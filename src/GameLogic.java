@@ -14,8 +14,8 @@ public class GameLogic implements GameObjectInterface
 	public GameLogic(GameEngine GE)
 	{
 		this.GE = GE;
-				
-		AddObject(new BeispielGameObject());
+		
+		AddObject(new BeispielGameObject()); // Beispielobject hinzufügen
 	}
 	
 	// Fügt ein neues GameObject der Liste hinzu und gibt dessen Index zurück
@@ -67,7 +67,7 @@ public class GameLogic implements GameObjectInterface
     		{
     			Objects.get(X).MouseClick(P);
     		}
-    	}	
+    	}
 	}
 	
 	public void MouseDown(Point P)
@@ -84,5 +84,32 @@ public class GameLogic implements GameObjectInterface
     	{
 			MouseMove.get(X).MouseMove(P);
     	}		
+	}
+
+	@Override
+	public void KeyDown(int KeyCode)
+	{
+		for(int X = 0; X < Objects.size(); X++)
+    	{
+			Objects.get(X).KeyDown(KeyCode);
+    	}
+	}
+
+	@Override
+	public void KeyUp(int KeyCode)
+	{
+		for(int X = 0; X < Objects.size(); X++)
+    	{
+			Objects.get(X).KeyUp(KeyCode);
+    	}
+	}
+
+	@Override
+	public void KeyPressed(int KeyCode, char KeyChar)
+	{
+		for(int X = 0; X < Objects.size(); X++)
+    	{
+			Objects.get(X).KeyPressed(KeyCode, KeyChar);
+    	}
 	}
 }

@@ -4,14 +4,15 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 
-public class BeispielGameObject extends GameObject 
+public class BeispielGameObject extends GameObject // Implement nicht benötigt da bereits un GameObject
 {
 	private boolean HasClick = false;
+	private int XTop = 0;
 	
 	// Init
 	public BeispielGameObject()
 	{
-		Position.y = 100;
+		PosY = 100;
 		ClickArea = new Rectangle(0, 0, 200, 100); // In diesem Bereich soll ein klick erkannt werden
 	}
 	
@@ -20,7 +21,7 @@ public class BeispielGameObject extends GameObject
 	public void Draw(Graphics G)
 	{
 		G.setColor(Color.black);
-		G.drawLine(0, 0, Position.x, Position.y);
+		G.drawLine(XTop, 0, PosX, PosY);
 		
 		G.setColor(new Color(255, 0, 0, 100));
 		G.drawRect(0, 0, 200, 100);
@@ -36,9 +37,14 @@ public class BeispielGameObject extends GameObject
 	@Override
 	public void Update(long Tick)
 	{
-		Position.x++;
-		if(Position.x > 200)
-			Position.x = 0;
+		PosX += 2;
+		if(PosX > 200)
+		{
+			PosX = 0;
+			XTop += 10;
+			if(XTop > 200)
+				XTop = 0;
+		}
 	}
 
 	// Wird ausgeführt wenn auf das Objekt geklickt wurde
@@ -47,5 +53,24 @@ public class BeispielGameObject extends GameObject
 	public void MouseClick(Point P)
 	{
 		HasClick = !HasClick;
+	}
+
+	// Wird ausgeführt wenn eine Taste gedrückt wird
+	@Override
+	public void KeyDown(int KeyCode)
+	{
+
+	}
+
+	// Wird ausgeführt wenn eine Taste losgelassen wird
+	@Override
+	public void KeyUp(int KeyCode)
+	{	
+	}
+
+	// Wird ausgeführt wenn eine Taste gedrückt WURDE (runter und hoch)
+	@Override
+	public void KeyPressed(int KeyCode, char KeyChar)
+	{
 	}
 }
