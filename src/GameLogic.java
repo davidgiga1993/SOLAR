@@ -7,19 +7,19 @@ import java.util.List;
 public class GameLogic implements GameObjectInterface
 {
 	public GameEngine GE;
-	private List<GameObjectInterface> Objects = new ArrayList<GameObjectInterface>();
+	private List<GameObject> Objects = new ArrayList<GameObject>();
 	private List<MouseMoveInterface> MouseMove = new ArrayList<MouseMoveInterface>();
 	private int ObjectCounter = 0;
 	
 	public GameLogic(GameEngine GE)
 	{
 		this.GE = GE;
-				
-		AddObject(new Hallo());
+		
+		AddObject(new BeispielGameObject()); // Beispielobject hinzufügen
 	}
 	
 	// Fügt ein neues GameObject der Liste hinzu und gibt dessen Index zurück
-	public int AddObject(GameObjectInterface O)
+	public int AddObject(GameObject O)
     {
     	Objects.add(O);
     	ObjectCounter++;
@@ -63,8 +63,11 @@ public class GameLogic implements GameObjectInterface
 	{
 		for(int X = 0; X < Objects.size(); X++)
     	{
-    		Objects.get(X).MouseClick(P);
-    	}	
+    		if(Objects.get(X).ClickArea.contains(P.x, P.y))
+    		{
+    			Objects.get(X).MouseClick(P);
+    		}
+    	}
 	}
 	
 	public void MouseDown(Point P)
@@ -81,5 +84,32 @@ public class GameLogic implements GameObjectInterface
     	{
 			MouseMove.get(X).MouseMove(P);
     	}		
+	}
+
+	@Override
+	public void KeyDown(int KeyCode)
+	{
+		for(int X = 0; X < Objects.size(); X++)
+    	{
+			Objects.get(X).KeyDown(KeyCode);
+    	}
+	}
+
+	@Override
+	public void KeyUp(int KeyCode)
+	{
+		for(int X = 0; X < Objects.size(); X++)
+    	{
+			Objects.get(X).KeyUp(KeyCode);
+    	}
+	}
+
+	@Override
+	public void KeyPressed(int KeyCode, char KeyChar)
+	{
+		for(int X = 0; X < Objects.size(); X++)
+    	{
+			Objects.get(X).KeyPressed(KeyCode, KeyChar);
+    	}
 	}
 }

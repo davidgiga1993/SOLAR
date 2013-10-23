@@ -1,8 +1,12 @@
 import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -18,6 +22,16 @@ public class GameEngine  extends Applet
 	private Timer mFrameTimer;
 	private Timer mGameTimer;
 	
+	// DEBUG
+	private Timer mDebugTimer;
+	private int mDebugFPS;
+	private int mDebugTPS;
+	private int mDebugFPSCounter;
+	private int mDebugTPSCounter;
+	private Font mDebugFont;
+	private boolean mShowDebug = true;
+	// END DEBUG
+	
 	private GameLogic GL;
 	
 	private long GameTick = 0;
@@ -32,16 +46,20 @@ public class GameEngine  extends Applet
 		
 		addMouseMotionListener(new MouseMotion());
 		addMouseListener(new MouseClick());
+		addKeyListener(new KeyEvents());
 	}
 	
 	public void start()
-	{		
+	{
+		mDebugTimer = new Timer(1000, new DebugTick());
 		mFrameTimer = new Timer(15, new FrameTimerTick());
 		mGameTimer = new Timer(50, new GameLogicTick());
 		mFrameTimer.start();
 		mGameTimer.start();
-		
+		mDebugTimer.start();
 		GL = new GameLogic(this);
+		
+		mDebugFont = new Font("Arial", Font.PLAIN, 10);
 	}
 	
     public void update(Graphics g)
@@ -54,7 +72,31 @@ public class GameEngine  extends Applet
     	mBufferGraphics.clearRect(0, 0, Width, Height);
     	
     	GL.Draw(mBufferGraphics);
+    	
+    	if(mShowDebug)
+    	{
+    		mDebugFPSCounter++;
+    		mBufferGraphics.setColor(Color.black);
+    		mBufferGraphics.setFont(mDebugFont);
+    		mBufferGraphics.drawString("FPS", 2, 13);
+    		mBufferGraphics.drawString(String.valueOf(mDebugFPS), 25, 13);
+    		mBufferGraphics.drawString("TPS", 2, 25);
+    		mBufferGraphics.drawString(String.valueOf(mDebugTPS), 25, 25);
+    	}
+    	
     	g.drawImage(mOffscreen, 0, 0, this);
+    }
+    
+    private class DebugTick implements ActionListener
+    {
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			mDebugFPS = mDebugFPSCounter;
+			mDebugTPS = mDebugTPSCounter;
+			mDebugFPSCounter = 0;
+			mDebugTPSCounter = 0;			
+		}    	
     }
     
     private class FrameTimerTick implements ActionListener
@@ -72,6 +114,11 @@ public class GameEngine  extends Applet
 		{
 			GL.Update(GameTick);
 			GameTick++;
+			
+			if(mShowDebug)
+	    	{
+				mDebugTPSCounter++;
+	    	}
 		}
     }
     
@@ -123,6 +170,31 @@ public class GameEngine  extends Applet
 		public void mouseReleased(MouseEvent e)
 		{
 			GL.MouseRelease(e.getPoint());
+		}    	
+    }
+    
+    private class KeyEvents implements KeyListener
+    {
+		@Override
+		public void keyPressed(KeyEvent arg0)
+		{
+			GL.KeyDown(arg0.getKeyCode());
+			if(arg0.getKeyCode() == 112) // F1
+			{
+				mShowDebug = !mShowDebug;
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0)
+		{
+			GL.KeyUp(arg0.getKeyCode());
+		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0)
+		{
+			GL.KeyPressed(arg0.getKeyCode(), arg0.getKeyChar());
 		}    	
     }
 }
