@@ -7,7 +7,7 @@ import java.util.List;
 public class GameLogic implements GameObjectInterface
 {
 	public GameEngine GE;
-	private List<GameObjectInterface> Objects = new ArrayList<GameObjectInterface>();
+	private List<GameObject> Objects = new ArrayList<GameObject>();
 	private List<MouseMoveInterface> MouseMove = new ArrayList<MouseMoveInterface>();
 	private int ObjectCounter = 0;
 	
@@ -15,11 +15,11 @@ public class GameLogic implements GameObjectInterface
 	{
 		this.GE = GE;
 				
-		AddObject(new Hallo());
+		AddObject(new BeispielGameObject());
 	}
 	
 	// Fügt ein neues GameObject der Liste hinzu und gibt dessen Index zurück
-	public int AddObject(GameObjectInterface O)
+	public int AddObject(GameObject O)
     {
     	Objects.add(O);
     	ObjectCounter++;
@@ -63,7 +63,10 @@ public class GameLogic implements GameObjectInterface
 	{
 		for(int X = 0; X < Objects.size(); X++)
     	{
-    		Objects.get(X).MouseClick(P);
+    		if(Objects.get(X).ClickArea.contains(P.x, P.y))
+    		{
+    			Objects.get(X).MouseClick(P);
+    		}
     	}	
 	}
 	
