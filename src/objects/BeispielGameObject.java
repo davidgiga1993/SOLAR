@@ -1,10 +1,13 @@
+package objects;
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import solar.SimpleInputInterface;
 
-public class BeispielGameObject extends GameObject // Implement nicht benötigt da bereits un GameObject
+
+public class BeispielGameObject extends GameObject implements SimpleInputInterface
 {
 	private boolean HasClick = false;
 	private int XTop = 0;
@@ -18,7 +21,7 @@ public class BeispielGameObject extends GameObject // Implement nicht benötigt d
 	
 	// Draw wird ~ alle 15 ms ausgeführt und sollte NUR(!) zum zeichnen verwendet werden
 	@Override
-	public void Draw(Graphics G)
+	public void Draw(Graphics2D G)
 	{
 		G.setColor(Color.black);
 		G.drawLine(XTop, 0, PosX, PosY);
@@ -32,8 +35,8 @@ public class BeispielGameObject extends GameObject // Implement nicht benötigt d
 		}
 	}
 
-	// Update wird ~ alle 50ms ausgeführt und solle für die Logik benutzt werden
-	// Tick gibt die Anzahl abgelaufener Ticks an (1 Tick = ~ 50ms)
+	// Update wird ~ alle 40ms ausgeführt und solle für die Logik benutzt werden
+	// Tick gibt die Anzahl abgelaufener Ticks an (1 Tick = ~ 40ms)
 	@Override
 	public void Update(long Tick)
 	{
@@ -50,27 +53,30 @@ public class BeispielGameObject extends GameObject // Implement nicht benötigt d
 	// Wird ausgeführt wenn auf das Objekt geklickt wurde
 	// Dazu muss das Rechteck ClickArea auf ein Bereich gesetzt werden, auf den geklickt werden darf
 	@Override
-	public void MouseClick(Point P)
+	public boolean MouseClick(Point P)
 	{
 		HasClick = !HasClick;
+		return true;
 	}
 
 	// Wird ausgeführt wenn eine Taste gedrückt wird
 	@Override
-	public void KeyDown(int KeyCode)
+	public boolean KeyDown(int KeyCode)
 	{
-
+		return false;
 	}
 
 	// Wird ausgeführt wenn eine Taste losgelassen wird
 	@Override
-	public void KeyUp(int KeyCode)
-	{	
+	public boolean KeyUp(int KeyCode)
+	{
+		return false;
 	}
 
 	// Wird ausgeführt wenn eine Taste gedrückt WURDE (runter und hoch)
 	@Override
-	public void KeyPressed(int KeyCode, char KeyChar)
+	public boolean KeyPressed(int KeyCode, char KeyChar)
 	{
+		return false;
 	}
 }
