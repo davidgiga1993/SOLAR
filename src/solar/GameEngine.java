@@ -1,8 +1,11 @@
+package solar;
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,7 +20,7 @@ import javax.swing.Timer;
 public class GameEngine  extends Applet 
 {
 	private static final long serialVersionUID = 1L;
-	private Graphics mBufferGraphics;
+	private Graphics2D mBufferGraphics;
 	private Image mOffscreen;
 	private Timer mFrameTimer;
 	private Timer mGameTimer;
@@ -35,14 +38,14 @@ public class GameEngine  extends Applet
 	private GameLogic GL;
 	
 	private long GameTick = 0;
-	private int Width = 800;
-	private int Height = 600;
+	public static int Width = 800;
+	public static int Height = 600;
 	
 	public void init()
 	{
 		setSize(Width, Height);
 		mOffscreen = createImage(Width,Height);
-		mBufferGraphics = mOffscreen.getGraphics();
+		mBufferGraphics = (Graphics2D)mOffscreen.getGraphics();
 		
 		addMouseMotionListener(new MouseMotion());
 		addMouseListener(new MouseClick());
@@ -51,14 +54,14 @@ public class GameEngine  extends Applet
 	
 	public void start()
 	{
+		GL = new GameLogic(this);
+		
 		mDebugTimer = new Timer(1000, new DebugTick());
 		mFrameTimer = new Timer(15, new FrameTimerTick());
-		mGameTimer = new Timer(50, new GameLogicTick());
+		mGameTimer = new Timer(40, new GameLogicTick());
 		mFrameTimer.start();
 		mGameTimer.start();
 		mDebugTimer.start();
-		GL = new GameLogic(this);
-		
 		mDebugFont = new Font("Arial", Font.PLAIN, 10);
 	}
 	
@@ -70,6 +73,7 @@ public class GameEngine  extends Applet
     public void paint(Graphics g)
     {
     	mBufferGraphics.clearRect(0, 0, Width, Height);
+    	mBufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     	
     	GL.Draw(mBufferGraphics);
     	
@@ -127,7 +131,7 @@ public class GameEngine  extends Applet
 		@Override
 		public void mouseDragged(MouseEvent arg0)
 		{
-			
+		
 		}
 
 		@Override
