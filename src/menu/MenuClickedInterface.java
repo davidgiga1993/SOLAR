@@ -1,5 +1,5 @@
 package menu;
 
 public interface MenuClickedInterface {
-	abstract void MenuClicked(int Index);
+	abstract void MenuClicked(MenuItem Item, int Index);
 }

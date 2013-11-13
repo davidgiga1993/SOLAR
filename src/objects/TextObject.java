@@ -1,26 +1,26 @@
 package objects;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 
 import solar.GameEngine;
 
 public class TextObject extends GameObject
 {
     private final String Label;
-    private Color TextColor;
+    private Paint TextPaint;
     private Font TextFont;
     private GameObjectRectangle CenterRect;
     
     private int Width;
     private int Height;
     
-    public TextObject(String Label, Color TextColor, Font TextFont)
+    public TextObject(String Label, Paint TextPaint, Font TextFont)
     {
         this.Label = Label;
-        this.TextColor = TextColor;
+        this.TextPaint = TextPaint;
         this.TextFont = TextFont;
         PosX = GameEngine.Width;
         PosY = GameEngine.Height;
@@ -44,19 +44,17 @@ public class TextObject extends GameObject
     public void Draw(Graphics2D G)
     {
         G.setFont(TextFont);
-        G.setColor(TextColor);
+        G.setPaint(TextPaint);
         G.drawString(Label, PosX, PosY);
         
         if(CenterRect != null || Height == 0)
         {
             CenterInRect(G);
-        }
-        
+        }        
     }
 
     @Override
     public void Update(long Tick)
     {
     }
-
 }

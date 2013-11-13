@@ -23,10 +23,10 @@ public class BeispielGameObject extends GameObject implements SimpleInputInterfa
 	@Override
 	public void Draw(Graphics2D G)
 	{
-		G.setColor(Color.black);
+		G.setPaint(Color.black);
 		G.drawLine(XTop, 0, PosX, PosY);
 		
-		G.setColor(new Color(255, 0, 0, 100));
+		G.setPaint(new Color(255, 0, 0, 100));
 		G.drawRect(0, 0, 200, 100);
 		
 		if(HasClick)

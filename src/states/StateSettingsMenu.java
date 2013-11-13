@@ -1,13 +1,13 @@
 package states;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-import fonts.FontBuilder;
 import menu.MenuBuilder;
 import menu.MenuClickedInterface;
+import menu.MenuItem;
 import menu.MenuObject;
+import solar.GameEngine;
 import solar.GameLogic;
 import solar.GameState;
 import solar.Logger;
@@ -19,20 +19,29 @@ public class StateSettingsMenu extends GameState
     {
         super(GL);
 
-        MenuObject mo = MenuBuilder.Build(100, 100, 2, FontBuilder.BuildDefaultFont(30), new String[]
-        { "Debug", "Back" }, Color.red, Color.gray, Color.darkGray, Color.blue);
+        MenuObject MO = MenuBuilder.BuildDefaultMenu(GameEngine.CenterX, GameEngine.CenterY)
+                .addItem("Debug", true, GL.GE.mShowDebug)
+                .addItem("Back", false)
+                .Build();
 
-        mo.SetMenuClickedListener(new MenuItemClicked());
-        Objects.add(mo);
+        MO.SetMenuClickedListener(new MenuItemClicked());
+        Objects.add(MO);
     }
 
     private class MenuItemClicked implements MenuClickedInterface
     {
         @Override
-        public void MenuClicked(int Index)
+        public void MenuClicked(MenuItem Item, int Index)
         {
-            if (Index == 1)
+            switch(Index)
+            {
+            case 0:
+                GL.GE.mShowDebug = Item.Selected;
+                break;
+            case 1:
                 GL.ChangeState(new StateMainMenu(GL));
+                break;
+            }
             Logger.LogD("Menuitem clicked " + Index);
         }
     }

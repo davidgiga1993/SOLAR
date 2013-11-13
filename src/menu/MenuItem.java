@@ -1,8 +1,8 @@
 package menu;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 
 import objects.GameObject;
 import objects.GameObjectRectangle;
@@ -11,17 +11,23 @@ import objects.TextObject;
 public class MenuItem extends GameObject
 {
     public boolean Selected;
+    public boolean Hovered;
     private GameObjectRectangle DrawRect;
     private TextObject TextItem;
 
-    private Color HoverColor;
-    private Color BackgroundColor;
+    private Paint HoverColor;
+    private Paint BackgroundColor;
+    private Paint SelectedColor;
+    
+    public MenuItemModes ItemMode;
 
-    public MenuItem(String Label, Color TextColor, Color HoverColor, Color BackgroundColor, Font TextFont)
+    public MenuItem(String Label, Paint TextColor, Paint HoverColor, Paint BackgroundColor, Paint SelectedColor, Font TextFont, MenuItemModes ItemMode)
     {
         TextItem = new TextObject(Label, TextColor, TextFont);
         this.HoverColor = HoverColor;
         this.BackgroundColor = BackgroundColor;
+        this.SelectedColor = SelectedColor;
+        this.ItemMode = ItemMode;
     }
 
     public void setDrawRect(GameObjectRectangle drawRect)
@@ -34,9 +40,11 @@ public class MenuItem extends GameObject
     public void Draw(Graphics2D G)
     {
         if (Selected)
-            G.setColor(HoverColor);
+            G.setPaint(SelectedColor);
+        else if(Hovered)
+            G.setPaint(HoverColor);
         else
-            G.setColor(BackgroundColor);
+            G.setPaint(BackgroundColor);
 
         DrawRect.Draw(G);
         TextItem.Draw(G);
