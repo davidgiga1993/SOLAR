@@ -84,6 +84,6 @@ public class BeispielGameObject extends GameObject implements SimpleInputInterfa
 	protected void ZoomChanged() {
 		// TODO Auto-generated method stub
 		
-	}
+	
     }
 }

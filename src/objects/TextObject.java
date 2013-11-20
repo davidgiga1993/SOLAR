@@ -64,5 +64,5 @@ public class TextObject extends GameObject
 		// TODO Auto-generated method stub
 		
 	}
-    }
+    
 }

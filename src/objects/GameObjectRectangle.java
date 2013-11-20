@@ -163,5 +163,4 @@ public class GameObjectRectangle extends GameObject
 		// TODO Auto-generated method stub
 		
 	}
-    }
 }
