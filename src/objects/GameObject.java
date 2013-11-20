@@ -8,6 +8,7 @@ public abstract class GameObject implements GameObjectInterface
 {
     protected int PosX;
     protected int PosY;
+    protected float Zoom;
     public Rectangle ClickArea;
 
     public int getPosX()
@@ -28,5 +29,13 @@ public abstract class GameObject implements GameObjectInterface
     {
         this.PosY = PosY;
     }
+    
+    public void setZoom(float Zoom)
+    {
+        this.Zoom = Zoom;
+        ZoomChanged();
+    }
+    
+    protected abstract void ZoomChanged();
     
 }

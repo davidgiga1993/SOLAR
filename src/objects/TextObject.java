@@ -58,4 +58,11 @@ public class TextObject extends GameObject
     public void Update(long Tick)
     {
     }
+
+    @Override
+    protected void ZoomChanged()
+    {
+        // TODO Auto-generated method stub
+        
+    }
 }
