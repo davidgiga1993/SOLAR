@@ -157,4 +157,10 @@ public class GameObjectRectangle extends GameObject
                 Height = Effect[3].Update(Tick);
         }
     }
+
+	@Override
+	protected void ZoomChanged() {
+		// TODO Auto-generated method stub
+		
+	}
 }

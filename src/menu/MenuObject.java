@@ -120,4 +120,10 @@ public class MenuObject extends GameObject implements MouseMoveInterface
         return false;
     }
 
+	@Override
+	protected void ZoomChanged() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

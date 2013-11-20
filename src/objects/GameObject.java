@@ -28,5 +28,5 @@ public abstract class GameObject implements GameObjectInterface
     {
         this.PosY = PosY;
     }
-    
+    protected abstract void ZoomChanged();
 }

@@ -81,11 +81,10 @@ public class StateMainMenu extends GameState
     {
         if (KeyCode == KeyEvent.VK_MINUS)
         {
-            AddZoom(-0.05f);
+        	
         }
         else if (KeyCode == KeyEvent.VK_PLUS)
         {
-            AddZoom(0.05f);
         }
         return false;
     }

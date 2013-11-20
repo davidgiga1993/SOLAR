@@ -55,4 +55,10 @@ public class MenuItem extends GameObject
     {
         // TODO Auto-generated method stub
     }
+
+	@Override
+	protected void ZoomChanged() {
+		// TODO Auto-generated method stub
+		
+	}
 }

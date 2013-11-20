@@ -79,4 +79,10 @@ public class BeispielGameObject extends GameObject implements SimpleInputInterfa
     {
         return false;
     }
+
+	@Override
+	protected void ZoomChanged() {
+		// TODO Auto-generated method stub
+		
+	}
 }

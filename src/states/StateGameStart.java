@@ -16,7 +16,7 @@ public class StateGameStart extends GameState
         super(GL);
         // TODO Auto-generated constructor stub
         Objects.add(new ObjectRaumschiff1());
-        Objects.add(new ObjectStern(300, 50, Color.cyan , new Point(200,200) ));
+        Objects.add(new ObjectStern(300, 50, Color.cyan , new Point(200,200), ObjectStern.Sterntyp.braunerZwerg ));
     }
 
     @Override
