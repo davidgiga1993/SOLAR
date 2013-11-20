@@ -1,8 +1,10 @@
 package states;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseWheelEvent;
 
+import objects.*;
 import solar.GameLogic;
 import solar.GameState;
 
@@ -13,12 +15,14 @@ public class StateGameStart extends GameState
     {
         super(GL);
         // TODO Auto-generated constructor stub
+        Objects.add(new ObjectRaumschiff1());
+        Objects.add(new ObjectStern(300, 50, Color.cyan , new Point(200,200) ));
     }
 
     @Override
     public boolean MouseClick(Point P)
     {
-        // TODO Auto-generated method stub
+        ((ObjectRaumschiff1) Objects.get(0)).MouseClick(P);
         return false;
     }
 
