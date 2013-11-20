@@ -22,7 +22,7 @@ public class StateStarBackground extends GameState
 
         BufferedImage Texture = TextureLoader.LoadTexture("bg.png");
 
-        GameObjectRectangle BG = new GameObjectRectangle(0, 0, GameEngine.Width, GameEngine.Height);
+        GameObjectRectangle BG = new GameObjectRectangle(0, 0, GameEngine.MaxPositions, GameEngine.MaxPositions);
         
         if (Texture != null)
             Background = new TexturePaint(Texture, BG.toRectangle());

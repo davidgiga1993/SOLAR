@@ -24,7 +24,7 @@ public class StateMainMenu extends GameState
         if (!GL.HasState(BackState))
             GL.AddStateToLast(BackState);
 
-        MenuObject MO = MenuBuilder.BuildDefaultMenu(GameEngine.CenterX, GameEngine.CenterY).addItem("Start", false).addItem("Settings", false).addItem("Exit", false).Build();
+        MenuObject MO = MenuBuilder.BuildDefaultMenu(0, 0).addItem("Start", false).addItem("Settings", false).addItem("Exit", false).Build();
 
         MO.SetMenuClickedListener(new MenuItemClicked());
         Objects.add(MO);
