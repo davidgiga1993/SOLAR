@@ -14,6 +14,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Timer;
 
@@ -21,8 +24,13 @@ public class GameEngine extends Applet
 {
     private static final long serialVersionUID = 1L;
     private Graphics2D mBufferGraphics;
-    private Image mOffscreen;
+    private Graphics2D mBufferSubframe;
+
+    private BufferedImage mOffscreen;
+    private Image mSubframe;
+
     private Timer mFrameTimer;
+    private Timer mSubFrameTimer;
     private Timer mGameTimer;
 
     // DEBUG
@@ -39,21 +47,28 @@ public class GameEngine extends Applet
 
     private long GameTick = 0;
 
-    public static final int Width = 800;
-    public static final int Height = 600;
+    public static final int Width = 1200;
+    public static final int Height = 810;
     public static final int CenterX = Width / 2;
     public static final int CenterY = Height / 2;
 
     public static final int DebugLoopTime = 1000;
+    public static final int DrawSleepTime = 5;
+    public static final int DrawSubframeSleepTime = 50;
+    public static final int GameLoopTime = 20;
 
     public void init()
     {
         setSize(Width, Height);
-        mOffscreen = createImage(Width, Height);
+        mOffscreen = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_ARGB);
+        mSubframe = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_ARGB);
+
+        mBufferSubframe = (Graphics2D) mSubframe.getGraphics();
         mBufferGraphics = (Graphics2D) mOffscreen.getGraphics();
 
         addMouseMotionListener(new MouseMotion());
         addMouseListener(new MouseClick());
+        addMouseWheelListener(new MouseWheel());
         addKeyListener(new KeyEvents());
     }
 
@@ -62,8 +77,11 @@ public class GameEngine extends Applet
         GL = new GameLogic(this);
 
         mDebugTimer = new Timer(DebugLoopTime, new DebugTick());
-        mFrameTimer = new Timer(15, new FrameTimerTick());
-        mGameTimer = new Timer(40, new GameLogicTick());
+        mFrameTimer = new Timer(DrawSleepTime, new FrameTimerTick());
+        mSubFrameTimer = new Timer(DrawSubframeSleepTime, new SubFrameTimerTick());
+
+        mGameTimer = new Timer(GameLoopTime, new GameLogicTick());
+        mSubFrameTimer.start();
         mFrameTimer.start();
         mGameTimer.start();
         mDebugTimer.start();
@@ -77,22 +95,24 @@ public class GameEngine extends Applet
 
     public void paint(Graphics g)
     {
-        mBufferGraphics.clearRect(0, 0, Width, Height);
+        mBufferGraphics.setColor(Color.black);
+        mBufferGraphics.fillRect(0, 0, Width, Height);
+
         mBufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        mBufferGraphics.drawImage(mSubframe, 0, 0, null);
         GL.Draw(mBufferGraphics);
 
         if (mShowDebug)
         {
             mDebugFPSCounter++;
-            mBufferGraphics.setPaint(Color.black);
+            mBufferGraphics.setPaint(Color.white);
             mBufferGraphics.setFont(mDebugFont);
             mBufferGraphics.drawString("FPS", 2, 13);
             mBufferGraphics.drawString(String.valueOf(mDebugFPS), 25, 13);
             mBufferGraphics.drawString("TPS", 2, 25);
             mBufferGraphics.drawString(String.valueOf(mDebugTPS), 25, 25);
         }
-
         g.drawImage(mOffscreen, 0, 0, this);
     }
 
@@ -114,6 +134,25 @@ public class GameEngine extends Applet
         public void actionPerformed(ActionEvent arg0)
         {
             repaint();
+        }
+    }
+
+    private class SubFrameTimerTick implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            GL.DrawSubframe(mBufferSubframe);
+        }
+    }
+
+    private class MouseWheel implements MouseWheelListener
+    {
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent arg0)
+        {
+            GL.MouseWheelMoved(arg0);
+
         }
     }
 

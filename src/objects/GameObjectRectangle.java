@@ -1,6 +1,8 @@
 package objects;
 
 import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.Rectangle;
 
 import solar.EffectTypes;
 import solar.LinearScaler;
@@ -10,8 +12,9 @@ public class GameObjectRectangle extends GameObject
 {
     protected int Width;
     protected int Height;
-
     public boolean Fill;
+    
+    public Paint paint;
 
     protected ScaleEffect[] Effect;
 
@@ -23,10 +26,11 @@ public class GameObjectRectangle extends GameObject
         this.Height = Height;
     }
 
-    public GameObjectRectangle(int PosX, int PosY, int Width, int Height, boolean Fill)
+    public GameObjectRectangle(int PosX, int PosY, int Width, int Height, boolean Fill, Paint paint)
     {
         this(PosX, PosY, Width, Height);
         this.Fill = Fill;
+        this.paint = paint;
     }
 
     public void SetEffect(EffectTypes Type)
@@ -86,6 +90,11 @@ public class GameObjectRectangle extends GameObject
         }
     }
     
+    public Rectangle toRectangle()
+    {
+        return new Rectangle(PosX, PosY, Width, Height);
+    }
+    
     @Override
     public void setPosX(int PosX)
     {       
@@ -121,6 +130,9 @@ public class GameObjectRectangle extends GameObject
     @Override
     public void Draw(Graphics2D G)
     {
+        if(paint != null)
+            G.setPaint(paint);
+        
         if (Fill)
             G.fillRect(PosX, PosY, Width, Height);
         else

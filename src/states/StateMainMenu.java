@@ -2,6 +2,8 @@ package states;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseWheelEvent;
 
 import menu.MenuBuilder;
 import menu.MenuClickedInterface;
@@ -12,21 +14,21 @@ import solar.GameLogic;
 import solar.GameState;
 import solar.Logger;
 
-
 public class StateMainMenu extends GameState
 {
 
     public StateMainMenu(GameLogic GL)
     {
         super(GL);
+        GameState BackState = new StateStarBackground(GL);
+        if (!GL.HasState(BackState))
+            GL.AddStateToLast(BackState);
 
-        MenuObject MO = MenuBuilder.BuildDefaultMenu(GameEngine.CenterX, GameEngine.CenterY)
-        .addItem("Start", false)
-        .addItem("Settings", false)
-        .addItem("Exit", false).Build();
-        
+        MenuObject MO = MenuBuilder.BuildDefaultMenu(GameEngine.CenterX, GameEngine.CenterY).addItem("Start", false).addItem("Settings", false).addItem("Exit", false).Build();
+
         MO.SetMenuClickedListener(new MenuItemClicked());
         Objects.add(MO);
+
     }
 
     private class MenuItemClicked implements MenuClickedInterface
@@ -34,9 +36,10 @@ public class StateMainMenu extends GameState
         @Override
         public void MenuClicked(MenuItem Item, int Index)
         {
-            switch(Index)
+            switch (Index)
             {
             case 0:
+                GL.ChangeState(new StateGameStart(GL));
                 break;
             case 1:
                 GL.ChangeState(new StateSettingsMenu(GL));
@@ -45,7 +48,7 @@ public class StateMainMenu extends GameState
                 System.exit(0);
                 break;
             }
-                
+
             Logger.LogD("Menuitem clicked " + Index);
         }
     }
@@ -76,21 +79,26 @@ public class StateMainMenu extends GameState
     @Override
     public boolean KeyDown(int KeyCode)
     {
-        // TODO Auto-generated method stub
+        if (KeyCode == KeyEvent.VK_MINUS)
+        {
+            AddZoom(-0.05f);
+        }
+        else if (KeyCode == KeyEvent.VK_PLUS)
+        {
+            AddZoom(0.05f);
+        }
         return false;
     }
 
     @Override
     public boolean KeyUp(int KeyCode)
     {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     public boolean KeyPressed(int KeyCode, char KeyChar)
     {
-        // TODO Auto-generated method stub
         return false;
     }
 
@@ -110,6 +118,13 @@ public class StateMainMenu extends GameState
 
     @Override
     public boolean MouseRelease(Point P)
+    {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean MouseWheelMoved(MouseWheelEvent event)
     {
         // TODO Auto-generated method stub
         return false;

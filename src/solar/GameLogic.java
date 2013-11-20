@@ -2,13 +2,13 @@ package solar;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 import states.StateMainMenu;
 
-public class GameLogic implements GameObjectInterface, SimpleInputInterface,
-        MouseMoveInterface
+public class GameLogic implements GameObjectInterface, SimpleInputInterface, SubframeInterface, MouseMoveInterface
 {
     public GameEngine GE;
     private List<GameState> States = new ArrayList<GameState>();
@@ -30,9 +30,23 @@ public class GameLogic implements GameObjectInterface, SimpleInputInterface,
     public int AddState(GameState S)
     {
         States.add(S);
+        S.ID = StateCounter;
         StateCounter++;
         Logger.LogD("New State");
         return (StateCounter - 1);
+    }
+
+    public int AddStateToLast(GameState S)
+    {
+        States.add(0, S);
+        S.ID = 0;
+        for(int X = 1; X < States.size(); X++)
+        {
+            States.get(X).ID = X;
+        }
+        StateCounter++;
+        Logger.LogD("New State");
+        return 0;
     }
 
     public void RemoveState(int Index)
@@ -42,6 +56,10 @@ public class GameLogic implements GameObjectInterface, SimpleInputInterface,
             StateCounter--;
             Logger.LogD("State removed");
         }
+    }
+    public boolean HasState(GameState S)
+    {
+        return States.contains(S);
     }
 
     public void RemoveState(GameState GS)
@@ -119,6 +137,16 @@ public class GameLogic implements GameObjectInterface, SimpleInputInterface,
         return true;
     }
 
+    public boolean MouseWheelMoved(MouseWheelEvent event)
+    {
+        for (int X = 0; X < StateCounter; X++)
+        {
+            if (States.get(X).MouseWheelMoved(event))
+                break;
+        }
+        return true;
+    }
+
     @Override
     public boolean KeyDown(int KeyCode)
     {
@@ -150,5 +178,14 @@ public class GameLogic implements GameObjectInterface, SimpleInputInterface,
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void DrawSubframe(Graphics2D G)
+    {
+        for (int X = 0; X < StateCounter; X++)
+        {
+            States.get(X).DrawSubframe(G);
+        }
     }
 }

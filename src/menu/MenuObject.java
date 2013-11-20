@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.MouseWheelEvent;
 
 import objects.GameObject;
 import objects.GameObjectRectangle;
@@ -31,11 +32,11 @@ public class MenuObject extends GameObject implements MouseMoveInterface
         this.ItemHeight = ItemHeight;
 
         if (Border > 0)
-            Container = new GameObjectRectangle(PosX, PosY, Width + Border, Items.length * ItemHeight + Border, true);
+            Container = new GameObjectRectangle(PosX, PosY, Width + Border, Items.length * ItemHeight + Border, true, BorderPaint);
 
         for (int X = 0; X < Items.length; X++)
         {
-            this.Items[X].setDrawRect(new GameObjectRectangle(PosX + Border / 2, PosY + ItemHeight * X + Border / 2, 280, ItemHeight, true));
+            this.Items[X].setDrawRect(new GameObjectRectangle(PosX + Border / 2, PosY + ItemHeight * X + Border / 2, 280, ItemHeight, true, BorderPaint));
             this.Items[X].ClickArea = new Rectangle(PosX + Border / 2, PosY + ItemHeight * X + Border / 2, 280, ItemHeight);
         }
     }
@@ -107,6 +108,13 @@ public class MenuObject extends GameObject implements MouseMoveInterface
 
     @Override
     public boolean MouseRelease(Point P)
+    {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean MouseWheelMoved(MouseWheelEvent event)
     {
         // TODO Auto-generated method stub
         return false;

@@ -38,19 +38,20 @@ public class TextObject extends GameObject
         Height = TextFont.getSize();
         PosX = CenterRect.PosX + (CenterRect.Width / 2) - (Width / 2);
         PosY = CenterRect.PosY + (CenterRect.Height / 2) + (Height / 2);
+        CenterRect = null;
     }
     
     @Override
     public void Draw(Graphics2D G)
     {
-        G.setFont(TextFont);
-        G.setPaint(TextPaint);
-        G.drawString(Label, PosX, PosY);
-        
         if(CenterRect != null || Height == 0)
         {
             CenterInRect(G);
-        }        
+        } 
+        
+        G.setFont(TextFont);
+        G.setPaint(TextPaint);
+        G.drawString(Label, PosX, PosY);               
     }
 
     @Override

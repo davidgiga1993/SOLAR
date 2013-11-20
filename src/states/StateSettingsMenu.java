@@ -2,6 +2,7 @@ package states;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.MouseWheelEvent;
 
 import menu.MenuBuilder;
 import menu.MenuClickedInterface;
@@ -106,6 +107,13 @@ public class StateSettingsMenu extends GameState
 
     @Override
     public boolean MouseRelease(Point P)
+    {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean MouseWheelMoved(MouseWheelEvent event)
     {
         // TODO Auto-generated method stub
         return false;
