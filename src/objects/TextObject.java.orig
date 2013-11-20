@@ -59,10 +59,18 @@ public class TextObject extends GameObject
     {
     }
 
+<<<<<<< HEAD
 	@Override
 	protected void ZoomChanged() {
 		// TODO Auto-generated method stub
 		
 	}
+=======
+    @Override
+    protected void ZoomChanged()
+    {
+        // TODO Auto-generated method stub
+        
     }
+>>>>>>> master
 }

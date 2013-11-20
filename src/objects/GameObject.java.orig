@@ -29,6 +29,9 @@ public abstract class GameObject implements GameObjectInterface
     {
         this.PosY = PosY;
     }
+<<<<<<< HEAD
+    protected abstract void ZoomChanged();
+=======
     
     public void setZoom(float Zoom)
     {
@@ -37,4 +40,6 @@ public abstract class GameObject implements GameObjectInterface
     }
     
     protected abstract void ZoomChanged();
+    
+>>>>>>> master
 }

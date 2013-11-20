@@ -81,6 +81,10 @@ public class StateMainMenu extends GameState
     {
         if (KeyCode == KeyEvent.VK_MINUS)
         {
+<<<<<<< HEAD
+        	
+=======
+>>>>>>> master
         }
         else if (KeyCode == KeyEvent.VK_PLUS)
         {

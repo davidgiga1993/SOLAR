@@ -12,7 +12,7 @@ public abstract class GameState implements GameObjectInterface, SubframeInterfac
     protected GameLogic GL;
     protected int ID; // Eigene ID -> Entspricht dem Index in der GameLogic
                       // Liste
-
+    
     protected List<GameObject> Objects = new ArrayList<GameObject>();
     protected List<GameObject> SubObjects = new ArrayList<GameObject>();
     
@@ -25,27 +25,10 @@ public abstract class GameState implements GameObjectInterface, SubframeInterfac
         this.GL = GL;
     }
     
-    public void AddZoom(double ToAdd)
-    {
-        SetZoom(Zoom + ToAdd);
-    }
-    public void SetZoom(double Zoom)
-    {
-        this.Zoom = Zoom;
-        ViewportX =  GameEngine.Width / 2 - Zoom * GameEngine.Width / 2;
-        ViewportY =  GameEngine.Height / 2 - Zoom * GameEngine.Height / 2;
-    }
-    
 
     @Override
     public void Draw(Graphics2D G)
     {
-        if(Zoom != 1.0f)
-        {
-            G.translate(ViewportX, ViewportY);
-            G.scale(Zoom, Zoom);
-            Zoom = 1.0f;
-        }
         for (int X = 0; X < Objects.size(); X++)
         {
             Objects.get(X).Draw(G);
