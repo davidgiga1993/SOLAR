@@ -20,7 +20,7 @@ public class StateSettingsMenu extends GameState
     {
         super(GL);
 
-        MenuObject MO = MenuBuilder.BuildDefaultMenu(0,0)
+        MenuObject MO = MenuBuilder.BuildDefaultMenu(GameEngine.CenterX, GameEngine.CenterY)
                 .addItem("Debug", true, GL.GE.mShowDebug)
                 .addItem("Back", false)
                 .Build();

@@ -2,7 +2,6 @@ package solar;
 
 import java.applet.Applet;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -48,14 +47,10 @@ public class GameEngine extends Applet
 
     private long GameTick = 0;
 
-    public int Width = 800;
-    public int Height = 600;
-
-    public static final int MaxPositions = 1500;
-    private static final double MaxPositionsD = 1500;
-
-    // public static final int CenterX = Width / 2;
-    // public static final int CenterY = Height / 2;
+    public static final int Width = 1200;
+    public static final int Height = 810;
+    public static final int CenterX = Width / 2;
+    public static final int CenterY = Height / 2;
 
     public static final int DebugLoopTime = 1000;
     public static final int DrawSleepTime = 5;
@@ -64,7 +59,7 @@ public class GameEngine extends Applet
 
     public void init()
     {
-        setResolution(Width, Height);
+        setSize(Width, Height);
         mOffscreen = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_ARGB);
         mSubframe = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_ARGB);
 
@@ -98,25 +93,10 @@ public class GameEngine extends Applet
         paint(g);
     }
 
-    public void setResolution(int Width, int Height)
-    {
-        this.Width = Width;
-        this.Height = Height;
-        setSize(Width, Height);
-        Rescale = true;
-    }
-
-    private boolean Rescale = true;
-
     public void paint(Graphics g)
     {
         mBufferGraphics.setColor(Color.black);
-        if (Rescale)
-        {
-            mBufferGraphics.translate(Width / 2, Height / 2);
-            mBufferGraphics.scale(Width / (MaxPositionsD * 2), Height / (MaxPositionsD * 2));
-            Rescale = false;
-        }
+        mBufferGraphics.fillRect(0, 0, Width, Height);
 
 
         mBufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -129,9 +109,9 @@ public class GameEngine extends Applet
             mDebugFPSCounter++;
             mBufferGraphics.setPaint(Color.white);
             mBufferGraphics.setFont(mDebugFont);
-            mBufferGraphics.drawString("FPS", 0, 5);
+            mBufferGraphics.drawString("FPS", 2, 13);
             mBufferGraphics.drawString(String.valueOf(mDebugFPS), 25, 13);
-            mBufferGraphics.drawString("TPS", 0, 5);
+            mBufferGraphics.drawString("TPS", 2, 25);
             mBufferGraphics.drawString(String.valueOf(mDebugTPS), 25, 25);
         }
         g.drawImage(mOffscreen, 0, 0, this);

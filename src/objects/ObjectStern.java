@@ -1,39 +1,41 @@
 package objects;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Paint;
 import java.awt.Point;
+import java.awt.RadialGradientPaint;
+import java.awt.geom.Point2D;
 
 import tools.Calculator;
 
 public class ObjectStern extends GameObject {
 	private int Masse;
 	private int Durchmesser;
-	private Paint Farbe;
-	private Point Position;
+	private Point Position = new Point(0,0);
 	private Sterntyp Typ;
+	private RadialGradientPaint Farbe;
 	
 	public enum Sterntyp
 	{
-		HauptreiheBlau("blau.png"),
-		HauptreiheBlauWeiﬂ("blauweiss.png"),
-		HauptreiheWeiﬂ("weiss.png"),
-		HauptreiheWeiﬂGelb("weissgelb.png"),
-		HauptreiheGelb("gelb.png"),
-		HauptreiheOrange("orange.png"),
-		HauptreiheRotOrange("rotorange.png"),
-		RiesensternRot("riesenrot.png"),
-		RiesensternOrange("riesenorange.png"),
-		RiesensternGelb("riesengelb.png"),
-		weiﬂerZwerg("weisserzwerg.png"),
-		braunerZwerg("braun.png"),
-		SchwarzesLoch("schwarz.png"),
-		Neutronenstern("neutron.png");
+		HauptreiheBlau(Color.blue),
+		HauptreiheBlauWeiﬂ(Color.cyan),
+		HauptreiheWeiﬂ(Color.white),
+		HauptreiheWeiﬂGelb(Color.cyan),
+		HauptreiheGelb(Color.yellow),
+		HauptreiheOrange(Color.orange),
+		HauptreiheRotOrange(Color.cyan),
+		RiesensternRot(Color.red),
+		RiesensternOrange(Color.orange),
+		RiesensternGelb(Color.yellow),
+		weiﬂerZwerg(Color.white),
+		braunerZwerg(Color.cyan),
+		SchwarzesLoch(Color.cyan),
+		Neutronenstern(Color.cyan);
 		
-		public String TexturePath;
-		private Sterntyp(String TexturePath)
+		public Color Farbe;
+		private Sterntyp(Color Farbe)
 		{
-			this.TexturePath = TexturePath;
+			this.Farbe = Farbe;
 		}
 		
 		public static Sterntyp getRandomType() {
@@ -41,26 +43,55 @@ public class ObjectStern extends GameObject {
 	    }
 	}
 
-	public ObjectStern(int Masse, int Durchmesser, Paint Farbe, Point Position, Sterntyp Typ) {
+	public ObjectStern(int Masse, int Durchmesser, Point Position, Sterntyp Typ) {
 		this.Masse = Masse;
 		this.Durchmesser = Durchmesser;
-		this.Farbe = Farbe;
 		this.Position = Position;
 		this.Typ = Typ;
+		Farbe = SetColor();
+		
+		
 	}
 
 	public ObjectStern() {
-		this.Typ = Sterntyp.getRandomType();
-		this.Masse = (int) (Math.random()*100000);//1 = 0,001 Sonnenmassen
-		this.Durchmesser = 50;
+		Typ = Sterntyp.getRandomType();
+		Masse = MassenBestimmung(Typ);
+		Durchmesser = DurchmesserBestimmung(Typ, Masse);
+		Position.x = Calculator.Random(0, 1000);
+		Position.y = Calculator.Random(0, 700);
+		Farbe = SetColor();
 		
 	}
 	
+	private int DurchmesserBestimmung(Sterntyp Typ, int Masse) {
+		
+		int Durchmesser = 0;
+		
+		switch (Typ){
+		
+		case HauptreiheBlau:
+		case HauptreiheBlauWeiﬂ:
+		case HauptreiheWeiﬂ:
+		case HauptreiheWeiﬂGelb:
+		case HauptreiheGelb:
+		case HauptreiheOrange:
+		case HauptreiheRotOrange:
+			Durchmesser = (int) (Math.pow((double) Masse, (9.0/19.0))/26.36*100);//Teilung durch 26,36 um 
+			if(Durchmesser < 10) Durchmesser = 10;
+			break;																 //die Einheit Sonnenmassen zu erhalten
+			
+		default:
+			Durchmesser = 100;
+			break;
+		
+		}
+		return Durchmesser;
+	}
 	
 	private int MassenBestimmung(Sterntyp Typ) {
 		
-		int Untergrenze = 0;
-		int Obergrenze = 0;
+		float Untergrenze = 0;
+		float Obergrenze = 0;
 		switch (Typ){
 		
 		case HauptreiheBlau:
@@ -68,80 +99,89 @@ public class ObjectStern extends GameObject {
 			Obergrenze = 100;
 			break;
 		case HauptreiheBlauWeiﬂ:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 6;
+			Obergrenze = 25;
 			break;
 		case HauptreiheWeiﬂ:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 1.9f;
+			Obergrenze = 6;
 			break;
 		case HauptreiheWeiﬂGelb:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 1.3f;
+			Obergrenze = 1.9f;
 			break;
 		case HauptreiheGelb:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 0.9f;
+			Obergrenze = 1.3f;
 			break;
 		case HauptreiheOrange:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 0.5f;
+			Obergrenze = 0.9f;
 			break;
 		case HauptreiheRotOrange:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 0.1f;
+			Obergrenze = 0.5f;
 			break;
 		case RiesensternGelb:
-			Untergrenze = 25;
+			Untergrenze = 6;
 			Obergrenze = 100;
 			break;
 		case RiesensternOrange:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 2.3f;
+			Obergrenze = 25;
 			break;
 		case RiesensternRot:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 0.9f;
+			Obergrenze = 6;
 			break;
 		case weiﬂerZwerg:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 0.1f;
+			Obergrenze = 1.44f;
 			break;
 		case braunerZwerg:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 0.0013f;
+			Obergrenze = 0.5f;
 			break;
 		case SchwarzesLoch:
-			Untergrenze = 25;
+			Untergrenze = 3;
 			Obergrenze = 100;
 			break;
 		case Neutronenstern:
-			Untergrenze = 25;
-			Obergrenze = 100;
+			Untergrenze = 1.44f;
+			Obergrenze = 3;
 			break;
 			
 		default:
 			break;
 		}
-		return Calculator.Random(Untergrenze*Calculator.Sonnenmasse, Obergrenze*Calculator.Sonnenmasse);
+		return Calculator.Random((int) Untergrenze*Calculator.Sonnenmasse, (int) Obergrenze*Calculator.Sonnenmasse);
 	}
 	
+	private RadialGradientPaint SetColor() {
+		
+		Point2D center = new Point2D.Float(Position.x, Position.y);
+		float radius = Durchmesser/2;
+		float[] dist = {0.0f, 0.5f, 1.0f};
+		Color[] colors = {Typ.Farbe, Typ.Farbe, new Color(0, 0, 0, 0 )};
+		RadialGradientPaint p = new RadialGradientPaint(center, radius, dist, colors);
+		
+		return p;
+	}
 	@Override
 	public void Draw(Graphics2D G) {
-		G.setPaint(Farbe);
-		G.fillOval(Position.x, Position.y, Durchmesser, Durchmesser);
-
+		
+		G.setPaint(Farbe); 
+		G.fillRect(Position.x - Durchmesser/2, Position.y - Durchmesser/2, Durchmesser*2, Durchmesser*2); 
 	}
+	
 
 	@Override
 	public void Update(long Tick) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	protected void ZoomChanged() {
-		// TODO Auto-generated method stub
 
 	}
 

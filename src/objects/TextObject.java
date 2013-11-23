@@ -22,6 +22,9 @@ public class TextObject extends GameObject
         this.Label = Label;
         this.TextPaint = TextPaint;
         this.TextFont = TextFont;
+        PosX = GameEngine.Width;
+        PosY = GameEngine.Height;
+
     }
     
     public void CenterInRect(GameObjectRectangle Rect)

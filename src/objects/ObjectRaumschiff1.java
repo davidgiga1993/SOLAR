@@ -2,7 +2,6 @@ package objects;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.geom.GeneralPath;
 
 import solar.SimpleInputInterface;
@@ -28,7 +27,6 @@ public class ObjectRaumschiff1 extends GameObject implements SimpleInputInterfac
 	    trapez.lineTo(position[3].x, position[3].y);
 	    trapez.closePath();
 	    
-		ClickArea = new Rectangle(0, 0, 200, 100);
 	}
 	private void Rotate() {
 		
@@ -47,14 +45,11 @@ public class ObjectRaumschiff1 extends GameObject implements SimpleInputInterfac
         else if (sin <= (-0.5) && sin > (-1.5)) sin = 1;
 		else sin = 2;
 		
-        int height;
-        int width;
-        if(Degree%90 == 0){
-        	width = 50;
-        	height = 50;}
-        else {
-        	width = 35;
-        	height = 35;
+        int height = 50;
+        int width = 50;
+        if(Degree%90 != 0) {
+        	width = (int) Math.round(width/Math.sqrt(2));
+        	height = (int) Math.round(height/Math.sqrt(2));
         }
  
         position[0].x = (int) (center.x + cos * width / 2.0 - sin * height / 2.0);
@@ -81,6 +76,7 @@ public class ObjectRaumschiff1 extends GameObject implements SimpleInputInterfac
 	public void Update(long Tick) {
 		double cos = 2*Math.cos(Math.toRadians(Degree));
 		double sin = 2*Math.sin(Math.toRadians(Degree));
+
 
         if(cos < 0.5 && cos > (-0.5)) cos = 0;
         else if (cos >= 0.5 && cos < 1.5) cos = 1;
