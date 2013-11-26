@@ -15,7 +15,7 @@ public class PerformanceLog extends BaseStage
     {
         super(SE);
         timer = new Timer();
-        BitmapFont font = new BitmapFont(Gdx.files.internal("Assets/ptsans.fnt"));
+        BitmapFont font = new BitmapFont();
         FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
         FPSLabel.setPosition(-SolarEngine.WidthHalf, SolarEngine.HeightHalf - 18);
         addActor(FPSLabel);

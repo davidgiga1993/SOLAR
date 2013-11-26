@@ -20,7 +20,6 @@ public class TextureLoader
     
     public void LoadTextures()
     {        
-        NinePatch n = new NinePatch(TextureLoader.Load("assets/button_regular.png"));
-        
+        //NinePatch n = new NinePatch(TextureLoader.Load("assets/button_regular.png"));        
     }
 }
