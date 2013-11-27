@@ -6,3 +6,4 @@
 *.ear
 *.orig
 Project/Solar-html/war/*
+.metadata*
