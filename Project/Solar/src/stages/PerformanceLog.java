@@ -1,6 +1,4 @@
-package com.me.solar;
-
-import stages.BaseStage;
+package stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -8,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
+import com.me.solar.SolarEngine;
 
 public class PerformanceLog extends BaseStage
 {
@@ -18,11 +17,11 @@ public class PerformanceLog extends BaseStage
         BitmapFont font = new BitmapFont();
         FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
         FPSLabel.setPosition(-SolarEngine.WidthHalf, SolarEngine.HeightHalf - 18);
+        
         addActor(FPSLabel);
         BuildTimer();
     }
 
-    private int FPSC = 0;
     private Label FPSLabel;
     private Timer timer;
 
@@ -45,8 +44,8 @@ public class PerformanceLog extends BaseStage
         {
             public void run()
             {
-                FPSLabel.setText("FPS: " + FPSC);
-                FPSC = 0;
+                FPSLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
+                
                 if (LogData)
                     BuildTimer();
             }
@@ -58,7 +57,6 @@ public class PerformanceLog extends BaseStage
     {
         if (LogData)
         {
-            FPSC++;
             super.draw();
         }
     }

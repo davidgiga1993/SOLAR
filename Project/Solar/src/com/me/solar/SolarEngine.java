@@ -1,6 +1,7 @@
 package com.me.solar;
 
 import stages.StageManager;
+import UserControls.Styles;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -8,16 +9,16 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class SolarEngine implements ApplicationListener, InputProcessor
 {
     public OrthographicCamera camera;
-    public TextureLoader Textures;
+    public TextureCacher Textures;
+    public Styles styles;
+
+    // Stage manager
+    public StageManager stageManager;
 
     public static final float Width = 900;
     public static final float Height = 600;
@@ -26,11 +27,7 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
     private SpriteBatch mainBatch;
 
-    private Texture texture;
-    private Sprite sprite;
 
-    // Stage manager
-    private StageManager mStage;
 
     @Override
     public void create()
@@ -43,21 +40,14 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
         mainBatch = new SpriteBatch();
 
-        texture = TextureLoader.Load("data/libgdx.png");
-        texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-        
-        Textures = new TextureLoader();
+        Textures = new TextureCacher();
         Textures.LoadTextures();
-
-        TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
-
-        sprite = new Sprite(region);
-        sprite.setSize(Width, Height);
-        sprite.setPosition(-WidthHalf, -HeightHalf);
+        
+        styles = new Styles(Textures);
 
         // Einstiegspunkt ins Spiel
-        mStage = new StageManager(this);
-        mStage.StartGame();
+        stageManager = new StageManager(this);
+        stageManager.StartGame();
 
     }
 
@@ -66,7 +56,6 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     public void dispose()
     {
         mainBatch.dispose();
-        texture.dispose();
     }
 
     @Override
@@ -79,7 +68,7 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         // Projektionsmatrix auf Batch anwenden
         mainBatch.setProjectionMatrix(camera.combined);
 
-        mStage.draw();
+        stageManager.draw();
 
     }
 
@@ -112,56 +101,56 @@ public class SolarEngine implements ApplicationListener, InputProcessor
             camera.update();
             break;
         }
-        mStage.keyDown(keycode);
+        stageManager.keyDown(keycode);
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode)
     {
-        mStage.keyUp(keycode);
+        stageManager.keyUp(keycode);
         return false;
     }
 
     @Override
     public boolean keyTyped(char character)
     {
-        mStage.keyTyped(character);
+        stageManager.keyTyped(character);
         return false;
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button)
     {
-        mStage.touchDown(screenX, screenY, pointer, button);
+        stageManager.touchDown(screenX, screenY, pointer, button);
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button)
     {
-        mStage.touchUp(screenX, screenY, pointer, button);
+        stageManager.touchUp(screenX, screenY, pointer, button);
         return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer)
     {
-        mStage.touchDragged(screenX, screenY, pointer);
+        stageManager.touchDragged(screenX, screenY, pointer);
         return false;
     }
 
     @Override
     public boolean mouseMoved(int screenX, int screenY)
     {
-        mStage.mouseMoved(screenX, screenY);
+        stageManager.mouseMoved(screenX, screenY);
         return false;
     }
 
     @Override
     public boolean scrolled(int amount)
     {
-        mStage.scrolled(amount);
+        stageManager.scrolled(amount);
         return false;
     }
 }

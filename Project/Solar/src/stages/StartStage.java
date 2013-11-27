@@ -1,68 +1,87 @@
 package stages;
 
+import Actions.LabelFontScalerAction;
+
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.me.solar.SolarEngine;
 
 public class StartStage extends BaseStage
 {
-    
-    public StartStage(SolarEngine SE, float width, float height, boolean keepAspectRatio)
+
+    private Label labelStart;
+    private Label labelSettings;
+
+    public StartStage(final SolarEngine SE)
     {
         super(SE);
+
+        labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
+        labelStart.setPosition(-labelStart.getWidth() / 2, 70);
+        labelStart.addListener(new InputListener()
+        {
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+            {
+                SE.stageManager.swapCurrentStage(new GameStartStage(SE));
+                return true;
+            }
+
+            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                 AnimateLabelIn(labelStart);
+            }
+
+            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                 AnimateLabelOut(labelStart);
+            }
+        });
+
+        labelSettings = new Label("Settings", SE.styles.defaultLabelStyle);
+        labelSettings.setPosition(-labelStart.getWidth() / 2, 40);
+        labelSettings.addListener(new InputListener()
+        {
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+            {
+                return true;
+            }
+
+            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                AnimateLabelIn(labelSettings);
+            }
+
+            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                AnimateLabelOut(labelSettings);
+            }
+        });
+
+        addActor(labelStart);
+        addActor(labelSettings);
+
     }
 
-    @Override
-    public boolean keyDown(int keycode)
+    private void AnimateLabelIn(Label label)
     {
-        // TODO Auto-generated method stub
-        return false;
+        AnimateLabel(label, 1.2f);
     }
 
-    @Override
-    public boolean keyUp(int keycode)
+    private void AnimateLabelOut(Label label)
     {
-        // TODO Auto-generated method stub
-        return false;
+        AnimateLabel(label, 1);
     }
 
-    @Override
-    public boolean keyTyped(char character)
+    private void AnimateLabel(Label label, float Scale)
     {
-        // TODO Auto-generated method stub
-        return false;
+        LabelFontScalerAction ac = new LabelFontScalerAction(Scale, label.getFontScaleX());
+        ac.setDuration(0.7f);
+        ac.setInterpolation(Interpolation.exp5);
+        label.addAction(ac);
     }
 
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }    
+    
 }

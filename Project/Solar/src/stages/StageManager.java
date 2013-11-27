@@ -3,7 +3,7 @@ package stages;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.me.solar.PerformanceLog;
+import com.badlogic.gdx.Gdx;
 import com.me.solar.SolarEngine;
 
 public class StageManager extends BaseStage
@@ -19,7 +19,13 @@ public class StageManager extends BaseStage
 
     public void StartGame()
     {
-        Stages.add(new StartStage(SE, getWidth(), getHeight(), false));
+        Stages.add(new StartStage(SE));
+    }
+
+    public void swapCurrentStage(BaseStage S)
+    {
+        Stages.remove(Stages.size() - 1);
+        Stages.add(S);       
     }
 
     @Override
@@ -27,6 +33,7 @@ public class StageManager extends BaseStage
     {
         for (int X = 0; X < Stages.size(); X++)
         {
+            Stages.get(X).act(Gdx.graphics.getDeltaTime());
             Stages.get(X).draw();
         }
         super.draw();
@@ -37,7 +44,7 @@ public class StageManager extends BaseStage
     {
         for (int X = 0; X < Stages.size(); X++)
         {
-            if(Stages.get(X).keyDown(keycode))
+            if (Stages.get(X).keyDown(keycode))
                 break;
         }
         return false;
@@ -48,7 +55,7 @@ public class StageManager extends BaseStage
     {
         for (int X = 0; X < Stages.size(); X++)
         {
-            if(Stages.get(X).keyUp(keycode))
+            if (Stages.get(X).keyUp(keycode))
                 break;
         }
         return false;
@@ -59,7 +66,7 @@ public class StageManager extends BaseStage
     {
         for (int X = 0; X < Stages.size(); X++)
         {
-            if(Stages.get(X).keyTyped(character))
+            if (Stages.get(X).keyTyped(character))
                 break;
         }
         return false;
