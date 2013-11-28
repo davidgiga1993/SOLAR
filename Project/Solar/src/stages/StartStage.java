@@ -11,16 +11,16 @@ import com.me.solar.SolarEngine;
 
 public class StartStage extends BaseStage
 {
-
     private Label labelStart;
     private Label labelSettings;
+    private Label labelExit;
 
     public StartStage(final SolarEngine SE)
     {
         super(SE);
 
         labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
-        labelStart.setPosition(-labelStart.getWidth() / 2, 70);
+        labelStart.setPosition(-labelStart.getWidth() / 2, 80);
         labelStart.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
@@ -31,17 +31,17 @@ public class StartStage extends BaseStage
 
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                 AnimateLabelIn(labelStart);
+                AnimateLabelIn(labelStart);
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                 AnimateLabelOut(labelStart);
+                AnimateLabelOut(labelStart);
             }
         });
 
         labelSettings = new Label("Settings", SE.styles.defaultLabelStyle);
-        labelSettings.setPosition(-labelStart.getWidth() / 2, 40);
+        labelSettings.setPosition(-labelStart.getWidth() / 2, 50);
         labelSettings.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
@@ -59,10 +59,29 @@ public class StartStage extends BaseStage
                 AnimateLabelOut(labelSettings);
             }
         });
+        
+        labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
+        labelExit.setPosition(-labelStart.getWidth() / 2, 20);
+        labelExit.addListener(new InputListener()
+        {
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+            {
+                return true;
+            }
 
+            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                AnimateLabelIn(labelExit);
+            }
+
+            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                AnimateLabelOut(labelExit);
+            }
+        });
+        addActor(labelExit);
         addActor(labelStart);
         addActor(labelSettings);
-
     }
 
     private void AnimateLabelIn(Label label)
@@ -83,5 +102,4 @@ public class StartStage extends BaseStage
         label.addAction(ac);
     }
 
-    
 }
