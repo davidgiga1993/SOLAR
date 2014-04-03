@@ -12,7 +12,8 @@ public class Main
         cfg.useGL20 = false;
         cfg.width = 900;
         cfg.height = 600;
-        cfg.foregroundFPS = 00;
+        cfg.foregroundFPS = 0;
+        //Test
         
         new LwjglApplication(new SolarEngine(), cfg);
     }
