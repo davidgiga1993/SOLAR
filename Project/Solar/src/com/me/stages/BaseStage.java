@@ -1,4 +1,4 @@
-package stages;
+package com.me.stages;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.me.solar.SolarEngine;

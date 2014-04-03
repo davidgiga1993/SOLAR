@@ -1,4 +1,4 @@
-package UserControls;
+package com.me.UserControls;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

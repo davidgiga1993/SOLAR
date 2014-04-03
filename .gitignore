@@ -7,3 +7,5 @@
 *.orig
 Project/Solar-html/war/*
 .metadata*
+Project/Solar-html/gwt-unitCache/*
+Project/Solar-android/bin/*

@@ -1,7 +1,8 @@
-package stages;
+package com.me.stages;
 
 import Actions.LabelFontScalerAction;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -21,6 +22,7 @@ public class StartStage extends BaseStage
 
         labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
         labelStart.setPosition(-labelStart.getWidth() / 2, 80);
+        
         labelStart.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
@@ -66,6 +68,7 @@ public class StartStage extends BaseStage
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
+                Gdx.app.exit();
                 return true;
             }
 
@@ -98,7 +101,7 @@ public class StartStage extends BaseStage
     {
         LabelFontScalerAction ac = new LabelFontScalerAction(Scale, label.getFontScaleX());
         ac.setDuration(0.7f);
-        ac.setInterpolation(Interpolation.exp5);
+        ac.setInterpolation(Interpolation.exp10);
         label.addAction(ac);
     }
 

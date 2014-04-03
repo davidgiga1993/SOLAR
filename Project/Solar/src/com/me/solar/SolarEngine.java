@@ -1,8 +1,5 @@
 package com.me.solar;
 
-import stages.StageManager;
-import UserControls.Styles;
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -10,12 +7,14 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.me.stages.StageManager;
+import com.me.UserControls.*;
 
 public class SolarEngine implements ApplicationListener, InputProcessor
 {
     public OrthographicCamera camera;
     public TextureCacher Textures;
-    public Styles styles;
+    public com.me.UserControls.Styles styles;
 
     // Stage manager
     public StageManager stageManager;
@@ -48,7 +47,6 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         // Einstiegspunkt ins Spiel
         stageManager = new StageManager(this);
         stageManager.StartGame();
-
     }
 
     // Anwendung wird beendet

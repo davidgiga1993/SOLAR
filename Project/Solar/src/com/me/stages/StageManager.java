@@ -1,4 +1,4 @@
-package stages;
+package com.me.stages;
 
 import java.util.ArrayList;
 import java.util.List;
