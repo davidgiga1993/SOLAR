@@ -4,91 +4,90 @@ import Actions.LabelFontScalerAction;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.me.solar.SolarEngine;
 
-public class StartStage extends BaseStage
-{
-    private Label labelStart;
-    private Label labelSettings;
-    private Label labelExit;
+public class ExitStage extends BaseStage {
+	
+	private Label labelAreYouSure;
+	private Label labelYes;
+	private Label labelNo;
 
-    public StartStage(final SolarEngine SE)
-    {
-        super(SE);
-
-        labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
-        labelStart.setPosition(-labelStart.getWidth() / 2, 80);
+	public ExitStage(final SolarEngine SE) {
+		super(SE);
+		
+		labelAreYouSure = new Label("Are you sure?", SE.styles.defaultLabelStyle);
+		labelAreYouSure.setPosition(-labelAreYouSure.getWidth() / 2, 80);
         
-        labelStart.addListener(new InputListener()
+		labelAreYouSure.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-                SE.stageManager.swapCurrentStage(new GameStartStage(SE));
                 return true;
             }
 
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelIn(labelStart);
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelOut(labelStart);
             }
         });
-
-        labelSettings = new Label("Settings", SE.styles.defaultLabelStyle);
-        labelSettings.setPosition(-labelStart.getWidth() / 2, 50);
-        labelSettings.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
-            	SE.stageManager.swapCurrentStage(new GameOptionsStage(SE));
-                return true;
-            }
-
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelSettings);
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelSettings);
-            }
-        });
+		
+		labelYes = new Label("Yes", SE.styles.defaultLabelStyle);
+		labelYes.setPosition(-labelAreYouSure.getWidth() / 2, 50);
         
-        labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
-        labelExit.setPosition(-labelStart.getWidth() / 2, 20);
-        labelExit.addListener(new InputListener()
+		labelYes.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-            	SE.stageManager.swapCurrentStage(new ExitStage(SE));
+                Gdx.app.exit();
                 return true;
             }
 
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelIn(labelExit);
+                AnimateLabelIn(labelYes);
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelOut(labelExit);
+                AnimateLabelOut(labelYes);
             }
         });
-        addActor(labelExit);
-        addActor(labelStart);
-        addActor(labelSettings);
-    }
+		
+		labelNo = new Label("No", SE.styles.defaultLabelStyle);
+		labelNo.setPosition(-labelNo.getWidth() / 2, 50);
+        
+		labelNo.addListener(new InputListener()
+        {
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+            {
+                SE.stageManager.swapCurrentStage(new StartStage(SE));
+                return true;
+            }
 
-    private void AnimateLabelIn(Label label)
+            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                AnimateLabelIn(labelNo);
+            }
+
+            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
+            {
+                AnimateLabelOut(labelNo);
+            }
+        });
+		
+		addActor(labelAreYouSure);
+		addActor(labelYes);
+		addActor(labelNo);
+	}
+	
+	private void AnimateLabelIn(Label label)
     {
         AnimateLabel(label, 1.2f);
     }
