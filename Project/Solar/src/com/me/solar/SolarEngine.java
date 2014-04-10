@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.me.stages.StageManager;
+import com.me.stages.StartStage;
 import com.me.UserControls.*;
 
 public class SolarEngine implements ApplicationListener, InputProcessor
@@ -98,6 +99,8 @@ public class SolarEngine implements ApplicationListener, InputProcessor
             camera.zoom -= 0.05f;
             camera.update();
             break;
+        case Keys.ESCAPE:
+        	stageManager.swapCurrentStage(new StartStage(this));
         }
         stageManager.keyDown(keycode);
         return false;

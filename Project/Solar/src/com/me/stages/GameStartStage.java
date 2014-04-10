@@ -14,6 +14,8 @@ public class GameStartStage extends BaseStage
     public GameStartStage(SolarEngine SE)
     {
         super(SE);
+        
+        
 
         Rectangle rect = new Rectangle();
         rect.setPosition(0, 0);
@@ -45,5 +47,6 @@ public class GameStartStage extends BaseStage
         // Zum Zeichen / Logik loop hinzufügen
         addActor(rect);
     }
+    
 
 }
