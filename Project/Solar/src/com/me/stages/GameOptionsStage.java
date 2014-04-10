@@ -4,72 +4,67 @@ import Actions.LabelFontScalerAction;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.me.solar.SolarEngine;
 
-public class StartStage extends BaseStage
-{
-    private Label labelStart;
-    private Label labelSettings;
-    private Label labelExit;
+public class GameOptionsStage extends BaseStage {
 
-    public StartStage(final SolarEngine SE)
-    {
-        super(SE);
-
-        labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
-        labelStart.setPosition(-labelStart.getWidth() / 2, 80);
-        
-        labelStart.addListener(new InputListener()
+	private Label labelOption1;
+	private Label labelOption2;
+	private Label labelExit;
+	
+	public GameOptionsStage(final SolarEngine SE) {
+		super(SE);
+		labelOption1 = new Label("Option1", SE.styles.defaultLabelStyle);
+		labelOption1.setPosition(-labelOption1.getWidth() / 2, 80);
+		labelOption1.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-                SE.stageManager.swapCurrentStage(new GameStartStage(SE));
                 return true;
             }
 
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelIn(labelStart);
+                AnimateLabelIn(labelOption1);
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelOut(labelStart);
+                AnimateLabelOut(labelOption1);
             }
         });
-
-        labelSettings = new Label("Settings", SE.styles.defaultLabelStyle);
-        labelSettings.setPosition(-labelStart.getWidth() / 2, 50);
-        labelSettings.addListener(new InputListener()
+        
+		labelOption2 = new Label("Option2", SE.styles.defaultLabelStyle);
+		labelOption2.setPosition(-labelOption1.getWidth() / 2, 50);
+		labelOption2.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-            	SE.stageManager.swapCurrentStage(new GameOptionsStage(SE));
                 return true;
             }
 
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelIn(labelSettings);
+                AnimateLabelIn(labelOption2);
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelOut(labelSettings);
+                AnimateLabelOut(labelOption2);
             }
         });
-        
-        labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
-        labelExit.setPosition(-labelStart.getWidth() / 2, 20);
-        labelExit.addListener(new InputListener()
+		
+		labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
+		labelExit.setPosition(-labelOption1.getWidth() / 2, 20);
+		labelExit.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-                Gdx.app.exit();
+            	SE.stageManager.swapCurrentStage(new StartStage(SE));
                 return true;
             }
 
@@ -83,9 +78,9 @@ public class StartStage extends BaseStage
                 AnimateLabelOut(labelExit);
             }
         });
+        addActor(labelOption1);
+        addActor(labelOption2);
         addActor(labelExit);
-        addActor(labelStart);
-        addActor(labelSettings);
     }
 
     private void AnimateLabelIn(Label label)
@@ -105,5 +100,4 @@ public class StartStage extends BaseStage
         ac.setInterpolation(Interpolation.exp10);
         label.addAction(ac);
     }
-
 }

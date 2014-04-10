@@ -17,7 +17,7 @@ public class GameStartStage extends BaseStage
 
         Rectangle rect = new Rectangle();
         rect.setPosition(0, 0);
-        rect.setSize(900, 600);
+        rect.setSize(100, 100);        
 
         rect.addListener(new InputListener()
         {
