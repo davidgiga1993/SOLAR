@@ -18,7 +18,7 @@ public class StartStage extends HUDStage
     public StartStage(final SolarEngine SE)
     {
         super(SE, "StartStage");
-
+               
         labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
         labelStart.setPosition(-labelStart.getWidth() / 2, 80);
 
