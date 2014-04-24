@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.me.solar.SolarEngine;
 
 public class StageManager extends BaseStage
@@ -23,21 +22,30 @@ public class StageManager extends BaseStage
 
     /**
      * Returns a stage with the given tag
+     * 
      * @param TAG
      * @return null if stage is not found
      */
-    public Stage getStage(String TAG)
+    public BaseStage getStage(String TAG)
     {
         for (int X = 0; X < Stages.size(); X++)
         {
             if (Stages.get(X).TAG.equals(TAG))
-                return Stages.get(X);
+                return getStage(X);
         }
+        return null;
+    }
+
+    public BaseStage getStage(int Index)
+    {
+        if (Index < Stages.size())
+            return Stages.get(Index);
         return null;
     }
 
     /**
      * Inserts a stage to position 0
+     * 
      * @param S
      */
     public void insertStageToBack(BaseStage S)
@@ -53,6 +61,7 @@ public class StageManager extends BaseStage
 
     /**
      * Adds a stage to the list
+     * 
      * @param S
      */
     public void addStage(BaseStage S)
@@ -62,6 +71,7 @@ public class StageManager extends BaseStage
 
     /**
      * Removes the stage with the given tag
+     * 
      * @param TAG
      */
     public void removeStage(String TAG)
@@ -76,7 +86,7 @@ public class StageManager extends BaseStage
         }
         return;
     }
-    
+
     /**
      * Removes all stages from the list
      */
