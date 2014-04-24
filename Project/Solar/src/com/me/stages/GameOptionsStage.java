@@ -13,7 +13,7 @@ import com.me.solar.SolarEngine;
 public class GameOptionsStage extends BaseStage {
 
 	private Label labelOption1;
-	private Label labelOption2;
+	private Label labelBackground;
 	private Label labelExit;
 	
 	public GameOptionsStage(final SolarEngine SE) {
@@ -38,23 +38,24 @@ public class GameOptionsStage extends BaseStage {
             }
         });
         
-		labelOption2 = new Label("Option2", SE.styles.defaultLabelStyle);
-		labelOption2.setPosition(-labelOption1.getWidth() / 2, 50);
-		labelOption2.addListener(new InputListener()
+		labelBackground = new Label("Choose Background", SE.styles.defaultLabelStyle);
+		labelBackground.setPosition(-labelBackground.getWidth() / 2, 50);
+		labelBackground.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
+            	SE.stageManager.swapCurrentStage(new GameOptionsBackgroundStage(SE));
                 return true;
             }
 
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelIn(labelOption2);
+                AnimateLabelIn(labelBackground);
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
             {
-                AnimateLabelOut(labelOption2);
+                AnimateLabelOut(labelBackground);
             }
         });
 		
@@ -79,7 +80,7 @@ public class GameOptionsStage extends BaseStage {
             }
         });
         addActor(labelOption1);
-        addActor(labelOption2);
+        addActor(labelBackground);
         addActor(labelExit);
     }
 
