@@ -15,6 +15,9 @@ import com.me.UserControls.*;
 public class SolarEngine implements ApplicationListener, InputProcessor
 {
     public OrthographicCamera camera;
+    public OrthographicCamera HUDcamera;
+    public OrthographicCamera Backgroundcamera;
+    
     public TextureCacher Textures;
     public com.me.UserControls.Styles styles;
 
@@ -28,8 +31,6 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
     private SpriteBatch mainBatch;
 
-
-
     @Override
     public void create()
     {
@@ -38,6 +39,8 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
         // Kamera erstellen
         camera = new OrthographicCamera(Width, Height);
+        HUDcamera = new OrthographicCamera(Width, Height);
+        Backgroundcamera = new OrthographicCamera(Width, Height); 
 
         mainBatch = new SpriteBatch();
 
@@ -148,7 +151,9 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 //            camera.update();
 //            break;
         case Keys.ESCAPE:
-        	stageManager.swapCurrentStage(new StartStage(this));
+                stageManager.removeStages();
+        	stageManager.addStage(new StartStage(this));
+        	break;
         }
         System.out.println(keycode);
         stageManager.keyDown(keycode);

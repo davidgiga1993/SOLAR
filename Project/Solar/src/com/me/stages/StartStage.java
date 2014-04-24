@@ -2,7 +2,6 @@ package com.me.stages;
 
 import Actions.LabelFontScalerAction;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -10,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.me.solar.SolarEngine;
 
-public class StartStage extends BaseStage
+public class StartStage extends HUDStage
 {
     private Label labelStart;
     private Label labelSettings;
@@ -18,16 +17,17 @@ public class StartStage extends BaseStage
 
     public StartStage(final SolarEngine SE)
     {
-        super(SE);
+        super(SE, "StartStage");
 
         labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
         labelStart.setPosition(-labelStart.getWidth() / 2, 80);
-        
+
         labelStart.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-                SE.stageManager.swapCurrentStage(new GameStartStage(SE));
+                SE.stageManager.removeStage("StartStage");
+                SE.stageManager.addStage(new GameStartStage(SE));                
                 return true;
             }
 
@@ -48,7 +48,7 @@ public class StartStage extends BaseStage
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-            	SE.stageManager.swapCurrentStage(new GameOptionsStage(SE));
+                SE.stageManager.swapCurrentStage(new GameOptionsStage(SE));
                 return true;
             }
 
@@ -62,14 +62,14 @@ public class StartStage extends BaseStage
                 AnimateLabelOut(labelSettings);
             }
         });
-        
+
         labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
         labelExit.setPosition(-labelStart.getWidth() / 2, 20);
         labelExit.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-            	SE.stageManager.swapCurrentStage(new ExitStage(SE));
+                SE.stageManager.swapCurrentStage(new ExitStage(SE));
                 return true;
             }
 

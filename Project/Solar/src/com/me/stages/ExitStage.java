@@ -10,19 +10,21 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.me.solar.SolarEngine;
 
-public class ExitStage extends BaseStage {
-	
-	private Label labelAreYouSure;
-	private Label labelYes;
-	private Label labelNo;
+public class ExitStage extends BaseStage
+{
 
-	public ExitStage(final SolarEngine SE) {
-		super(SE);
-		
-		labelAreYouSure = new Label("Are you sure?", SE.styles.defaultLabelStyle);
-		labelAreYouSure.setPosition(-labelAreYouSure.getWidth() / 2, 80);
-        
-		labelAreYouSure.addListener(new InputListener()
+    private Label labelAreYouSure;
+    private Label labelYes;
+    private Label labelNo;
+
+    public ExitStage(final SolarEngine SE)
+    {
+        super(SE, "Exit");
+
+        labelAreYouSure = new Label("Are you sure?", SE.styles.defaultLabelStyle);
+        labelAreYouSure.setPosition(-labelAreYouSure.getWidth() / 2, 80);
+
+        labelAreYouSure.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
@@ -37,11 +39,11 @@ public class ExitStage extends BaseStage {
             {
             }
         });
-		
-		labelYes = new Label("Yes", SE.styles.defaultLabelStyle);
-		labelYes.setPosition(-labelAreYouSure.getWidth() / 2, 50);
-        
-		labelYes.addListener(new InputListener()
+
+        labelYes = new Label("Yes", SE.styles.defaultLabelStyle);
+        labelYes.setPosition(-labelAreYouSure.getWidth() / 2, 50);
+
+        labelYes.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
@@ -59,11 +61,11 @@ public class ExitStage extends BaseStage {
                 AnimateLabelOut(labelYes);
             }
         });
-		
-		labelNo = new Label("No", SE.styles.defaultLabelStyle);
-		labelNo.setPosition(-labelNo.getWidth() / 2, 50);
-        
-		labelNo.addListener(new InputListener()
+
+        labelNo = new Label("No", SE.styles.defaultLabelStyle);
+        labelNo.setPosition(-labelNo.getWidth() / 2, 50);
+
+        labelNo.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
@@ -81,13 +83,13 @@ public class ExitStage extends BaseStage {
                 AnimateLabelOut(labelNo);
             }
         });
-		
-		addActor(labelAreYouSure);
-		addActor(labelYes);
-		addActor(labelNo);
-	}
-	
-	private void AnimateLabelIn(Label label)
+
+        addActor(labelAreYouSure);
+        addActor(labelYes);
+        addActor(labelNo);
+    }
+
+    private void AnimateLabelIn(Label label)
     {
         AnimateLabel(label, 1.2f);
     }

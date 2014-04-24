@@ -8,11 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.me.solar.SolarEngine;
 
-public class PerformanceLog extends BaseStage
+public class HUDStage extends BaseStage
 {
-    public PerformanceLog(SolarEngine SE)
+    public HUDStage(SolarEngine SE, String TAG)
     {
-        super(SE);
+        super(SE, TAG);
+        setCamera(SE.HUDcamera);
+        
+        
         timer = new Timer();
         BitmapFont font = new BitmapFont();
         FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
@@ -51,7 +54,7 @@ public class PerformanceLog extends BaseStage
             }
         }, 1);
     }
-
+    
     @Override
     public void draw()
     {
@@ -59,19 +62,6 @@ public class PerformanceLog extends BaseStage
         {
             super.draw();
         }
-    }
-
-    @Override
-    public boolean keyDown(int keycode)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode)
-    {
-        // TODO Auto-generated method stub
-        return false;
     }
 
     @Override
@@ -86,41 +76,6 @@ public class PerformanceLog extends BaseStage
                 Start();
             return true;
         }
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY)
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount)
-    {
-        // TODO Auto-generated method stub
         return false;
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.me.solar.SolarEngine;
 
 public class StageManager extends BaseStage
@@ -12,9 +13,7 @@ public class StageManager extends BaseStage
 
     public StageManager(SolarEngine SE)
     {
-        super(SE);
-        PerformanceLog logger = new PerformanceLog(SE);
-        Stages.add(logger);
+        super(SE, "StageManager");
     }
 
     public void StartGame()
@@ -22,10 +21,68 @@ public class StageManager extends BaseStage
         Stages.add(new StartStage(SE));
     }
 
+    /**
+     * Returns a stage with the given tag
+     * @param TAG
+     * @return null if stage is not found
+     */
+    public Stage getStage(String TAG)
+    {
+        for (int X = 0; X < Stages.size(); X++)
+        {
+            if (Stages.get(X).TAG.equals(TAG))
+                return Stages.get(X);
+        }
+        return null;
+    }
+
+    /**
+     * Inserts a stage to position 0
+     * @param S
+     */
+    public void insertStageToBack(BaseStage S)
+    {
+        Stages.add(0, S);
+    }
+
     public void swapCurrentStage(BaseStage S)
     {
         Stages.remove(Stages.size() - 1);
-        Stages.add(S);       
+        Stages.add(S);
+    }
+
+    /**
+     * Adds a stage to the list
+     * @param S
+     */
+    public void addStage(BaseStage S)
+    {
+        Stages.add(S);
+    }
+
+    /**
+     * Removes the stage with the given tag
+     * @param TAG
+     */
+    public void removeStage(String TAG)
+    {
+        for (int X = 0; X < Stages.size(); X++)
+        {
+            if (Stages.get(X).TAG.equals(TAG))
+            {
+                Stages.remove(X);
+                return;
+            }
+        }
+        return;
+    }
+    
+    /**
+     * Removes all stages from the list
+     */
+    public void removeStages()
+    {
+        Stages.clear();
     }
 
     @Override

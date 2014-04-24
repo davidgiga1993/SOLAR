@@ -2,7 +2,6 @@ package com.me.stages;
 
 import Actions.LabelFontScalerAction;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -17,7 +16,7 @@ public class GameOptionsStage extends BaseStage {
 	private Label labelExit;
 	
 	public GameOptionsStage(final SolarEngine SE) {
-		super(SE);
+		super(SE, "GameOptions");
 		labelOption1 = new Label("Option1", SE.styles.defaultLabelStyle);
 		labelOption1.setPosition(-labelOption1.getWidth() / 2, 80);
 		labelOption1.addListener(new InputListener()
