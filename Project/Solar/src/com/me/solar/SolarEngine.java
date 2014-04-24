@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.me.stages.StageManager;
 import com.me.stages.StartStage;
@@ -42,6 +43,7 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
         Textures = new TextureCacher();
         Textures.LoadTextures();
+        Texture.setEnforcePotImages(false);
         
         styles = new Styles(Textures);
 
