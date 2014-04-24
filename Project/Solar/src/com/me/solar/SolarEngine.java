@@ -67,11 +67,45 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         // Projektionsmatrix auf Batch anwenden
         mainBatch.setProjectionMatrix(camera.combined);
 
+        handleInput();
         stageManager.draw();
 
     }
 
-    @Override
+    private void handleInput() {
+    	if(Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(70)) {
+    		camera.zoom += 0.01f;
+        }	
+    	if(Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(69)) {
+    		camera.zoom -= 0.01f;
+        }	
+    	if(Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.NUM_8) || Gdx.input.isKeyPressed(152)) {
+    		camera.translate(0,1,0);
+        }	
+    	if(Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.NUM_2) || Gdx.input.isKeyPressed(146)) {
+    		camera.translate(0,-1,0);
+        }
+    	if(Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.NUM_4) || Gdx.input.isKeyPressed(148)) {
+    		camera.translate(-1,0,0);
+        }
+    	if(Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.NUM_6) || Gdx.input.isKeyPressed(150)) {
+    		camera.translate(1,0,0);
+        }
+    	if(Gdx.input.isKeyPressed(Keys.NUM_7) || Gdx.input.isKeyPressed(151)) {
+    		camera.translate(-1,1,0);
+        }
+    	if(Gdx.input.isKeyPressed(Keys.NUM_9) || Gdx.input.isKeyPressed(153)) {
+    		camera.translate(1,1,0);
+        }
+    	if(Gdx.input.isKeyPressed(Keys.NUM_3) || Gdx.input.isKeyPressed(147)) {
+    		camera.translate(1,-1,0);
+        }
+    	if(Gdx.input.isKeyPressed(Keys.NUM_1) || Gdx.input.isKeyPressed(145)) {
+    		camera.translate(-1,-1,0);
+        }
+	}
+
+	@Override
     public void resize(int width, int height)
     {
     }
@@ -91,17 +125,30 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     {
         switch (keycode)
         {
-        case Keys.DOWN:
-            camera.zoom += 0.05f;
-            camera.update();
-            break;
-        case Keys.UP:
-            camera.zoom -= 0.05f;
-            camera.update();
-            break;
+//        case Keys.UP:       	
+//        	camera.translate(0,10.0f,0);
+//        	break;
+//        case Keys.DOWN:
+//        	camera.translate(0,-10.0f,0);
+//        	break;
+//        case Keys.LEFT:
+//        	camera.translate(-10.0f,0,0);
+//        	break;
+//        case Keys.RIGHT:
+//        	camera.translate(10.0f,0,0);
+//        	break;
+//        case Keys.PLUS:
+//           camera.zoom += 0.05f;
+//           camera.update();
+//           break;
+//        case Keys.MINUS:
+//            camera.zoom -= 0.05f;
+//            camera.update();
+//            break;
         case Keys.ESCAPE:
         	stageManager.swapCurrentStage(new StartStage(this));
         }
+        System.out.println(keycode);
         stageManager.keyDown(keycode);
         return false;
     }
@@ -153,5 +200,11 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     {
         stageManager.scrolled(amount);
         return false;
+    }
+    
+
+    public boolean scrollSystemMap (int vertical, int horizontal)
+    {
+    	return false;
     }
 }
