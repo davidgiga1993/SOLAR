@@ -27,8 +27,9 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     public static final float HeightHalf = Height / 2;
 
     private SpriteBatch mainBatch;
-
-
+    
+    private enum myKeys { NONE, UP, DOWN, LEFT, RIGHT, PLUS, MINUS };
+    myKeys pressedKey = myKeys.NONE;
 
     @Override
     public void create()
@@ -75,22 +76,23 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     }
 
     private void handleInput() {
-    	if(Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(70)) {
-    		camera.zoom += 0.01f;
-        }	
-    	if(Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(69)) {
+    	
+    	if( pressedKey == myKeys.PLUS) {
     		camera.zoom -= 0.01f;
         }	
-    	if(Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.NUM_8) || Gdx.input.isKeyPressed(152)) {
+    	if( pressedKey == myKeys.MINUS) {
+    		camera.zoom += 0.01f;
+        }	
+    	if( pressedKey == myKeys.UP) {
     		camera.translate(0,1,0);
         }	
-    	if(Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.NUM_2) || Gdx.input.isKeyPressed(146)) {
+    	if(pressedKey == myKeys.DOWN) {
     		camera.translate(0,-1,0);
         }
-    	if(Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.NUM_4) || Gdx.input.isKeyPressed(148)) {
+    	if( pressedKey == myKeys.LEFT) {
     		camera.translate(-1,0,0);
         }
-    	if(Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.NUM_6) || Gdx.input.isKeyPressed(150)) {
+    	if( pressedKey == myKeys.RIGHT) {
     		camera.translate(1,0,0);
         }
     	if(Gdx.input.isKeyPressed(Keys.NUM_7) || Gdx.input.isKeyPressed(151)) {
@@ -127,26 +129,33 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     {
         switch (keycode)
         {
-//        case Keys.UP:       	
-//        	camera.translate(0,10.0f,0);
-//        	break;
-//        case Keys.DOWN:
-//        	camera.translate(0,-10.0f,0);
-//        	break;
-//        case Keys.LEFT:
-//        	camera.translate(-10.0f,0,0);
-//        	break;
-//        case Keys.RIGHT:
-//        	camera.translate(10.0f,0,0);
-//        	break;
-//        case Keys.PLUS:
-//           camera.zoom += 0.05f;
-//           camera.update();
-//           break;
-//        case Keys.MINUS:
-//            camera.zoom -= 0.05f;
-//            camera.update();
-//            break;
+        case Keys.NUM_8:
+        case 152:
+        case Keys.UP:       	
+        	pressedKey = myKeys.UP;
+        	break;
+        case Keys.NUM_2:
+        case 146:
+        case Keys.DOWN:
+        	pressedKey = myKeys.DOWN;
+        	break;
+        case Keys.NUM_4:
+        case 148:
+        case Keys.LEFT:
+        	pressedKey = myKeys.LEFT;
+        	break;
+        case Keys.NUM_6:
+        case 150:
+        case Keys.RIGHT:
+        	pressedKey = myKeys.RIGHT;
+        	break;
+        case 70:
+        case Keys.PLUS:
+        	pressedKey = myKeys.PLUS;
+           break;
+        case Keys.MINUS:
+        	pressedKey = myKeys.MINUS;
+            break;
         case Keys.ESCAPE:
         	stageManager.swapCurrentStage(new StartStage(this));
         }
@@ -158,6 +167,26 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     @Override
     public boolean keyUp(int keycode)
     {
+        switch (keycode)
+        {
+        case Keys.NUM_8:
+        case 152:
+        case Keys.UP:  
+        case Keys.NUM_2:
+        case 146:
+        case Keys.DOWN:
+        case Keys.NUM_4:
+        case 148:
+        case Keys.LEFT:
+        case Keys.NUM_6:
+        case 150:
+        case Keys.RIGHT:
+        case 70:
+        case Keys.PLUS:
+        case Keys.MINUS:
+        	pressedKey = myKeys.NONE;
+            break;
+        }
         stageManager.keyUp(keycode);
         return false;
     }
