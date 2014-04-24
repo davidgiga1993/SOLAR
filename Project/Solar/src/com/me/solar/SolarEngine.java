@@ -161,8 +161,11 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         	pressedKey = myKeys.MINUS;
             break;
         case Keys.ESCAPE:
-                stageManager.removeStages();
-        	stageManager.addStage(new StartStage(this));
+        	if(stageManager.getStage("GameStartStage") != null )
+        	{
+	            stageManager.removeStages();
+	        	stageManager.addStage(new StartStage(this));
+        	}
         	break;
         }
         System.out.println(keycode);
