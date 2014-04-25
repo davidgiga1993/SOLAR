@@ -21,7 +21,7 @@ public class GameStartStage extends BaseStage
         
         Spaceship ship = new Spaceship();
         ship.setPosition(0, 0);
-        ship.setSize(20, 20);        
+        ship.setSize(20, 20);
         
         Rectangle rect = new Rectangle();
         rect.setPosition(100, 100);
