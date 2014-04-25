@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.me.UserControls.Rectangle;
+import com.me.UserControls.Spaceship;
 import com.me.solar.SolarEngine;
 
 public class GameStartStage extends BaseStage
@@ -18,9 +19,15 @@ public class GameStartStage extends BaseStage
         SE.stageManager.insertStageToBack(new BackgroundStage(SE));
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         
+        Spaceship ship = new Spaceship();
+        ship.setPosition(0, 0);
+        ship.setSize(20, 20);        
+        
         Rectangle rect = new Rectangle();
-        rect.setPosition(0, 0);
+        rect.setPosition(100, 100);
         rect.setSize(100, 100);
+        
+
 
         rect.addListener(new InputListener()
         {
@@ -44,7 +51,8 @@ public class GameStartStage extends BaseStage
         ac.setInterpolation(Interpolation.exp5);
 
         rect.addAction(ac);
-        
+      
         addActor(rect);
+        addActor(ship);
     }
 }
