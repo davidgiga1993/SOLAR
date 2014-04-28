@@ -18,6 +18,7 @@ public class GameStartStage extends BaseStage
         
         SE.stageManager.insertStageToBack(new BackgroundStage(SE));
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
+        SE.stageManager.addStage(new GameHUDStage(SE));
         
         Spaceship ship = new Spaceship();
         ship.setPosition(0, 0);

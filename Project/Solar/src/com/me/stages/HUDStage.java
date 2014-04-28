@@ -19,8 +19,8 @@ public class HUDStage extends BaseStage
         timer = new Timer();
         BitmapFont font = new BitmapFont();
         FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
-        FPSLabel.setPosition(-SolarEngine.WidthHalf, SolarEngine.HeightHalf - 18);
-        
+        FPSLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
+       
         addActor(FPSLabel);
         BuildTimer();
     }
