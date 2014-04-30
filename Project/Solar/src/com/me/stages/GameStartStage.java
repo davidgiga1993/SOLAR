@@ -3,6 +3,7 @@ package com.me.stages;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -90,11 +91,30 @@ public class GameStartStage extends BaseStage
     	{
             public void clicked(InputEvent event, float x, float y)
             {
-            	//Deselektion: Klick in den leeren Raum deselektiert Auswahl
+            	//Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl
             	if (event.getTarget() instanceof Spaceship == false)
-            		removeSelections();
+            		removeSelections();            	
             }  
+            
+        	//Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+            {
+            	if (button == 1 && ( selectedActors.isEmpty() == false ))
+            		setNewTarget( new GridPoint2((int)x, (int)y));
+          	     return true;
+            }
+            
     	});
+	}
+	
+	public void setNewTarget( GridPoint2 target)
+	{
+		for (int index = selectedActors.size(); index > 0; index--)
+		{
+			Actor actor = selectedActors.get(index - 1);
+		     if (actor instanceof Spaceship)
+		    	 ((Spaceship) actor).setTarget(target);
+		}		
 	}
     
 	public void addSelection(Actor actor)

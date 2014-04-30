@@ -3,14 +3,16 @@ package com.me.UserControls;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 
 public class Spaceship extends Actor {
 	
 	private String shipName;
-	private ShapeRenderer shapeRenderer;
 	private boolean selected;
+	private GridPoint2 target;
+	private ShapeRenderer shapeRenderer;
 	
 	public Spaceship ( String name )
 	{
@@ -18,6 +20,7 @@ public class Spaceship extends Actor {
 		this.shapeRenderer = new ShapeRenderer();
 		this.selected = false;
 		this.shipName = name;
+		this.target = null;
 	}
 
 
@@ -56,5 +59,16 @@ public class Spaceship extends Actor {
 	public String toString()
 	{
 		return shipName;	
+	}
+	
+	public void setTarget(GridPoint2 target)
+	{
+		this.target = target;
+  	     System.out.println("Neues Ziel gesetzt für " + this.shipName + " bei X= " + target.x + ", Y= " + target.y);
+	}
+	
+	public GridPoint2 getTarget()
+	{
+		return target;
 	}
 }
