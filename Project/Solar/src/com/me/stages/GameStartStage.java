@@ -25,39 +25,18 @@ public class GameStartStage extends BaseStage
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         SE.stageManager.addStage(new GameHUDStage(SE));
         
-    	this.addListener(new ClickListener()
-    	{
-            public void clicked(InputEvent event, float x, float y)
-            {
-            	//Deselektion: Klick in den leeren Raum deselektiert Auswahl
-            	if (event.getTarget() instanceof Spaceship == false)
-            		removeSelections();
-            }  
-    	});
+    	gameStartStageListener();
                       
-        Spaceship ship1 = new Spaceship("Event Horizon");
-        ship1.setPosition(100, 100);
-    	ship1.addListener(new ClickListener()
-    	{
-            public void clicked(InputEvent event, float x, float y)
-            {
-                addSelection(event.getListenerActor());
-       	     System.out.println("Selected Actors: " + selectedActors.toString());
-            }  
-    	});
-        Spaceship ship2 = new Spaceship("Nostromo");
-        ship2.setPosition(100, -100);
-    	ship2.addListener(new ClickListener()
-    	{
-            public void clicked(InputEvent event, float x, float y)
-            {
-                addSelection(event.getListenerActor());
-       	     System.out.println("Selected Actors: " + selectedActors.toString());
-            }  
-    	});
-       
+        placeNewShip("Event Horizon", 100, 100);
+        placeNewShip("Nostromo", 143, 75);
+        placeNewShip("Destiny", 121, 144);
+        
 
-        Rectangle rect = new Rectangle();
+        exampleRectangle();
+    }
+
+	private void exampleRectangle() {
+		Rectangle rect = new Rectangle();
         rect.setPosition(0, 0);
         rect.setSize(100, 100);
         
@@ -85,9 +64,38 @@ public class GameStartStage extends BaseStage
         rect.addAction(ac);
       
         addActor(rect);
-        addActor(ship1);
-        addActor(ship2);
-    }
+	}
+
+	private void placeNewShip(String name, int x, int y) {
+		Spaceship newShip = new Spaceship(name);
+        newShip.setPosition(x, y);
+    	shipListener(newShip);
+        addActor(newShip);
+	}
+
+	private void shipListener(Spaceship newShip) {
+		newShip.addListener(new ClickListener()
+    	{
+            public void clicked(InputEvent event, float x, float y)
+            {
+                addSelection(event.getListenerActor());
+                //TODO: Remove Diagnoseausgabe wenn nicht mehr benötigt
+       	     System.out.println("Selected Actors: " + selectedActors.toString());
+            }  
+    	});
+	}
+
+	private void gameStartStageListener() {
+		this.addListener(new ClickListener()
+    	{
+            public void clicked(InputEvent event, float x, float y)
+            {
+            	//Deselektion: Klick in den leeren Raum deselektiert Auswahl
+            	if (event.getTarget() instanceof Spaceship == false)
+            		removeSelections();
+            }  
+    	});
+	}
     
 	public void addSelection(Actor actor)
 	{	     
