@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.me.UserControls.Rectangle;
@@ -28,9 +30,9 @@ public class GameStartStage extends BaseStage
         
     	gameStartStageListener();
                       
-        placeNewShip("Event Horizon", 100, 100);
-        placeNewShip("Nostromo", 143, 75);
-        placeNewShip("Destiny", 121, 144);
+        placeNewShip("Event Horizon", new GridPoint2(100, 100));
+        placeNewShip("Nostromo", new GridPoint2(143, 75));
+        placeNewShip("Destiny", new GridPoint2(121, 144));
         
 
         exampleRectangle();
@@ -67,44 +69,51 @@ public class GameStartStage extends BaseStage
         addActor(rect);
 	}
 
-	private void placeNewShip(String name, int x, int y) {
+	private void placeNewShip(String name, GridPoint2 startlocation) {
 		Spaceship newShip = new Spaceship(name);
-        newShip.setPosition(x, y);
-    	shipListener(newShip);
+        newShip.setPosition(startlocation.x, startlocation.y);
         addActor(newShip);
-	}
-
-	private void shipListener(Spaceship newShip) {
-		newShip.addListener(new ClickListener()
-    	{
-            public void clicked(InputEvent event, float x, float y)
-            {
-                addSelection(event.getListenerActor());
-                //TODO: Remove Diagnoseausgabe wenn nicht mehr benötigt
-       	     System.out.println("Selected Actors: " + selectedActors.toString());
-            }  
-    	});
 	}
 
 	private void gameStartStageListener() {
 		this.addListener(new ClickListener()
-    	{
-            public void clicked(InputEvent event, float x, float y)
-            {
-            	//Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl
-            	if (event.getTarget() instanceof Spaceship == false)
-            		removeSelections();            	
-            }  
-            
-        	//Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben
+    	{            
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
+            	//Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl
+            	if (event.getTarget() instanceof Spaceship == false && button == 0)
+            		removeSelections();   
+            	
+            	//Selektion von Raumschiffen
+            	if (event.getTarget() instanceof Spaceship && button == 0)
+            		addSelection(event.getTarget());   
+            	
+            	//Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben
             	if (button == 1 && ( selectedActors.isEmpty() == false ))
+            	{
             		setNewTarget( new GridPoint2((int)x, (int)y));
-          	     return true;
+            		moveSelectedSpaceship();
+            	}
+          	    
+            	//TODO: Remove Diagnoseausgabe wenn nicht mehr benötigt
+       	     System.out.println("Selected Actors: " + selectedActors.toString());
+      	     return true;
             }
             
     	});
+	}
+	
+	public void moveSelectedSpaceship()
+	{
+		for (int index = selectedActors.size(); index > 0; index--)
+		{
+			Actor actor = selectedActors.get(index - 1);
+		     if (actor instanceof Spaceship)
+		    	 ((Spaceship)actor).moveSpaceship();
+		}	
+		
+
+		
 	}
 	
 	public void setNewTarget( GridPoint2 target)

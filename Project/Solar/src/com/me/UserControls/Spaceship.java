@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
 
 public class Spaceship extends Actor {
@@ -70,5 +71,14 @@ public class Spaceship extends Actor {
 	public GridPoint2 getTarget()
 	{
 		return target;
+	}
+
+
+	public void moveSpaceship() {
+		MoveToAction mov = new MoveToAction();
+		mov.setPosition(this.target.x, this.target.y);
+        mov.setDuration(5);
+		this.addAction(mov);
+		
 	}
 }
