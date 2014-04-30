@@ -24,6 +24,16 @@ public class GameStartStage extends BaseStage
         SE.stageManager.insertStageToBack(new BackgroundStage(SE));
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         SE.stageManager.addStage(new GameHUDStage(SE));
+        
+    	this.addListener(new ClickListener()
+    	{
+            public void clicked(InputEvent event, float x, float y)
+            {
+            	//Deselektion: Klick in den leeren Raum deselektiert Auswahl
+            	if (event.getTarget() instanceof Spaceship == false)
+            		removeSelections();
+            }  
+    	});
                       
         Spaceship ship1 = new Spaceship("Event Horizon");
         ship1.setPosition(100, 100);
@@ -32,6 +42,7 @@ public class GameStartStage extends BaseStage
             public void clicked(InputEvent event, float x, float y)
             {
                 addSelection(event.getListenerActor());
+       	     System.out.println("Selected Actors: " + selectedActors.toString());
             }  
     	});
         Spaceship ship2 = new Spaceship("Nostromo");
@@ -41,6 +52,7 @@ public class GameStartStage extends BaseStage
             public void clicked(InputEvent event, float x, float y)
             {
                 addSelection(event.getListenerActor());
+       	     System.out.println("Selected Actors: " + selectedActors.toString());
             }  
     	});
        
@@ -78,22 +90,31 @@ public class GameStartStage extends BaseStage
     }
     
 	public void addSelection(Actor actor)
-	{
+	{	     
 		// variant 1: no other object are in selectedActors-List: simple left click selects object
 		if (selectedActors.isEmpty())
+		{
 			selectActor(actor);
+			return;
+		}
 		// Variant 2: no Shift or Control-button is pressed: discard all other selections
 		if (SE.isShiftPressed() == false && SE.isControlPressed() == false )
 		{
 			removeSelections();
 			selectActor(actor);
-		}		
-		// Variant 3: additional object added to list with Click+SHIFT or Click+CONTROL
+			return;
+		}	
+		// Variant 3: object already in list 'added' with Click+SHIFT or Click+CONTROL: remove that object from selection
+		if (selectedActors.contains(actor) && ( SE.isShiftPressed() == true || SE.isControlPressed() == true ) )
+		{
+			removeActor(actor);
+			return;
+		}
+		// Variant 4: new additional object added to list with Click+SHIFT or Click+CONTROL
 		else
 		{
 			selectActor(actor);
 		}
-     System.out.println("Selected Actors: " + selectedActors.toString());
 	}
 
 	private void selectActor(Actor actor)
@@ -103,6 +124,13 @@ public class GameStartStage extends BaseStage
 		selectedActors.add(actor);
 		 if (actor instanceof Spaceship)
 			 ((Spaceship) actor).select();
+	}
+	
+	private void removeActor(Actor actor)
+	{
+		 if (actor instanceof Spaceship)
+			 ((Spaceship) actor).deselect();
+		 selectedActors.remove(actor);
 	}
 	
 	public void removeSelections()
@@ -115,4 +143,5 @@ public class GameStartStage extends BaseStage
 			selectedActors.remove(index - 1);
 		}
 	}
+
 }
