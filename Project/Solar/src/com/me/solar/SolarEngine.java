@@ -31,8 +31,9 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
     private SpriteBatch mainBatch;
     
-    private enum myKeys { NONE, UP, DOWN, LEFT, RIGHT, PLUS, MINUS };
-    myKeys pressedKey = myKeys.NONE;
+    public enum myKeys { NONE, UP, DOWN, LEFT, RIGHT, PLUS, MINUS, SHIFT, CONTROL, ESC };
+    private myKeys pressedKey = myKeys.NONE;
+    
     @Override
     public void create()
     {
@@ -111,6 +112,13 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     	if(Gdx.input.isKeyPressed(Keys.NUM_1) || Gdx.input.isKeyPressed(145)) {
     		camera.translate(-1,-1,0);
         }
+    	if(pressedKey == myKeys.ESC) {
+        	if(stageManager.getStage("GameStartStage") != null )
+        	{
+	            stageManager.removeStages();
+	        	stageManager.addStage(new StartStage(this));
+        	}
+    	}
 	}
 
 	@Override
@@ -160,15 +168,18 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         case Keys.MINUS:
         	pressedKey = myKeys.MINUS;
             break;
+        case Keys.SHIFT_LEFT:
+        case Keys.SHIFT_RIGHT:
+        	pressedKey = myKeys.SHIFT;
+            break;
+        case Keys.CONTROL_LEFT:
+        case Keys.CONTROL_RIGHT:
+        	pressedKey = myKeys.CONTROL;
+            break;
         case Keys.ESCAPE:
-        	if(stageManager.getStage("GameStartStage") != null )
-        	{
-	            stageManager.removeStages();
-	        	stageManager.addStage(new StartStage(this));
-        	}
+        	pressedKey = myKeys.ESC;
         	break;
         }
-        System.out.println(keycode);
         stageManager.keyDown(keycode);
         return false;
     }
@@ -193,6 +204,11 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         case 70:
         case Keys.PLUS:
         case Keys.MINUS:
+        case Keys.SHIFT_LEFT:
+        case Keys.SHIFT_RIGHT:
+        case Keys.CONTROL_LEFT:
+        case Keys.CONTROL_RIGHT:
+        case Keys.ESCAPE:
         	pressedKey = myKeys.NONE;
             break;
         }
@@ -245,6 +261,20 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
     public boolean scrollSystemMap (int vertical, int horizontal)
     {
+    	return false;
+    }
+    
+    public boolean isShiftPressed()
+    {
+    	if ( pressedKey == myKeys.SHIFT )
+    		return true;
+    	return false;
+    }
+    
+    public boolean isControlPressed()
+    {
+    	if ( pressedKey == myKeys.CONTROL )
+    		return true;
     	return false;
     }
 }
