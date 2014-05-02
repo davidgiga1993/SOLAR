@@ -10,6 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.me.UserControls.Asteroid;
+import com.me.UserControls.Moon;
+import com.me.UserControls.SolarActor;
+import com.me.UserControls.TerrestrialPlanet;
 import com.me.UserControls.Rectangle;
 import com.me.UserControls.Spaceship;
 import com.me.UserControls.Star;
@@ -34,6 +38,9 @@ public class GameStartStage extends BaseStage
         placeNewShip("Destiny", new GridPoint2(121, 144));
         
         placeNewStar("Sol", new GridPoint2(-300,-300));
+        placeNewPlanet("Earth", new GridPoint2(300,-300));
+        placeNewMoon("Moon", new GridPoint2(500,-375));
+        placeNewAsteroid("Vesta", new GridPoint2(-250,50));
 
         exampleRectangle();
     }
@@ -75,13 +82,36 @@ public class GameStartStage extends BaseStage
         newShip.setPosition(startlocation.x, startlocation.y);
         addActor(newShip);
 	}
-	
-	private void placeNewStar(String name, GridPoint2 startlocation) {
-		Star newStar = new Star(name);
-		//setPosition setzt die Position des linken unteren Randes des Objekts. Daher sind die Koordinaten angepasst, um den Kreismottelpunkt als Koordinate zu erhalten
-        newStar.setPosition(startlocation.x-newStar.getWidth()/2, startlocation.y-newStar.getHeight()/2);
-        addActor(newStar);
+		
+	private void placeNewAsteroid(String name, GridPoint2 startlocation) {
+		Asteroid newObject = new Asteroid(name);
+		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
+		addActor(newObject);
 	}
+
+
+	private void placeNewMoon(String name, GridPoint2 startlocation) {
+		Moon newObject = new Moon(name);
+		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
+		addActor(newObject);
+	}
+
+
+	private void placeNewPlanet(String name, GridPoint2 startlocation) {
+		TerrestrialPlanet newObject = new TerrestrialPlanet(name);
+		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
+		addActor(newObject);
+	}
+
+
+	private void placeNewStar(String name, GridPoint2 startlocation) {
+		Star newObject = new Star(name);
+		//setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
+		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
+		addActor(newObject);
+	}
+
+
 
 	/**
 	 * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
@@ -92,11 +122,11 @@ public class GameStartStage extends BaseStage
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
             	//Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl
-            	if (event.getTarget() instanceof Spaceship == false && button == 0)
+            	if (event.getTarget() instanceof SolarActor == false && button == 0)
             		discardAllSelections();   
             	
             	//Selektion von Raumschiffen
-            	if ((event.getTarget() instanceof Spaceship || event.getTarget() instanceof Star ) && button == 0)
+            	if (event.getTarget() instanceof SolarActor && button == 0)
             		addSelection(event.getTarget());   
             	
             	//Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben

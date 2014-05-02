@@ -4,12 +4,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
-public class Star extends SolarActor
+public class TerrestrialPlanet extends SolarActor
 {
-	public Star(String name)
+	public TerrestrialPlanet(String name)
 	{
-		this.setSize(500, 500);
+		this.setSize(200, 200);
 		this.shapeRenderer = new ShapeRenderer();
 		this.name = name;
 	}
@@ -22,8 +23,15 @@ public class Star extends SolarActor
         
         shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
-        shapeRenderer.setColor(Color.YELLOW);
+        shapeRenderer.setColor(Color.BLUE);
         shapeRenderer.circle(getX() + getWidth()/2, getY()+getHeight()/2, getHeight()/2);
         shapeRenderer.end();    
+	}
+	
+	public void moveSpaceship() {
+		MoveToAction mov = new MoveToAction();
+        mov.setDuration(5);
+		this.addAction(mov);
+		
 	}
 }
