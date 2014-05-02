@@ -8,12 +8,11 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.me.UserControls.Rectangle;
 import com.me.UserControls.Spaceship;
+import com.me.UserControls.Star;
 import com.me.solar.SolarEngine;
 
 public class GameStartStage extends BaseStage
@@ -34,10 +33,12 @@ public class GameStartStage extends BaseStage
         placeNewShip("Nostromo", new GridPoint2(143, 75));
         placeNewShip("Destiny", new GridPoint2(121, 144));
         
+        placeNewStar("Sol", new GridPoint2(-300,-300));
 
         exampleRectangle();
     }
 
+    
 	private void exampleRectangle() {
 		Rectangle rect = new Rectangle();
         rect.setPosition(0, 0);
@@ -74,7 +75,17 @@ public class GameStartStage extends BaseStage
         newShip.setPosition(startlocation.x, startlocation.y);
         addActor(newShip);
 	}
+	
+	private void placeNewStar(String name, GridPoint2 startlocation) {
+		Star newStar = new Star(name);
+		//setPosition setzt die Position des linken unteren Randes des Objekts. Daher sind die Koordinaten angepasst, um den Kreismottelpunkt als Koordinate zu erhalten
+        newStar.setPosition(startlocation.x-newStar.getWidth()/2, startlocation.y-newStar.getHeight()/2);
+        addActor(newStar);
+	}
 
+	/**
+	 * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
+	 */
 	private void gameStartStageListener() {
 		this.addListener(new ClickListener()
     	{            
@@ -82,16 +93,16 @@ public class GameStartStage extends BaseStage
             {
             	//Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl
             	if (event.getTarget() instanceof Spaceship == false && button == 0)
-            		removeSelections();   
+            		discardAllSelections();   
             	
             	//Selektion von Raumschiffen
-            	if (event.getTarget() instanceof Spaceship && button == 0)
+            	if ((event.getTarget() instanceof Spaceship || event.getTarget() instanceof Star ) && button == 0)
             		addSelection(event.getTarget());   
             	
             	//Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben
             	if (button == 1 && ( selectedActors.isEmpty() == false ))
             	{
-            		setNewTarget( new GridPoint2((int)x, (int)y));
+            		setNewDestination( new GridPoint2((int)x, (int)y));
             		moveSelectedSpaceship();
             	}
           	    
@@ -110,19 +121,16 @@ public class GameStartStage extends BaseStage
 			Actor actor = selectedActors.get(index - 1);
 		     if (actor instanceof Spaceship)
 		    	 ((Spaceship)actor).moveSpaceship();
-		}	
-		
-
-		
+		}		
 	}
 	
-	public void setNewTarget( GridPoint2 target)
+	public void setNewDestination( GridPoint2 target)
 	{
 		for (int index = selectedActors.size(); index > 0; index--)
 		{
 			Actor actor = selectedActors.get(index - 1);
 		     if (actor instanceof Spaceship)
-		    	 ((Spaceship) actor).setTarget(target);
+		    	 ((Spaceship) actor).setDestination(target);
 		}		
 	}
     
@@ -137,7 +145,7 @@ public class GameStartStage extends BaseStage
 		// Variant 2: no Shift or Control-button is pressed: discard all other selections
 		if (SE.isShiftPressed() == false && SE.isControlPressed() == false )
 		{
-			removeSelections();
+			discardAllSelections();
 			selectActor(actor);
 			return;
 		}	
@@ -170,14 +178,12 @@ public class GameStartStage extends BaseStage
 		 selectedActors.remove(actor);
 	}
 	
-	public void removeSelections()
+	public void discardAllSelections()
 	{
 		for (int index = selectedActors.size(); index > 0; index--)
 		{
 			Actor actor = selectedActors.get(index - 1);
-		     if (actor instanceof Spaceship)
-		    	 ((Spaceship) actor).deselect();
-			selectedActors.remove(index - 1);
+		    removeActor(actor);
 		}
 	}
 

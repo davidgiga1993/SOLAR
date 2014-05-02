@@ -4,26 +4,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
 
-public class Spaceship extends Actor {
+public class Spaceship extends SolarActor {
 	
-	private String shipName;
-	private boolean selected;
-	private GridPoint2 target;
-	private ShapeRenderer shapeRenderer;
+	private GridPoint2 destination;
 	
 	public Spaceship ( String name )
 	{
 		this.setSize(33, 33);
 		this.shapeRenderer = new ShapeRenderer();
 		this.selected = false;
-		this.shipName = name;
-		this.target = null;
+		this.name = name;
+		this.destination = null;
 	}
-
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha)
@@ -46,37 +41,20 @@ public class Spaceship extends Actor {
         shapeRenderer.end(); 
 	}
 	
-	public void select()
+	public void setDestination(GridPoint2 destination)
 	{
-		selected = true;
-	}	
-	
-	public void deselect()
-	{
-		selected = false;
-	}	
-	
-	@Override
-	public String toString()
-	{
-		return shipName;	
+		this.destination = destination;
+  	     System.out.println("Neues Ziel gesetzt für " + this.name + " bei X= " + destination.x + ", Y= " + destination.y);
 	}
 	
-	public void setTarget(GridPoint2 target)
+	public GridPoint2 getDestination()
 	{
-		this.target = target;
-  	     System.out.println("Neues Ziel gesetzt für " + this.shipName + " bei X= " + target.x + ", Y= " + target.y);
+		return destination;
 	}
 	
-	public GridPoint2 getTarget()
-	{
-		return target;
-	}
-
-
 	public void moveSpaceship() {
 		MoveToAction mov = new MoveToAction();
-		mov.setPosition(this.target.x, this.target.y);
+		mov.setPosition(this.destination.x, this.destination.y);
         mov.setDuration(5);
 		this.addAction(mov);
 		
