@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.me.UserControls.Spaceship;
 import com.me.solar.Main;
 
