@@ -4,7 +4,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
+import com.badlogic.gdx.utils.Array;
 
 
 public class Spaceship extends SolarActor {
@@ -16,8 +18,8 @@ public class Spaceship extends SolarActor {
 		this.setSize(33, 33);
 		this.shapeRenderer = new ShapeRenderer();
 		this.selected = false;
-		this.name = name;
 		this.destination = null;
+		this.setName(name);
 	}
 
 	@Override
@@ -44,7 +46,7 @@ public class Spaceship extends SolarActor {
 	public void setDestination(GridPoint2 destination)
 	{
 		this.destination = destination;
-  	     System.out.println("Neues Ziel gesetzt für " + this.name + " bei X= " + destination.x + ", Y= " + destination.y);
+  	     System.out.println("Neues Ziel gesetzt für " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
 	}
 	
 	public GridPoint2 getDestination()
@@ -57,6 +59,5 @@ public class Spaceship extends SolarActor {
 		mov.setPosition(this.destination.x, this.destination.y);
         mov.setDuration(5);
 		this.addAction(mov);
-		
 	}
 }

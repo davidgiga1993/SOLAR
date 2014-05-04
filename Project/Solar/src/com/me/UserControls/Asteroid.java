@@ -11,7 +11,7 @@ public class Asteroid extends SolarActor
 	{
 		this.setSize(35, 20);
 		this.shapeRenderer = new ShapeRenderer();
-		this.name = name;
+		this.setName(name);
 	}
 	
 	@Override

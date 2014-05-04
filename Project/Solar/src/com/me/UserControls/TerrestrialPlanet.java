@@ -12,7 +12,7 @@ public class TerrestrialPlanet extends SolarActor
 	{
 		this.setSize(200, 200);
 		this.shapeRenderer = new ShapeRenderer();
-		this.name = name;
+		this.setName(name);
 	}
 	
 	@Override

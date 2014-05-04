@@ -11,7 +11,7 @@ public class Star extends SolarActor
 	{
 		this.setSize(500, 500);
 		this.shapeRenderer = new ShapeRenderer();
-		this.name = name;
+		this.setName(name);
 	}
 	
 	@Override

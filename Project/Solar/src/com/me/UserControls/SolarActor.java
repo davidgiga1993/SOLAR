@@ -5,14 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public abstract class SolarActor extends Actor {
 	
-	protected String name;
 	protected ShapeRenderer shapeRenderer;
 	protected boolean selected;
 
 	@Override
 	public String toString()
 	{
-		return name;	
+		return getName();	
 	}
 	
 	public void select()
@@ -24,4 +23,9 @@ public abstract class SolarActor extends Actor {
 	{
 		selected = false;
 	}	
+	
+	public boolean getSelected()
+	{
+		return selected;
+	}
 }

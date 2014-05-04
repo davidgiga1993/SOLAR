@@ -11,7 +11,7 @@ public class Moon extends SolarActor
 	{
 		this.setSize(75, 75);
 		this.shapeRenderer = new ShapeRenderer();
-		this.name = name;
+		this.setName(name);
 	}
 	
 	@Override

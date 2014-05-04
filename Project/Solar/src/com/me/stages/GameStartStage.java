@@ -38,7 +38,7 @@ public class GameStartStage extends BaseStage
         placeNewShip("Destiny", new GridPoint2(121, 144));
         
         placeNewStar("Sol", new GridPoint2(-300,-300));
-        placeNewPlanet("Earth", new GridPoint2(300,-300));
+        placeNewTerrestrialPlanet("Earth", new GridPoint2(300,-300));
         placeNewMoon("Moon", new GridPoint2(500,-375));
         placeNewAsteroid("Vesta", new GridPoint2(-250,50));
 
@@ -97,7 +97,7 @@ public class GameStartStage extends BaseStage
 	}
 
 
-	private void placeNewPlanet(String name, GridPoint2 startlocation) {
+	private void placeNewTerrestrialPlanet(String name, GridPoint2 startlocation) {
 		TerrestrialPlanet newObject = new TerrestrialPlanet(name);
 		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
 		addActor(newObject);
