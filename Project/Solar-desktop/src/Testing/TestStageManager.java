@@ -2,46 +2,14 @@ package Testing;
 
 import static org.junit.Assert.fail;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.badlogic.gdx.Gdx;
-import com.me.solar.Main;
 import com.me.stages.BaseStage;
 import com.me.stages.StageManager;
 import com.me.stages.TestStage;
 
 public class TestStageManager
 {
-    public TestStageManager()
-    {
-    }
-
-    @BeforeClass
-    public static void setUpOnce()
-    {
-        Main.main(null);
-    }
-
-    @AfterClass
-    public static void tearDownOnce()
-    {
-        Gdx.app.exit();
-    }
-
-    @Before
-    public void setUp() throws Exception
-    {
-    }
-
-    @After
-    public void tearDown() throws Exception
-    {
-    }
-
     @Test
     public void testGetStage()
     {

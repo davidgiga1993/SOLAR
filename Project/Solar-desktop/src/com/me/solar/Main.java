@@ -5,6 +5,8 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 public class Main
 {
+    public static SolarEngine Engine;
+    
     public static void main(String[] args)
     {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
@@ -13,8 +15,8 @@ public class Main
         cfg.width = 900;
         cfg.height = 600;
         cfg.foregroundFPS = 0;
-        //Test
         
-        new LwjglApplication(new SolarEngine(), cfg);
+        Engine = new SolarEngine();
+        new LwjglApplication(Engine, cfg);
     }
 }

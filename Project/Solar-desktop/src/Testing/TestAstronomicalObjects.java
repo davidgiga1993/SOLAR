@@ -1,45 +1,23 @@
 package Testing;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.GridPoint2;
 import com.me.UserControls.Asteroid;
 import com.me.UserControls.Moon;
-import com.me.UserControls.Spaceship;
 import com.me.UserControls.Star;
 import com.me.UserControls.TerrestrialPlanet;
-import com.me.solar.Main;
 
+public class TestAstronomicalObjects
+{
 
-public class TestAstronomicalObjects {
-	
-	private Star testStar;
-	private TerrestrialPlanet testPlanet;
-	private Moon testMoon;
-	private Asteroid testAsteroid;
-	
-	public TestAstronomicalObjects() {
-		
-	}
-
-    @BeforeClass
-    public static void setUpOnce()
-    {
-        Main.main(null);
-    }
-    
-    @AfterClass
-    public static void tearDownOnce()
-    {
-        Gdx.app.exit();
-    }
+    private Star testStar;
+    private TerrestrialPlanet testPlanet;
+    private Moon testMoon;
+    private Asteroid testAsteroid;
 
     @Before
     public void setUp() throws Exception
@@ -58,46 +36,49 @@ public class TestAstronomicalObjects {
     public void tearDown() throws Exception
     {
     }
-    
-	/**
-	 * Eine Klasse "Stern" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
-	 */
-	@Test
-	public void testStarCreation() {
-		assertEquals(500f, testStar.getWidth(), 0);
-		assertEquals(500f, testStar.getHeight(), 0);
-		assertEquals("Yavin", testStar.getName());
-	}
-	
-	/**
-	 * Eine Klasse "Planet" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
-	 */
-	@Test
-	public void testPlanetCreation() {
-		assertEquals(200f, testPlanet.getWidth(), 0);
-		assertEquals(200f, testPlanet.getHeight(), 0);
-		assertEquals("Alderan", testPlanet.getName());
-	}
-	
-	/**
-	 * Eine Klasse "Moon" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
-	 */
-	@Test
-	public void testMoonCreation() {
-		assertEquals(75f, testMoon.getWidth(), 0);
-		assertEquals(75f, testMoon.getHeight(), 0);
-		assertEquals("Death Star", testMoon.getName());
-	}
-	
-	/**
-	 * Eine Klasse "Asteroid" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
-	 */
-	@Test
-	public void testAsteroidCreation() {
-		assertEquals(35f, testAsteroid.getWidth(), 0);
-		assertEquals(20f, testAsteroid.getHeight(), 0);
-		assertEquals("Astra", testAsteroid.getName());
-	}
-	
-	
-	}
+
+    /**
+     * Eine Klasse "Stern" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     */
+    @Test
+    public void testStarCreation()
+    {
+        assertEquals(500f, testStar.getWidth(), 0);
+        assertEquals(500f, testStar.getHeight(), 0);
+        assertEquals("Yavin", testStar.getName());
+    }
+
+    /**
+     * Eine Klasse "Planet" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     */
+    @Test
+    public void testPlanetCreation()
+    {
+        assertEquals(200f, testPlanet.getWidth(), 0);
+        assertEquals(200f, testPlanet.getHeight(), 0);
+        assertEquals("Alderan", testPlanet.getName());
+    }
+
+    /**
+     * Eine Klasse "Moon" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     */
+    @Test
+    public void testMoonCreation()
+    {
+        assertEquals(75f, testMoon.getWidth(), 0);
+        assertEquals(75f, testMoon.getHeight(), 0);
+        assertEquals("Death Star", testMoon.getName());
+    }
+
+    /**
+     * Eine Klasse "Asteroid" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     */
+    @Test
+    public void testAsteroidCreation()
+    {
+        assertEquals(35f, testAsteroid.getWidth(), 0);
+        assertEquals(20f, testAsteroid.getHeight(), 0);
+        assertEquals("Astra", testAsteroid.getName());
+    }
+
+}
