@@ -168,11 +168,19 @@ public class GameStartStage extends BaseStage
     	{
     		float x = getActors().get(index).getX();
     		float y = getActors().get(index).getY();
-    		if ( x > SelRec.getX() &&  x < (SelRec.getX() + SelRec.getWidth()))
-    			if(y > SelRec.getY() &&  y < (SelRec.getY() + SelRec.getHeight()))
+    		if ( isXWithinSelRec(x))
+    			if(isYWithinSelRec(y))
     				if(getActors().get(index) instanceof SolarActor && !selectedActors.contains(getActors().get(index)))
           				selectActor(getActors().get(index));
     	}
+	}
+
+	private boolean isYWithinSelRec(float y) {
+		return y > SelRec.getY() &&  y < (SelRec.getY() + SelRec.getHeight());
+	}
+
+	private boolean isXWithinSelRec(float x) {
+		return x > SelRec.getX() &&  x < (SelRec.getX() + SelRec.getWidth());
 	}
 	
 	public void moveSelectedSpaceship()

@@ -1,5 +1,7 @@
 package com.me.UserControls;
 
+import javax.swing.text.Position;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -11,16 +13,7 @@ public class Spaceship extends SolarActor
 {
 
     private GridPoint2 destination;
-
 	private float speed = 100f;
-	
-	public float getSpeed() {
-		return speed;
-	}
-	
-	public void setSpeed(float speed) {
-		this.speed = speed;
-	}
 	
     public Spaceship(String name)
     {
@@ -47,9 +40,20 @@ public class Spaceship extends SolarActor
         {
             shapeRenderer.begin(ShapeType.Line);
             shapeRenderer.rect(getX() - 5, getY() - 5, getWidth() + 10, getHeight() + 10);
+            shapeRenderer.end();
+        }
+       
+        if ( destination != null && this.getActions().size != 0 )
+        {
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destination.x, destination.y);
+        shapeRenderer.end();
+        
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.circle(destination.x, destination.y, 10);
+        shapeRenderer.end();        
         }
 
-        shapeRenderer.end();
     }
 
     public void setDestination(GridPoint2 destination)
@@ -72,6 +76,14 @@ public class Spaceship extends SolarActor
 		float moveTime = (float) ((Math.sqrt(Math.pow(deltaX,2)+ Math.pow(deltaY,2))) / speed);
         mov.setDuration(moveTime);
 		this.addAction(mov);
+	}
+    
+	public float getSpeed() {
+		return speed;
+	}
+	
+	public void setSpeed(float speed) {
+		this.speed = speed;
 	}
 
 }
