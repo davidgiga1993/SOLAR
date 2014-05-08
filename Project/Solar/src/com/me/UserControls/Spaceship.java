@@ -69,7 +69,7 @@ public class Spaceship extends SolarActor
         mov.setPosition(this.destination.x, this.destination.y);
 		float deltaX = getX() - destination.x;
 		float deltaY = getY() - destination.y;
-		float moveTime = (float) (Math.sqrt(Math.pow(deltaX,2)+ Math.pow(deltaY,2))) / speed;
+		float moveTime = (float) ((Math.sqrt(Math.pow(deltaX,2)+ Math.pow(deltaY,2))) / speed);
         mov.setDuration(moveTime);
 		this.addAction(mov);
 	}
