@@ -162,13 +162,13 @@ public class GameStartStage extends BaseStage
             public void touchUp(InputEvent event, float x, float y,
             		int pointer, int button) {
             	SelRec.hide();
+             	getSelectionBoxSelectedActors();
             }           
             
 			@Override
             public void touchDragged(InputEvent event, float x, float y,
             		int pointer) {
           	     SelRec.updatePositionAndSize(x,y);
-             	getSelectionBoxSelectedActors();
             }
         });
     }
