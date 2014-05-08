@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.me.solar.SolarEngine;
 
-public class ExitStage extends BaseStage
+public class ExitStage extends HUDStage
 {
 
     private Label labelAreYouSure;

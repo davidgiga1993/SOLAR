@@ -8,12 +8,15 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.me.solar.logic.GameLogicService;
 import com.me.stages.StageManager;
 import com.me.stages.StartStage;
 import com.me.UserControls.*;
 
 public class SolarEngine implements ApplicationListener, InputProcessor
 {
+    public GameLogicService Service = new GameLogicService();
+    
     public OrthographicCamera camera;
     public OrthographicCamera HUDcamera;
     public OrthographicCamera Backgroundcamera;
