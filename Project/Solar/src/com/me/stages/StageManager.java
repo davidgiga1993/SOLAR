@@ -164,7 +164,7 @@ public class StageManager extends BaseStage
     {
         for (int X = 0; X < Stages.size(); X++)
         {
-            Stages.get(X).draw();
+            Stages.get(X).touchDragged(screenX, screenY, pointer);
         }
         return false;
     }
