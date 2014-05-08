@@ -11,7 +11,7 @@ import com.me.solar.Main;
 
 @RunWith(Suite.class)
 @SuiteClasses(
-{ TestAstronomicalObjects.class, TestSpaceship.class, TestStageManager.class, TestKartenbewergung.class })
+{ TestAstronomicalObjects.class, TestSpaceship.class, TestStageManager.class, TestKartenbewergung.class, TestOverlay.class })
 public class AllTests
 {
 

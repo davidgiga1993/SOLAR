@@ -28,10 +28,4 @@ public class TerrestrialPlanet extends SolarActor
         shapeRenderer.end();    
 	}
 	
-	public void moveSpaceship() {
-		MoveToAction mov = new MoveToAction();
-        mov.setDuration(5);
-		this.addAction(mov);
-		
-	}
 }
