@@ -27,13 +27,15 @@ public class GameStartStage extends BaseStage
     public GameStartStage(SolarEngine SE)
     {
         super(SE, "GameStartStage");
-
+        SE.Service.StartGame();
+        
         SE.stageManager.insertStageToBack(new BackgroundStage(SE));
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         SE.stageManager.addStage(new GameHUDStage(SE));
 
         gameStartStageListener();
     	addActor(SelRec);
+       
 
         placeNewShip("Event Horizon", new GridPoint2(100, 100));
         placeNewShip("Nostromo", new GridPoint2(143, 75));
@@ -113,7 +115,7 @@ public class GameStartStage extends BaseStage
         // setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
         newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
         addActor(newObject);
-    }
+	}
 
     /**
      * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
@@ -141,18 +143,6 @@ public class GameStartStage extends BaseStage
                     setNewDestination(new GridPoint2((int) x, (int) y));
                     moveSelectedSpaceship();
                 }
-            		discardAllSelections();   
-            	
-            	//Selektion von Raumschiffen
-            	if (event.getTarget() instanceof SolarActor && button == 0)
-            		addSelection(event.getTarget());   
-            	
-            	//Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben
-            	if (button == 1 && ( selectedActors.isEmpty() == false ))
-            	{
-            		setNewDestination( new GridPoint2((int)x, (int)y));
-            		moveSelectedSpaceship();
-            	}
           	    return true;
             }
                         
@@ -160,13 +150,13 @@ public class GameStartStage extends BaseStage
             public void touchUp(InputEvent event, float x, float y,
             		int pointer, int button) {
             	SelRec.hide();
+             	getSelectionBoxSelectedActors();
             }           
             
 			@Override
             public void touchDragged(InputEvent event, float x, float y,
             		int pointer) {
           	     SelRec.updatePositionAndSize(x,y);
-             	getSelectionBoxSelectedActors();
             }
         });
     }
