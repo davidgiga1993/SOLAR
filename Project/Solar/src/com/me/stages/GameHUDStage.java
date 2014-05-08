@@ -22,20 +22,16 @@ public class GameHUDStage extends HUDStage{
         
         
 		navigationBar = new Table();
-        navigationBar.setSize(Gdx.graphics.getWidth(), 30);
+        navigationBar.setSize(30, Gdx.graphics.getHeight());
         navigationBar.setPosition(-SolarEngine.WidthHalf, SolarEngine.HeightHalf - navigationBar.getHeight());
         navigationBar.align(Align.left);
         navigationBar.setColor(Color.CYAN);
-
+        navigationBar.add(new Label("Results", new LabelStyle(font, Color.WHITE))).left().top().expandX();
+        navigationBar.row();
+        navigationBar.add(new Label("Option1", new LabelStyle(font, Color.WHITE)));
+        navigationBar.row();
+        navigationBar.add(new Label("Option2", new LabelStyle(font, Color.WHITE)));
         
-        Label start = new Label("START", new LabelStyle(font, new Color(125, 125, 125, 255)));
-        navigationBar.add(start);
-        Label option1 = new Label("Option1", new LabelStyle(font, new Color(125, 125, 125, 255)));
-        navigationBar.add(option1);
-        Label option2 = new Label("Option2", new LabelStyle(font, new Color(125, 125, 125, 255)));
-        navigationBar.add(option2);
-        
-
         addActor(navigationBar);
 	}
 	
