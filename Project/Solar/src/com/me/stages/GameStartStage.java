@@ -143,18 +143,6 @@ public class GameStartStage extends BaseStage
                     setNewDestination(new GridPoint2((int) x, (int) y));
                     moveSelectedSpaceship();
                 }
-            		discardAllSelections();   
-            	
-            	//Selektion von Raumschiffen
-            	if (event.getTarget() instanceof SolarActor && button == 0)
-            		addSelection(event.getTarget());   
-            	
-            	//Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben
-            	if (button == 1 && ( selectedActors.isEmpty() == false ))
-            	{
-            		setNewDestination( new GridPoint2((int)x, (int)y));
-            		moveSelectedSpaceship();
-            	}
           	    return true;
             }
                         
