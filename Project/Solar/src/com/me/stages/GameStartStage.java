@@ -3,24 +3,20 @@ package com.me.stages;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.me.UserControls.Asteroid;
 import com.me.UserControls.Moon;
+import com.me.UserControls.Rectangle;
 import com.me.UserControls.SelectionRectangle;
 import com.me.UserControls.SolarActor;
-import com.me.UserControls.TerrestrialPlanet;
-import com.me.UserControls.Rectangle;
 import com.me.UserControls.Spaceship;
 import com.me.UserControls.Star;
+import com.me.UserControls.TerrestrialPlanet;
 import com.me.solar.SolarEngine;
 
 public class GameStartStage extends BaseStage
@@ -123,6 +119,7 @@ public class GameStartStage extends BaseStage
      * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
      */
     private void gameStartStageListener()
+    {
 		this.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
