@@ -9,17 +9,19 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.me.solar.SolarEngine;
 
-public class GameOptionsStage extends BaseStage {
+public class GameOptionsStage extends HUDStage
+{
 
-	private Label labelOption1;
-	private Label labelBackground;
-	private Label labelExit;
-	
-	public GameOptionsStage(final SolarEngine SE) {
-		super(SE, "GameOptions");
-		labelOption1 = new Label("Option1", SE.styles.defaultLabelStyle);
-		labelOption1.setPosition(-labelOption1.getWidth() / 2, 80);
-		labelOption1.addListener(new InputListener()
+    private Label labelOption1;
+    private Label labelBackground;
+    private Label labelExit;
+
+    public GameOptionsStage(final SolarEngine SE)
+    {
+        super(SE, "GameOptions");
+        labelOption1 = new Label("Option1", SE.styles.defaultLabelStyle);
+        labelOption1.setPosition(-labelOption1.getWidth() / 2, 80);
+        labelOption1.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
@@ -36,14 +38,14 @@ public class GameOptionsStage extends BaseStage {
                 AnimateLabelOut(labelOption1);
             }
         });
-        
-		labelBackground = new Label("Choose Background", SE.styles.defaultLabelStyle);
-		labelBackground.setPosition(-labelBackground.getWidth() / 2, 50);
-		labelBackground.addListener(new InputListener()
+
+        labelBackground = new Label("Choose Background", SE.styles.defaultLabelStyle);
+        labelBackground.setPosition(-labelBackground.getWidth() / 2, 50);
+        labelBackground.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-            	SE.stageManager.swapCurrentStage(new GameOptionsBackgroundStage(SE));
+                SE.stageManager.swapCurrentStage(new GameOptionsBackgroundStage(SE));
                 return true;
             }
 
@@ -57,14 +59,14 @@ public class GameOptionsStage extends BaseStage {
                 AnimateLabelOut(labelBackground);
             }
         });
-		
-		labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
-		labelExit.setPosition(-labelOption1.getWidth() / 2, 20);
-		labelExit.addListener(new InputListener()
+
+        labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
+        labelExit.setPosition(-labelOption1.getWidth() / 2, 20);
+        labelExit.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-            	SE.stageManager.swapCurrentStage(new StartStage(SE));
+                SE.stageManager.swapCurrentStage(new StartStage(SE));
                 return true;
             }
 

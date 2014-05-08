@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.me.solar.SolarEngine;
 
-public class GameOptionsBackgroundStage extends BaseStage
+public class GameOptionsBackgroundStage extends HUDStage
 {
 	
 	private Label Background1;
