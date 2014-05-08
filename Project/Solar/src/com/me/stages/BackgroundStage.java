@@ -16,7 +16,7 @@ public class BackgroundStage extends BaseBackgroundStage
     {
         super(SE, "Background");
 
-        ChangeBackgroundImage(defaultBackground);
+        ChangeBackgroundImage(defaultBackground);        
     }
 
     public void ChangeBackgroundImage(String backgroundImage)

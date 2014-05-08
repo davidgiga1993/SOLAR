@@ -24,39 +24,39 @@ import com.me.UserControls.Star;
 import com.me.solar.SolarEngine;
 
 public class GameStartStage extends BaseStage
-{	
-	protected List<Actor> selectedActors = new ArrayList<Actor>();
+{
+    protected List<Actor> selectedActors = new ArrayList<Actor>();
 	private SelectionRectangle SelRec = new SelectionRectangle();
-	
+
     public GameStartStage(SolarEngine SE)
     {
         super(SE, "GameStartStage");
-        
+
         SE.stageManager.insertStageToBack(new BackgroundStage(SE));
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         SE.stageManager.addStage(new GameHUDStage(SE));
-        
-    	gameStartStageListener();
+
+        gameStartStageListener();
     	addActor(SelRec);
-                      
+
         placeNewShip("Event Horizon", new GridPoint2(100, 100));
         placeNewShip("Nostromo", new GridPoint2(143, 75));
         placeNewShip("Destiny", new GridPoint2(121, 144));
-        
-        placeNewStar("Sol", new GridPoint2(-300,-300));
-        placeNewTerrestrialPlanet("Earth", new GridPoint2(300,-300));
-        placeNewMoon("Moon", new GridPoint2(500,-375));
-        placeNewAsteroid("Vesta", new GridPoint2(-250,50));
+
+        placeNewStar("Sol", new GridPoint2(-300, -300));
+        placeNewTerrestrialPlanet("Earth", new GridPoint2(300, -300));
+        placeNewMoon("Moon", new GridPoint2(500, -375));
+        placeNewAsteroid("Vesta", new GridPoint2(-250, 50));
 
         exampleRectangle();
     }
 
-    
-	private void exampleRectangle() {
-		Rectangle rect = new Rectangle();
+    private void exampleRectangle()
+    {
+        Rectangle rect = new Rectangle();
         rect.setPosition(0, 0);
         rect.setSize(100, 100);
-        
+
         rect.addListener(new InputListener()
         {
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
@@ -79,52 +79,52 @@ public class GameStartStage extends BaseStage
         ac.setInterpolation(Interpolation.exp5);
 
         rect.addAction(ac);
-      
-        addActor(rect);
-	}
 
-	private void placeNewShip(String name, GridPoint2 startlocation) {
-		Spaceship newShip = new Spaceship(name);
+        addActor(rect);
+    }
+
+    private void placeNewShip(String name, GridPoint2 startlocation)
+    {
+        Spaceship newShip = new Spaceship(name);
         newShip.setPosition(startlocation.x, startlocation.y);
         addActor(newShip);
-	}
-		
-	private void placeNewAsteroid(String name, GridPoint2 startlocation) {
-		Asteroid newObject = new Asteroid(name);
-		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
-		addActor(newObject);
-	}
+    }
 
+    private void placeNewAsteroid(String name, GridPoint2 startlocation)
+    {
+        Asteroid newObject = new Asteroid(name);
+        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
+        addActor(newObject);
+    }
 
-	private void placeNewMoon(String name, GridPoint2 startlocation) {
-		Moon newObject = new Moon(name);
-		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
-		addActor(newObject);
-	}
+    private void placeNewMoon(String name, GridPoint2 startlocation)
+    {
+        Moon newObject = new Moon(name);
+        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
+        addActor(newObject);
+    }
 
+    private void placeNewTerrestrialPlanet(String name, GridPoint2 startlocation)
+    {
+        TerrestrialPlanet newObject = new TerrestrialPlanet(name);
+        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
+        addActor(newObject);
+    }
 
-	private void placeNewTerrestrialPlanet(String name, GridPoint2 startlocation) {
-		TerrestrialPlanet newObject = new TerrestrialPlanet(name);
-		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
-		addActor(newObject);
-	}
+    private void placeNewStar(String name, GridPoint2 startlocation)
+    {
+        Star newObject = new Star(name);
+        // setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
+        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
+        addActor(newObject);
+    }
 
-
-	private void placeNewStar(String name, GridPoint2 startlocation) {
-		Star newObject = new Star(name);
-		//setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
-		newObject.setPosition(startlocation.x-newObject.getWidth()/2, startlocation.y-newObject.getHeight()/2);
-		addActor(newObject);
-	}
-
-
-
-	/**
-	 * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
-	 */
-	private void gameStartStageListener() {
+    /**
+     * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
+     */
+    private void gameStartStageListener()
 		this.addListener(new InputListener()
-    	{            
+        {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
             	//Selection Box Functionality
@@ -132,6 +132,18 @@ public class GameStartStage extends BaseStage
             	
             	//Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl wenn Shift/Control nicht gedrückt
             	if (event.getTarget() instanceof SolarActor == false && button == 0 && !SE.isControlPressed() && !SE.isShiftPressed())
+                    discardAllSelections();
+
+                // Selektion von Raumschiffen
+                if (event.getTarget() instanceof SolarActor && button == 0)
+                    addSelection(event.getTarget());
+
+                // Ziel vorgeben: rechter mausklick bei selektiertem Raumschiff soll ein Ziel angeben
+                if (button == 1 && (selectedActors.isEmpty() == false))
+                {
+                    setNewDestination(new GridPoint2((int) x, (int) y));
+                    moveSelectedSpaceship();
+                }
             		discardAllSelections();   
             	
             	//Selektion von Raumschiffen
@@ -159,9 +171,9 @@ public class GameStartStage extends BaseStage
           	     SelRec.updatePositionAndSize(x,y);
              	getSelectionBoxSelectedActors();
             }
-    	});
-	}
-	
+        });
+    }
+
     private void getSelectionBoxSelectedActors()
     {
 //    	//Geht alle Actors in der Stage durch und überprüft, ob sie in der Box liegen. Falls ja, werden sie zur Selektion geaddet

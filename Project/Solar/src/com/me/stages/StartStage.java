@@ -48,7 +48,8 @@ public class StartStage extends HUDStage
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-                SE.stageManager.swapCurrentStage(new GameOptionsStage(SE));
+                SE.stageManager.removeStage("StartStage");
+                SE.stageManager.addStage(new GameOptionsStage(SE));
                 return true;
             }
 
@@ -69,7 +70,8 @@ public class StartStage extends HUDStage
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-                SE.stageManager.swapCurrentStage(new ExitStage(SE));
+                SE.stageManager.removeStage("StartStage");
+                SE.stageManager.addStage(new ExitStage(SE));
                 return true;
             }
 
