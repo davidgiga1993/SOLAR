@@ -5,14 +5,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
-import com.badlogic.gdx.utils.Array;
 
 
 public class Spaceship extends SolarActor {
 	
 	private GridPoint2 destination;
+
+	private float speed = 100f;
+	
+	public float getSpeed() {
+		return speed;
+	}
+	
+	public void setSpeed(float speed) {
+		this.speed = speed;
+	}
 	
 	public Spaceship ( String name )
 	{
@@ -58,7 +66,10 @@ public class Spaceship extends SolarActor {
 	public void moveSpaceship() {
 		MoveToAction mov = new MoveToAction();
 		mov.setPosition(this.destination.x, this.destination.y);
-        mov.setDuration(5);
+		float deltaX = getX() - destination.x;
+		float deltaY = getY() - destination.y;
+		float moveTime = (float) (Math.sqrt(Math.pow(deltaX,2)+ Math.pow(deltaY,2))) / speed;
+        mov.setDuration(moveTime);
 		this.addAction(mov);
 	}
 
