@@ -1,5 +1,6 @@
 package com.me.UserControls;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -30,7 +31,7 @@ public class Spaceship extends SolarActor {
         
         shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
-        shapeRenderer.setColor(0,1,0,0);
+        shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.triangle(getX() + getWidth() / 2, getY(), getX(), getY() + getHeight(), getX() + getWidth(), getY() + getHeight());
         shapeRenderer.end(); 
         
@@ -60,4 +61,5 @@ public class Spaceship extends SolarActor {
         mov.setDuration(5);
 		this.addAction(mov);
 	}
+
 }
