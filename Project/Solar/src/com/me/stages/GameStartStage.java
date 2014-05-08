@@ -26,12 +26,14 @@ public class GameStartStage extends BaseStage
     public GameStartStage(SolarEngine SE)
     {
         super(SE, "GameStartStage");
-
+        SE.Service.StartGame();
+        
         SE.stageManager.insertStageToBack(new BackgroundStage(SE));
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         SE.stageManager.addStage(new GameHUDStage(SE));
 
         gameStartStageListener();
+       
 
         placeNewShip("Event Horizon", new GridPoint2(100, 100));
         placeNewShip("Nostromo", new GridPoint2(143, 75));
@@ -111,7 +113,7 @@ public class GameStartStage extends BaseStage
         // setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
         newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
         addActor(newObject);
-    }
+	}
 
     /**
      * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
