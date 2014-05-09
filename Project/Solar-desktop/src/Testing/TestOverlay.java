@@ -1,16 +1,8 @@
 package Testing;
 
 import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.me.solar.Main;
 import com.me.stages.BaseStage;
 import com.me.stages.StageManager;
 import com.me.stages.TestStage;

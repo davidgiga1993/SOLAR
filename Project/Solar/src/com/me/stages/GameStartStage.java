@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.me.UserControls.Asteroid;
 import com.me.UserControls.Moon;
-import com.me.UserControls.Rectangle;
 import com.me.UserControls.SelectionRectangle;
 import com.me.UserControls.SolarActor;
 import com.me.UserControls.Spaceship;
@@ -35,7 +32,6 @@ public class GameStartStage extends BaseStage
 
         gameStartStageListener();
     	addActor(SelRec);
-       
 
         placeNewShip("Event Horizon", new GridPoint2(100, 100));
         placeNewShip("Nostromo", new GridPoint2(143, 75));
@@ -46,39 +42,6 @@ public class GameStartStage extends BaseStage
         placeNewMoon("Moon", new GridPoint2(500, -375));
         placeNewAsteroid("Vesta", new GridPoint2(-250, 50));
 
-        exampleRectangle();
-    }
-
-    private void exampleRectangle()
-    {
-        Rectangle rect = new Rectangle();
-        rect.setPosition(0, 0);
-        rect.setSize(100, 100);
-
-        rect.addListener(new InputListener()
-        {
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                System.out.println("enter");
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                System.out.println("exit");
-            }
-
-            // Hier können weitere Events stehen
-        });
-
-        // Animationen
-        RotateToAction ac = new RotateToAction();
-        ac.setRotation(900);
-        ac.setDuration(20);
-        ac.setInterpolation(Interpolation.exp5);
-
-        rect.addAction(ac);
-
-        addActor(rect);
     }
 
     private void placeNewShip(String name, GridPoint2 startlocation)

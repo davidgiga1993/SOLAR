@@ -7,17 +7,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
 import com.me.UserControls.Spaceship;
-import com.me.solar.SolarEngine;
-import com.me.stages.GameStartStage;
-import com.me.stages.StageManager;
-import com.me.stages.StartStage;
-
 public class TestSpaceship
 {
 
