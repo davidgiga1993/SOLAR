@@ -1,6 +1,5 @@
 package com.me.UserControls;
 
-import javax.swing.text.Position;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -69,10 +68,13 @@ public class Spaceship extends SolarActor
 
     public void moveSpaceship()
     {
+    	//MovetoAction bezieht sich auf linke untere Ecke des Spaceship-Objekts. Umrechnung auf Schiffsmittelpunkt erforderlich
+    	GridPoint2 adjDestination = new GridPoint2( destination.x - (int)(getWidth() / 2), destination.y - (int)(getHeight() / 2));
+    	
         MoveToAction mov = new MoveToAction();
-        mov.setPosition(this.destination.x, this.destination.y);
-		float deltaX = getX() - destination.x;
-		float deltaY = getY() - destination.y;
+        mov.setPosition(adjDestination.x, adjDestination.y);
+		float deltaX = getX() - adjDestination.x;
+		float deltaY = getY() - adjDestination.y;
 		float moveTime = (float) ((Math.sqrt(Math.pow(deltaX,2)+ Math.pow(deltaY,2))) / speed);
         mov.setDuration(moveTime);
 		this.addAction(mov);
