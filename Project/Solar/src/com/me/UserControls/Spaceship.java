@@ -35,22 +35,35 @@ public class Spaceship extends SolarActor
         shapeRenderer.triangle(getX() + getWidth() / 2, getY(), getX(), getY() + getHeight(), getX() + getWidth(), getY() + getHeight());
         shapeRenderer.end();
 
+        //Anzeige Selektions Box
         if (selected)
         {
             shapeRenderer.begin(ShapeType.Line);
+            shapeRenderer.setColor(Color.YELLOW);
             shapeRenderer.rect(getX() - 5, getY() - 5, getWidth() + 10, getHeight() + 10);
             shapeRenderer.end();
-        }
+                   }
        
+        //Anzeige des Kurses und Markierung des Ziels
         if ( destination != null && this.getActions().size != 0 )
         {
         shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destination.x, destination.y);
         shapeRenderer.end();
         
         shapeRenderer.begin(ShapeType.Line);
         shapeRenderer.circle(destination.x, destination.y, 10);
         shapeRenderer.end();        
+ 
+        //Besondere Hervorhebung des Ziels wenn selektiert
+        if (selected)
+        {
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.setColor(Color.YELLOW);
+        shapeRenderer.rect(destination.x - 13, destination.y -13, 26, 26);
+        shapeRenderer.end();    
+        }
         }
 
     }
@@ -68,6 +81,8 @@ public class Spaceship extends SolarActor
 
     public void moveSpaceship()
     {
+    	getActions().clear();
+    	
     	//MovetoAction bezieht sich auf linke untere Ecke des Spaceship-Objekts. Umrechnung auf Schiffsmittelpunkt erforderlich
     	GridPoint2 adjDestination = new GridPoint2( destination.x - (int)(getWidth() / 2), destination.y - (int)(getHeight() / 2));
     	
