@@ -1,14 +1,15 @@
 package com.me.UserControls;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
-import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
 public class Spaceship extends SolarActor
@@ -19,33 +20,38 @@ public class Spaceship extends SolarActor
 	
     public Spaceship(String name)
     {
-        this.setSize(33, 33);
         this.shapeRenderer = new ShapeRenderer();
         this.selected = false;
         this.destination = null;
         this.setName(name);
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
+    	solarActorTexture = new Texture(Gdx.files.internal("data/Cruiser.png"));
+        this.setSize(solarActorTexture.getWidth(), solarActorTexture.getHeight());
+        createShipSprite();
     }
-
+    
+    private void createShipSprite()
+    {
+    	solarActorSprite = new Sprite(solarActorTexture);
+    }
+    
     @Override
     public void draw(SpriteBatch batch, float parentAlpha)
     {  	
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
         shapeRenderer.identity();
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());     
-        
-        displaySpaceship();
+                
+        displaySpaceship(batch);
         displaySelectionBox();       
         displayCourseAndDestination();
 
     }
     
 
-	private void displaySpaceship() {
-		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.setColor(Color.GREEN);
-		shapeRenderer.triangle(getX() + getWidth() / 2, getY(), getX(), getY() + getHeight(), getX() + getWidth(), getY() + getHeight());
-		shapeRenderer.end();
+	private void displaySpaceship(SpriteBatch batch) {
+    	solarActorSprite.setPosition(getX(), getY());
+		solarActorSprite.draw(batch);
 	}
 
 	private void displayCourseAndDestination() {
@@ -82,9 +88,9 @@ public class Spaceship extends SolarActor
         {
             shapeRenderer.begin(ShapeType.Line);
             shapeRenderer.setColor(Color.YELLOW);
-            shapeRenderer.rect(getX() - 5, getY() - 5, getWidth() + 10, getHeight() + 10);
+            shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
             shapeRenderer.end();
-                   }
+        }
 	}
 
     public void setDestination(GridPoint2 destination)
@@ -101,9 +107,8 @@ public class Spaceship extends SolarActor
     public void moveSpaceship()
     {
     	getActions().clear();  	
- //       setPosition(-getWidth() /2 , -getHeight()/2);
     	SequenceAction sequence = new SequenceAction();
- //   	sequence.addAction(shipRotation());
+    	shipRotation();
     	sequence.addAction(shipMovement());
     	addAction(sequence);
 	}
@@ -120,23 +125,14 @@ public class Spaceship extends SolarActor
 		return mov;
 	}
     
-	private RotateToAction shipRotation()
+	private void shipRotation()
 	{
-		float angle = (float)calculateRotationAngle();
-        return Actions.rotateTo(angle, calculateRotationDuration(angle));        
+		solarActorSprite.setRotation(calculateRotationAngle()); 			
 	}
 
-	private float calculateRotationDuration(float angle) {
-		float DurationMofifier = 90f;
-		if ( angle < 0 )
-			return -angle/DurationMofifier;
-		else
-			return angle/DurationMofifier;
-	}
-
-	private double calculateRotationAngle()
+	private float calculateRotationAngle()
 	{
-		return -Math.toDegrees(Math.atan2( getX() + getWidth()/2 - destination.x , getY() + getHeight()/2 - destination.y ));
+		return (float)-Math.toDegrees(Math.atan2( getX() + getWidth()/2 - destination.x , getY() + getHeight()/2 - destination.y ));
 	}
 
 	public float getSpeed() {

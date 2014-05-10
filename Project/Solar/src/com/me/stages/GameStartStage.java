@@ -32,16 +32,15 @@ public class GameStartStage extends BaseStage
 
         gameStartStageListener();
     	addActor(SelRec);
-
+    	    	
         placeNewShip("Event Horizon", new GridPoint2(100, 100));
-        placeNewShip("Nostromo", new GridPoint2(143, 75));
-        placeNewShip("Destiny", new GridPoint2(121, 144));
+ //       placeNewShip("Nostromo", new GridPoint2(300, 300));
+//        placeNewShip("Destiny", new GridPoint2(400, 400));
 
         placeNewStar("Sol", new GridPoint2(-300, -300));
         placeNewTerrestrialPlanet("Earth", new GridPoint2(300, -300));
         placeNewMoon("Moon", new GridPoint2(500, -375));
         placeNewAsteroid("Vesta", new GridPoint2(-250, 50));
-
     }
 
     private void placeNewShip(String name, GridPoint2 startlocation)
