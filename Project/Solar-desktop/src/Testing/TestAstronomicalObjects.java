@@ -9,13 +9,13 @@ import org.junit.Test;
 import com.me.UserControls.Asteroid;
 import com.me.UserControls.Moon;
 import com.me.UserControls.Star;
-import com.me.UserControls.TerrestrialPlanet;
+import com.me.UserControls.Planet;
 
 public class TestAstronomicalObjects
 {
 
     private Star testStar;
-    private TerrestrialPlanet testPlanet;
+    private Planet testPlanet;
     private Moon testMoon;
     private Asteroid testAsteroid;
 
@@ -24,7 +24,7 @@ public class TestAstronomicalObjects
     {
         testStar = new Star("Yavin");
         testStar.setPosition(22, 33);
-        testPlanet = new TerrestrialPlanet("Alderan");
+        testPlanet = new Planet("Alderan");
         testPlanet.setPosition(44, 55);
         testMoon = new Moon("Death Star");
         testMoon.setPosition(66, 77);

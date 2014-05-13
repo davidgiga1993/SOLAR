@@ -1,5 +1,7 @@
 package com.me.UserControls;
 
+import java.util.List;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -7,6 +9,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Star extends SolarActor
 {
+	private List<SolarActor> Satellites;
+	
 	public Star(String name)
 	{
 		this.setSize(500, 500);

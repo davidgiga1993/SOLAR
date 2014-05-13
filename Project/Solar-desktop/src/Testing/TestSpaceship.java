@@ -37,8 +37,6 @@ public class TestSpaceship
     @Test
     public void testShipCreation()
     {
-        assertEquals(33f, ship.getWidth(), 0);
-        assertEquals(33f, ship.getHeight(), 0);
         assertEquals("Test", ship.getName());
     }
 
@@ -50,9 +48,9 @@ public class TestSpaceship
     public void testSelectionFunctionality()
     {
         ship.select();
-        assertTrue(ship.getSelected());
+        assertTrue(ship.isSelected());
         ship.deselect();
-        assertFalse(ship.getSelected());
+        assertFalse(ship.isSelected());
     }
 
     /**

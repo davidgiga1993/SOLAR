@@ -28,7 +28,7 @@ public abstract class SolarActor extends Actor {
 		selected = false;
 	}	
 	
-	public boolean getSelected()
+	public boolean isSelected()
 	{
 		return selected;
 	}

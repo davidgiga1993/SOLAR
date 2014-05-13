@@ -1,13 +1,17 @@
 package com.me.UserControls;
 
+import java.util.List;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-public class TerrestrialPlanet extends SolarActor
+public class Planet extends SolarActor
 {
-	public TerrestrialPlanet(String name)
+	private List<SolarActor> Satellites;
+	
+	public Planet(String name)
 	{
 		this.setSize(200, 200);
 		this.shapeRenderer = new ShapeRenderer();

@@ -13,7 +13,7 @@ import com.me.UserControls.SelectionRectangle;
 import com.me.UserControls.SolarActor;
 import com.me.UserControls.Spaceship;
 import com.me.UserControls.Star;
-import com.me.UserControls.TerrestrialPlanet;
+import com.me.UserControls.Planet;
 import com.me.solar.SolarEngine;
 
 public class GameStartStage extends BaseStage
@@ -33,9 +33,9 @@ public class GameStartStage extends BaseStage
         gameStartStageListener();
     	addActor(SelRec);
     	    	
-        placeNewShip("Event Horizon", new GridPoint2(100, 100));
- //       placeNewShip("Nostromo", new GridPoint2(300, 300));
-//        placeNewShip("Destiny", new GridPoint2(400, 400));
+        placeNewShip("Event Horizon", new GridPoint2(0, 120));
+//        placeNewShip("Nostromo", new GridPoint2(150, 100));
+//        placeNewShip("Destiny", new GridPoint2(75, 0));
 
         placeNewStar("Sol", new GridPoint2(-300, -300));
         placeNewTerrestrialPlanet("Earth", new GridPoint2(300, -300));
@@ -66,7 +66,7 @@ public class GameStartStage extends BaseStage
 
     private void placeNewTerrestrialPlanet(String name, GridPoint2 startlocation)
     {
-        TerrestrialPlanet newObject = new TerrestrialPlanet(name);
+        Planet newObject = new Planet(name);
         newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
         addActor(newObject);
     }
