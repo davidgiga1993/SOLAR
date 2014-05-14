@@ -80,9 +80,11 @@ public class GameOptionsStage extends HUDStage
                 AnimateLabelOut(labelExit);
             }
         });
+        addActor(SE.Service.AddBackgroundImage());
         addActor(labelOption1);
         addActor(labelBackground);
         addActor(labelExit);
+        
     }
 
     private void AnimateLabelIn(Label label)

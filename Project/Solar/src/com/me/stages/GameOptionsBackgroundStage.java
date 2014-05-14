@@ -35,7 +35,8 @@ public class GameOptionsBackgroundStage extends HUDStage
          {
              public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
              {
-            	 ChangeBackgroundImage("hintergrund01.png");
+            	 SE.Service.setBackgroundImage("Hintergrund01.png");
+            	 addActor(SE.Service.AddBackgroundImage());
                  group.toFront();
                  return true;
              }
@@ -57,7 +58,8 @@ public class GameOptionsBackgroundStage extends HUDStage
          {
              public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
              {
-            	 ChangeBackgroundImage("hintergrund02.png");
+            	 SE.Service.setBackgroundImage("Hintergrund02.png");
+            	 addActor(SE.Service.AddBackgroundImage());
             	 group.toFront();
                  return true;
              }
@@ -101,6 +103,7 @@ public class GameOptionsBackgroundStage extends HUDStage
         group.addActor(Background2);
         group.addActor(labelExit);
     	
+        addActor(SE.Service.AddBackgroundImage());
         addActor(group);
      }
     
@@ -122,7 +125,7 @@ public class GameOptionsBackgroundStage extends HUDStage
         label.addAction(ac);
     }
     
-    public void ChangeBackgroundImage(String backgroundImage)
+    /*public void ChangeBackgroundImage(String backgroundImage)
     {
         Texture texture = new Texture(Gdx.files.internal("data/" + backgroundImage));
         texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -137,6 +140,6 @@ public class GameOptionsBackgroundStage extends HUDStage
         actor.setPosition(x, y);
         actor.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         addActor(actor);
-    }
+    }*/
 
 }

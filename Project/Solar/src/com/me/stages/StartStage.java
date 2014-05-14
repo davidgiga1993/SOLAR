@@ -85,6 +85,7 @@ public class StartStage extends HUDStage
                 AnimateLabelOut(labelExit);
             }
         });
+        addActor(SE.Service.AddBackgroundImage());
         addActor(labelExit);
         addActor(labelStart);
         addActor(labelSettings);

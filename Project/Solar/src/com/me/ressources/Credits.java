@@ -12,7 +12,7 @@ public class Credits{
 	}
 	
 	public void raise(){
-		this.setValue(this.Value * this.RaiseRate);
+		setValue(Value * RaiseRate);
 	}
 	
 	public void setRaiseRate(double Value)

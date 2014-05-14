@@ -83,7 +83,8 @@ public class ExitStage extends HUDStage
                 AnimateLabelOut(labelNo);
             }
         });
-
+        
+        addActor(SE.Service.AddBackgroundImage());
         addActor(labelAreYouSure);
         addActor(labelYes);
         addActor(labelNo);

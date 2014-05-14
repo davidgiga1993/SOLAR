@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.me.UserControls.Asteroid;
 import com.me.UserControls.Moon;
 import com.me.UserControls.SelectionRectangle;
@@ -41,6 +42,10 @@ public class GameStartStage extends BaseStage
         placeNewTerrestrialPlanet("Earth", new GridPoint2(300, -300));
         placeNewMoon("Moon", new GridPoint2(500, -375));
         placeNewAsteroid("Vesta", new GridPoint2(-250, 50));
+        
+        /*Image background = SE.Service.AddBackgroundImage();
+        addActor(background);
+        background.toBack();*/
     }
 
     private void placeNewShip(String name, GridPoint2 startlocation)

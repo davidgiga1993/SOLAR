@@ -2,7 +2,9 @@ package com.me.stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -32,8 +34,9 @@ public class GameHUDStage extends HUDStage{
         navigationBar.add(new Label("Option1", new LabelStyle(font, Color.WHITE)));
         navigationBar.row();
         navigationBar.add(new Label("Option2", new LabelStyle(font, Color.WHITE)));
+        
         RessourceOverview = new Table();
-        //RessourceOverview.setBackground(SE.getUISkin().getDrawable("ui-bg"));
+        //RessourceOverview.setBackground();
         
         RessourceOverview.setSize(Gdx.graphics.getWidth(), 100);
         RessourceOverview.setPosition(-SolarEngine.WidthHalf, SolarEngine.HeightHalf - RessourceOverview.getHeight());
