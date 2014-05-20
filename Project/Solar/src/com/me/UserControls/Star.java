@@ -2,19 +2,15 @@ package com.me.UserControls;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.scenes.scene2d.Group;
 
 public class Star extends AstronomicalBody
 {	
 	public Star(String name)
 	{
-		this.setSize(500, 500);
-		this.shapeRenderer = new ShapeRenderer();
-		this.setName(name);
-		this.satellites = new Group();
+		super(name);
+		this.setSize(100, 100);
 	}
 	
 	@Override

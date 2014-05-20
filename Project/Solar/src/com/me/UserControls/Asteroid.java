@@ -2,16 +2,14 @@ package com.me.UserControls;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Asteroid extends AstronomicalBody
 {
 	public Asteroid(String name)
 	{
-		this.setSize(35, 20);
-		this.shapeRenderer = new ShapeRenderer();
-		this.setName(name);
+		super(name);
+		this.setSize(25, 10);
 	}
 	
 	@Override

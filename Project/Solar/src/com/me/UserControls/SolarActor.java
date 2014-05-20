@@ -11,6 +11,12 @@ public abstract class SolarActor extends Actor {
 	protected boolean selected;
 	protected Texture solarActorTexture;
 	protected Sprite solarActorSprite;
+	
+	public SolarActor (String name)
+	{
+		this.setName(name);
+		this.shapeRenderer = new ShapeRenderer();
+	}
 
 	@Override
 	public String toString()
