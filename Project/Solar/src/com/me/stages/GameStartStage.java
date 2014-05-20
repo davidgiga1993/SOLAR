@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -63,9 +64,7 @@ public class GameStartStage extends BaseStage
 		for (int index = solarSystem.getNumberOfMainBodies(); index > 0; index-- )
     	{
     		addActor(solarSystem.getSolarSystem().getChildren().get(0));
-    	}
-		
-		
+    	}		
 	}
 
 	private String getGameName() {
