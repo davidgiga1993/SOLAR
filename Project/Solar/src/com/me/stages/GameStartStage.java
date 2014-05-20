@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.me.UserControls.Asteroid;
+import com.me.UserControls.SolarSystem;
 import com.me.UserControls.Moon;
 import com.me.UserControls.SelectionRectangle;
 import com.me.UserControls.SolarActor;
@@ -20,7 +21,8 @@ import com.me.solar.SolarEngine;
 public class GameStartStage extends BaseStage
 {
     protected List<Actor> selectedActors = new ArrayList<Actor>();
-	private SelectionRectangle SelRec = new SelectionRectangle();
+	private SelectionRectangle SelRec;
+	private SolarSystem solarSystem;
 
     public GameStartStage(SolarEngine SE)
     {
@@ -31,22 +33,45 @@ public class GameStartStage extends BaseStage
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         SE.stageManager.addStage(new GameHUDStage(SE));
 
-        gameStartStageListener();
-    	addActor(SelRec);
+        gameStartStageListener();     
+        addSelectionRectangle(); 
+    	systemCreation();
     	    	
         placeNewShip("Event Horizon", new GridPoint2(0, 120));
 //        placeNewShip("Nostromo", new GridPoint2(150, 100));
 //        placeNewShip("Destiny", new GridPoint2(75, 0));
 
-        placeNewStar("Sol", new GridPoint2(-300, -300));
-        placeNewTerrestrialPlanet("Earth", new GridPoint2(300, -300));
-        placeNewMoon("Moon", new GridPoint2(500, -375));
-        placeNewAsteroid("Vesta", new GridPoint2(-250, 50));
         
         /*Image background = SE.Service.AddBackgroundImage();
         addActor(background);
         background.toBack();*/
     }
+
+	private void addSelectionRectangle() {
+		SelRec = new SelectionRectangle();
+    	addActor(SelRec);
+	}
+
+	private void systemCreation() {
+		//Creates the Solar System for the game
+    	solarSystem = new SolarSystem(getGameName());
+    	solarSystem.createSolarSystem(); 	        
+    	addSolarSystemActors();
+	}
+
+	private void addSolarSystemActors() {
+		for (int index = solarSystem.getNumberOfMainBodies(); index > 0; index-- )
+    	{
+    		addActor(solarSystem.getSolarSystem().getChildren().get(0));
+    	}
+		
+		
+	}
+
+	private String getGameName() {
+		String name = "Sol";
+		return name;
+	}
 
     private void placeNewShip(String name, GridPoint2 startlocation)
     {
@@ -55,34 +80,7 @@ public class GameStartStage extends BaseStage
         addActor(newShip);
     }
 
-    private void placeNewAsteroid(String name, GridPoint2 startlocation)
-    {
-        Asteroid newObject = new Asteroid(name);
-        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        addActor(newObject);
-    }
 
-    private void placeNewMoon(String name, GridPoint2 startlocation)
-    {
-        Moon newObject = new Moon(name);
-        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        addActor(newObject);
-    }
-
-    private void placeNewTerrestrialPlanet(String name, GridPoint2 startlocation)
-    {
-        Planet newObject = new Planet(name);
-        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        addActor(newObject);
-    }
-
-    private void placeNewStar(String name, GridPoint2 startlocation)
-    {
-        Star newObject = new Star(name);
-        // setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
-        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        addActor(newObject);
-	}
 
     /**
      * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
@@ -225,5 +223,4 @@ public class GameStartStage extends BaseStage
 		    removeActor(actor);
 		}
 	}
-
 }
