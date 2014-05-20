@@ -16,11 +16,10 @@ public class SolarSystem {
     public void createSolarSystem()
     {
     	mainBodies = new Group();
-    	mainBodies.addActor(placeNewStar("Sol", new GridPoint2(-300, -300)));
-    	mainBodies.addActorAt(1, placeNewPlanet("Earth", new GridPoint2(300, -300)));
-    	mainBodies.addActorAt(2, placeNewMoon("Moon", new GridPoint2(500, -375)));
-    	mainBodies.addActorAt(3, placeNewAsteroid("Vesta", new GridPoint2(-250, 50))); 
-    	mainBodies.addActorAt(4, placeNewAsteroid("Vesta2", new GridPoint2(-250, 50)));  
+    	placeNewStar("Sol", new GridPoint2(-300, -300));
+    	placeNewPlanet("Earth", new GridPoint2(300, -300));
+    	placeNewMoon("Moon", new GridPoint2(500, -375));
+    	placeNewAsteroid("Vesta", new GridPoint2(-250, 50)); 
     }
     
     public Group getSolarSystem()
@@ -41,33 +40,33 @@ public class SolarSystem {
     	return name;
     }
 
-    private Asteroid placeNewAsteroid(String name, GridPoint2 startlocation)
+    private void placeNewAsteroid(String name, GridPoint2 startlocation)
     {
         Asteroid newObject = new Asteroid(name);
         newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        return newObject;
+        mainBodies.addActor(newObject);
     }
 
-    private Moon placeNewMoon(String name, GridPoint2 startlocation)
+    private void placeNewMoon(String name, GridPoint2 startlocation)
     {
         Moon newObject = new Moon(name);
         newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        return newObject;
+        mainBodies.addActor(newObject);
     }
 
-    private Planet placeNewPlanet(String name, GridPoint2 startlocation)
+    private void placeNewPlanet(String name, GridPoint2 startlocation)
     {
         Planet newObject = new Planet(name);
         newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        return newObject;
+        mainBodies.addActor(newObject);
     }
 
-    public Star placeNewStar(String name, GridPoint2 startlocation)
+    public void placeNewStar(String name, GridPoint2 startlocation)
     {
         Star newObject = new Star(name);
         // setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
         newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
-        return newObject;
+        mainBodies.addActor(newObject);
 	}
     
 }
