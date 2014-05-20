@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.me.UserControls.AstronomicalBody;
 import com.me.UserControls.SolarSystem;
 import com.me.UserControls.SelectionRectangle;
 import com.me.UserControls.SolarActor;
@@ -51,14 +52,19 @@ public class GameStartStage extends BaseStage
 		//Creates the Solar System for the game
     	solarSystem = new SolarSystem(getGameName());
     	solarSystem.createSolarSystem(); 	        
-    	addSolarSystemActors();
+    	addSolarSystemActors(solarSystem);
 	}
 
-	private void addSolarSystemActors() {
-		for (int index = solarSystem.getNumberOfMainBodies(); index > 0; index-- )
-    	{
-    		addActor(solarSystem.getSolarSystem().getChildren().get(0));
-    	}		
+	private void addSolarSystemActors(AstronomicalBody body) {
+		if ( body.getNumberOfSatellites() != 0 )
+		{
+			for (int index = body.getNumberOfSatellites(); index > 0; index-- )
+	    	{
+				AstronomicalBody object = (AstronomicalBody) body.getSatellites().getChildren().get(0);
+	    		addActor(object);
+	    		addSolarSystemActors(object);
+	    	}	
+		}
 	}
 
 	private String getGameName() {
