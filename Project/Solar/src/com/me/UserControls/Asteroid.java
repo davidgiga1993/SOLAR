@@ -18,6 +18,7 @@ public class Asteroid extends AstronomicalBody
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
         shapeRenderer.identity();
         
+        displayOrbit();
         displayAsteroid();   
 	}
 

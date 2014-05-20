@@ -18,15 +18,15 @@ public class Planet extends AstronomicalBody
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
         shapeRenderer.identity();
         
-        displayPlanet();  
         displayOrbit();
+        displayPlanet();  
 	}
 
 	private void displayPlanet() {
 		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.circle(getX() + getWidth()/2, getY()+getHeight()/2, getHeight()/2);
+        shapeRenderer.circle(getX(), getY(), getHeight()/2);
         shapeRenderer.end();
 	}
 	

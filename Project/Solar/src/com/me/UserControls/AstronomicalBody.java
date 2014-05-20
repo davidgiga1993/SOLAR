@@ -49,19 +49,15 @@ public abstract class AstronomicalBody extends SolarActor {
     
     protected void calculateOrbitalPositionTotal()
     {
-    	if ( getParent() == null )
-    		return;
-    	this.setPosition(calculateOrbitalPositionX(), calculateOrbitalPositionY());
+    		this.setPosition(calculateOrbitalPositionX(), calculateOrbitalPositionY());
     }
 
 	protected int calculateOrbitalPositionX() {
-		return -50;
-//		return (int) (getParent().getX() + (float) Math.cos(Math.toRadians(angleInDegree)) * ( orbitalRadius - getWidth() / 2));
+		return (int) (getX() + (float) Math.cos(Math.toRadians(angleInDegree)) * orbitalRadius);
 	}
 	
 	protected int calculateOrbitalPositionY() {
-		return -50;
-//		return (int) (getParent().getY() + (float) Math.sin(Math.toRadians(angleInDegree))  * ( orbitalRadius - getWidth() / 2));
+		return (int) (getY() + (float) Math.sin(Math.toRadians(angleInDegree))  * orbitalRadius);
 	}
     
     protected void displayOrbit()

@@ -17,15 +17,16 @@ public class Moon extends AstronomicalBody
 	{
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
         shapeRenderer.identity();
-        
-        displayMoon();    
+   
+        displayOrbit();
+        displayMoon();       
 	}
 
 	private void displayMoon() {
 		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.GRAY);
-        shapeRenderer.circle(getX() + getWidth()/2, getY()+getHeight()/2, getHeight()/2);
+        shapeRenderer.circle(getX(), getY(), getHeight()/2);
         shapeRenderer.end();
 	}
 }
