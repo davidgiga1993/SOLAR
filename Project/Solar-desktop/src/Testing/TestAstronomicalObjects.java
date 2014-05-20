@@ -22,14 +22,14 @@ public class TestAstronomicalObjects
     @Before
     public void setUp() throws Exception
     {
-        testStar = new Star("Yavin");
-        testStar.setPosition(22, 33);
-        testPlanet = new Planet("Alderan");
-        testPlanet.setPosition(44, 55);
-        testMoon = new Moon("Death Star");
-        testMoon.setPosition(66, 77);
-        testAsteroid = new Asteroid("Astra");
-        testAsteroid.setPosition(22, 33);
+//        testStar = new Star("Yavin");
+//        testStar.setPosition(22, 33);
+//        testPlanet = new Planet("Alderan");
+//        testPlanet.setPosition(44, 55);
+//        testMoon = new Moon("Death Star");
+//        testMoon.setPosition(66, 77);
+//        testAsteroid = new Asteroid("Astra");
+//        testAsteroid.setPosition(22, 33);
     }
 
     @After

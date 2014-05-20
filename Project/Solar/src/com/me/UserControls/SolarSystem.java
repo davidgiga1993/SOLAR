@@ -1,7 +1,8 @@
 package com.me.UserControls;
 
-import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class SolarSystem extends AstronomicalBody {
 	
@@ -10,6 +11,7 @@ public class SolarSystem extends AstronomicalBody {
     public SolarSystem(String name)
     {
 		super(name);
+		setPosition(0, 0);
     }
     
     public void createSolarSystem()
@@ -17,30 +19,46 @@ public class SolarSystem extends AstronomicalBody {
     	Star star;
     	Planet planet;
     	
-    	star = placeNewStar("Sun", new GridPoint2(0, 0));
-    		star.placeNewPlanet("Mercury", new GridPoint2(0, 200));
-    		star.placeNewPlanet("Venus", new GridPoint2(0, 300));
-    		planet = star.placeNewPlanet("Earth", new GridPoint2(0, 400));
-    			planet.placeNewMoon("Moon", new GridPoint2(50, 400));
-    		planet = star.placeNewPlanet("Mars", new GridPoint2(0, 500));
-    			planet.placeNewAsteroid("Phobos", new GridPoint2(50, 500));
-    			planet.placeNewAsteroid("Deimos", new GridPoint2(100, 500));
-    		star.placeNewPlanet("Jupiter", new GridPoint2(0, 600));
-    		star.placeNewPlanet("Saturn", new GridPoint2(0, 700));
-    		star.placeNewPlanet("Uranus", new GridPoint2(0, 800));
-    		star.placeNewPlanet("Neptune", new GridPoint2(0, 900));
+    	star = placeNewStar("Sun", 0, 0);
+//    		star.placeNewPlanet("Mercury", 100, 0);
+//    		star.placeNewPlanet("Venus", 200, 0);
+//    		planet = star.placeNewPlanet("Earth", 300, 0);
+//    			planet.placeNewMoon("Moon", 50, 90);
+//    		planet = star.placeNewPlanet("Mars", 400, 0);
+//    			planet.placeNewAsteroid("Phobos", 50, 90);
+//    			planet.placeNewAsteroid("Deimos", 100, 90);
+//    		star.placeNewPlanet("Jupiter", 500, 0);
+//    		star.placeNewPlanet("Saturn", 600, 0);
+//    		star.placeNewPlanet("Uranus", 700, 0);
+//    		star.placeNewPlanet("Neptune", 800, 0);
     }
+    
+	@Override
+	public void draw(SpriteBatch batch, float parentAlpha)
+	{
+        shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
+        shapeRenderer.identity();
+        
+        diplaySystemCenter();    
+	}
+	
+	private void diplaySystemCenter() {
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.circle(getX(), getY(), 10);
+        shapeRenderer.end();  
+	}
         
     public String getSystemName()
     {
     	return name;
     }
 
-    public Star placeNewStar(String name, GridPoint2 startlocation)
+    public Star placeNewStar(String name, int orbitalRadius, int angleInDegree)
     {
-        Star newObject = new Star(name);
+        Star newObject = new Star(name, orbitalRadius, angleInDegree);
         // setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
-        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
+        newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
 	}

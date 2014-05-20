@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Asteroid extends AstronomicalBody
 {
-	public Asteroid(String name)
+	public Asteroid(String name, int orbitalRadius, int angleInDegree)
 	{
-		super(name);
+		super(name, orbitalRadius, angleInDegree);
 		this.setSize(25, 10);
 	}
 	
@@ -18,10 +18,14 @@ public class Asteroid extends AstronomicalBody
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
         shapeRenderer.identity();
         
-        shapeRenderer.begin(ShapeType.Filled);             
+        displayAsteroid();   
+	}
+
+	private void displayAsteroid() {
+		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.GRAY);
         shapeRenderer.ellipse(getX(), getY(), getWidth(), getHeight());
-        shapeRenderer.end();    
+        shapeRenderer.end();
 	}
 }

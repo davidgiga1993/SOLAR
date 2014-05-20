@@ -1,16 +1,29 @@
 package com.me.UserControls;
 
-import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 public abstract class AstronomicalBody extends SolarActor {
 	
 	protected Group satellites;
+	protected int orbitalRadius;
+	protected int angleInDegree;
 	
 	public AstronomicalBody(String name)
 	{
 		super(name);
 		this.satellites = new Group();
+		this.orbitalRadius = 0;
+		this.angleInDegree = 0;
+	}
+	
+	public AstronomicalBody(String name, int orbitalRadius, int angleInDegree)
+	{
+		super(name);
+		this.satellites = new Group();
+		this.orbitalRadius = orbitalRadius;
+		this.angleInDegree = angleInDegree;
 	}
 	
     public Group getSatellites()
@@ -26,12 +39,38 @@ public abstract class AstronomicalBody extends SolarActor {
     		return satellites.getChildren().size;
     }
     
-    protected Asteroid placeNewAsteroid(String name, GridPoint2 startlocation)
+    protected Asteroid placeNewAsteroid(String name, int orbitalRadius, int angle)
     {
-        Asteroid newObject = new Asteroid(name);
-        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
+        Asteroid newObject = new Asteroid(name, orbitalRadius, angle);
+        newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
     }
+    
+    protected void calculateOrbitalPositionTotal()
+    {
+    	if ( getParent() == null )
+    		return;
+    	this.setPosition(calculateOrbitalPositionX(), calculateOrbitalPositionY());
+    }
 
+	protected int calculateOrbitalPositionX() {
+		return -50;
+//		return (int) (getParent().getX() + (float) Math.cos(Math.toRadians(angleInDegree)) * ( orbitalRadius - getWidth() / 2));
+	}
+	
+	protected int calculateOrbitalPositionY() {
+		return -50;
+//		return (int) (getParent().getY() + (float) Math.sin(Math.toRadians(angleInDegree))  * ( orbitalRadius - getWidth() / 2));
+	}
+    
+    protected void displayOrbit()
+    {
+    	if (orbitalRadius < getParent().getWidth())
+    		return;
+		shapeRenderer.begin(ShapeType.Line);             
+        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.circle(getParent().getX() + getParent().getWidth()/2, getParent().getY()+getParent().getHeight()/2, orbitalRadius);
+        shapeRenderer.end();
+    }
 }

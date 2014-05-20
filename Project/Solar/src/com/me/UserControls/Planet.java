@@ -3,13 +3,12 @@ package com.me.UserControls;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.GridPoint2;
 
 public class Planet extends AstronomicalBody
 {
-	public Planet(String name)
+	public Planet(String name, int orbitalRadius, int angleInDegree)
 	{
-		super(name);
+		super(name, orbitalRadius, angleInDegree);
 		this.setSize(50, 50);
 	}
 	
@@ -19,17 +18,22 @@ public class Planet extends AstronomicalBody
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
         shapeRenderer.identity();
         
-        shapeRenderer.begin(ShapeType.Filled);             
+        displayPlanet();  
+        displayOrbit();
+	}
+
+	private void displayPlanet() {
+		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.BLUE);
         shapeRenderer.circle(getX() + getWidth()/2, getY()+getHeight()/2, getHeight()/2);
-        shapeRenderer.end();    
+        shapeRenderer.end();
 	}
 	
-    public Moon placeNewMoon(String name, GridPoint2 startlocation)
+    public Moon placeNewMoon(String name, int radius, int angle)
     {
-        Moon newObject = new Moon(name);
-        newObject.setPosition(startlocation.x - newObject.getWidth() / 2, startlocation.y - newObject.getHeight() / 2);
+        Moon newObject = new Moon(name, radius, angle);
+        newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
     }

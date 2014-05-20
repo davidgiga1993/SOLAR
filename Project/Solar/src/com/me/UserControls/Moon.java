@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Moon extends AstronomicalBody
 {
-	public Moon(String name)
+	public Moon(String name, int orbitalRadius, int angleInDegree)
 	{
-		super(name);
+		super(name, orbitalRadius, angleInDegree);
 		this.setSize(25, 25);
 	}
 	
@@ -18,10 +18,14 @@ public class Moon extends AstronomicalBody
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
         shapeRenderer.identity();
         
-        shapeRenderer.begin(ShapeType.Filled);             
+        displayMoon();    
+	}
+
+	private void displayMoon() {
+		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.GRAY);
         shapeRenderer.circle(getX() + getWidth()/2, getY()+getHeight()/2, getHeight()/2);
-        shapeRenderer.end();    
+        shapeRenderer.end();
 	}
 }

@@ -51,7 +51,8 @@ public class GameStartStage extends BaseStage
 	private void systemCreation() {
 		//Creates the Solar System for the game
     	solarSystem = new SolarSystem(getGameName());
-    	solarSystem.createSolarSystem(); 	        
+    	solarSystem.createSolarSystem(); 	
+    	addActor(solarSystem);
     	addSolarSystemActors(solarSystem);
 	}
 
