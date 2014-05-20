@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Star extends AstronomicalBody
 {	
-	public Star(String name, int orbitalRadius, int angleInDegree)
+	public Star(String name, int orbitalRadius, int angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadius, angleInDegree);
+		super(name, orbitalRadius, angleInDegree, origin);
 		this.setSize(100, 100);
 	}
 	
@@ -31,7 +31,7 @@ public class Star extends AstronomicalBody
 	
     public Planet placeNewPlanet(String name, int orbitalRadius, int angleInDegree)
     {
-        Planet newObject = new Planet(name, orbitalRadius, angleInDegree);
+        Planet newObject = new Planet(name, orbitalRadius, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;

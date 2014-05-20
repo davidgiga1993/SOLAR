@@ -92,43 +92,43 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     {
         if (pressedKey == myKeys.PLUS)
         {
-            camera.zoom -= 0.01f;
+            camera.zoom -= 0.10f;
         }
         if (pressedKey == myKeys.MINUS)
         {
-            camera.zoom += 0.01f;
+            camera.zoom += 0.10f;
         }
         if (pressedKey == myKeys.UP)
         {
-            camera.translate(0, 1, 0);
+            camera.translate(0, 10, 0);
         }
         if (pressedKey == myKeys.DOWN)
         {
-            camera.translate(0, -1, 0);
+            camera.translate(0, -10, 0);
         }
         if (pressedKey == myKeys.LEFT)
         {
-            camera.translate(-1, 0, 0);
+            camera.translate(-10, 0, 0);
         }
         if (pressedKey == myKeys.RIGHT)
         {
-            camera.translate(1, 0, 0);
+            camera.translate(10, 0, 0);
         }
         if (Gdx.input.isKeyPressed(Keys.NUM_7) || Gdx.input.isKeyPressed(151))
         {
-            camera.translate(-1, 1, 0);
+            camera.translate(-10, 10, 0);
         }
         if (Gdx.input.isKeyPressed(Keys.NUM_9) || Gdx.input.isKeyPressed(153))
         {
-            camera.translate(1, 1, 0);
+            camera.translate(10, 10, 0);
         }
         if (Gdx.input.isKeyPressed(Keys.NUM_3) || Gdx.input.isKeyPressed(147))
         {
-            camera.translate(1, -1, 0);
+            camera.translate(10, -10, 0);
         }
         if (Gdx.input.isKeyPressed(Keys.NUM_1) || Gdx.input.isKeyPressed(145))
         {
-            camera.translate(-1, -1, 0);
+            camera.translate(-10, -10, 0);
         }
         if (pressedKey == myKeys.ESC)
         {

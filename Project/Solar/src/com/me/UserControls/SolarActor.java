@@ -21,7 +21,7 @@ public abstract class SolarActor extends Actor {
 	@Override
 	public String toString()
 	{
-		return getName() + ", Position: ( " + getX() + " / " + getY() + " )";	
+		return getName() + " (" + getX() + "/" + getY() + ")";	
 	}
 	
 	public void select()

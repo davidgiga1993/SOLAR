@@ -20,17 +20,40 @@ public class SolarSystem extends AstronomicalBody {
     	Planet planet;
     	
     	star = placeNewStar("Sun", 0, 0);
-    		star.placeNewPlanet("Mercury", 100, 0);
-   		star.placeNewPlanet("Venus", 200, 0);
-    		planet = star.placeNewPlanet("Earth", 300, 0);
-    			planet.placeNewMoon("Moon", 50, 90);
-//    		planet = star.placeNewPlanet("Mars", 400, 0);
-//    			planet.placeNewAsteroid("Phobos", 50, 90);
-//    			planet.placeNewAsteroid("Deimos", 100, 90);
-//    		star.placeNewPlanet("Jupiter", 500, 0);
-//    		star.placeNewPlanet("Saturn", 600, 0);
-//    		star.placeNewPlanet("Uranus", 700, 0);
-//    		star.placeNewPlanet("Neptune", 800, 0);
+    		star.placeNewPlanet("Mercury", 387, 0);
+   		star.placeNewPlanet("Venus", 723, 0);
+    		planet = star.placeNewPlanet("Earth", 1000, 0);
+    			planet.placeNewMoon("Moon", 100, 90);
+    		planet = star.placeNewPlanet("Mars", 1524, 0);
+    			planet.placeNewAsteroid("Phobos", 50, 90);
+    			planet.placeNewAsteroid("Deimos", 100, 90);
+    		star.placeNewPlanet("Ceres", 2766, 0);
+    		planet = star.placeNewPlanet("Jupiter", 5203, 0);
+    			planet.placeNewMoon("Io", 50, 90);
+    			planet.placeNewMoon("Europa", 100, 90);
+    			planet.placeNewMoon("Ganymede", 150, 90);
+    			planet.placeNewMoon("Callisto", 200, 90);
+    		planet = star.placeNewPlanet("Saturn", 9537, 0);
+				planet.placeNewMoon("Mimas", 50, 90);
+				planet.placeNewMoon("Enceladus", 100, 90);
+				planet.placeNewMoon("Tethys", 150, 90);
+				planet.placeNewMoon("Dione", 200, 90);
+				planet.placeNewMoon("Rhea", 250, 90);
+				planet.placeNewMoon("Titan", 300, 90);
+				planet.placeNewMoon("Iapetus", 350, 90);
+    		planet = star.placeNewPlanet("Uranus", 19191, 0);
+				planet.placeNewMoon("Miranda", 50, 90);
+				planet.placeNewMoon("Ariel", 100, 90);
+				planet.placeNewMoon("Umbriel", 150, 90);
+				planet.placeNewMoon("Titania", 200, 90);
+				planet.placeNewMoon("Oberon", 250, 90);
+    		planet = star.placeNewPlanet("Neptune", 30069, 0);
+				planet.placeNewMoon("Triton", 50, 90);
+	    	planet = star.placeNewPlanet("Pluto", 39482, 0);
+	    		planet.placeNewMoon("Charon", 50, 90);
+	    	star.placeNewPlanet("Haumea", 43335, 0);
+	    	star.placeNewPlanet("Makemake", 45792, 0);
+	    	star.placeNewPlanet("Eris", 67668, 0);
     }
     
 	@Override
@@ -56,7 +79,7 @@ public class SolarSystem extends AstronomicalBody {
 
     public Star placeNewStar(String name, int orbitalRadius, int angleInDegree)
     {
-        Star newObject = new Star(name, orbitalRadius, angleInDegree);
+        Star newObject = new Star(name, orbitalRadius, angleInDegree, this);
         // setPosition ist relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
