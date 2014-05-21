@@ -18,10 +18,11 @@ public class Star extends AstronomicalBody
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
         shapeRenderer.identity();
         
-        diplayStar();    
+        displayOrbit();
+        displayStar();    
 	}
 
-	private void diplayStar() {
+	private void displayStar() {
 		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.YELLOW);

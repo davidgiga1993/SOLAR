@@ -34,8 +34,8 @@ public class GameStartStage extends BaseStage
     	systemCreation();
     	    	
         placeNewShip("Event Horizon", new GridPoint2(0, 120));
-//        placeNewShip("Nostromo", new GridPoint2(150, 100));
-//        placeNewShip("Destiny", new GridPoint2(75, 0));
+        placeNewShip("Nostromo", new GridPoint2(150, 100));
+        placeNewShip("Destiny", new GridPoint2(75, 0));
 
         
         /*Image background = SE.Service.AddBackgroundImage();

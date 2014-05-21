@@ -21,7 +21,7 @@ public class SolarSystem extends AstronomicalBody {
     	
     	star = placeNewStar("Sun", 0, 0);
     		star.placeNewPlanet("Mercury", 387, 170);
-   		star.placeNewPlanet("Venus", 723, -45);
+    		star.placeNewPlanet("Venus", 723, -45);
     		planet = star.placeNewPlanet("Earth", 1000, -120);
     			planet.placeNewMoon("Moon", 100, -30);
     		planet = star.placeNewPlanet("Mars", 1524, -140);
