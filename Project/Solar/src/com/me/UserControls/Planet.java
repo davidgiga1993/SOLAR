@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Planet extends AstronomicalBody
 {
-	public Planet(String name, int orbitalRadius, int angleInDegree, AstronomicalBody origin)
+	public Planet(String name, double massInEarthMasses, double orbitalRadiusInAU, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadius, angleInDegree, origin);
+		super(name, convertAUIntoKilometer(orbitalRadiusInAU), angleInDegree, origin);
 		this.setSize(50, 50);
+		this.massInKilogram = convertEarthMassesIntoKilogram(massInEarthMasses);
 	}
 	
 	@Override
@@ -30,12 +31,11 @@ public class Planet extends AstronomicalBody
         shapeRenderer.end();
 	}
 	
-    public Moon placeNewMoon(String name, int radius, int angle)
+    public Moon placeNewMoon(String name, double massInEarthMasses, double orbitalRadiusInKilometers, double angleInDegree)
     {
-        Moon newObject = new Moon(name, radius, angle, this);
+        Moon newObject = new Moon(name, massInEarthMasses, orbitalRadiusInKilometers, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
-    }
-	
+    }	
 }

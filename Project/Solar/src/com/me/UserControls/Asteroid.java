@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Asteroid extends AstronomicalBody
 {
-	public Asteroid(String name, int orbitalRadius, int angleInDegree, AstronomicalBody origin)
+	public Asteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadius, angleInDegree, origin);
+		super(name, orbitalRadiusInKilometers, angleInDegree, origin);
 		this.setSize(25, 10);
+		this.massInKilogram = massInKilogram;
 	}
 	
 	@Override

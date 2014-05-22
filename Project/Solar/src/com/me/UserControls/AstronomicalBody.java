@@ -6,27 +6,32 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 
 public abstract class AstronomicalBody extends SolarActor {
 	
-	protected Group satellites;
-	protected int orbitalRadius;
-	protected int angleInDegree;
+	protected double orbitalRadiusInKilometers;
+	protected double orbitalPeriodInDays;
+	protected double massInKilogram;
+	protected double angleInDegree;
 	protected AstronomicalBody origin;
+	protected Group satellites;
 	
 	public AstronomicalBody(String name)
 	{
 		super(name);
 		this.satellites = new Group();
-		this.orbitalRadius = 0;
+		this.orbitalRadiusInKilometers = 0;
 		this.angleInDegree = 0;
 		this.origin = null;
+		this.orbitalPeriodInDays = -1;
+		this.massInKilogram = 0;
 	}
 	
-	public AstronomicalBody(String name, int orbitalRadius, int angleInDegree, AstronomicalBody origin)
+	public AstronomicalBody(String name, double orbitalRadiusInMeters, double angleInDegree, AstronomicalBody origin)
 	{
 		super(name);
 		this.satellites = new Group();
-		this.orbitalRadius = orbitalRadius;
+		this.orbitalRadiusInKilometers = orbitalRadiusInMeters;
 		this.angleInDegree = angleInDegree;
 		this.origin = origin;
+		this.orbitalPeriodInDays = calculateOrbitalPeriod();
 	}
 	
     public Group getSatellites()
@@ -42,9 +47,9 @@ public abstract class AstronomicalBody extends SolarActor {
     		return satellites.getChildren().size;
     }
     
-    protected Asteroid placeNewAsteroid(String name, int orbitalRadius, int angle)
+    protected Asteroid placeNewAsteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, int angleInDegree)
     {
-        Asteroid newObject = new Asteroid(name, orbitalRadius, angle, this);
+        Asteroid newObject = new Asteroid(name, massInKilogram, orbitalRadiusInKilometers, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
@@ -55,21 +60,46 @@ public abstract class AstronomicalBody extends SolarActor {
     		this.setPosition(calculateOrbitalPositionX(), calculateOrbitalPositionY());
     }
 
-	protected int calculateOrbitalPositionX() {
-		return (int) (origin.getX() + (float) Math.cos(Math.toRadians(angleInDegree)) * orbitalRadius);
+	protected float calculateOrbitalPositionX() {
+		return (float) (origin.getX() + (float) Math.cos(Math.toRadians(angleInDegree)) * scaleDistanceToStage(orbitalRadiusInKilometers));
 	}
 	
-	protected int calculateOrbitalPositionY() {
-		return (int) (origin.getY() + (float) Math.sin(Math.toRadians(angleInDegree))  * orbitalRadius);
+	protected float calculateOrbitalPositionY() {
+		return (float) (origin.getY() + (float) Math.sin(Math.toRadians(angleInDegree))  * scaleDistanceToStage(orbitalRadiusInKilometers));
 	}
-    
+	    
     protected void displayOrbit()
     {
-    	if (orbitalRadius < getParent().getWidth())
+    	if (scaleDistanceToStage(orbitalRadiusInKilometers) < getParent().getWidth())
     		return;
 		shapeRenderer.begin(ShapeType.Line);             
         shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.circle(origin.getX(), origin.getY(), orbitalRadius);
+        shapeRenderer.circle(origin.getX(), origin.getY(), scaleDistanceToStage(orbitalRadiusInKilometers));
         shapeRenderer.end();
+    }
+    
+    protected double calculateOrbitalPeriod()
+    {
+    	return Math.sqrt( 4 * Math.pow((Math.PI), 2) * Math.pow(orbitalRadiusInKilometers * 1000, 3) / origin.getMass() / getGravitationalConstant() ) /24 / 3600;
+    }
+    
+    private static double getGravitationalConstant()
+    {
+    	return 6.67 * Math.pow(10, -11);
+    }
+    
+    public double getMass()
+    {
+    	return massInKilogram;
+    }
+    
+    protected static double convertEarthMassesIntoKilogram( double massInEarthMasses)
+    {
+    	return massInEarthMasses * 5.97219 * Math.pow(10, 24);
+    }
+    
+    protected static double convertSolarMassesIntoKilogram( double massInSolarMasses)
+    {
+    	return massInSolarMasses * 1.98855 * Math.pow(10, 30);
     }
 }

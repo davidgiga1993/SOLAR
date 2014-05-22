@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Moon extends AstronomicalBody
 {
-	public Moon(String name, int orbitalRadius, int angleInDegree, AstronomicalBody origin)
+	public Moon(String name, double massInEarthMasses, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadius, angleInDegree, origin);
+		super(name, orbitalRadiusInKilometers, angleInDegree, origin);
 		this.setSize(25, 25);
+		this.massInKilogram = convertEarthMassesIntoKilogram(massInEarthMasses);
 	}
 	
 	@Override

@@ -38,4 +38,14 @@ public abstract class SolarActor extends Actor {
 	{
 		return selected;
 	}
+	
+    protected static double convertAUIntoKilometer( double AU )
+    {
+    	return AU * 1.4960 * Math.pow(10, 8);
+    }
+    
+	protected static float scaleDistanceToStage( double distance ) {
+		double scalingFactor = Math.pow(10, 8);
+		return (float) (distance / scalingFactor);
+	}
 }

@@ -42,7 +42,7 @@ public class Spaceship extends SolarActor
         shapeRenderer.identity();
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());     
                 
-        displaySelectionBox();       
+        displaySelectionBox();  
         displayCourseAndDestination();
         displaySpaceship(batch);
     }
