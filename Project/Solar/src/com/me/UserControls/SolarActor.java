@@ -45,7 +45,8 @@ public abstract class SolarActor extends Actor {
     }
     
 	protected static float scaleDistanceToStage( double distance ) {
-		double scalingFactor = Math.pow(10, 8);
+		//TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
+		double scalingFactor = 2 * Math.pow(10, 4);
 		return (float) (distance / scalingFactor);
 	}
 }

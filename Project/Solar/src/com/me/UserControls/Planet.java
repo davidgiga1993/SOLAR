@@ -9,7 +9,7 @@ public class Planet extends AstronomicalBody
 	public Planet(String name, double massInEarthMasses, double orbitalRadiusInAU, double angleInDegree, AstronomicalBody origin)
 	{
 		super(name, convertAUIntoKilometer(orbitalRadiusInAU), angleInDegree, origin);
-		this.setSize(50, 50);
+		this.setSize(250, 250);
 		this.massInKilogram = convertEarthMassesIntoKilogram(massInEarthMasses);
 	}
 	
@@ -27,7 +27,7 @@ public class Planet extends AstronomicalBody
 		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.circle(getX(), getY(), getHeight()/2);
+        shapeRenderer.circle(getX() + getWidth() /2, getY() + getHeight() / 2, getHeight()/2);
         shapeRenderer.end();
 	}
 	

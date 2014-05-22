@@ -9,7 +9,7 @@ public class Star extends AstronomicalBody
 	public Star(String name, double massInSolarMasses, double orbitalRadiusInMeters, double angleInDegree, AstronomicalBody origin)
 	{
 		super(name, orbitalRadiusInMeters, angleInDegree, origin);
-		this.setSize(100, 100);
+		this.setSize(1000, 1000);
 		this.massInKilogram = convertSolarMassesIntoKilogram(massInSolarMasses);
 	}
 	
@@ -27,7 +27,7 @@ public class Star extends AstronomicalBody
 		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.YELLOW);
-        shapeRenderer.circle(getX(), getY(), getHeight()/2);
+        shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight()/2);
         shapeRenderer.end();
 	}
 	

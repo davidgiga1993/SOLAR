@@ -57,15 +57,15 @@ public abstract class AstronomicalBody extends SolarActor {
     
     protected void calculateOrbitalPositionTotal()
     {
-    		this.setPosition(calculateOrbitalPositionX(), calculateOrbitalPositionY());
+    		this.setPosition(calculateOrbitalPositionX() - getWidth() / 2, calculateOrbitalPositionY() - getHeight() / 2);
     }
 
 	protected float calculateOrbitalPositionX() {
-		return (float) (origin.getX() + (float) Math.cos(Math.toRadians(angleInDegree)) * scaleDistanceToStage(orbitalRadiusInKilometers));
+		return (float) (calculateCenterOfOrbitX() + (float) Math.cos(Math.toRadians(angleInDegree)) * scaleDistanceToStage(orbitalRadiusInKilometers));
 	}
 	
 	protected float calculateOrbitalPositionY() {
-		return (float) (origin.getY() + (float) Math.sin(Math.toRadians(angleInDegree))  * scaleDistanceToStage(orbitalRadiusInKilometers));
+		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * scaleDistanceToStage(orbitalRadiusInKilometers));
 	}
 	    
     protected void displayOrbit()
@@ -74,13 +74,22 @@ public abstract class AstronomicalBody extends SolarActor {
     		return;
 		shapeRenderer.begin(ShapeType.Line);             
         shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.circle(origin.getX(), origin.getY(), scaleDistanceToStage(orbitalRadiusInKilometers));
+        shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), scaleDistanceToStage(orbitalRadiusInKilometers));
         shapeRenderer.end();
     }
+
+	private float calculateCenterOfOrbitY() {
+        // Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
+		return origin.getY() + origin.getHeight() / 2;
+	}
+
+	private float calculateCenterOfOrbitX() {
+		return origin.getX() + origin.getWidth() / 2;
+	}
     
     protected double calculateOrbitalPeriod()
     {
-    	return Math.sqrt( 4 * Math.pow((Math.PI), 2) * Math.pow(orbitalRadiusInKilometers * 1000, 3) / origin.getMass() / getGravitationalConstant() ) /24 / 3600;
+    	return Math.sqrt( 4 * Math.pow((Math.PI), 2) * Math.pow(orbitalRadiusInKilometers * 1000, 3) / origin.getMass() / getGravitationalConstant() ) / 24 / 3600;
     }
     
     private static double getGravitationalConstant()

@@ -8,8 +8,9 @@ public class Moon extends AstronomicalBody
 {
 	public Moon(String name, double massInEarthMasses, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadiusInKilometers, angleInDegree, origin);
-		this.setSize(25, 25);
+		//TODO: orbitalRadiusInKilometers was increased 20 times here for the testing of scaling purposes (moons visibly separate from planet without needing to zoom in. Needs to be redone at some point
+		super(name, orbitalRadiusInKilometers*20, angleInDegree, origin);
+		this.setSize(100, 100);
 		this.massInKilogram = convertEarthMassesIntoKilogram(massInEarthMasses);
 	}
 	
@@ -27,7 +28,7 @@ public class Moon extends AstronomicalBody
 		shapeRenderer.begin(ShapeType.Filled);             
         shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
         shapeRenderer.setColor(Color.GRAY);
-        shapeRenderer.circle(getX(), getY(), getHeight()/2);
+        shapeRenderer.circle(getX() + getWidth() /2, getY() + getHeight() / 2, getHeight()/2);
         shapeRenderer.end();
 	}
 }

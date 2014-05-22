@@ -9,7 +9,7 @@ public class Asteroid extends AstronomicalBody
 	public Asteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
 	{
 		super(name, orbitalRadiusInKilometers, angleInDegree, origin);
-		this.setSize(25, 10);
+		this.setSize(100, 50);
 		this.massInKilogram = massInKilogram;
 	}
 	
