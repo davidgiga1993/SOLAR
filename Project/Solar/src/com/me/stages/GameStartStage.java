@@ -17,61 +17,66 @@ import com.me.solar.SolarEngine;
 public class GameStartStage extends BaseStage
 {
     protected List<Actor> selectedActors = new ArrayList<Actor>();
-	private SelectionRectangle SelRec;
-	private SolarSystem solarSystem;
+    private SelectionRectangle SelRec;
+    private SolarSystem solarSystem;
 
     public GameStartStage(SolarEngine SE)
     {
         super(SE, "GameStartStage");
         SE.Service.StartGame();
-        
+
         SE.stageManager.insertStageToBack(new BackgroundStage(SE));
         SE.stageManager.addStage(new HUDStage(SE, "HUD"));
         SE.stageManager.addStage(new GameHUDStage(SE));
 
-        gameStartStageListener();     
-        addSelectionRectangle(); 
-    	systemCreation();
-    	    	
+        gameStartStageListener();
+        addSelectionRectangle();
+        systemCreation();
+
         placeNewShip("Event Horizon", new GridPoint2(0, 120));
         placeNewShip("Nostromo", new GridPoint2(150, 100));
         placeNewShip("Destiny", new GridPoint2(75, 0));
 
-        
-        /*Image background = SE.Service.AddBackgroundImage();
-        addActor(background);
-        background.toBack();*/
+        /*
+         * Image background = SE.Service.AddBackgroundImage();
+         * addActor(background);
+         * background.toBack();
+         */
     }
 
-	private void addSelectionRectangle() {
-		SelRec = new SelectionRectangle();
-    	addActor(SelRec);
-	}
+    private void addSelectionRectangle()
+    {
+        SelRec = new SelectionRectangle();
+        addActor(SelRec);
+    }
 
-	private void systemCreation() {
-		//Creates the Solar System for the game
-    	solarSystem = new SolarSystem(getGameName());
-    	solarSystem.createSolarSystem(); 	
-    	addActor(solarSystem);
-    	addSolarSystemActors(solarSystem);
-	}
+    private void systemCreation()
+    {
+        // Creates the Solar System for the game
+        solarSystem = new SolarSystem(getGameName());
+        solarSystem.createSolarSystem();
+        addActor(solarSystem);
+        addSolarSystemActors(solarSystem);
+    }
 
-	private void addSolarSystemActors(AstronomicalBody body) {
-		if ( body.getNumberOfSatellites() != 0 )
-		{
-			for (int index = body.getNumberOfSatellites(); index > 0; index-- )
-	    	{
-				AstronomicalBody object = (AstronomicalBody) body.getSatellites().getChildren().get(0);
-	    		addActor(object);
-	    		addSolarSystemActors(object);
-	    	}	
-		}
-	}
+    private void addSolarSystemActors(AstronomicalBody body)
+    {
+        if (body.getNumberOfSatellites() != 0)
+        {
+            for (int index = body.getNumberOfSatellites(); index > 0; index--)
+            {
+                AstronomicalBody object = (AstronomicalBody) body.getSatellites().getChildren().get(0);
+                addActor(object);
+                addSolarSystemActors(object);
+            }
+        }
+    }
 
-	private String getGameName() {
-		String name = "Sol";
-		return name;
-	}
+    private String getGameName()
+    {
+        String name = "Sol";
+        return name;
+    }
 
     private void placeNewShip(String name, GridPoint2 startlocation)
     {
@@ -80,22 +85,20 @@ public class GameStartStage extends BaseStage
         addActor(newShip);
     }
 
-
-
     /**
      * Wartet auf Mausinputs im Spielfeld und wertet diese aus.
      */
     private void gameStartStageListener()
     {
-		this.addListener(new InputListener()
+        this.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-            	//Selection Box Functionality
-            	SelRec.resetSelRec(x,y);
-            	
-            	//Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl wenn Shift/Control nicht gedrückt
-            	if (event.getTarget() instanceof SolarActor == false && button == 0 && !SE.isControlPressed() && !SE.isShiftPressed())
+                // Selection Box Functionality
+                SelRec.resetSelRec(x, y);
+
+                // Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl wenn Shift/Control nicht gedrückt
+                if (event.getTarget() instanceof SolarActor == false && button == 0 && !SE.isControlPressed() && !SE.isShiftPressed())
                     discardAllSelections();
 
                 // Selektion von Raumschiffen
@@ -108,119 +111,121 @@ public class GameStartStage extends BaseStage
                     setNewDestination(new GridPoint2((int) x, (int) y));
                     moveSelectedSpaceship();
                 }
-          	    return true;
+                return true;
             }
-                        
+
             @Override
-            public void touchUp(InputEvent event, float x, float y,
-            		int pointer, int button) {
-            	SelRec.hide();
-             	getSelectionBoxSelectedActors();
-            }           
-            
-			@Override
-            public void touchDragged(InputEvent event, float x, float y,
-            		int pointer) {
-          	     SelRec.updatePositionAndSize(x,y);
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+            {
+                SelRec.hide();
+                getSelectionBoxSelectedActors();
+            }
+
+            @Override
+            public void touchDragged(InputEvent event, float x, float y, int pointer)
+            {
+                SelRec.updatePositionAndSize(x, y);
             }
         });
     }
 
     private void getSelectionBoxSelectedActors()
     {
-//    	//Geht alle Actors in der Stage durch und überprüft, ob sie in der Box liegen. Falls ja, werden sie zur Selektion geaddet
-    	for ( int index = 0; index < getActors().size; index++ )
-    	{
-    		float x = getActors().get(index).getX();
-    		float y = getActors().get(index).getY();
-    		if ( isXWithinSelRec(x))
-    			if(isYWithinSelRec(y))
-    				if(getActors().get(index) instanceof SolarActor && !selectedActors.contains(getActors().get(index)))
-          				selectActor(getActors().get(index));
-    	}
-	}
+        // //Geht alle Actors in der Stage durch und überprüft, ob sie in der Box liegen. Falls ja, werden sie zur Selektion geaddet
+        for (int index = 0; index < getActors().size; index++)
+        {
+            float x = getActors().get(index).getX();
+            float y = getActors().get(index).getY();
+            if (isXWithinSelRec(x))
+                if (isYWithinSelRec(y))
+                    if (getActors().get(index) instanceof SolarActor && !selectedActors.contains(getActors().get(index)))
+                        selectActor(getActors().get(index));
+        }
+    }
 
-	private boolean isYWithinSelRec(float y) {
-		return y > SelRec.getY() &&  y < (SelRec.getY() + SelRec.getHeight());
-	}
+    private boolean isYWithinSelRec(float y)
+    {
+        return y > SelRec.getY() && y < (SelRec.getY() + SelRec.getHeight());
+    }
 
-	private boolean isXWithinSelRec(float x) {
-		return x > SelRec.getX() &&  x < (SelRec.getX() + SelRec.getWidth());
-	}
-	
-	public void moveSelectedSpaceship()
-	{
-		for (int index = selectedActors.size(); index > 0; index--)
-		{
-			Actor actor = selectedActors.get(index - 1);
-		     if (actor instanceof Spaceship)
-		    	 ((Spaceship)actor).moveSpaceship();
-		}		
-	}
-	
-	public void setNewDestination( GridPoint2 target)
-	{
-		for (int index = selectedActors.size(); index > 0; index--)
-		{
-			Actor actor = selectedActors.get(index - 1);
-		     if (actor instanceof Spaceship)
-		    	 ((Spaceship) actor).setDestination(target);
-		}		
-	}
-    
-	public void addSelection(Actor actor)
-	{	     
-		// variant 1: no other object are in selectedActors-List: simple left click selects object
-		if (selectedActors.isEmpty())
-		{
-			selectActor(actor);
-			return;
-		}
-		// Variant 2: no Shift or Control-button is pressed: discard all other selections
-		if (SE.isShiftPressed() == false && SE.isControlPressed() == false )
-		{
-			discardAllSelections();
-			selectActor(actor);
-			return;
-		}	
-		// Variant 3: object already in list 'added' with Click+SHIFT or Click+CONTROL: remove that object from selection
-		if (selectedActors.contains(actor) && ( SE.isShiftPressed() == true || SE.isControlPressed() == true ) )
-		{
-			removeActor(actor);
-			return;
-		}
-		// Variant 4: new additional object added to list with Click+SHIFT or Click+CONTROL
-		else
-		{
-			selectActor(actor);
-		}
-	}
+    private boolean isXWithinSelRec(float x)
+    {
+        return x > SelRec.getX() && x < (SelRec.getX() + SelRec.getWidth());
+    }
 
-	private void selectActor(Actor actor)
-	{
-		if (selectedActors.contains(actor))
-			return;
-		selectedActors.add(actor);
-		 if (actor instanceof Spaceship)
-			 ((Spaceship) actor).select();
-		 
-     	//TODO: Remove Diagnoseausgabe wenn nicht mehr benötigt
-	     System.out.println("Selected Actors: " + selectedActors.toString());
-	}
-	
-	private void removeActor(Actor actor)
-	{
-		 if (actor instanceof Spaceship)
-			 ((Spaceship) actor).deselect();
-		 selectedActors.remove(actor);
-	}
-	
-	public void discardAllSelections()
-	{
-		for (int index = selectedActors.size(); index > 0; index--)
-		{
-			Actor actor = selectedActors.get(index - 1);
-		    removeActor(actor);
-		}
-	}
+    public void moveSelectedSpaceship()
+    {
+        for (int index = selectedActors.size(); index > 0; index--)
+        {
+            Actor actor = selectedActors.get(index - 1);
+            if (actor instanceof Spaceship)
+                ((Spaceship) actor).moveSpaceship();
+        }
+    }
+
+    public void setNewDestination(GridPoint2 target)
+    {
+        for (int index = selectedActors.size(); index > 0; index--)
+        {
+            Actor actor = selectedActors.get(index - 1);
+            if (actor instanceof Spaceship)
+                ((Spaceship) actor).setDestination(target);
+        }
+    }
+
+    public void addSelection(Actor actor)
+    {
+        // variant 1: no other object are in selectedActors-List: simple left click selects object
+        if (selectedActors.isEmpty())
+        {
+            selectActor(actor);
+            return;
+        }
+        // Variant 2: no Shift or Control-button is pressed: discard all other selections
+        if (SE.isShiftPressed() == false && SE.isControlPressed() == false)
+        {
+            discardAllSelections();
+            selectActor(actor);
+            return;
+        }
+        // Variant 3: object already in list 'added' with Click+SHIFT or Click+CONTROL: remove that object from selection
+        if (selectedActors.contains(actor) && (SE.isShiftPressed() == true || SE.isControlPressed() == true))
+        {
+            removeActor(actor);
+            return;
+        }
+        // Variant 4: new additional object added to list with Click+SHIFT or Click+CONTROL
+        else
+        {
+            selectActor(actor);
+        }
+    }
+
+    private void selectActor(Actor actor)
+    {
+        if (selectedActors.contains(actor))
+            return;
+        selectedActors.add(actor);
+        if (actor instanceof Spaceship)
+            ((Spaceship) actor).select();
+
+        // TODO: Remove Diagnoseausgabe wenn nicht mehr benötigt
+        System.out.println("Selected Actors: " + selectedActors.toString());
+    }
+
+    private void removeActor(Actor actor)
+    {
+        if (actor instanceof Spaceship)
+            ((Spaceship) actor).deselect();
+        selectedActors.remove(actor);
+    }
+
+    public void discardAllSelections()
+    {
+        for (int index = selectedActors.size(); index > 0; index--)
+        {
+            Actor actor = selectedActors.get(index - 1);
+            removeActor(actor);
+        }
+    }
 }
