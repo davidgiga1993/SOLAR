@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.me.UserControls.Styles" project="Solar" 
+    file="/Solar/src/com/me/UserControls/Styles.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="180" x="370" y="828"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.me.stages.StartStage" project="Solar" 
+    file="/Solar/src/com/me/stages/StartStage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="172" x="58" y="347"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="Actions.LabelFontScalerAction" project="Solar" 
+    file="/Solar/src/Actions/LabelFontScalerAction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="156" y="231"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.me.stages.StageManager" project="Solar" 
+    file="/Solar/src/com/me/stages/StageManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1018" y="887"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.me.stages.BaseStage" project="Solar" 
+    file="/Solar/src/com/me/stages/BaseStage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="600" y="205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.me.solar.TextureCacher" project="Solar" 
+    file="/Solar/src/com/me/solar/TextureCacher.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="236" x="590" y="828"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.me.stages.GameStartStage" project="Solar" 
+    file="/Solar/src/com/me/stages/GameStartStage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="170" x="270" y="347"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.me.solar.SolarEngine" project="Solar" 
+    file="/Solar/src/com/me/solar/SolarEngine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="184" x="480" y="347"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.me.UserControls.Rectangle" project="Solar" 
+    file="/Solar/src/com/me/UserControls/Rectangle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="371" y="221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.me.stages.PerformanceLog" project="Solar" 
+    file="/Solar/src/com/me/stages/PerformanceLog.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="184" x="704" y="347"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="11">    
+    <bendpoint x="939" y="347"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="12" name="Stages"/>      
+      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="15" name="styles"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="18">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="19" name="Textures"/>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="22" name="SE"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="24">    
+    <bendpoint x="918" y="347"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="26">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="27" name="stageManager"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -1,0 +1,11 @@
+1. Git branch "new engine" syncen
+2. Eclipse öffnen und rechtsklick im package explorer -> Import -> General -> Existing Projects
+3. Ordner "Project" auswählen
+4. Es sollten jetzt 4 Projekte angezeigt werden -> Finish klicken
+5. Das eigentliche Spiel ist in dem Projekt "Solar" im Ordner src
+6. Um das Spiel zu starten muss die Datei "Main.java" aus dem Projekt "Solar-desktop" geöffnet und im Editor selektiert sein.
+	Erst dann kann man auf den Play-Knopf klicken. Wählt man das falsche Projekt / Datei aus kommt ein Fehler beim Starten
+
+
+Optional:
+ Projekt "Solar-android" und Solar-html schließen (rechtsklick -> Close project)
