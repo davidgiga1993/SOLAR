@@ -1,7 +1,10 @@
 package com.me.UserControls;
 
+import java.util.List;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 public abstract class AstronomicalBody extends SolarActor {
@@ -47,7 +50,7 @@ public abstract class AstronomicalBody extends SolarActor {
     		return satellites.getChildren().size;
     }
     
-    protected Asteroid placeNewAsteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, int angleInDegree)
+    public Asteroid placeNewAsteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, int angleInDegree)
     {
         Asteroid newObject = new Asteroid(name, massInKilogram, orbitalRadiusInKilometers, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
@@ -77,6 +80,37 @@ public abstract class AstronomicalBody extends SolarActor {
         shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), scaleDistanceToStage(orbitalRadiusInKilometers));
         shapeRenderer.end();
     }
+    
+    
+	/**
+	 * Searches the satellites of a parent astronomical object for their names so that they can be added to a list.
+	 * @param listOfSatellites List to which names are to be added.
+	 */
+	protected void addNamesOfSatellitesToList(List<String> listOfSatellites)
+	{
+		String name;
+		for(int index = 0; index < satellites.getChildren().size; index++)
+    	{
+    		name = satellites.getChildren().get(index).getName();
+    		listOfSatellites.add(name);
+    	}
+	}
+	
+	/**
+	 * Searches the satellites of a parent astronomical object for a satellite with a matching name.
+	 * @param name Searched for key word
+	 * @return Satellite object with matching name
+	 */
+	public Actor findSatelliteByName(String name)
+	{
+		for(int index = 0; index < satellites.getChildren().size; index++)
+    	{
+			Actor object =  satellites.getChildren().get(index);
+    		if ( object.getName().equals(name) )
+    			return object;
+    	}	
+		return null;
+	}
 
 	private float calculateCenterOfOrbitY() {
         // Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren

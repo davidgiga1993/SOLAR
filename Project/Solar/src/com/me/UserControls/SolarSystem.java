@@ -1,9 +1,20 @@
 package com.me.UserControls;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+/**
+ * @author Andi
+ * Contains the model of the structure of all astronomical objects in the solar system.
+ */
+/**
+ * @author Andi
+ *
+ */
 public class SolarSystem extends AstronomicalBody {
 	
 	private String name;
@@ -14,6 +25,11 @@ public class SolarSystem extends AstronomicalBody {
 		setPosition(0, 0);
     }
     
+    
+    /**
+     * Creation of a new solar system containing the specified number of astronomical objects.
+     * Current implementation creates the fixed home system of our Sun, the eight planets and various dwarf planets.
+     */
     public void createSolarSystem()
     {
     	Star star;
@@ -77,6 +93,15 @@ public class SolarSystem extends AstronomicalBody {
     	return name;
     }
 
+    
+    /**
+     * A new actor of class Star with the specified parameters is added to the solar system.
+     * @param name
+     * @param massInSolarMasses
+     * @param orbitalRadiusInMeters
+     * @param angleInDegree
+     * @return
+     */
     public Star placeNewStar(String name, double massInSolarMasses, double orbitalRadiusInMeters, double angleInDegree)
     {
         Star newObject = new Star(name, massInSolarMasses, orbitalRadiusInMeters, angleInDegree, this);
@@ -85,5 +110,16 @@ public class SolarSystem extends AstronomicalBody {
         massInKilogram += convertSolarMassesIntoKilogram(massInSolarMasses);
         return newObject;
 	}
-    
+     
+    /**
+     * @return List containing the names of all astronomical objects placed in the system 
+     */
+    public List<String> getSatelliteNames()
+    {
+    	List <String> listOfSatellites = new ArrayList <String>();
+		
+    	addNamesOfSatellitesToList(listOfSatellites);
+    	    	
+    	return listOfSatellites;
+    }    
 }

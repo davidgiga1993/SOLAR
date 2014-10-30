@@ -6,79 +6,90 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.me.UserControls.Asteroid;
 import com.me.UserControls.Moon;
+import com.me.UserControls.SolarSystem;
 import com.me.UserControls.Star;
 import com.me.UserControls.Planet;
 
 public class TestAstronomicalObjects
 {
 
-    private Star testStar;
-    private Planet testPlanet;
-    private Moon testMoon;
-    private Asteroid testAsteroid;
-
+	SolarSystem solarSystem;
+	Star star;
+	Planet planet;
+	
     @Before
     public void setUp() throws Exception
     {
-//        testStar = new Star("Yavin");
-//        testStar.setPosition(22, 33);
-//        testPlanet = new Planet("Alderan");
-//        testPlanet.setPosition(44, 55);
-//        testMoon = new Moon("Death Star");
-//        testMoon.setPosition(66, 77);
-//        testAsteroid = new Asteroid("Astra");
-//        testAsteroid.setPosition(22, 33);
+        solarSystem = new SolarSystem("Testsystem");
+        star = solarSystem.placeNewStar("Testsonne", 1, 0, 0);
+	    planet = star.placeNewPlanet("Testplanet", 0.5, 1.5, 23);
+	    planet.placeNewMoon("Testmond", 0.1, 200000, -50);
+	    star.placeNewAsteroid("Testasteroid", 20000, 900, 42);
     }
 
     @After
     public void tearDown() throws Exception
     {
     }
+    
+    @Test
+    public void testSystemCreation()
+    {   	
+        assertEquals("Testsystem", solarSystem.getName());
+    }
 
     /**
-     * Eine Klasse "Stern" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     * Tests whether stars can be successfully added to a solar system.
+     * Checks if object is of type star.
+     * Checks by searching for the name in the list of satellites.
      */
     @Test
     public void testStarCreation()
-    {
-        assertEquals(500f, testStar.getWidth(), 0);
-        assertEquals(500f, testStar.getHeight(), 0);
-        assertEquals("Yavin", testStar.getName());
-    }
-
+    {   	
+        Actor object = solarSystem.findSatelliteByName("Testsonne");
+        assertEquals(true, object instanceof Star);
+        assertEquals("Testsonne", object.getName());
+     }
+    
     /**
-     * Eine Klasse "Planet" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     * Tests whether planets can be successfully added to a solar system.
+     * Checks if object is of type planet.
+     * Checks by searching for the name in the list of satellites.
      */
     @Test
     public void testPlanetCreation()
-    {
-        assertEquals(200f, testPlanet.getWidth(), 0);
-        assertEquals(200f, testPlanet.getHeight(), 0);
-        assertEquals("Alderan", testPlanet.getName());
+    {   	
+        Actor object = star.findSatelliteByName("Testplanet");
+        assertEquals(true, object instanceof Planet);
+        assertEquals("Testplanet", object.getName());
     }
-
+    
     /**
-     * Eine Klasse "Moon" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     * Tests whether moons can be successfully added to a solar system.
+     * Checks if object is of type moon.
+     * Checks by searching for the name in the list of satellites.
      */
     @Test
     public void testMoonCreation()
-    {
-        assertEquals(75f, testMoon.getWidth(), 0);
-        assertEquals(75f, testMoon.getHeight(), 0);
-        assertEquals("Death Star", testMoon.getName());
+    {   	
+        Actor object = planet.findSatelliteByName("Testmond");
+        assertEquals(true, object instanceof Moon);
+        assertEquals("Testmond", object.getName());
     }
-
+    
     /**
-     * Eine Klasse "Asteroid" sinnvoll erstellen und in irgendeiner sinnvollen Form anzeigen.
+     * Tests whether moons can be successfully added to a solar system.
+     * Checks if object is of type moon.
+     * Checks by searching for the name in the list of satellites.
      */
     @Test
     public void testAsteroidCreation()
-    {
-        assertEquals(35f, testAsteroid.getWidth(), 0);
-        assertEquals(20f, testAsteroid.getHeight(), 0);
-        assertEquals("Astra", testAsteroid.getName());
+    {   	
+        Actor object = star.findSatelliteByName("Testasteroid");
+        assertEquals(true, object instanceof Asteroid);
+        assertEquals("Testasteroid", object.getName());
     }
-
 }
