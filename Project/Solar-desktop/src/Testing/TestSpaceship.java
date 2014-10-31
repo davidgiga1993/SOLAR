@@ -4,28 +4,58 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.EventQueue;
+import java.util.concurrent.CountDownLatch;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.lwjgl.opengl.Display;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.me.UserControls.Spaceship;
+import com.me.solar.Main;
 import com.me.solar.SolarEngine;
+import com.me.stages.BaseStage;
 import com.me.stages.GameStartStage;
+import com.me.stages.StageManager;
+import com.me.stages.StartStage;
+import com.me.stages.TestStage;
 public class TestSpaceship
 {
 
-    private Spaceship ship;
-
-    public TestSpaceship()
-    {
-
-    }
+    private Spaceship testShip;
 
     @Before
     public void setUp() throws Exception
+    { 
+    	final CountDownLatch latch = new CountDownLatch(1);
+    	Runnable runner = new Runnable() {
+
+    	@Override
+    	public void run() {
+    		try {
+				testShip = placeTestShip();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    		latch.countDown();
+    	}
+    	};
+    	Gdx.app.postRunnable(runner);
+    	try {
+    		latch.await();
+    	}
+    	catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    private Spaceship placeTestShip() throws Exception
     {
-//        ship = new Spaceship("Testschiff");
+    	return new Spaceship("Testschiff");
     }
 
     @After
@@ -39,7 +69,7 @@ public class TestSpaceship
     @Test
     public void testShipCreation()
     {
-//        assertEquals("Test", ship.getName());
+        assertEquals("Testschiff", testShip.getName());
     }
 
     /**
@@ -49,20 +79,10 @@ public class TestSpaceship
     @Test
     public void testSelectionFunctionality()
     {
-//        ship.select();
-//        assertTrue(ship.isSelected());
-//        ship.deselect();
-//        assertFalse(ship.isSelected());
-    }
-
-    /**
-     * Das Raumschiff soll sich in irgendeiner Weise auf dem Bildschirm bewegen.
-     */
-    @Test
-    public void testMovement()
-    {
-//        ship.setDestination(new GridPoint2(12345, 67890));
-//        ship.moveSpaceship();
+        testShip.select();
+        assertTrue(testShip.isSelected());
+        testShip.deselect();
+        assertFalse(testShip.isSelected());
     }
 
     /**
@@ -71,15 +91,8 @@ public class TestSpaceship
     @Test
     public void testSpaceshipDestination()
     {
-//        ship.setDestination(new GridPoint2(12345, 67890));
-//        assertEquals(12345, ship.getDestination().x);
-//        assertEquals(67890, ship.getDestination().y);
+    	testShip.setDestination(new GridPoint2(12345, 67890));
+        assertEquals(12345, testShip.getDestination().x);
+        assertEquals(67890, testShip.getDestination().y);
     }
-    
-    @Test
-    public void testDrawSpaceship()
-    {   	
-//    	assertTrue(true);
-    }
-
 }

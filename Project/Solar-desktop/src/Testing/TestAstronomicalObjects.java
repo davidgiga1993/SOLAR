@@ -16,9 +16,9 @@ import com.me.UserControls.Planet;
 public class TestAstronomicalObjects
 {
 
-	SolarSystem solarSystem;
-	Star star;
-	Planet planet;
+	private SolarSystem solarSystem;
+	private Star star;
+	private Planet planet;
 	
     @Before
     public void setUp() throws Exception

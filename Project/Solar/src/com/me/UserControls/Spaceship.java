@@ -20,13 +20,13 @@ public class Spaceship extends SolarActor
     public Spaceship(String name)
     {
         super(name);
-        this.shapeRenderer = new ShapeRenderer();
-        this.selected = false;
-        this.destination = null;
-        this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
-        solarActorTexture = new Texture(Gdx.files.internal("data/Cruiser.png"));
-        this.setSize(solarActorTexture.getWidth(), solarActorTexture.getHeight());
-        createShipSprite();
+          this.shapeRenderer = new ShapeRenderer();
+	      this.selected = false;
+	      this.destination = null;
+	      this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
+	      solarActorTexture = new Texture(Gdx.files.internal("data/Cruiser.png"));
+	      this.setSize(solarActorTexture.getWidth(), solarActorTexture.getHeight());
+	      createShipSprite();
     }
 
     private void createShipSprite()
