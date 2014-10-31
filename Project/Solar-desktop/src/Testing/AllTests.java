@@ -22,8 +22,10 @@ public class AllTests
     }
 
     @AfterClass
-    public static void tearDown()
+    public static void tearDown() throws InterruptedException
     {
+    	System.out.println("derp");
+    	Thread.sleep(5000);
         Gdx.app.exit();
     }
 }
