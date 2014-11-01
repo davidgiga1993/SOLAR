@@ -4,6 +4,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+/**
+ * @author Andi
+ *
+ */
 public class Asteroid extends AstronomicalBody
 {
 	public Asteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)

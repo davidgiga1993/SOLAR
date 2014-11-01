@@ -7,6 +7,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
+/**
+ * @author Andi
+ *
+ */
 public abstract class AstronomicalBody extends SolarActor {
 	
 	protected double orbitalRadiusInKilometers;
@@ -49,7 +53,15 @@ public abstract class AstronomicalBody extends SolarActor {
     	else
     		return satellites.getChildren().size;
     }
-    
+
+    /**
+     * Adds a new Asteroid with the specified parameters as a satellite orbiting the astronomical body.
+     * @param name Desired name of the Asteroid.
+     * @param massInKilogram Desired mass of the Asteroid in kilogram
+     * @param orbitalRadiusInKilometers Desired orbital radius around the parent body in kilometers
+     * @param angleInDegree Desired angle of the Asteroid's position on the map of the system relative to its parent body
+     * @return created Asteroid object
+     */
     public Asteroid placeNewAsteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, int angleInDegree)
     {
         Asteroid newObject = new Asteroid(name, massInKilogram, orbitalRadiusInKilometers, angleInDegree, this);
@@ -58,15 +70,26 @@ public abstract class AstronomicalBody extends SolarActor {
         return newObject;
     }
     
+    /**
+     * Calculates the current position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
+     */
     protected void calculateOrbitalPositionTotal()
     {
     		this.setPosition(calculateOrbitalPositionX() - getWidth() / 2, calculateOrbitalPositionY() - getHeight() / 2);
     }
 
+	/**
+	 * Part of the calculateOrbitalPositionTotal method, calculates the X-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
+	 * @return current X-axis position of the body
+	 */
 	protected float calculateOrbitalPositionX() {
 		return (float) (calculateCenterOfOrbitX() + (float) Math.cos(Math.toRadians(angleInDegree)) * scaleDistanceToStage(orbitalRadiusInKilometers));
 	}
-	
+
+	/**
+	 * Part of the calculateOrbitalPositionTotal method, calculates the Y-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
+	 * @return current Y-axis position of the body
+	 */
 	protected float calculateOrbitalPositionY() {
 		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * scaleDistanceToStage(orbitalRadiusInKilometers));
 	}
@@ -112,21 +135,31 @@ public abstract class AstronomicalBody extends SolarActor {
 		return null;
 	}
 
+	/**
+	 * @return Calculates the Y-axis point around which the astronomical body orbits based on its Origin attribute.
+	 */
 	private float calculateCenterOfOrbitY() {
         // Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
 		return origin.getY() + origin.getHeight() / 2;
 	}
 
+	/**
+	 * @return Calculates the X-axis point around which the astronomical body orbits based on its Origin attribute.
+	 */
 	private float calculateCenterOfOrbitX() {
 		return origin.getX() + origin.getWidth() / 2;
 	}
     
+    /**
+     * Determines the correct orbital period of the astronomical body around its parent object based on Kepler's Third Law of Planetary Motion.
+     * @return Orbital period in days.
+     */
     protected double calculateOrbitalPeriod()
     {
-    	return Math.sqrt( 4 * Math.pow((Math.PI), 2) * Math.pow(orbitalRadiusInKilometers * 1000, 3) / origin.getMass() / getGravitationalConstant() ) / 24 / 3600;
+    	return Math.sqrt( 4 * Math.pow((Math.PI), 2) * Math.pow(orbitalRadiusInKilometers * 1000, 3) / (origin.getMass()+massInKilogram) / gravitationalConstant() ) / 24 / 3600;
     }
     
-    private static double getGravitationalConstant()
+    private static double gravitationalConstant()
     {
     	return 6.67 * Math.pow(10, -11);
     }

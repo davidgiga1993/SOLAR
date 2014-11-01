@@ -9,10 +9,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 /**
  * @author Andi
- * Contains the model of the structure of all astronomical objects in the solar system.
- */
-/**
- * @author Andi
  *
  */
 public class SolarSystem extends AstronomicalBody {
@@ -28,7 +24,7 @@ public class SolarSystem extends AstronomicalBody {
     
     /**
      * Creation of a new solar system containing the specified number of astronomical objects.
-     * Current implementation creates the fixed home system of our Sun, the eight planets and various dwarf planets.
+     * Current implementation creates a fixed prototpye system (our Sun, the eight planets, their moons, etc.).
      */
     public void createSolarSystem()
     {
@@ -92,19 +88,18 @@ public class SolarSystem extends AstronomicalBody {
     {
     	return name;
     }
-
     
     /**
-     * A new actor of class Star with the specified parameters is added to the solar system.
-     * @param name
-     * @param massInSolarMasses
-     * @param orbitalRadiusInMeters
-     * @param angleInDegree
-     * @return
+     * Adds a new star with the specified parameters as a satellite orbiting the center of the solar system.
+     * @param name Desired name of the star
+     * @param massInSolarMasses Desired mass of the planet in multiples of Solar Masses
+     * @param orbitalRadiusInAU Desired orbital radius around the center of the solar system in multiples of Astronomical Units
+     * @param angleInDegree Desired angle of the star's position on the map of the system
+     * @return created Star object
      */
-    public Star placeNewStar(String name, double massInSolarMasses, double orbitalRadiusInMeters, double angleInDegree)
+    public Star placeNewStar(String name, double massInSolarMasses, double orbitalRadiusInAU, double angleInDegree)
     {
-        Star newObject = new Star(name, massInSolarMasses, orbitalRadiusInMeters, angleInDegree, this);
+        Star newObject = new Star(name, massInSolarMasses, orbitalRadiusInAU, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         massInKilogram += convertSolarMassesIntoKilogram(massInSolarMasses);

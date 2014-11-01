@@ -11,6 +11,10 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
+/**
+ * @author Andi
+ *
+ */
 public class Spaceship extends SolarActor
 {
 
@@ -94,17 +98,27 @@ public class Spaceship extends SolarActor
         }
     }
 
+    /**
+     * The spaceship object receives a new destination for its course. The old destination is discarded.
+     * @param destination Desired destination coordinates
+     */
     public void setDestination(GridPoint2 destination)
     {
         this.destination = destination;
         System.out.println("Neues Ziel gesetzt für " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
     }
 
+    /**
+     * @return Destination coordinates the spaceship object is heading to
+     */
     public GridPoint2 getDestination()
     {
         return destination;
     }
 
+    /**
+     * A simple movement is executed for the spaceship object. It rotates to face the destination and calls a constant MoveToAction.
+     */
     public void moveSpaceship()
     {
         getActions().clear();
@@ -114,9 +128,13 @@ public class Spaceship extends SolarActor
         addAction(sequence);
     }
 
+    /**
+     * Calculation of the necessary MoveToAction for the simple spaceship movement model. Ship speed is dependent on spaceship's speed attribute.
+     * The MoveToAction acts on the lower left corner of the spaceship object. A recalculation to take into account the ship's center point is necessary.
+     * @return A correctly prepared MoveToAction that now can be applied to the spacheship.
+     */
     private MoveToAction shipMovement()
     {
-        // MovetoAction bezieht sich auf linke untere Ecke des Spaceship-Objekts. Umrechnung auf Schiffsmittelpunkt erforderlich
         GridPoint2 adjDestination = new GridPoint2(destination.x - (int) (getWidth() / 2), destination.y - (int) (getHeight() / 2));
         MoveToAction mov = new MoveToAction();
         mov.setPosition(adjDestination.x, adjDestination.y);
@@ -127,11 +145,18 @@ public class Spaceship extends SolarActor
         return mov;
     }
 
+    /**
+     * Simple rotation model. Instantly turns the ship to face its current destination.
+     */
     private void shipRotation()
     {
         solarActorSprite.setRotation(calculateRotationAngle());
     }
 
+    /**
+     * Calculates the angle between the current location of the spaceship and its destination point.
+     * @return The rotation angle which will make the ship face its destination from its current position.
+     */
     private float calculateRotationAngle()
     {
         return (float) -Math.toDegrees(Math.atan2(getX() + getWidth() / 2 - destination.x, getY() + getHeight() / 2 - destination.y));

@@ -4,11 +4,16 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+
+/**
+ * @author Andi
+ *
+ */
 public class Star extends AstronomicalBody
 {	
-	public Star(String name, double massInSolarMasses, double orbitalRadiusInMeters, double angleInDegree, AstronomicalBody origin)
+	public Star(String name, double massInSolarMasses, double orbitalRadiusInAU, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadiusInMeters, angleInDegree, origin);
+		super(name, convertAUIntoKilometer(orbitalRadiusInAU), angleInDegree, origin);
 		this.setSize(1000, 1000);
 		this.massInKilogram = convertSolarMassesIntoKilogram(massInSolarMasses);
 	}
@@ -37,8 +42,8 @@ public class Star extends AstronomicalBody
      * @param name Desired name of the planet
      * @param massInEarthMasses Desired mass of the planet in multiples of Earth Masses
      * @param orbitalRadiusInAU Desired orbital radius around the star in multiples of Astronomical Units
-     * @param angleInDegree Desired angle of the planet's position on the map of the system
-     * @return created planet object
+     * @param angleInDegree Desired angle of the planet's position on the map of the system relative to its star
+     * @return created Planet object
      */
     public Planet placeNewPlanet(String name, double massInEarthMasses, double orbitalRadiusInAU, double angleInDegree)
     {
