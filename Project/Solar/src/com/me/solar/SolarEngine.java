@@ -88,6 +88,10 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
     }
 
+    /**
+     * Camera movement controls.
+     * Handle zoom and lateral camera movement based on pressed keys.
+     */
     private void handleInput()
     {
         if (pressedKey == myKeys.PLUS)
