@@ -75,7 +75,7 @@
 							</target>
 						</configuration>
 						<goals>
-							<goal>run</goal>
+							<!-- <goal>run</goal>-->
 						</goals>
 					</execution>
 				</executions>
