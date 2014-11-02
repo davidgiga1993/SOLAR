@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.resources;
+ï»¿package dhbw.karlsruhe.it.solar.core.resources;
 
 public class Credits{
 	
@@ -18,7 +18,7 @@ public class Credits{
 	public void setRaiseRate(double Value)
 	{
 		this.RaiseRate = Value;
-  	     System.out.println("Raise Rate für Credits wurden gesetzt auf " + this.getRaiseRate());
+  	     System.out.println("Raise Rate fÃ¼r Credits wurden gesetzt auf " + this.getRaiseRate());
 	}
 	
 	public double getRaiseRate()
@@ -29,7 +29,7 @@ public class Credits{
 	public void setValue(double Value)
 	{
 		this.Value = Value;
-  	     System.out.println("Value für Credits wurden gesetzt auf " + this.getValue());
+  	     System.out.println("Value fÃ¼r Credits wurden gesetzt auf " + this.getValue());
 	}
 	
 	public double getValue()

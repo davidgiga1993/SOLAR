@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.stages;
+ï»¿package dhbw.karlsruhe.it.solar.core.stages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +122,7 @@ public class GameStartStage extends BaseStage
                 // Selection Box Functionality
                 SelRec.resetSelRec(x, y);
 
-                // Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl wenn Shift/Control nicht gedrückt
+                // Deselektion: linker Mausklick in den leeren Raum deselektiert Auswahl wenn Shift/Control nicht gedrÃ¼ckt
                 if (event.getTarget() instanceof SolarActor == false && button == 0 && !SE.isControlPressed() && !SE.isShiftPressed())
                     discardAllSelections();
 
@@ -159,7 +159,7 @@ public class GameStartStage extends BaseStage
      */
     private void getSelectionBoxSelectedActors()
     {
-        // //Geht alle Actors in der Stage durch und überprüft, ob sie in der Box liegen. Falls ja, werden sie zur Selektion geaddet
+        // //Geht alle Actors in der Stage durch und Ã¼berprÃ¼ft, ob sie in der Box liegen. Falls ja, werden sie zur Selektion geaddet
         for (int index = 0; index < getActors().size; index++)
         {
             float x = getActors().get(index).getX();
@@ -264,7 +264,7 @@ public class GameStartStage extends BaseStage
         if (actor instanceof Spaceship)
             ((Spaceship) actor).select();
 
-        // TODO: Remove Diagnoseausgabe wenn nicht mehr benötigt
+        // TODO: Remove Diagnoseausgabe wenn nicht mehr benÃ¶tigt
         System.out.println("Selected Actors: " + selectedActors.toString());
     }
 

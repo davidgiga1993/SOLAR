@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.solar.logic;
+﻿package dhbw.karlsruhe.it.solar.core.solar.logic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,7 +11,7 @@ import dhbw.karlsruhe.it.solar.core.resources.Credits;
 
 public class GameLogicService
 {
-    // Globale Spiellogik wird hier eingef�gt!
+    // Globale Spiellogik wird hier eingefügt!
 
     public Credits credits;
     public String backgroundImage = "defaultBackground.png";

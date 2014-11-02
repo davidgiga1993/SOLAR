@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+﻿package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -105,7 +105,7 @@ public class Spaceship extends SolarActor
     public void setDestination(GridPoint2 destination)
     {
         this.destination = destination;
-        System.out.println("Neues Ziel gesetzt f�r " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
+        System.out.println("Neues Ziel gesetzt für " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
     }
 
     /**

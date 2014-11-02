@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+ï»¿package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -38,7 +38,7 @@ public class SelectionRectangle extends Actor
 	
 	public void updatePositionAndSize(float mouseX, float mouseY)
 	{
-		//Berechnet Position, Width und Height neu abhängig von ursprünglicher Startposition und derzeitiger Mausposition
+		//Berechnet Position, Width und Height neu abhÃ¤ngig von ursprÃ¼nglicher Startposition und derzeitiger Mausposition
 		if( startPosition.x > mouseX)
 		{
 			setX(mouseX);

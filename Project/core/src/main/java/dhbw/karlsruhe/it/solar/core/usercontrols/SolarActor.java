@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+Ôªøpackage dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -59,7 +59,7 @@ public abstract class SolarActor extends Actor {
 	 * @return scaled down distance
 	 */
 	protected static float scaleDistanceToStage( double distance ) {
-		//TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu groﬂe Eingaben gesch¸tzt
+		//TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu gro√üe Eingaben gesch√ºtzt
 		double scalingFactor = 2 * Math.pow(10, 4);
 		return (float) (distance / scalingFactor);
 	}
