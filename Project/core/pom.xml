@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>dhbw.karlsruhe.it</groupId>
+		<artifactId>solar</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>solar-core</artifactId>
+	<packaging>jar</packaging>
+	<name>Solar Core</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-backend-lwjgl</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-platform</artifactId>
+			<scope>test</scope>
+			<classifier>natives-desktop</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.github.stefanbirkner</groupId>
+			<artifactId>system-rules</artifactId>
+			<scope>test</scope>
+			<version>1.5.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
