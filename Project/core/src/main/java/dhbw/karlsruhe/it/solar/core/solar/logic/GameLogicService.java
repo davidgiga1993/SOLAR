@@ -1,4 +1,4 @@
-﻿package dhbw.karlsruhe.it.solar.core.solar.logic;
+package dhbw.karlsruhe.it.solar.core.solar.logic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

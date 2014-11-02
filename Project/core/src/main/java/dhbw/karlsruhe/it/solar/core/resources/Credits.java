@@ -1,4 +1,4 @@
-﻿package dhbw.karlsruhe.it.solar.core.resources;
+package dhbw.karlsruhe.it.solar.core.resources;
 
 public class Credits{
 	

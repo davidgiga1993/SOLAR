@@ -1,4 +1,4 @@
-﻿package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;

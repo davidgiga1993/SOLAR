@@ -1,4 +1,4 @@
-﻿package dhbw.karlsruhe.it.solar.core.stages;
+package dhbw.karlsruhe.it.solar.core.stages;
 
 import java.util.ArrayList;
 import java.util.List;
