@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
@@ -18,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 public class Spaceship extends SolarActor
 {
 
-    private GridPoint2 destination;
+    private Vector2 destination;
     private float speed = 100f;
 
     public Spaceship(String name)
@@ -52,8 +52,12 @@ public class Spaceship extends SolarActor
 
     private void displaySpaceship(Batch batch)
     {
+    	batch.end();
+    	batch.begin();
         solarActorSprite.setPosition(getX(), getY());
         solarActorSprite.draw(batch);
+        batch.end();
+        batch.begin();
     }
 
     private void displayCourseAndDestination()
@@ -102,7 +106,7 @@ public class Spaceship extends SolarActor
      * The spaceship object receives a new destination for its course. The old destination is discarded.
      * @param destination Desired destination coordinates
      */
-    public void setDestination(GridPoint2 destination)
+    public void setDestination(Vector2 destination)
     {
         this.destination = destination;
         System.out.println("Neues Ziel gesetzt für " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
@@ -111,7 +115,7 @@ public class Spaceship extends SolarActor
     /**
      * @return Destination coordinates the spaceship object is heading to
      */
-    public GridPoint2 getDestination()
+    public Vector2 getDestination()
     {
         return destination;
     }
@@ -119,7 +123,7 @@ public class Spaceship extends SolarActor
     /**
      * A simple movement is executed for the spaceship object. It rotates to face the destination and calls a constant MoveToAction.
      */
-    public void moveSpaceship()
+    public void moveToDestination()
     {
         getActions().clear();
         SequenceAction sequence = new SequenceAction();
@@ -135,7 +139,7 @@ public class Spaceship extends SolarActor
      */
     private MoveToAction shipMovement()
     {
-        GridPoint2 adjDestination = new GridPoint2(destination.x - (int) (getWidth() / 2), destination.y - (int) (getHeight() / 2));
+    	Vector2 adjDestination = new Vector2(destination.x - (getWidth() / 2), destination.y - (getHeight() / 2));
         MoveToAction mov = new MoveToAction();
         mov.setPosition(adjDestination.x, adjDestination.y);
         float deltaX = getX() - adjDestination.x;

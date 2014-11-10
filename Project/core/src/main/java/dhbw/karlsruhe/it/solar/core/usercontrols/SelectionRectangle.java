@@ -36,7 +36,7 @@ public class SelectionRectangle extends Actor
         }
 	}
 	
-	public void updatePositionAndSize(float mouseX, float mouseY)
+	public void updateEnd(float mouseX, float mouseY)
 	{
 		//Berechnet Position, Width und Height neu abhängig von ursprünglicher Startposition und derzeitiger Mausposition
 		if( startPosition.x > mouseX)
@@ -65,7 +65,7 @@ public class SelectionRectangle extends Actor
 
 	}
 	
-	public void resetSelRec(float x, float y)
+	public void setStart(float x, float y)
 	{
     	setPosition(x, y);
     	setStartPosition(new GridPoint2((int)x,(int)y));
