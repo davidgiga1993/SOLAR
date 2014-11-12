@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 public class GameInputListener extends InputListener {
 	
@@ -65,7 +66,6 @@ public class GameInputListener extends InputListener {
 	public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 		switch(button) {
 		case Input.Buttons.LEFT:
-			stage.selectedActors.clear();
 			stage.selectionRectangle.setStart(x,y);
 			break;
 		case Input.Buttons.MIDDLE:
@@ -89,7 +89,7 @@ public class GameInputListener extends InputListener {
 		switch(button) {
 		case Input.Buttons.LEFT:
 			stage.selectionRectangle.hide();
-			stage.updateSelection();
+			updateSelection();
 			break;
 		case Input.Buttons.MIDDLE:
 			break;
@@ -105,9 +105,44 @@ public class GameInputListener extends InputListener {
 	 * Updates the selection according to the currently pressed modifiers
 	 */
 	private void updateSelection() {
+		// first select the selection state (add, remove, create)
+		SelectionState state;
 		if (se.isShiftPressed()) {
-			// TODO: Move Selection Logic to some safe spot.
+			state = SelectionState.ADD;
+		} else if (se.isControlPressed()) {
+			state = SelectionState.REMOVE;
+		} else {
+			// Create: clear & add
+			stage.selectedActors.clear();
+			state = SelectionState.ADD;
 		}
+
+		// iterate every actor of the stage
+		SolarActor sa;
+		for (Actor a : stage.getActors()) {
+			// cast so we can use insideRectangle method
+			if (a instanceof SolarActor) {
+				sa = (SolarActor) a;
+				// insideRectangle to evaluate whether the actor is inside the selection.
+				if (sa.insideRectangle(stage.selectionRectangle.getRectangle())) {
+					// proceed according to state
+					switch(state) {
+						case ADD:
+							stage.selectedActors.add(sa);
+							break;
+						case REMOVE:
+							stage.selectedActors.remove(sa);
+							break;
+					}
+				}
+			}
+		}
+
+	}
+
+	private enum SelectionState {
+		ADD,
+		REMOVE
 	}
 
 }

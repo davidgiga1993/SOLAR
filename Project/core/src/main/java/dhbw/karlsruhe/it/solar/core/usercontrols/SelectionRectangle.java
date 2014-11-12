@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class SelectionRectangle extends Actor
@@ -12,6 +13,7 @@ public class SelectionRectangle extends Actor
 
 	private ShapeRenderer shapeRenderer;
 	private boolean visible;
+	private Rectangle rectangle = new Rectangle(0f,0f,0f,0f);
 	private GridPoint2 startPosition;
 	private GridPoint2 mousePosition;
 
@@ -93,6 +95,10 @@ public class SelectionRectangle extends Actor
 	public GridPoint2 getEndPosition()
 	{
 		return mousePosition;
+	}
+
+	public Rectangle getRectangle() {
+		return new Rectangle(getX(), getY(), getWidth(), getHeight());
 	}
 	
 }

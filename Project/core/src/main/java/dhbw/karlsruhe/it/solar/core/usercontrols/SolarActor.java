@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
@@ -62,5 +63,10 @@ public abstract class SolarActor extends Actor {
 		//TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
 		double scalingFactor = 2 * Math.pow(10, 4);
 		return (float) (distance / scalingFactor);
+	}
+
+	public boolean insideRectangle(Rectangle rect) {
+		Rectangle boundingRect = new Rectangle(getX(), getY(), getWidth(), getHeight());
+		return boundingRect.overlaps(rect);
 	}
 }

@@ -1,8 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.inputlisteners;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
@@ -16,12 +14,12 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
  */
 public class Selection {
 
-	protected List<SolarActor> selectedActors;
+	protected Set<SolarActor> selectedActors;
 	protected List<Spaceship> cachedSpaceships;
 	protected boolean spaceshipDirtyFlag = true;
 	
 	public Selection() {
-		selectedActors = new ArrayList<SolarActor>();
+		selectedActors = new HashSet<SolarActor>();
 		cachedSpaceships = new ArrayList<Spaceship>();
 	}
 	
@@ -48,7 +46,7 @@ public class Selection {
 	 */
 	public void create(List<SolarActor> actors) {
 		clear();
-		selectedActors = actors;
+		selectedActors.addAll(actors);
 		setSelected(actors);
 	}
 	
@@ -64,7 +62,7 @@ public class Selection {
 	
 	/**
 	 * Convenience method
-	 * @see add(SolarActor)
+	 * @see dhbw.karlsruhe.it.solar.core.inputlisteners.Selection.add(dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor add)
 	 */
 	public void add(Actor actor) {
 		if (actor instanceof SolarActor)
@@ -82,6 +80,17 @@ public class Selection {
 			}
 		}
 		spaceshipDirtyFlag = true;
+	}
+
+	/**
+	 * Removes the given Object from the selection iff it is present.
+	 * @param actor
+	 */
+	public void remove(SolarActor actor) {
+		if (selectedActors.remove(actor)) {
+			actor.deselect();
+			spaceshipDirtyFlag = true;
+		}
 	}
 
 	private void setSelected(Collection<SolarActor> actors) {
@@ -103,7 +112,7 @@ public class Selection {
 		return cachedSpaceships;
 	}
 	
-	public List<SolarActor> getActors() {
+	public Collection<SolarActor> getActors() {
 		return selectedActors;
 	}
 	
@@ -120,4 +129,5 @@ public class Selection {
 		}
 		spaceshipDirtyFlag = false;
 	}
+
 }

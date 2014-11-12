@@ -1,14 +1,12 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SelectionRectangle;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 
@@ -115,76 +113,5 @@ public class GameStartStage extends BaseStage
     	this.addListener(new GameInputListener(this));
     }
 
-    /**
-     * Iterates over all actors in the stage and checks whether they are within the bounds of the selection box. If yes, adds them to the selection list.
-     */
-    public void updateSelection()
-    {
-        // //Geht alle Actors in der Stage durch und überprüft, ob sie in der Box liegen. Falls ja, werden sie zur Selektion geaddet
-        for (Actor a : getActors())
-        {
-            float x = a.getX();
-            float y = a.getY();
-            if(isXWithinSelRec(x) && isYWithinSelRec(y) && a instanceof SolarActor && !selectedActors.contains(a)) {
-            	selectedActors.add(a);
-            }
-        }
-    }
-
-    /**
-     * @param y Y-Axis value to be checked
-     * @return Checks whether an Y-axis value is within the bounds of the selection rectangle.
-     */
-    private boolean isYWithinSelRec(float y)
-    {
-        return y > selectionRectangle.getY() && y < (selectionRectangle.getY() + selectionRectangle.getHeight());
-    }
-
-    /**
-     * @param x X-Axis value to be checked
-     * @return Checks whether an X-axis value is within the bounds of the selection rectangle.
-     */
-    private boolean isXWithinSelRec(float x)
-    {
-        return x > selectionRectangle.getX() && x < (selectionRectangle.getX() + selectionRectangle.getWidth());
-    }
-
-/*
-    /**
-     * Interprets a selection order based on environment.
-     * 1 - simple left click selection on an empty selection list
-     * 2 - simple left click selection, other selections are discarded
-     * 3 - remove from selection - mouse click with Shift/Ctrl-Button pressed on an already selected object
-     * 4 - add to selection list with Shift/Ctrl-Button pressed
-     * @param actor New actor which is to be added to the selection list.
-     *
-    public void addSelection(Actor actor)
-    {
-        // variant 1: no other object are in selectedActors-List: simple left click selects object
-        if (selectedActors.isEmpty())
-        {
-            selectActor(actor);
-            return;
-        }
-        // Variant 2: no Shift or Control-button is pressed: discard all other selections
-        if (SE.isShiftPressed() == false && SE.isControlPressed() == false)
-        {
-            discardAllSelections();
-            selectActor(actor);
-            return;
-        }
-        // Variant 3: object already in list 'added' with Click+SHIFT or Click+CONTROL: remove that object from selection
-        if (selectedActors.contains(actor) && (SE.isShiftPressed() == true || SE.isControlPressed() == true))
-        {
-            removeActor(actor);
-            return;
-        }
-        // Variant 4: new additional object added to list with Click+SHIFT or Click+CONTROL
-        else
-        {
-            selectActor(actor);
-        }
-    }
-*/
 
 }

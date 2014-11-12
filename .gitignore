@@ -5,7 +5,9 @@
 *.war
 *.ear
 *.orig
+*.iml
 Project/Solar-html/war/*
 .metadata*
 Project/Solar-html/gwt-unitCache/*
 Project/Solar-android/bin/*
+SOLAR/*

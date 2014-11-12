@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 public class SpaceshipJUnit
@@ -82,8 +82,9 @@ public class SpaceshipJUnit
     @Test
     public void testSpaceshipDestination()
     {
-    	testShip.setDestination(new GridPoint2(12345, 67890));
-        assertEquals(12345, testShip.getDestination().x);
-        assertEquals(67890, testShip.getDestination().y);
+    	testShip.setDestination(new Vector2(12345, 67890));
+
+        assertEquals(12345, testShip.getDestination().x, 1);
+        assertEquals(67890, testShip.getDestination().y, 1);
     }
 }
