@@ -27,7 +27,7 @@ public class StartStage extends HUDStage
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
                 SE.stageManager.removeStage("StartStage");
-                SE.stageManager.addStage(new GameStartStage(SE));                
+                GameStartStage.startGame();
                 return true;
             }
 

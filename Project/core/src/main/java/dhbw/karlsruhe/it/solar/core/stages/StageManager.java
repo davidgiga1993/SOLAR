@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 public class StageManager extends BaseStage
@@ -188,5 +190,11 @@ public class StageManager extends BaseStage
             Stages.get(X).scrolled(amount);
         }
         return false;
+    }
+
+    public void resize(int width, int height) {
+        for(Stage stage : Stages) {
+            ((BaseStage) stage).resize(width, height);
+        }
     }
 }

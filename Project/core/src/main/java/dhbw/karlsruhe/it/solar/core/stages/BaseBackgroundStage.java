@@ -7,6 +7,6 @@ public class BaseBackgroundStage extends BaseStage
 {
     public BaseBackgroundStage(SolarEngine SE, String TAG)
     {
-        super(SE, TAG, SE.Backgroundcamera);
+        super(SE, TAG, SE.backgroundCamera);
     }
 }

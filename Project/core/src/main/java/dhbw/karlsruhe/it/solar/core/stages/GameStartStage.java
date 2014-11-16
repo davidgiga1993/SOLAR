@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.math.GridPoint2;
 
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
@@ -16,14 +18,37 @@ public class GameStartStage extends BaseStage
     public SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
 
+    /**
+     * Call this to initialize a new game.
+     */
+    public static void startGame(){
+        SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
+
+        BackgroundStage backgroundStage = new BackgroundStage(engine);
+        engine.stageManager.insertStageToBack(backgroundStage);
+
+        GameStartStage gameStage = new GameStartStage(engine);
+        engine.stageManager.addStage(gameStage);
+
+        HUDStage hudStage = new HUDStage(engine, "HUD");
+        engine.stageManager.addStage(hudStage);
+
+        GameHUDStage gameHUDStage = new GameHUDStage(engine);
+        engine.stageManager.addStage(gameHUDStage);
+
+
+
+        InputMultiplexer multiplexer = new InputMultiplexer();
+        multiplexer.addProcessor(gameHUDStage);
+        multiplexer.addProcessor(gameStage);
+        Gdx.input.setInputProcessor(multiplexer);
+
+    }
+
     public GameStartStage(SolarEngine SE)
     {
         super(SE, "GameStartStage");
         SE.Service.StartGame();
-
-        SE.stageManager.insertStageToBack(new BackgroundStage(SE));
-        SE.stageManager.addStage(new HUDStage(SE, "HUD"));
-        SE.stageManager.addStage(new GameHUDStage(SE));
 
         gameStartStageListener();
         addSelectionRectangle();
@@ -32,12 +57,6 @@ public class GameStartStage extends BaseStage
         placeNewShip("Event Horizon", new GridPoint2(0, 120));
         placeNewShip("Nostromo", new GridPoint2(150, 100));
         placeNewShip("Destiny", new GridPoint2(75, 0));
-
-        /*
-         * Image background = SE.Service.AddBackgroundImage();
-         * addActor(background);
-         * background.toBack();
-         */
     }
 
     /**

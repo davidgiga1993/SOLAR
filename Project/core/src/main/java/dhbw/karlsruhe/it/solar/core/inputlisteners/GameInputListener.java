@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 public class GameInputListener extends InputListener {
@@ -64,6 +65,9 @@ public class GameInputListener extends InputListener {
 
 	@Override
 	public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+		if (event.getTarget() instanceof GUIActor){
+			return false;
+		}
 		switch(button) {
 		case Input.Buttons.LEFT:
 			stage.selectionRectangle.setStart(x,y);

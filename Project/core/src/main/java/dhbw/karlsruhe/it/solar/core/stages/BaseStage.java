@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import com.badlogic.gdx.utils.viewport.Viewport;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 public abstract class BaseStage extends Stage
@@ -21,5 +22,15 @@ public abstract class BaseStage extends Stage
     	
     	this.SE = SE;
     	this.TAG = TAG;
+    }
+
+    public BaseStage(SolarEngine SE,String TAG, Viewport v) {
+        super(v);
+        this.SE=SE;
+        this.TAG=TAG;
+    }
+
+    public void resize(int width, int height) {
+        getViewport().update(width, height);
     }
 }

@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.solar;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
@@ -8,19 +9,22 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import dhbw.karlsruhe.it.solar.core.solar.logic.GameLogicService;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 
-public class SolarEngine implements ApplicationListener, InputProcessor
+public class SolarEngine extends Game implements InputProcessor
 {
     public GameLogicService Service = new GameLogicService();
     
     public OrthographicCamera camera;
-    public OrthographicCamera HUDcamera;
-    public OrthographicCamera Backgroundcamera;
+    public OrthographicCamera guiCamera;
+    public OrthographicCamera backgroundCamera;
 
     public TextureCacher Textures;
     public Styles styles;
@@ -28,8 +32,8 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     // Stage manager
     public StageManager stageManager;
 
-    public static final float Width = 900;
-    public static final float Height = 600;
+    public static float Width = 900;
+    public static float Height = 600;
     public static final float WidthHalf = Width / 2;
     public static final float HeightHalf = Height / 2;
 
@@ -50,8 +54,9 @@ public class SolarEngine implements ApplicationListener, InputProcessor
 
         // Kamera erstellen
         camera = new OrthographicCamera(Width, Height);
-        HUDcamera = new OrthographicCamera(Width, Height);
-        Backgroundcamera = new OrthographicCamera(Width, Height);
+        guiCamera = new OrthographicCamera(Width, Height);
+        backgroundCamera = new OrthographicCamera(Width, Height);
+
 
         mainBatch = new SpriteBatch();
 
@@ -77,7 +82,7 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     public void render()
     {
         // Reset farbe
-        Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
+        Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // Projektionsmatrix auf Batch anwenden
@@ -86,6 +91,8 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         handleInput();
         camera.update();
         stageManager.draw();
+        // Table.drawDebug(stageManager.getStage("GameHUD"));
+
 
     }
 
@@ -148,6 +155,22 @@ public class SolarEngine implements ApplicationListener, InputProcessor
     @Override
     public void resize(int width, int height)
     {
+        this.Width=width;
+        this.Height=height;
+        float ratio = (float) (Gdx.graphics.getHeight()) / (float) (Gdx.graphics.getWidth());
+        camera.viewportWidth = width;
+        camera.viewportHeight = width*ratio;
+        camera.update();
+        guiCamera.viewportWidth = width;
+        guiCamera.viewportHeight = width*ratio;
+        guiCamera.update();
+        backgroundCamera.viewportWidth = width;
+        backgroundCamera.viewportHeight = width*ratio;
+        backgroundCamera.update();
+
+        stageManager.resize(width, (int) (width*ratio));
+
+        super.resize(width, height);
     }
 
     @Override
@@ -299,6 +322,10 @@ public class SolarEngine implements ApplicationListener, InputProcessor
         if (pressedKey == myKeys.CONTROL)
             return true;
         return false;
+    }
+
+    public static SolarEngine get() {
+        return (SolarEngine) Gdx.app.getApplicationListener();
     }
    
 }

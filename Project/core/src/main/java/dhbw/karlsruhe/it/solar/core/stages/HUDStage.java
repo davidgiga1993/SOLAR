@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Timer;
 
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
-public class HUDStage extends BaseStage
+public class HUDStage extends BaseGUIStage
 {
     public HUDStage(SolarEngine SE, String TAG)
     {

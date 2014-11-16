@@ -3,64 +3,65 @@ package dhbw.karlsruhe.it.solar.core.stages;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
+import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.BottomBarGUIElement;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBarGUIElement;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBarGUIElement;
 
-public class GameHUDStage extends HUDStage{
+public class GameHUDStage extends BaseGUIStage{
 	
 
-    private Table navigationBar;
-    private Table RessourceOverview;
+    private NavigationBarGUIElement navigationBar;
+    private ResourceBarGUIElement resourceBar;
+    private BottomBarGUIElement bottomBar;
 
-	public GameHUDStage(final SolarEngine SE) {
-		super(SE, "GameHUD");
-		
+    private Table guiTable;
 
-        BitmapFont font = new BitmapFont();
-        
-        
-		navigationBar = new Table();
-        navigationBar.setSize(30, Gdx.graphics.getHeight());
-        navigationBar.setPosition(-SolarEngine.WidthHalf, SolarEngine.HeightHalf - navigationBar.getHeight());
-        navigationBar.align(Align.left);
-        navigationBar.setColor(Color.CYAN);
-        navigationBar.add(new Label("Results", new LabelStyle(font, Color.WHITE))).left().top().expandX();
-        navigationBar.row();
-        navigationBar.add(new Label("Option1", new LabelStyle(font, Color.WHITE)));
-        navigationBar.row();
-        navigationBar.add(new Label("Option2", new LabelStyle(font, Color.WHITE)));
-        
-        RessourceOverview = new Table();
-        //RessourceOverview.setBackground();
-        
-        RessourceOverview.setSize(Gdx.graphics.getWidth(), 100);
-        RessourceOverview.setPosition(-SolarEngine.WidthHalf, SolarEngine.HeightHalf - RessourceOverview.getHeight());
-        RessourceOverview.align(Align.right);
-        
-        //Label CreditsLabel = new Label("Credits", new LabelStyle(font, new Color(125, 125, 125, 255)));
-        RessourceOverview.add(new Label("", new LabelStyle(font, Color.WHITE))).uniform();
-        RessourceOverview.add(new Label("Value", new LabelStyle(font, Color.WHITE))).uniform();
-        RessourceOverview.add(new Label("Raise Rate", new LabelStyle(font, Color.WHITE))).uniform();
-        RessourceOverview.row();
-        RessourceOverview.add(new Label("Credits", new LabelStyle(font, Color.WHITE))).uniform();
-        RessourceOverview.add(new Label(String.valueOf(SE.Service.credits.getValue()), new LabelStyle(font, Color.WHITE)));
-        RessourceOverview.add(new Label(String.valueOf(SE.Service.credits.getRaiseRate()), new LabelStyle(font, Color.WHITE)));
-        
-        //Label CreditsValue = new Label(String.valueOf(SE.Service.credits.getValue()), new LabelStyle(font, new Color(125, 125, 125, 255)));
-        //Label CreditsRaiseRate = new Label(String.valueOf(SE.Service.credits.getRaiseRate()), new LabelStyle(font, new Color(125, 125, 125, 255)));
-        
-        //RessourceOverview.addActor(CreditsLabel);
-        //RessourceOverview.addActor(CreditsValue);
-        //RessourceOverview.addActor(CreditsRaiseRate);     
-        
-        addActor(navigationBar);
-        addActor(RessourceOverview);
+	public GameHUDStage(final SolarEngine solarEngine) {
+		super(solarEngine, "GameHUD");
+
+        this.addListener(new GUIInputListener());
+
+        guiTable = new Table();
+        guiTable.setPosition(0,0);
+        guiTable.setFillParent(false);
+        guiTable.setWidth(Gdx.graphics.getWidth());
+        guiTable.setHeight(Gdx.graphics.getHeight());
+        guiTable.debug();
+        guiTable.top().left();
+
+        navigationBar = new NavigationBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
+        resourceBar = new ResourceBarGUIElement(solarEngine.styles.defaultLabelStyle);
+        bottomBar = new BottomBarGUIElement(solarEngine.styles.defaultLabelStyle);
+
+        guiTable.add(resourceBar.resourceBar).align(Align.right).colspan(2).height(50).expandX();
+        guiTable.row();
+        guiTable.add(navigationBar.navigationBar).expandY().top().fill();
+        guiTable.add(new Actor()).expandX();
+        guiTable.row().maxHeight(75);
+        guiTable.add(bottomBar.root).height(75).colspan(2).expandX().fill();
+
+
+        addActor(guiTable);
+        //navigationBar.addTo(this);
+        //resourceBar.addTo(this);
+
 	}
-	
-	
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+        guiTable.invalidateHierarchy();
+        guiTable.setSize(width, height);
+    }
 
 }
