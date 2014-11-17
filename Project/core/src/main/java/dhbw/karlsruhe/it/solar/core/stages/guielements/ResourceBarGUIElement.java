@@ -18,12 +18,7 @@ public class ResourceBarGUIElement {
 
     public ResourceBarGUIElement(Label.LabelStyle labelStyle) {
         resourceBar = new Table();
-        // resourceBar.debug();
-        //resourceBar.setPosition(posX, posY);
 
-        //resourceBar.align(Align.right);
-
-        //Label CreditsLabel = new Label("Credits", new LabelStyle(font, new Color(125, 125, 125, 255)));
         resourceBar.row();
         resourceBar.add(new Label("", labelStyle)).uniform();
         resourceBar.add(new Label("Value", labelStyle)).uniform();

@@ -1,6 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.solar;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -8,10 +7,6 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import dhbw.karlsruhe.it.solar.core.solar.logic.GameLogicService;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
@@ -60,8 +55,7 @@ public class SolarEngine extends Game implements InputProcessor
 
         mainBatch = new SpriteBatch();
 
-        Textures = new TextureCacher();
-        Textures.LoadTextures();
+
         // Texture.setEnforcePotImages(false);
 
         styles = new Styles(Textures);
@@ -76,6 +70,8 @@ public class SolarEngine extends Game implements InputProcessor
     public void dispose()
     {
         mainBatch.dispose();
+        FontCacher.cleanUp();
+        TextureCacher.cleanUp();
     }
 
     @Override
@@ -91,7 +87,6 @@ public class SolarEngine extends Game implements InputProcessor
         handleInput();
         camera.update();
         stageManager.draw();
-        // Table.drawDebug(stageManager.getStage("GameHUD"));
 
 
     }

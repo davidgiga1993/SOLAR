@@ -1,29 +1,20 @@
 package dhbw.karlsruhe.it.solar.core.solar;
 
-import java.util.HashMap;
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
+import java.util.HashMap;
 
 public class TextureCacher
 {
-    public HashMap<String, NinePatch> NinePatchMap = new HashMap<String, NinePatch>();
+    public static HashMap<String, NinePatch> ninePatchCache = new HashMap<String, NinePatch>();
+    public static TextureAtlas gameAtlas = new TextureAtlas(Gdx.files.internal("packed/texturePack.atlas"));
 
-    public static Texture Load(String Path)
-    {
-        return new Texture(Gdx.files.internal(Path));
+    private TextureCacher() {}
+
+    public static void cleanUp() {
+        gameAtlas.dispose();
     }
 
-    public void LoadTextures()
-    {
-//        NinePatch n = new NinePatch(TextureCacher.Load("data/button_regular.9.png"));
-//        NinePatchMap.put("button_regular", n);
-//        
-//        n = new NinePatch(TextureCacher.Load("data/button_selected.9.png"));
-//        NinePatchMap.put("button_selected", n);
-//        
-//        n = new NinePatch(TextureCacher.Load("data/button_active.9.png"));
-//        NinePatchMap.put("button_active", n);
-    }
 }

@@ -24,6 +24,5 @@ public class GUIInputListener extends InputListener {
             return false;
         }
         return false;
-        // return super.mouseMoved(event, x, y);
     }
 }

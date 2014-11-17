@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
+import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 /**
  * @author Andi
@@ -28,8 +29,8 @@ public class Spaceship extends SolarActor
 	      this.selected = false;
 	      this.destination = null;
 	      this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
-	      solarActorTexture = new Texture(Gdx.files.internal("data/Cruiser.png"));
-	      this.setSize(solarActorTexture.getWidth(), solarActorTexture.getHeight());
+	      solarActorTexture = TextureCacher.gameAtlas.findRegion("Cruiser");
+	      this.setSize(solarActorTexture.getRegionWidth(), solarActorTexture.getRegionHeight());
 	      createShipSprite();
     }
 

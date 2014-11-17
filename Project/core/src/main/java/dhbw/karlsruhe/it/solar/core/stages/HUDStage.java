@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 
+import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 public class HUDStage extends BaseGUIStage
@@ -18,7 +19,7 @@ public class HUDStage extends BaseGUIStage
         
         
         timer = new Timer();
-        BitmapFont font = new BitmapFont();
+        BitmapFont font = FontCacher.getFont("default");
         FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
         FPSLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
        

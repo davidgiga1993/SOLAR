@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -14,7 +15,7 @@ public abstract class SolarActor extends Actor {
 	
 	protected ShapeRenderer shapeRenderer;
 	protected boolean selected;
-	protected Texture solarActorTexture;
+	protected TextureRegion solarActorTexture;
 	protected Sprite solarActorSprite;
 	
 	public SolarActor (String name)

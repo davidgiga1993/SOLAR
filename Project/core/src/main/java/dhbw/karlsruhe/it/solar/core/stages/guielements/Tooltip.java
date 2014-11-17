@@ -10,8 +10,6 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
  */
 public class Tooltip extends Window {
 
-    private Skin skin;
-
     public Tooltip(String title, Skin tooltipSkin) {
         super(title, tooltipSkin);
         setMovable(false);
