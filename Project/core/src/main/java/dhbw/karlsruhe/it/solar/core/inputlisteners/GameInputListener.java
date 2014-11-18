@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.inputlisteners;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -15,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 public class GameInputListener extends InputListener {
 	
 	protected GameStartStage stage;
-	protected SolarEngine se = (SolarEngine) Gdx.app.getApplicationListener();
+	protected SolarEngine se = SolarEngine.get();
 	
 	public GameInputListener(GameStartStage gameStage) {
 		stage = gameStage;
@@ -35,7 +36,6 @@ public class GameInputListener extends InputListener {
 
 	@Override
 	public boolean keyDown(InputEvent event, int keycode) {
-		// TODO Auto-generated method stub
 		return super.keyDown(event, keycode);
 	}
 
@@ -142,6 +142,40 @@ public class GameInputListener extends InputListener {
 			}
 		}
 
+	}
+	
+	/**
+	 * Handle continous input e.g. moving the camera
+	 */
+	public void handleContinousInput() {
+    	if(Gdx.input.isKeyPressed(Keys.ANY_KEY)) {
+    		System.out.println("pressed");
+    		Gdx.input.isKeyPressed(Keys.PLUS);
+    	}
+        if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.STAR))
+        {
+            se.camera.zoom -= 0.10f;
+        }
+        if (Gdx.input.isKeyPressed(Keys.MINUS))
+        {
+        	se.camera.zoom += 0.10f;
+        }
+        if (Gdx.input.isKeyPressed(Keys.UP))
+        {
+        	se.camera.translate(0, 10, 0);
+        }
+        if (Gdx.input.isKeyPressed(Keys.DOWN))
+        {
+        	se.camera.translate(0, -10, 0);
+        }
+        if (Gdx.input.isKeyPressed(Keys.LEFT))
+        {
+        	se.camera.translate(-10, 0, 0);
+        }
+        if (Gdx.input.isKeyPressed(Keys.RIGHT))
+        {
+        	se.camera.translate(10, 0, 0);
+        }
 	}
 
 	private enum SelectionState {

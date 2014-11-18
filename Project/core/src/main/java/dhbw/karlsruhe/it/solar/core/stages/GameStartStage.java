@@ -17,6 +17,7 @@ public class GameStartStage extends BaseStage
     public Selection selectedActors = new Selection();
     public SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
+    private GameInputListener inputListener;
 
     /**
      * Call this to initialize a new game.
@@ -57,6 +58,11 @@ public class GameStartStage extends BaseStage
         placeNewShip("Event Horizon", new GridPoint2(0, 120));
         placeNewShip("Nostromo", new GridPoint2(150, 100));
         placeNewShip("Destiny", new GridPoint2(75, 0));
+    }
+    
+    @Override
+    public void act(float delta) {
+    	inputListener.handleContinousInput();
     }
 
     /**
@@ -129,7 +135,8 @@ public class GameStartStage extends BaseStage
      */
     private void gameStartStageListener()
     {
-    	this.addListener(new GameInputListener(this));
+    	inputListener = new GameInputListener(this);
+    	this.addListener(inputListener);
     }
 
 

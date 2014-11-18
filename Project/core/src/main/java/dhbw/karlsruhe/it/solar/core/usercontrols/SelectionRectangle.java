@@ -13,7 +13,6 @@ public class SelectionRectangle extends Actor
 
 	private ShapeRenderer shapeRenderer;
 	private boolean visible;
-	private Rectangle rectangle = new Rectangle(0f,0f,0f,0f);
 	private GridPoint2 startPosition;
 	private GridPoint2 mousePosition;
 

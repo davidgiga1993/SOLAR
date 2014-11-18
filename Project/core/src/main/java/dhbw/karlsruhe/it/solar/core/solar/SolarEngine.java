@@ -97,46 +97,6 @@ public class SolarEngine extends Game implements InputProcessor
      */
     private void handleInput()
     {
-        if (pressedKey == myKeys.PLUS)
-        {
-            camera.zoom -= 0.10f;
-        }
-        if (pressedKey == myKeys.MINUS)
-        {
-            camera.zoom += 0.10f;
-        }
-        if (pressedKey == myKeys.UP)
-        {
-            camera.translate(0, 10, 0);
-        }
-        if (pressedKey == myKeys.DOWN)
-        {
-            camera.translate(0, -10, 0);
-        }
-        if (pressedKey == myKeys.LEFT)
-        {
-            camera.translate(-10, 0, 0);
-        }
-        if (pressedKey == myKeys.RIGHT)
-        {
-            camera.translate(10, 0, 0);
-        }
-        if (Gdx.input.isKeyPressed(Keys.NUM_7) || Gdx.input.isKeyPressed(151))
-        {
-            camera.translate(-10, 10, 0);
-        }
-        if (Gdx.input.isKeyPressed(Keys.NUM_9) || Gdx.input.isKeyPressed(153))
-        {
-            camera.translate(10, 10, 0);
-        }
-        if (Gdx.input.isKeyPressed(Keys.NUM_3) || Gdx.input.isKeyPressed(147))
-        {
-            camera.translate(10, -10, 0);
-        }
-        if (Gdx.input.isKeyPressed(Keys.NUM_1) || Gdx.input.isKeyPressed(145))
-        {
-            camera.translate(-10, -10, 0);
-        }
         if (pressedKey == myKeys.ESC)
         {
             if (stageManager.getStage("GameStartStage") != null)
@@ -150,8 +110,8 @@ public class SolarEngine extends Game implements InputProcessor
     @Override
     public void resize(int width, int height)
     {
-        this.Width=width;
-        this.Height=height;
+        Width=width;
+        Height=height;
         float ratio = (float) (Gdx.graphics.getHeight()) / (float) (Gdx.graphics.getWidth());
         camera.viewportWidth = width;
         camera.viewportHeight = width*ratio;
