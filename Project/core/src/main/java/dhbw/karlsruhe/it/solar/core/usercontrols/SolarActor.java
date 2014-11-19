@@ -70,4 +70,11 @@ public abstract class SolarActor extends Actor {
 		Rectangle boundingRect = new Rectangle(getX(), getY(), getWidth(), getHeight());
 		return boundingRect.overlaps(rect);
 	}
+
+	@Override
+	public void setSize(float width, float height) {
+		// this ensures, that the origin is the center of the SolarActor.
+		setOrigin(width/2, height/2);
+		super.setSize(width, height);
+	}
 }

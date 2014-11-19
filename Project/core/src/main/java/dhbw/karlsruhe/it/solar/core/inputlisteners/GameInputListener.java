@@ -4,14 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
+import org.lwjgl.input.Keyboard;
 
 public class GameInputListener extends InputListener {
 	
@@ -93,7 +95,7 @@ public class GameInputListener extends InputListener {
 		switch(button) {
 		case Input.Buttons.LEFT:
 			stage.selectionRectangle.hide();
-			updateSelection();
+			interact(event);
 			break;
 		case Input.Buttons.MIDDLE:
 			break;
@@ -104,7 +106,20 @@ public class GameInputListener extends InputListener {
 			super.touchUp(event, x, y, pointer, button);
 		}
 	}
-	
+
+	/**
+	 * This method handles interact inputs. As of now it will Move the camera if ALT is pressed, or otherwise update the selection
+	 * @param event
+	 */
+	public void interact(InputEvent event) {
+		if (Gdx.input.isKeyPressed(Keys.ALT_LEFT)) {
+			moveCamera(event.getTarget());
+		} else {
+			updateSelection();
+		}
+
+	}
+
 	/**
 	 * Updates the selection according to the currently pressed modifiers
 	 */
@@ -143,38 +158,51 @@ public class GameInputListener extends InputListener {
 		}
 
 	}
-	
+
+	/**
+	 * Moves the camera above the given target
+	 * @param target
+	 */
+	private void moveCamera(Actor target) {
+		if(target instanceof Group) {
+			// if the user clicked into free space the target is the group containing all actors.
+			// moving the camera to the groups origin will result in a movement to the center
+			return;
+		}
+		se.camera.translate(target.getX() + target.getOriginX() - se.camera.position.x, target.getY() + target.getOriginY() - se.camera.position.y);
+	}
+
 	/**
 	 * Handle continous input e.g. moving the camera
 	 */
 	public void handleContinousInput() {
-    	if(Gdx.input.isKeyPressed(Keys.ANY_KEY)) {
-    		System.out.println("pressed");
-    		Gdx.input.isKeyPressed(Keys.PLUS);
-    	}
-        if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.STAR))
+		if (Keyboard.isKeyDown(Keyboard.KEY_ADD) ||Keyboard.isKeyDown(13))
         {
-            se.camera.zoom -= 0.10f;
+			// using a linear zoom is necessary because the perception of the world changes with it's zoom
+			// using a constant zoom would feel good while having a close look at things, but very slow when watching the whole solar system
+            se.camera.zoom *= 0.98f;
         }
-        if (Gdx.input.isKeyPressed(Keys.MINUS))
+        if (Gdx.input.isKeyPressed(Keys.MINUS) || Keyboard.isKeyDown(Keyboard.KEY_SUBTRACT))
         {
-        	se.camera.zoom += 0.10f;
+        	se.camera.zoom *= 1.02f;
         }
         if (Gdx.input.isKeyPressed(Keys.UP))
         {
-        	se.camera.translate(0, 10, 0);
+			// same goes for camera translation, it has to be a function of the current zoom, since we don't want to wait for
+			// hours to move the camera a few pixels while looking at the whole solar system
+        	se.camera.translate(0, 5 * se.camera.zoom, 0);
         }
         if (Gdx.input.isKeyPressed(Keys.DOWN))
         {
-        	se.camera.translate(0, -10, 0);
+        	se.camera.translate(0, -5 * se.camera.zoom, 0);
         }
         if (Gdx.input.isKeyPressed(Keys.LEFT))
         {
-        	se.camera.translate(-10, 0, 0);
+        	se.camera.translate(-5 * se.camera.zoom, 0, 0);
         }
         if (Gdx.input.isKeyPressed(Keys.RIGHT))
         {
-        	se.camera.translate(10, 0, 0);
+        	se.camera.translate(5 * se.camera.zoom, 0, 0);
         }
 	}
 

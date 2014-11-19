@@ -63,6 +63,7 @@ public class GameStartStage extends BaseStage
     @Override
     public void act(float delta) {
     	inputListener.handleContinousInput();
+        super.act(delta);
     }
 
     /**

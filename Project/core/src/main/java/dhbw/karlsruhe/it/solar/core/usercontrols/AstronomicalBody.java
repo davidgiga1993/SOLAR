@@ -178,4 +178,5 @@ public abstract class AstronomicalBody extends SolarActor {
     {
     	return massInSolarMasses * 1.98855 * Math.pow(10, 30);
     }
+
 }

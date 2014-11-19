@@ -49,5 +49,6 @@ public class Planet extends AstronomicalBody
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
-    }	
+    }
+
 }

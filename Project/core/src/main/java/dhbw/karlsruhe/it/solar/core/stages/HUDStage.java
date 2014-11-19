@@ -16,18 +16,21 @@ public class HUDStage extends BaseGUIStage
     {
         super(SE, TAG);
         // setCamera(SE.HUDcamera);
-        
+
         
         timer = new Timer();
         BitmapFont font = FontCacher.getFont("default");
         FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
         FPSLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
-       
+        zoomLabel = new Label("Zoom: ", SE.styles.defaultLabelStyle);
+        zoomLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 45);
         addActor(FPSLabel);
+        addActor(zoomLabel);
         BuildTimer();
     }
 
     private Label FPSLabel;
+    private Label zoomLabel;
     private Timer timer;
 
     private boolean LogData = true;
@@ -50,7 +53,8 @@ public class HUDStage extends BaseGUIStage
             public void run()
             {
                 FPSLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
-                
+                zoomLabel.setText("Zoom: " + SE.camera.zoom);
+
                 if (LogData)
                     BuildTimer();
             }
