@@ -26,7 +26,7 @@ import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 
 @RunWith(Suite.class)
 @SuiteClasses(
-		{ AstronomicalObjectsJUnit.class, KartenbewegungJUnit.class, OverlayJUnit.class, SpaceshipJUnit.class, StageManagerJUnit.class}
+		{ AstronomicalObjectsJUnit.class, KartenbewegungJUnit.class, OverlayJUnit.class, SpaceshipJUnit.class, StageManagerJUnit.class, LengthJUnit.class}
 		)
 public class TestSuite {
 
