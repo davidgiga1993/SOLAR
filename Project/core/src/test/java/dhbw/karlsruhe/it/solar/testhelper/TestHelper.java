@@ -12,7 +12,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 
 public class TestHelper {
@@ -112,7 +111,6 @@ public class TestHelper {
      * @throws InterruptedException shouldn't occur
      */
     public static void changeScreen(final Screen targetScreen) throws InterruptedException {
-    	final SolarEngine game = (SolarEngine) Gdx.app.getApplicationListener();
     	final CountDownLatch latch = new CountDownLatch(1);
     	Gdx.app.postRunnable(new Runnable() {
 			

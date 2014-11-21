@@ -20,7 +20,7 @@ public class StartStage extends HUDStage
         super(SE, "StartStage");
                
         labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
-        labelStart.setPosition(SE.WidthHalf - labelStart.getWidth() / 2, SE.HeightHalf + 80);
+        labelStart.setPosition(SolarEngine.WidthHalf - labelStart.getWidth() / 2, SolarEngine.HeightHalf + 80);
 
         labelStart.addListener(new InputListener()
         {
@@ -43,7 +43,7 @@ public class StartStage extends HUDStage
         });
 
         labelSettings = new Label("Settings", SE.styles.defaultLabelStyle);
-        labelSettings.setPosition(SE.WidthHalf - labelStart.getWidth() / 2, SE.HeightHalf + 50);
+        labelSettings.setPosition(SolarEngine.WidthHalf - labelStart.getWidth() / 2, SolarEngine.HeightHalf + 50);
         labelSettings.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
@@ -65,7 +65,7 @@ public class StartStage extends HUDStage
         });
 
         labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
-        labelExit.setPosition(SE.WidthHalf - labelStart.getWidth() / 2,SE.HeightHalf +  20);
+        labelExit.setPosition(SolarEngine.WidthHalf - labelStart.getWidth() / 2,SolarEngine.HeightHalf +  20);
         labelExit.addListener(new InputListener()
         {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)

@@ -6,7 +6,13 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
+
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 public class SelectionRectangle extends Actor
 {
@@ -15,12 +21,21 @@ public class SelectionRectangle extends Actor
 	private boolean visible;
 	private GridPoint2 startPosition;
 	private GridPoint2 mousePosition;
+	private boolean isInitialized = false;
+	
+	private Label widthLabel = new Label("", SolarEngine.get().styles.defaultLabelStyle);
+	private Label heightLabel = new Label("", SolarEngine.get().styles.defaultLabelStyle);
 
 	public SelectionRectangle() {
 		this.shapeRenderer = new ShapeRenderer();
 		this.visible = false;
 		this.setName("SelectionRectangle");
 		this.setSize(0, 0);
+		widthLabel.setAlignment(Align.center);
+		heightLabel.setAlignment(Align.center);
+		widthLabel.setColor(0f,1f,0f,1f);
+		heightLabel.setColor(0f,1f,0f,1f);
+		hideLabels();
 	}
 
 	@Override
@@ -63,11 +78,19 @@ public class SelectionRectangle extends Actor
 		}
 		
 		mousePosition = new GridPoint2((int)mouseX, (int)mouseY);
-
+		updateLabels();
 	}
+
 	
 	public void setStart(float x, float y)
 	{
+		if(!isInitialized) {
+			//Stage stage = this.getStage();
+			Stage stage = SolarEngine.get().stageManager.getStage("GameHUD");
+			stage.addActor(widthLabel);
+			stage.addActor(heightLabel);
+			isInitialized = true;
+		}
     	setPosition(x, y);
     	setStartPosition(new GridPoint2((int)x,(int)y));
 		visible = true;
@@ -78,7 +101,7 @@ public class SelectionRectangle extends Actor
 	public void hide()
 	{
 		visible = false;
-		
+		hideLabels();
 	}
 	
 	public void setStartPosition(GridPoint2 position)
@@ -98,6 +121,39 @@ public class SelectionRectangle extends Actor
 
 	public Rectangle getRectangle() {
 		return new Rectangle(getX(), getY(), getWidth(), getHeight());
+	}
+	
+	private void hideLabels() {
+		this.heightLabel.setVisible(false);
+		this.widthLabel.setVisible(false);
+	}
+	
+	private void showLabels() {
+		this.heightLabel.setVisible(true);
+		this.widthLabel.setVisible(true);
+	}
+	
+	private void updateLabels() {
+		widthLabel.setText(Integer.toString((int) getWidth()));
+		heightLabel.setText(Integer.toString((int) getHeight()));
+		
+		updateLabelPosition(getX(), getY()); 
+		
+		showLabels();
+	}
+	
+	private void updateLabelPosition(float x, float y) {
+		Vector3 newPosition = new Vector3(x, y, 0);
+		Vector3 endpoint = new Vector3(x + getWidth(), y + getHeight(), 0); 
+		
+		getStage().getCamera().project(newPosition);
+		getStage().getCamera().project(endpoint);
+
+		widthLabel.setPosition(newPosition.x, newPosition.y-20);
+		heightLabel.setPosition(newPosition.x - 40, newPosition.y);
+		
+		widthLabel.setWidth(endpoint.x - widthLabel.getX());
+		heightLabel.setHeight(endpoint.y - heightLabel.getY());
 	}
 	
 }
