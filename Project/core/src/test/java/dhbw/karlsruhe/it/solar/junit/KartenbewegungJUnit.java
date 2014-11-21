@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 
 public class KartenbewegungJUnit
 {
@@ -35,6 +37,16 @@ public class KartenbewegungJUnit
     @Test
     public void testZoom()
     {
+    	Runnable startGame = new Runnable() {
+			
+			@Override
+			public void run() {
+				engine.stageManager.removeStage("StartStage");
+				GameStartStage.startGame();
+			}
+		};
+		TestHelper.sendRunnableToOpenGL(startGame);
+		
         float startZoom = engine.camera.zoom;
         Robot robot;
         try

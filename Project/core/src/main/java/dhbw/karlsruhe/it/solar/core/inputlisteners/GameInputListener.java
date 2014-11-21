@@ -7,13 +7,12 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
-import org.lwjgl.input.Keyboard;
 
 public class GameInputListener extends InputListener {
 	
@@ -176,31 +175,32 @@ public class GameInputListener extends InputListener {
 	 * Handle continous input e.g. moving the camera
 	 */
 	public void handleContinousInput() {
-		if (Keyboard.isKeyDown(Keyboard.KEY_ADD) ||Keyboard.isKeyDown(13))
+		//if (Keyboard.isKeyDown(Keyboard.KEY_ADD) ||Keyboard.isKeyDown(13))
+		if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E))
         {
 			// using a linear zoom is necessary because the perception of the world changes with it's zoom
 			// using a constant zoom would feel good while having a close look at things, but very slow when watching the whole solar system
             se.camera.zoom *= 0.98f;
         }
-        if (Gdx.input.isKeyPressed(Keys.MINUS) || Keyboard.isKeyDown(Keyboard.KEY_SUBTRACT))
+        if (Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(Keys.Q))
         {
         	se.camera.zoom *= 1.02f;
         }
-        if (Gdx.input.isKeyPressed(Keys.UP))
+        if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))
         {
 			// same goes for camera translation, it has to be a function of the current zoom, since we don't want to wait for
 			// hours to move the camera a few pixels while looking at the whole solar system
         	se.camera.translate(0, 5 * se.camera.zoom, 0);
         }
-        if (Gdx.input.isKeyPressed(Keys.DOWN))
+        if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))
         {
         	se.camera.translate(0, -5 * se.camera.zoom, 0);
         }
-        if (Gdx.input.isKeyPressed(Keys.LEFT))
+        if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
         {
         	se.camera.translate(-5 * se.camera.zoom, 0, 0);
         }
-        if (Gdx.input.isKeyPressed(Keys.RIGHT))
+        if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))
         {
         	se.camera.translate(5 * se.camera.zoom, 0, 0);
         }
