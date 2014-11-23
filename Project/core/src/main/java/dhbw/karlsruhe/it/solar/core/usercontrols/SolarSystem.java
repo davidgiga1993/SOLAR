@@ -24,7 +24,7 @@ public class SolarSystem extends AstronomicalBody {
 
 	@Override
 	public void act(float delta) {
-		super.act(delta);
+
 	}
 
 	/**
