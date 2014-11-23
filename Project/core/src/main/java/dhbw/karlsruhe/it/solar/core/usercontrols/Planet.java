@@ -12,9 +12,8 @@ public class Planet extends AstronomicalBody
 {
 	public Planet(String name, double massInEarthMasses, double orbitalRadiusInAU, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, convertAUIntoKilometer(orbitalRadiusInAU), angleInDegree, origin);
+		super(name, convertAUIntoKilometer(orbitalRadiusInAU), convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin);
 		this.setSize(250, 250);
-		this.massInKilogram = convertEarthMassesIntoKilogram(massInEarthMasses);
 	}
 	
 	@Override

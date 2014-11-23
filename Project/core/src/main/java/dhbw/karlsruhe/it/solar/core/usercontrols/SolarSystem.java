@@ -19,10 +19,15 @@ public class SolarSystem extends AstronomicalBody {
     {
 		super(name);
 		setPosition(0, 0);
+		origin = new SystemRoot(0,0);
     }
-    
-    
-    /**
+
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+	}
+
+	/**
      * Creation of a new solar system containing the specified number of astronomical objects.
      * Current implementation creates a fixed prototpye system (our Sun, the eight planets, their moons, etc.).
      */

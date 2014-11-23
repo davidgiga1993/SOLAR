@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
@@ -85,7 +86,9 @@ public class GameInputListener extends InputListener {
 
 	@Override
 	public void touchDragged(InputEvent event, float x, float y, int pointer) {
-		stage.selectionRectangle.updateEnd(x, y);
+		if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+			stage.selectionRectangle.updateEnd(x, y);
+		}
 		super.touchDragged(event, x, y, pointer);
 	}
 

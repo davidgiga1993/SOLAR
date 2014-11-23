@@ -13,9 +13,8 @@ public class Star extends AstronomicalBody
 {	
 	public Star(String name, double massInSolarMasses, double orbitalRadiusInAU, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, convertAUIntoKilometer(orbitalRadiusInAU), angleInDegree, origin);
+		super(name, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin);
 		this.setSize(1000, 1000);
-		this.massInKilogram = convertSolarMassesIntoKilogram(massInSolarMasses);
 	}
 	
 	@Override

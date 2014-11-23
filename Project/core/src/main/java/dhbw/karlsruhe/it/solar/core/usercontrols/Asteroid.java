@@ -12,11 +12,10 @@ public class Asteroid extends AstronomicalBody
 {
 	public Asteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadiusInKilometers, angleInDegree, origin);
+		super(name, orbitalRadiusInKilometers, massInKilogram, angleInDegree, origin);
 		this.setSize(100, 50);
-		this.massInKilogram = massInKilogram;
 	}
-	
+
 	@Override
 	public void draw(Batch batch, float parentAlpha)
 	{
