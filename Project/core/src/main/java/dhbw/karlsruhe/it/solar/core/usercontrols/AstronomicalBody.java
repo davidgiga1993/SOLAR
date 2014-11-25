@@ -6,13 +6,18 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
+import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
+import dhbw.karlsruhe.it.solar.core.solar.logic.Mass;
 
 /**
  * @author Andi
  *
  */
 public abstract class AstronomicalBody extends SolarActor {
-	
+
+	protected BodyProperties physicalProperties;
+
 	protected double orbitalRadiusInKilometers;
 	protected double orbitalPeriodInDays;
 	protected double massInKilogram;
@@ -40,6 +45,8 @@ public abstract class AstronomicalBody extends SolarActor {
 		this.massInKilogram = massInKilograms;
 		this.angleInDegree = angleInDegree;
 		this.origin = origin;
+		this.physicalProperties = new BodyProperties(new Mass((float) massInKilograms, Mass.Unit.KILOGRAM), new Length(1337, Length.Unit.kilometres), new Length((float) orbitalRadiusInMeters, Length.Unit.kilometres), (float) angleInDegree, origin.physicalProperties);
+		// this remains here in order to allow the modification of the simulated world without altering the physics behind them.
 		this.orbitalPeriodInDays = calculateOrbitalPeriod();
 		if (orbitalPeriodInDays != 0) {
 			this.periodicConstant = 360 / (float) orbitalPeriodInDays;
@@ -170,14 +177,7 @@ public abstract class AstronomicalBody extends SolarActor {
      */
     protected double calculateOrbitalPeriod()
     {
-		double constant = 39.478417604357434475337963999505; // 4 * PI * PI
-		double cubicRadius = Math.pow(orbitalRadiusInKilometers * 1000, 3);
-		double gravitationalConstant = 0.00000000006673; // 6,673*10^-11
-		double mass = origin.massInKilogram + massInKilogram;
-		double squarePeriod = constant * cubicRadius / (gravitationalConstant * mass);
-		double period = Math.sqrt(squarePeriod);
-		return period / (3600*24);
-    	//return Math.sqrt( 4 * Math.pow((Math.PI), 2) * Math.pow(orbitalRadiusInKilometers * 1000, 3) / (origin.getMass()+massInKilogram) / gravitationalConstant() ) / 24 / 3600;
+		return this.physicalProperties.orbitalPeriodInDays;
     }
     
     private static double gravitationalConstant()
