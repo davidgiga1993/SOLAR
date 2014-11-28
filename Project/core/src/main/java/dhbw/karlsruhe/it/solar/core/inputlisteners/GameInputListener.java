@@ -16,7 +16,8 @@ import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 public class GameInputListener extends InputListener {
-	
+
+	public static final int CAMERA_TRANSLATION_FACTOR = 5 * 60; // 60fps
 	protected GameStartStage stage;
 	protected SolarEngine se = SolarEngine.get();
 	
@@ -176,8 +177,9 @@ public class GameInputListener extends InputListener {
 
 	/**
 	 * Handle continous input e.g. moving the camera
+	 * @param delta
 	 */
-	public void handleContinousInput() {
+	public void handleContinousInput(float delta) {
 		//if (Keyboard.isKeyDown(Keyboard.KEY_ADD) ||Keyboard.isKeyDown(13))
 		if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E))
         {
@@ -189,24 +191,29 @@ public class GameInputListener extends InputListener {
         {
         	se.camera.zoom *= 1.02f;
         }
+		float x = 0;
+		float y = 0;
         if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))
         {
 			// same goes for camera translation, it has to be a function of the current zoom, since we don't want to wait for
 			// hours to move the camera a few pixels while looking at the whole solar system
-        	se.camera.translate(0, 5 * se.camera.zoom, 0);
+			y += CAMERA_TRANSLATION_FACTOR;
         }
         if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))
         {
-        	se.camera.translate(0, -5 * se.camera.zoom, 0);
+			y -= CAMERA_TRANSLATION_FACTOR;
         }
         if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
         {
-        	se.camera.translate(-5 * se.camera.zoom, 0, 0);
+			x -= CAMERA_TRANSLATION_FACTOR;
         }
         if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))
         {
-        	se.camera.translate(5 * se.camera.zoom, 0, 0);
+			x += CAMERA_TRANSLATION_FACTOR;
         }
+		x *= delta;
+		y *= delta;
+		se.camera.translate(x * se.camera.zoom, y * se.camera.zoom, 0);
 	}
 
 	private enum SelectionState {

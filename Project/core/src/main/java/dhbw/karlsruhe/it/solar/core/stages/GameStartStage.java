@@ -2,15 +2,14 @@ package dhbw.karlsruhe.it.solar.core.stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SelectionRectangle;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 
 public class GameStartStage extends BaseStage
 {
@@ -18,6 +17,8 @@ public class GameStartStage extends BaseStage
     public SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
     private GameInputListener inputListener;
+
+    private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     /**
      * Call this to initialize a new game.
@@ -46,6 +47,20 @@ public class GameStartStage extends BaseStage
 
     }
 
+    @Override
+    public void draw() {
+        // render line shapes
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        for (Actor child : getRoot().getChildren()) {
+            if (child instanceof ShapeRenderable) {
+                ((ShapeRenderable) child).drawLines(shapeRenderer);
+            }
+        }
+        shapeRenderer.end();
+        // draw sprite batch stuff
+        super.draw();
+    }
+
     public GameStartStage(SolarEngine SE)
     {
         super(SE, "GameStartStage");
@@ -62,7 +77,7 @@ public class GameStartStage extends BaseStage
     
     @Override
     public void act(float delta) {
-    	inputListener.handleContinousInput();
+    	inputListener.handleContinousInput(delta);
         super.act(delta);
     }
 

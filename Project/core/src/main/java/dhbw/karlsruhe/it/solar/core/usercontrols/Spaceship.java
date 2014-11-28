@@ -16,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  * @author Andi
  *
  */
-public class Spaceship extends SolarActor
+public class Spaceship extends SolarActor implements ShapeRenderable
 {
 
     private Vector2 destination;
@@ -25,7 +25,6 @@ public class Spaceship extends SolarActor
     public Spaceship(String name)
     {
         super(name);
-          this.shapeRenderer = new ShapeRenderer();
 	      this.selected = false;
 	      this.destination = null;
 	      this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
@@ -42,13 +41,16 @@ public class Spaceship extends SolarActor
     @Override
     public void draw(Batch batch, float parentAlpha)
     {
-        shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
-        shapeRenderer.identity();
-        shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
-
-        displaySelectionBox();
-        displayCourseAndDestination();
         displaySpaceship(batch);
+    }
+
+    @Override
+    public void drawLines(ShapeRenderer shapeRenderer) {
+        shapeRenderer.setProjectionMatrix(getStage().getCamera().combined);
+        shapeRenderer.identity();
+
+        displaySelectionBox(shapeRenderer);
+        displayCourseAndDestination(shapeRenderer);
     }
 
     private void displaySpaceship(Batch batch)
@@ -61,45 +63,36 @@ public class Spaceship extends SolarActor
         batch.begin();
     }
 
-    private void displayCourseAndDestination()
+    private void displayCourseAndDestination(ShapeRenderer shapeRenderer)
     {
         // Anzeige des Kurses und Markierung des Ziels
         if (destination != null && this.getActions().size != 0)
         {
-            shapeRenderer.begin(ShapeType.Line);
             shapeRenderer.setColor(Color.GREEN);
             shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destination.x, destination.y);
-            shapeRenderer.end();
-
-            shapeRenderer.begin(ShapeType.Line);
             shapeRenderer.circle(destination.x, destination.y, 10);
-            shapeRenderer.end();
 
-            displaySelectedDestination();
+            displaySelectedDestination(shapeRenderer);
         }
     }
 
-    private void displaySelectedDestination()
+    private void displaySelectedDestination(ShapeRenderer shapeRenderer)
     {
         // Besondere Hervorhebung des Ziels wenn selektiert
         if (selected)
         {
-            shapeRenderer.begin(ShapeType.Line);
             shapeRenderer.setColor(Color.YELLOW);
             shapeRenderer.rect(destination.x - 13, destination.y - 13, 26, 26);
-            shapeRenderer.end();
         }
     }
 
-    private void displaySelectionBox()
+    private void displaySelectionBox(ShapeRenderer shapeRenderer)
     {
         // Anzeige Selektions Box
         if (selected)
         {
-            shapeRenderer.begin(ShapeType.Line);
             shapeRenderer.setColor(Color.YELLOW);
             shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
-            shapeRenderer.end();
         }
     }
 
@@ -176,5 +169,6 @@ public class Spaceship extends SolarActor
     {
         this.speed = speed;
     }
+
 
 }
