@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 /**
@@ -72,21 +73,16 @@ public class SolarSystem extends AstronomicalBody {
 	    	star.placeNewPlanet("Makemake", 0.0003, 45.792, 0);
 	    	star.placeNewPlanet("Eris", 0.0028, 67.668, 0);
     }
-    
+
 	@Override
-	public void draw(Batch batch, float parentAlpha)
-	{
-        shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
-        shapeRenderer.identity();
-        
-        diplaySystemCenter();    
+	public void drawLines(ShapeRenderer shapeRenderer) {
+		super.drawLines(shapeRenderer);
+		diplaySystemCenter(shapeRenderer);
 	}
-	
-	private void diplaySystemCenter() {
-        shapeRenderer.begin(ShapeType.Line);
+
+	private void diplaySystemCenter(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.circle(getX(), getY(), 10);
-        shapeRenderer.end();  
 	}
         
     public String getSystemName()

@@ -51,6 +51,7 @@ public class GameStartStage extends BaseStage
     public void draw() {
         // render line shapes
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setProjectionMatrix(getCamera().combined);
         for (Actor child : getRoot().getChildren()) {
             if (child instanceof ShapeRenderable) {
                 ((ShapeRenderable) child).drawLines(shapeRenderer);

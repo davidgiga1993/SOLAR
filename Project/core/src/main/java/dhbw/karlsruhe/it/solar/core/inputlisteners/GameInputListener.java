@@ -129,9 +129,9 @@ public class GameInputListener extends InputListener {
 	private void updateSelection() {
 		// first select the selection state (add, remove, create)
 		SelectionState state;
-		if (se.isShiftPressed()) {
+		if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
 			state = SelectionState.ADD;
-		} else if (se.isControlPressed()) {
+		} else if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
 			state = SelectionState.REMOVE;
 		} else {
 			// Create: clear & add

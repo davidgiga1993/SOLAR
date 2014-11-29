@@ -46,7 +46,6 @@ public class Spaceship extends SolarActor implements ShapeRenderable
 
     @Override
     public void drawLines(ShapeRenderer shapeRenderer) {
-        shapeRenderer.setProjectionMatrix(getStage().getCamera().combined);
         shapeRenderer.identity();
 
         displaySelectionBox(shapeRenderer);

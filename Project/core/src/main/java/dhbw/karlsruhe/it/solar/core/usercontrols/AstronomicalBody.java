@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -14,7 +15,7 @@ import dhbw.karlsruhe.it.solar.core.solar.logic.Mass;
  * @author Andi
  *
  */
-public abstract class AstronomicalBody extends SolarActor {
+public abstract class AstronomicalBody extends SolarActor implements ShapeRenderable {
 
 	protected BodyProperties physicalProperties;
 
@@ -25,7 +26,8 @@ public abstract class AstronomicalBody extends SolarActor {
 	protected AstronomicalBody origin;
 	protected Group satellites;
 	protected float periodicConstant;
-	
+	protected Color color = Color.WHITE;
+
 	public AstronomicalBody(String name)
 	{
 		super(name);
@@ -60,6 +62,12 @@ public abstract class AstronomicalBody extends SolarActor {
 		super.act(delta);
 		angleInDegree += periodicConstant * delta;
 		calculateOrbitalPositionTotal();
+	}
+
+	@Override
+	public void drawLines(ShapeRenderer shapeRenderer) {
+		displayOrbit(shapeRenderer);
+		drawBody(shapeRenderer);
 	}
 
 	public Group getSatellites()
@@ -115,15 +123,27 @@ public abstract class AstronomicalBody extends SolarActor {
 		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * scaleDistanceToStage(orbitalRadiusInKilometers));
 	}
 	    
-    protected void displayOrbit()
+    protected void displayOrbit(ShapeRenderer shapeRenderer)
     {
     	if (scaleDistanceToStage(orbitalRadiusInKilometers) < getParent().getWidth())
     		return;
-		shapeRenderer.begin(ShapeType.Line);             
         shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), scaleDistanceToStage(orbitalRadiusInKilometers));
-        shapeRenderer.end();
     }
+
+	/**
+	 * This method will draw the Body of this object using a shapeRenderer and the object's color field.
+	 * @param shapeRenderer
+	 */
+	protected void drawBody(ShapeRenderer shapeRenderer) {
+		shapeRenderer.end();
+		shapeRenderer.begin(ShapeType.Filled);
+		shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
+		shapeRenderer.setColor(color);
+		shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight()/2);
+		shapeRenderer.end();
+		shapeRenderer.begin(ShapeType.Line);
+	}
     
     
 	/**

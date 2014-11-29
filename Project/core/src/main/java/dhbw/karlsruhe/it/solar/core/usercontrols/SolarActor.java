@@ -12,8 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  *
  */
 public abstract class SolarActor extends Actor {
-	
-	protected ShapeRenderer shapeRenderer;
+
 	protected boolean selected;
 	protected TextureRegion solarActorTexture;
 	protected Sprite solarActorSprite;
@@ -21,7 +20,6 @@ public abstract class SolarActor extends Actor {
 	public SolarActor (String name)
 	{
 		this.setName(name);
-		this.shapeRenderer = new ShapeRenderer();
 	}
 
 	@Override
