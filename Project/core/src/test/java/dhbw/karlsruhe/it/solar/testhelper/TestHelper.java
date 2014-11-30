@@ -1,17 +1,15 @@
 package dhbw.karlsruhe.it.solar.testhelper;
 
-import java.awt.AWTException;
-import java.awt.Robot;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+
+import java.awt.*;
 import java.awt.event.InputEvent;
 import java.security.Permission;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 
 
 public class TestHelper {

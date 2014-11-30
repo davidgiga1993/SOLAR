@@ -1,13 +1,11 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.badlogic.gdx.Gdx;
-
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 public class StageManager extends BaseStage
 {

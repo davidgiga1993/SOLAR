@@ -1,15 +1,13 @@
 package dhbw.karlsruhe.it.solar.junit;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
 import dhbw.karlsruhe.it.solar.core.stages.BaseStage;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 import dhbw.karlsruhe.it.solar.testhelper.TestResult;
 import dhbw.karlsruhe.it.solar.testhelper.TestStage;
+import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class StageManagerJUnit
 {

@@ -1,28 +1,28 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.player.Ownable;
+import dhbw.karlsruhe.it.solar.player.Player;
 
 /**
  * @author Andi
  *
  */
-public class Spaceship extends SolarActor implements ShapeRenderable
+public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
 {
 
     private Vector2 destination;
     private float speed = 100f;
+    protected Player owner;
 
-    public Spaceship(String name)
+    public Spaceship(String name, Player owner)
     {
         super(name);
 	      this.selected = false;
@@ -30,6 +30,7 @@ public class Spaceship extends SolarActor implements ShapeRenderable
 	      this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
 	      solarActorTexture = TextureCacher.gameAtlas.findRegion("Cruiser");
 	      this.setSize(solarActorTexture.getRegionWidth(), solarActorTexture.getRegionHeight());
+          this.owner = owner;
 	      createShipSprite();
     }
 
@@ -90,7 +91,7 @@ public class Spaceship extends SolarActor implements ShapeRenderable
         // Anzeige Selektions Box
         if (selected)
         {
-            shapeRenderer.setColor(Color.YELLOW);
+            shapeRenderer.setColor(Color.GREEN);
             shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
         }
     }
@@ -170,4 +171,8 @@ public class Spaceship extends SolarActor implements ShapeRenderable
     }
 
 
+    @Override
+    public boolean isOwnedBy(Player player) {
+        return player.equals(owner);
+    }
 }

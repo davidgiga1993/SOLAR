@@ -1,11 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.inputlisteners;
 
-import java.util.*;
-
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+
+import java.util.*;
 
 /**
  * @author Soeren

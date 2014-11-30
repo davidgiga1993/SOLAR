@@ -7,13 +7,12 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.player.Ownable;
 
 public class GameInputListener extends InputListener {
 
@@ -103,7 +102,7 @@ public class GameInputListener extends InputListener {
 		case Input.Buttons.MIDDLE:
 			break;
 		case Input.Buttons.RIGHT:
-			new MoveCommand(stage.selectedActors.getSpaceships(), x, y).execute();
+			new MoveCommand(stage.selectedActors.getSpaceships(), x, y, stage.getHumanPlayer()).execute();
 			break;
 		default:
 			super.touchUp(event, x, y, pointer, button);
@@ -146,6 +145,9 @@ public class GameInputListener extends InputListener {
 			if (a instanceof SolarActor) {
 				sa = (SolarActor) a;
 				// insideRectangle to evaluate whether the actor is inside the selection.
+				if (sa instanceof Ownable && !((Ownable) sa).isOwnedBy(stage.getHumanPlayer())) {
+					break;
+				}
 				if (sa.insideRectangle(stage.selectionRectangle.getRectangle())) {
 					// proceed according to state
 					switch(state) {

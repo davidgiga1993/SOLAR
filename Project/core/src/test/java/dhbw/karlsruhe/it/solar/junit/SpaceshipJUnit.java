@@ -1,19 +1,15 @@
 package dhbw.karlsruhe.it.solar.junit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.concurrent.CountDownLatch;
-
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
+import java.util.concurrent.CountDownLatch;
 
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import static org.junit.Assert.*;
 public class SpaceshipJUnit
 {
 
@@ -46,7 +42,7 @@ public class SpaceshipJUnit
     
     private Spaceship placeTestShip() throws Exception
     {
-    	return new Spaceship("Testschiff");
+    	return new Spaceship("Testschiff", null);
     }
 
     @After

@@ -1,7 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 /**

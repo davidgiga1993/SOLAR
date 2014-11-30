@@ -1,22 +1,13 @@
 package dhbw.karlsruhe.it.solar.junit;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.concurrent.CountDownLatch;
-
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.*;
+import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-
-import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
-import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
+import static org.junit.Assert.assertEquals;
 
 public class AstronomicalObjectsJUnit
 {

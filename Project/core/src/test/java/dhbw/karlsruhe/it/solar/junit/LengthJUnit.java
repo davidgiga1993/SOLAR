@@ -2,11 +2,11 @@ package dhbw.karlsruhe.it.solar.junit;
 
 
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class LengthJUnit {
 

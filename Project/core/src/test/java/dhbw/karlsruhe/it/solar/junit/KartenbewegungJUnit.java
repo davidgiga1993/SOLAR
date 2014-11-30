@@ -1,18 +1,16 @@
 package dhbw.karlsruhe.it.solar.junit;
 
-import static org.junit.Assert.fail;
-
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
-import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
+import static org.junit.Assert.fail;
 
 public class KartenbewegungJUnit
 {

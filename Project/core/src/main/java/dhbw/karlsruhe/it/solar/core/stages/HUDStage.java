@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
-
 import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 

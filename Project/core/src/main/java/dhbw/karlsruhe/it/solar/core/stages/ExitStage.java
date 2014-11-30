@@ -7,9 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 public class ExitStage extends HUDStage
 {

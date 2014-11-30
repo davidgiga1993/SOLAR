@@ -1,16 +1,15 @@
 package dhbw.karlsruhe.it.solar.junit;
 
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+
 import static org.junit.Assert.assertNotNull;
-
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 
 /*
  * 

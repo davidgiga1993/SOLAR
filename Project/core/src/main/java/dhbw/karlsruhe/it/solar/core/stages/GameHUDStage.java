@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BottomBarGUIElement;
@@ -34,7 +33,7 @@ public class GameHUDStage extends BaseGUIStage{
         guiTable.top().left();
 
         navigationBar = new NavigationBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
-        resourceBar = new ResourceBarGUIElement(solarEngine.styles.defaultLabelStyle);
+        resourceBar = new ResourceBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
         bottomBar = new BottomBarGUIElement(solarEngine.styles.defaultLabelStyle);
 
         guiTable.add(resourceBar.resourceBar).align(Align.right).colspan(2).height(50).expandX();

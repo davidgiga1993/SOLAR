@@ -1,14 +1,13 @@
 package dhbw.karlsruhe.it.solar.cucumber;
 
-import static org.junit.Assert.assertTrue;
-
 import com.badlogic.gdx.Gdx;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
+
+import static org.junit.Assert.assertTrue;
 
 public class ExampleCucumberSteps {
 

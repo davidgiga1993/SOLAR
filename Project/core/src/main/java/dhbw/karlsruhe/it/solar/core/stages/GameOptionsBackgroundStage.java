@@ -2,12 +2,11 @@ package dhbw.karlsruhe.it.solar.core.stages;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.Group;
-
 import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 

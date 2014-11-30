@@ -1,9 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -11,10 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
-public class SelectionRectangle extends Actor
+public class SelectionRectangle extends Actor implements ShapeRenderable
 {
 
 	private ShapeRenderer shapeRenderer;
@@ -38,20 +35,15 @@ public class SelectionRectangle extends Actor
 		hideLabels();
 	}
 
+
 	@Override
-	public void draw(Batch batch, float parentAlpha)
-	{
-        if ( visible )
-        {
-        shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());        
-        shapeRenderer.identity();
-            shapeRenderer.begin(ShapeType.Line);  
-            shapeRenderer.setColor(Color.GREEN);
-            shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
-        shapeRenderer.end(); 
-        }
+	public void drawLines(ShapeRenderer shapeRenderer) {
+		if(visible) {
+			shapeRenderer.setColor(Color.GREEN);
+			shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
+		}
 	}
-	
+
 	public void updateEnd(float mouseX, float mouseY)
 	{
 		//Berechnet Position, Width und Height neu abhängig von ursprünglicher Startposition und derzeitiger Mausposition

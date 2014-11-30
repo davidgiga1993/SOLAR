@@ -4,12 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
-
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
+import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.player.PlayerManager;
 
 public class GameStartStage extends BaseStage
 {
@@ -17,8 +18,11 @@ public class GameStartStage extends BaseStage
     public SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
     private GameInputListener inputListener;
-
+    private PlayerManager playerManager = new PlayerManager();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
+
+    protected Player humanPlayer;
+    protected Player aiPlayer;
 
     /**
      * Call this to initialize a new game.
@@ -71,9 +75,12 @@ public class GameStartStage extends BaseStage
         addSelectionRectangle();
         systemCreation();
 
-        placeNewShip("Event Horizon", new GridPoint2(0, 120));
-        placeNewShip("Nostromo", new GridPoint2(150, 100));
-        placeNewShip("Destiny", new GridPoint2(75, 0));
+        humanPlayer = playerManager.createPlayer("Human Player");
+        aiPlayer = playerManager.createPlayer("CPU Player");
+
+        placeNewShip("Event Horizon", new GridPoint2(0, 120), humanPlayer);
+        placeNewShip("Nostromo", new GridPoint2(150, 100), humanPlayer);
+        placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
     }
     
     @Override
@@ -137,9 +144,9 @@ public class GameStartStage extends BaseStage
      * @param name Desired name of the spaceship.
      * @param startlocation Desired location at which the ship is to appear.
      */
-    private void placeNewShip(String name, GridPoint2 startlocation)
+    private void placeNewShip(String name, GridPoint2 startlocation, Player owner)
     {
-        Spaceship newShip = new Spaceship(name);
+        Spaceship newShip = new Spaceship(name, owner);
         newShip.setPosition(startlocation.x, startlocation.y);
         addActor(newShip);
     }
@@ -154,6 +161,10 @@ public class GameStartStage extends BaseStage
     {
     	inputListener = new GameInputListener(this);
     	this.addListener(inputListener);
+    }
+
+    public Player getHumanPlayer() {
+        return humanPlayer;
     }
 
 

@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.stages;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
