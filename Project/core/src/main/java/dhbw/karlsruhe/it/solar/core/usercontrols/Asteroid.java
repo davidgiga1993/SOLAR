@@ -3,6 +3,8 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 
 /**
  * @author Andi
@@ -10,11 +12,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
  */
 public class Asteroid extends AstronomicalBody
 {
-	public Asteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
+	public Asteroid(String name, Length radius, double massInKilogram, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
 	{
-		super(name, orbitalRadiusInKilometers, massInKilogram, angleInDegree, origin);
-		this.setSize(100, 50);
-		this.color = Color.LIGHT_GRAY;
+		super(name, radius, orbitalRadiusInKilometers, massInKilogram, angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_ASTEROID);
+		//this.setSize(100, 50);
+		this.setColor(Color.LIGHT_GRAY);
 	}
 
 	@Override

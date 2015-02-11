@@ -26,7 +26,10 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	protected AstronomicalBody origin;
 	protected Group satellites;
 	protected float periodicConstant;
-	protected Color color = Color.WHITE;
+
+	protected SolarActorScale scaleFactor;
+	float orbitalRadiusInPixels;
+	//protected Color color = Color.WHITE;
 
 	public AstronomicalBody(String name)
 	{
@@ -37,9 +40,10 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		this.origin = null;
 		this.orbitalPeriodInDays = -1;
 		this.massInKilogram = 1;
+		this.scaleFactor = new SolarActorScale(1,1);
 	}
 	
-	public AstronomicalBody(String name, double orbitalRadiusInMeters, double massInKilograms, double angleInDegree, AstronomicalBody origin)
+	public AstronomicalBody(String name, Length radius, double orbitalRadiusInMeters, double massInKilograms, double angleInDegree, AstronomicalBody origin, SolarActorScale scaleFactor)
 	{
 		super(name);
 		this.satellites = new Group();
@@ -47,7 +51,8 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		this.massInKilogram = massInKilograms;
 		this.angleInDegree = angleInDegree;
 		this.origin = origin;
-		this.physicalProperties = new BodyProperties(new Mass((float) massInKilograms, Mass.Unit.KILOGRAM), new Length(1337, Length.Unit.kilometres), new Length((float) orbitalRadiusInMeters, Length.Unit.kilometres), (float) angleInDegree, origin.physicalProperties);
+		this.scaleFactor = scaleFactor;
+		this.physicalProperties = new BodyProperties(new Mass((float) massInKilograms, Mass.Unit.KILOGRAM), radius, new Length((float) orbitalRadiusInMeters, Length.Unit.kilometres), (float) angleInDegree, origin.physicalProperties);
 		// this remains here in order to allow the modification of the simulated world without altering the physics behind them.
 		this.orbitalPeriodInDays = calculateOrbitalPeriod();
 		if (orbitalPeriodInDays != 0) {
@@ -55,6 +60,13 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		} else {
 			this.periodicConstant = 0;
 		}
+		changeScale(scaleFactor);
+	}
+
+	public void changeScale(SolarActorScale scaleFactor) {
+		float tSize = scaleDistanceToStage(physicalProperties.radius.asKilometres()) * scaleFactor.shapeScale;
+		this.setSize(tSize, tSize);
+		orbitalRadiusInPixels = scaleDistanceToStage(orbitalRadiusInKilometers) * scaleFactor.orbitScale;
 	}
 
 	@Override
@@ -86,14 +98,15 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     /**
      * Adds a new Asteroid with the specified parameters as a satellite orbiting the astronomical body.
      * @param name Desired name of the Asteroid.
+	 * @param radius Desired radius of the Asteroid
      * @param massInKilogram Desired mass of the Asteroid in kilogram
      * @param orbitalRadiusInKilometers Desired orbital radius around the parent body in kilometers
      * @param angleInDegree Desired angle of the Asteroid's position on the map of the system relative to its parent body
      * @return created Asteroid object
      */
-    public Asteroid placeNewAsteroid(String name, double massInKilogram, double orbitalRadiusInKilometers, int angleInDegree)
+    public Asteroid placeNewAsteroid(String name, Length radius, double massInKilogram, double orbitalRadiusInKilometers, int angleInDegree)
     {
-        Asteroid newObject = new Asteroid(name, massInKilogram, orbitalRadiusInKilometers, angleInDegree, this);
+        Asteroid newObject = new Asteroid(name, radius, massInKilogram, orbitalRadiusInKilometers, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
@@ -127,8 +140,10 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     {
     	if (scaleDistanceToStage(orbitalRadiusInKilometers) < getParent().getWidth())
     		return;
-        shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), scaleDistanceToStage(orbitalRadiusInKilometers));
+
+
+        shapeRenderer.setColor(Color.TEAL);
+        shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels);
     }
 
 	/**
@@ -139,8 +154,8 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		shapeRenderer.end();
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
-		shapeRenderer.setColor(color);
-		shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight()/2);
+		shapeRenderer.setColor(this.getColor());
+		shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight() / 2);
 		shapeRenderer.end();
 		shapeRenderer.begin(ShapeType.Line);
 	}
@@ -219,5 +234,9 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     {
     	return massInSolarMasses * 1.98855 * Math.pow(10, 30);
     }
+//@Override
+//	public void setColor(Color color) {
+		//this.color = color;
+	//}
 
 }

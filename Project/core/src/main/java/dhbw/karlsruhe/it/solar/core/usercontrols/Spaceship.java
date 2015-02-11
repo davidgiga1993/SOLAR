@@ -55,12 +55,8 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
 
     private void displaySpaceship(Batch batch)
     {
-    	batch.end();
-    	batch.begin();
         solarActorSprite.setPosition(getX(), getY());
         solarActorSprite.draw(batch);
-        batch.end();
-        batch.begin();
     }
 
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer)

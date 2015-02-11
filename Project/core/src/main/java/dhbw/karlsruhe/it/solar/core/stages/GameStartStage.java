@@ -36,8 +36,10 @@ public class GameStartStage extends BaseStage
         GameStartStage gameStage = new GameStartStage(engine);
         engine.stageManager.addStage(gameStage);
 
-        HUDStage hudStage = new HUDStage(engine, "HUD");
-        engine.stageManager.addStage(hudStage);
+        if (SolarEngine.DEBUG) {
+            HUDStage hudStage = new HUDStage(engine, "HUD");
+            engine.stageManager.addStage(hudStage);
+        }
 
         GameHUDStage gameHUDStage = new GameHUDStage(engine);
         engine.stageManager.addStage(gameHUDStage);

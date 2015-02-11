@@ -129,4 +129,8 @@ public class Selection {
 		spaceshipDirtyFlag = false;
 	}
 
+	public int getNumberOfSelectedUnits() {
+		return selectedActors.size();
+	}
+
 }

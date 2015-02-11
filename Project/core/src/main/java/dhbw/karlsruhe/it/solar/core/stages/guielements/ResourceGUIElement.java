@@ -21,6 +21,7 @@ public class ResourceGUIElement extends HorizontalGroup implements GUIActor {
         this.resource = resource;
 
         label = new GUILabel(buildLabelString(), SolarEngine.get().styles.defaultLabelStyle, stage);
+        label.tooltip.setTitle("Resource");
         sprite = new GUIImage(resource.getIcon());
 
         Container spriteContainer = new Container<GUIImage>(sprite);

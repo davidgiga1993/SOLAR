@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 import org.junit.After;
@@ -31,10 +32,10 @@ public class AstronomicalObjectsJUnit
     
     public void runSetUp() {
     	solarSystem = new SolarSystem("Testsystem");
-    	star = solarSystem.placeNewStar("Testsonne", 1, 0, 0);
-	    planet = star.placeNewPlanet("Testplanet", 0.5, 1.5, 23);
-	    planet.placeNewMoon("Testmond", 0.1, 200000, -50);
-	    star.placeNewAsteroid("Testasteroid", 20000, 900, 42);
+    	star = solarSystem.placeNewStar("Testsonne", new Length(1392684f/2, Length.Unit.kilometres), 1, 0, 0);
+	    planet = star.placeNewPlanet("Testplanet", new Length(10000.4f/2, Length.Unit.kilometres), 0.5, 1.5, 23);
+	    planet.placeNewMoon("Testmond", new Length(4879.4f/2, Length.Unit.kilometres), 0.1, 200000, -50);
+	    star.placeNewAsteroid("Testasteroid", new Length(1500.4f/2, Length.Unit.kilometres), 20000, 900, 42);
     }
 
     @After

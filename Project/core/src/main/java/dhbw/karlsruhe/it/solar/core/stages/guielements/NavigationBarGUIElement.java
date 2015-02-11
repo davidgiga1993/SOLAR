@@ -15,7 +15,9 @@ public class NavigationBarGUIElement {
         super();
         navigationBar = new Table();
 
-        navigationBar.add(new GUILabel("NavBar", labelStyle, stage)).expand().top().left();
+        GUILabel label = new GUILabel("Navigation", labelStyle, stage);
+        label.tooltip.setTitle("Navi Tooltip...");
+        navigationBar.add(label).expand().top().left();
         navigationBar.row();
     }
 

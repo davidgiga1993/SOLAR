@@ -1,6 +1,8 @@
 package dhbw.karlsruhe.it.solar.config;
 
 
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
+
 public final class ConfigurationConstants {
 	
 	private ConfigurationConstants() {
@@ -9,4 +11,9 @@ public final class ConfigurationConstants {
 	
 	public static final int SCREENWIDTH = 800;
 	public static final int SCREENHEIGHT = 600;
+
+	public static final SolarActorScale SCALE_FACTOR_PLANET = new SolarActorScale(400, 1);
+	public static final SolarActorScale SCALE_FACTOR_STAR = new SolarActorScale(50, 1);
+	public static final SolarActorScale SCALE_FACTOR_MOON = new SolarActorScale(500, 1.2f);
+	public static final SolarActorScale SCALE_FACTOR_ASTEROID = new SolarActorScale(500, 1);
 }

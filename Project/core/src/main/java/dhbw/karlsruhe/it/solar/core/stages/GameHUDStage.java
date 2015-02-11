@@ -29,8 +29,10 @@ public class GameHUDStage extends BaseGUIStage{
         guiTable.setFillParent(false);
         guiTable.setWidth(Gdx.graphics.getWidth());
         guiTable.setHeight(Gdx.graphics.getHeight());
-        guiTable.debug();
         guiTable.top().left();
+        if(SolarEngine.DEBUG) {
+            guiTable.debug();
+        }
 
         navigationBar = new NavigationBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
         resourceBar = new ResourceBarGUIElement(solarEngine.styles.defaultLabelStyle, this);

@@ -12,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
  */
 public class GUILabel extends Label implements GUIActor {
 
-    Tooltip tooltip = new Tooltip("Test", SolarEngine.get().styles.tooltipSkin);
+    final Tooltip tooltip = new Tooltip("Test", SolarEngine.get().styles.tooltipSkin);
 
     public GUILabel (CharSequence text, LabelStyle style, Stage stage) {
         super(text, style);
@@ -37,5 +37,6 @@ public class GUILabel extends Label implements GUIActor {
         });
 
     }
+
 
 }

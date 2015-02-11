@@ -23,9 +23,9 @@ public class BottomBarGUIElement {
         root = new Table();
         GameStartStage gameStartStage = (GameStartStage) solarEngine.stageManager.getStage("GameStartStage");
         Selection selection = gameStartStage.selectedActors;
-        Collection<SolarActor> selectedActors = selection.getActors();
 
-        root.add(new Label("Number of Selected Actors: " + selectedActors.size(), labelStyle));
-        root.row();
+
+        //root.add(new Label("Number of Selected Actors: " + selection.getNumberOfSelectedUnits(), labelStyle));
+        //root.row();
     }
 }
