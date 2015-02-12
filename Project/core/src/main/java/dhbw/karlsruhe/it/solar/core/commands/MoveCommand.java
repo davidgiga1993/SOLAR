@@ -1,11 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.commands;
 
-import java.util.List;
-
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 import dhbw.karlsruhe.it.solar.player.Player;
+
+import java.util.List;
 
 public class MoveCommand implements Command {
 

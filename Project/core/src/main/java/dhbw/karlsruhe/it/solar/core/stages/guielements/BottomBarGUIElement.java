@@ -5,9 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-
-import java.util.Collection;
 
 /**
  * Created by Arga on 16.11.2014.

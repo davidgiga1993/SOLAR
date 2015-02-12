@@ -1,6 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import com.badlogic.gdx.graphics.Color;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 

@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 

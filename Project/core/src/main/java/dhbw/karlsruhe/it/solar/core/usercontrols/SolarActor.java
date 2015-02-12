@@ -91,15 +91,17 @@ public abstract class SolarActor extends Actor {
 	@Override
 	public void setOrigin(float originX, float originY) {
 		super.setOrigin(originX, originY);
-		if(solarActorSprite != null)
+		if(solarActorSprite != null) {
 			this.solarActorSprite.setOrigin(originX, originY);
+		}
 	}
 
 	@Override
 	public void setRotation(float degrees) {
 		super.setRotation(degrees);
-		if(solarActorSprite != null)
+		if(solarActorSprite != null) {
 			this.solarActorSprite.setRotation(degrees);
+		}
 	}
 
 	public void setActorScale(SolarActorScale scale) {
