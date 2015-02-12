@@ -13,14 +13,15 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 public class GUILabel extends Label implements GUIActor {
 
     final Tooltip tooltip = new Tooltip("Test", SolarEngine.get().styles.tooltipSkin);
+    private InputListener tooltipInputListener;
+    private boolean tooltipIsEnabled = false;
 
     public GUILabel (CharSequence text, LabelStyle style, Stage stage) {
         super(text, style);
         tooltip.setVisible(false);
         stage.addActor(tooltip);
 
-
-        this.addListener(new InputListener() {
+        tooltipInputListener = new InputListener() {
             @Override
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                 tooltip.updatePosition();
@@ -34,8 +35,25 @@ public class GUILabel extends Label implements GUIActor {
                 return;
             }
 
-        });
+        };
+        enableTooltips();
 
+    }
+
+    public void disableTooltips() {
+        if(!tooltipIsEnabled) {
+            return;
+        }
+        this.removeListener(tooltipInputListener);
+        tooltipIsEnabled = false;
+    }
+
+    public void enableTooltips() {
+        if(tooltipIsEnabled){
+            return;
+        }
+        this.addListener(tooltipInputListener);
+        tooltipIsEnabled = true;
     }
 
 

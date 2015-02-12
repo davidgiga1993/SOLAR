@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Mass;
@@ -29,6 +30,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 
 	protected SolarActorScale scaleFactor;
 	float orbitalRadiusInPixels;
+	private float orbitalRadiusInWorld;
 	//protected Color color = Color.WHITE;
 
 	public AstronomicalBody(String name)
@@ -46,6 +48,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	public AstronomicalBody(String name, Length radius, double orbitalRadiusInMeters, double massInKilograms, double angleInDegree, AstronomicalBody origin, SolarActorScale scaleFactor)
 	{
 		super(name);
+		setActorScale(scaleFactor);
 		this.satellites = new Group();
 		this.orbitalRadiusInKilometers = orbitalRadiusInMeters;
 		this.massInKilogram = massInKilograms;
@@ -67,6 +70,12 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		float tSize = scaleDistanceToStage(physicalProperties.radius.asKilometres()) * scaleFactor.shapeScale;
 		this.setSize(tSize, tSize);
 		orbitalRadiusInPixels = scaleDistanceToStage(orbitalRadiusInKilometers) * scaleFactor.orbitScale;
+	}
+
+	@Override
+	public void updateScale(SolarActorScale scale) {
+		changeScale(scale);
+		orbitalRadiusInWorld = scaleDistanceToStage(orbitalRadiusInKilometers) *  scale.orbitScale;
 	}
 
 	@Override
@@ -125,7 +134,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return current X-axis position of the body
 	 */
 	protected float calculateOrbitalPositionX() {
-		return (float) (calculateCenterOfOrbitX() + (float) Math.cos(Math.toRadians(angleInDegree)) * scaleDistanceToStage(orbitalRadiusInKilometers));
+		return (float) (calculateCenterOfOrbitX() + (float) Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInWorld);
 	}
 
 	/**
@@ -133,7 +142,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return current Y-axis position of the body
 	 */
 	protected float calculateOrbitalPositionY() {
-		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * scaleDistanceToStage(orbitalRadiusInKilometers));
+		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInWorld);
 	}
 	    
     protected void displayOrbit(ShapeRenderer shapeRenderer)

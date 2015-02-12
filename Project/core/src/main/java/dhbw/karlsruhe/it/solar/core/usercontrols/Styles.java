@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
@@ -15,6 +16,7 @@ public class Styles
     public TextButtonStyle textButtonStyle;
 
     public LabelStyle defaultLabelStyle;
+    public TextField.TextFieldStyle defaultTextFieldStyle;
 
     public Skin tooltipSkin;
 
@@ -23,6 +25,7 @@ public class Styles
         BitmapFont defaultFont = new BitmapFont();
         FontCacher.addFont(defaultFont, "default");
         defaultLabelStyle = new LabelStyle(defaultFont, new Color(0.8f, 0.8f, 0.8f, 1f));
+        defaultTextFieldStyle = new TextField.TextFieldStyle(defaultFont, new Color(0,.5f,.5f,1f), null, null, null);
         TextureAtlas guiAtlas = new TextureAtlas(Gdx.files.internal("data/skin/uiskin.atlas"));
         tooltipSkin = new Skin(Gdx.files.internal("data/skin/uiskin.json"));
         tooltipSkin.addRegions(guiAtlas);

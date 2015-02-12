@@ -17,6 +17,7 @@ public class Solar
         cfg.width = 900;
         cfg.height = 600;
         cfg.foregroundFPS = 0;
+        cfg.vSyncEnabled = true;
         
         Engine = new SolarEngine();
         new LwjglApplication(Engine, cfg);

@@ -7,7 +7,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -22,16 +25,31 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
     private float speed = 100f;
     protected Player owner;
 
-    public Spaceship(String name, Player owner)
+    public Spaceship(String name, Length width, Length length, Player owner)
     {
         super(name);
-	      this.selected = false;
-	      this.destination = null;
-	      this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
-	      solarActorTexture = TextureCacher.gameAtlas.findRegion("Cruiser");
-	      this.setSize(solarActorTexture.getRegionWidth(), solarActorTexture.getRegionHeight());
-          this.owner = owner;
-	      createShipSprite();
+        setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
+	    this.selected = false;
+	    this.destination = null;
+	    this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
+	    solarActorTexture = TextureCacher.gameAtlas.findRegion("Cruiser");
+        createShipSprite();
+
+        this.setSize(width, length);
+        this.owner = owner;
+    }
+
+    /**
+     * Resizes the Spaceship
+     * @param width
+     * @param height
+     */
+    public void setSize(Length width, Length height) {
+        // convert to pixels and scale with scale setting
+        float pWidth = scaleDistanceToStage(width.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
+        float pHeight = scaleDistanceToStage(height.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
+        // call super
+        super.setSize(pWidth , pHeight);
     }
 
     private void createShipSprite()
@@ -88,7 +106,7 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
         if (selected)
         {
             shapeRenderer.setColor(Color.GREEN);
-            shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
+            shapeRenderer.rect(getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), 1, 1, getRotation());
         }
     }
 
@@ -144,7 +162,7 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
      */
     private void shipRotation()
     {
-        solarActorSprite.setRotation(calculateRotationAngle());
+        this.setRotation(calculateRotationAngle());
     }
 
     /**

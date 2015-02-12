@@ -14,6 +14,10 @@ public abstract class SolarActor extends Actor {
 	protected boolean selected;
 	protected TextureRegion solarActorTexture;
 	protected Sprite solarActorSprite;
+
+	private SolarActorScale actorScale;
+	protected float currentShapeScale;
+	protected float currentOrbitScale;
 	
 	public SolarActor (String name)
 	{
@@ -72,5 +76,35 @@ public abstract class SolarActor extends Actor {
 		// this ensures, that the origin is the center of the SolarActor.
 		setOrigin(width/2, height/2);
 		super.setSize(width, height);
+		if (solarActorSprite != null) {
+			solarActorSprite.setSize(width, height);
+		}
+	}
+
+	public void updateScale(SolarActorScale newScale) {
+		float width = getWidth() / currentShapeScale * newScale.shapeScale;
+		float height = getHeight() / currentShapeScale * newScale.shapeScale;
+		setSize(width, height);
+		setActorScale(newScale);
+	}
+
+	@Override
+	public void setOrigin(float originX, float originY) {
+		super.setOrigin(originX, originY);
+		if(solarActorSprite != null)
+			this.solarActorSprite.setOrigin(originX, originY);
+	}
+
+	@Override
+	public void setRotation(float degrees) {
+		super.setRotation(degrees);
+		if(solarActorSprite != null)
+			this.solarActorSprite.setRotation(degrees);
+	}
+
+	public void setActorScale(SolarActorScale scale) {
+		actorScale = scale;
+		currentOrbitScale = scale.orbitScale;
+		currentShapeScale = scale.shapeScale;
 	}
 }

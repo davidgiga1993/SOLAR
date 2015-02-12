@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 import org.junit.After;
 import org.junit.Before;
@@ -42,7 +43,7 @@ public class SpaceshipJUnit
     
     private Spaceship placeTestShip() throws Exception
     {
-    	return new Spaceship("Testschiff", null);
+    	return new Spaceship("Testschiff", new Length(1, Length.Unit.kilometres), new Length(2, Length.Unit.kilometres), null);
     }
 
     @After

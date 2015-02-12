@@ -1,14 +1,23 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BottomBarGUIElement;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBarGUIElement;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBarGUIElement;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.Tooltip;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.configElements.OrbitScaleSlider;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.configElements.ScaleDialog;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.configElements.ScaleSlider;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.configElements.ShapeScaleSlider;
+import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 
 public class GameHUDStage extends BaseGUIStage{
 	
@@ -50,6 +59,10 @@ public class GameHUDStage extends BaseGUIStage{
         //navigationBar.addTo(this);
         //resourceBar.addTo(this);
 
+        if(ConfigurationConstants.SCALE_DIALOG_ENABLED) {
+            ScaleDialog.createScaleDialog(this);
+        }
+
 	}
 
     @Override
@@ -60,3 +73,4 @@ public class GameHUDStage extends BaseGUIStage{
     }
 
 }
+
