@@ -8,6 +8,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.ai.AIModule;
+import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
+import dhbw.karlsruhe.it.solar.core.ai.AISpaceshipModule;
+import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
+import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 import dhbw.karlsruhe.it.solar.player.Ownable;
@@ -17,25 +22,50 @@ import dhbw.karlsruhe.it.solar.player.Player;
  * @author Andi
  *
  */
-public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
+public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, KinematicObject
 {
 
     private Vector2 destination;
-    private float speed = 100f;
+    private float speed = 1000f;
     protected Player owner;
+
+    protected Kinematic kinematic;
+
+    AIModule aiModule;
+    AIOutput aiOutput;
 
     public Spaceship(String name, Length width, Length length, Player owner)
     {
         super(name);
         setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
 	    this.selected = false;
-	    this.destination = null;
-	    this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
+
 	    solarActorTexture = TextureCacher.gameAtlas.findRegion("Cruiser");
         createShipSprite();
 
         this.setSize(width, length);
+        this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
         this.owner = owner;
+
+        // initialize AI Module
+        this.destination = new Vector2(getX(), getY());
+        this.kinematic = new Kinematic(new Vector2(getX()+getOriginX(), getY()+getOriginY()), getRotation(), speed);
+        this.aiModule = new AISpaceshipModule(this);
+        aiModule.setTarget(destination);
+    }
+
+    @Override
+    public Kinematic getKinematic() {
+        return kinematic;
+    }
+
+    @Override
+    public void act(float delta) {
+        aiOutput = aiModule.act(delta);
+        setPosition(aiOutput.position.x-getOriginX(), aiOutput.position.y-getOriginY());
+        // TODO: fix rotation offset of spaceship... +90° necessary atm.
+        setRotation(aiOutput.rotation + 90);
+        super.act(delta);
     }
 
     /**
@@ -79,7 +109,7 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer)
     {
         // Anzeige des Kurses und Markierung des Ziels
-        if (destination != null && this.getActions().size != 0)
+        if (destination != null && this.aiModule.isMoving())
         {
             shapeRenderer.setColor(Color.GREEN);
             shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destination.x, destination.y);
@@ -115,8 +145,15 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable
      */
     public void setDestination(Vector2 destination)
     {
+        this.aiModule.setTarget(destination);
         this.destination = destination;
         System.out.println("Neues Ziel gesetzt für " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
+    }
+
+    public void setDestination(KinematicObject destination) {
+        this.aiModule.setTarget(destination.getKinematic());
+        this.destination = destination.getKinematic().position;
+        System.out.println("Neues Ziel gesetzt für " + this.getName());
     }
 
     /**

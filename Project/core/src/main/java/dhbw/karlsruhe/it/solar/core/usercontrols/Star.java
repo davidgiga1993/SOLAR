@@ -11,7 +11,7 @@ import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
  */
 public class Star extends AstronomicalBody
 {	
-	public Star(String name, Length radius, double massInSolarMasses, double orbitalRadiusInAU, double angleInDegree, AstronomicalBody origin)
+	public Star(String name, Length radius, double massInSolarMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin)
 	{
 		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_STAR);
 		//this.setSize(1000, 1000);
@@ -28,7 +28,7 @@ public class Star extends AstronomicalBody
      * @param angleInDegree Desired angle of the planet's position on the map of the system relative to its star
      * @return created Planet object
      */
-    public Planet placeNewPlanet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, double angleInDegree)
+    public Planet placeNewPlanet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree)
     {
         Planet newObject = new Planet(name, radius, massInEarthMasses, orbitalRadiusInAU, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();

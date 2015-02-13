@@ -10,7 +10,7 @@ import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
  */
 public class Moon extends AstronomicalBody
 {
-	public Moon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
+	public Moon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, float angleInDegree, AstronomicalBody origin)
 	{
 		//TODO: orbitalRadiusInKilometers was increased 20 times here for the testing of scaling purposes (moons visibly separate from planet without needing to zoom in. Needs to be redone at some point
 		super(name, radius, orbitalRadiusInKilometers, convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_MOON);

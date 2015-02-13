@@ -7,7 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
+import dhbw.karlsruhe.it.solar.core.commands.MoveToKineticObjectCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
@@ -102,7 +104,12 @@ public class GameInputListener extends InputListener {
 		case Input.Buttons.MIDDLE:
 			break;
 		case Input.Buttons.RIGHT:
-			new MoveCommand(stage.selectedActors.getSpaceships(), x, y, stage.getHumanPlayer()).execute();
+			Actor target = event.getTarget();
+			if(target instanceof KinematicObject) {
+				new MoveToKineticObjectCommand(stage.selectedActors.getSpaceships(), (KinematicObject) target, stage.getHumanPlayer()).execute();
+			} else {
+				new MoveCommand(stage.selectedActors.getSpaceships(), x, y, stage.getHumanPlayer()).execute();	
+			}
 			break;
 		default:
 			super.touchUp(event, x, y, pointer, button);

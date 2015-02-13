@@ -12,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
  */
 public class Asteroid extends AstronomicalBody
 {
-	public Asteroid(String name, Length radius, double massInKilogram, double orbitalRadiusInKilometers, double angleInDegree, AstronomicalBody origin)
+	public Asteroid(String name, Length radius, double massInKilogram, double orbitalRadiusInKilometers, float angleInDegree, AstronomicalBody origin)
 	{
 		super(name, radius, orbitalRadiusInKilometers, massInKilogram, angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_ASTEROID);
 		//this.setSize(100, 50);

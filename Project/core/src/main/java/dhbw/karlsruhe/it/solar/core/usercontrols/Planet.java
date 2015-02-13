@@ -10,7 +10,7 @@ import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 public class Planet extends AstronomicalBody
 {
 
-	public Planet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, double angleInDegree, AstronomicalBody origin)
+	public Planet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin)
 	{
 		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_PLANET);
 		//this.setSize(250, 250);
@@ -27,12 +27,14 @@ public class Planet extends AstronomicalBody
      * @param angleInDegree Desired angle of the moon's position on the map of the system relative to its planet
      * @return created Moon object
      */
-    public Moon placeNewMoon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, double angleInDegree)
+    public Moon placeNewMoon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, float angleInDegree)
     {
         Moon newObject = new Moon(name, radius, massInEarthMasses, orbitalRadiusInKilometers, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.addActor(newObject);
         return newObject;
     }
+
+    //TODO: Alle Klassen die von AstronomicalBody ableiten müssen die Konstruktoren auf Length angepasst kriegen...
 
 }

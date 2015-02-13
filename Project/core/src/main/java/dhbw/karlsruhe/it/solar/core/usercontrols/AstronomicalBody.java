@@ -3,8 +3,11 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
+import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Mass;
@@ -15,17 +18,19 @@ import java.util.List;
  * @author Andi
  *
  */
-public abstract class AstronomicalBody extends SolarActor implements ShapeRenderable {
+public abstract class AstronomicalBody extends SolarActor implements ShapeRenderable, KinematicObject {
 
 	protected BodyProperties physicalProperties;
 
 	protected double orbitalRadiusInKilometers;
 	protected double orbitalPeriodInDays;
 	protected double massInKilogram;
-	protected double angleInDegree;
+	protected float angleInDegree;
 	protected AstronomicalBody origin;
 	protected Group satellites;
 	protected float periodicConstant;
+
+	protected Kinematic kinematic;
 
 	protected SolarActorScale scaleFactor;
 	float orbitalRadiusInPixels;
@@ -44,17 +49,17 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		this.scaleFactor = new SolarActorScale(1,1);
 	}
 	
-	public AstronomicalBody(String name, Length radius, double orbitalRadiusInMeters, double massInKilograms, double angleInDegree, AstronomicalBody origin, SolarActorScale scaleFactor)
+	public AstronomicalBody(String name, Length radius, double orbitalRadiusInKilometres, double massInKilograms, float angleInDegree, AstronomicalBody origin, SolarActorScale scaleFactor)
 	{
 		super(name);
 		setActorScale(scaleFactor);
 		this.satellites = new Group();
-		this.orbitalRadiusInKilometers = orbitalRadiusInMeters;
+		this.orbitalRadiusInKilometers = orbitalRadiusInKilometres;
 		this.massInKilogram = massInKilograms;
 		this.angleInDegree = angleInDegree;
 		this.origin = origin;
 		this.scaleFactor = scaleFactor;
-		this.physicalProperties = new BodyProperties(new Mass((float) massInKilograms, Mass.Unit.KILOGRAM), radius, new Length((float) orbitalRadiusInMeters, Length.Unit.kilometres), (float) angleInDegree, origin.physicalProperties);
+		this.physicalProperties = new BodyProperties(new Mass((float) massInKilograms, Mass.Unit.KILOGRAM), radius, new Length((float) orbitalRadiusInKilometres, Length.Unit.kilometres), (float) angleInDegree, origin.physicalProperties);
 		// this remains here in order to allow the modification of the simulated world without altering the physics behind them.
 		this.orbitalPeriodInDays = calculateOrbitalPeriod();
 		if (orbitalPeriodInDays != 0) {
@@ -63,6 +68,9 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 			this.periodicConstant = 0;
 		}
 		changeScale(scaleFactor);
+		float speed = (float) ((2 * Math.PI * scaleDistanceToStage(orbitalRadiusInKilometres)) / orbitalPeriodInDays);
+		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
+		this.kinematic.velocity = new Vector2(1,0).scl(speed);
 	}
 
 	public void changeScale(SolarActorScale scaleFactor) {
@@ -82,6 +90,11 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		super.act(delta);
 		angleInDegree += periodicConstant * delta;
 		calculateOrbitalPositionTotal();
+
+		kinematic.position.x = getX()+getOriginX();
+		kinematic.position.y = getY()+getOriginY();
+		kinematic.rotation = angleInDegree + 90f;
+		kinematic.velocity.rotate(kinematic.rotation);
 	}
 
 	@Override
@@ -242,9 +255,9 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     {
     	return massInSolarMasses * 1.98855 * Math.pow(10, 30);
     }
-//@Override
-//	public void setColor(Color color) {
-		//this.color = color;
-	//}
 
+	@Override
+	public Kinematic getKinematic() {
+		return kinematic;
+	}
 }

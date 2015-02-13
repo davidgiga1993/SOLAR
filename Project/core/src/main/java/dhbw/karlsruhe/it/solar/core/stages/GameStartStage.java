@@ -81,9 +81,9 @@ public class GameStartStage extends BaseStage
         humanPlayer = playerManager.createPlayer("Human Player");
         aiPlayer = playerManager.createPlayer("CPU Player");
 
-        placeNewShip("Event Horizon", new GridPoint2(0, 120), humanPlayer);
-        placeNewShip("Nostromo", new GridPoint2(150, 100), humanPlayer);
-        placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
+        placeNewShip("Event Horizon", new GridPoint2(0, 0), humanPlayer);
+        //placeNewShip("Nostromo", new GridPoint2(150, 100), humanPlayer);
+        //placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
     }
     
     @Override

@@ -22,10 +22,14 @@ public class MoveCommand implements Command {
 	public void execute() {
 		for(Spaceship unit : units) {
 			if (unit.isOwnedBy(commander)) {
-				unit.setDestination(destination);
-				unit.moveToDestination();
+				action(unit);
+				//unit.moveToDestination();
 			}
 		}
+	}
+
+	public void action(Spaceship unit) {
+		unit.setDestination(destination);
 	}
 
 }

@@ -106,7 +106,7 @@ public class SolarSystem extends AstronomicalBody {
      * @param angleInDegree Desired angle of the star's position on the map of the system
      * @return created Star object
      */
-    public Star placeNewStar(String name, Length radius, double massInSolarMasses, double orbitalRadiusInAU, double angleInDegree)
+    public Star placeNewStar(String name, Length radius, double massInSolarMasses, double orbitalRadiusInAU, float angleInDegree)
     {
         Star newObject = new Star(name, radius, massInSolarMasses, orbitalRadiusInAU, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
