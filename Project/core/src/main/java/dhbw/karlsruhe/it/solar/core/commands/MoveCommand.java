@@ -23,7 +23,6 @@ public class MoveCommand implements Command {
 		for(Spaceship unit : units) {
 			if (unit.isOwnedBy(commander)) {
 				action(unit);
-				//unit.moveToDestination();
 			}
 		}
 	}

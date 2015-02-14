@@ -28,6 +28,9 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	protected float angleInDegree;
 	protected AstronomicalBody origin;
 	protected Group satellites;
+
+
+
 	protected float periodicConstant;
 
 	protected Kinematic kinematic;
@@ -260,4 +263,5 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	public Kinematic getKinematic() {
 		return kinematic;
 	}
+
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
@@ -81,8 +82,8 @@ public class GameStartStage extends BaseStage
         humanPlayer = playerManager.createPlayer("Human Player");
         aiPlayer = playerManager.createPlayer("CPU Player");
 
-        placeNewShip("Event Horizon", new GridPoint2(0, 0), humanPlayer);
-        //placeNewShip("Nostromo", new GridPoint2(150, 100), humanPlayer);
+        placeNewShip("Event Horizon", new Vector2(0, 0), humanPlayer);
+        placeNewShip("Nostromo", new Vector2(1500, 1000), humanPlayer);
         //placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
     }
     
@@ -147,10 +148,9 @@ public class GameStartStage extends BaseStage
      * @param name Desired name of the spaceship.
      * @param startlocation Desired location at which the ship is to appear.
      */
-    private void placeNewShip(String name, GridPoint2 startlocation, Player owner)
+    private void placeNewShip(String name, Vector2 startlocation, Player owner)
     {
-        Spaceship newShip = new Spaceship(name, new Length(1, Length.Unit.kilometres), new Length(1, Length.Unit.kilometres), owner);
-        newShip.setPosition(startlocation.x, startlocation.y);
+        Spaceship newShip = Spaceship.placeNewShip(name, startlocation, owner);
         addActor(newShip);
     }
     

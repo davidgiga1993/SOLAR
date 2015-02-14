@@ -29,11 +29,9 @@ public class PursueSteeringProvider extends ArriveSteeringProvider {
             prediction = distance / speed;
         }
 
-
         Vector2 predictedMovement = new Vector2(pursueTarget.velocity).scl(prediction);
         Vector2 predictedPosition = new Vector2(pursueTarget.position).add(predictedMovement);
         target.position = predictedPosition;
-        //TODO: astronomical body kinematic.. xD
 
         return super.getSteering(character);
     }

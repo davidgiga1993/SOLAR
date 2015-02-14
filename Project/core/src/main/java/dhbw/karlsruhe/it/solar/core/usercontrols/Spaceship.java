@@ -12,6 +12,7 @@ import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
 import dhbw.karlsruhe.it.solar.core.ai.AISpaceshipModule;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
+import dhbw.karlsruhe.it.solar.core.ai.movement.AstronomicalBodyKinematic;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
@@ -156,6 +157,11 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
         System.out.println("Neues Ziel gesetzt für " + this.getName());
     }
 
+    public void setDestination(AstronomicalBodyKinematic destination) {
+        this.aiModule.setTarget(destination);
+        this.destination = destination.position;
+    }
+
     /**
      * @return Destination coordinates the spaceship object is heading to
      */
@@ -225,4 +231,20 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
     public boolean isOwnedBy(Player player) {
         return player.equals(owner);
     }
+
+
+    /**
+     * Adds a new spaceship object to the game.
+     * @param name Desired name of the spaceship.
+     * @param startlocation Desired location at which the ship is to appear.
+     */
+    public static Spaceship placeNewShip(String name, Vector2 startlocation, Player owner)
+    {
+        Spaceship newShip = new Spaceship(name, new Length(1, Length.Unit.kilometres), new Length(1, Length.Unit.kilometres), owner);
+        newShip.setPosition(startlocation.x, startlocation.y);
+        newShip.kinematic.position = startlocation;
+        newShip.setDestination(startlocation);
+        return newShip;
+    }
+
 }

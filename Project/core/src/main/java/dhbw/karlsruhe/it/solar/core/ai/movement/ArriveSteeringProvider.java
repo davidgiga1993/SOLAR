@@ -5,22 +5,12 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * Created by Arga on 13.02.2015.
  */
-public class ArriveSteeringProvider implements SteeringProvider {
-
-    Steering output = new Steering(0,0,0);
-    Kinematic target;
-
-    float maxVelocity;
-
-    float radius;
-    float slowRadius;
+public class ArriveSteeringProvider extends BaseSteeringProvider {
 
     float timeToTarget = 0.25f;
 
     public ArriveSteeringProvider(float maxVelocity, float radius, float slowRadius) {
-        this.maxVelocity = maxVelocity;
-        this.radius = radius;
-        this.slowRadius = slowRadius;
+        super(maxVelocity,radius,slowRadius);
     }
 
     @Override
