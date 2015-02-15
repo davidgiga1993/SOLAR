@@ -15,11 +15,7 @@ public class Kinematic {
     public Vector2 velocity;
 
     public float maxSpeed;
-    public float maxAcceleration = 100000f;
-
-    protected float slowDownDistance;
-    protected float accelerationModifier = 1f;
-    protected float slowDownTime = 0.25f;
+    public float maxAcceleration = 1000f;
 
     public boolean isMoving = false;
 
@@ -36,7 +32,6 @@ public class Kinematic {
         this.velocity = new Vector2(1,0).setAngle(rotation).scl(speed);
         this.rotation = rotation;
         this.maxSpeed = maxSpeed;
-        this.slowDownDistance = maxSpeed * slowDownTime;
     }
 
     /**
@@ -48,17 +43,6 @@ public class Kinematic {
      */
     public Kinematic(Vector2 position, float rotation, float maxSpeed) {
         this(position, rotation, 0, maxSpeed);
-    }
-
-    /**
-     * This method calculates the orientation (Vector2) based on the given rotation (float)
-     * @param rotation angle in radians
-     * @return vectorial represantation of the angle
-     */
-    public static Vector2 rotationToOrientation(float rotation) {
-        Vector2 orientation = new Vector2(1,0);
-        orientation.setAngle(rotation);
-        return orientation;
     }
 
     public void update(Steering steering, float time) {

@@ -12,7 +12,6 @@ import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
 import dhbw.karlsruhe.it.solar.core.ai.AISpaceshipModule;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
-import dhbw.karlsruhe.it.solar.core.ai.movement.AstronomicalBodyKinematic;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
@@ -155,11 +154,6 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
         this.aiModule.setTarget(destination.getKinematic());
         this.destination = destination.getKinematic().position;
         System.out.println("Neues Ziel gesetzt für " + this.getName());
-    }
-
-    public void setDestination(AstronomicalBodyKinematic destination) {
-        this.aiModule.setTarget(destination);
-        this.destination = destination.position;
     }
 
     /**

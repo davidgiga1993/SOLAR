@@ -10,8 +10,8 @@ public class PursueSteeringProvider extends ArriveSteeringProvider {
     protected Kinematic pursueTarget;
     protected float maxPrediction = 5; // 5 days of maximum prediction
 
-    public PursueSteeringProvider(float maxVelocity, float radius, float slowRadius) {
-        super(maxVelocity, radius, slowRadius);
+    public PursueSteeringProvider(float radius, float slowRadius) {
+        super(radius, slowRadius);
         target = new Kinematic(new Vector2(0,0),0,0);
     }
 
