@@ -23,7 +23,14 @@ public abstract class ScaleSlider extends WidgetGroup {
     protected SolarActorScale scale;
     private Class solarActorType;
 
-
+    /**
+     * Instantiates a new ScaleSlider
+     * @param stage that contains the ScaleSlider
+     * @param scale that should be modified
+     * @param minValue of the slider
+     * @param maxValue of the slider
+     * @param solarActorType corresponding class of the scale
+     */
     public ScaleSlider(final Stage stage, final SolarActorScale scale, float minValue, float maxValue ,final Class solarActorType) {
         super();
         this.scale = scale;
@@ -65,7 +72,7 @@ public abstract class ScaleSlider extends WidgetGroup {
         setValueLabelText(newValue);
         for (Actor a : SolarEngine.get().stageManager.getStage("GameStartStage").getActors()) {
             if (solarActorType.isInstance(a)) {
-                ((SolarActor) (a)).updateScale(scale);
+                ((SolarActor) (a)).updateScale();
             }
         }
     }

@@ -35,9 +35,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 
 	protected Kinematic kinematic;
 
-	protected SolarActorScale scaleFactor;
 	float orbitalRadiusInPixels;
-	private float orbitalRadiusInWorld;
 	//protected Color color = Color.WHITE;
 
 	public AstronomicalBody(String name)
@@ -49,7 +47,6 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		this.origin = null;
 		this.orbitalPeriodInDays = -1;
 		this.massInKilogram = 1;
-		this.scaleFactor = new SolarActorScale(1,1);
 	}
 	
 	public AstronomicalBody(String name, Length radius, double orbitalRadiusInKilometres, double massInKilograms, float angleInDegree, AstronomicalBody origin, SolarActorScale scaleFactor)
@@ -61,8 +58,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		this.massInKilogram = massInKilograms;
 		this.angleInDegree = angleInDegree;
 		this.origin = origin;
-		this.scaleFactor = scaleFactor;
-		this.physicalProperties = new BodyProperties(new Mass((float) massInKilograms, Mass.Unit.KILOGRAM), radius, new Length((float) orbitalRadiusInKilometres, Length.Unit.kilometres), (float) angleInDegree, origin.physicalProperties);
+		this.physicalProperties = new BodyProperties(new Mass((float) massInKilograms, Mass.Unit.KILOGRAM), radius, new Length((float) orbitalRadiusInKilometres, Length.Unit.kilometres), angleInDegree, origin.physicalProperties);
 		// this remains here in order to allow the modification of the simulated world without altering the physics behind them.
 		this.orbitalPeriodInDays = calculateOrbitalPeriod();
 		if (orbitalPeriodInDays != 0) {
@@ -70,22 +66,22 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		} else {
 			this.periodicConstant = 0;
 		}
-		changeScale(scaleFactor);
+		changeScale();
 		float speed = (float) ((2 * Math.PI * scaleDistanceToStage(orbitalRadiusInKilometres)) / orbitalPeriodInDays);
 		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
 		this.kinematic.velocity = new Vector2(1,0).scl(speed);
 	}
 
-	public void changeScale(SolarActorScale scaleFactor) {
-		float tSize = scaleDistanceToStage(physicalProperties.radius.asKilometres()) * scaleFactor.shapeScale;
+	private void changeScale() {
+		float tSize = scaleDistanceToStage(physicalProperties.radius.asKilometres()) * actorScale.shapeScale * 2;
 		this.setSize(tSize, tSize);
-		orbitalRadiusInPixels = scaleDistanceToStage(orbitalRadiusInKilometers) * scaleFactor.orbitScale;
+		orbitalRadiusInPixels = scaleDistanceToStage(orbitalRadiusInKilometers) * actorScale.orbitScale;
 	}
 
 	@Override
-	public void updateScale(SolarActorScale scale) {
-		changeScale(scale);
-		orbitalRadiusInWorld = scaleDistanceToStage(orbitalRadiusInKilometers) *  scale.orbitScale;
+	public void updateScale() {
+		orbitalRadiusInPixels *= actorScale.orbitScale / currentOrbitScale;
+		super.updateScale();
 	}
 
 	@Override
@@ -149,7 +145,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return current X-axis position of the body
 	 */
 	protected float calculateOrbitalPositionX() {
-		return (float) (calculateCenterOfOrbitX() + (float) Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInWorld);
+		return (float) (calculateCenterOfOrbitX() + (float) Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInPixels);
 	}
 
 	/**
@@ -157,7 +153,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return current Y-axis position of the body
 	 */
 	protected float calculateOrbitalPositionY() {
-		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInWorld);
+		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInPixels);
 	}
 	    
     protected void displayOrbit(ShapeRenderer shapeRenderer)
@@ -237,16 +233,6 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     protected double calculateOrbitalPeriod()
     {
 		return this.physicalProperties.orbitalPeriodInDays;
-    }
-    
-    private static double gravitationalConstant()
-    {
-    	return 6.67 * Math.pow(10, -11);
-    }
-    
-    public double getMass()
-    {
-    	return massInKilogram;
     }
     
     protected static double convertEarthMassesIntoKilogram( double massInEarthMasses)

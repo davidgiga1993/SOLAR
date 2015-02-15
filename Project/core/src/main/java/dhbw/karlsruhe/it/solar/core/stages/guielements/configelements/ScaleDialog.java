@@ -26,6 +26,7 @@ public class ScaleDialog {
         scaleDialog.setWidth(350);
         scaleDialog.setHeight(300);
         scaleDialog.setMovable(true);
+        scaleDialog.setResizable(true);
         Table contentTable = new Table();
         contentTable.setFillParent(true);
 
