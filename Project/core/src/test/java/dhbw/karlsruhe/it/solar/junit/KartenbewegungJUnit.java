@@ -50,16 +50,16 @@ public class KartenbewegungJUnit
         try
         {
             robot = new Robot();
-            robot.keyPress(KeyEvent.VK_PLUS);
+            robot.keyPress(KeyEvent.VK_E);
             Thread.sleep(700);
-            robot.keyRelease(KeyEvent.VK_PLUS);
+            robot.keyRelease(KeyEvent.VK_E);
             if(startZoom <= engine.camera.zoom)
                 fail("Zoom not working");
-            
-            startZoom = engine.camera.zoom;            
-            robot.keyPress(KeyEvent.VK_MINUS);
+
+            startZoom = engine.camera.zoom;
+            robot.keyPress(KeyEvent.VK_Q);
             Thread.sleep(700);
-            robot.keyRelease(KeyEvent.VK_MINUS);
+            robot.keyRelease(KeyEvent.VK_Q);
             if(startZoom >= engine.camera.zoom)
                 fail("Zoom not working");
             

@@ -189,16 +189,17 @@ public class GameInputListener extends InputListener {
 	 * @param delta
 	 */
 	public void handleContinousInput(float delta) {
-		//if (Keyboard.isKeyDown(Keyboard.KEY_ADD) ||Keyboard.isKeyDown(13))
+		// delta / (1/60) = delta * 60
+        float cameraModifier = 0.02f * (delta * 60);
 		if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E))
         {
 			// using a linear zoom is necessary because the perception of the world changes with it's zoom
 			// using a constant zoom would feel good while having a close look at things, but very slow when watching the whole solar system
-            se.camera.zoom *= 0.98f;
+            se.camera.zoom *= 1 - cameraModifier;
         }
         if (Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(Keys.Q))
         {
-        	se.camera.zoom *= 1.02f;
+        	se.camera.zoom *= 1 + cameraModifier;
         }
 		float x = 0;
 		float y = 0;
