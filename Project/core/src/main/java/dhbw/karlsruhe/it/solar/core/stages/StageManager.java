@@ -75,17 +75,16 @@ public class StageManager extends BaseStage
      * 
      * @param TAG
      */
-    public void removeStage(String TAG)
+    public Stage removeStage(String TAG)
     {
         for (int X = 0; X < Stages.size(); X++)
         {
             if (Stages.get(X).TAG.equals(TAG))
             {
-                Stages.remove(X);
-                return;
+                return Stages.remove(X);
             }
         }
-        return;
+        return null;
     }
 
     /**

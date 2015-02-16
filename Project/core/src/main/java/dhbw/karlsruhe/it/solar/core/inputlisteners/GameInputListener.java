@@ -52,6 +52,15 @@ public class GameInputListener extends InputListener {
 	@Override
 	public boolean keyUp(InputEvent event, int keycode) {
 		// TODO Auto-generated method stub
+        if (keycode == Keys.ESCAPE) {
+            Gdx.app.postRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    GameStartStage.endGame();
+                }
+            });
+            return true;
+        }
 		return super.keyUp(event, keycode);
 	}
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -32,6 +33,7 @@ public class GameStartStage extends BaseStage
     public static void startGame(){
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
+
         BackgroundStage backgroundStage = new BackgroundStage(engine);
         engine.stageManager.insertStageToBack(backgroundStage);
 
@@ -55,6 +57,23 @@ public class GameStartStage extends BaseStage
 
     }
 
+    public static void endGame() {
+        SolarEngine engine = SolarEngine.get();
+        StageManager manager = engine.stageManager;
+
+        manager.removeStage("Background").dispose();
+        manager.removeStage("GameHUD").dispose();
+
+        if(SolarEngine.DEBUG) {
+            manager.removeStage("HUD").dispose();
+        }
+
+        manager.removeStage("GameStartStage").dispose();
+
+        Gdx.input.setInputProcessor(engine);
+        engine.stageManager.StartGame();
+    }
+
     @Override
     public void draw() {
         // render line shapes
@@ -74,6 +93,7 @@ public class GameStartStage extends BaseStage
     {
         super(SE, "GameStartStage");
         SE.Service.StartGame();
+        SE.camera.zoom = 1;
 
         gameStartStageListener();
         addSelectionRectangle();
