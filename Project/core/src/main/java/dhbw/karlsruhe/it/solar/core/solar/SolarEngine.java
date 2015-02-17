@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dhbw.karlsruhe.it.solar.core.solar.logic.GameLogicService;
+import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -53,16 +54,14 @@ public class SolarEngine extends Game implements InputProcessor
         guiCamera = new OrthographicCamera(Width, Height);
         backgroundCamera = new OrthographicCamera(Width, Height);
 
-
         mainBatch = new SpriteBatch();
 
-
-        // Texture.setEnforcePotImages(false);
 
         styles = new Styles(Textures);
 
         // Einstiegspunkt ins Spiel
         stageManager = new StageManager(this);
+        stageManager.addStage(new BackgroundStage(this));
         stageManager.StartGame();
     }
 
@@ -87,9 +86,8 @@ public class SolarEngine extends Game implements InputProcessor
 
         handleInput();
         camera.update();
+
         stageManager.draw();
-
-
     }
 
     /**
@@ -120,9 +118,10 @@ public class SolarEngine extends Game implements InputProcessor
         guiCamera.viewportWidth = width;
         guiCamera.viewportHeight = width*ratio;
         guiCamera.update();
-        backgroundCamera.viewportWidth = width;
-        backgroundCamera.viewportHeight = width*ratio;
-        backgroundCamera.update();
+//        backgroundCamera.viewportWidth = width;
+//        backgroundCamera.viewportHeight = height;
+//        backgroundCamera.position.set(width/2, height/2, 0);
+//        backgroundCamera.update();
 
         stageManager.resize(width, (int) (width*ratio));
 

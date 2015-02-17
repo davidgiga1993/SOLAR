@@ -56,7 +56,6 @@ public class StartStage extends HUDStage {
         menuTable.row();
         menuTable.add(labelExit).expandX().pad(10f).height(25);
 
-        addActor(SE.Service.AddBackgroundImage());
         addActor(menuTable);
     }
 

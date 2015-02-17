@@ -50,7 +50,6 @@ public class ExitStage extends HUDStage
         menuTable.add(labelYes).pad(10f).height(25);
         menuTable.add(labelNo).pad(10f).height(25);
 
-        addActor(SE.Service.AddBackgroundImage());
         addActor(menuTable);
     }
 

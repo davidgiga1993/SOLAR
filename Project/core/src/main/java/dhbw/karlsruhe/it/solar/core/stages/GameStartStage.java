@@ -30,9 +30,6 @@ public class GameStartStage extends BaseStage
     public static void startGame(){
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
-        BackgroundStage backgroundStage = new BackgroundStage(engine);
-        engine.stageManager.insertStageToBack(backgroundStage);
-
         GameStartStage gameStage = new GameStartStage(engine);
         engine.stageManager.addStage(gameStage);
 
@@ -57,7 +54,6 @@ public class GameStartStage extends BaseStage
         SolarEngine engine = SolarEngine.get();
         StageManager manager = engine.stageManager;
 
-        manager.removeStage("Background").dispose();
         manager.removeStage("GameHUD").dispose();
 
         if(SolarEngine.DEBUG) {

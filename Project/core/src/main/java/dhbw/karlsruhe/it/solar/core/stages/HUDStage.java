@@ -16,16 +16,18 @@ public class HUDStage extends BaseGUIStage
         super(SE, TAG);
         // setCamera(SE.HUDcamera);
 
-        
-        timer = new Timer();
-        BitmapFont font = FontCacher.getFont("default");
-        FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
-        FPSLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
-        zoomLabel = new Label("Zoom: ", SE.styles.defaultLabelStyle);
-        zoomLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 45);
-        addActor(FPSLabel);
-        addActor(zoomLabel);
-        BuildTimer();
+        if (SolarEngine.DEBUG) {
+            timer = new Timer();
+            BitmapFont font = FontCacher.getFont("default");
+            FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
+            FPSLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
+            zoomLabel = new Label("Zoom: ", SE.styles.defaultLabelStyle);
+            zoomLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 45);
+            addActor(FPSLabel);
+            addActor(zoomLabel);
+            BuildTimer();
+        }
+
     }
 
     private Label FPSLabel;
@@ -58,15 +60,6 @@ public class HUDStage extends BaseGUIStage
                     BuildTimer();
             }
         }, 1);
-    }
-    
-    @Override
-    public void draw()
-    {
-        if (LogData)
-        {
-            super.draw();
-        }
     }
 
     @Override
