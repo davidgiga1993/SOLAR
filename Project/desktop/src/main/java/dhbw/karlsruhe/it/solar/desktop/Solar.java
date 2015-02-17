@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import dhbw.karlsruhe.it.solar.core.solar.*;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 public class Solar
 {

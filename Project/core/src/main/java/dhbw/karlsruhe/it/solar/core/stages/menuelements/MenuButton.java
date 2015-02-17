@@ -7,9 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.stages.ExitStage;
-
-import java.util.function.IntConsumer;
 
 /**
  * Created by argannor on 17.02.15.
