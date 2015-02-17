@@ -1,13 +1,16 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
 public class GameOptionsStage extends HUDStage
 {
@@ -19,89 +22,46 @@ public class GameOptionsStage extends HUDStage
     public GameOptionsStage(final SolarEngine SE)
     {
         super(SE, "GameOptions");
-        labelOption1 = new Label("Option1", SE.styles.defaultLabelStyle);
-        labelOption1.setPosition(-labelOption1.getWidth() / 2, 80);
-        labelOption1.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
-                return true;
-            }
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelOption1);
-            }
+        Table menuTable = new Table();
+        menuTable.setFillParent(true);
+        menuTable.setPosition(0, 0);
+        menuTable.setWidth(Gdx.graphics.getWidth());
+        menuTable.setHeight(Gdx.graphics.getHeight());
+        menuTable.center().left();
 
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelOption1);
-            }
-        });
+        if (SolarEngine.DEBUG) {
+            menuTable.debug();
+        }
 
-        labelBackground = new Label("Choose Background", SE.styles.defaultLabelStyle);
-        labelBackground.setPosition(-labelBackground.getWidth() / 2, 50);
-        labelBackground.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
+        labelOption1 = new MenuButton("Option 1", SE) {
+            @Override
+            protected void onClick() {
+            }
+        };
+
+        labelBackground = new MenuButton("Choose Background", SE) {
+            @Override
+            protected void onClick() {
                 SE.stageManager.swapCurrentStage(new GameOptionsBackgroundStage(SE));
-                return true;
             }
+        };
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelBackground);
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelBackground);
-            }
-        });
-
-        labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
-        labelExit.setPosition(-labelOption1.getWidth() / 2, 20);
-        labelExit.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
+        labelExit = new MenuButton("Return", SE) {
+            @Override
+            protected void onClick() {
                 SE.stageManager.swapCurrentStage(new StartStage(SE));
-                return true;
             }
+        };
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelExit);
-            }
+        menuTable.add(labelOption1).expandX().pad(10f).height(25);
+        menuTable.row();
+        menuTable.add(labelBackground).expandX().pad(10f).height(25);
+        menuTable.row();
+        menuTable.add(labelExit).expandX().pad(10f).height(25);
 
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelExit);
-            }
-        });
         addActor(SE.Service.AddBackgroundImage());
-        addActor(labelOption1);
-        addActor(labelBackground);
-        addActor(labelExit);
-        
+        addActor(menuTable);
     }
 
-    private void AnimateLabelIn(Label label)
-    {
-        AnimateLabel(label, 1.2f);
-    }
-
-    private void AnimateLabelOut(Label label)
-    {
-        AnimateLabel(label, 1);
-    }
-
-    private void AnimateLabel(Label label, float Scale)
-    {
-        LabelFontScalerAction ac = new LabelFontScalerAction(Scale, label.getFontScaleX());
-        ac.setDuration(0.7f);
-        ac.setInterpolation(Interpolation.exp10);
-        label.addAction(ac);
-    }
 }

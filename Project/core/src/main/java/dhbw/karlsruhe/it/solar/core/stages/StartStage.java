@@ -1,111 +1,64 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
-public class StartStage extends HUDStage
-{
+public class StartStage extends HUDStage {
     private Label labelStart;
     private Label labelSettings;
     private Label labelExit;
 
-    public StartStage(final SolarEngine SE)
-    {
+    public StartStage(final SolarEngine SE) {
         super(SE, "StartStage");
-               
-        labelStart = new Label("Start game", SE.styles.defaultLabelStyle);
-        labelStart.setPosition(SolarEngine.WidthHalf - labelStart.getWidth() / 2, SolarEngine.HeightHalf + 80);
 
-        labelStart.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
+        Table menuTable = new Table();
+        menuTable.setFillParent(true);
+        menuTable.setPosition(0, 0);
+        menuTable.setWidth(Gdx.graphics.getWidth());
+        menuTable.setHeight(Gdx.graphics.getHeight());
+        menuTable.center().left();
+
+        if (SolarEngine.DEBUG) {
+            menuTable.debug();
+        }
+
+
+        labelStart = new MenuButton("Start game", SE) {
+            @Override
+            protected void onClick() {
                 SE.stageManager.removeStage("StartStage");
                 GameStartStage.startGame();
-                return true;
             }
+        };
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelStart);
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelStart);
-            }
-        });
-
-        labelSettings = new Label("Settings", SE.styles.defaultLabelStyle);
-        labelSettings.setPosition(SolarEngine.WidthHalf - labelStart.getWidth() / 2, SolarEngine.HeightHalf + 50);
-        labelSettings.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
+        labelSettings = new MenuButton("Settings", SE) {
+            @Override
+            protected void onClick() {
                 SE.stageManager.removeStage("StartStage");
                 SE.stageManager.addStage(new GameOptionsStage(SE));
-                return true;
             }
+        };
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelSettings);
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelSettings);
-            }
-        });
-
-        labelExit = new Label("Exit", SE.styles.defaultLabelStyle);
-        labelExit.setPosition(SolarEngine.WidthHalf - labelStart.getWidth() / 2,SolarEngine.HeightHalf +  20);
-        labelExit.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
+        labelExit = new MenuButton("Exit", SE) {
+            @Override
+            protected void onClick() {
                 SE.stageManager.removeStage("StartStage");
                 SE.stageManager.addStage(new ExitStage(SE));
-                return true;
             }
+        };
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelExit);
-            }
+        menuTable.add(labelStart).expandX().pad(10f).height(25);
+        menuTable.row();
+        menuTable.add(labelSettings).expandX().pad(10f).height(25);
+        menuTable.row();
+        menuTable.add(labelExit).expandX().pad(10f).height(25);
 
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelExit);
-            }
-        });
         addActor(SE.Service.AddBackgroundImage());
-        addActor(labelExit);
-        addActor(labelStart);
-        addActor(labelSettings);
+        addActor(menuTable);
     }
 
-    private void AnimateLabelIn(Label label)
-    {
-        AnimateLabel(label, 1.2f);
-    }
-
-    private void AnimateLabelOut(Label label)
-    {
-        AnimateLabel(label, 1);
-    }
-
-    private void AnimateLabel(Label label, float Scale)
-    {
-        LabelFontScalerAction ac = new LabelFontScalerAction(Scale, label.getFontScaleX());
-        ac.setDuration(0.7f);
-        ac.setInterpolation(Interpolation.exp10);
-        label.addAction(ac);
-    }
 
 }

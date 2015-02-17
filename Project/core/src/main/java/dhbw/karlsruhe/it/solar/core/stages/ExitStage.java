@@ -7,8 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
 public class ExitStage extends HUDStage
 {
@@ -21,91 +23,41 @@ public class ExitStage extends HUDStage
     {
         super(SE, "Exit");
 
+        Table menuTable = new Table();
+        menuTable.setFillParent(true);
+        menuTable.setPosition(0, 0);
+        menuTable.setWidth(Gdx.graphics.getWidth());
+        menuTable.setHeight(Gdx.graphics.getHeight());
+        menuTable.center().left();
+
+        if (SolarEngine.DEBUG) {
+            menuTable.debug();
+        }
+
         labelAreYouSure = new Label("Are you sure?", SE.styles.defaultLabelStyle);
-        labelAreYouSure.setPosition(-labelAreYouSure.getWidth() / 2, 80);
 
-        labelAreYouSure.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
-                return true;
-            }
-
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-            }
-        });
-
-        labelYes = new Label("Yes", SE.styles.defaultLabelStyle);
-        labelYes.setPosition(-labelAreYouSure.getWidth() / 2, 50);
-
-        labelYes.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
+        labelYes = new MenuButton("Yes", SE) {
+            @Override
+            protected void onClick() {
                 Gdx.app.exit();
-                return true;
             }
+        };
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelYes);
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelYes);
-            }
-        });
-
-        labelNo = new Label("No", SE.styles.defaultLabelStyle);
-        labelNo.setPosition(-labelNo.getWidth() / 2, 50);
-
-        labelNo.addListener(new InputListener()
-        {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
+        labelNo = new MenuButton("No", SE) {
+            @Override
+            protected void onClick() {
                 SE.stageManager.swapCurrentStage(new StartStage(SE));
-                return true;
             }
+        };
 
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelIn(labelNo);
-            }
+        menuTable.add(labelAreYouSure).expandX().pad(10f).height(25).colspan(2);
+        menuTable.row();
+        menuTable.add(labelYes).pad(10f).height(25);
+        menuTable.add(labelNo).pad(10f).height(25);
 
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor)
-            {
-                AnimateLabelOut(labelNo);
-            }
-        });
-        
         addActor(SE.Service.AddBackgroundImage());
-        addActor(labelAreYouSure);
-        addActor(labelYes);
-        addActor(labelNo);
+        addActor(menuTable);
     }
 
-    private void AnimateLabelIn(Label label)
-    {
-        AnimateLabel(label, 1.2f);
-    }
-
-    private void AnimateLabelOut(Label label)
-    {
-        AnimateLabel(label, 1);
-    }
-
-    private void AnimateLabel(Label label, float Scale)
-    {
-        LabelFontScalerAction ac = new LabelFontScalerAction(Scale, label.getFontScaleX());
-        ac.setDuration(0.7f);
-        ac.setInterpolation(Interpolation.exp10);
-        label.addAction(ac);
-    }
 
 }
