@@ -28,7 +28,7 @@ public class GameHUDStage extends BaseGUIStage{
 
         guiTable = new Table();
         guiTable.setPosition(0,0);
-        guiTable.setFillParent(false);
+        guiTable.setFillParent(true);
         guiTable.setWidth(Gdx.graphics.getWidth());
         guiTable.setHeight(Gdx.graphics.getHeight());
         guiTable.top().left();
@@ -57,13 +57,6 @@ public class GameHUDStage extends BaseGUIStage{
         }
 
 	}
-
-    @Override
-    public void resize(int width, int height) {
-        super.resize(width, height);
-        guiTable.invalidateHierarchy();
-        guiTable.setSize(width, height);
-    }
 
 }
 
