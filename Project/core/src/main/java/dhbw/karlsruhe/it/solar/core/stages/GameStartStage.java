@@ -85,7 +85,7 @@ public class GameStartStage extends BaseStage
     {
         super(SE, "GameStartStage");
         SE.Service.StartGame();
-        SE.camera.zoom = 1;
+        SE.camera.zoom = 25;
 
         gameStartStageListener();
         addSelectionRectangle();

@@ -8,7 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.Tooltip;
-import dhbw.karlsruhe.it.solar.core.usercontrols.*;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,27 +49,29 @@ public class ScaleDialog {
         
         ScaleSlider starShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_STAR, 1, 100, Star.class);
         ScaleSlider planetShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 1, 2000, Planet.class);
-        ScaleSlider asteroidShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 1, 10000, Asteroid.class);
+    //    ScaleSlider asteroidShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 1, 10000, Asteroid.class);
         ScaleSlider moonShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_MOON, 1, 5000, Moon.class);
         ScaleSlider unitShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_UNITS, 40000, 40000000, Spaceship.class);
 
         ScaleSlider planetOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 0.1f, 5, Planet.class);
-        ScaleSlider asteroidOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 0.1f, 200, Asteroid.class);
+     //   ScaleSlider asteroidOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 0.1f, 200, Asteroid.class);
         ScaleSlider moonOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_MOON, 0.1f, 200, Moon.class);
 
         scaleSliders.add(starShapeSlider);
         scaleSliders.add(planetShapeSlider);
-        scaleSliders.add(asteroidShapeSlider);
+      //  scaleSliders.add(asteroidShapeSlider);
         scaleSliders.add(moonShapeSlider);
         scaleSliders.add(unitShapeSlider);
 
         scaleSliders.add(planetOrbitSlider);
-        scaleSliders.add(asteroidOrbitSlider);
+     //   scaleSliders.add(asteroidOrbitSlider);
         scaleSliders.add(moonOrbitSlider);
         
         ScalePresetButton preset1Button = new ScalePresetButton("Preset 1") {
             @Override
             public void onClick() {
+                ScalePresetButton.loadPreset1();
+                refreshSliders();
                 ScalePresetButton.loadPreset1();
                 refreshSliders();
             }
@@ -77,12 +82,16 @@ public class ScaleDialog {
             public void onClick() {
                 ScalePresetButton.loadPreset2();
                 refreshSliders();
+                ScalePresetButton.loadPreset2();
+                refreshSliders();
             }
         };
 
         ScalePresetButton preset3Button = new ScalePresetButton("Preset 3") {
             @Override
             public void onClick() {
+                ScalePresetButton.loadPreset3();
+                refreshSliders();
                 ScalePresetButton.loadPreset3();
                 refreshSliders();
             }
@@ -94,12 +103,12 @@ public class ScaleDialog {
         presetButtonTable.add(preset3Button);
 
         contentTable.add(shapeLabel).fillX().height(25).row();
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 4; i++) {
             contentTable.add(scaleSliders.get(i)).fillX().height(25).row();
         }
 
         contentTable.add(orbitLabel).fillX().height(25).row();
-        for(int i = 5; i < 8; i++) {
+        for(int i = 4; i < 6; i++) {
             contentTable.add(scaleSliders.get(i)).fillX().height(25).row();
         }
 
