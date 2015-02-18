@@ -29,8 +29,6 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	protected AstronomicalBody origin;
 	protected Group satellites;
 
-
-
 	protected float periodicConstant;
 
 	protected Kinematic kinematic;

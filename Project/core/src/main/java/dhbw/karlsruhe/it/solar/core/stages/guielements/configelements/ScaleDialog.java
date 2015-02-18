@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.Tooltip;
@@ -23,15 +24,19 @@ public class ScaleDialog {
 
     public void initialize() {
         scaleDialog = new Tooltip("Scale Settings");
-        scaleDialog.setWidth(350);
-        scaleDialog.setHeight(300);
+        scaleDialog.setWidth(340);
+        scaleDialog.setHeight(330);
         scaleDialog.setMovable(true);
         scaleDialog.setResizable(true);
         Table contentTable = new Table();
         contentTable.setFillParent(true);
 
         Label shapeLabel = new Label("Body Size", SolarEngine.get().styles.defaultLabelStyle);
+        shapeLabel.setAlignment(Align.center);
         Label orbitLabel = new Label("Orbit Size", SolarEngine.get().styles.defaultLabelStyle);
+        orbitLabel.setAlignment(Align.center);
+        Label presetLabel = new Label("Load a Preset", SolarEngine.get().styles.defaultLabelStyle);
+        presetLabel.setAlignment(Align.center);
 
         ScaleSlider starShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_STAR, 1, 100, Star.class);
         ScaleSlider planetShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 1, 5000, Planet.class);
@@ -42,6 +47,32 @@ public class ScaleDialog {
         ScaleSlider planetOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 0.1f, 10, Planet.class);
         ScaleSlider asteroidOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 0.1f, 10, Asteroid.class);
         ScaleSlider moonOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_MOON, 0.1f, 1000, Moon.class);
+
+        ScalePresetButton preset1Button = new ScalePresetButton("Preset 1") {
+            @Override
+            public void onClick() {
+                ScalePresetButton.loadPreset1();
+            }
+        };
+
+        ScalePresetButton preset2Button = new ScalePresetButton("Preset 2") {
+            @Override
+            public void onClick() {
+                ScalePresetButton.loadPreset2();
+            }
+        };
+
+        ScalePresetButton preset3Button = new ScalePresetButton("Preset 3") {
+            @Override
+            public void onClick() {
+                ScalePresetButton.loadPreset3();
+            }
+        };
+
+        Table presetButtonTable = new Table();
+        presetButtonTable.add(preset1Button);
+        presetButtonTable.add(preset2Button);
+        presetButtonTable.add(preset3Button);
 
         contentTable.add(shapeLabel).fillX().height(25).row();
         contentTable.add(starShapeSlider).fillX().height(25).row();
@@ -55,7 +86,8 @@ public class ScaleDialog {
         contentTable.add(asteroidOrbitSlider).fillX().height(25).row();
         contentTable.add(moonOrbitSlider).fillX().height(25).row();
 
-
+        contentTable.add(presetLabel).fillX().height(25).row();
+        contentTable.add(presetButtonTable).fillX().height(25).padTop(3).row();
 
         scaleDialog.addActor(contentTable);
         Color windowColor = scaleDialog.getColor();

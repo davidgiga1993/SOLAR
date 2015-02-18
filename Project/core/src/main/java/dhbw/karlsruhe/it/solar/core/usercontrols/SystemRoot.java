@@ -17,4 +17,9 @@ public class SystemRoot extends AstronomicalBody {
     public void draw(Batch batch, float parentAlpha) {
         return;
     }
+
+    @Override
+    public void updateScale() {
+        // nothing to do
+    }
 }

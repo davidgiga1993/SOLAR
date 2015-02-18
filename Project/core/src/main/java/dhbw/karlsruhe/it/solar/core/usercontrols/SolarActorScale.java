@@ -11,4 +11,9 @@ public class SolarActorScale {
         this.shapeScale = shapeScale;
         this.orbitScale = orbitScale;
     }
+
+    public void set(float shapeScale, float orbitScale) {
+        this.shapeScale = shapeScale;
+        this.orbitScale = orbitScale;
+    }
 }

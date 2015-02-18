@@ -27,7 +27,12 @@ public class SolarSystem extends AstronomicalBody {
 
 	}
 
-	/**
+    @Override
+    public void updateScale() {
+        // nothing to do
+    }
+
+    /**
      * Creation of a new solar system containing the specified number of astronomical objects.
      * Current implementation creates a fixed prototpye system (our Sun, the eight planets, their moons, etc.).
      */
