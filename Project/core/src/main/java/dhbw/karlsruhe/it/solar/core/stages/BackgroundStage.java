@@ -33,7 +33,7 @@ public class BackgroundStage extends BaseBackgroundStage
         backgroundImage = new Image(backgroundTextures.get(name));
         backgroundImage.setScaling(Scaling.fill);
         backgroundImage.setPosition(0,0);
-        backgroundImage.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        backgroundImage.setColor(1,1,1,.6f);
         addActor(backgroundImage);
     }
 

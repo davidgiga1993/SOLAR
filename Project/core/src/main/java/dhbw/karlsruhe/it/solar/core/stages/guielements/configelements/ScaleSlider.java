@@ -84,4 +84,8 @@ public abstract class ScaleSlider extends WidgetGroup {
     protected abstract void initialize();
     protected abstract void updateScale(float value);
 
+    public void refreshValues() {
+        initialize();
+    }
+
 }

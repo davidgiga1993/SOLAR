@@ -46,17 +46,17 @@ public abstract class ScalePresetButton extends TextButton {
 
     public static void loadPreset2() {
         ConfigurationConstants.SCALE_FACTOR_ASTEROID.set(2,2);
-        ConfigurationConstants.SCALE_FACTOR_MOON.set(2,2);
-        ConfigurationConstants.SCALE_FACTOR_PLANET.set(2,2);
-        ConfigurationConstants.SCALE_FACTOR_STAR.set(2,2);
+        ConfigurationConstants.SCALE_FACTOR_MOON.set(80,20);
+        ConfigurationConstants.SCALE_FACTOR_PLANET.set(20,0.3f);
+        ConfigurationConstants.SCALE_FACTOR_STAR.set(20,1);
         ConfigurationConstants.SCALE_FACTOR_UNITS.set(2,2);
     }
 
     public static void loadPreset3() {
         ConfigurationConstants.SCALE_FACTOR_ASTEROID.set(3,3);
-        ConfigurationConstants.SCALE_FACTOR_MOON.set(3,3);
-        ConfigurationConstants.SCALE_FACTOR_PLANET.set(3,3);
-        ConfigurationConstants.SCALE_FACTOR_STAR.set(3,3);
+        ConfigurationConstants.SCALE_FACTOR_MOON.set(500,50);
+        ConfigurationConstants.SCALE_FACTOR_PLANET.set(80,0.6f);
+        ConfigurationConstants.SCALE_FACTOR_STAR.set(24,1);
         ConfigurationConstants.SCALE_FACTOR_UNITS.set(3,3);
     }
 }
