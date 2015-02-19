@@ -9,10 +9,12 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
+import dhbw.karlsruhe.it.solar.core.commands.MoveToAstronomicalBodyCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToKineticObjectCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 
@@ -113,19 +115,27 @@ public class GameInputListener extends InputListener {
 		case Input.Buttons.MIDDLE:
 			break;
 		case Input.Buttons.RIGHT:
-			Actor target = event.getTarget();
-			if(target instanceof KinematicObject) {
-				new MoveToKineticObjectCommand(stage.selectedActors.getSpaceships(), (KinematicObject) target, stage.getHumanPlayer()).execute();
-			} else {
-				new MoveCommand(stage.selectedActors.getSpaceships(), x, y, stage.getHumanPlayer()).execute();	
-			}
+            navigate(event, x, y);
 			break;
 		default:
 			super.touchUp(event, x, y, pointer, button);
 		}
 	}
 
-	/**
+    private void navigate(InputEvent event, float x, float y) {
+        Actor target = event.getTarget();
+        if(target instanceof AstronomicalBody) {
+            new MoveToAstronomicalBodyCommand(stage.selectedActors.getSpaceships(), (AstronomicalBody) target, stage.getHumanPlayer()).execute();
+            return;
+        }
+        if(target instanceof KinematicObject) {
+            new MoveToKineticObjectCommand(stage.selectedActors.getSpaceships(), (KinematicObject) target, stage.getHumanPlayer()).execute();
+            return;
+        }
+        new MoveCommand(stage.selectedActors.getSpaceships(), x, y, stage.getHumanPlayer()).execute();
+    }
+
+    /**
 	 * This method handles interact inputs. As of now it will Move the camera if ALT is pressed, or otherwise update the selection
 	 * @param event
 	 */

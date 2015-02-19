@@ -156,6 +156,11 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
         System.out.println("Neues Ziel gesetzt für " + this.getName());
     }
 
+    public void setDestination(AstronomicalBody destination) {
+        this.aiModule.setTarget(destination);
+        this.destination = destination.getKinematic().position;
+    }
+
     /**
      * @return Destination coordinates the spaceship object is heading to
      */

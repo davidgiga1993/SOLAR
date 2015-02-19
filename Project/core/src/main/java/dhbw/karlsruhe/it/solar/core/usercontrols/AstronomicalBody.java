@@ -135,22 +135,24 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
      */
     protected void calculateOrbitalPositionTotal()
     {
-    		this.setPosition(calculateOrbitalPositionX() - getWidth() / 2, calculateOrbitalPositionY() - getHeight() / 2);
+    		this.setPosition(calculateOrbitalPositionX(angleInDegree) - getWidth() / 2, calculateOrbitalPositionY(angleInDegree) - getHeight() / 2);
     }
 
 	/**
 	 * Part of the calculateOrbitalPositionTotal method, calculates the X-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
+     * @param angleInDegree current angle
 	 * @return current X-axis position of the body
 	 */
-	protected float calculateOrbitalPositionX() {
+	protected float calculateOrbitalPositionX(float angleInDegree) {
 		return (float) (calculateCenterOfOrbitX() + (float) Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInPixels);
 	}
 
 	/**
 	 * Part of the calculateOrbitalPositionTotal method, calculates the Y-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
+     * @param angleInDegree current angle
 	 * @return current Y-axis position of the body
 	 */
-	protected float calculateOrbitalPositionY() {
+	protected float calculateOrbitalPositionY(float angleInDegree) {
 		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInPixels);
 	}
 	    
@@ -223,7 +225,15 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	private float calculateCenterOfOrbitX() {
 		return origin.getX() + origin.getWidth() / 2;
 	}
-    
+
+    /**
+     * Returns a Vector2 containing the position of this objects center of orbit.
+     * @return Vector2
+     */
+    public Vector2 getCenterOfOrbit() {
+        return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
+    }
+
     /**
      * Determines the correct orbital period of the astronomical body around its parent object based on Kepler's Third Law of Planetary Motion.
      * @return Orbital period in days.
@@ -243,9 +253,21 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     	return massInSolarMasses * 1.98855 * Math.pow(10, 30);
     }
 
-	@Override
-	public Kinematic getKinematic() {
-		return kinematic;
-	}
+    public AstronomicalBody getAstronomicalOrigin() {
+        return this.origin;
+    }
 
+    public Vector2 calculateFuturePosition(float delta) {
+        float deltaAlpha = periodicConstant * delta;
+        return new Vector2(calculateOrbitalPositionX(deltaAlpha + angleInDegree), calculateOrbitalPositionY(deltaAlpha + angleInDegree));
+    }
+
+    public float getOrbitalRadiusInPixels() {
+        return orbitalRadiusInPixels;
+    }
+
+    @Override
+    public Kinematic getKinematic() {
+        return this.kinematic;
+    }
 }
