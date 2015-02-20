@@ -10,6 +10,7 @@ public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
 
 
     protected AstronomicalBody target;
+    protected float reachedRadius = 75f;
 
     public OrbitalArriveSteeringProvider(float radius, float slowRadius) {
         super(radius, slowRadius);
@@ -43,7 +44,12 @@ public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
 
         super.target = new Kinematic(futurePosition, 0,0,0);
 
-        return super.getSteering(character);
+        Steering steering = super.getSteering(character);
+        if (futurePosition.sub(character.position).len() < reachedRadius) {
+            steering.reached = true;
+        }
+
+        return steering;
     }
 
     public void setOrbitingTarget(AstronomicalBody target) {

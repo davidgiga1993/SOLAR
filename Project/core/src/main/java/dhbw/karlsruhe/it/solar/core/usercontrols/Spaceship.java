@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
-import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
 import dhbw.karlsruhe.it.solar.core.ai.AISpaceshipModule;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
+import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
+import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
@@ -52,6 +52,12 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
         this.kinematic = new Kinematic(new Vector2(getX()+getOriginX(), getY()+getOriginY()), getRotation(), speed);
         this.aiModule = new AISpaceshipModule(this);
         aiModule.setTarget(destination);
+        aiModule.addEventListener(new TargetReachedListener() {
+            @Override
+            public void handle(TargetReachedEvent event) {
+                System.out.println("Target reached");
+            }
+        });
     }
 
     @Override
@@ -169,34 +175,6 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
         return destination;
     }
 
-    /**
-     * A simple movement is executed for the spaceship object. It rotates to face the destination and calls a constant MoveToAction.
-     */
-    public void moveToDestination()
-    {
-        getActions().clear();
-        SequenceAction sequence = new SequenceAction();
-        shipRotation();
-        sequence.addAction(shipMovement());
-        addAction(sequence);
-    }
-
-    /**
-     * Calculation of the necessary MoveToAction for the simple spaceship movement model. Ship speed is dependent on spaceship's speed attribute.
-     * The MoveToAction acts on the lower left corner of the spaceship object. A recalculation to take into account the ship's center point is necessary.
-     * @return A correctly prepared MoveToAction that now can be applied to the spacheship.
-     */
-    private MoveToAction shipMovement()
-    {
-    	Vector2 adjDestination = new Vector2(destination.x - (getWidth() / 2), destination.y - (getHeight() / 2));
-        MoveToAction mov = new MoveToAction();
-        mov.setPosition(adjDestination.x, adjDestination.y);
-        float deltaX = getX() - adjDestination.x;
-        float deltaY = getY() - adjDestination.y;
-        float moveTime = (float) ((Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2))) / speed);
-        mov.setDuration(moveTime);
-        return mov;
-    }
 
     /**
      * Simple rotation model. Instantly turns the ship to face its current destination.
@@ -214,17 +192,6 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
     {
         return (float) -Math.toDegrees(Math.atan2(getX() + getWidth() / 2 - destination.x, getY() + getHeight() / 2 - destination.y));
     }
-
-    public float getSpeed()
-    {
-        return speed;
-    }
-
-    public void setSpeed(float speed)
-    {
-        this.speed = speed;
-    }
-
 
     @Override
     public boolean isOwnedBy(Player player) {

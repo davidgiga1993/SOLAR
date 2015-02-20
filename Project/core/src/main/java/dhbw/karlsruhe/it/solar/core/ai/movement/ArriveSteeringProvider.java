@@ -29,6 +29,7 @@ public class ArriveSteeringProvider implements SteeringProvider {
         if (distance < radius) {
             output.linear.setZero();
             output.angular = character.position.angle();
+            output.reached = true;
             return output;
         }
 
@@ -50,6 +51,7 @@ public class ArriveSteeringProvider implements SteeringProvider {
 
         output.angular = direction.angle();
 
+        output.reached = false;
         return output;
     }
 
@@ -57,4 +59,5 @@ public class ArriveSteeringProvider implements SteeringProvider {
     public void setTarget(Kinematic newTarget) {
         this.target = newTarget;
     }
+
 }

@@ -1,8 +1,13 @@
 package dhbw.karlsruhe.it.solar.core.ai;
 
 import com.badlogic.gdx.math.Vector2;
+import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
+import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.*;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Arga on 13.02.2015.
@@ -17,9 +22,14 @@ public class AISpaceshipModule implements AIModule {
     SteeringProvider arriveSteeringProvider;
     OrbitalArriveSteeringProvider orbitalArriveSteeringProvider;
 
+    List<TargetReachedListener> targetReachedListeners = new ArrayList<TargetReachedListener>();
+
+    boolean targetReached = true;
+
     public AISpaceshipModule(KinematicObject object) {
         kinematic = object.getKinematic();
         output = new AIOutput();
+
         pursueSteeringProvider = new PursueSteeringProvider(10, kinematic.maxSpeed * .5f);
         arriveSteeringProvider = new ArriveSteeringProvider(10, kinematic.maxSpeed * .5f);
         orbitalArriveSteeringProvider = new OrbitalArriveSteeringProvider(10, kinematic.maxSpeed * .5f);
@@ -34,7 +44,20 @@ public class AISpaceshipModule implements AIModule {
         // output
         output.position = kinematic.position;
         output.rotation = kinematic.rotation;
+
+        if(steering.reached && !targetReached) {
+            fireTargetReached();
+            targetReached = true;
+        }
+
         return output;
+    }
+
+    private void fireTargetReached() {
+        TargetReachedEvent event = new TargetReachedEvent(null);
+        for (TargetReachedListener listener : targetReachedListeners) {
+            listener.handle(event);
+        }
     }
 
     @Override
@@ -51,11 +74,13 @@ public class AISpaceshipModule implements AIModule {
     public void setTarget(AstronomicalBody target) {
         orbitalArriveSteeringProvider.setOrbitingTarget(target);
         currentSteeringProvider = orbitalArriveSteeringProvider;
+        targetReached = false;
     }
 
     protected void setTarget(Kinematic target, SteeringProvider provider) {
         currentSteeringProvider = provider;
         provider.setTarget(target);
+        targetReached = false;
     }
 
     @Override
@@ -66,5 +91,15 @@ public class AISpaceshipModule implements AIModule {
     @Override
     public boolean isMoving() {
         return kinematic.isMoving;
+    }
+
+    @Override
+    public void addEventListener(TargetReachedListener newListener) {
+        targetReachedListeners.add(newListener);
+    }
+
+    @Override
+    public void removeEventListener(TargetReachedListener listener) {
+        targetReachedListeners.remove(listener);
     }
 }

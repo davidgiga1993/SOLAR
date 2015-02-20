@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.ai;
 
 import com.badlogic.gdx.math.Vector2;
+import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 
@@ -39,4 +40,7 @@ public interface AIModule {
     public void setTarget(AstronomicalBody target);
 
     public boolean isMoving();
+
+    public void addEventListener(TargetReachedListener newListener);
+    public void removeEventListener(TargetReachedListener newListener);
 }

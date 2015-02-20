@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Steering {
     public Vector2 linear;
     public float angular;
+    public boolean reached = false;
 
     public Steering(Vector2 linear, float angular) {
         this.linear = linear;
