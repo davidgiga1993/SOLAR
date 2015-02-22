@@ -1,7 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 
 
@@ -15,7 +17,7 @@ public class Star extends AstronomicalBody
 	{
 		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_STAR);
 		//this.setSize(1000, 1000);
-        this.setColor(Color.YELLOW);
+        this.setColor(Color.YELLOW);      
 	}
 
 	
