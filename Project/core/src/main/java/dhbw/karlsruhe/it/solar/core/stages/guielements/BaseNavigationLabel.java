@@ -14,31 +14,25 @@ import java.util.List;
 /**
  * Created by Arga on 22.02.2015.
  */
-public class NavigationLabel extends Label {
-
-    protected List<NavigationLabel> children = new ArrayList<NavigationLabel>();
+public class BaseNavigationLabel extends Label {
+    protected List<BaseNavigationLabel> children = new ArrayList<BaseNavigationLabel>();
     protected boolean childrenVisible = true;
-    protected NavigationLabel parent;
-
+    protected BaseNavigationLabel parent;
     protected SolarActor actor;
-
     protected CharSequence name;
     protected String tab;
 
-    private BodyNavigationTable container;
-
-    public NavigationLabel(CharSequence text, String tab, SolarActor actor, BodyNavigationTable container) {
+    public BaseNavigationLabel(CharSequence text, String tab, SolarActor actor) {
         super(tab + text, SolarEngine.get().styles.defaultLabelStyle);
-        addListener(new NavigationLabelListener());
-        this.name = text;
-        this.tab = tab;
         this.actor = actor;
-        this.container = container;
+        this.tab = tab;
+        this.name = text;
+        addListener(new NavigationLabelListener());
     }
 
-    public void setChildren(List<NavigationLabel> children) {
+    public void setChildren(List<BaseNavigationLabel> children) {
         this.children = children;
-        for (NavigationLabel child : children) {
+        for (BaseNavigationLabel child : children) {
             child.parent = this;
         }
         if (!children.isEmpty()) {
@@ -68,11 +62,11 @@ public class NavigationLabel extends Label {
         } else {
             setText(tab + "+ " + name);
         }
-        container.buildTable();
+
     }
 
     public void setChildrenVisibility(boolean newVisibiilty) {
-        for (NavigationLabel child : children) {
+        for (BaseNavigationLabel child : children) {
             child.setVisible(newVisibiilty);
         }
     }
@@ -89,7 +83,7 @@ public class NavigationLabel extends Label {
         return super.isVisible() && parent.isVisible();
     }
 
-    private class NavigationLabelListener extends ClickListener {
+    protected class NavigationLabelListener extends ClickListener {
         public NavigationLabelListener() {
             super();
             // listen to any button

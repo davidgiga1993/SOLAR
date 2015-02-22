@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
@@ -13,17 +12,10 @@ import java.util.List;
 /**
  * Created by Arga on 22.02.2015.
  */
-public class BodyNavigationTable extends Table {
-
-    List<NavigationLabel> allLabels = new ArrayList<NavigationLabel>();
+public class BodyNavigationTable extends BaseNavigationTable {
 
     public BodyNavigationTable() {
         super();
-        top();
-        left();
-        pad(5);
-        defaults().expandX().fillX();
-
         init();
     }
 
@@ -42,8 +34,8 @@ public class BodyNavigationTable extends Table {
         invalidate();
     }
 
-    protected List<NavigationLabel> buildHierarchy(List<AstronomicalBody> group, int depth) {
-        List<NavigationLabel> result = new ArrayList<NavigationLabel>();
+    protected List<BaseNavigationLabel> buildHierarchy(List<AstronomicalBody> group, int depth) {
+        List<BaseNavigationLabel> result = new ArrayList<BaseNavigationLabel>();
         String tab = "";
         for (int i = 0; i < depth; i++) {
             tab += "    ";
@@ -51,11 +43,11 @@ public class BodyNavigationTable extends Table {
 
         for (AstronomicalBody child : group) {
             // Process current level
-            NavigationLabel label = new NavigationLabel(child.getName(), tab, child, this);
+            BodyNavigationLabel label = new BodyNavigationLabel(child.getName(), tab, child, this);
             allLabels.add(label);
 
             // Proceed with next level
-            List<NavigationLabel> children = buildHierarchy(child.getSatellites(), depth+1);
+            List<BaseNavigationLabel> children = buildHierarchy(child.getSatellites(), depth+1);
             label.setChildren(children);
 
             if(depth > 0) {
@@ -69,12 +61,4 @@ public class BodyNavigationTable extends Table {
         return result;
     }
 
-    public void buildTable() {
-        this.clearChildren();
-        for (NavigationLabel label : allLabels) {
-            if (label.isVisible()) {
-                this.add(label).row();
-            }
-        }
-    }
 }

@@ -143,7 +143,7 @@ public class GameInputListener extends InputListener {
 		if (Gdx.input.isKeyPressed(Keys.ALT_LEFT)) {
 			moveCamera(event.getTarget());
 		} else {
-			updateSelection();
+			updateSelection(event);
 		}
 
 	}
@@ -151,17 +151,21 @@ public class GameInputListener extends InputListener {
 	/**
 	 * Updates the selection according to the currently pressed modifiers
 	 */
-	private void updateSelection() {
+	private void updateSelection(InputEvent event) {
 		// first select the selection state (add, remove, create)
+		// and handle the event's target actor
 		SelectionState state;
 		if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
 			state = SelectionState.ADD;
+			stage.selectedActors.add(event.getTarget());
 		} else if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
 			state = SelectionState.REMOVE;
+			stage.selectedActors.remove(event.getTarget());
 		} else {
 			// Create: clear & add
 			stage.selectedActors.clear();
 			state = SelectionState.ADD;
+			stage.selectedActors.add(event.getTarget());
 		}
 
 		// iterate every actor of the stage

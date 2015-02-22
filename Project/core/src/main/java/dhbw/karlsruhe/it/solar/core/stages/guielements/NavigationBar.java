@@ -1,7 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
@@ -42,10 +45,12 @@ public class NavigationBar extends Window {
 
         // To be replaced with actual NavigationTables
         bodyTable = new BodyNavigationTable();
+        shipTable = new ShipNavigationTable();
+
+//        shipTable = new Table();
+//        shipTable.add(new Label("Ships", SolarEngine.get().styles.defaultLabelStyle));
 
 
-        shipTable = new Table();
-        shipTable.add(new Label("Ships", SolarEngine.get().styles.defaultLabelStyle));
 
         // layout
         layoutTable = new Table();

@@ -92,6 +92,12 @@ public class Selection {
 		}
 	}
 
+	public void remove(Actor actor) {
+		if (actor instanceof SolarActor) {
+			remove((SolarActor) actor);
+		}
+	}
+
 	private void setSelected(Collection<SolarActor> actors) {
 		for(SolarActor a : actors) {
 			a.select();
