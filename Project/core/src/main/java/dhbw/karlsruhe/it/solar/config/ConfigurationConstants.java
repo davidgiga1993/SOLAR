@@ -16,6 +16,9 @@ public final class ConfigurationConstants {
 	public static final boolean SCALE_DIALOG_ENABLED = true;
 
 	private ConfigurationConstants() {}
-	
+
+	// GUI Settings
+
+	public static final int GUI_NAVIGATION_WIDTH = 125;
 
 }

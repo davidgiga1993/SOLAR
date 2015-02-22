@@ -32,7 +32,7 @@ public class Star extends AstronomicalBody
     {
         Planet newObject = new Planet(name, radius, massInEarthMasses, orbitalRadiusInAU, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
-        satellites.addActor(newObject);
+        satellites.add(newObject);
         return newObject;
     }
 }

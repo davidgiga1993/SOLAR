@@ -8,14 +8,14 @@ import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BottomBarGUIElement;
-import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBarGUIElement;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBarGUIElement;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialog;
 
 public class GameHUDStage extends BaseGUIStage{
 	
 
-    private NavigationBarGUIElement navigationBar;
+    private NavigationBar navigationBar;
     private ResourceBarGUIElement resourceBar;
     private BottomBarGUIElement bottomBar;
 
@@ -36,21 +36,21 @@ public class GameHUDStage extends BaseGUIStage{
             guiTable.debug();
         }
 
-        navigationBar = new NavigationBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
+//        navigationBar = new NavigationBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
+        navigationBar = new NavigationBar();
         resourceBar = new ResourceBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
         bottomBar = new BottomBarGUIElement(solarEngine.styles.defaultLabelStyle);
 
         guiTable.add(resourceBar.resourceBar).align(Align.right).colspan(2).height(50).expandX();
         guiTable.row();
-        guiTable.add(navigationBar.navigationBar).expandY().top().fill();
+        int maxHeight = Gdx.graphics.getHeight() - (50+75);
+        guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(maxHeight).top().fill();
         guiTable.add(new Actor()).expandX();
         guiTable.row().maxHeight(75);
         guiTable.add(bottomBar.root).height(75).colspan(2).expandX().fill();
 
 
         addActor(guiTable);
-        //navigationBar.addTo(this);
-        //resourceBar.addTo(this);
 
         if(ConfigurationConstants.SCALE_DIALOG_ENABLED) {
             ScaleDialog.createScaleDialog(this);
@@ -58,5 +58,11 @@ public class GameHUDStage extends BaseGUIStage{
 
 	}
 
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+        int maxHeight = Gdx.graphics.getHeight() - (50+75);
+        guiTable.getCell(navigationBar).maxHeight(maxHeight);
+    }
 }
 

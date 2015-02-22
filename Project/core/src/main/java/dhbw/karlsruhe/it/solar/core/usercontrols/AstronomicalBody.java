@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
 import dhbw.karlsruhe.it.solar.core.solar.logic.Mass;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +27,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	protected double massInKilogram;
 	protected float angleInDegree;
 	protected AstronomicalBody origin;
-	protected Group satellites;
+	protected List<AstronomicalBody> satellites;
 
 	protected float periodicConstant;
 
@@ -39,7 +39,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	public AstronomicalBody(String name)
 	{
 		super(name);
-		this.satellites = new Group();
+		this.satellites = new ArrayList<AstronomicalBody>();
 		this.orbitalRadiusInKilometers = 0;
 		this.angleInDegree = 0;
 		this.origin = null;
@@ -51,7 +51,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	{
 		super(name);
 		setActorScale(scaleFactor);
-		this.satellites = new Group();
+		this.satellites = new ArrayList<AstronomicalBody>();
 		this.orbitalRadiusInKilometers = orbitalRadiusInKilometres;
 		this.massInKilogram = massInKilograms;
 		this.angleInDegree = angleInDegree;
@@ -100,7 +100,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		drawBody(shapeRenderer);
 	}
 
-	public Group getSatellites()
+	public List<AstronomicalBody> getSatellites()
     {
     	return satellites;
     }
@@ -110,7 +110,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     	if (satellites == null )
     		return 0;
     	else
-    		return satellites.getChildren().size;
+    		return satellites.size();
     }
 
     /**
@@ -126,7 +126,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     {
         Asteroid newObject = new Asteroid(name, radius, massInKilogram, orbitalRadiusInKilometers, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
-        satellites.addActor(newObject);
+        satellites.add(newObject);
         return newObject;
     }
     
@@ -188,11 +188,10 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	protected void addNamesOfSatellitesToList(List<String> listOfSatellites)
 	{
 		String name;
-		for(int index = 0; index < satellites.getChildren().size; index++)
-    	{
-    		name = satellites.getChildren().get(index).getName();
-    		listOfSatellites.add(name);
-    	}
+		for (AstronomicalBody satellite : satellites) {
+			name = satellite.getName();
+			listOfSatellites.add(name);
+		}
 	}
 	
 	/**
@@ -202,12 +201,11 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 */
 	public Actor findSatelliteByName(String name)
 	{
-		for(int index = 0; index < satellites.getChildren().size; index++)
-    	{
-			Actor object =  satellites.getChildren().get(index);
-    		if ( object.getName().equals(name) )
-    			return object;
-    	}	
+		for (AstronomicalBody satellite : satellites) {
+			if (satellite.getName().equals(name)) {
+				return satellite;
+			}
+		}
 		return null;
 	}
 

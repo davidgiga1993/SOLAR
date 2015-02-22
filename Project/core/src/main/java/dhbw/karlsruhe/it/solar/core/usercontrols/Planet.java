@@ -31,7 +31,7 @@ public class Planet extends AstronomicalBody
     {
         Moon newObject = new Moon(name, radius, massInEarthMasses, orbitalRadiusInKilometers, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
-        satellites.addActor(newObject);
+        satellites.add(newObject);
         return newObject;
     }
 

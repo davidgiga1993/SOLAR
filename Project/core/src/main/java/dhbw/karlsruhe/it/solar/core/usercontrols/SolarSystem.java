@@ -115,7 +115,7 @@ public class SolarSystem extends AstronomicalBody {
     {
         Star newObject = new Star(name, radius, massInSolarMasses, orbitalRadiusInAU, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
-        satellites.addActor(newObject);
+        satellites.add(newObject);
         massInKilogram += convertSolarMassesIntoKilogram(massInSolarMasses);
         return newObject;
 	}

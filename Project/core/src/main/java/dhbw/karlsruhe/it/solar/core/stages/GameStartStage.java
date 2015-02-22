@@ -136,11 +136,9 @@ public class GameStartStage extends BaseStage
     {
         if (body.getNumberOfSatellites() != 0)
         {
-            for (int index = body.getNumberOfSatellites(); index > 0; index--)
-            {
-                AstronomicalBody object = (AstronomicalBody) body.getSatellites().getChildren().get(0);
-                addActor(object);
-                addSolarSystemActors(object);
+            for (AstronomicalBody astronomicalBody : body.getSatellites()) {
+                addActor(astronomicalBody);
+                addSolarSystemActors(astronomicalBody);
             }
         }
     }

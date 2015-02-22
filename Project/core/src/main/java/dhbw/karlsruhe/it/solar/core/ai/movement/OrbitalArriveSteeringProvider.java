@@ -42,6 +42,8 @@ public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
         // Add the time error to our initial estimation and calculate the corrected future position
         futurePosition = target.calculateFuturePosition(timeError + timeToTravel);
 
+        super.target = new Kinematic(futurePosition, 0, target.getKinematic().maxSpeed);
+
         Steering steering = super.getSteering(character);
         if (futurePosition.sub(character.position).len() < reachedRadius) {
             steering.reached = true;
