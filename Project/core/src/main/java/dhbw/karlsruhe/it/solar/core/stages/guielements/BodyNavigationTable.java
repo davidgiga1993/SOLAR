@@ -51,7 +51,7 @@ public class BodyNavigationTable extends Table {
 
         for (AstronomicalBody child : group) {
             // Process current level
-            NavigationLabel label = new NavigationLabel(tab + child.getName(), this);
+            NavigationLabel label = new NavigationLabel(child.getName(), tab, child, this);
             allLabels.add(label);
 
             // Proceed with next level

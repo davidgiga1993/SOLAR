@@ -17,7 +17,7 @@ public class GameStartStage extends BaseStage
     public Selection selectedActors = new Selection();
     public SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
-    private GameInputListener inputListener;
+    public static GameInputListener inputListener;
     private PlayerManager playerManager = new PlayerManager();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 

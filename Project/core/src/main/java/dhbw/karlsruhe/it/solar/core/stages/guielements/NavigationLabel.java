@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +16,23 @@ import java.util.List;
  */
 public class NavigationLabel extends Label {
 
-    // TODO: implement expand/shrink indicator
-    // TODO: implement selection and camera movement funcionality
-
     protected List<NavigationLabel> children = new ArrayList<NavigationLabel>();
     protected boolean childrenVisible = true;
     protected NavigationLabel parent;
 
+    protected SolarActor actor;
+
+    protected CharSequence name;
+    protected String tab;
+
     private BodyNavigationTable container;
 
-    public NavigationLabel(CharSequence text, BodyNavigationTable container) {
-        super(text, SolarEngine.get().styles.defaultLabelStyle);
+    public NavigationLabel(CharSequence text, String tab, SolarActor actor, BodyNavigationTable container) {
+        super(tab + text, SolarEngine.get().styles.defaultLabelStyle);
         addListener(new NavigationLabelListener());
+        this.name = text;
+        this.tab = tab;
+        this.actor = actor;
         this.container = container;
     }
 
@@ -34,19 +41,33 @@ public class NavigationLabel extends Label {
         for (NavigationLabel child : children) {
             child.parent = this;
         }
+        if (!children.isEmpty()) {
+            setText(tab + "+ " + name);
+        }
     }
 
-    private void onLeftClick() {
-        toggleChildren();
+    private void onLeftClick(InputEvent event) {
+        // replace the actor with the actor represented by this NavigationLabel
+        event.setTarget(actor);
+        // and let the GameInputListener do his job
+        GameStartStage.inputListener.interact(event);
     }
 
     private void onRightClick() {
-
     }
 
     protected void toggleChildren() {
-        childrenVisible = childrenVisible ? false : true;
+        if (children == null || children.isEmpty()) {
+            return;
+        }
+
+        childrenVisible = !childrenVisible;
         setChildrenVisibility(childrenVisible);
+        if(childrenVisible) {
+            setText(tab + "-  " + name);
+        } else {
+            setText(tab + "+ " + name);
+        }
         container.buildTable();
     }
 
@@ -58,7 +79,7 @@ public class NavigationLabel extends Label {
 
     /**
      * A NavigationLabel is only visible, if it's own visibility is set to true AND it's parent's visibility is true as well.
-     * @return
+     * @return visibility
      */
     @Override
     public boolean isVisible() {
@@ -79,11 +100,18 @@ public class NavigationLabel extends Label {
         public void clicked(InputEvent event, float x, float y) {
             switch(event.getButton()) {
                 case Input.Buttons.LEFT:
-                    onLeftClick();
+                    // decide whether it was a click on the label or the expand indicator
+                    if(!children.isEmpty() && x < getX() + 6 + tab.length() * 4) {
+                        toggleChildren();
+                    } else {
+                        onLeftClick(event);
+                    }
                     break;
+
                 case Input.Buttons.RIGHT:
                     onRightClick();
                     break;
+
                 default:
                     break;
             }
