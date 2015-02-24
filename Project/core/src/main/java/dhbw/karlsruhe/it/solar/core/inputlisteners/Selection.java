@@ -135,6 +135,14 @@ public class Selection {
 		spaceshipDirtyFlag = false;
 	}
 
+	public SolarActor getRepresentative() {
+		Iterator<SolarActor> iterator = selectedActors.iterator();
+		if(iterator.hasNext()) {
+			return iterator.next();
+		}
+		return null;
+	}
+
 	public int getNumberOfSelectedUnits() {
 		return selectedActors.size();
 	}

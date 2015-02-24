@@ -104,4 +104,8 @@ public abstract class SolarActor extends Actor {
         currentOrbitScale = scale.orbitScale;
         currentShapeScale = scale.shapeScale;
     }
+
+    public TextureRegion getSolarActorTexture() {
+        return solarActorTexture;
+    }
 }

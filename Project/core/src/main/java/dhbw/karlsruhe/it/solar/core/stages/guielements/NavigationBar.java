@@ -47,11 +47,6 @@ public class NavigationBar extends Window {
         bodyTable = new BodyNavigationTable();
         shipTable = new ShipNavigationTable();
 
-//        shipTable = new Table();
-//        shipTable.add(new Label("Ships", SolarEngine.get().styles.defaultLabelStyle));
-
-
-
         // layout
         layoutTable = new Table();
 
