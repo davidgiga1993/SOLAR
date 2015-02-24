@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
+import dhbw.karlsruhe.it.solar.core.physics.Length;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -21,14 +21,7 @@ public class Selection {
 		selectedActors = new HashSet<SolarActor>();
 		cachedSpaceships = new ArrayList<Spaceship>();
 	}
-	
-	/**
-	 * @see java.util.List.contains()
-	 */
-	public boolean contains(Object actor) {
-		return selectedActors.contains(actor);
-	}
-	
+
 	/**
 	 * Empties the selection and marks previous selected SolarActors as unselected
 	 */

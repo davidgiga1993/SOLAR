@@ -1,8 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
-import dhbw.karlsruhe.it.solar.core.solar.logic.Mass;
-
 /**
  * Created by Arga on 25.11.2014.
  */

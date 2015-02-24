@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
+import dhbw.karlsruhe.it.solar.core.physics.Length;
 
 /**
  * @author Andi

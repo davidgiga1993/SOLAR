@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.solar.logic;
+package dhbw.karlsruhe.it.solar.core.physics;
 
 /**
  * Created by Arga on 21.11.2014.

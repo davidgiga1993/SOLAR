@@ -1,13 +1,11 @@
-package dhbw.karlsruhe.it.solar.core.solar.logic;
-
-import dhbw.karlsruhe.it.solar.core.physics.PhysicalConstants;
+package dhbw.karlsruhe.it.solar.core.physics;
 
 /**
  * Created by Arga on 25.11.2014.
  */
 public class Mass {
 
-    public static final float SOLAR_MASS_IN_KILOGRAM = 1.98892e32f;
+    public static final float SOLAR_MASS_IN_KILOGRAM = 1.98855e30f;
     public static final float EARTH_MASS_IN_KILOGRAM = 5.97219e24f;
     public static final float SOLAR_MASS_IN_EARTH_MASS = 333000;
     protected float value;

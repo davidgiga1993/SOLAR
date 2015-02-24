@@ -42,11 +42,11 @@ public class GameHUDStage extends BaseGUIStage{
 
         guiTable.add(resourceBar.resourceBar).align(Align.right).colspan(2).height(50).expandX();
         guiTable.row();
-        int maxHeight = Gdx.graphics.getHeight() - (50+75);
+        int maxHeight = Gdx.graphics.getHeight() - (50+150);
         guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(maxHeight).top().fill();
         guiTable.add(new Actor()).expandX();
-        guiTable.row().maxHeight(75);
-        guiTable.add(bottomBar).height(75).colspan(2).expandX().fill();
+        guiTable.row().maxHeight(150);
+        guiTable.add(bottomBar).height(150).colspan(2).expandX().fill();
 
 
         addActor(guiTable);

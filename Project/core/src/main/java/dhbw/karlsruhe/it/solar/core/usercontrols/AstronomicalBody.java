@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
-import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
-import dhbw.karlsruhe.it.solar.core.solar.logic.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.physics.Mass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -263,6 +263,10 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     public float getOrbitalRadiusInPixels() {
         return orbitalRadiusInPixels;
     }
+
+	public BodyProperties getPhysicalProperties() {
+		return physicalProperties;
+	}
 
     @Override
     public Kinematic getKinematic() {

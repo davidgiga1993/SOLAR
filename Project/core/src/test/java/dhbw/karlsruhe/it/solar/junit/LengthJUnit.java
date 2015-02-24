@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.junit;
 
 
-import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
+import dhbw.karlsruhe.it.solar.core.physics.Length;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

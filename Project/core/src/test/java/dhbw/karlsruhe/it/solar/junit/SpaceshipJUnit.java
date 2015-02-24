@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import dhbw.karlsruhe.it.solar.core.solar.logic.Length;
+import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 import org.junit.After;
 import org.junit.Before;

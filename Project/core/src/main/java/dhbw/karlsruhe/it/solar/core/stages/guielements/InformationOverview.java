@@ -28,7 +28,6 @@ public class InformationOverview extends Table {
         icon.setScaling(Scaling.fit);
         icon.setAlign(Align.center);
 
-        debug();
         if(actor != null) {
             loadContent();
         } else {

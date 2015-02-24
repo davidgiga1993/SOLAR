@@ -14,7 +14,6 @@ public class InformationActions extends Table {
 
     public InformationActions() {
         super();
-        debug();
         Label landColonyLabel = new Label("Land Colony", SolarEngine.get().styles.defaultLabelStyle);
         Label enterParkingOrbitLabel = new Label("Enter Parking Orbit", SolarEngine.get().styles.defaultLabelStyle);
         Label partyLabel = new Label("Party!", SolarEngine.get().styles.defaultLabelStyle);
