@@ -66,21 +66,6 @@ public class GameStartStage extends BaseStage
         engine.stageManager.StartGame();
     }
 
-    @Override
-    public void draw() {
-        // render line shapes
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setProjectionMatrix(getCamera().combined);
-        for (Actor child : getRoot().getChildren()) {
-            if (child instanceof ShapeRenderable) {
-                ((ShapeRenderable) child).drawLines(shapeRenderer);
-            }
-        }
-        shapeRenderer.end();
-        // draw sprite batch stuff
-        super.draw();
-    }
-
     public GameStartStage(SolarEngine SE)
     {
         super(SE, "GameStartStage");
@@ -98,7 +83,28 @@ public class GameStartStage extends BaseStage
         placeNewShip("Nostromo", new Vector2(1500, 1000), humanPlayer);
         //placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
     }
-    
+
+    @Override
+    public void draw() {
+        // render line shapes
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setProjectionMatrix(getCamera().combined);
+        for (Actor child : getRoot().getChildren()) {
+            if (child instanceof ShapeRenderable) {
+                ((ShapeRenderable) child).drawLines(shapeRenderer);
+            }
+        }
+        shapeRenderer.end();
+        // draw sprite batch stuff
+        super.draw();
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        shapeRenderer.dispose();
+    }
+
     @Override
     public void act(float delta) {
     	inputListener.handleContinousInput(delta);

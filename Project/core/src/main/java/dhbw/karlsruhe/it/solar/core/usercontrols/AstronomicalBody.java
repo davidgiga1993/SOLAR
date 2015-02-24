@@ -163,7 +163,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 
 
         shapeRenderer.setColor(Color.TEAL);
-        shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels);
+        shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 1000);
     }
 
 	/**
@@ -175,7 +175,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
 		shapeRenderer.setColor(this.getColor());
-		shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight() / 2);
+		shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight() / 2, 100);
 		shapeRenderer.end();
 		shapeRenderer.begin(ShapeType.Line);
 	}
