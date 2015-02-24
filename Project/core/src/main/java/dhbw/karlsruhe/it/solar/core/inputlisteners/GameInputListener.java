@@ -204,6 +204,7 @@ public class GameInputListener extends InputListener {
 			return;
 		}
 		se.camera.translate(target.getX() + target.getOriginX() - se.camera.position.x, target.getY() + target.getOriginY() - se.camera.position.y);
+        se.camera.zoom = target.getWidth() / 25;
 	}
 
 	/**
