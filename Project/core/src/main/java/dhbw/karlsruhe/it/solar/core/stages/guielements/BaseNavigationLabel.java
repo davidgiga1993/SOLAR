@@ -44,7 +44,7 @@ public class BaseNavigationLabel extends Label {
         // replace the actor with the actor represented by this NavigationLabel
         event.setTarget(actor);
         // and let the GameInputListener do his job
-        GameStartStage.inputListener.interact(event);
+        GameStartStage.inputListener.interact(event, 0, 0);
     }
 
     private void onRightClick() {

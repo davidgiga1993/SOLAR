@@ -110,7 +110,7 @@ public class GameInputListener extends InputListener {
 		switch(button) {
 		case Input.Buttons.LEFT:
 			stage.selectionRectangle.hide();
-			interact(event);
+			interact(event, x, y);
 			break;
 		case Input.Buttons.MIDDLE:
 			break;
@@ -139,9 +139,9 @@ public class GameInputListener extends InputListener {
 	 * This method handles interact inputs. As of now it will Move the camera if ALT is pressed, or otherwise update the selection
 	 * @param event
 	 */
-	public void interact(InputEvent event) {
-		if (Gdx.input.isKeyPressed(Keys.ALT_LEFT)) {
-			moveCamera(event.getTarget());
+	public void interact(InputEvent event, float x, float y) {
+		if (Gdx.input.isKeyPressed(Keys.ALT_LEFT) | Gdx.input.isKeyPressed(Keys.ALT_RIGHT)) {
+			moveCamera(event.getTarget(), x, y);
 		} else {
 			updateSelection(event);
 		}
@@ -198,10 +198,9 @@ public class GameInputListener extends InputListener {
 	 * Moves the camera above the given target
 	 * @param target
 	 */
-	private void moveCamera(Actor target) {
+	private void moveCamera(Actor target, float x, float y) {
 		if(target instanceof Group) {
-			// if the user clicked into free space the target is the group containing all actors.
-			// moving the camera to the groups origin will result in a movement to the center
+			se.camera.translate(x - se.camera.position.x, y - se.camera.position.y);
 			return;
 		}
 		se.camera.translate(target.getX() + target.getOriginX() - se.camera.position.x, target.getY() + target.getOriginY() - se.camera.position.y);
