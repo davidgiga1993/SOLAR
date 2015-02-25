@@ -48,6 +48,9 @@ public class GameInputListener extends InputListener {
 	@Override
 	public boolean keyTyped(InputEvent event, char character) {
 		// TODO Auto-generated method stub
+        if(character == 'p') {
+            GameStartStage.gameSpeed = GameStartStage.gameSpeed == 1 ? 0 : 1;
+        }
 		return super.keyTyped(event, character);
 	}
 
