@@ -2,10 +2,8 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
@@ -20,9 +18,11 @@ import java.util.List;
  *
  */
 public abstract class AstronomicalBody extends SolarActor implements ShapeRenderable, KinematicObject {
+	
+	public enum PlanetType { BARREN, HOTHOUSE, TERRAN, ARID, DWARFPLANET, GASGIANT, RINGED_GASGIANT, RINGED_ICEGIANT, ICEGIANT }
 
 	protected BodyProperties physicalProperties;
-
+	
 	protected double orbitalRadiusInKilometers;
 	protected double orbitalPeriodInDays;
 	protected double massInKilogram;
@@ -48,7 +48,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		this.massInKilogram = 1;
 	}
 	
-	public AstronomicalBody(String name, Length radius, double orbitalRadiusInKilometres, double massInKilograms, float angleInDegree, AstronomicalBody origin, SolarActorScale scaleFactor)
+	public AstronomicalBody(String name, Length radius, double orbitalRadiusInKilometres, double massInKilograms, float angleInDegree, AstronomicalBody origin, SolarActorScale scaleFactor, String textureName)
 	{
 		super(name);
 		setActorScale(scaleFactor);
@@ -65,6 +65,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		} else {
 			this.periodicConstant = 0;
 		}
+		setupSolarActorSprite(textureName);
 		changeScale();
 		float speed = (float) ((2 * Math.PI * scaleDistanceToStage(orbitalRadiusInKilometres)) / orbitalPeriodInDays);
 		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
@@ -167,19 +168,19 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
         shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 1000);
     }
 
-	/**
-	 * This method will draw the Body of this object using a shapeRenderer and the object's color field.
-	 * @param shapeRenderer
-	 */
-	protected void drawBody(ShapeRenderer shapeRenderer) {
-		shapeRenderer.end();
-		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
-		shapeRenderer.setColor(this.getColor());
-		shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight() / 2, 100);
-		shapeRenderer.end();
-		shapeRenderer.begin(ShapeType.Line);
-	}
+//	/**
+//	 * This method will draw the Body of this object using a shapeRenderer and the object's color field.
+//	 * @param shapeRenderer
+//	 */
+//	protected void drawBody(ShapeRenderer shapeRenderer) {
+//		shapeRenderer.end();
+//		shapeRenderer.begin(ShapeType.Filled);
+//		shapeRenderer.rotate(0.f, 0.f, 1.f, getRotation());
+//		shapeRenderer.setColor(this.getColor());
+//		shapeRenderer.circle(getX() + getWidth() / 2, getY() + getHeight() / 2, getHeight() / 2, 100);
+//		shapeRenderer.end();
+//		shapeRenderer.begin(ShapeType.Line);
+//	}
     
     
 	/**

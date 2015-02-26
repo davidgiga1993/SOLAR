@@ -1,7 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 
@@ -11,22 +9,37 @@ import dhbw.karlsruhe.it.solar.core.physics.Length;
  */
 public class Planet extends AstronomicalBody
 {
-
-	public Planet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin)
+	public Planet(String name, PlanetType type, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin)
 	{
-		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_PLANET);
-		//this.setSize(250, 250);
-        //this.color = Color.BLUE;
-	    setupSolarActorSprite("TerranTerrestrial");
+		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
 	}
 	
-    @Override
-    public void draw(Batch batch, float parentAlpha)
-    {
-        solarActorSprite.setPosition(getX(), getY());
-        solarActorSprite.draw(batch);
-    }
-
+	private static String getTextureNameForPlanetType(PlanetType type)
+	{			
+		switch(type)
+		{
+			case ARID:
+				return "AridTerrestrial";
+			case BARREN:
+				return "BarrenTerrestrial";
+			case DWARFPLANET:
+				return "DwarfPlanet";
+			case GASGIANT:
+				return "ClassIGasGiant";
+			case HOTHOUSE:
+				return "HellTerrestrial";
+			case ICEGIANT:
+				return "IceGiant";
+			case RINGED_GASGIANT:
+				return "RingedClassIGasGiant";
+			case RINGED_ICEGIANT:
+				return "RingedIceGiant";
+			case TERRAN:
+				return "TerranTerrestrial";
+			default:
+				return "BarrenTerrestrial";
+		}
+	}
 	
     /**
      * Adds a new moon with the specified parameters as a satellite orbiting the planet.

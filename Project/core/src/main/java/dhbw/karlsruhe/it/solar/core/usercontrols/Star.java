@@ -1,8 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 
@@ -12,21 +9,11 @@ import dhbw.karlsruhe.it.solar.core.physics.Length;
  */
 public class Star extends AstronomicalBody
 {	
+	
 	public Star(String name, Length radius, double massInSolarMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin)
 	{
-		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_STAR);
-		//this.setSize(1000, 1000);
-        this.setColor(Color.YELLOW);   
-        
-	    setupSolarActorSprite("Version1GTypeMainSequenceStar");
+		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_STAR, "GTypeMainSequenceStar");       
 	}
-	
-    @Override
-    public void draw(Batch batch, float parentAlpha)
-    {
-        solarActorSprite.setPosition(getX(), getY());
-        solarActorSprite.draw(batch);
-    }
 		
     /**
      * Adds a new planet with the specified parameters as a satellite orbiting the star.
@@ -37,9 +24,9 @@ public class Star extends AstronomicalBody
      * @param angleInDegree Desired angle of the planet's position on the map of the system relative to its star
      * @return created Planet object
      */
-    public Planet placeNewPlanet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree)
+    public Planet placeNewPlanet(String name, PlanetType type, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree)
     {
-        Planet newObject = new Planet(name, radius, massInEarthMasses, orbitalRadiusInAU, angleInDegree, this);
+        Planet newObject = new Planet(name, type, radius, massInEarthMasses, orbitalRadiusInAU, angleInDegree, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;

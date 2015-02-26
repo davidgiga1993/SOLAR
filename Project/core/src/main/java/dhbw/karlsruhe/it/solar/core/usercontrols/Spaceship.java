@@ -1,8 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
@@ -14,7 +12,6 @@ import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -87,23 +84,11 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
-    {
-        displaySpaceship(batch);
-    }
-
-    @Override
     public void drawLines(ShapeRenderer shapeRenderer) {
         shapeRenderer.identity();
 
         displaySelectionBox(shapeRenderer);
         displayCourseAndDestination(shapeRenderer);
-    }
-
-    private void displaySpaceship(Batch batch)
-    {
-        solarActorSprite.setPosition(getX(), getY());
-        solarActorSprite.draw(batch);
     }
 
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer)
@@ -167,24 +152,6 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
     public Vector2 getDestination()
     {
         return destination;
-    }
-
-
-    /**
-     * Simple rotation model. Instantly turns the ship to face its current destination.
-     */
-    private void shipRotation()
-    {
-        this.setRotation(calculateRotationAngle());
-    }
-
-    /**
-     * Calculates the angle between the current location of the spaceship and its destination point.
-     * @return The rotation angle which will make the ship face its destination from its current position.
-     */
-    private float calculateRotationAngle()
-    {
-        return (float) -Math.toDegrees(Math.atan2(getX() + getWidth() / 2 - destination.x, getY() + getHeight() / 2 - destination.y));
     }
 
     @Override

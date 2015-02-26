@@ -1,5 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -111,9 +112,21 @@ public abstract class SolarActor extends Actor {
         return solarActorTexture;
     }
     
+    /**
+     * Creates a graphics sprite for the actor object from the texture atlas region identified by the textureName.
+     * Unless specifically overridden by the subclass, the draw method of the solar actor class will expect that a sprite has been set up.
+     * @param textureName Identifier used by the texture atlas to locate the texture.
+     */
     protected void setupSolarActorSprite(String textureName) {
 	    solarActorTexture = TextureCacher.gameAtlas.findRegion(textureName);
-        solarActorSprite = new Sprite(solarActorTexture);  	
+        solarActorSprite = new Sprite(solarActorTexture);
+    }
+    
+    @Override
+    public void draw(Batch batch, float parentAlpha)
+    {
+        solarActorSprite.setPosition(getX(), getY());
+        solarActorSprite.draw(batch);
     }
     
 }
