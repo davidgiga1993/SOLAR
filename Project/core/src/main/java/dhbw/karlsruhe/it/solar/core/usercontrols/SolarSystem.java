@@ -3,8 +3,8 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
 import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,20 +55,20 @@ public class SolarSystem extends AstronomicalBody {
     		planet = star.placeNewPlanet("Earth", PlanetType.TERRAN, new Length(12756.32f/2, Length.Unit.kilometres), 1, 1, -120);
     			planet.placeNewMoon("Moon", new Length(3476f/2, Length.Unit.kilometres), 0.0123, 384399, -30);
     		planet = star.placeNewPlanet("Mars", PlanetType.ARID, new Length(6792.4f/2, Length.Unit.kilometres), 0.107, 1.52366231, -140);
-    			planet.placeNewAsteroid("Phobos", new Length(23f/2, Length.Unit.kilometres), 1.0659 * Math.pow(10, 16), 9367, 90);
+    			planet.placeNewAsteroid("Phobos", new Length(23f / 2, Length.Unit.kilometres), 1.0659 * Math.pow(10, 16), 9367, 90);
     			planet.placeNewAsteroid("Deimos", new Length(13f/2, Length.Unit.kilometres), 1.4762 * Math.pow(10, 15), 23463, 90);
-    		star.placeNewPlanet("Ceres", PlanetType.DWARFPLANET, new Length(975f/2, Length.Unit.kilometres), 0.00016, 2.766, 0);
+    		star.placeNewPlanet("Ceres", PlanetType.DWARFPLANET, new Length(975f / 2, Length.Unit.kilometres), 0.00016, 2.766, 0);
     		planet = star.placeNewPlanet("Jupiter", PlanetType.GASGIANT, new Length(142984f/2, Length.Unit.kilometres), 318, 5.20336301, 120);
-    			planet.placeNewMoon("Io", new Length(3643f/2, Length.Unit.kilometres), 0.015, 421600, 90);
-    			planet.placeNewMoon("Europa", new Length(3122f/2, Length.Unit.kilometres), 0.008, 670900, 90);
+    			planet.placeNewMoon("Io", new Length(3643f / 2, Length.Unit.kilometres), 0.015, 421600, 90);
+    			planet.placeNewMoon("Europa", new Length(3122f / 2, Length.Unit.kilometres), 0.008, 670900, 90);
     			planet.placeNewMoon("Ganymede", new Length(5262f/2, Length.Unit.kilometres), 0.025, 1070400, 90);
-    			planet.placeNewMoon("Callisto", new Length(4821/2, Length.Unit.kilometres), 0.018, 1882700, 90);
+    			planet.placeNewMoon("Callisto", new Length(4821 / 2, Length.Unit.kilometres), 0.018, 1882700, 90);
     		planet = star.placeNewPlanet("Saturn", PlanetType.RINGED_GASGIANT, new Length(120536f/2, Length.Unit.kilometres), 95, 9.53707032, -130);
 				planet.placeNewMoon("Mimas", new Length(396.4f/2, Length.Unit.kilometres), 0.000006, 185520, 90);
 				planet.placeNewMoon("Enceladus", new Length(504.2f/2, Length.Unit.kilometres), 0.000018, 237948, 90);
 				planet.placeNewMoon("Tethys", new Length(1066f/2, Length.Unit.kilometres), 0.00132, 294619, 90);
 				planet.placeNewMoon("Dione", new Length(1123.4f/2, Length.Unit.kilometres), 0.0003, 377396, 90);
-				planet.placeNewMoon("Rhea", new Length(1529f/2, Length.Unit.kilometres), 0.0004, 527108, 90);
+				planet.placeNewMoon("Rhea", new Length(1529f / 2, Length.Unit.kilometres), 0.0004, 527108, 90);
 				planet.placeNewMoon("Titan", new Length(5150f/2, Length.Unit.kilometres), 0.023, 1221870, 90);
 				planet.placeNewMoon("Iapetus", new Length(1436f/2, Length.Unit.kilometres), 0.0003, 3560820, 90);
     		planet = star.placeNewPlanet("Uranus", PlanetType.RINGED_ICEGIANT, new Length(51118f/2, Length.Unit.kilometres), 14, 19.19126393, 20);
@@ -87,7 +87,7 @@ public class SolarSystem extends AstronomicalBody {
     }
 
 	@Override
-	public void drawLines(ShapeRenderer shapeRenderer) {
+	public void drawLines(SolarShapeRenderer shapeRenderer) {
 		super.drawLines(shapeRenderer);
 		diplaySystemCenter(shapeRenderer);
 	}

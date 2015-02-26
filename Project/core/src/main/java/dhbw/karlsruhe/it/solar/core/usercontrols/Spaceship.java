@@ -12,6 +12,7 @@ import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -84,7 +85,7 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
     }
 
     @Override
-    public void drawLines(ShapeRenderer shapeRenderer) {
+    public void drawLines(SolarShapeRenderer shapeRenderer) {
         shapeRenderer.identity();
 
         displaySelectionBox(shapeRenderer);

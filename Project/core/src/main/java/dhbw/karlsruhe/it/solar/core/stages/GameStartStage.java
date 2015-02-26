@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
@@ -19,7 +20,7 @@ public class GameStartStage extends BaseStage
     private SolarSystem solarSystem;
     public static GameInputListener inputListener;
     private PlayerManager playerManager = new PlayerManager();
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+    private SolarShapeRenderer shapeRenderer = new SolarShapeRenderer();
 
     public static float gameSpeed = 0f;
 

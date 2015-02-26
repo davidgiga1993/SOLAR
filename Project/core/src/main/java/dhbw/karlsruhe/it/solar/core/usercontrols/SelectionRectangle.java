@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 public class SelectionRectangle extends Actor implements ShapeRenderable
 {
@@ -37,7 +38,7 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 
 
 	@Override
-	public void drawLines(ShapeRenderer shapeRenderer) {
+	public void drawLines(SolarShapeRenderer shapeRenderer) {
 		if(visible) {
 			shapeRenderer.setColor(Color.GREEN);
 			shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());

@@ -9,6 +9,7 @@ import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +98,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	}
 
 	@Override
-	public void drawLines(ShapeRenderer shapeRenderer) {
+	public void drawLines(SolarShapeRenderer shapeRenderer) {
 		displayOrbit(shapeRenderer);
 //		drawBody(shapeRenderer);
 	}
@@ -158,12 +159,12 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		return (float) (calculateCenterOfOrbitY() + (float) Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInPixels);
 	}
 	    
-    protected void displayOrbit(ShapeRenderer shapeRenderer)
+    protected void displayOrbit(SolarShapeRenderer shapeRenderer)
     {
     	if (scaleDistanceToStage(orbitalRadiusInKilometers) < getParent().getWidth())
     		return;
 
-
+		shapeRenderer.set(ShapeRenderer.ShapeType.Line);
         shapeRenderer.setColor(Color.TEAL);
         shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 1000);
     }
@@ -214,7 +215,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	/**
 	 * @return Calculates the Y-axis point around which the astronomical body orbits based on its Origin attribute.
 	 */
-	private float calculateCenterOfOrbitY() {
+	protected float calculateCenterOfOrbitY() {
         // Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
 		return origin.getY() + origin.getHeight() / 2;
 	}
@@ -222,7 +223,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	/**
 	 * @return Calculates the X-axis point around which the astronomical body orbits based on its Origin attribute.
 	 */
-	private float calculateCenterOfOrbitX() {
+	protected float calculateCenterOfOrbitX() {
 		return origin.getX() + origin.getWidth() / 2;
 	}
 

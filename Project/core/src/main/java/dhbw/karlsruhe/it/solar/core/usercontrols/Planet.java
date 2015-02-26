@@ -1,7 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.graphics.Color;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 /**
  * @author Andi
@@ -57,7 +59,18 @@ public class Planet extends AstronomicalBody
         satellites.add(newObject);
         return newObject;
     }
-
     //TODO: Alle Klassen die von AstronomicalBody ableiten müssen die Konstruktoren auf Length angepasst kriegen...
+
+	@Override
+	protected void displayOrbit(SolarShapeRenderer shapeRenderer)
+	{
+		if (scaleDistanceToStage(orbitalRadiusInKilometers) < getParent().getWidth())
+			return;
+
+
+		shapeRenderer.setColor(Color.TEAL);
+		shapeRenderer.orbit(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 2000);
+
+	}
 
 }
