@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+
 /**
  * @author Andi
  */
@@ -108,4 +110,10 @@ public abstract class SolarActor extends Actor {
     public TextureRegion getSolarActorTexture() {
         return solarActorTexture;
     }
+    
+    protected void setupSolarActorSprite(String textureName) {
+	    solarActorTexture = TextureCacher.gameAtlas.findRegion(textureName);
+        solarActorSprite = new Sprite(solarActorTexture);  	
+    }
+    
 }

@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 
@@ -15,7 +17,15 @@ public class Planet extends AstronomicalBody
 		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_PLANET);
 		//this.setSize(250, 250);
         //this.color = Color.BLUE;
+	    setupSolarActorSprite("TerranTerrestrial");
 	}
+	
+    @Override
+    public void draw(Batch batch, float parentAlpha)
+    {
+        solarActorSprite.setPosition(getX(), getY());
+        solarActorSprite.draw(batch);
+    }
 
 	
     /**

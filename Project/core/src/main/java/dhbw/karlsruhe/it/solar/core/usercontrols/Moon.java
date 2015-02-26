@@ -1,6 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 
@@ -17,7 +19,15 @@ public class Moon extends AstronomicalBody
 		//this.orbitalRadiusInKilometers = orbitalRadiusInKilometers * 20;
 		//this.setSize(100, 100);
 		this.setColor(Color.GRAY);
+	    setupSolarActorSprite("TerrestrialMoon");
 	}
+	
+    @Override
+    public void draw(Batch batch, float parentAlpha)
+    {
+        solarActorSprite.setPosition(getX(), getY());
+        solarActorSprite.draw(batch);
+    }
 
 
 }

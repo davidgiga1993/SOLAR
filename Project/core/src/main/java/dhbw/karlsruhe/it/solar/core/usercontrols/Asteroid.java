@@ -1,8 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 
@@ -17,7 +19,15 @@ public class Asteroid extends AstronomicalBody
 		super(name, radius, orbitalRadiusInKilometers, massInKilogram, angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_ASTEROID);
 		//this.setSize(100, 50);
 		this.setColor(Color.LIGHT_GRAY);
+	    setupSolarActorSprite("IrregularSatellite");
 	}
+	
+    @Override
+    public void draw(Batch batch, float parentAlpha)
+    {
+        solarActorSprite.setPosition(getX(), getY());
+        solarActorSprite.draw(batch);
+    }
 
 	@Override
 	protected void drawBody(ShapeRenderer shapeRenderer) {

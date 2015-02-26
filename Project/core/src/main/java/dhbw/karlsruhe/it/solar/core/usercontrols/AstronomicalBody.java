@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
@@ -97,7 +98,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	@Override
 	public void drawLines(ShapeRenderer shapeRenderer) {
 		displayOrbit(shapeRenderer);
-		drawBody(shapeRenderer);
+//		drawBody(shapeRenderer);
 	}
 
 	public List<AstronomicalBody> getSatellites()

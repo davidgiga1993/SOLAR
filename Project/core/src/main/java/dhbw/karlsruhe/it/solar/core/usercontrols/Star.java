@@ -1,9 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-
 
 /**
  * @author Andi
@@ -15,10 +16,18 @@ public class Star extends AstronomicalBody
 	{
 		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_STAR);
 		//this.setSize(1000, 1000);
-        this.setColor(Color.YELLOW);      
+        this.setColor(Color.YELLOW);   
+        
+	    setupSolarActorSprite("Version1GTypeMainSequenceStar");
 	}
-
 	
+    @Override
+    public void draw(Batch batch, float parentAlpha)
+    {
+        solarActorSprite.setPosition(getX(), getY());
+        solarActorSprite.draw(batch);
+    }
+		
     /**
      * Adds a new planet with the specified parameters as a satellite orbiting the star.
      * @param name Desired name of the planet

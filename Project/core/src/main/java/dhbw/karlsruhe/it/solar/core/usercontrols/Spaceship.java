@@ -40,8 +40,7 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
         setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
 	    this.selected = false;
 
-	    solarActorTexture = TextureCacher.gameAtlas.findRegion("Cruiser");
-        createShipSprite();
+	    setupSolarActorSprite("Cruiser");
 
         this.setSize(width, length);
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
@@ -85,11 +84,6 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
         float pHeight = scaleDistanceToStage(height.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
         // call super
         super.setSize(pWidth , pHeight);
-    }
-
-    private void createShipSprite()
-    {
-        solarActorSprite = new Sprite(solarActorTexture);
     }
 
     @Override

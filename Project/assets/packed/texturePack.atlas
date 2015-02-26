@@ -1,19 +1,109 @@
 
 texturePack.png
-size: 512,512
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+AridTerrestrial
+  rotate: false
+  xy: 1, 583
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+BarrenTerrestrial
+  rotate: false
+  xy: 1, 325
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ClassIGasGiant
+  rotate: false
+  xy: 259, 583
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
 Cruiser
   rotate: false
-  xy: 2, 68
+  xy: 1, 67
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+DwarfPlanet
+  rotate: false
+  xy: 259, 325
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+HellTerrestrial
+  rotate: false
+  xy: 517, 583
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+IceGiant
+  rotate: false
+  xy: 259, 67
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+IrregularSatellite
+  rotate: false
+  xy: 517, 325
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+RingedClassIGasGiant
+  rotate: false
+  xy: 775, 583
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+RingedIceGiant
+  rotate: false
+  xy: 517, 67
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+TerranTerrestrial
+  rotate: false
+  xy: 775, 325
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+TerrestrialMoon
+  rotate: false
+  xy: 1033, 583
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Version1GTypeMainSequenceStar
+  rotate: false
+  xy: 775, 67
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Version2GTypeMainSequenceStar
+  rotate: false
+  xy: 1033, 325
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 resource_placeholder
   rotate: false
-  xy: 2, 2
+  xy: 1, 1
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
