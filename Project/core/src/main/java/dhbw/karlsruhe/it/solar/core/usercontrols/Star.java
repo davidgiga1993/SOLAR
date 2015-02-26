@@ -12,7 +12,7 @@ public class Star extends AstronomicalBody
 	
 	public Star(String name, Length radius, double massInSolarMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin)
 	{
-		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_STAR, "GTypeMainSequenceStar");       
+		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertSolarMassesIntoKilogram(massInSolarMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_STAR, "GTypeMainSequence");       
 	}
 		
     /**

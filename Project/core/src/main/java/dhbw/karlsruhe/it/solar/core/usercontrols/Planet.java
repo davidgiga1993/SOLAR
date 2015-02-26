@@ -39,7 +39,7 @@ public class Planet extends AstronomicalBody
 			case TERRAN:
 				return "Terran";
 			default:
-				return "Mercurian";
+				return "DwarfPlanet";
 		}
 	}
 	

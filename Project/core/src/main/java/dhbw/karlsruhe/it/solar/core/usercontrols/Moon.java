@@ -42,8 +42,20 @@ public class Moon extends AstronomicalBody
 				return "Titanean";
 			case IAPETIAN:
 				return "Iapetian";
+			case MIRANDAN:
+				return "Mirandan";
+			case ARIELIAN:
+				return "Arielian";
+			case UMBRELIAN:
+				return "Umbrelian";
+			case TITANIAN:
+				return "Titanian";
+			case OBERONIAN:
+				return "Oberonian";
+			case TRITONIAN:
+				return "Tritonian";
 			default:
-				return "Lunar";
+				return "IrregularSatellite";
 		}
 	}
 	
