@@ -24,9 +24,9 @@ public class Star extends AstronomicalBody
      * @param angleInDegree Desired angle of the planet's position on the map of the system relative to its star
      * @return created Planet object
      */
-    public Planet placeNewPlanet(String name, PlanetType type, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree)
+    public Planet placeNewPlanet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree, PlanetType type)
     {
-        Planet newObject = new Planet(name, type, radius, massInEarthMasses, orbitalRadiusInAU, angleInDegree, this);
+        Planet newObject = new Planet(name, radius, massInEarthMasses, orbitalRadiusInAU, angleInDegree, this, type);
         newObject.calculateOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;

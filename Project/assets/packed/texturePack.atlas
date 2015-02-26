@@ -3,25 +3,144 @@ texturePack.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-AridTerrestrial
+Callistoan
   rotate: false
-  xy: 1, 583
-  size: 256, 256
-  orig: 256, 256
+  xy: 1, 1353
+  size: 512, 512
+  orig: 512, 512
   offset: 0, 0
   index: -1
-BarrenTerrestrial
+Dionean
+  rotate: false
+  xy: 1, 839
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+DwarfPlanet
+  rotate: false
+  xy: 515, 1353
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Enceladean
   rotate: false
   xy: 1, 325
-  size: 256, 256
-  orig: 256, 256
+  size: 512, 512
+  orig: 512, 512
   offset: 0, 0
   index: -1
-ClassIGasGiant
+Europan
   rotate: false
-  xy: 259, 583
-  size: 256, 256
-  orig: 256, 256
+  xy: 515, 839
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Ganymedian
+  rotate: false
+  xy: 1029, 1353
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Iapetian
+  rotate: false
+  xy: 515, 325
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Ionian
+  rotate: false
+  xy: 1029, 839
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Jovian
+  rotate: false
+  xy: 1543, 1353
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Martian
+  rotate: false
+  xy: 1029, 325
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Mercurian
+  rotate: false
+  xy: 1543, 839
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Mimantean
+  rotate: false
+  xy: 2057, 1353
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Neptunian
+  rotate: false
+  xy: 1543, 325
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Rhean
+  rotate: false
+  xy: 2057, 839
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+RingedClassIGasGiant
+  rotate: false
+  xy: 2571, 1353
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Terran
+  rotate: false
+  xy: 2057, 325
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Tethyan
+  rotate: false
+  xy: 2571, 839
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Titanean
+  rotate: false
+  xy: 3085, 1353
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Uranian
+  rotate: false
+  xy: 2571, 325
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Venusian
+  rotate: false
+  xy: 3085, 839
+  size: 512, 512
+  orig: 512, 512
   offset: 0, 0
   index: -1
 Cruiser
@@ -31,65 +150,23 @@ Cruiser
   orig: 256, 256
   offset: 0, 0
   index: -1
-DwarfPlanet
-  rotate: false
-  xy: 259, 325
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
 GTypeMainSequenceStar
   rotate: false
-  xy: 517, 583
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-HellTerrestrial
-  rotate: false
-  xy: 259, 67
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-IceGiant
-  rotate: false
-  xy: 517, 325
+  xy: 3599, 1609
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 IrregularSatellite
   rotate: false
-  xy: 775, 583
+  xy: 3085, 581
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-RingedClassIGasGiant
+Lunar
   rotate: false
-  xy: 517, 67
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-RingedIceGiant
-  rotate: false
-  xy: 775, 325
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-TerranTerrestrial
-  rotate: false
-  xy: 1033, 583
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-TerrestrialMoon
-  rotate: false
-  xy: 775, 67
+  xy: 259, 67
   size: 256, 256
   orig: 256, 256
   offset: 0, 0

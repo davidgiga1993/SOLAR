@@ -20,7 +20,8 @@ import java.util.List;
  */
 public abstract class AstronomicalBody extends SolarActor implements ShapeRenderable, KinematicObject {
 	
-	public enum PlanetType { BARREN, HOTHOUSE, TERRAN, ARID, DWARFPLANET, GASGIANT, RINGED_GASGIANT, RINGED_ICEGIANT, ICEGIANT }
+	public enum PlanetType { MERCURIAN, VENUSIAN, TERRAN, MARTIAN, DWARFPLANET, JOVIAN, SATURNIAN, URANIAN, NEPTUNIAN }
+	public enum MoonType { IRREGULAR, LUNAR, IONIAN, EUROPAN, GANYMEDIAN, CALLISTOAN, MIMANTEAN, ENCELADEAN, TETHYAN, DIONEAN, RHEAN, TITANEAN, IAPETIAN  }
 
 	protected BodyProperties physicalProperties;
 	

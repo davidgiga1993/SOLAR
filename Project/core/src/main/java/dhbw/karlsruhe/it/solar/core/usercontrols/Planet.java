@@ -11,7 +11,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
  */
 public class Planet extends AstronomicalBody
 {
-	public Planet(String name, PlanetType type, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin)
+	public Planet(String name, Length radius, double massInEarthMasses, double orbitalRadiusInAU, float angleInDegree, AstronomicalBody origin, PlanetType type)
 	{
 		super(name, radius, convertAUIntoKilometer(orbitalRadiusInAU), convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
 	}
@@ -20,26 +20,26 @@ public class Planet extends AstronomicalBody
 	{			
 		switch(type)
 		{
-			case ARID:
-				return "AridTerrestrial";
-			case BARREN:
-				return "BarrenTerrestrial";
+			case MARTIAN:
+				return "Martian";
+			case MERCURIAN:
+				return "Mercurian";
 			case DWARFPLANET:
 				return "DwarfPlanet";
-			case GASGIANT:
-				return "ClassIGasGiant";
-			case HOTHOUSE:
-				return "HellTerrestrial";
-			case ICEGIANT:
-				return "IceGiant";
-			case RINGED_GASGIANT:
+			case JOVIAN:
+				return "Jovian";
+			case VENUSIAN:
+				return "Venusian";
+			case NEPTUNIAN:
+				return "Neptunian";
+			case SATURNIAN:
 				return "RingedClassIGasGiant";
-			case RINGED_ICEGIANT:
-				return "RingedIceGiant";
+			case URANIAN:
+				return "Uranian";
 			case TERRAN:
-				return "TerranTerrestrial";
+				return "Terran";
 			default:
-				return "BarrenTerrestrial";
+				return "Mercurian";
 		}
 	}
 	
@@ -52,9 +52,9 @@ public class Planet extends AstronomicalBody
      * @param angleInDegree Desired angle of the moon's position on the map of the system relative to its planet
      * @return created Moon object
      */
-    public Moon placeNewMoon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, float angleInDegree)
+    public Moon placeNewMoon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, float angleInDegree, MoonType type)
     {
-        Moon newObject = new Moon(name, radius, massInEarthMasses, orbitalRadiusInKilometers, angleInDegree, this);
+        Moon newObject = new Moon(name, radius, massInEarthMasses, orbitalRadiusInKilometers, angleInDegree, this, type);
         newObject.calculateOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;
