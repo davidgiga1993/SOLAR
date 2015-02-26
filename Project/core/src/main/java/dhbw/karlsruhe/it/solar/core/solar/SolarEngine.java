@@ -16,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class SolarEngine extends Game implements InputProcessor
 {
-    public static boolean DEBUG = false;
+    public static boolean DEBUG = true;
     public GameLogicService Service = new GameLogicService();
     
     public OrthographicCamera camera;

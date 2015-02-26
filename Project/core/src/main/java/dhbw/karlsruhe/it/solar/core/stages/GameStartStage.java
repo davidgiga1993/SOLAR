@@ -21,6 +21,8 @@ public class GameStartStage extends BaseStage
     private PlayerManager playerManager = new PlayerManager();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
+    public static float gameSpeed = 0f;
+
     protected Player humanPlayer;
     protected Player aiPlayer;
 
@@ -108,6 +110,7 @@ public class GameStartStage extends BaseStage
     @Override
     public void act(float delta) {
     	inputListener.handleContinousInput(delta);
+        delta *= GameStartStage.gameSpeed;
         super.act(delta);
     }
 

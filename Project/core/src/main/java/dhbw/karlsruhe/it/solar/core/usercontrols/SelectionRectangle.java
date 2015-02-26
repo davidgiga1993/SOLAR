@@ -2,8 +2,8 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,8 +16,8 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 
 	private ShapeRenderer shapeRenderer;
 	private boolean visible;
-	private GridPoint2 startPosition;
-	private GridPoint2 mousePosition;
+	private Vector2 startPosition;
+	private Vector2 mousePosition;
 	private boolean isInitialized = false;
 	
 	private Label widthLabel = new Label("", SolarEngine.get().styles.defaultLabelStyle);
@@ -69,7 +69,7 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 			setHeight(mouseY - (float)startPosition.y);
 		}
 		
-		mousePosition = new GridPoint2((int)mouseX, (int)mouseY);
+		mousePosition = new Vector2(mouseX, mouseY);
 		updateLabels();
 	}
 
@@ -84,10 +84,11 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 			isInitialized = true;
 		}
     	setPosition(x, y);
-    	setStartPosition(new GridPoint2((int)x,(int)y));
+    	setStartPosition(new Vector2(x,y));
 		visible = true;
 		setWidth(0);
 		setHeight(0);
+		System.out.println(x +"\t|\t"+ y);
 	}
 
 	public void hide()
@@ -96,17 +97,17 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 		hideLabels();
 	}
 	
-	public void setStartPosition(GridPoint2 position)
+	public void setStartPosition(Vector2 position)
 	{
 		startPosition = position;
 	}
 	
-	public GridPoint2 getStartPosition()
+	public Vector2 getStartPosition()
 	{
 		return startPosition;
 	}
 	
-	public GridPoint2 getEndPosition()
+	public Vector2 getEndPosition()
 	{
 		return mousePosition;
 	}
