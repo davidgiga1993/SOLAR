@@ -55,14 +55,16 @@ public class SolarSystem extends AstronomicalBody {
     		planet = star.placeNewPlanet("Earth", new Length(12756.32f/2, Length.Unit.kilometres), 1, 1, -120, PlanetType.TERRAN);
     			planet.placeNewMoon("Moon", new Length(3476f/2, Length.Unit.kilometres), 0.0123, 384399, -30, MoonType.LUNAR);
     		planet = star.placeNewPlanet("Mars", new Length(6792.4f/2, Length.Unit.kilometres), 0.107, 1.52366231, -140, PlanetType.MARTIAN);
-    			planet.placeNewAsteroid("Phobos", new Length(23f / 2, Length.Unit.kilometres), 1.0659 * Math.pow(10, 16), 9367, 90);
-    			planet.placeNewAsteroid("Deimos", new Length(13f/2, Length.Unit.kilometres), 1.4762 * Math.pow(10, 15), 23463, 90);
+    			planet.placeNewMoon("Phobos", new Length(23f / 2, Length.Unit.kilometres), 1.0659 * Math.pow(10, 16), 9367, 90, MoonType.IRREGULAR);
+    			planet.placeNewMoon("Deimos", new Length(13f/2, Length.Unit.kilometres), 1.4762 * Math.pow(10, 15), 23463, 90, MoonType.IRREGULAR);
     		star.placeNewPlanet("Ceres", new Length(975f/2, Length.Unit.kilometres), 0.00016, 2.766, 0, PlanetType.DWARFPLANET);
     		planet = star.placeNewPlanet("Jupiter", new Length(142984f/2, Length.Unit.kilometres), 318, 5.20336301, 120, PlanetType.JOVIAN);
     			planet.placeNewMoon("Io", new Length(3643f/2, Length.Unit.kilometres), 0.015, 421600, 90, MoonType.IONIAN);
     			planet.placeNewMoon("Europa", new Length(3122f/2, Length.Unit.kilometres), 0.008, 670900, 90, MoonType.EUROPAN);
     			planet.placeNewMoon("Ganymede", new Length(5262f/2, Length.Unit.kilometres), 0.025, 1070400, 90, MoonType.GANYMEDIAN);
     			planet.placeNewMoon("Callisto", new Length(4821/2, Length.Unit.kilometres), 0.018, 1882700, 90, MoonType.CALLISTOAN);
+				planet.placeNewMoon("Himalia", new Length(170f/2, Length.Unit.kilometres), 0.00000112, 11460000, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Amalthea", new Length(167f/2, Length.Unit.kilometres), 0.00000035, 181365, 90, MoonType.IRREGULAR);
     		planet = star.placeNewPlanet("Saturn", new Length(120536f/2, Length.Unit.kilometres), 95, 9.53707032, -130, PlanetType.SATURNIAN);
 				planet.placeNewMoon("Mimas", new Length(396.4f/2, Length.Unit.kilometres), 0.000006, 185520, 90, MoonType.MIMANTEAN);
 				planet.placeNewMoon("Enceladus", new Length(504.2f/2, Length.Unit.kilometres), 0.000018, 237948, 90, MoonType.ENCELADEAN);
@@ -71,19 +73,34 @@ public class SolarSystem extends AstronomicalBody {
 				planet.placeNewMoon("Rhea", new Length(1529f/2, Length.Unit.kilometres), 0.0004, 527108, 90, MoonType.RHEAN);
 				planet.placeNewMoon("Titan", new Length(5150f/2, Length.Unit.kilometres), 0.023, 1221870, 90, MoonType.TITANEAN);
 				planet.placeNewMoon("Iapetus", new Length(1436f/2, Length.Unit.kilometres), 0.0003, 3560820, 90, MoonType.IAPETIAN);
+				planet.placeNewMoon("Hyperion", new Length(266f/2, Length.Unit.kilometres), 0.00000094, 1481009, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Phoebe", new Length(212f/2, Length.Unit.kilometres), 0.00000139, 12955759, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Janus", new Length(179f/2, Length.Unit.kilometres), 0.00000032, 151460, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Epimetheus", new Length(116f/2, Length.Unit.kilometres), 0.00000009, 151410, 90, MoonType.IRREGULAR);
     		planet = star.placeNewPlanet("Uranus", new Length(51118f/2, Length.Unit.kilometres), 14, 19.19126393, 20, PlanetType.URANIAN);
 				planet.placeNewMoon("Miranda", new Length(472f/2, Length.Unit.kilometres), 0.00001,  129390, 90, MoonType.MIRANDAN);
 				planet.placeNewMoon("Ariel", new Length(1158f/2, Length.Unit.kilometres), 0.00022, 190900, 90, MoonType.ARIELIAN);
 				planet.placeNewMoon("Umbriel", new Length(1169f/2, Length.Unit.kilometres), 0.0002, 266000, 90, MoonType.UMBRELIAN);
 				planet.placeNewMoon("Titania", new Length(1578f/2, Length.Unit.kilometres), 0.0006, 436300, 90, MoonType.TITANIAN);
 				planet.placeNewMoon("Oberon", new Length(1523f/2, Length.Unit.kilometres), 0.00046, 583519, 90, MoonType.OBERONIAN);
+				planet.placeNewMoon("Puck", new Length(162f/2, Length.Unit.kilometres), 0.00000049, 86004, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Sycorax", new Length(150f/2, Length.Unit.kilometres), 0.00000039, 12179000, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Portia", new Length(134f/2, Length.Unit.kilometres), 0.00000028, 66097, 90, MoonType.IRREGULAR);
     		planet = star.placeNewPlanet("Neptune", new Length(49528f/2, Length.Unit.kilometres), 17, 30.06896348, -30, PlanetType.NEPTUNIAN);
 				planet.placeNewMoon("Triton", new Length(2707f/2, Length.Unit.kilometres), 0.00358, 354759, 90, MoonType.TRITONIAN);
+				planet.placeNewMoon("Proteus", new Length(420f/2, Length.Unit.kilometres), 0.0000074, 117647, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Nereid", new Length(340f/2, Length.Unit.kilometres), 0.0000025, 5513787, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Larissa", new Length(194f/2, Length.Unit.kilometres), 0.0000007, 73548, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Galatea", new Length(176f/2, Length.Unit.kilometres), 0.00000035, 61953, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Despina", new Length(180f/2, Length.Unit.kilometres), 0.00000037, 52526, 90, MoonType.IRREGULAR);
 	    	planet = star.placeNewPlanet("Pluto", new Length(2310f/2, Length.Unit.kilometres), 0.0022, 39.482, -80, PlanetType.DWARFPLANET);
 	    		planet.placeNewMoon("Charon", new Length(1207f/2, Length.Unit.kilometres), 0.00025, 17536, 90, MoonType.IRREGULAR);
-	    	star.placeNewPlanet("Haumea", new Length(1600f/2, Length.Unit.kilometres), 0.0007,  43.335, 0, PlanetType.DWARFPLANET);
+	    	planet = star.placeNewPlanet("Haumea", new Length(1600f/2, Length.Unit.kilometres), 0.0007,  43.335, 0, PlanetType.DWARFPLANET);
+	    		planet.placeNewMoon("Hi'iaka", new Length(380f/2, Length.Unit.kilometres), 0.000003, 49880, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Namaka", new Length(200f/2, Length.Unit.kilometres), 0.0000003, 25657, 90, MoonType.IRREGULAR);
 	    	star.placeNewPlanet("Makemake", new Length(1500f/2, Length.Unit.kilometres), 0.0003, 45.792, 0, PlanetType.DWARFPLANET);
-	    	star.placeNewPlanet("Eris", new Length(2326f/2, Length.Unit.kilometres), 0.0028, 67.668, 0, PlanetType.DWARFPLANET);
+	    	planet = star.placeNewPlanet("Eris", new Length(2326f/2, Length.Unit.kilometres), 0.0028, 67.668, 0, PlanetType.DWARFPLANET);
+    			planet.placeNewMoon("Dysnomia", new Length(684f/2, Length.Unit.kilometres), 0.000006, 37350, 90, MoonType.IRREGULAR);
     }
 
 	@Override

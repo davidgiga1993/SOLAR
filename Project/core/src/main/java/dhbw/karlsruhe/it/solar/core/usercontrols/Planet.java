@@ -48,7 +48,7 @@ public class Planet extends AstronomicalBody
      * @param name Desired name of the Moon
      * @param radius Desired radius of the Moon
      * @param massInEarthMasses Desired mass of the planet in multiples of Earth Masses
-     * @param orbitalRadiusInKilometers Desired orbital radius around the star in kilometers
+     * @param orbitalRadiusInKilometers Desired orbital radius around the planet in kilometers
      * @param angleInDegree Desired angle of the moon's position on the map of the system relative to its planet
      * @return created Moon object
      */
