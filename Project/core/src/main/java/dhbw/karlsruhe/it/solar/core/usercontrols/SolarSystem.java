@@ -75,8 +75,8 @@ public class SolarSystem extends AstronomicalBody {
 				planet.placeNewMoon("Iapetus", new Length(1436f/2, Length.Unit.kilometres), 0.0003, 3560820, 90, MoonType.IAPETIAN);
 				planet.placeNewMoon("Hyperion", new Length(266f/2, Length.Unit.kilometres), 0.00000094, 1481009, 90, MoonType.IRREGULAR);
 				planet.placeNewMoon("Phoebe", new Length(212f/2, Length.Unit.kilometres), 0.00000139, 12955759, 90, MoonType.IRREGULAR);
-				planet.placeNewMoon("Janus", new Length(179f/2, Length.Unit.kilometres), 0.00000032, 151460, 90, MoonType.IRREGULAR);
-				planet.placeNewMoon("Epimetheus", new Length(116f/2, Length.Unit.kilometres), 0.00000009, 151410, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Janus", new Length(179f/2, Length.Unit.kilometres), 0.00000032, 151410, 95, MoonType.IRREGULAR);
+				planet.placeNewMoon("Epimetheus", new Length(116f/2, Length.Unit.kilometres), 0.00000009, 151410, 85, MoonType.IRREGULAR);
     		planet = star.placeNewPlanet("Uranus", new Length(51118f/2, Length.Unit.kilometres), 14, 19.19126393, 20, PlanetType.URANIAN);
 				planet.placeNewMoon("Miranda", new Length(472f/2, Length.Unit.kilometres), 0.00001,  129390, 90, MoonType.MIRANDAN);
 				planet.placeNewMoon("Ariel", new Length(1158f/2, Length.Unit.kilometres), 0.00022, 190900, 90, MoonType.ARIELIAN);
