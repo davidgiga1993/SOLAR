@@ -26,21 +26,19 @@ public class SolarShapeRenderer extends ShapeRenderer {
      */
     public void orbit(float centerX, float centerY, float radius, int segments) {
         double theta = 2 * MathUtils.PI / (segments);
-        //precalculate the sine and cosine
+        // precalculate the sine and cosine
         double c = Math.cos(theta);
         double s = Math.sin(theta);
         double t;
 
-        double x = radius;//we start at angle = 0
+        // we start at angle = 0
+        double x = radius;
         double y = 0;
 
         float vx, vy;
 
-     //   glBegin(GL_LINE_LOOP);
-        end();
         beginOrbit();
-        for(int ii = 0; ii < segments; ii++)
-        {
+        for(int ii = 0; ++ii < segments;) {
             //output vertex
             renderer.color(color);
             vx = (float) x + centerX;
@@ -52,8 +50,6 @@ public class SolarShapeRenderer extends ShapeRenderer {
             y = s * t + c * y;
         }
         end();
-        begin(ShapeType.Line);
-     //   glEnd();
     }
 
 

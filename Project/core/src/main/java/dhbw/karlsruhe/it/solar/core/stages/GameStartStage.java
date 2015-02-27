@@ -20,7 +20,8 @@ public class GameStartStage extends BaseStage
     private SolarSystem solarSystem;
     public static GameInputListener inputListener;
     private PlayerManager playerManager = new PlayerManager();
-    private SolarShapeRenderer shapeRenderer = new SolarShapeRenderer();
+    private SolarShapeRenderer solarShapeRenderer = new SolarShapeRenderer();
+    private ShapeRenderer libGDXShapeRenderer = new ShapeRenderer();
 
     public static float gameSpeed = 0f;
 
@@ -90,14 +91,15 @@ public class GameStartStage extends BaseStage
     @Override
     public void draw() {
         // render line shapes
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setProjectionMatrix(getCamera().combined);
+        libGDXShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        libGDXShapeRenderer.setProjectionMatrix(getCamera().combined);
+        solarShapeRenderer.setProjectionMatrix(getCamera().combined);
         for (Actor child : getRoot().getChildren()) {
             if (child instanceof ShapeRenderable) {
-                ((ShapeRenderable) child).drawLines(shapeRenderer);
+                ((ShapeRenderable) child).drawLines(libGDXShapeRenderer, solarShapeRenderer);
             }
         }
-        shapeRenderer.end();
+        libGDXShapeRenderer.end();
         // draw sprite batch stuff
         super.draw();
     }
@@ -105,7 +107,7 @@ public class GameStartStage extends BaseStage
     @Override
     public void dispose() {
         super.dispose();
-        shapeRenderer.dispose();
+        solarShapeRenderer.dispose();
     }
 
     @Override

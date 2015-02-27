@@ -85,11 +85,11 @@ public class Spaceship extends SolarActor implements ShapeRenderable, Ownable, K
     }
 
     @Override
-    public void drawLines(SolarShapeRenderer shapeRenderer) {
-        shapeRenderer.identity();
+    public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
+        libGDXShapeRenderer.identity();
 
-        displaySelectionBox(shapeRenderer);
-        displayCourseAndDestination(shapeRenderer);
+        displaySelectionBox(libGDXShapeRenderer);
+        displayCourseAndDestination(libGDXShapeRenderer);
     }
 
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer)

@@ -57,18 +57,18 @@ public class SolarSystem extends AstronomicalBody {
     		planet = star.placeNewPlanet("Mars", new Length(6792.4f/2, Length.Unit.kilometres), 0.107, 1.52366231, -140, PlanetType.MARTIAN);
     			planet.placeNewMoon("Phobos", new Length(23f / 2, Length.Unit.kilometres), 1.0659 * Math.pow(10, 16), 9367, 90, MoonType.IRREGULAR);
     			planet.placeNewMoon("Deimos", new Length(13f/2, Length.Unit.kilometres), 1.4762 * Math.pow(10, 15), 23463, 90, MoonType.IRREGULAR);
-    		star.placeNewPlanet("Ceres", new Length(975f/2, Length.Unit.kilometres), 0.00016, 2.766, 0, PlanetType.DWARFPLANET);
+    		star.placeNewPlanet("Ceres", new Length(975f / 2, Length.Unit.kilometres), 0.00016, 2.766, 0, PlanetType.DWARFPLANET);
     		planet = star.placeNewPlanet("Jupiter", new Length(142984f/2, Length.Unit.kilometres), 318, 5.20336301, 120, PlanetType.JOVIAN);
-    			planet.placeNewMoon("Io", new Length(3643f/2, Length.Unit.kilometres), 0.015, 421600, 90, MoonType.IONIAN);
-    			planet.placeNewMoon("Europa", new Length(3122f/2, Length.Unit.kilometres), 0.008, 670900, 90, MoonType.EUROPAN);
+    			planet.placeNewMoon("Io", new Length(3643f / 2, Length.Unit.kilometres), 0.015, 421600, 90, MoonType.IONIAN);
+    			planet.placeNewMoon("Europa", new Length(3122f / 2, Length.Unit.kilometres), 0.008, 670900, 90, MoonType.EUROPAN);
     			planet.placeNewMoon("Ganymede", new Length(5262f/2, Length.Unit.kilometres), 0.025, 1070400, 90, MoonType.GANYMEDIAN);
-    			planet.placeNewMoon("Callisto", new Length(4821/2, Length.Unit.kilometres), 0.018, 1882700, 90, MoonType.CALLISTOAN);
+    			planet.placeNewMoon("Callisto", new Length(4821 / 2, Length.Unit.kilometres), 0.018, 1882700, 90, MoonType.CALLISTOAN);
 				planet.placeNewMoon("Himalia", new Length(170f/2, Length.Unit.kilometres), 0.00000112, 11460000, 90, MoonType.IRREGULAR);
 				planet.placeNewMoon("Amalthea", new Length(167f/2, Length.Unit.kilometres), 0.00000035, 181365, 90, MoonType.IRREGULAR);
     		planet = star.placeNewPlanet("Saturn", new Length(120536f/2, Length.Unit.kilometres), 95, 9.53707032, -130, PlanetType.SATURNIAN);
 				planet.placeNewMoon("Mimas", new Length(396.4f/2, Length.Unit.kilometres), 0.000006, 185520, 90, MoonType.MIMANTEAN);
 				planet.placeNewMoon("Enceladus", new Length(504.2f/2, Length.Unit.kilometres), 0.000018, 237948, 90, MoonType.ENCELADEAN);
-				planet.placeNewMoon("Tethys", new Length(1066f/2, Length.Unit.kilometres), 0.00132, 294619, 90, MoonType.TETHYAN);
+				planet.placeNewMoon("Tethys", new Length(1066f / 2, Length.Unit.kilometres), 0.00132, 294619, 90, MoonType.TETHYAN);
 				planet.placeNewMoon("Dione", new Length(1123.4f/2, Length.Unit.kilometres), 0.0003, 377396, 90, MoonType.DIONEAN);
 				planet.placeNewMoon("Rhea", new Length(1529f/2, Length.Unit.kilometres), 0.0004, 527108, 90, MoonType.RHEAN);
 				planet.placeNewMoon("Titan", new Length(5150f/2, Length.Unit.kilometres), 0.023, 1221870, 90, MoonType.TITANEAN);
@@ -84,13 +84,13 @@ public class SolarSystem extends AstronomicalBody {
 				planet.placeNewMoon("Titania", new Length(1578f/2, Length.Unit.kilometres), 0.0006, 436300, 90, MoonType.TITANIAN);
 				planet.placeNewMoon("Oberon", new Length(1523f/2, Length.Unit.kilometres), 0.00046, 583519, 90, MoonType.OBERONIAN);
 				planet.placeNewMoon("Puck", new Length(162f/2, Length.Unit.kilometres), 0.00000049, 86004, 90, MoonType.IRREGULAR);
-				planet.placeNewMoon("Sycorax", new Length(150f/2, Length.Unit.kilometres), 0.00000039, 12179000, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Sycorax", new Length(150f / 2, Length.Unit.kilometres), 0.00000039, 12179000, 90, MoonType.IRREGULAR);
 				planet.placeNewMoon("Portia", new Length(134f/2, Length.Unit.kilometres), 0.00000028, 66097, 90, MoonType.IRREGULAR);
     		planet = star.placeNewPlanet("Neptune", new Length(49528f/2, Length.Unit.kilometres), 17, 30.06896348, -30, PlanetType.NEPTUNIAN);
-				planet.placeNewMoon("Triton", new Length(2707f/2, Length.Unit.kilometres), 0.00358, 354759, 90, MoonType.TRITONIAN);
+				planet.placeNewMoon("Triton", new Length(2707f / 2, Length.Unit.kilometres), 0.00358, 354759, 90, MoonType.TRITONIAN);
 				planet.placeNewMoon("Proteus", new Length(420f/2, Length.Unit.kilometres), 0.0000074, 117647, 90, MoonType.IRREGULAR);
-				planet.placeNewMoon("Nereid", new Length(340f/2, Length.Unit.kilometres), 0.0000025, 5513787, 90, MoonType.IRREGULAR);
-				planet.placeNewMoon("Larissa", new Length(194f/2, Length.Unit.kilometres), 0.0000007, 73548, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Nereid", new Length(340f / 2, Length.Unit.kilometres), 0.0000025, 5513787, 90, MoonType.IRREGULAR);
+				planet.placeNewMoon("Larissa", new Length(194f / 2, Length.Unit.kilometres), 0.0000007, 73548, 90, MoonType.IRREGULAR);
 				planet.placeNewMoon("Galatea", new Length(176f/2, Length.Unit.kilometres), 0.00000035, 61953, 90, MoonType.IRREGULAR);
 				planet.placeNewMoon("Despina", new Length(180f/2, Length.Unit.kilometres), 0.00000037, 52526, 90, MoonType.IRREGULAR);
 	    	planet = star.placeNewPlanet("Pluto", new Length(2310f/2, Length.Unit.kilometres), 0.0022, 39.482, -80, PlanetType.DWARFPLANET);
@@ -100,13 +100,13 @@ public class SolarSystem extends AstronomicalBody {
 				planet.placeNewMoon("Namaka", new Length(200f/2, Length.Unit.kilometres), 0.0000003, 25657, 90, MoonType.IRREGULAR);
 	    	star.placeNewPlanet("Makemake", new Length(1500f/2, Length.Unit.kilometres), 0.0003, 45.792, 0, PlanetType.DWARFPLANET);
 	    	planet = star.placeNewPlanet("Eris", new Length(2326f/2, Length.Unit.kilometres), 0.0028, 67.668, 0, PlanetType.DWARFPLANET);
-    			planet.placeNewMoon("Dysnomia", new Length(684f/2, Length.Unit.kilometres), 0.000006, 37350, 90, MoonType.IRREGULAR);
+    			planet.placeNewMoon("Dysnomia", new Length(684f / 2, Length.Unit.kilometres), 0.000006, 37350, 90, MoonType.IRREGULAR);
     }
 
 	@Override
-	public void drawLines(SolarShapeRenderer shapeRenderer) {
-		super.drawLines(shapeRenderer);
-		diplaySystemCenter(shapeRenderer);
+	public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
+		super.drawLines(libGDXShapeRenderer,solarShapeRenderer);
+		diplaySystemCenter(libGDXShapeRenderer);
 	}
 
 	private void diplaySystemCenter(ShapeRenderer shapeRenderer) {

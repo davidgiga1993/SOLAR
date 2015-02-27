@@ -15,7 +15,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 public class SelectionRectangle extends Actor implements ShapeRenderable
 {
 
-	private ShapeRenderer shapeRenderer;
+//	private ShapeRenderer shapeRenderer;
 	private boolean visible;
 	private Vector2 startPosition;
 	private Vector2 mousePosition;
@@ -25,7 +25,7 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 	private Label heightLabel = new Label("", SolarEngine.get().styles.defaultLabelStyle);
 
 	public SelectionRectangle() {
-		this.shapeRenderer = new ShapeRenderer();
+		//this.shapeRenderer = new ShapeRenderer();
 		this.visible = false;
 		this.setName("SelectionRectangle");
 		this.setSize(0, 0);
@@ -38,10 +38,10 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 
 
 	@Override
-	public void drawLines(SolarShapeRenderer shapeRenderer) {
+	public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
 		if(visible) {
-			shapeRenderer.setColor(Color.GREEN);
-			shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
+			libGDXShapeRenderer.setColor(Color.GREEN);
+			libGDXShapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
 		}
 	}
 

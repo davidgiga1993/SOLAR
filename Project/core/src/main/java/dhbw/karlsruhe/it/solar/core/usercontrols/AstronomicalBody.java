@@ -99,8 +99,8 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	}
 
 	@Override
-	public void drawLines(SolarShapeRenderer shapeRenderer) {
-		displayOrbit(shapeRenderer);
+	public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
+		displayOrbit(solarShapeRenderer);
 //		drawBody(shapeRenderer);
 	}
 
@@ -165,9 +165,8 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
     	if (scaleDistanceToStage(orbitalRadiusInKilometers) < getParent().getWidth())
     		return;
 
-		shapeRenderer.set(ShapeRenderer.ShapeType.Line);
         shapeRenderer.setColor(Color.TEAL);
-        shapeRenderer.circle(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 1000);
+        shapeRenderer.orbit(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 250);
     }
 
 //	/**
