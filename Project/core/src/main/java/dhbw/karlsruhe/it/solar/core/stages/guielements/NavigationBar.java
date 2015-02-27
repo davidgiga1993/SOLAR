@@ -16,6 +16,10 @@ public class NavigationBar extends Window {
     private final ScrollPane shipPane;
     private final ScrollPane bodyPane;
 
+    private final BodyNavigationTable bodyTable;
+    private final ShipNavigationTable shipTable;
+
+
     public NavigationBar() {
         super("Navigation", SolarEngine.get().styles.tooltipSkin);
         setMovable(false);
@@ -39,8 +43,8 @@ public class NavigationBar extends Window {
         });
 
         // To be replaced with actual NavigationTables
-        Table bodyTable = new BodyNavigationTable();
-        Table shipTable = new ShipNavigationTable();
+        bodyTable = new BodyNavigationTable();
+        shipTable = new ShipNavigationTable();
 
         bodyPane = new ScrollPane(bodyTable);
         shipPane = new ScrollPane(shipTable);
@@ -74,4 +78,6 @@ public class NavigationBar extends Window {
     private void onShipClick() {
         contentCell.setActor(shipPane).expand();
     }
+
+    // TODO: Message Framework integration, listen to actorAddedEvent
 }

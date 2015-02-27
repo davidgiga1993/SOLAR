@@ -12,6 +12,7 @@ public class Moon extends AstronomicalBody
 	public Moon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, float angleInDegree, AstronomicalBody origin, MoonType type)
 	{
 		super(name, radius, orbitalRadiusInKilometers, convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
+        label.setThreshold(0.4f);
 	}
 	
 	private static String getTextureNameForMoonType(MoonType type)

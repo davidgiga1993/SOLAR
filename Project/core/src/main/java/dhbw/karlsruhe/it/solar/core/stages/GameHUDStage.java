@@ -23,7 +23,10 @@ public class GameHUDStage extends BaseGUIStage{
 
 	public GameHUDStage(final SolarEngine solarEngine) {
 		super(solarEngine, "GameHUD");
+	}
 
+    public void init() {
+        SolarEngine solarEngine = SolarEngine.get();
         this.addListener(new GUIInputListener());
 
         guiTable = new Table();
@@ -54,8 +57,7 @@ public class GameHUDStage extends BaseGUIStage{
         if(ConfigurationConstants.SCALE_DIALOG_ENABLED) {
             ScaleDialog.createScaleDialog(this);
         }
-
-	}
+    }
 
     @Override
     public void resize(int width, int height) {

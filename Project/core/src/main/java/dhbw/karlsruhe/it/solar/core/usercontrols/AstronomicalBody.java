@@ -10,6 +10,7 @@ import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,8 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	protected float angleInDegree;
 	protected AstronomicalBody origin;
 	protected List<AstronomicalBody> satellites;
+
+    protected BodyGameLabel label;
 
 	protected float periodicConstant;
 
@@ -72,6 +75,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		float speed = (float) ((2 * Math.PI * scaleDistanceToStage(orbitalRadiusInKilometres)) / orbitalPeriodInDays);
 		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
 		this.kinematic.velocity = new Vector2(1,0).scl(speed);
+        label = new BodyGameLabel(name);
 	}
 
 	private void changeScale() {
@@ -91,6 +95,12 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		super.act(delta);
 		angleInDegree += periodicConstant * delta;
 		calculateOrbitalPositionTotal();
+
+        if(label.isVisible()) {
+            Vector2 labelPos = new Vector2(getX()+getWidth(), getY() + getHeight());
+            getStage().getViewport().project(labelPos);
+            label.setPosition(labelPos.x, labelPos.y);
+        }
 
 		kinematic.position.x = getX()+getOriginX();
 		kinematic.position.y = getY()+getOriginY();

@@ -45,7 +45,8 @@ public class GameStartStage extends BaseStage
         GameHUDStage gameHUDStage = new GameHUDStage(engine);
         engine.stageManager.addStage(gameHUDStage);
 
-
+        gameStage.init();
+        gameHUDStage.init();
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(gameHUDStage);
@@ -78,14 +79,17 @@ public class GameStartStage extends BaseStage
 
         gameStartStageListener();
         addSelectionRectangle();
-        systemCreation();
+
 
         humanPlayer = playerManager.createPlayer("Human Player");
         aiPlayer = playerManager.createPlayer("CPU Player");
+        //placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
+    }
 
+    public void init() {
+        systemCreation();
         placeNewShip("Event Horizon", new Vector2(0, 0), humanPlayer);
         placeNewShip("Nostromo", new Vector2(1500, 1000), humanPlayer);
-        //placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
     }
 
     @Override
