@@ -16,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class SolarEngine extends Game implements InputProcessor
 {
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
     public GameLogicService Service = new GameLogicService();
     
     public OrthographicCamera camera;
@@ -39,7 +39,7 @@ public class SolarEngine extends Game implements InputProcessor
     public enum myKeys
     {
         NONE, UP, DOWN, LEFT, RIGHT, PLUS, MINUS, SHIFT, CONTROL, ESC
-    };
+    }
 
     private myKeys pressedKey = myKeys.NONE;
 

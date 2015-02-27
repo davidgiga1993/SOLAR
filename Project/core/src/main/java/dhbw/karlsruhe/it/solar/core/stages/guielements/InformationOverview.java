@@ -24,6 +24,9 @@ public class InformationOverview extends Table {
 
     public InformationOverview(SolarActor actor) {
         super();
+
+        defaults().padLeft(5).padRight(5);
+
         this.actor = actor;
         icon.setScaling(Scaling.fit);
         icon.setAlign(Align.center);
