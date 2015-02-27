@@ -2,9 +2,9 @@ package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +32,7 @@ public class AstronomicalObjectsJUnit
     }
     
     public void runSetUp() {
+        GameStartStage.startGame();
     	solarSystem = new SolarSystem("Testsystem");
     	star = solarSystem.placeNewStar("Testsonne", new Length(1392684f/2, Length.Unit.kilometres), 1, 0, 0);
 	    planet = star.placeNewPlanet("Testplanet", new Length(10000.4f/2, Length.Unit.kilometres), 0.5, 1.5, 23, AstronomicalBody.PlanetType.TERRAN);
@@ -42,6 +43,16 @@ public class AstronomicalObjectsJUnit
     @After
     public void tearDown() throws Exception
     {
+        TestHelper.sendRunnableToOpenGL(new Runnable() {
+            @Override
+            public void run() {
+                runTearDown();
+            }
+        });
+    }
+
+    public void runTearDown() {
+        GameStartStage.endGame();
     }
     
     @Test
