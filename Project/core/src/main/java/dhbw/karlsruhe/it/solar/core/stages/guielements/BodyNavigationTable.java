@@ -1,5 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
+import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
@@ -16,7 +17,7 @@ public class BodyNavigationTable extends BaseNavigationTable {
 
     public BodyNavigationTable() {
         super();
-        init();
+      //  init();
     }
 
     protected void init() {
@@ -61,4 +62,14 @@ public class BodyNavigationTable extends BaseNavigationTable {
         return result;
     }
 
+    @Override
+    public boolean handleMessage(Telegram telegram) {
+        if(telegram.extraInfo instanceof AstronomicalBody) {
+            allLabels.clear();
+            clear();
+            init();
+            return true;
+        }
+        return false;
+    }
 }

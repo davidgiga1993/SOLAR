@@ -1,6 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +12,7 @@ import java.util.List;
 /**
  * Created by Arga on 22.02.2015.
  */
-public abstract class BaseNavigationTable extends Table {
+public abstract class BaseNavigationTable extends Table implements Telegraph {
     List<BaseNavigationLabel> allLabels = new ArrayList<BaseNavigationLabel>();
 
     public BaseNavigationTable() {
@@ -17,6 +21,8 @@ public abstract class BaseNavigationTable extends Table {
         left();
         pad(5);
         defaults().expandX().fillX();
+
+        SolarEngine.messageDispatcher.addListener(this, SolarMessageType.NEW_ACTOR_ADDED);
     }
 
     public void buildTable() {
@@ -27,4 +33,7 @@ public abstract class BaseNavigationTable extends Table {
             }
         }
     }
+
+
+    public abstract boolean handleMessage(Telegram telegram);
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,7 +18,9 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 public class SolarEngine extends Game implements InputProcessor
 {
     public static boolean DEBUG = true;
+
     public GameLogicService Service = new GameLogicService();
+    public static MessageDispatcher messageDispatcher = new MessageDispatcher();
     
     public OrthographicCamera camera;
     public OrthographicCamera guiCamera;

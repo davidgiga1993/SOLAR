@@ -2,18 +2,21 @@ package dhbw.karlsruhe.it.solar.core.stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
 
-public class GameStartStage extends BaseStage
+public class GameStartStage extends BaseStage implements Telegraph
 {
     public Selection selectedActors = new Selection();
     public SelectionRectangle selectionRectangle;
@@ -45,8 +48,8 @@ public class GameStartStage extends BaseStage
         GameHUDStage gameHUDStage = new GameHUDStage(engine);
         engine.stageManager.addStage(gameHUDStage);
 
-        gameStage.init();
         gameHUDStage.init();
+        gameStage.init();
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(gameHUDStage);
@@ -197,4 +200,14 @@ public class GameStartStage extends BaseStage
     }
 
 
+    @Override
+    public void addActor(Actor actor) {
+        super.addActor(actor);
+        SolarEngine.messageDispatcher.dispatchMessage(this, SolarMessageType.NEW_ACTOR_ADDED, actor);
+    }
+
+    @Override
+    public boolean handleMessage(Telegram telegram) {
+        return false;
+    }
 }
