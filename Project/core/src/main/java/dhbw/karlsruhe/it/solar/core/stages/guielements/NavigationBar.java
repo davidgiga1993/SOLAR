@@ -16,8 +16,6 @@ public class NavigationBar extends Window {
     private final ScrollPane shipPane;
     private final ScrollPane bodyPane;
 
-    // TODO: NavigationBar - implement Scrolling functionality. Maybe in BodyNavigationTable / ShipNavigationTable
-
     public NavigationBar() {
         super("Navigation", SolarEngine.get().styles.tooltipSkin);
         setMovable(false);
