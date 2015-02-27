@@ -1,10 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
@@ -14,10 +11,10 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 public class NavigationBar extends Window {
 
     protected Table layoutTable;
-    protected Table bodyTable;
-    protected Table shipTable;
 
-    private final Cell<Table> contentCell;
+    private final Cell<ScrollPane> contentCell;
+    private final ScrollPane shipPane;
+    private final ScrollPane bodyPane;
 
     // TODO: NavigationBar - implement Scrolling functionality. Maybe in BodyNavigationTable / ShipNavigationTable
 
@@ -44,8 +41,11 @@ public class NavigationBar extends Window {
         });
 
         // To be replaced with actual NavigationTables
-        bodyTable = new BodyNavigationTable();
-        shipTable = new ShipNavigationTable();
+        Table bodyTable = new BodyNavigationTable();
+        Table shipTable = new ShipNavigationTable();
+
+        bodyPane = new ScrollPane(bodyTable);
+        shipPane = new ScrollPane(shipTable);
 
         // layout
         layoutTable = new Table();
@@ -55,10 +55,10 @@ public class NavigationBar extends Window {
         layoutTable.add(shipButton).top();
         // content below
         layoutTable.row().colspan(2);
-        layoutTable.add(bodyTable).expand().top().fill();
+        layoutTable.add(bodyPane).expand().top().fill();
 
         // save contentCell to switch between tabs later on
-        contentCell = layoutTable.getCell(bodyTable);
+        contentCell = layoutTable.getCell(bodyPane);
 
         this.add(layoutTable).expand().fill();
     }
@@ -67,13 +67,13 @@ public class NavigationBar extends Window {
      * Set's the contentCell to show the Bodies
      */
     private void onBodyClick() {
-        contentCell.setActor(bodyTable).expand();
+        contentCell.setActor(bodyPane).expand();
     }
 
     /**
      * Set's the contentCell to show the Ships
      */
     private void onShipClick() {
-        contentCell.setActor(shipTable).expand();
+        contentCell.setActor(shipPane).expand();
     }
 }
