@@ -5,11 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.Tooltip;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
 
@@ -51,7 +53,7 @@ public class ScaleDialog {
         ScaleSlider planetShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 1, 2000, Planet.class);
     //    ScaleSlider asteroidShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 1, 10000, Asteroid.class);
         ScaleSlider moonShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_MOON, 1, 5000, Moon.class);
-        ScaleSlider unitShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_UNITS, 40000, 40000000, Spaceship.class);
+        ScaleSlider unitShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_UNITS, 40000, 40000000, SpaceUnit.class);
 
         ScaleSlider planetOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 0.1f, 5, Planet.class);
      //   ScaleSlider asteroidOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 0.1f, 200, Asteroid.class);

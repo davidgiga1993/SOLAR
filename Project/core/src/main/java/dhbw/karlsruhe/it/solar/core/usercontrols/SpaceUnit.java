@@ -20,7 +20,7 @@ import dhbw.karlsruhe.it.solar.player.Player;
 /**
  * 
  * @author Andi
- * SpaceUnit is supposed to define all combined traits of player unit objects such as ships or stations into one superclass
+ * SpaceUnit is supposed to define all shared propertoes of player unit objects such as ships or stations into one superclass
  * derived from SolarActor from which the individual unit subclasses can inherit.
  */
 public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, KinematicObject
