@@ -20,7 +20,7 @@ public class SolarSystem extends AstronomicalBody {
     {
 		super(name);
 		setPosition(0, 0);
-		origin = new SystemRoot(0,0);
+		physicalProperties.setNewOrbitPrimary(new SystemRoot(0,0));
     }
     
     @Override
@@ -122,11 +122,10 @@ public class SolarSystem extends AstronomicalBody {
      */
     public Star placeNewStar(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree)
     {
-		BodyProperties properties = new BodyProperties(mass, radius, orbitalRadius, angleInDegree, this.physicalProperties);
+		BodyProperties properties = new BodyProperties(this, mass, radius, orbitalRadius, angleInDegree);
         Star newObject = new Star(name, properties, this);
         newObject.calculateOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;
 	}
-
 }

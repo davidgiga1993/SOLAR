@@ -11,8 +11,8 @@ import dhbw.karlsruhe.it.solar.core.physics.Mass;
  */
 public class Moon extends AstronomicalBody
 {
-	public Moon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody origin, MoonType type) {
-		this(name, new BodyProperties(mass, radius, orbitalRadius, angleInDegree, origin.physicalProperties), origin, type);
+	public Moon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary, MoonType type) {
+		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), orbitPrimary, type);
 	}
 
 	public Moon(String name, BodyProperties properties, AstronomicalBody origin, MoonType type) {

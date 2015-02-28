@@ -13,8 +13,8 @@ public class Asteroid extends AstronomicalBody
 {
 	private static final String TEXTURE_NAME = "IrregularSatellite";
 
-	public Asteroid(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody origin) {
-		this(name, new BodyProperties(mass, radius, orbitalRadius, angleInDegree, origin.physicalProperties), origin);
+	public Asteroid(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary) {
+		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), orbitPrimary);
 	}
 	
 	public Asteroid(String name, BodyProperties properties, AstronomicalBody origin) {

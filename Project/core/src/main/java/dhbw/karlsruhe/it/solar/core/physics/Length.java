@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+
 /**
  * Created by Arga on 21.11.2014.
  */
@@ -96,4 +98,11 @@ public class Length {
         lightYear,
         parsec
     }
+
+	public static Length calculateDistance(SolarActor actorOne, SolarActor actorTwo)
+	{
+		double directDistance = Math.sqrt( Math.pow(actorTwo.getX() - actorOne.getX(),2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
+		
+		return new Length( (float)directDistance, Unit.kilometres);
+	}
 }

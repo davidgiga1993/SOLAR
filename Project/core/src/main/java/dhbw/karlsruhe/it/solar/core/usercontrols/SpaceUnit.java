@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
@@ -12,7 +11,6 @@ import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
-import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -183,12 +181,10 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
 //    /**
 //     * Commands the unit to enter orbit around the nearest celestial object.
 //     */
-//    public void enterOrbit()
+//    public void enterOrbit(AstronomicalBody orbitPrimary)
 //    {
-//    	AstronomicalBody primary = determinePrimaryGravitationSource();
-//    	Length orbitalRadius = calculateDistance(primary);
-//    	float angle = calculateOrbitalAngle(primary);
-//    	BodyProperties originProperties = primary.getBodyProperties();
-//    	this.orbit = new OrbitalProperties(orbitalRadius, angle, originProperties);   	
+//    	Length orbitalRadius = Length.calculateDistance(this, orbitPrimary);
+//    	float angle = calculateInitialOrbitAngle(this, orbitPrimary);
+//    	orbit = new OrbitalProperties(orbitPrimary, orbitalRadius, angle)
 //    }
 }

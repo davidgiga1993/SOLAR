@@ -14,8 +14,8 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 public class Planet extends AstronomicalBody
 {
 
-	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody origin, PlanetType type) {
-		this(name, new BodyProperties(mass, radius, orbitalRadius, angleInDegree, origin.physicalProperties), origin, type);
+	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary, PlanetType type) {
+		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), orbitPrimary, type);
 	}
 
 	public Planet(String name, BodyProperties properties, AstronomicalBody origin, PlanetType type) {
@@ -60,7 +60,7 @@ public class Planet extends AstronomicalBody
      */
     public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, Moon.MoonType type)
     {
-		BodyProperties properties = new BodyProperties(mass, radius, orbitalRadius, angleInDegree, physicalProperties);
+		BodyProperties properties = new BodyProperties(this, mass, radius, orbitalRadius, angleInDegree);
         Moon newObject = new Moon(name, properties, this, type);
         newObject.calculateOrbitalPositionTotal();
         satellites.add(newObject);

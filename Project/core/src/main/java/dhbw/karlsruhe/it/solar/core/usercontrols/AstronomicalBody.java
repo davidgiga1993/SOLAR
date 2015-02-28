@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
@@ -22,36 +23,26 @@ import java.util.List;
 public abstract class AstronomicalBody extends SolarActor implements ShapeRenderable, KinematicObject {
 
 	protected BodyProperties physicalProperties;
-
-	protected float angleInDegree;
-	protected AstronomicalBody origin;
 	protected List<AstronomicalBody> satellites = new ArrayList<AstronomicalBody>();
-
-    protected BodyGameLabel label;
-
-	protected float periodicConstant;
-
 	protected Kinematic kinematic;
-
+	
+    protected BodyGameLabel label;
+	protected float periodicConstant;
 	float orbitalRadiusInPixels;
 
 	public AstronomicalBody(String name)
 	{
 		super(name);
-		this.angleInDegree = 0;
-		this.origin = null;
-		this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres), new Length(1, Length.Unit.kilometres), 0, null);
+		this.physicalProperties = new BodyProperties(null, new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres), new Length(1, Length.Unit.kilometres), 0);
 	}
 
-	public AstronomicalBody(String name, BodyProperties properties, AstronomicalBody origin, SolarActorScale scaleFactor, String textureName)
+	public AstronomicalBody(String name, BodyProperties properties, AstronomicalBody orbitPrimary, SolarActorScale scaleFactor, String textureName)
 	{
 		super(name);
 		setActorScale(scaleFactor);
 		setupSolarActorSprite(textureName);
 
 		this.physicalProperties = properties;
-		this.angleInDegree = properties.getOrbitalAngle();
-		this.origin = origin;
 		this.label = new BodyGameLabel(name);
 
 		float orbitalPeriodInDays = physicalProperties.getOrbitalPeriodInDays();
@@ -84,9 +75,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		angleInDegree += periodicConstant * delta;
-		// make sure that no overflow happens.
-		angleInDegree = angleInDegree < 360 ? angleInDegree : angleInDegree - 360;
+		physicalProperties.updateOrbitalAngle(periodicConstant * delta);
 		calculateOrbitalPositionTotal();
 
         if(label.isVisible()) {
@@ -97,7 +86,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 
 		kinematic.position.x = getX()+getOriginX();
 		kinematic.position.y = getY()+getOriginY();
-		kinematic.rotation = angleInDegree + 90f;
+		kinematic.rotation = physicalProperties.getOrbitalAngleInDegree() + 90f;
 		kinematic.velocity.setAngle(kinematic.rotation);
 	}
 
@@ -134,6 +123,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
      */
     protected void calculateOrbitalPositionTotal()
     {
+    		float angleInDegree = physicalProperties.getOrbitalAngleInDegree();
     		this.setPosition(calculateOrbitalPositionX(angleInDegree) - getWidth() / 2, calculateOrbitalPositionY(angleInDegree) - getHeight() / 2);
     }
 
@@ -159,7 +149,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return Calculates the X-axis point around which the astronomical body orbits based on its Origin attribute.
 	 */
 	protected float calculateCenterOfOrbitX() {
-		return origin.getX() + origin.getWidth() / 2;
+		return physicalProperties.getPrimaryX() + physicalProperties.getPrimaryWidth() / 2;
 	}
 
 	/**
@@ -167,7 +157,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 */
 	protected float calculateCenterOfOrbitY() {
 		// Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
-		return origin.getY() + origin.getHeight() / 2;
+		return physicalProperties.getPrimaryY() + physicalProperties.getPrimaryHeight() / 2;
 	}
 
 	/**
@@ -195,6 +185,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 
     public Vector2 calculateFuturePosition(float delta) {
         float deltaAlpha = periodicConstant * delta;
+        float angleInDegree = physicalProperties.getOrbitalAngleInDegree();
         return new Vector2(calculateOrbitalPositionX(deltaAlpha + angleInDegree), calculateOrbitalPositionY(deltaAlpha + angleInDegree));
     }
 
