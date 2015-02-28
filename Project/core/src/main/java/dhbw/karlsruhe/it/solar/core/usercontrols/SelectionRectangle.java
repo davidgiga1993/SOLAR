@@ -15,7 +15,6 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 public class SelectionRectangle extends Actor implements ShapeRenderable
 {
 
-//	private ShapeRenderer shapeRenderer;
 	private boolean visible;
 	private Vector2 startPosition;
 	private Vector2 mousePosition;
@@ -25,7 +24,6 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 	private Label heightLabel = new Label("", SolarEngine.get().styles.defaultLabelStyle);
 
 	public SelectionRectangle() {
-		//this.shapeRenderer = new ShapeRenderer();
 		this.visible = false;
 		this.setName("SelectionRectangle");
 		this.setSize(0, 0);
@@ -51,23 +49,23 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 		if( startPosition.x > mouseX)
 		{
 			setX(mouseX);
-			setWidth((float)startPosition.x - mouseX);
+			setWidth(startPosition.x - mouseX);
 		}
 		else
 		{
-			setX((float)startPosition.x);
-			setWidth(mouseX - (float)startPosition.x);
+			setX(startPosition.x);
+			setWidth(mouseX - startPosition.x);
 		}
 		
 		if( startPosition.y > mouseY)
 		{
 			setY(mouseY);
-			setHeight((float)startPosition.y - mouseY);
+			setHeight(startPosition.y - mouseY);
 		}
 		else
 		{
-			setY((float)startPosition.y);
-			setHeight(mouseY - (float)startPosition.y);
+			setY(startPosition.y);
+			setHeight(mouseY - startPosition.y);
 		}
 		
 		mousePosition = new Vector2(mouseX, mouseY);
@@ -78,7 +76,6 @@ public class SelectionRectangle extends Actor implements ShapeRenderable
 	public void setStart(float x, float y)
 	{
 		if(!isInitialized) {
-			//Stage stage = this.getStage();
 			Stage stage = SolarEngine.get().stageManager.getStage("GameHUD");
 			stage.addActor(widthLabel);
 			stage.addActor(heightLabel);

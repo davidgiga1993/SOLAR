@@ -20,7 +20,7 @@ public class SolarEngine extends Game implements InputProcessor
     public static boolean DEBUG = true;
 
     public GameLogicService Service = new GameLogicService();
-    public static MessageDispatcher messageDispatcher = new MessageDispatcher();
+    public static final MessageDispatcher messageDispatcher = new MessageDispatcher();
     
     public OrthographicCamera camera;
     public OrthographicCamera guiCamera;
@@ -260,25 +260,6 @@ public class SolarEngine extends Game implements InputProcessor
     public boolean scrolled(int amount)
     {
         stageManager.scrolled(amount);
-        return false;
-    }
-
-    public boolean scrollSystemMap(int vertical, int horizontal)
-    {
-        return false;
-    }
-
-    public boolean isShiftPressed()
-    {
-        if (pressedKey == myKeys.SHIFT)
-            return true;
-        return false;
-    }
-
-    public boolean isControlPressed()
-    {
-        if (pressedKey == myKeys.CONTROL)
-            return true;
         return false;
     }
 

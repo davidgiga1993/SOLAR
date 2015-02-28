@@ -17,7 +17,6 @@ public class BodyNavigationTable extends BaseNavigationTable {
 
     public BodyNavigationTable() {
         super();
-      //  init();
     }
 
     protected void init() {

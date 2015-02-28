@@ -1,7 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.physics.Mass;
 
 /**
  * @author Andi
@@ -9,14 +11,17 @@ import dhbw.karlsruhe.it.solar.core.physics.Length;
  */
 public class Moon extends AstronomicalBody
 {
-	public Moon(String name, Length radius, double massInEarthMasses, double orbitalRadiusInKilometers, float angleInDegree, AstronomicalBody origin, MoonType type)
-	{
-		super(name, radius, orbitalRadiusInKilometers, convertEarthMassesIntoKilogram(massInEarthMasses), angleInDegree, origin, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
-        label.setThreshold(0.4f);
+	public Moon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody origin, MoonType type) {
+		this(name, new BodyProperties(mass, radius, orbitalRadius, angleInDegree, origin.physicalProperties), origin, type);
 	}
-	
+
+	public Moon(String name, BodyProperties properties, AstronomicalBody origin, MoonType type) {
+		super(name, properties, origin, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
+		label.setThreshold(0.4f);
+	}
+
 	private static String getTextureNameForMoonType(MoonType type)
-	{			
+	{
 		switch(type)
 		{
 			case LUNAR:
@@ -59,5 +64,27 @@ public class Moon extends AstronomicalBody
 				return "IrregularSatellite";
 		}
 	}
-	
+
+	public enum MoonType {
+		IRREGULAR,
+		LUNAR,
+		IONIAN,
+		EUROPAN,
+		GANYMEDIAN,
+		CALLISTOAN,
+		MIMANTEAN,
+		ENCELADEAN,
+		TETHYAN,
+		DIONEAN,
+		RHEAN,
+		TITANEAN,
+		IAPETIAN,
+		MIRANDAN,
+		ARIELIAN,
+		UMBRELIAN,
+		TITANIAN,
+		OBERONIAN,
+		TRITONIAN
+	}
+
 }

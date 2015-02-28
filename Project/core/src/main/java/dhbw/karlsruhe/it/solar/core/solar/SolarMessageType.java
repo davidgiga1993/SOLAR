@@ -7,4 +7,6 @@ public class SolarMessageType {
 
     public static final int NEW_ACTOR_ADDED = 1;
 
+
+    private SolarMessageType() {}
 }
