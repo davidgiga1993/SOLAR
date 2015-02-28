@@ -26,7 +26,7 @@ public class NavigationBar extends Window {
 
         // Tab Buttons
         TextButton bodyButton = new TextButton("Bodies", SolarEngine.get().styles.tooltipSkin);
-        TextButton shipButton = new TextButton("Ships", SolarEngine.get().styles.tooltipSkin);
+        TextButton shipButton = new TextButton("Units", SolarEngine.get().styles.tooltipSkin);
 
         // Button Listeners
         bodyButton.addListener(new ChangeListener() {

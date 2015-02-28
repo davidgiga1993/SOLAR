@@ -2,8 +2,10 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import java.util.List;
  */
 public class ShipNavigationTable extends BaseNavigationTable {
 
-    protected List<Spaceship> allShips = new ArrayList<Spaceship>();
+    protected List<SpaceUnit> allShips = new ArrayList<SpaceUnit>();
 
     public ShipNavigationTable() {
         super();
@@ -24,28 +26,28 @@ public class ShipNavigationTable extends BaseNavigationTable {
     public void buildShipList() {
         GameStartStage gameStartStage = (GameStartStage) SolarEngine.get().stageManager.getStage("GameStartStage");
         for (Actor actor : gameStartStage.getActors()) {
-            if (actor instanceof Spaceship && ((Spaceship) actor).isOwnedBy(gameStartStage.getHumanPlayer())) {
-                allShips.add((Spaceship) actor);
+            if (actor instanceof SpaceUnit && ((SpaceUnit) actor).isOwnedBy(gameStartStage.getHumanPlayer())) {
+                allShips.add((SpaceUnit) actor);
             }
         }
     }
 
     private void buildHierarchy() {
         allLabels.clear();
-        for (Spaceship ship : allShips) {
+        for (SpaceUnit ship : allShips) {
             allLabels.add(new BaseNavigationLabel(ship.getName(), "", ship));
         }
     }
 
-    private void addSingleShip(Spaceship ship) {
+    private void addSingleShip(SpaceUnit ship) {
         allShips.add(ship);
         allLabels.add(new BaseNavigationLabel(ship.getName(), "", ship));
     }
 
     @Override
     public boolean handleMessage(Telegram telegram) {
-        if(telegram.extraInfo instanceof Spaceship) {
-            addSingleShip((Spaceship) telegram.extraInfo);
+        if(telegram.extraInfo instanceof SpaceUnit) {
+            addSingleShip((SpaceUnit) telegram.extraInfo);
             buildTable();
             return true;
         }
