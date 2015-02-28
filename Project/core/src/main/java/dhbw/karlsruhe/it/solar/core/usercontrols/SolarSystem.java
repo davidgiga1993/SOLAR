@@ -50,7 +50,6 @@ public class SolarSystem extends AstronomicalBody {
     	star = placeNewStar("Sun", new Length(1392684f/2, Length.Unit.kilometres), new Mass(1, Mass.Unit.SOLAR_MASS), new Length(0, Length.Unit.kilometres), 0);
     		planet = star.placeNewPlanet("Mercury", new Length(4879.4f/2, Length.Unit.kilometres), new Mass(0.055f, Mass.Unit.EARTH_MASS), new Length(0.38709893f, Length.Unit.astronomicalUnit), 170, PlanetType.MERCURIAN);
 			planet = star.placeNewPlanet("Venus", new Length(12103.6f/2, Length.Unit.kilometres), new Mass(0.815f, Mass.Unit.EARTH_MASS), new Length(0.72333199f, Length.Unit.astronomicalUnit), -45, PlanetType.VENUSIAN);
-				planet.setColor(new Color(.7f,.55f,.3f,1f));
     		planet = star.placeNewPlanet("Earth", new Length(12756.32f/2, Length.Unit.kilometres), new Mass(1f, Mass.Unit.EARTH_MASS), new Length(1f, Length.Unit.astronomicalUnit), -120, PlanetType.TERRAN);
     			planet.placeNewMoon("Moon", new Length(3476f/2, Length.Unit.kilometres), new Mass(0.0123f, Mass.Unit.EARTH_MASS), new Length(384399, Length.Unit.kilometres), -30, MoonType.LUNAR);
     		planet = star.placeNewPlanet("Mars", new Length(6792.4f/2, Length.Unit.kilometres), new Mass(0.107f, Mass.Unit.EARTH_MASS), new Length(1.52366231f, Length.Unit.astronomicalUnit), -140, PlanetType.MARTIAN);
