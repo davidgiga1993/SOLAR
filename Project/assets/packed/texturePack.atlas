@@ -213,9 +213,16 @@ IrregularSatellite
   orig: 256, 256
   offset: 0, 0
   index: -1
+space_station
+  rotate: false
+  xy: 1029, 1029
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
 resource_placeholder
   rotate: false
-  xy: 1029, 1221
+  xy: 1543, 1735
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
