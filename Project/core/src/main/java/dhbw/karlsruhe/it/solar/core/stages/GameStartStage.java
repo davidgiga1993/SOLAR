@@ -86,13 +86,15 @@ public class GameStartStage extends BaseStage implements Telegraph
 
         humanPlayer = playerManager.createPlayer("Human Player");
         aiPlayer = playerManager.createPlayer("CPU Player");
-        //placeNewShip("Destiny", new GridPoint2(75, 0), aiPlayer);
     }
 
     public void init() {
         systemCreation();
-        placeNewShip("Event Horizon", new Vector2(0, 0), humanPlayer);
+        placeNewShip("Event Horizon", new Vector2(1200, 500), humanPlayer);
         placeNewShip("Nostromo", new Vector2(1500, 1000), humanPlayer);
+        placeNewShip("Destiny", new Vector2(1550, 1050), aiPlayer);
+        placeNewStation("Deep Space Nine", new Vector2(1500, 0), humanPlayer);
+        placeNewStation("Babylon 5", new Vector2(2000, 500), aiPlayer);
     }
 
     @Override
@@ -181,6 +183,17 @@ public class GameStartStage extends BaseStage implements Telegraph
     {
         Spaceship newShip = Spaceship.placeNewShip(name, startlocation, owner);
         addActor(newShip);
+    }
+    
+    /**
+     * Adds a new space station object to the game.
+     * @param name Desired name of the station.
+     * @param startlocation Desired location at which the station is to appear.
+     */
+    private void placeNewStation(String name, Vector2 startlocation, Player owner)
+    {
+        Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
+        addActor(newStation);
     }
     
 
