@@ -178,18 +178,18 @@ public class GameInputListener extends InputListener {
 			if (a instanceof SolarActor) {
 				sa = (SolarActor) a;
 				// insideRectangle to evaluate whether the actor is inside the selection.
-				if (sa instanceof Ownable && !((Ownable) sa).isOwnedBy(stage.getHumanPlayer())) {
-					break;
-				}
 				if (sa.insideRectangle(stage.selectionRectangle.getRectangle())) {
-					// proceed according to state
-					switch(state) {
-						case ADD:
-							stage.selectedActors.add(sa);
-							break;
-						case REMOVE:
-							stage.selectedActors.remove(sa);
-							break;
+					//Actor will only be added to selection if owned by the player
+					if (sa instanceof Ownable && ((Ownable) sa).isOwnedBy(stage.getHumanPlayer())) {
+						// proceed according to state
+						switch(state) {
+							case ADD:
+								stage.selectedActors.add(sa);
+								break;
+							case REMOVE:
+								stage.selectedActors.remove(sa);
+								break;
+						}
 					}
 				}
 			}

@@ -8,8 +8,6 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spacestation;
 
 import java.util.*;
 
@@ -132,11 +130,8 @@ public class Selection implements Telegraph {
 	private void cacheSpaceUnits() {
 		cachedSpaceUnits.clear();
 		for(Actor actor : selectedActors) {
-			if (actor instanceof Spaceship) {
-				cachedSpaceUnits.add((Spaceship) actor);
-			}
-			if (actor instanceof Spacestation) {
-				cachedSpaceUnits.add((Spacestation) actor);
+			if (actor instanceof SpaceUnit) {
+				cachedSpaceUnits.add((SpaceUnit) actor);
 			}
 		}
 		spaceUnitDirtyFlag = false;
