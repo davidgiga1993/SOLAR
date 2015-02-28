@@ -1,6 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.inputlisteners;
 
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 
@@ -11,7 +15,7 @@ import java.util.*;
  * This class represents the player's selection of SolarActors.
  * 
  */
-public class Selection {
+public class Selection implements Telegraph {
 
 	protected Set<SolarActor> selectedActors;
 	protected List<Spaceship> cachedSpaceships;
@@ -29,6 +33,7 @@ public class Selection {
 		setUnselected(selectedActors);
 		selectedActors.clear();
 		spaceshipDirtyFlag = true;
+		selectionChanged();
 	}
 	
 	/**
@@ -50,6 +55,7 @@ public class Selection {
 		selectedActors.add(actor);
 		actor.select();
 		spaceshipDirtyFlag = true;
+		selectionChanged();
 	}
 	
 	/**
@@ -72,6 +78,7 @@ public class Selection {
 			}
 		}
 		spaceshipDirtyFlag = true;
+		selectionChanged();
 	}
 
 	/**
@@ -83,6 +90,7 @@ public class Selection {
 			actor.deselect();
 			spaceshipDirtyFlag = true;
 		}
+		selectionChanged();
 	}
 
 	public void remove(Actor actor) {
@@ -136,8 +144,16 @@ public class Selection {
 		return null;
 	}
 
+	private void selectionChanged() {
+		SolarEngine.messageDispatcher.dispatchMessage(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
+	}
+
 	public int getNumberOfSelectedUnits() {
 		return selectedActors.size();
 	}
 
+	@Override
+	public boolean handleMessage(Telegram telegram) {
+		return false;
+	}
 }

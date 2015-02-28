@@ -1,10 +1,13 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
@@ -13,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 /**
  * Created by Arga on 24.02.2015.
  */
-public class InformationBar extends Window {
+public class InformationBar extends Window implements Telegraph {
 
     protected Table contentTable = new Table();
     protected Cell<InformationOverview> overviewCell;
@@ -28,6 +31,8 @@ public class InformationBar extends Window {
 
     public InformationBar() {
         super("Information", SolarEngine.get().styles.tooltipSkin);
+
+        SolarEngine.messageDispatcher.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
 
         overview = new InformationOverview(gameStage.selectedActors.getRepresentative());
         details = new InformationDetails();
@@ -60,9 +65,11 @@ public class InformationBar extends Window {
     }
 
     @Override
-    public void act(float delta) {
-        super.act(delta);
-        // TODO: After refactoring Selection this should be called on demand, and not every frame. for now it's ok.
-        onSelectionChange(gameStage.selectedActors);
+    public boolean handleMessage(Telegram telegram) {
+        if(telegram.message == SolarMessageType.PLAYER_SELECTION_CHANGED) {
+            onSelectionChange((Selection) telegram.sender);
+            return true;
+        }
+        return false;
     }
 }
