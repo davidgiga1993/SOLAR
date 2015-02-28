@@ -50,11 +50,11 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		setupSolarActorSprite(textureName);
 
 		this.physicalProperties = properties;
-		this.angleInDegree = properties.angle;
+		this.angleInDegree = properties.getOrbitalAngle();
 		this.origin = origin;
 		this.label = new BodyGameLabel(name);
 
-		float orbitalPeriodInDays = physicalProperties.orbitalPeriodInDays;
+		float orbitalPeriodInDays = physicalProperties.getOrbitalPeriodInDays();
 		if (orbitalPeriodInDays != 0) {
 			this.periodicConstant = 360 / orbitalPeriodInDays;
 		} else {
@@ -63,16 +63,16 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 
 		changeScale();
 
-		float orbitalRadiusInKilometres = properties.orbitalRadius.asKilometres();
+		float orbitalRadiusInKilometres = properties.getOrbitalRadius().asKilometres();
 		float speed = (float) ((2 * Math.PI * scaleDistanceToStage(orbitalRadiusInKilometres)) / orbitalPeriodInDays);
 		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
 		this.kinematic.velocity = new Vector2(1,0).scl(speed);
 	}
 
 	private void changeScale() {
-		float tSize = scaleDistanceToStage(physicalProperties.radius.asKilometres()) * actorScale.shapeScale * 2;
+		float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometres()) * actorScale.shapeScale * 2;
 		this.setSize(tSize, tSize);
-		orbitalRadiusInPixels = scaleDistanceToStage(physicalProperties.orbitalRadius.asKilometres()) * actorScale.orbitScale;
+		orbitalRadiusInPixels = scaleDistanceToStage(physicalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
 	}
 
 	@Override
@@ -216,4 +216,9 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	{
 		return satellites.size();
 	}
+	
+    public BodyProperties getBodyProperties()
+    {
+    	return physicalProperties;
+    }
 }

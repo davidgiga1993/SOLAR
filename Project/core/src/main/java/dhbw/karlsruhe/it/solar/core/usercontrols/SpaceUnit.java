@@ -12,7 +12,9 @@ import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
+import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -29,6 +31,7 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
     protected Kinematic kinematic;
     protected Vector2 destination;
 	protected float speed;
+	protected OrbitalProperties orbit;
     AIModule aiModule;
     AIOutput aiOutput;
     
@@ -41,6 +44,11 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
         this.speed = speed;
 	}
 
+	/**
+	 * Shared constructor tasks for space units which have to come after their texture is added.
+	 * @param width
+	 * @param length
+	 */
 	protected void initSpaceUnit(Length width, Length length) {
 		this.setSize(width, length);
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
@@ -116,9 +124,13 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
         displayCourseAndDestination(libGDXShapeRenderer);
     }
 
+    /**
+     * Methods regulates how the course of the unit is displayed 
+     * and also how the destination of the movement order is to be marked.
+     * @param shapeRenderer
+     */
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer)
     {
-        // Anzeige des Kurses und Markierung des Ziels
         if (destination != null && this.aiModule.isMoving())
         {
             shapeRenderer.setColor(Color.GREEN);
@@ -129,9 +141,12 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
         }
     }
 
+    /**
+     * The destination of the movement order is highlighted differently if selected.
+     * @param shapeRenderer
+     */
     private void displaySelectedDestination(ShapeRenderer shapeRenderer)
     {
-        // Besondere Hervorhebung des Ziels wenn selektiert
         if (selected)
         {
             shapeRenderer.setColor(Color.YELLOW);
@@ -139,9 +154,12 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
         }
     }
 
+    /**
+     * If selected, the unit is highlighted by a selection box.
+     * @param shapeRenderer
+     */
     private void displaySelectionBox(ShapeRenderer shapeRenderer)
     {
-        // Anzeige Selektions Box
         if (selected)
         {
             shapeRenderer.setColor(Color.GREEN);
@@ -161,4 +179,16 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
     {
         return destination;
     }
+    
+//    /**
+//     * Commands the unit to enter orbit around the nearest celestial object.
+//     */
+//    public void enterOrbit()
+//    {
+//    	AstronomicalBody primary = determinePrimaryGravitationSource();
+//    	Length orbitalRadius = calculateDistance(primary);
+//    	float angle = calculateOrbitalAngle(primary);
+//    	BodyProperties originProperties = primary.getBodyProperties();
+//    	this.orbit = new OrbitalProperties(orbitalRadius, angle, originProperties);   	
+//    }
 }
