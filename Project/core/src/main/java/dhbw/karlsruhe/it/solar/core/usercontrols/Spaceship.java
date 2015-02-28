@@ -14,8 +14,9 @@ public class Spaceship extends SpaceUnit
 
     public Spaceship(String name, Length width, Length length, Player owner)
     {
-        super(name, width, length, owner, shipSpeed);
+        super(name, owner, shipSpeed);
 	    setupSolarActorSprite("Cruiser");
+        initSpaceUnit(width, length);
     }
 
     /**

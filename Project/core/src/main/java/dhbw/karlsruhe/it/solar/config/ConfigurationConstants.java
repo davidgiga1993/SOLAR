@@ -12,7 +12,7 @@ public final class ConfigurationConstants {
 	public static final SolarActorScale SCALE_FACTOR_STAR = new SolarActorScale(1, 1);
 	public static final SolarActorScale SCALE_FACTOR_MOON = new SolarActorScale(10, 1f);
 	public static final SolarActorScale SCALE_FACTOR_ASTEROID = new SolarActorScale(1, 0.05f);
-	public static final SolarActorScale SCALE_FACTOR_UNITS = new SolarActorScale(40000,1);
+	public static final SolarActorScale SCALE_FACTOR_UNITS = new SolarActorScale(4000000,1);
 	public static final boolean SCALE_DIALOG_ENABLED = true;
 
 	private ConfigurationConstants() {}

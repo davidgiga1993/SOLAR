@@ -32,16 +32,19 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
     AIModule aiModule;
     AIOutput aiOutput;
     
-	public SpaceUnit(String name, Length width, Length length, Player owner, float speed)
+	public SpaceUnit(String name, Player owner, float speed)
 	{
 		super(name);
         setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
-        this.setSize(width, length);
-        this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
 	    this.selected = false;
-	    
         this.owner = owner;
         this.speed = speed;
+	}
+
+	protected void initSpaceUnit(Length width, Length length) {
+		this.setSize(width, length);
+        this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
+	    
         this.destination = new Vector2(getX(), getY());
         this.kinematic = new Kinematic(new Vector2(getX()+getOriginX(), getY()+getOriginY()), getRotation(), speed);
         
@@ -64,7 +67,13 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
     {
         this.aiModule.setTarget(destination);
         this.destination = destination;
-        System.out.println("Neues Ziel gesetzt f\00FCr " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
+        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
+    }
+    
+    public void setDestination(KinematicObject destination) {
+        this.aiModule.setTarget(destination.getKinematic());
+        this.destination = destination.getKinematic().position;
+        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName());
     }
 
     @Override
@@ -138,12 +147,6 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
             shapeRenderer.setColor(Color.GREEN);
             shapeRenderer.rect(getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), 1, 1, getRotation());
         }
-    }
-
-    public void setDestination(KinematicObject destination) {
-        this.aiModule.setTarget(destination.getKinematic());
-        this.destination = destination.getKinematic().position;
-        System.out.println("Neues Ziel gesetzt für " + this.getName());
     }
 
     public void setDestination(AstronomicalBody destination) {

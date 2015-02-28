@@ -15,8 +15,9 @@ public class Spacestation extends SpaceUnit
 
 	public Spacestation(String name, Length width, Length length, Player owner)
 	{
-		super(name, width, length, owner,stationSpeed);
-	    setupSolarActorSprite("space_station");        
+		super(name, owner,stationSpeed);
+	    setupSolarActorSprite("space_station");  
+        initSpaceUnit(width, length);
 	}
 	
     /**
