@@ -3,10 +3,13 @@ package dhbw.karlsruhe.it.solar.core.inputlisteners;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Spacestation;
 
 import java.util.*;
 
@@ -18,12 +21,12 @@ import java.util.*;
 public class Selection implements Telegraph {
 
 	protected Set<SolarActor> selectedActors;
-	protected List<Spaceship> cachedSpaceships;
-	protected boolean spaceshipDirtyFlag = true;
+	protected List<SpaceUnit> cachedSpaceUnits;
+	protected boolean spaceUnitDirtyFlag = true;
 	
 	public Selection() {
 		selectedActors = new HashSet<SolarActor>();
-		cachedSpaceships = new ArrayList<Spaceship>();
+		cachedSpaceUnits = new ArrayList<SpaceUnit>();
 	}
 
 	/**
@@ -32,7 +35,7 @@ public class Selection implements Telegraph {
 	public void clear() {
 		setUnselected(selectedActors);
 		selectedActors.clear();
-		spaceshipDirtyFlag = true;
+		spaceUnitDirtyFlag = true;
 		selectionChanged();
 	}
 	
@@ -54,7 +57,7 @@ public class Selection implements Telegraph {
 	public void add(SolarActor actor) {
 		selectedActors.add(actor);
 		actor.select();
-		spaceshipDirtyFlag = true;
+		spaceUnitDirtyFlag = true;
 		selectionChanged();
 	}
 	
@@ -77,7 +80,7 @@ public class Selection implements Telegraph {
 				actor.select();
 			}
 		}
-		spaceshipDirtyFlag = true;
+		spaceUnitDirtyFlag = true;
 		selectionChanged();
 	}
 
@@ -88,7 +91,7 @@ public class Selection implements Telegraph {
 	public void remove(SolarActor actor) {
 		if (selectedActors.remove(actor)) {
 			actor.deselect();
-			spaceshipDirtyFlag = true;
+			spaceUnitDirtyFlag = true;
 		}
 		selectionChanged();
 	}
@@ -111,11 +114,11 @@ public class Selection implements Telegraph {
 		}
 	}
 	
-	public List<Spaceship> getSpaceships() {
-		if (spaceshipDirtyFlag) {
-			cacheSpaceships();
+	public List<SpaceUnit> getSpaceUnits() {
+		if (spaceUnitDirtyFlag) {
+			cacheSpaceUnits();
 		}
-		return cachedSpaceships;
+		return cachedSpaceUnits;
 	}
 	
 	public Collection<SolarActor> getActors() {
@@ -126,14 +129,17 @@ public class Selection implements Telegraph {
 	 * Rebuilds the cachedSpaceships list by cleaning and adding all Spaceships contained in
 	 * selected Actors.
 	 */
-	private void cacheSpaceships() {
-		cachedSpaceships.clear();
+	private void cacheSpaceUnits() {
+		cachedSpaceUnits.clear();
 		for(Actor actor : selectedActors) {
 			if (actor instanceof Spaceship) {
-				cachedSpaceships.add((Spaceship) actor);
+				cachedSpaceUnits.add((Spaceship) actor);
+			}
+			if (actor instanceof Spacestation) {
+				cachedSpaceUnits.add((Spacestation) actor);
 			}
 		}
-		spaceshipDirtyFlag = false;
+		spaceUnitDirtyFlag = false;
 	}
 
 	public SolarActor getRepresentative() {

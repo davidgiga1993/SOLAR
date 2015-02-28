@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.commands;
 
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 import java.util.List;
@@ -12,13 +12,13 @@ import java.util.List;
 public class MoveToAstronomicalBodyCommand extends MoveCommand {
     protected AstronomicalBody destination;
 
-    public MoveToAstronomicalBodyCommand(List<Spaceship> units, AstronomicalBody target, Player commander) {
+    public MoveToAstronomicalBodyCommand(List<SpaceUnit> units, AstronomicalBody target, Player commander) {
         super(units, 0, 0, commander);
         this.destination = target;
     }
 
     @Override
-    public void action(Spaceship unit) {
+    public void action(SpaceUnit unit) {
         unit.setDestination(destination);
     }
 }

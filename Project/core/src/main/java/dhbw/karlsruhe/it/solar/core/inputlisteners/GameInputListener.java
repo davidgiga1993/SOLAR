@@ -128,14 +128,14 @@ public class GameInputListener extends InputListener {
     private void navigate(InputEvent event, float x, float y) {
         Actor target = event.getTarget();
         if(target instanceof AstronomicalBody) {
-            new MoveToAstronomicalBodyCommand(stage.selectedActors.getSpaceships(), (AstronomicalBody) target, stage.getHumanPlayer()).execute();
+            new MoveToAstronomicalBodyCommand(stage.selectedActors.getSpaceUnits(), (AstronomicalBody) target, stage.getHumanPlayer()).execute();
             return;
         }
         if(target instanceof KinematicObject) {
-            new MoveToKineticObjectCommand(stage.selectedActors.getSpaceships(), (KinematicObject) target, stage.getHumanPlayer()).execute();
+            new MoveToKineticObjectCommand(stage.selectedActors.getSpaceUnits(), (KinematicObject) target, stage.getHumanPlayer()).execute();
             return;
         }
-        new MoveCommand(stage.selectedActors.getSpaceships(), x, y, stage.getHumanPlayer()).execute();
+        new MoveCommand(stage.selectedActors.getSpaceUnits(), x, y, stage.getHumanPlayer()).execute();
     }
 
     /**
