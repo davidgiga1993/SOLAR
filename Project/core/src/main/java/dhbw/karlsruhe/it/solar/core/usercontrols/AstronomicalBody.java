@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
@@ -36,7 +35,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 		this.physicalProperties = new BodyProperties(null, new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres), new Length(1, Length.Unit.kilometres), 0);
 	}
 
-	public AstronomicalBody(String name, BodyProperties properties, AstronomicalBody orbitPrimary, SolarActorScale scaleFactor, String textureName)
+	public AstronomicalBody(String name, BodyProperties properties, SolarActorScale scaleFactor, String textureName)
 	{
 		super(name);
 		setActorScale(scaleFactor);

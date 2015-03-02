@@ -12,11 +12,11 @@ import dhbw.karlsruhe.it.solar.core.physics.Mass;
 public class Moon extends AstronomicalBody
 {
 	public Moon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary, MoonType type) {
-		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), orbitPrimary, type);
+		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), type);
 	}
 
-	public Moon(String name, BodyProperties properties, AstronomicalBody origin, MoonType type) {
-		super(name, properties, origin, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
+	public Moon(String name, BodyProperties properties, MoonType type) {
+		super(name, properties, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
 		label.setThreshold(0.4f);
 	}
 

@@ -123,7 +123,7 @@ public class SolarSystem extends AstronomicalBody {
     public Star placeNewStar(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree)
     {
 		BodyProperties properties = new BodyProperties(this, mass, radius, orbitalRadius, angleInDegree);
-        Star newObject = new Star(name, properties, this);
+        Star newObject = new Star(name, properties);
         newObject.calculateOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;

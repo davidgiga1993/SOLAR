@@ -15,11 +15,11 @@ public class Planet extends AstronomicalBody
 {
 
 	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary, PlanetType type) {
-		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), orbitPrimary, type);
+		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), type);
 	}
 
-	public Planet(String name, BodyProperties properties, AstronomicalBody origin, PlanetType type) {
-		super(name, properties, origin, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
+	public Planet(String name, BodyProperties properties, PlanetType type) {
+		super(name, properties, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
 	}
 
 	private static String getTextureNameForPlanetType(PlanetType type)
@@ -61,7 +61,7 @@ public class Planet extends AstronomicalBody
     public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, Moon.MoonType type)
     {
 		BodyProperties properties = new BodyProperties(this, mass, radius, orbitalRadius, angleInDegree);
-        Moon newObject = new Moon(name, properties, this, type);
+        Moon newObject = new Moon(name, properties, type);
         newObject.calculateOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;

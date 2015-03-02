@@ -14,11 +14,11 @@ public class Star extends AstronomicalBody
     private static final String TEXTURE_NAME = "GTypeMainSequence";
 
     public Star(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary) {
-        this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), orbitPrimary);
+        this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree));
     }
 
-    public Star(String name, BodyProperties properties, AstronomicalBody origin) {
-        super(name, properties, origin, ConfigurationConstants.SCALE_FACTOR_STAR, TEXTURE_NAME);
+    public Star(String name, BodyProperties properties) {
+        super(name, properties, ConfigurationConstants.SCALE_FACTOR_STAR, TEXTURE_NAME);
     }
 		
     /**
