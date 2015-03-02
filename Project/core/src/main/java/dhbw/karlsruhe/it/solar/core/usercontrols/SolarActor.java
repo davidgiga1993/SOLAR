@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 /**
@@ -126,5 +127,5 @@ public abstract class SolarActor extends Actor {
     {
         solarActorSprite.setPosition(getX(), getY());
         solarActorSprite.draw(batch);
-    }    
+    } 
 }

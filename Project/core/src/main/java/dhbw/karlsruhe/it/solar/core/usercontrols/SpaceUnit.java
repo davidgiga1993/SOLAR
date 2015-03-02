@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
@@ -20,7 +21,7 @@ import dhbw.karlsruhe.it.solar.player.Player;
 /**
  * 
  * @author Andi
- * SpaceUnit is supposed to define all shared propertoes of player unit objects such as ships or stations into one superclass
+ * SpaceUnit is supposed to define all shared properties of player unit objects such as ships or stations into one superclass
  * derived from SolarActor from which the individual unit subclasses can inherit.
  */
 public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, KinematicObject
@@ -122,7 +123,7 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
         displayCourseAndDestination(libGDXShapeRenderer);
     }
 
-    /**
+	/**
      * Methods regulates how the course of the unit is displayed 
      * and also how the destination of the movement order is to be marked.
      * @param shapeRenderer
@@ -177,14 +178,4 @@ public class SpaceUnit extends SolarActor implements ShapeRenderable, Ownable, K
     {
         return destination;
     }
-    
-//    /**
-//     * Commands the unit to enter orbit around the nearest celestial object.
-//     */
-//    public void enterOrbit(AstronomicalBody orbitPrimary)
-//    {
-//    	Length orbitalRadius = Length.calculateDistance(this, orbitPrimary);
-//    	float angle = calculateInitialOrbitAngle(this, orbitPrimary);
-//    	orbit = new OrbitalProperties(orbitPrimary, orbitalRadius, angle)
-//    }
 }

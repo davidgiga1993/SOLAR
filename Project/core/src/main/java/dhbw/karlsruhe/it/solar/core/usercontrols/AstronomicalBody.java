@@ -53,8 +53,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 
 		changeScale();
 
-		float orbitalRadiusInKilometres = properties.getOrbitalRadius().asKilometres();
-		float speed = (float) ((2 * Math.PI * scaleDistanceToStage(orbitalRadiusInKilometres)) / orbitalPeriodInDays);
+		float speed = (float) ((2 * Math.PI * scaleDistanceToStage(properties.getOrbitalRadius().asKilometres())) / orbitalPeriodInDays);
 		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
 		this.kinematic.velocity = new Vector2(1,0).scl(speed);
 	}
@@ -93,11 +92,11 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
 		displayOrbit(solarShapeRenderer);
 	}
-
+	
 	protected void displayOrbit(SolarShapeRenderer shapeRenderer)
 	{
 		shapeRenderer.setColor(Color.TEAL);
-		shapeRenderer.orbit(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 250);
+		shapeRenderer.orbit(physicalProperties.calculateCenterOfOrbitX(), physicalProperties.calculateCenterOfOrbitY(), orbitalRadiusInPixels, 250);
 	}
 
     /**
@@ -132,7 +131,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return current X-axis position of the body
 	 */
 	protected float calculateOrbitalPositionX(float angleInDegree) {
-		return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInPixels);
+		return (float) (physicalProperties.calculateCenterOfOrbitX() + Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInPixels);
 	}
 
 	/**
@@ -141,22 +140,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return current Y-axis position of the body
 	 */
 	protected float calculateOrbitalPositionY(float angleInDegree) {
-		return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInPixels);
-	}
-
-	/**
-	 * @return Calculates the X-axis point around which the astronomical body orbits based on its Origin attribute.
-	 */
-	protected float calculateCenterOfOrbitX() {
-		return physicalProperties.getPrimaryX() + physicalProperties.getPrimaryWidth() / 2;
-	}
-
-	/**
-	 * @return Calculates the Y-axis point around which the astronomical body orbits based on its Origin attribute.
-	 */
-	protected float calculateCenterOfOrbitY() {
-		// Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
-		return physicalProperties.getPrimaryY() + physicalProperties.getPrimaryHeight() / 2;
+		return (float) (physicalProperties.calculateCenterOfOrbitY() + Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInPixels);
 	}
 
 	/**
@@ -164,7 +148,7 @@ public abstract class AstronomicalBody extends SolarActor implements ShapeRender
 	 * @return Vector2
 	 */
 	public Vector2 getCenterOfOrbit() {
-		return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
+		return new Vector2(physicalProperties.calculateCenterOfOrbitX(), physicalProperties.calculateCenterOfOrbitY());
 	}
 
 	/**
