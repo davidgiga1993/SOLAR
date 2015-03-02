@@ -75,4 +75,13 @@ public class BodyProperties
 	public void setNewOrbitPrimary(AstronomicalBody body) {
 		orbit.setNewOrbitPrimary(body);		
 	}
+	
+	public float calculateCenterOfOrbitX() {
+		return orbit.calculateCenterOfOrbitX();
+	}
+
+	public float calculateCenterOfOrbitY() {
+		return orbit.calculateCenterOfOrbitY();
+	}
+
 }

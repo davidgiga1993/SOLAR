@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
@@ -71,7 +72,7 @@ public class Planet extends AstronomicalBody
 	protected void displayOrbit(SolarShapeRenderer shapeRenderer)
 	{
 		shapeRenderer.setColor(Color.TEAL);
-		shapeRenderer.orbit(calculateCenterOfOrbitX(), calculateCenterOfOrbitY(), orbitalRadiusInPixels, 2000);
+		shapeRenderer.orbit(physicalProperties.calculateCenterOfOrbitX(), physicalProperties.calculateCenterOfOrbitY(), orbitalRadiusInPixels, 2000);
 
 	}
 

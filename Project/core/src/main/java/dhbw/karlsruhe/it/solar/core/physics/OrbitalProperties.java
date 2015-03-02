@@ -109,5 +109,20 @@ public class OrbitalProperties
 	public void setNewOrbitPrimary(AstronomicalBody body) {
 		orbitPrimary = body;		
 	}
+	
+	/**
+	 * @return Calculates the X-axis point around which the astronomical body orbits based on its Origin attribute.
+	 */
+	public float calculateCenterOfOrbitX() {
+		return getPrimaryX() + getPrimaryWidth() / 2;
+	}
+	
+	/**
+	 * @return Calculates the Y-axis point around which the astronomical body orbits based on its Origin attribute.
+	 */
+	public float calculateCenterOfOrbitY() {
+		// Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
+		return getPrimaryY() + getPrimaryHeight() / 2;
+	}
 
 }
