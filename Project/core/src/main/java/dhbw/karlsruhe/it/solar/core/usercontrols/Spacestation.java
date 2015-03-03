@@ -5,6 +5,9 @@ import java.text.DecimalFormat;
 import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.ai.AIModule;
+import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
+import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Length.Unit;
@@ -42,6 +45,8 @@ public class Spacestation extends SpaceUnit
     
     public void enterOrbit(AstronomicalBody orbitPrimary)
     {  	
+    	//TODO: Tell the AIModule to fuck off or something like that.
+    	destination = null;
 		Vector2 distance = new Vector2( orbitPrimary.getX() + orbitPrimary.getWidth()/2, orbitPrimary.getY() + orbitPrimary.getHeight()/2 ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
     	Length orbitalRadius = calculateDistanceInKilometer(distance, new OrbitalProperties(orbitPrimary));     
     	Angle angle = new Angle(distance.angle() + 180, Angle.Unit.degree);

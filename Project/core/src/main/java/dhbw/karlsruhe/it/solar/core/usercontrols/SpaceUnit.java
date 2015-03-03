@@ -53,7 +53,10 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
         this.destination = new Vector2(getX(), getY());
         this.kinematic = new Kinematic(new Vector2(getX()+getOriginX(), getY()+getOriginY()), getRotation(), speed);
         
-        // initialize AI Module
+        initializeAIModule();
+	}
+
+	private void initializeAIModule() {
         this.aiModule = new AISpaceshipModule(this);
         aiModule.setTarget(destination);
         aiModule.addEventListener(new TargetReachedListener() {
@@ -70,6 +73,10 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
      */
     public void setDestination(Vector2 destination)
     {
+    	if(null != orbitalProperties)
+    	{
+    		leaveOrbit();
+    	}
     	//TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination);
         this.destination = destination;
@@ -78,6 +85,10 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
     
     public void setDestination(KinematicObject destination)
     {
+    	if(null != orbitalProperties)
+    	{
+    		leaveOrbit();	
+    	}
     	//TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination.getKinematic());
         this.destination = destination.getKinematic().position;
@@ -181,5 +192,11 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
     public Vector2 getDestination()
     {
         return destination;
+    }
+    
+    public void leaveOrbit() {
+        System.out.println(this.getName() + " verlässt ihren Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
+        this.kinematic = new Kinematic(new Vector2(getX() + getWidth()/2, getY() + getHeight()/2), getRotation(), speed);
+		orbitalProperties = null;
     }
 }

@@ -40,9 +40,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 	}
 
 	protected void setKinematicValues() {
-		float speed = calculateOrbitalSpeed();
-		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
-		this.kinematic.velocity = new Vector2(1,0).scl(speed);
+		float orbitalSpeed = calculateOrbitalSpeed();
+		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, orbitalSpeed);
+		this.kinematic.velocity = new Vector2(1,0).scl(orbitalSpeed);
 	}
 
 	/**
