@@ -121,7 +121,7 @@ public class GameStartStage extends BaseStage implements Telegraph
 
     @Override
     public void act(float delta) {
-    	inputListener.handleContinousInput(delta);
+    	inputListener.handleContinuousInput(delta);
         delta *= GameStartStage.gameSpeed;
         super.act(delta);
     }

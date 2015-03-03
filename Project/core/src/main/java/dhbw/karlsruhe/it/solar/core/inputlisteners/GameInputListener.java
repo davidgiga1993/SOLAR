@@ -77,7 +77,8 @@ public class GameInputListener extends InputListener {
 
 	@Override
 	public boolean scrolled(InputEvent event, float x, float y, int amount) {
-		// TODO Auto-generated method stub
+		float amountF = (float) amount / 10;
+		modifyZoom(1 + amountF);
 		return super.scrolled(event, x, y, amount);
 	}
 
@@ -211,22 +212,20 @@ public class GameInputListener extends InputListener {
 	}
 
 	/**
-	 * Handle continous input e.g. moving the camera
+	 * Handle continuous input e.g. moving the camera
 	 * @param delta
 	 */
-	public void handleContinousInput(float delta) {
+	public void handleContinuousInput(float delta) {
 		// delta / (1/60) = delta * 60
         float cameraModifier = 0.02f * (delta * 60);
 		if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E))
         {
-			// using a linear zoom is necessary because the perception of the world changes with it's zoom
-			// using a constant zoom would feel good while having a close look at things, but very slow when watching the whole solar system
-            se.camera.zoom *= 1 - cameraModifier;
-        }
+			modifyZoom(1 - cameraModifier);
+		}
         if (Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(Keys.Q))
         {
-        	se.camera.zoom *= 1 + cameraModifier;
-        }
+			modifyZoom(1 + cameraModifier);
+		}
 		float x = 0;
 		float y = 0;
         if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))
@@ -250,6 +249,12 @@ public class GameInputListener extends InputListener {
 		x *= delta;
 		y *= delta;
 		se.camera.translate(x * se.camera.zoom, y * se.camera.zoom, 0);
+	}
+
+	private void modifyZoom(float cameraModifier) {
+		// using a linear zoom is necessary because the perception of the world changes with it's zoom
+		// using a constant zoom would feel good while having a close look at things, but very slow when watching the whole solar system
+		se.camera.zoom *= cameraModifier;
 	}
 
 	private enum SelectionState {
