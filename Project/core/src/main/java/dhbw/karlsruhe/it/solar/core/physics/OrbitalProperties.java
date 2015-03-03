@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
 
 import com.badlogic.gdx.math.Vector2;
 
+import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 
 public class OrbitalProperties
@@ -10,15 +11,15 @@ public class OrbitalProperties
 	
 	private AstronomicalBody orbitPrimary;
 	private Length orbitalRadius;
-	private float angleInDegree;
+	private Angle orbitalAngle;
 	private float orbitalPeriodInDays;
-	private float periodicConstant;
+	private Angle periodicConstant;
     
-    public OrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, float angle)
+    public OrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle angle)
     {
     	this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = orbitalRadius;
-        this.angleInDegree = angle;
+        this.orbitalAngle = angle;
     	if (orbitPrimary != null)
     	{
             calculateOrbitalPeriod();
@@ -26,11 +27,11 @@ public class OrbitalProperties
     	calculatePeriodicConstant();
     }
     
-	public OrbitalProperties(Mass mass, AstronomicalBody orbitPrimary, Length orbitalRadius, float angle)
+	public OrbitalProperties(Mass mass, AstronomicalBody orbitPrimary, Length orbitalRadius, Angle angle)
     {
     	this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = orbitalRadius;
-        this.angleInDegree = angle;
+        this.orbitalAngle = angle;
     	if (orbitPrimary != null)
     	{
             calculateOrbitalPeriod(mass);
@@ -63,15 +64,15 @@ public class OrbitalProperties
     {
     	if ( 0 != orbitalPeriodInDays )
     	{
-    		periodicConstant = 360 / orbitalPeriodInDays;
+    		periodicConstant = new Angle(360 / orbitalPeriodInDays , Unit.degree);
     		return;
     	}
-    	periodicConstant = 0;
+    	periodicConstant = new Angle();
 	}
     
-    public float getOrbitalAngleInDegree()
+    public Angle getOrbitalAngle()
     {
-    	return angleInDegree;
+    	return orbitalAngle;
     }
     
     public float getOrbitalPeriodInDays()
@@ -89,11 +90,14 @@ public class OrbitalProperties
      * Checks for the overflow condition (resets at 360 degrees).
      * @param degreeOfAngleIncrease Degrees to be added to the orbital angle of the object.
      */
-    public void updateOrbitalAngle(float degreeOfAngleIncrease)
+    public void updateOrbitalAngle(Angle change)
     {
-    	angleInDegree += degreeOfAngleIncrease;
-		// make sure that no overflow happens.
-    	angleInDegree = angleInDegree < 360 ? angleInDegree : angleInDegree - 360;
+    	orbitalAngle.changeBy(change);
+    }
+    
+    public void updateOrbitalAngle(float increment)
+    {
+    	updateOrbitalAngle( new Angle( periodicConstant.inDegrees()*increment, Unit.degree));
     }
     
 	public float getPrimaryX()
@@ -135,31 +139,35 @@ public class OrbitalProperties
 		return getPrimaryY() + getPrimaryHeight() / 2;
 	}
 	
-	public float getPeriodicConstant() {
+	public Angle getPeriodicConstant() {
 		return periodicConstant;
 	}
 	
 	/**
 	 * Part of the calculateOrbitalPositionTotal method, calculates the X-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
-     * @param angleInDegree current angle
+     * @param orbitalAngle current angle
 	 * @return current X-axis position of the body
 	 */
-	public float calculateOrbitalPositionX(float orbitalRadiusInPixels, float deltaAlphaInDegree) {
-		return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(angleInDegree + deltaAlphaInDegree)) * orbitalRadiusInPixels);
+	public float calculateOrbitalPositionX(float orbitalRadiusInPixels, Angle deltaAlpha) {
+		return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels);
 	}
 
 	/**
 	 * Part of the calculateOrbitalPositionTotal method, calculates the Y-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
-     * @param angleInDegree current angle
+     * @param orbitalAngle current angle
 	 * @return current Y-axis position of the body
 	 */
-	public float calculateOrbitalPositionY(float orbitalRadiusInPixels, float deltaAlphaInDegree) {
-		return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(angleInDegree + deltaAlphaInDegree))  * orbitalRadiusInPixels);
+	public float calculateOrbitalPositionY(float orbitalRadiusInPixels, Angle deltaAlpha) {
+		return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees()))  * orbitalRadiusInPixels);
 	}
 	
     public Vector2 calculateFuturePosition(float orbitalRadiusInPixels, float delta) {
-        float deltaAlpha = periodicConstant * delta;
+        Angle deltaAlpha = predictedChangeInOrbitalAngle (delta);
         return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
+    }
+    
+    private Angle predictedChangeInOrbitalAngle(float delta) {
+    	return new Angle( periodicConstant.inDegrees() * delta, Unit.degree );
     }
     
 	/**

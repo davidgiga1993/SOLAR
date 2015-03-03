@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
@@ -14,8 +15,8 @@ public class Star extends AstronomicalBody
 {
     private static final String TEXTURE_NAME = "GTypeMainSequence";
 
-    public Star(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary) {
-        this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, angleInDegree), new BodyProperties(mass, radius));
+    public Star(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary) {
+        this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius));
     }
 
     public Star(String name, OrbitalProperties orbit, BodyProperties body) {
@@ -28,12 +29,12 @@ public class Star extends AstronomicalBody
      * @param radius Desired radius of the planet
      * @param mass Desired mass of the planet in multiples of Earth Masses
      * @param orbitalRadius Desired orbital radius around the star in multiples of Astronomical Units
-     * @param angleInDegree Desired angle of the planet's position on the map of the system relative to its star
+     * @param orbitalAngle Desired angle of the planet's position on the map of the system relative to its star
      * @return created Planet object
      */
-    public Planet placeNewPlanet(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, Planet.PlanetType type)
+    public Planet placeNewPlanet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Planet.PlanetType type)
     {
-    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, angleInDegree);
+    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, orbitalAngle);
 		BodyProperties body = new BodyProperties(mass, radius);
         Planet newObject = new Planet(name, orbit, body, type);
         newObject.setOrbitalPositionTotal();
