@@ -145,7 +145,7 @@ public class GameInputListener extends InputListener {
 	 */
 	public void interact(InputEvent event, float x, float y) {
 		if (Gdx.input.isKeyPressed(Keys.ALT_LEFT) | Gdx.input.isKeyPressed(Keys.ALT_RIGHT)) {
-			moveCamera(event.getTarget(), x, y);
+			moveCamera(event.getTarget(), x, y, Gdx.input.isKeyPressed(Keys.CONTROL_LEFT));
 		} else {
 			updateSelection(event);
 		}
@@ -202,13 +202,15 @@ public class GameInputListener extends InputListener {
 	 * Moves the camera above the given target
 	 * @param target
 	 */
-	private void moveCamera(Actor target, float x, float y) {
+	private void moveCamera(Actor target, float x, float y, boolean shouldModifyZoom) {
 		if(target instanceof Group) {
-			se.camera.translate(x - se.camera.position.x, y - se.camera.position.y);
+			se.camera.moveTo(x, y);
 			return;
 		}
-		se.camera.translate(target.getX() + target.getOriginX() - se.camera.position.x, target.getY() + target.getOriginY() - se.camera.position.y);
-        se.camera.zoom = target.getWidth() / 25;
+		se.camera.moveTo(target);
+		if(shouldModifyZoom) {
+			se.camera.zoomTo(target.getWidth() / 25);
+		}
 	}
 
 	/**
@@ -248,13 +250,13 @@ public class GameInputListener extends InputListener {
         }
 		x *= delta;
 		y *= delta;
-		se.camera.translate(x * se.camera.zoom, y * se.camera.zoom, 0);
+		se.camera.translate(x * se.camera.zoom, y * se.camera.zoom);
 	}
 
 	private void modifyZoom(float cameraModifier) {
 		// using a linear zoom is necessary because the perception of the world changes with it's zoom
 		// using a constant zoom would feel good while having a close look at things, but very slow when watching the whole solar system
-		se.camera.zoom *= cameraModifier;
+		se.camera.setZoom(se.camera.zoom * cameraModifier);
 	}
 
 	private enum SelectionState {

@@ -22,7 +22,7 @@ public class SolarEngine extends Game implements InputProcessor
     public GameLogicService Service = new GameLogicService();
     public static final MessageDispatcher messageDispatcher = new MessageDispatcher();
     
-    public OrthographicCamera camera;
+    public SolarCamera camera;
     public OrthographicCamera guiCamera;
     public OrthographicCamera backgroundCamera;
 
@@ -53,7 +53,7 @@ public class SolarEngine extends Game implements InputProcessor
         Gdx.input.setInputProcessor(this);
 
         // Kamera erstellen
-        camera = new OrthographicCamera(Width, Height);
+        camera = new SolarCamera(Width, Height);
         guiCamera = new OrthographicCamera(Width, Height);
         backgroundCamera = new OrthographicCamera(Width, Height);
 
@@ -88,7 +88,7 @@ public class SolarEngine extends Game implements InputProcessor
         mainBatch.setProjectionMatrix(camera.combined);
 
         handleInput();
-        camera.update();
+        camera.update(Gdx.graphics.getDeltaTime());
 
         stageManager.draw();
     }

@@ -16,7 +16,7 @@ public class Solar
         // cfg.useGL20 = false;
         cfg.width = 900;
         cfg.height = 600;
-        cfg.foregroundFPS = 0;
+        cfg.foregroundFPS = 500;
         cfg.vSyncEnabled = false;
         // cfg.samples = 16;
         
