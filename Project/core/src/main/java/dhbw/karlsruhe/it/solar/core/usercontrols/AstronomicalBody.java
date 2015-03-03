@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
@@ -25,7 +26,7 @@ public abstract class AstronomicalBody extends Orbiter
 
 	public AstronomicalBody(String name)
 	{
-		super(name, new OrbitalProperties(new Mass(1, Mass.Unit.KILOGRAM), null, new Length(1, Length.Unit.kilometres), 0), ConfigurationConstants.SCALE_FACTOR_STAR);
+		super(name, new OrbitalProperties(new Mass(1, Mass.Unit.KILOGRAM), null, new Length(1, Length.Unit.kilometres), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
 		this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres));
 	}
 
@@ -49,12 +50,12 @@ public abstract class AstronomicalBody extends Orbiter
 	 * @param radius Desired radius of the Asteroid
      * @param mass Desired mass of the Asteroid in kilogram
      * @param orbitalRadius Desired orbital radius around the parent body in kilometers
-     * @param angleInDegree Desired angle of the Asteroid's position on the map of the system relative to its parent body
+     * @param orbitalAngle Desired angle of the Asteroid's position on the map of the system relative to its parent body
      * @return created Asteroid object
      */
-    public Asteroid placeNewAsteroid(String name, Length radius, Mass mass, Length orbitalRadius, int angleInDegree)
+    public Asteroid placeNewAsteroid(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle)
     {
-        Asteroid newObject = new Asteroid(name, radius, mass, orbitalRadius, angleInDegree, this);
+        Asteroid newObject = new Asteroid(name, radius, mass, orbitalRadius, orbitalAngle, this);
         newObject.setOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;

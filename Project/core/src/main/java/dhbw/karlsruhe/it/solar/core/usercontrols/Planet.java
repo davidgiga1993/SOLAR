@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
@@ -16,8 +17,8 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 public class Planet extends AstronomicalBody
 {
 
-	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary, PlanetType type) {
-		this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, angleInDegree), new BodyProperties(mass, radius), type);
+	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary, PlanetType type) {
+		this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius), type);
 	}
 
 	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
@@ -57,12 +58,12 @@ public class Planet extends AstronomicalBody
      * @param radius Desired radius of the Moon
      * @param mass Desired mass of the planet in multiples of Earth Masses
      * @param orbitalRadius Desired orbital radius around the planet in kilometers
-     * @param angleInDegree Desired angle of the moon's position on the map of the system relative to its planet
+     * @param orbitalAngle Desired angle of the moon's position on the map of the system relative to its planet
      * @return created Moon object
      */
-    public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, Moon.MoonType type)
+    public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Moon.MoonType type)
     {
-    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, angleInDegree);
+    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, orbitalAngle);
 		BodyProperties body = new BodyProperties(mass, radius);
         Moon newObject = new Moon(name, orbit, body, type);
         newObject.setOrbitalPositionTotal();

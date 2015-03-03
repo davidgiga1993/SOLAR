@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
+import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -75,14 +76,14 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 	}
 
 	private void actOrbitalMovement(float delta) {
-		orbitalProperties.updateOrbitalAngle(orbitalProperties.getPeriodicConstant() * delta);
+		orbitalProperties.updateOrbitalAngle(delta);
 		setOrbitalPositionTotal();
 
         adjustLabelPosition();
 
 		kinematic.position.x = getX()+getOriginX();
 		kinematic.position.y = getY()+getOriginY();
-		kinematic.rotation = orbitalProperties.getOrbitalAngleInDegree() + 90f;
+		kinematic.rotation = orbitalProperties.getOrbitalAngle().inDegrees() + 90f;
 		kinematic.velocity.setAngle(kinematic.rotation);
 	}
 
@@ -98,7 +99,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      */
     protected void setOrbitalPositionTotal()
     {
-    	this.setPosition(orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, 0) - getWidth() / 2, orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, 0) - getHeight() / 2);
+    	this.setPosition(orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, new Angle()) - getWidth() / 2, orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, new Angle()) - getHeight() / 2);
     }
     
     public Vector2 calculateFuturePosition(float delta) {
