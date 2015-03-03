@@ -1,9 +1,11 @@
 package dhbw.karlsruhe.it.solar.core.ai;
 
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 
 /**
  * Created by Arga on 13.02.2015.
@@ -37,7 +39,7 @@ public interface AIModule {
      * Set's the Actor's target object
      * @param target AstronomicalBody
      */
-    public void setTarget(AstronomicalBody target);
+    public void setTarget(Orbiter target);
 
     public boolean isMoving();
 

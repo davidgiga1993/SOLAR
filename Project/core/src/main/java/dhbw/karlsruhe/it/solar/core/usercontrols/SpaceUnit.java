@@ -74,13 +74,13 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
     {
         this.aiModule.setTarget(destination);
         this.destination = destination;
-        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + " bei X= " + destination.x + ", Y= " + destination.y);
+        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + " (" + destination.x + "/" + destination.y  + ").");
     }
     
     public void setDestination(KinematicObject destination) {
         this.aiModule.setTarget(destination.getKinematic());
         this.destination = destination.getKinematic().position;
-        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName());
+        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.toString() + ".");
     }
 
     @Override
@@ -166,9 +166,10 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
         }
     }
 
-    public void setDestination(AstronomicalBody destination) {
+    public void setDestination(Orbiter destination) {
         this.aiModule.setTarget(destination);
         this.destination = destination.getKinematic().position;
+        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.getName() + " (" + destination.getX() + "/" + destination.getY()  + ").");
     }
 
     /**

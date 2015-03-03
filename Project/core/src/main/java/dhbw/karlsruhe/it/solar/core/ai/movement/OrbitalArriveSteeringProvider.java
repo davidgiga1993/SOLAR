@@ -1,7 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.ai.movement;
 
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 
 /**
  * Created by argannor on 19.02.15.
@@ -9,7 +11,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
 
 
-    protected AstronomicalBody target;
+    protected Orbiter target;
     protected float reachedRadius = 75f;
 
     public OrbitalArriveSteeringProvider(float radius, float slowRadius) {
@@ -52,7 +54,7 @@ public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
         return steering;
     }
 
-    public void setOrbitingTarget(AstronomicalBody target) {
+    public void setOrbitingTarget(Orbiter target) {
         this.target = target;
     }
 
