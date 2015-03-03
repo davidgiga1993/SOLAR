@@ -9,8 +9,8 @@ public class Angle {
 	
     public static final float DEGREE_IN_RADIANS = (float)( 180f / Math.PI);
     
-    protected Unit unit;
-    protected float value;
+    private Unit unit;
+    private float value;
     
     public Angle()
     {

@@ -13,7 +13,6 @@ import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -30,7 +29,6 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
     protected Kinematic kinematic;
     protected Vector2 destination;
 	protected float speed;
-	protected OrbitalProperties orbit;
     AIModule aiModule;
     AIOutput aiOutput;
     
@@ -72,12 +70,15 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
      */
     public void setDestination(Vector2 destination)
     {
+    	//TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination);
         this.destination = destination;
         System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + " (" + destination.x + "/" + destination.y  + ").");
     }
     
-    public void setDestination(KinematicObject destination) {
+    public void setDestination(KinematicObject destination)
+    {
+    	//TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination.getKinematic());
         this.destination = destination.getKinematic().position;
         System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.toString() + ".");
@@ -121,6 +122,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
 
         displaySelectionBox(libGDXShapeRenderer);
         displayCourseAndDestination(libGDXShapeRenderer);
+        super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
     }
 
 	/**
@@ -166,7 +168,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
         }
     }
 
-    public void setDestination(Orbiter destination) {
+    public void setDestination(AstronomicalBody destination) {
+    	//TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination);
         this.destination = destination.getKinematic().position;
         System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.getName() + " (" + destination.getX() + "/" + destination.getY()  + ").");

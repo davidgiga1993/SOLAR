@@ -2,8 +2,14 @@ package dhbw.karlsruhe.it.solar.core.physics;
 
 import com.badlogic.gdx.math.Vector2;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
 
 public class OrbitalProperties
 {
@@ -176,5 +182,17 @@ public class OrbitalProperties
 	 */
 	public Vector2 getCenterOfOrbit() {
 		return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
+	}
+	
+	public SolarActorScale getOrbitalSpaceUnitScaleFactor() {
+		if (orbitPrimary instanceof Star)
+			return ConfigurationConstants.SCALE_FACTOR_PLANET;
+		if (orbitPrimary instanceof Planet)
+			return ConfigurationConstants.SCALE_FACTOR_MOON;
+		if (orbitPrimary instanceof Moon)
+			return ConfigurationConstants.SCALE_FACTOR_MOON;
+		if (orbitPrimary instanceof Asteroid)
+			return ConfigurationConstants.SCALE_FACTOR_ASTEROID;
+		return ConfigurationConstants.SCALE_FACTOR_PLANET;
 	}
 }

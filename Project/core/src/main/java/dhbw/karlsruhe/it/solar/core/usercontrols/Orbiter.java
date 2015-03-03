@@ -39,7 +39,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 		changeOrbitScale();
 	}
 
-	private void setKinematicValues() {
+	protected void setKinematicValues() {
 		float speed = calculateOrbitalSpeed();
 		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, speed);
 		this.kinematic.velocity = new Vector2(1,0).scl(speed);
@@ -60,7 +60,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 	private void changeOrbitScale() {
 			orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
 	}
-	
+		
 	@Override
 	public void updateScale() {
 		orbitalRadiusInPixels *= actorScale.orbitScale / currentOrbitScale;
@@ -116,7 +116,10 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
     
 	@Override
 	public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
-		displayOrbit(solarShapeRenderer);
+		if (null != orbitalProperties )
+		{
+			displayOrbit(solarShapeRenderer);
+		}
 	}
 	
 	protected void displayOrbit(SolarShapeRenderer shapeRenderer)
