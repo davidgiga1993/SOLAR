@@ -27,7 +27,6 @@ public abstract class AstronomicalBody extends Orbiter
 	{
 		super(name, new OrbitalProperties(new Mass(1, Mass.Unit.KILOGRAM), null, new Length(1, Length.Unit.kilometres), 0), ConfigurationConstants.SCALE_FACTOR_STAR);
 		this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres));
-		this.label = new BodyGameLabel(name);	
 	}
 
 	public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)
