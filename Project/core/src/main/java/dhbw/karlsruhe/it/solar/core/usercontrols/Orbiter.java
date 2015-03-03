@@ -98,11 +98,11 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      */
     protected void setOrbitalPositionTotal()
     {
-    	this.setPosition(orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels) - getWidth() / 2, orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels) - getHeight() / 2);
+    	this.setPosition(orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, 0) - getWidth() / 2, orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, 0) - getHeight() / 2);
     }
     
     public Vector2 calculateFuturePosition(float delta) {
-        return orbitalProperties.calculateFuturePosition(delta);
+        return orbitalProperties.calculateFuturePosition( orbitalRadiusInPixels, delta);
     }
     
 	/**

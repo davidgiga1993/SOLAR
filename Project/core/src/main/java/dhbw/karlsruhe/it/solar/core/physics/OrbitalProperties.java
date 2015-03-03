@@ -144,8 +144,8 @@ public class OrbitalProperties
      * @param angleInDegree current angle
 	 * @return current X-axis position of the body
 	 */
-	public float calculateOrbitalPositionX(float orbitalRadiusInPixels) {
-		return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInPixels);
+	public float calculateOrbitalPositionX(float orbitalRadiusInPixels, float deltaAlphaInDegree) {
+		return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(angleInDegree + deltaAlphaInDegree)) * orbitalRadiusInPixels);
 	}
 
 	/**
@@ -153,13 +153,13 @@ public class OrbitalProperties
      * @param angleInDegree current angle
 	 * @return current Y-axis position of the body
 	 */
-	public float calculateOrbitalPositionY(float orbitalRadiusInPixels) {
-		return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInPixels);
+	public float calculateOrbitalPositionY(float orbitalRadiusInPixels, float deltaAlphaInDegree) {
+		return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(angleInDegree + deltaAlphaInDegree))  * orbitalRadiusInPixels);
 	}
 	
-    public Vector2 calculateFuturePosition(float delta) {
+    public Vector2 calculateFuturePosition(float orbitalRadiusInPixels, float delta) {
         float deltaAlpha = periodicConstant * delta;
-        return new Vector2(calculateOrbitalPositionX(deltaAlpha + angleInDegree), calculateOrbitalPositionY(deltaAlpha + angleInDegree));
+        return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
     
 	/**
