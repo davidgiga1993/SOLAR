@@ -5,9 +5,6 @@ import java.text.DecimalFormat;
 import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.ai.AIModule;
-import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
-import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Length.Unit;
@@ -72,12 +69,14 @@ public class Spacestation extends SpaceUnit
 
 	@Override
     public void setDestination(AstronomicalBody destination) {
+		//TODO: Very rough implementation. More elegant solution, approach AI?
         enterOrbit(destination);
    }
     
 	/**
-	 * Sets the orbital radius in pixels value relative to the parameter scaling setting.
-	 * Necessary for space units which need to determine the appropriate scale setting for the object they are trying to orbit.
+	 * Sets the orbital radius relative to the parameter scaling setting.
+	 * Different implementation to AstronomicalBody since space units have different orbit scaling depending on what type of object they orbit
+	 * The method getOrbitalSpaceUnitScaleFactor() determines the appropriate scale setting for the object the unit is trying to orbit.
 	 */
 	private void changeOrbitScaleSpaceUnit() {
 		setOrbitScale(orbitalProperties.getOrbitalSpaceUnitScaleFactor());
@@ -90,10 +89,10 @@ public class Spacestation extends SpaceUnit
 		{
 			changeOrbitScaleSpaceUnit();
 		}
-        float width = getWidth() / currentShapeScale * actorScale.shapeScale;
-        float height = getHeight() / currentShapeScale * actorScale.shapeScale;
+        float width = getWidth() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
+        float height = getHeight() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
         setSize(width, height);
-        setActorScale(actorScale);
+        setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
 	}
 	
 	/**

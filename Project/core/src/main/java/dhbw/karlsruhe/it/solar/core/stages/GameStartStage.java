@@ -94,7 +94,12 @@ public class GameStartStage extends BaseStage implements Telegraph
         placeNewShip("Nostromo", new Vector2(1500, 1000), humanPlayer);
         placeNewShip("Destiny", new Vector2(1550, 1050), aiPlayer);
         placeNewStation("Deep Space Nine", new Vector2(1500, 0), humanPlayer);
-        placeNewStation("Babylon 5", new Vector2(2000, 500), aiPlayer);
+        
+        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-659.06335f, 1655.2389f), aiPlayer);
+        AstronomicalBody primary = solarSystem.findSatelliteByName("Jupiter");
+        if (null != primary) {
+            babylon.enterOrbit(primary);       	
+        }
     }
 
     @Override
@@ -190,10 +195,11 @@ public class GameStartStage extends BaseStage implements Telegraph
      * @param name Desired name of the station.
      * @param startlocation Desired location at which the station is to appear.
      */
-    private void placeNewStation(String name, Vector2 startlocation, Player owner)
+    private Spacestation placeNewStation(String name, Vector2 startlocation, Player owner)
     {
         Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
         addActor(newStation);
+        return newStation;
     }
     
 

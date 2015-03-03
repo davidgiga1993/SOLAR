@@ -66,11 +66,16 @@ public abstract class AstronomicalBody extends Orbiter
 	 * @param name Searched for key word
 	 * @return Satellite object with matching name or null if no satellite was found
 	 */
-	public Actor findSatelliteByName(String name)
+	public AstronomicalBody findSatelliteByName(String name)
 	{
+		AstronomicalBody searchedBody;
 		for (AstronomicalBody satellite : satellites) {
 			if (satellite.getName().equals(name)) {
 				return satellite;
+			}
+			searchedBody = satellite.findSatelliteByName(name);
+			if (null != searchedBody && searchedBody.getName().equals(name)) {
+				return searchedBody;
 			}
 		}
 		return null;
