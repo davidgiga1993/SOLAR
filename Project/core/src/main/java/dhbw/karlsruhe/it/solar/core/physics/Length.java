@@ -18,6 +18,12 @@ public class Length {
 
     protected Unit unit = Unit.astronomicalUnit;
     protected float value = 0f;
+    
+    public Length()
+    {
+    	this.value = 0;
+    	this.unit = Unit.kilometres;
+    }
 
     public Length(float value, Unit unit) {
         this.value = value;

@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import com.badlogic.gdx.math.Vector2;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Length.Unit;
@@ -40,17 +41,31 @@ public class Spacestation extends SpaceUnit
     }
     
     public void enterOrbit(AstronomicalBody orbitPrimary)
-    {
+    {  	
+		Vector2 distance = new Vector2( orbitPrimary.getX() + orbitPrimary.getWidth()/2, orbitPrimary.getY() + orbitPrimary.getHeight()/2 ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
+    	Length orbitalRadius = calculateDistanceInKilometer(distance, new OrbitalProperties(orbitPrimary));     
+    	Angle angle = new Angle(distance.angle() + 180, Angle.Unit.degree);
+    	
+    	orbitalProperties = new OrbitalProperties(orbitPrimary, orbitalRadius, angle);
+    	setKinematicValues();
+    	changeOrbitScaleSpaceUnit();   	
+    	
     	//TODO: Entferne Debugkommentare
         DecimalFormat df2 = new DecimalFormat("#.##");
-    	orbitalProperties = new OrbitalProperties(orbitPrimary, new Length(0.1f, Unit.astronomicalUnit), new Angle());
-    	setKinematicValues();
-    	changeOrbitScaleSpaceUnit();
         System.out.println(this.getName() + " tritt in Orbit ein um: " + orbitPrimary.getName() + " (" + orbitPrimary.getX() + "/" + orbitPrimary.getY()  + "). Orbitalradius: " + df2.format(orbitalProperties.getOrbitalRadius().asAstronomicalUnit()) + " / Periodendauer: " + orbitalProperties.getOrbitalPeriodInDays());
- 
     }
-    
-    @Override
+
+    /**
+     * Turns a in-game distance vector into the corresponding physical value.
+     * Essentially inverses the steps taken from the initial conversion of system creation AU distance values into the orbitalRadiusInPixel value.
+     * @param distance Vector distance to be converted back into a physical value.
+     * @return Result is the corresponding physical distance in kilometer.
+     */
+	private Length calculateDistanceInKilometer(Vector2 distance, OrbitalProperties newOrbit) {	
+		return new Length (inverseStagescaling(distance.len()) / newOrbit.getOrbitalSpaceUnitScaleFactor().orbitScale, Unit.kilometres);
+	}
+
+	@Override
     public void setDestination(AstronomicalBody destination) {
         enterOrbit(destination);
    }
@@ -59,7 +74,7 @@ public class Spacestation extends SpaceUnit
 	 * Sets the orbital radius in pixels value relative to the parameter scaling setting.
 	 * Necessary for space units which need to determine the appropriate scale setting for the object they are trying to orbit.
 	 */
-	public void changeOrbitScaleSpaceUnit() {
+	private void changeOrbitScaleSpaceUnit() {
 		setOrbitScale(orbitalProperties.getOrbitalSpaceUnitScaleFactor());
 		orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
 	}
@@ -70,13 +85,17 @@ public class Spacestation extends SpaceUnit
 		{
 			changeOrbitScaleSpaceUnit();
 		}
+        float width = getWidth() / currentShapeScale * actorScale.shapeScale;
+        float height = getHeight() / currentShapeScale * actorScale.shapeScale;
+        setSize(width, height);
+        setActorScale(actorScale);
 	}
 	
 	/**
 	 * Adjusts only the Orbital Scale, not the Shapescale of the object. Allows Space Units to adjust the scale of their orbits individually.
 	 * @param scale Scale value is derived from the configuration constants of the appropriate satellite to the orbital Primary body.
 	 */
-    public void setOrbitScale(SolarActorScale scale) {
+	private void setOrbitScale(SolarActorScale scale) {
         actorScale = new SolarActorScale(currentShapeScale, scale.orbitScale);
         currentOrbitScale = scale.orbitScale;
     }

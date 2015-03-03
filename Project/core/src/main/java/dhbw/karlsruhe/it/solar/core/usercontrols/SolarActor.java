@@ -20,6 +20,8 @@ public abstract class SolarActor extends Actor {
     protected SolarActorScale actorScale;
     protected float currentShapeScale;
     protected float currentOrbitScale;
+    
+    final static double stageScalingFactor = 2 * Math.pow(10, 4);
 
     public SolarActor(String name) {
         this.setName(name);
@@ -60,8 +62,11 @@ public abstract class SolarActor extends Actor {
      */
     protected static float scaleDistanceToStage(double distance) {
         //TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
-        double scalingFactor = 2 * Math.pow(10, 4);
-        return (float) (distance / scalingFactor);
+        return (float) (distance / stageScalingFactor);
+    }
+    
+    protected static float inverseStagescaling(float stageDistance) {
+    	return stageDistance * (float)stageScalingFactor;
     }
 
     public boolean insideRectangle(Rectangle rect) {

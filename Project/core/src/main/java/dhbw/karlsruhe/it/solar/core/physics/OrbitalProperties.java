@@ -21,6 +21,15 @@ public class OrbitalProperties
 	private float orbitalPeriodInDays;
 	private Angle periodicConstant;
     
+    public OrbitalProperties(AstronomicalBody orbitPrimary)
+    {
+    	this.orbitPrimary = orbitPrimary;
+        this.orbitalRadius = new Length();
+        this.orbitalAngle = new Angle();
+        this.orbitalPeriodInDays = Float.NaN;
+        this.periodicConstant = new Angle(Float.NaN);
+    }
+    
     public OrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle angle)
     {
     	this.orbitPrimary = orbitPrimary;
