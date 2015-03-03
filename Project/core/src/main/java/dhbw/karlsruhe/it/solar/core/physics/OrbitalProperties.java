@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 
 public class OrbitalProperties
@@ -10,6 +12,7 @@ public class OrbitalProperties
 	private Length orbitalRadius;
 	private float angleInDegree;
 	private float orbitalPeriodInDays;
+	private float periodicConstant;
     
     public OrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, float angle)
     {
@@ -20,9 +23,10 @@ public class OrbitalProperties
     	{
             calculateOrbitalPeriod();
     	}
+    	calculatePeriodicConstant();
     }
     
-    public OrbitalProperties(AstronomicalBody orbitPrimary, Mass mass, Length orbitalRadius, float angle)
+	public OrbitalProperties(Mass mass, AstronomicalBody orbitPrimary, Length orbitalRadius, float angle)
     {
     	this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = orbitalRadius;
@@ -31,6 +35,7 @@ public class OrbitalProperties
     	{
             calculateOrbitalPeriod(mass);
     	}
+    	calculatePeriodicConstant();
     }
     
     /**
@@ -38,12 +43,7 @@ public class OrbitalProperties
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod(Mass mass) {
-    	BodyProperties originProperties = orbitPrimary.getBodyProperties();
-        if(originProperties == null || originProperties.getMass() == null) {
-            orbitalPeriodInDays = 1;
-            return;
-        }
-        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (originProperties.getMass().getAsKilogram() + mass.getAsKilogram())) ) / (3600*24));
+        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().getAsKilogram() + mass.getAsKilogram())) ) / (3600*24));
     }
     
     /**
@@ -51,13 +51,23 @@ public class OrbitalProperties
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod() {
-    	BodyProperties originProperties = orbitPrimary.getBodyProperties();
-        if(originProperties == null) {
-            orbitalPeriodInDays = 1;
-            return;
-        }
-        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (originProperties.getMass().getAsKilogram())) ) / (3600*24));
+        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().getAsKilogram())) ) / (3600*24));
     }
+    
+    /**
+     * The Periodic Constant denotes the rate of (angle change in degree) per (time increment), as implied by the Orbital Period in Days value.
+     * One full revolution, accomplished in the orbital period time, corresponds to an angle change of 360 degrees.
+     * The Periodic Constant is consequently the fraction of those values.
+     */
+    private void calculatePeriodicConstant()
+    {
+    	if ( 0 != orbitalPeriodInDays )
+    	{
+    		periodicConstant = 360 / orbitalPeriodInDays;
+    		return;
+    	}
+    	periodicConstant = 0;
+	}
     
     public float getOrbitalAngleInDegree()
     {
@@ -124,5 +134,39 @@ public class OrbitalProperties
 		// Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
 		return getPrimaryY() + getPrimaryHeight() / 2;
 	}
+	
+	public float getPeriodicConstant() {
+		return periodicConstant;
+	}
+	
+	/**
+	 * Part of the calculateOrbitalPositionTotal method, calculates the X-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
+     * @param angleInDegree current angle
+	 * @return current X-axis position of the body
+	 */
+	public float calculateOrbitalPositionX(float orbitalRadiusInPixels) {
+		return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(angleInDegree)) * orbitalRadiusInPixels);
+	}
 
+	/**
+	 * Part of the calculateOrbitalPositionTotal method, calculates the Y-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
+     * @param angleInDegree current angle
+	 * @return current Y-axis position of the body
+	 */
+	public float calculateOrbitalPositionY(float orbitalRadiusInPixels) {
+		return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(angleInDegree))  * orbitalRadiusInPixels);
+	}
+	
+    public Vector2 calculateFuturePosition(float delta) {
+        float deltaAlpha = periodicConstant * delta;
+        return new Vector2(calculateOrbitalPositionX(deltaAlpha + angleInDegree), calculateOrbitalPositionY(deltaAlpha + angleInDegree));
+    }
+    
+	/**
+	 * Returns a Vector2 containing the position of this objects center of orbit.
+	 * @return Vector2
+	 */
+	public Vector2 getCenterOfOrbit() {
+		return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
+	}
 }

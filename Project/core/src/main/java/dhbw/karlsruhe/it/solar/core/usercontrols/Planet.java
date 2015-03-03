@@ -6,6 +6,7 @@ import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 /**
@@ -16,11 +17,11 @@ public class Planet extends AstronomicalBody
 {
 
 	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary, PlanetType type) {
-		this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree), type);
+		this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, angleInDegree), new BodyProperties(mass, radius), type);
 	}
 
-	public Planet(String name, BodyProperties properties, PlanetType type) {
-		super(name, properties, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
+	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
+		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
 	}
 
 	private static String getTextureNameForPlanetType(PlanetType type)
@@ -61,9 +62,10 @@ public class Planet extends AstronomicalBody
      */
     public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, Moon.MoonType type)
     {
-		BodyProperties properties = new BodyProperties(this, mass, radius, orbitalRadius, angleInDegree);
-        Moon newObject = new Moon(name, properties, type);
-        newObject.calculateOrbitalPositionTotal();
+    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, angleInDegree);
+		BodyProperties body = new BodyProperties(mass, radius);
+        Moon newObject = new Moon(name, orbit, body, type);
+        newObject.setOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;
     }
@@ -72,7 +74,7 @@ public class Planet extends AstronomicalBody
 	protected void displayOrbit(SolarShapeRenderer shapeRenderer)
 	{
 		shapeRenderer.setColor(Color.TEAL);
-		shapeRenderer.orbit(physicalProperties.calculateCenterOfOrbitX(), physicalProperties.calculateCenterOfOrbitY(), orbitalRadiusInPixels, 2000);
+		shapeRenderer.orbit(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), orbitalRadiusInPixels, 2000);
 
 	}
 

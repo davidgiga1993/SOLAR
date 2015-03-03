@@ -69,10 +69,10 @@ public class BodyInformationDetails extends InformationDetails {
     }
 
     private void initLabelsDefault(AstronomicalBody body) {
-        float radiusFloat = body.getPhysicalProperties().getRadius().asKilometres();
-        float massFloat = body.getPhysicalProperties().getMass().getAsSolarMass();
-        float orbitalRadiusFloat = body.getPhysicalProperties().getOrbitalRadius().asAstronomicalUnit();
-        float orbitalPeriodFloat = body.getPhysicalProperties().getOrbitalPeriodInDays();
+        float radiusFloat = body.getRadius().asKilometres();
+        float massFloat = body.getMass().getAsSolarMass();
+        float orbitalRadiusFloat = body.getOrbitalRadius().asAstronomicalUnit();
+        float orbitalPeriodFloat = body.getOrbitalPeriodInDays();
 
         String radius = df2.format(radiusFloat);
         String mass = dfE.format(massFloat);

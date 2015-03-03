@@ -4,6 +4,7 @@ import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 
 /**
  * @author Andi
@@ -14,11 +15,11 @@ public class Star extends AstronomicalBody
     private static final String TEXTURE_NAME = "GTypeMainSequence";
 
     public Star(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, AstronomicalBody orbitPrimary) {
-        this(name, new BodyProperties(orbitPrimary, mass, radius, orbitalRadius, angleInDegree));
+        this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, angleInDegree), new BodyProperties(mass, radius));
     }
 
-    public Star(String name, BodyProperties properties) {
-        super(name, properties, ConfigurationConstants.SCALE_FACTOR_STAR, TEXTURE_NAME);
+    public Star(String name, OrbitalProperties orbit, BodyProperties body) {
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, TEXTURE_NAME);
     }
 		
     /**
@@ -32,8 +33,10 @@ public class Star extends AstronomicalBody
      */
     public Planet placeNewPlanet(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree, Planet.PlanetType type)
     {
-        Planet newObject = new Planet(name, radius, mass, orbitalRadius, angleInDegree, this, type);
-        newObject.calculateOrbitalPositionTotal();
+    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, angleInDegree);
+		BodyProperties body = new BodyProperties(mass, radius);
+        Planet newObject = new Planet(name, orbit, body, type);
+        newObject.setOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;
     }

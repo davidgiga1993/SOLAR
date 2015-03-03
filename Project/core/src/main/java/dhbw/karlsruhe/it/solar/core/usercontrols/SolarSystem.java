@@ -3,9 +3,11 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon.MoonType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Planet.PlanetType;
@@ -20,7 +22,7 @@ public class SolarSystem extends AstronomicalBody {
     {
 		super(name);
 		setPosition(0, 0);
-		physicalProperties.setNewOrbitPrimary(new SystemRoot(0,0));
+		orbitalProperties.setNewOrbitPrimary(new SystemRoot(0,0));
     }
     
     @Override
@@ -128,9 +130,10 @@ public class SolarSystem extends AstronomicalBody {
      */
     public Star placeNewStar(String name, Length radius, Mass mass, Length orbitalRadius, float angleInDegree)
     {
-		BodyProperties properties = new BodyProperties(this, mass, radius, orbitalRadius, angleInDegree);
-        Star newObject = new Star(name, properties);
-        newObject.calculateOrbitalPositionTotal();
+    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, angleInDegree);
+		BodyProperties body = new BodyProperties(mass, radius);
+        Star newObject = new Star(name, orbit, body);
+        newObject.setOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;
 	}
