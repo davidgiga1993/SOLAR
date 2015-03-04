@@ -59,7 +59,7 @@ public class OrbitalProperties
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod(Mass mass) {
-        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().getAsKilogram() + mass.getAsKilogram())) ) / (3600*24));
+        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram() + mass.asKilogram())) ) / (3600*24));
     }
     
     /**
@@ -67,7 +67,7 @@ public class OrbitalProperties
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod() {
-        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().getAsKilogram())) ) / (3600*24));
+        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24));
     }
     
     /**
@@ -203,5 +203,9 @@ public class OrbitalProperties
 		if (orbitPrimary instanceof Asteroid)
 			return ConfigurationConstants.SCALE_FACTOR_ASTEROID;
 		return ConfigurationConstants.SCALE_FACTOR_PLANET;
+	}
+		
+	public AstronomicalBody getPrimary() {
+		return orbitPrimary;
 	}
 }

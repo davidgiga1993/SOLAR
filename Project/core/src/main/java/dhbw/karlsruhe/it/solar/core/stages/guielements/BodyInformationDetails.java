@@ -70,7 +70,7 @@ public class BodyInformationDetails extends InformationDetails {
 
     private void initLabelsDefault(AstronomicalBody body) {
         float radiusFloat = body.getRadius().asKilometres();
-        float massFloat = body.getMass().getAsSolarMass();
+        float massFloat = body.getMass().asSolarMass();
         float orbitalRadiusFloat = body.getOrbitalRadius().asAstronomicalUnit();
         float orbitalPeriodFloat = body.getOrbitalPeriodInDays();
 

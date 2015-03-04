@@ -63,11 +63,20 @@ public class Spacestation extends SpaceUnit
     
 	@Override
     public void setDestination(AstronomicalBody destination) {
-		//TODO: Very rough implementation. More elegant solution, approach AI?
-        enterOrbit(destination);
+		if( isAbleToEnterOrbitAround(destination) )
+		{
+			//TODO: Very rough implementation. More elegant solution: Approach AI?
+	        enterOrbit(destination);
+	        return;
+		}
+        
+    	//TODO: Entferne Debug-konsolenausgabe
+        this.aiModule.setTarget(destination);
+        this.destination = destination.getKinematic().position;
+        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.getName() + " (" + destination.getX() + "/" + destination.getY()  + ").");
    }
     
-    /**
+	/**
      * Actor stops other movement actions and, starting from its current position, assumes a circular orbit around the parameter AstronomicalBody. 
      * @param orbitPrimary Object around which the actor will enter orbit.
      */
@@ -101,7 +110,7 @@ public class Spacestation extends SpaceUnit
 		Vector2 distance = getDistanceVector(orbitPrimary);    	
     	orbitalProperties = new OrbitalProperties(orbitPrimary, getPhysicalLength(orbitPrimary, distance), getAngleToXAxis(distance));
 	}
-
+	
 	/**
 	 * Determines the vector between the space unit and an astronomical body. Actor coordinates reference their lower left corner, therefore the vector calculation first determines the center of the actors.
 	 * @param orbitPrimary Astronomical Body to which the space unit calculates its distance vector.
@@ -110,7 +119,7 @@ public class Spacestation extends SpaceUnit
 	private Vector2 getDistanceVector(AstronomicalBody orbitPrimary) {
 		return new Vector2( orbitPrimary.getX() + orbitPrimary.getWidth()/2, orbitPrimary.getY() + orbitPrimary.getHeight()/2 ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
 	}
-
+	
 	/**
 	 * Determines the actual physical length implied by an in-game vector. Takes the in-game scaling factors for the reference object into account.
 	 * Essentially inverses the steps taken from the initial conversion of system creation AU distance values into the orbitalRadiusInPixel value.
@@ -150,4 +159,29 @@ public class Spacestation extends SpaceUnit
 		currentOrbitScale = orbitalProperties.getOrbitalSpaceUnitScaleFactor().orbitScale;
         actorScale = new SolarActorScale(currentShapeScale, currentOrbitScale);
     }
+	
+	/**
+	 * Checks whether the space unit has approached the target Astronomical Body closely enough to be able to enter orbit around it.
+	 * For this to be possible the astronomical body's gravitational field has to be dominant (i.e. noticeably stronger than that of its own primary body).
+	 * @return
+	 */
+    private boolean  isAbleToEnterOrbitAround(AstronomicalBody destination)
+    {    	  
+		if( gravitationalPotentialOf(destination) > gravitationalPotentialOf(destination.getPrimary()))
+		{
+			return true;			
+		}
+		return false;
+	}
+    
+    /**
+     * Calculates the gravitational potential of the parameter astronomical body at the location of the space unit.
+     * Gravitational Potential in the circular gravitational field of a point mass is: g(r) = - G * M / r² with G - Gravitational Constant, M - Mass of the point mass, r - radius to point mass
+	 * Since this method compares to values relative to each other, this can be reduced to g1(r) = M1 / r², g2(r) = M2 / r²
+     * @param body Point mass source of the circular gravitational field.
+     * @return Value of the gravitational potential.
+     */
+	private float gravitationalPotentialOf(AstronomicalBody body) {
+    	return (float) (body.getMass().asKilogram() / Math.pow(getPhysicalLength(body,getDistanceVector(body)).asKilometres(), 2)); 
+	}
 }

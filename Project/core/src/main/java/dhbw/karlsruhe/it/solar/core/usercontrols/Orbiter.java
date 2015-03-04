@@ -81,8 +81,6 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
         adjustLabelPosition();
 
-		kinematic.position.x = getX()+getOriginX();
-		kinematic.position.y = getY()+getOriginY();
 		kinematic.rotation = orbitalProperties.getOrbitalAngle().inDegrees() + 90f;
 		kinematic.velocity.setAngle(kinematic.rotation);
 	}
@@ -99,7 +97,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      */
     protected void setOrbitalPositionTotal()
     {
-    	this.setPosition(orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, new Angle()) - getWidth() / 2, orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, new Angle()) - getHeight() / 2);
+		kinematic.position.x = orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, new Angle()) - getWidth() / 2;
+		kinematic.position.y = orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, new Angle()) - getHeight() / 2;
+    	this.setPosition(kinematic.position.x, kinematic.position.y);
     }
     
     public Vector2 calculateFuturePosition(float delta) {
@@ -139,5 +139,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
 	public float getOrbitalPeriodInDays() {
 		return orbitalProperties.getOrbitalPeriodInDays();
+	}
+	
+	public AstronomicalBody getPrimary() {
+		return orbitalProperties.getPrimary();
 	}
 }
