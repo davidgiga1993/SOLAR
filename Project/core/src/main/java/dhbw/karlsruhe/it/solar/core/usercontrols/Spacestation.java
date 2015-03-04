@@ -40,15 +40,41 @@ public class Spacestation extends SpaceUnit
         return newStation;
     }
     
+	@Override
+	public void updateScale() {
+		if(null != orbitalProperties)
+		{
+			changeOrbitScaleSpaceUnit();
+		}
+        float width = getWidth() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
+        float height = getHeight() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
+        setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
+        setSize(width, height);
+	}
+	
+    @Override
+    public void act(float delta) {
+		if(null != orbitalProperties)
+		{
+			changeOrbitScaleSpaceUnit();
+		}
+        super.act(delta);
+    }
+    
+	@Override
+    public void setDestination(AstronomicalBody destination) {
+		//TODO: Very rough implementation. More elegant solution, approach AI?
+        enterOrbit(destination);
+   }
+    
+    /**
+     * Actor stops other movement actions and, starting from its current position, assumes a circular orbit around the parameter AstronomicalBody. 
+     * @param orbitPrimary Object around which the actor will enter orbit.
+     */
     public void enterOrbit(AstronomicalBody orbitPrimary)
     {  	
-    	//TODO: Tell the AIModule to fuck off or something like that.
-    	destination = null;
-		Vector2 distance = new Vector2( orbitPrimary.getX() + orbitPrimary.getWidth()/2, orbitPrimary.getY() + orbitPrimary.getHeight()/2 ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
-    	Length orbitalRadius = calculateDistanceInKilometer(distance, new OrbitalProperties(orbitPrimary));     
-    	Angle angle = new Angle(distance.angle() + 180, Angle.Unit.degree);
-    	
-    	orbitalProperties = new OrbitalProperties(orbitPrimary, orbitalRadius, angle);
+    	stopMovement();
+		setNewOrbitalProperties(orbitPrimary);
     	setKinematicValues();
     	changeOrbitScaleSpaceUnit();   	
     	
@@ -58,20 +84,53 @@ public class Spacestation extends SpaceUnit
     }
 
     /**
-     * Turns a in-game distance vector into the corresponding physical value.
-     * Essentially inverses the steps taken from the initial conversion of system creation AU distance values into the orbitalRadiusInPixel value.
-     * @param distance Vector distance to be converted back into a physical value.
-     * @return Result is the corresponding physical distance in kilometer.
+     * Ends all ongoing movement for the space unit.
      */
-	private Length calculateDistanceInKilometer(Vector2 distance, OrbitalProperties newOrbit) {	
-		return new Length (inverseStagescaling(distance.len()) / newOrbit.getOrbitalSpaceUnitScaleFactor().orbitScale, Unit.kilometres);
+	private void stopMovement() {
+		//TODO: Tell the AIModule to fuck off or something like that.
+    	destination = null;
+    	this.aiModule.setTarget(this);
 	}
 
-	@Override
-    public void setDestination(AstronomicalBody destination) {
-		//TODO: Very rough implementation. More elegant solution, approach AI?
-        enterOrbit(destination);
-   }
+    /**
+     * Sets the Orbital Properties of an orbit circling around the parameter AstronomicalBody, starting from the current position of the actor.
+     * @param orbitPrimary Object around which the actor will enter orbit.
+     */
+	private void setNewOrbitalProperties(AstronomicalBody orbitPrimary)
+	{
+		Vector2 distance = getDistanceVector(orbitPrimary);    	
+    	orbitalProperties = new OrbitalProperties(orbitPrimary, getPhysicalLength(orbitPrimary, distance), getAngleToXAxis(distance));
+	}
+
+	/**
+	 * Determines the vector between the space unit and an astronomical body. Actor coordinates reference their lower left corner, therefore the vector calculation first determines the center of the actors.
+	 * @param orbitPrimary Astronomical Body to which the space unit calculates its distance vector.
+	 * @return Distance vector stating the in-game distance between the space unit and the parameter astronomical body.
+	 */
+	private Vector2 getDistanceVector(AstronomicalBody orbitPrimary) {
+		return new Vector2( orbitPrimary.getX() + orbitPrimary.getWidth()/2, orbitPrimary.getY() + orbitPrimary.getHeight()/2 ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
+	}
+
+	/**
+	 * Determines the actual physical length implied by an in-game vector. Takes the in-game scaling factors for the reference object into account.
+	 * Essentially inverses the steps taken from the initial conversion of system creation AU distance values into the orbitalRadiusInPixel value.
+	 * @param orbitPrimary Reference object to which the length is being calculated. Implies the scaling factor which needs to be used.
+	 * @param distance Distance vector stating the in-game distance between the two objects.
+	 * @return Physical length of the distance.
+	 */
+	private Length getPhysicalLength(AstronomicalBody orbitPrimary,
+			Vector2 distance) {
+		return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().orbitScale, Unit.kilometres);
+	}
+
+	/**
+	 * Determines the angle between two positions relative to the x-axis. Used for the orbitalAngle between Astronomical Bodies.
+	 * @param distance Vector containing the position
+	 * @return Angle which has been calculated.
+	 */
+	private Angle getAngleToXAxis(Vector2 distance) {
+		return new Angle(distance.angle() + 180, Angle.Unit.degree);
+	}
     
 	/**
 	 * Sets the orbital radius relative to the parameter scaling setting.
@@ -79,37 +138,16 @@ public class Spacestation extends SpaceUnit
 	 * The method getOrbitalSpaceUnitScaleFactor() determines the appropriate scale setting for the object the unit is trying to orbit.
 	 */
 	private void changeOrbitScaleSpaceUnit() {
-		setOrbitScale(orbitalProperties.getOrbitalSpaceUnitScaleFactor());
+		setOrbitScale();
 		orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
-	}
-	
-	@Override
-	public void updateScale() {
-		if(null != orbitalProperties)
-		{
-			changeOrbitScaleSpaceUnit();
-		}
-        float width = getWidth() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
-        float height = getHeight() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
-        setSize(width, height);
-        setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
 	}
 	
 	/**
 	 * Adjusts only the Orbital Scale, not the Shapescale of the object. Allows Space Units to adjust the scale of their orbits individually.
 	 * @param scale Scale value is derived from the configuration constants of the appropriate satellite to the orbital Primary body.
 	 */
-	private void setOrbitScale(SolarActorScale scale) {
-        actorScale = new SolarActorScale(currentShapeScale, scale.orbitScale);
-        currentOrbitScale = scale.orbitScale;
-    }
-    
-    @Override
-    public void act(float delta) {
-		if(null != orbitalProperties)
-		{
-			changeOrbitScaleSpaceUnit();
-		}
-        super.act(delta);
+	private void setOrbitScale() {
+		currentOrbitScale = orbitalProperties.getOrbitalSpaceUnitScaleFactor().orbitScale;
+        actorScale = new SolarActorScale(currentShapeScale, currentOrbitScale);
     }
 }

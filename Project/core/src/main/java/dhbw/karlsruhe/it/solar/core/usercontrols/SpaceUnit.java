@@ -67,6 +67,34 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
         });
 	}
 	
+    @Override
+    public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
+        libGDXShapeRenderer.identity();
+
+        displaySelectionBox(libGDXShapeRenderer);
+        displayCourseAndDestination(libGDXShapeRenderer);
+        super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
+    }
+    
+    @Override
+    public boolean isOwnedBy(Player player) {
+        return player.equals(owner);
+    }
+
+	@Override
+	public Kinematic getKinematic() {
+        return kinematic;
+	}
+	
+    @Override
+    public void act(float delta) {
+        aiOutput = aiModule.act(delta);
+        setPosition(aiOutput.position.x-getOriginX(), aiOutput.position.y-getOriginY());
+        // TODO: fix rotation offset of space unit... +90Â° necessary atm.
+        setRotation(aiOutput.rotation + 90);
+        super.act(delta);
+    }
+	
     /**
      * The Space Unit object receives a new destination for its course. The old destination is discarded.
      * @param destination Desired destination coordinates
@@ -94,24 +122,12 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
         this.destination = destination.getKinematic().position;
         System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.toString() + ".");
     }
-
-    @Override
-    public boolean isOwnedBy(Player player) {
-        return player.equals(owner);
-    }
-
-	@Override
-	public Kinematic getKinematic() {
-        return kinematic;
-	}
-	
-    @Override
-    public void act(float delta) {
-        aiOutput = aiModule.act(delta);
-        setPosition(aiOutput.position.x-getOriginX(), aiOutput.position.y-getOriginY());
-        // TODO: fix rotation offset of space unit... +90Â° necessary atm.
-        setRotation(aiOutput.rotation + 90);
-        super.act(delta);
+    
+    public void setDestination(AstronomicalBody destination) {
+    	//TODO: Entferne Debug-konsolenausgabe
+        this.aiModule.setTarget(destination);
+        this.destination = destination.getKinematic().position;
+        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.getName() + " (" + destination.getX() + "/" + destination.getY()  + ").");
     }
 	
     /**
@@ -125,15 +141,6 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
         float pHeight = scaleDistanceToStage(height.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
         // call super
         super.setSize(pWidth , pHeight);
-    }
-    
-    @Override
-    public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
-        libGDXShapeRenderer.identity();
-
-        displaySelectionBox(libGDXShapeRenderer);
-        displayCourseAndDestination(libGDXShapeRenderer);
-        super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
     }
 
 	/**
@@ -179,13 +186,6 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
         }
     }
 
-    public void setDestination(AstronomicalBody destination) {
-    	//TODO: Entferne Debug-konsolenausgabe
-        this.aiModule.setTarget(destination);
-        this.destination = destination.getKinematic().position;
-        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.getName() + " (" + destination.getX() + "/" + destination.getY()  + ").");
-    }
-
     /**
      * @return Destination coordinates the spaceship object is heading to
      */
@@ -195,7 +195,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
     }
     
     public void leaveOrbit() {
-        System.out.println(this.getName() + " verlässt ihren Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
+        System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
         this.kinematic = new Kinematic(new Vector2(getX() + getWidth()/2, getY() + getHeight()/2), getRotation(), speed);
 		orbitalProperties = null;
     }
