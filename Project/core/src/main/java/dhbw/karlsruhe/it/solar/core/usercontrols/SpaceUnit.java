@@ -11,7 +11,6 @@ import dhbw.karlsruhe.it.solar.core.ai.AISpaceshipModule;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
-import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.player.Ownable;
@@ -48,10 +47,9 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
 	protected void initSpaceUnit(Length width, Length length) {
 		this.setSize(width, length);
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
-	    
         this.destination = new Vector2(getX(), getY());
-        this.kinematic = new Kinematic(new Vector2(getX()+getOriginX(), getY()+getOriginY()), getRotation(), speed);
-        
+        kinematic.maxSpeed = speed;
+        kinematic.rotation = getRotation();        
         initializeAIModule();
 	}
 
@@ -194,6 +192,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
     public void leaveOrbit() {
 		orbitalProperties = null;
         System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
+        kinematic.maxSpeed = speed;
         aiModule.setPosition(kinematic.position);
     }
 }

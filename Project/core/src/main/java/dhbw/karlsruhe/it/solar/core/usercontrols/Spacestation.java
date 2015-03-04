@@ -63,6 +63,10 @@ public class Spacestation extends SpaceUnit
     
 	@Override
     public void setDestination(AstronomicalBody destination) {
+		if( isAlreadyInOrbitOfBodyOtherThan(destination) )
+		{
+			leaveOrbit();
+		}
 		if( isAbleToEnterOrbitAround(destination) )
 		{
 			//TODO: Very rough implementation. More elegant solution: Approach AI?
@@ -75,7 +79,7 @@ public class Spacestation extends SpaceUnit
         this.destination = destination.getKinematic().position;
         System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.getName() + " (" + destination.getX() + "/" + destination.getY()  + ").");
    }
-    
+
 	/**
      * Actor stops other movement actions and, starting from its current position, assumes a circular orbit around the parameter AstronomicalBody. 
      * @param orbitPrimary Object around which the actor will enter orbit.
@@ -183,5 +187,18 @@ public class Spacestation extends SpaceUnit
      */
 	private float gravitationalPotentialOf(AstronomicalBody body) {
     	return (float) (body.getMass().asKilogram() / Math.pow(getPhysicalLength(body,getDistanceVector(body)).asKilometres(), 2)); 
+	}
+	
+	/**
+	 * Checks whether the space unit is already in orbit around another body and therefore needs to leave that orbit to correctly carry out the movement order.
+	 * @param destination New destination which is being compared with the current orbital primary.
+	 * @return
+	 */
+	private boolean isAlreadyInOrbitOfBodyOtherThan(AstronomicalBody destination) {
+		if(null != orbitalProperties) {
+			if(destination != orbitalProperties.getPrimary())
+				return true;
+		}
+		return false;
 	}
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
@@ -22,27 +23,32 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 {
 	protected OrbitalProperties orbitalProperties;
 	float orbitalRadiusInPixels;
-	protected Kinematic kinematic;	
+	protected final Kinematic kinematic;	
 	
 	public Orbiter(String name)
 	{
-		super(name);
-		this.orbitalProperties = null;
+		this(name, null, ConfigurationConstants.SCALE_FACTOR_STAR);
 	}
 	
 	public Orbiter(String name, OrbitalProperties orbit, SolarActorScale scaleFactor)
 	{
 		super(name);
 		setActorScale(scaleFactor);
-		this.orbitalProperties = orbit;		
-		setKinematicValues();
-		changeOrbitScale();
+		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, 0);
+		this.orbitalProperties = orbit;	
+		if(null != orbitalProperties)
+		{
+			setKinematicValues();
+			changeOrbitScale();
+		}
 	}
 
 	protected void setKinematicValues() {
 		float orbitalSpeed = calculateOrbitalSpeed();
-		this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, orbitalSpeed);
-		this.kinematic.velocity = new Vector2(1,0).scl(orbitalSpeed);
+		kinematic.position = new Vector2(getX() + getWidth()/2, getY() + getHeight()/2);
+		kinematic.rotation = 0;
+		kinematic.velocity = new Vector2(1,0).scl(orbitalSpeed);
+		kinematic.maxSpeed = orbitalSpeed;
 	}
 
 	/**
@@ -97,9 +103,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      */
     protected void setOrbitalPositionTotal()
     {
-		kinematic.position.x = orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, new Angle()) - getWidth() / 2;
-		kinematic.position.y = orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, new Angle()) - getHeight() / 2;
-    	this.setPosition(kinematic.position.x, kinematic.position.y);
+		kinematic.position.x = orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, new Angle());
+		kinematic.position.y = orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, new Angle());
+    	this.setPosition(kinematic.position.x  - getWidth() / 2, kinematic.position.y  - getHeight() / 2);
     }
     
     public Vector2 calculateFuturePosition(float delta) {
