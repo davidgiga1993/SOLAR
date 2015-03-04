@@ -9,14 +9,14 @@ import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InformationBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBar;
-import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBarGUIElement;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.TimeLabel;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialog;
 
 public class GameHUDStage extends BaseGUIStage{
 	
 
     private NavigationBar navigationBar;
-    private ResourceBarGUIElement resourceBar;
+    private TimeLabel resourceBar;
     private InformationBar bottomBar;
 
     private Table guiTable;
@@ -40,10 +40,10 @@ public class GameHUDStage extends BaseGUIStage{
         }
 
         navigationBar = new NavigationBar();
-        resourceBar = new ResourceBarGUIElement(solarEngine.styles.defaultLabelStyle, this);
+        resourceBar = new TimeLabel();
         bottomBar = new InformationBar();
 
-        guiTable.add(resourceBar.resourceBar).align(Align.right).colspan(2).height(50).expandX();
+        guiTable.add(resourceBar).align(Align.right).colspan(2).height(50).expandX();
         guiTable.row();
         int maxHeight = Gdx.graphics.getHeight() - (50+150);
         guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(maxHeight).top().fill();

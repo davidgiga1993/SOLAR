@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -28,6 +29,8 @@ public class GameStartStage extends BaseStage implements Telegraph
 
     public static float gameSpeed = 0f;
     public static float oldGameSpeed = 1f;
+
+    public static Time gameTime = new Time();
 
     protected Player humanPlayer;
     protected Player aiPlayer;
@@ -129,6 +132,7 @@ public class GameStartStage extends BaseStage implements Telegraph
     public void act(float delta) {
     	inputListener.handleContinuousInput(delta);
         delta *= GameStartStage.gameSpeed;
+        gameTime.addDays(delta);
         super.act(delta);
     }
 
