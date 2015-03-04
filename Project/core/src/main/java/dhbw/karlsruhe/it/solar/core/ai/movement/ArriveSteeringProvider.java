@@ -22,7 +22,7 @@ public class ArriveSteeringProvider implements SteeringProvider {
 
 
     @Override
-    public Steering getSteering(Kinematic character) {
+    public Steering getSteering(final Kinematic character) {
         Vector2 direction = new Vector2(target.position).sub(character.position);
         float distance = direction.len();
 

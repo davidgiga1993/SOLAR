@@ -1,8 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.ai.movement;
 
 import com.badlogic.gdx.math.Vector2;
-
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 
 /**
@@ -19,7 +17,7 @@ public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
     }
 
     @Override
-    public Steering getSteering(Kinematic character) {
+    public Steering getSteering(final Kinematic character) {
         // Estimate traveling time:
         // Average Distance is the distance to the center of orbit.
         // Max-Distance = distanceToCenter + radius

@@ -16,7 +16,7 @@ public class PursueSteeringProvider extends ArriveSteeringProvider {
     }
 
     @Override
-    public Steering getSteering(Kinematic character) {
+    public Steering getSteering(final Kinematic character) {
         Vector2 direction = new Vector2(pursueTarget.position).sub(character.position);
         float distance = direction.len();
 

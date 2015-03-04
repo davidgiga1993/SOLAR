@@ -1,11 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.ai;
 
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.*;
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 
 import java.util.ArrayList;
@@ -16,7 +14,7 @@ import java.util.List;
  */
 public class AISpaceshipModule implements AIModule {
 
-    Kinematic kinematic;
+    final Kinematic kinematic;
     AIOutput output;
     SteeringProvider currentSteeringProvider;
 
