@@ -23,10 +23,9 @@ import dhbw.karlsruhe.it.solar.player.Player;
  * SpaceUnit is supposed to define all shared properties of player unit objects such as ships or stations into one superclass
  * derived from SolarActor from which the individual unit subclasses can inherit.
  */
-public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, KinematicObject
+public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
 {
     protected Player owner;
-    protected Kinematic kinematic;
     protected Vector2 destination;
 	protected float speed;
     AIModule aiModule;
@@ -80,18 +79,16 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
     public boolean isOwnedBy(Player player) {
         return player.equals(owner);
     }
-
-	@Override
-	public Kinematic getKinematic() {
-        return kinematic;
-	}
 	
     @Override
     public void act(float delta) {
-        aiOutput = aiModule.act(delta);
-        setPosition(aiOutput.position.x-getOriginX(), aiOutput.position.y-getOriginY());
-        // TODO: fix rotation offset of space unit... +90Â° necessary atm.
-        setRotation(aiOutput.rotation + 90);
+    	if (null == orbitalProperties)
+    	{
+	        aiOutput = aiModule.act(delta);
+	        setPosition(aiOutput.position.x-getOriginX(), aiOutput.position.y-getOriginY());
+	        // TODO: fix rotation offset of space unit... +90Â° necessary atm.
+	        setRotation(aiOutput.rotation + 90);
+    	}
         super.act(delta);
     }
 	
@@ -195,8 +192,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable, Kine
     }
     
     public void leaveOrbit() {
-        System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
-        this.kinematic = new Kinematic(new Vector2(getX() + getWidth()/2, getY() + getHeight()/2), getRotation(), speed);
 		orbitalProperties = null;
+        System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
+        aiModule.setPosition(kinematic.position);
     }
 }

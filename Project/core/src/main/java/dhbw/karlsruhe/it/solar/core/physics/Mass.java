@@ -28,7 +28,7 @@ public class Mass {
         return value;
     }
 
-    public float getAsKilogram() {
+    public float asKilogram() {
         switch (unit) {
             case SOLAR_MASS:
                 return value * SOLAR_MASS_IN_KILOGRAM;
@@ -40,7 +40,7 @@ public class Mass {
         }
     }
 
-    public float getAsEarthMass() {
+    public float asEarthMass() {
         switch(unit) {
 
             case KILOGRAM:
@@ -53,7 +53,7 @@ public class Mass {
         }
     }
 
-    public float getAsSolarMass() {
+    public float asSolarMass() {
         switch(unit) {
             case KILOGRAM:
                 return value / SOLAR_MASS_IN_KILOGRAM;
@@ -66,7 +66,7 @@ public class Mass {
     }
 
     public float getAsGM() {
-        return getAsKilogram() * PhysicalConstants.GRAVITATIONAL_CONSTANT;
+        return asKilogram() * PhysicalConstants.GRAVITATIONAL_CONSTANT;
     }
 
 
