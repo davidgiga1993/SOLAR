@@ -27,6 +27,7 @@ public class GameStartStage extends BaseStage implements Telegraph
     private ShapeRenderer libGDXShapeRenderer = new ShapeRenderer();
 
     public static float gameSpeed = 0f;
+    public static float oldGameSpeed = 1f;
 
     protected Player humanPlayer;
     protected Player aiPlayer;
@@ -228,5 +229,21 @@ public class GameStartStage extends BaseStage implements Telegraph
     @Override
     public boolean handleMessage(Telegram telegram) {
         return false;
+    }
+
+    public static void changeTimeSpeed(float increase) {
+        GameStartStage.gameSpeed += increase;
+        if (GameStartStage.gameSpeed < 0) {
+            GameStartStage.gameSpeed = 0;
+        }
+    }
+
+    public static void togglePause() {
+        if(GameStartStage.gameSpeed == 0) {
+            GameStartStage.gameSpeed = GameStartStage.oldGameSpeed;
+        } else {
+            GameStartStage.oldGameSpeed = GameStartStage.gameSpeed;
+            GameStartStage.gameSpeed = 0;
+        }
     }
 }
