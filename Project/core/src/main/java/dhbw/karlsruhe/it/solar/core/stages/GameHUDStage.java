@@ -9,14 +9,14 @@ import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InformationBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBar;
-import dhbw.karlsruhe.it.solar.core.stages.guielements.TimeLabel;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.TimeTable;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialog;
 
 public class GameHUDStage extends BaseGUIStage{
 	
 
     private NavigationBar navigationBar;
-    private TimeLabel resourceBar;
+    private Table resourceBar;
     private InformationBar bottomBar;
 
     private Table guiTable;
@@ -40,7 +40,7 @@ public class GameHUDStage extends BaseGUIStage{
         }
 
         navigationBar = new NavigationBar();
-        resourceBar = new TimeLabel();
+        resourceBar = new TimeTable();
         bottomBar = new InformationBar();
 
         guiTable.add(resourceBar).align(Align.right).colspan(2).height(50).expandX();

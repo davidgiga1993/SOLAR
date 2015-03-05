@@ -240,6 +240,7 @@ public class GameStartStage extends BaseStage implements Telegraph
         if (GameStartStage.gameSpeed < 0) {
             GameStartStage.gameSpeed = 0;
         }
+        GameStartStage.gameSpeed = (float) Math.round(GameStartStage.gameSpeed * 10)/10;
     }
 
     public static void togglePause() {

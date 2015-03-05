@@ -22,7 +22,7 @@ public class Time {
 
     @Override
     public String toString() {
-        return "Date: " +  cal.get(GregorianCalendar.DATE) + "." + (cal.get(GregorianCalendar.MONTH)+1) + "." + cal.get(GregorianCalendar.YEAR);
+        return cal.get(GregorianCalendar.DATE) + "." + (cal.get(GregorianCalendar.MONTH)+1) + "." + cal.get(GregorianCalendar.YEAR);
         //return String.valueOf((int) currentDay);
     }
 }
