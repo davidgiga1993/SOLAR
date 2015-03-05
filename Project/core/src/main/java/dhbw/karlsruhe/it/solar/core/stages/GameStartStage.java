@@ -99,8 +99,8 @@ public class GameStartStage extends BaseStage implements Telegraph
         placeNewShip("Destiny", new Vector2(1550, 1050), aiPlayer);
         placeNewStation("Deep Space Nine", new Vector2(1500, 0), humanPlayer);
         
-        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-659.06335f, 1655.2389f), aiPlayer);
-        AstronomicalBody primary = solarSystem.findSatelliteByName("Jupiter");
+        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-280f,-403f), aiPlayer);
+        AstronomicalBody primary = solarSystem.findSatelliteByName("Earth");
         if (null != primary) {
             babylon.enterOrbit(primary);       	
         }

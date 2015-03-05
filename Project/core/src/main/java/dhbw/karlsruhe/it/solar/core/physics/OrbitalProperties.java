@@ -160,8 +160,9 @@ public class OrbitalProperties
 	
 	/**
 	 * Part of the calculateOrbitalPositionTotal method, calculates the X-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
-     * @param orbitalAngle current angle
-	 * @return current X-axis position of the body
+	 * @param orbitalRadiusInPixels In-Game radius of the body caused by scaling.
+	 * @param deltaAlpha Additional change in orbital angle which will be taken into account during the calculation.
+	 * @return X-axis position of the body.
 	 */
 	public float calculateOrbitalPositionX(float orbitalRadiusInPixels, Angle deltaAlpha) {
 		return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels);
