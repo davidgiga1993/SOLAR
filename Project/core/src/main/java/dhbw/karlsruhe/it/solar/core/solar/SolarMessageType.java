@@ -7,6 +7,7 @@ public class SolarMessageType {
 
     public static final int NEW_ACTOR_ADDED = 1;
     public static final int PLAYER_SELECTION_CHANGED = 2;
+    public static final int GAME_SPEED_CHANGED = 3;
 
 
     private SolarMessageType() {}

@@ -236,11 +236,17 @@ public class GameStartStage extends BaseStage implements Telegraph
     }
 
     public static void changeTimeSpeed(float increase) {
-        GameStartStage.gameSpeed += increase;
-        if (GameStartStage.gameSpeed < 0) {
-            GameStartStage.gameSpeed = 0;
+        float newSpeed = GameStartStage.gameSpeed + increase;
+        if (newSpeed < 0) {
+            newSpeed = 0;
         }
-        GameStartStage.gameSpeed = (float) Math.round(GameStartStage.gameSpeed * 10)/10;
+        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10)/10;
+        SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
+    }
+
+    public static void setTimeSpeed(float newSpeed) {
+        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10)/10;
+        SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED,new Float(GameStartStage.gameSpeed));
     }
 
     public static void togglePause() {
@@ -250,5 +256,6 @@ public class GameStartStage extends BaseStage implements Telegraph
             GameStartStage.oldGameSpeed = GameStartStage.gameSpeed;
             GameStartStage.gameSpeed = 0;
         }
+        SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
     }
 }
