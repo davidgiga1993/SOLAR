@@ -106,4 +106,8 @@ public abstract class AstronomicalBody extends Orbiter
 	public Mass getMass() {
 		return physicalProperties.getMass();
 	}
+
+	public Length calculateMaxOrbitalRadius() {
+			return orbitalProperties.calculateMaxOrbitalRadius(physicalProperties.getMass());
+	}
 }

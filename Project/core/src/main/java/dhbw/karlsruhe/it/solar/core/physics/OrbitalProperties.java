@@ -209,4 +209,28 @@ public class OrbitalProperties
 	public AstronomicalBody getPrimary() {
 		return orbitPrimary;
 	}
+	
+    /**
+     * Calculates the maximum possible orbital radius for a valid orbit around the target astronomical body.
+     * This max radius is derived from the Hill sphere formula. An astronomical body's Hill sphere is the region in which it dominates the attraction of satellites. 
+     * This Hill sphere radius is approximately: r = R * CubicRoot( m / 3M ) with R-distance between two objects, m - smaller Mass, M - heavier Mass
+     * @param massOfSatellite Mass of the body for which the hill radius is supposed to be calculated.
+     * @return Distance value of the maximum orbital radius in physical units.
+     */
+	public Length calculateMaxOrbitalRadius(Mass massOfSatellite)
+	{
+		return new Length(orbitalRadius.asKilometres() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.Unit.kilometres);
+	}
+	
+	
+    /**
+     * Calculates the gravitational potential of the parameter astronomical body at the location of the space unit.
+     * Gravitational Potential in the circular gravitational field of a point mass is: g(r) = - G * M / r² with G - Gravitational Constant, M - Mass of the point mass, r - radius to point mass
+	 * Since this method compares to values relative to each other, this can be reduced to g1(r) = M1 / r², g2(r) = M2 / r²
+     * @param mass Mass of the circular gravitational field.
+     * @return Value of the gravitational potential.
+     */
+	public float gravitationalPotential(Mass mass, Length radius) {
+    	return (float) (mass.asKilogram() / Math.pow(radius.asKilometres(), 2)); 
+	}
 }

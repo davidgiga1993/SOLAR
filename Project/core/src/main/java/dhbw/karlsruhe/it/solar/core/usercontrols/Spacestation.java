@@ -171,22 +171,19 @@ public class Spacestation extends SpaceUnit
 	 */
     private boolean  isAbleToEnterOrbitAround(AstronomicalBody destination)
     {    	  
-		if( gravitationalPotentialOf(destination) > gravitationalPotentialOf(destination.getPrimary()))
+		if( maxOrbitalRadiusFor(destination).asKilometres() > physicalDistanceTo(destination).asKilometres() )
 		{
 			return true;			
 		}
 		return false;
 	}
-    
-    /**
-     * Calculates the gravitational potential of the parameter astronomical body at the location of the space unit.
-     * Gravitational Potential in the circular gravitational field of a point mass is: g(r) = - G * M / r² with G - Gravitational Constant, M - Mass of the point mass, r - radius to point mass
-	 * Since this method compares to values relative to each other, this can be reduced to g1(r) = M1 / r², g2(r) = M2 / r²
-     * @param body Point mass source of the circular gravitational field.
-     * @return Value of the gravitational potential.
-     */
-	private float gravitationalPotentialOf(AstronomicalBody body) {
-    	return (float) (body.getMass().asKilogram() / Math.pow(getPhysicalLength(body,getDistanceVector(body)).asKilometres(), 2)); 
+
+	private Length physicalDistanceTo(AstronomicalBody destination) {
+		return getPhysicalLength(destination, getDistanceVector(destination));
+	}
+
+	private Length maxOrbitalRadiusFor(AstronomicalBody destination) {
+		return destination.calculateMaxOrbitalRadius();
 	}
 	
 	/**
