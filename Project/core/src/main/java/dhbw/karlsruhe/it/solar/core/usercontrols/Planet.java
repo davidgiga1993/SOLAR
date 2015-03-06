@@ -1,13 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
-
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 /**
@@ -17,12 +14,15 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 public class Planet extends AstronomicalBody
 {
 
+    protected PreviewActor preview;
+
 	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary, PlanetType type) {
 		this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius), type);
 	}
 
 	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
 		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
+        preview = new PreviewActor(this, getWidth(), 5.5f);
 	}
 
 	private static String getTextureNameForPlanetType(PlanetType type)
@@ -55,9 +55,9 @@ public class Planet extends AstronomicalBody
     /**
      * Adds a new moon with the specified parameters as a satellite orbiting the planet.
      * @param name Desired name of the Moon
-     * @param radius Desired radius of the Moon
+     * @param radius Desired relativeRadius of the Moon
      * @param mass Desired mass of the planet in multiples of Earth Masses
-     * @param orbitalRadius Desired orbital radius around the planet in kilometers
+     * @param orbitalRadius Desired orbital relativeRadius around the planet in kilometers
      * @param orbitalAngle Desired angle of the moon's position on the map of the system relative to its planet
      * @return created Moon object
      */
@@ -79,7 +79,15 @@ public class Planet extends AstronomicalBody
 
 	}
 
-	public enum PlanetType {
+    @Override
+    public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
+        if(SolarEngine.get().camera.zoom > 5.5) {
+            preview.drawLines(libGDXShapeRenderer, solarShapeRenderer);
+        }
+        super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
+    }
+
+    public enum PlanetType {
 		MERCURIAN,
 		VENUSIAN,
 		TERRAN,
