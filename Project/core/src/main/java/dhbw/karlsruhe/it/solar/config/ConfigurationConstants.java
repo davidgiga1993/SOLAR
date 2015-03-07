@@ -6,7 +6,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 public final class ConfigurationConstants {
 
 	public static final int SCREENWIDTH = 800;
-	public static final int SCREENHEIGHT = 600;
+	public static final int SCREENHEIGHT = 600 ;
 
 	public static final SolarActorScale SCALE_FACTOR_PLANET = new SolarActorScale(1, 0.05f);
 	public static final SolarActorScale SCALE_FACTOR_STAR = new SolarActorScale(1, 1);
