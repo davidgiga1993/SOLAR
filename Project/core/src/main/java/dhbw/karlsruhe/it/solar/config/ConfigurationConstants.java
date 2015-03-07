@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.config;
 
 
-import dhbw.karlsruhe.it.solar.core.usercontrols.LinkedSolarActorScale;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 
 public final class ConfigurationConstants {
@@ -11,7 +10,7 @@ public final class ConfigurationConstants {
 
 	public static final SolarActorScale SCALE_FACTOR_PLANET = new SolarActorScale(1, 0.05f);
 	public static final SolarActorScale SCALE_FACTOR_STAR = new SolarActorScale(1, 1);
-	public static final SolarActorScale SCALE_FACTOR_MOON = new LinkedSolarActorScale(10, 1f, null, SCALE_FACTOR_PLANET);
+	public static final SolarActorScale SCALE_FACTOR_MOON = new SolarActorScale(10, 1f);
 	public static final SolarActorScale SCALE_FACTOR_ASTEROID = new SolarActorScale(1, 0.05f);
 	public static final SolarActorScale SCALE_FACTOR_UNITS = new SolarActorScale(4000000,1);
 	public static final boolean SCALE_DIALOG_ENABLED = true;
