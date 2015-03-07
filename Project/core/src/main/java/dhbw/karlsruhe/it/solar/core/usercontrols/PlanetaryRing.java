@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
@@ -17,6 +19,8 @@ public class PlanetaryRing extends AstronomicalBody {
 	
 	public PlanetaryRing(AstronomicalBody orbitPrimary, Mass mass, Length radius, RingType type) {
 		super(nameOfRings(orbitPrimary), orbitOfRings(orbitPrimary, radius), bodyOfRings(mass, radius), scaleOfRings(), textureOfRings(type));
+		label.hide();
+		this.setTouchable(Touchable.disabled);
 	}
 
 	@Override

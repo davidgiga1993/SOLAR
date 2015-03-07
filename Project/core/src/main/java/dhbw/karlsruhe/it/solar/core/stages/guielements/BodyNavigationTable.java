@@ -2,9 +2,11 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
 
 import java.util.ArrayList;
@@ -42,6 +44,10 @@ public class BodyNavigationTable extends BaseNavigationTable {
         }
 
         for (AstronomicalBody child : group) {
+        	if(child instanceof PlanetaryRing)
+        	{
+        		continue;
+        	}
             // Process current level
             BodyNavigationLabel label = new BodyNavigationLabel(child.getName(), tab, child, this);
             allLabels.add(label);

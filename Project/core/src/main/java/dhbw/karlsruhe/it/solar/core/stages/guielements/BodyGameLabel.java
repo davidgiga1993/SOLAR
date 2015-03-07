@@ -28,4 +28,8 @@ public class BodyGameLabel extends Label {
     public boolean isVisible() {
         return super.isVisible() && gameCamera.zoom < threshold;
     }
+
+	public void hide() {
+		this.setVisible(false);
+	}
 }
