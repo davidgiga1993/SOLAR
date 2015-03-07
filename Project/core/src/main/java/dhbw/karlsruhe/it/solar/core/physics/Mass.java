@@ -75,4 +75,21 @@ public class Mass {
         SOLAR_MASS,
         EARTH_MASS,
     }
+
+
+	public void addMass(Mass massToBeAddedToTheBody) {
+        switch(unit) {
+        case KILOGRAM:
+            value += massToBeAddedToTheBody.asKilogram();
+            break;
+        case SOLAR_MASS:
+            value += massToBeAddedToTheBody.asSolarMass();
+            break;
+        case EARTH_MASS:
+            value += massToBeAddedToTheBody.asEarthMass();
+            break;
+        default:
+            break;
+    }		
+	}
 }

@@ -9,6 +9,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
 
 public class OrbitalProperties
@@ -219,6 +220,10 @@ public class OrbitalProperties
      */
 	public Length calculateMaxOrbitalRadius(Mass massOfSatellite)
 	{
+		if (orbitPrimary instanceof SolarSystem && orbitPrimary.getMass().asSolarMass() == massOfSatellite.asSolarMass())
+		{
+			return new Length(1, Length.Unit.lightYear);
+		}
 		return new Length(orbitalRadius.asKilometres() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.Unit.kilometres);
 	}
 	

@@ -25,7 +25,7 @@ public abstract class AstronomicalBody extends Orbiter
 
 	public AstronomicalBody(String name)
 	{
-		super(name, new OrbitalProperties(new Mass(1, Mass.Unit.KILOGRAM), null, new Length(1, Length.Unit.kilometres), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
+		super(name, new OrbitalProperties(new Mass(0, Mass.Unit.KILOGRAM), null, new Length(0, Length.Unit.kilometres), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
 		this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres));
 	}
 
@@ -109,5 +109,9 @@ public abstract class AstronomicalBody extends Orbiter
 
 	public Length calculateMaxOrbitalRadius() {
 			return orbitalProperties.calculateMaxOrbitalRadius(physicalProperties.getMass());
+	}
+	
+	protected void addMass(Mass massToBeAddedToTheBody) {
+		physicalProperties.addMass(massToBeAddedToTheBody);
 	}
 }

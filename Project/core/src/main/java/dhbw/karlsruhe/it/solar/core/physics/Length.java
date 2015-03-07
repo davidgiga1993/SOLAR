@@ -43,6 +43,8 @@ public class Length {
                 return value * LUNAR_DISTANCE_IN_KILOMETRES;
             case astronomicalUnit:
                 return value * ASTRONOMICAL_UNIT_IN_KILOMETRES;
+            case lightYear:
+            	return value * LIGHT_YEARS_IN_ASTRONOMICAL_UNITS * ASTRONOMICAL_UNIT_IN_KILOMETRES;
             default:
                 return Float.NaN;
         }

@@ -171,7 +171,7 @@ public class Spacestation extends SpaceUnit
 	 */
     private boolean  isAbleToEnterOrbitAround(AstronomicalBody destination)
     {    	  
-		if( maxOrbitalRadiusFor(destination).asKilometres() > physicalDistanceTo(destination).asKilometres() )
+		if( maxOrbitalRadiusFor(destination).asAstronomicalUnit() > physicalDistanceTo(destination).asAstronomicalUnit() )
 		{
 			return true;			
 		}

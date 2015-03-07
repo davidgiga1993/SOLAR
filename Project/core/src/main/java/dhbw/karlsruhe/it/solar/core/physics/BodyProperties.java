@@ -21,5 +21,10 @@ public class BodyProperties
     public Length getRadius()
     {
     	return radius;
-    } 
+    }
+
+	public void addMass(Mass massToBeAddedToTheBody) {
+		mass.addMass(massToBeAddedToTheBody);
+		
+	} 
 }
