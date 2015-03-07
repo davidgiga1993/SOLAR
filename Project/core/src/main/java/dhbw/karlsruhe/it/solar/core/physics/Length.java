@@ -9,6 +9,7 @@ public class Length {
 
     public static final int LUNAR_DISTANCE_IN_KILOMETRES = 384400;
     public static final float ASTRONOMICAL_UNIT_IN_KILOMETRES = 149597870.7f;
+    public static final float LIGHT_YEAR_IN_KILOMETERS = (float) (9.4605284*Math.pow(10,12));
     public static final float ASTRONOMICAL_UNIT_IN_LUNAR_DISTANCES = 389.17240036f;
     public static final float LIGHT_YEAR_IN_LUNAR_DISTANCES = 24611681.77050156f;
     public static final float PARSEC_IN_LUNAR_DISTANCES = 80272569.66167685f;
@@ -44,7 +45,7 @@ public class Length {
             case astronomicalUnit:
                 return value * ASTRONOMICAL_UNIT_IN_KILOMETRES;
             case lightYear:
-            	return value * LIGHT_YEARS_IN_ASTRONOMICAL_UNITS * ASTRONOMICAL_UNIT_IN_KILOMETRES;
+            	return value * LIGHT_YEAR_IN_KILOMETERS;
             default:
                 return Float.NaN;
         }
@@ -86,6 +87,8 @@ public class Length {
 
     public float asLightYear() {
         switch (unit) {
+        	case kilometres:
+        		return value / LIGHT_YEAR_IN_KILOMETERS;
             case lunarDistance:
                 return value / LIGHT_YEAR_IN_LUNAR_DISTANCES;
             case astronomicalUnit:

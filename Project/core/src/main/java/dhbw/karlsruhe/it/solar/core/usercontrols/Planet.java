@@ -42,7 +42,7 @@ public class Planet extends AstronomicalBody
 			case NEPTUNIAN:
 				return "Neptunian";
 			case SATURNIAN:
-				return "RingedClassIGasGiant";
+				return "Saturn";
 			case URANIAN:
 				return "Uranian";
 			case TERRAN:

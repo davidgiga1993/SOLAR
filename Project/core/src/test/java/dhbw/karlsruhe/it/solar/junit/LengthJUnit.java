@@ -35,7 +35,7 @@ public class LengthJUnit {
         assertEquals(1, km.asKilometres(), 0.00001f);
         assertEquals(384400, ld.asKilometres(), 0.00001f);
         assertEquals(149597870.7f, au.asKilometres(), 0.00001f);
-        assertEquals(Float.NaN, ly.asKilometres(), 0.00001);
+        assertEquals((float)(9.4605284*Math.pow(10,12)), ly.asKilometres(), 0.00001);
         assertEquals(Float.NaN, pc.asKilometres(), 0.00001);
 
         Length reallyBig = new Length(100000000000000000f, Length.Unit.astronomicalUnit);
