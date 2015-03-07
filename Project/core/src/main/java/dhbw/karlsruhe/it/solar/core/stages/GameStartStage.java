@@ -126,6 +126,7 @@ public class GameStartStage extends BaseStage implements Telegraph
     public void dispose() {
         super.dispose();
         solarShapeRenderer.dispose();
+        libGDXShapeRenderer.dispose();
     }
 
     @Override

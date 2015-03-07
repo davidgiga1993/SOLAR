@@ -18,13 +18,14 @@ import java.text.DecimalFormat;
 public class Spacestation extends SpaceUnit
 {
 	private static float stationSpeed = 500f;
+	private static final Color SPACESTATION_ORBIT_COLOR = new Color(0, 0.5f, 0, 1);
 
 	public Spacestation(String name, Length width, Length length, Player owner)
 	{
 		super(name, owner,stationSpeed);
 	    setupSolarActorSprite("space_station");  
         initSpaceUnit(width, length);
-		orbitColor = Color.GREEN;
+		orbitColor = SPACESTATION_ORBIT_COLOR;
 	}
 	
     /**

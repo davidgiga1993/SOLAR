@@ -14,6 +14,7 @@ public class PreviewActor implements ShapeRenderable {
     protected SolarActor parent;
     protected OrthographicCamera camera = SolarEngine.get().camera;
     protected float zoomLevel;
+    protected float maxQuota;
 
     private float absoluteRadius;
 
@@ -22,11 +23,13 @@ public class PreviewActor implements ShapeRenderable {
     public PreviewActor(SolarActor parent, float relativeRadius, float zoomLevel) {
         this.parent = parent;
         this.zoomLevel = zoomLevel;
+        this.maxQuota = 155 / zoomLevel;
     }
 
     @Override
     public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
-        float zoomQuota = camera.zoom / zoomLevel ;
+        float zoomQuota = camera.zoom / zoomLevel;
+        zoomQuota = Math.min(zoomQuota, maxQuota);
 
         absoluteRadius = relativeRadius * zoomQuota;
         float absoluteWidth = absoluteRadius * 2;
