@@ -21,6 +21,6 @@ public class OrbitScaleSlider extends ScaleSlider{
 
     @Override
     protected void updateScale(float value) {
-        scale.orbitScale = value;
+        scale.set(scale.shapeScale, value);
     }
 }

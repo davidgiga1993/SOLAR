@@ -1,13 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 /**
@@ -93,4 +90,11 @@ public class PlanetaryRing extends AstronomicalBody {
 		}
 	}
 
+	@Override
+	public boolean handleMessage(Telegram telegram) {
+		if (telegram.message == SolarMessageType.GAME_SCALE_CHANGED && telegram.sender.equals(actorScale) || telegram.sender.equals(ConfigurationConstants.SCALE_FACTOR_MOON)) {
+			updateScale();
+		}
+		return false;
+	}
 }

@@ -1,17 +1,20 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 /**
  * @author Andi
  */
-public abstract class SolarActor extends Actor {
+public abstract class SolarActor extends Actor implements Telegraph {
 
     protected boolean selected;
     protected TextureRegion solarActorTexture;
@@ -25,6 +28,7 @@ public abstract class SolarActor extends Actor {
 
     public SolarActor(String name) {
         this.setName(name);
+        SolarEngine.messageDispatcher.addListener(this, SolarMessageType.GAME_SCALE_CHANGED);
     }
 
     @Override
@@ -132,5 +136,13 @@ public abstract class SolarActor extends Actor {
     {
         solarActorSprite.setPosition(getX(), getY());
         solarActorSprite.draw(batch);
-    } 
+    }
+
+    @Override
+    public boolean handleMessage(Telegram telegram) {
+        if (telegram.message == SolarMessageType.GAME_SCALE_CHANGED && telegram.sender.equals(actorScale)) {
+            updateScale();
+        }
+        return false;
+    }
 }
