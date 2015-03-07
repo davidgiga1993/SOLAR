@@ -16,7 +16,7 @@ public class Star extends AstronomicalBody
     private static final String TEXTURE_NAME = "GTypeMainSequence";
 
     public Star(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary) {
-        this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius));
+        this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius, null));
     }
 
     public Star(String name, OrbitalProperties orbit, BodyProperties body) {
@@ -32,11 +32,15 @@ public class Star extends AstronomicalBody
      * @param orbitalAngle Desired angle of the planet's position on the map of the system relative to its star
      * @return created Planet object
      */
-    public Planet placeNewPlanet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Planet.PlanetType type)
+    public Planet placeNewPlanet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Planet.PlanetType type, boolean planetaryRings, Mass massRings, Length radiusRings, PlanetaryRing.RingType ringType)
     {
     	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, orbitalAngle);
-		BodyProperties body = new BodyProperties(mass, radius);
+		BodyProperties body = new BodyProperties(mass, radius, null);
         Planet newObject = new Planet(name, orbit, body, type);
+        if(planetaryRings)
+        {
+        newObject.setUpRings(new PlanetaryRing(newObject, massRings, radiusRings, ringType));
+        }
         newObject.setOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;

@@ -26,7 +26,7 @@ public abstract class AstronomicalBody extends Orbiter
 	public AstronomicalBody(String name)
 	{
 		super(name, new OrbitalProperties(new Mass(0, Mass.Unit.KILOGRAM), null, new Length(0, Length.Unit.kilometres), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
-		this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres));
+		this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres), null);
 	}
 
 	public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)
@@ -88,6 +88,12 @@ public abstract class AstronomicalBody extends Orbiter
             label.setPosition(labelPos.x, labelPos.y);
         }
 	}
+    
+    protected void setUpRings(PlanetaryRing ring)
+    {
+    	physicalProperties.setUpRings(ring);
+    	satellites.add(physicalProperties.getRings());
+    }
 
 	public List<AstronomicalBody> getSatellites()
 	{

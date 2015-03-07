@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -17,7 +18,7 @@ public class Planet extends AstronomicalBody
     protected PreviewActor preview;
 
 	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary, PlanetType type) {
-		this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius), type);
+		this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius, null), type);
 	}
 
 	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
@@ -61,11 +62,15 @@ public class Planet extends AstronomicalBody
      * @param orbitalAngle Desired angle of the moon's position on the map of the system relative to its planet
      * @return created Moon object
      */
-    public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Moon.MoonType type)
+    public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Moon.MoonType type, boolean planetaryRings, Mass massRings, Length radiusRings, PlanetaryRing.RingType ringType)
     {
     	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, orbitalAngle);
-		BodyProperties body = new BodyProperties(mass, radius);
+		BodyProperties body = new BodyProperties(mass, radius, null);
         Moon newObject = new Moon(name, orbit, body, type);
+        if(planetaryRings)
+        {
+        newObject.setUpRings(new PlanetaryRing(newObject, massRings, radiusRings, ringType));
+        }
         newObject.setOrbitalPositionTotal();
         satellites.add(newObject);
         return newObject;

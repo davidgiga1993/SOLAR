@@ -8,8 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Array;
+
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUILabel;
+import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 
@@ -73,6 +76,10 @@ public abstract class ScaleSlider extends WidgetGroup {
         for (Actor a : SolarEngine.get().stageManager.getStage("GameStartStage").getActors()) {
             if (solarActorType.isInstance(a)) {
                 ((SolarActor) (a)).updateScale();
+            }
+            if (a instanceof PlanetaryRing)
+            {
+            	((SolarActor) a).updateScale();
             }
         }
     }

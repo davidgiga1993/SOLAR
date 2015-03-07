@@ -118,22 +118,12 @@ public class OrbitalProperties
     
 	public float getPrimaryX()
 	{
-		return orbitPrimary.getX();
+		return orbitPrimary.getX()  + orbitPrimary.getWidth() / 2;
 	}  
 	
 	public float getPrimaryY()
 	{
-		return orbitPrimary.getY();
-	}
-	
-	public float getPrimaryWidth()
-	{
-		return orbitPrimary.getWidth();
-	}
-    
-	public float getPrimaryHeight()
-	{
-		return orbitPrimary.getHeight();
+		return orbitPrimary.getY()  + orbitPrimary.getHeight() / 2;
 	}
 
 	public void setNewOrbitPrimary(AstronomicalBody body) {
@@ -144,15 +134,14 @@ public class OrbitalProperties
 	 * @return Calculates the X-axis point around which the astronomical body orbits based on its Origin attribute.
 	 */
 	public float calculateCenterOfOrbitX() {
-		return getPrimaryX() + getPrimaryWidth() / 2;
+		return getPrimaryX();
 	}
 	
 	/**
 	 * @return Calculates the Y-axis point around which the astronomical body orbits based on its Origin attribute.
 	 */
 	public float calculateCenterOfOrbitY() {
-		// Position ist immer relativ zum linken unteren Rand. Koordinaten sind angepasst, damit die eingehenden Koordinaten den Kreismittelpunkt referenzieren
-		return getPrimaryY() + getPrimaryHeight() / 2;
+		return getPrimaryY();
 	}
 	
 	public Angle getPeriodicConstant() {

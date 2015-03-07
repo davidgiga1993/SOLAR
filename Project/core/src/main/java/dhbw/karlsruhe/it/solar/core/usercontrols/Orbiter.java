@@ -81,7 +81,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 		}
 	}
 
-	private void actOrbitalMovement(float delta) {
+	protected void actOrbitalMovement(float delta) {
 		orbitalProperties.updateOrbitalAngle(delta);
 		setOrbitalPositionTotal();
 
