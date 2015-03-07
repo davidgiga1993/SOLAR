@@ -1,15 +1,15 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import java.text.DecimalFormat;
-
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Length.Unit;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.player.Player;
+
+import java.text.DecimalFormat;
 
 /**
  * Code for the space station unit object
@@ -24,6 +24,7 @@ public class Spacestation extends SpaceUnit
 		super(name, owner,stationSpeed);
 	    setupSolarActorSprite("space_station");  
         initSpaceUnit(width, length);
+		orbitColor = Color.GREEN;
 	}
 	
     /**

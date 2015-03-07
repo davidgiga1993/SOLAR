@@ -1,8 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -24,6 +22,7 @@ public class Planet extends AstronomicalBody
 	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
 		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
         preview = new PreviewActor(this, getWidth(), 5.5f);
+		this.segments = 2000;
 	}
 
 	private static String getTextureNameForPlanetType(PlanetType type)
@@ -75,14 +74,6 @@ public class Planet extends AstronomicalBody
         satellites.add(newObject);
         return newObject;
     }
-
-	@Override
-	protected void displayOrbit(SolarShapeRenderer shapeRenderer)
-	{
-		shapeRenderer.setColor(Color.TEAL);
-		shapeRenderer.orbit(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), orbitalRadiusInPixels, 2000);
-
-	}
 
     @Override
     public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {

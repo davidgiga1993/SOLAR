@@ -1,11 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.graphics.Color;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.*;
 
 /**
  * @author Andi
@@ -20,6 +17,7 @@ public class Moon extends AstronomicalBody
 	public Moon(String name, OrbitalProperties orbit, BodyProperties body, MoonType type) {
 		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
 		label.setThreshold(0.4f);
+		this.orbitColor = Color.GRAY;
 	}
 
 	private static String getTextureNameForMoonType(MoonType type)
