@@ -21,6 +21,7 @@ public class PlanetaryRing extends AstronomicalBody {
 		super(nameOfRings(orbitPrimary), orbitOfRings(orbitPrimary, radius), bodyOfRings(mass, radius), scaleOfRings(), textureOfRings(type));
 		label.hide();
 		this.setTouchable(Touchable.disabled);
+		updateScale();
 	}
 
 	@Override
@@ -40,6 +41,15 @@ public class PlanetaryRing extends AstronomicalBody {
 
 		kinematic.rotation = orbitalProperties.getOrbitalAngle().inDegrees() + 90f;
 		kinematic.velocity.setAngle(kinematic.rotation);
+	}
+	
+	@Override
+	public void updateScale() {
+		SolarActorScale scale = new SolarActorScale(ConfigurationConstants.SCALE_FACTOR_MOON.orbitScale, ConfigurationConstants.SCALE_FACTOR_MOON.orbitScale);
+        float width = getWidth() / currentShapeScale * scale.shapeScale;
+        float height = getHeight() / currentShapeScale * scale.shapeScale;
+        setActorScale(scale);
+        setSize(width, height);
 	}
 
 	private static SolarActorScale scaleOfRings() {
