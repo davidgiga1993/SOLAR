@@ -13,16 +13,16 @@ public class Planet extends AstronomicalBody
 {
 	private AstronomicalBody outermostMoon;
 
-	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
-		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
+	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType planet) {
+		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureFromTypeOf(planet));
 
 		this.segments = 2000;
 		preview.color = Color.TEAL;
 	}
 
-	private static String getTextureNameForPlanetType(PlanetType type)
+	private static String getTextureFromTypeOf(PlanetType planet)
 	{
-		switch(type)
+		switch(planet)
 		{
 			case MARTIAN:
 				return "Martian";
@@ -46,31 +46,6 @@ public class Planet extends AstronomicalBody
 				return "DwarfPlanet";
 		}
 	}
-
-    /**
-     * Adds a new moon with the specified parameters as a satellite orbiting the planet.
-     * @param name Desired name of the Moon
-     * @param radius Desired relativeRadius of the Moon
-     * @param mass Desired mass of the planet in multiples of Earth Masses
-     * @param orbitalRadius Desired orbital relativeRadius around the planet in kilometers
-     * @param orbitalAngle Desired angle of the moon's position on the map of the system relative to its planet
-     * @return created Moon object
-     */
-    public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Moon.MoonType type, boolean planetaryRings, Mass massRings, Length radiusRings, PlanetaryRing.RingType ringType)
-    {
-    	OrbitalProperties orbit = new OrbitalProperties(this, orbitalRadius, orbitalAngle);
-		BodyProperties body = new BodyProperties(mass, radius, null);
-        Moon newObject = new Moon(name, orbit, body, type);
-        if(planetaryRings) {
-        	newObject.setUpRings(new PlanetaryRing(newObject, massRings, radiusRings, ringType));
-        }
-        newObject.setOrbitalPositionTotal();
-        satellites.add(newObject);
-		if(outermostMoon == null || outermostMoon.orbitalProperties.getOrbitalRadius().asKilometres() < orbitalRadius.asKilometres()) {
-			outermostMoon = newObject;
-		}
-        return newObject;
-    }
 
 	@Override
 	public void addSatellite(AstronomicalBody newSatellite) {

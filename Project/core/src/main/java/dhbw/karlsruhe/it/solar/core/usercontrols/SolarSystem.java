@@ -54,7 +54,7 @@ public class SolarSystem extends AstronomicalBody {
     	Star star;
     	Planet planet;
 
-    	star = CreateAstronomicalBody.named("Sun").withOrbitalProperties(this, new Length(0, Length.Unit.kilometres), new Angle(0)).andBodyProperties(new Length(1392684f/2, Length.Unit.kilometres), new Mass(1, Mass.Unit.SOLAR_MASS)).buildAs(StarType.GTypeMainSequence, this);
+    	star = CreateAstronomicalBody.named("Sun").withOrbitalProperties(this).andBodyProperties(new Length(1392684f/2, Length.Unit.kilometres), new Mass(1, Mass.Unit.SOLAR_MASS)).buildAs(StarType.GTypeMainSequence, this);
     		CreateAstronomicalBody.named("Mercury").withOrbitalProperties(star, new Length(0.38709893f, Length.Unit.astronomicalUnit), new Angle(170)).andBodyProperties(new Length(4879.4f/2, Length.Unit.kilometres), new Mass(0.055f, Mass.Unit.EARTH_MASS)).buildAs(PlanetType.MERCURIAN, this);
     		CreateAstronomicalBody.named("Venus").withOrbitalProperties(star, new Length(0.72333199f, Length.Unit.astronomicalUnit), new Angle(-45)).andBodyProperties(new Length(12103.6f/2, Length.Unit.kilometres), new Mass(0.815f, Mass.Unit.EARTH_MASS)).buildAs(PlanetType.VENUSIAN, this);
     		planet = CreateAstronomicalBody.named("Earth").withOrbitalProperties(star, new Length(1f, Length.Unit.astronomicalUnit), new Angle(-120)).andBodyProperties(new Length(12756.32f/2, Length.Unit.kilometres), new Mass(1f, Mass.Unit.EARTH_MASS)).buildAs(PlanetType.TERRAN, this);

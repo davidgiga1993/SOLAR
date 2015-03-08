@@ -42,9 +42,11 @@ public final class CreateAstronomicalBody {
 	
 	/**
 	 * Adds the necessary orbital parameters for the astronomical body.
+	 * The orbital parameters define this object's movement on the game map.
+	 * Orbital movement is managed with polar coordinates, i.e. instead of x-/y-parameters, the game uses radius from the central body and angle away from the x-axis to calculate positions.
 	 * @param orbitPrimary Object around which the new astronomical body will orbit.
 	 * @param orbitalRadius Distance from the primary object around which the new astronomical body will orbit.
-	 * @param startingAngle Initial angle away from the y-axis from which the new astronomical body will start its orbit.
+	 * @param startingAngle Initial angle away from the x-axis from which the new astronomical body will start its orbit.
 	 * @return
 	 */
 	public CreatableProperties withOrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle startingAngle) {
@@ -52,12 +54,23 @@ public final class CreateAstronomicalBody {
 		return new CreatableProperties();
 	}
 	
+	/**
+	 * Adds the necessary orbital parameters for the astronomical body. This variant assumes that there is no orbit and that the object is sitting on top of its primary. Only to be used for stars in single-star system.
+	 * @param system Map point on which the body will be placed.  
+	 * @return
+	 */
+	public CreatableProperties withOrbitalProperties(AstronomicalBody system) {
+		this.orbitalProperties = new OrbitalProperties(system, new Length(0, Length.Unit.kilometres), new Angle(0));
+		return new CreatableProperties();
+	}
+	
 	public class CreatableProperties {
 		private CreatableProperties() {}
 		
 		/**
-		 * Determines which type of object is to be created.
-		 * @param type Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
+		 * Determines the physical properties of the celestial body such as its dimensions and mass.
+		 * @param bodyRadius Size of the astronomical body.
+		 * @param bodyMass Mass of the astronomical body.
 		 * @return
 		 */
 		public CreatableType andBodyProperties(Length bodyRadius, Mass bodyMass) {
