@@ -43,28 +43,9 @@ public class OrbitalProperties
     	calculatePeriodicConstant();
     }
     
-	public OrbitalProperties(Mass mass, AstronomicalBody orbitPrimary, Length orbitalRadius, Angle angle)
-    {
-    	this.orbitPrimary = orbitPrimary;
-        this.orbitalRadius = orbitalRadius;
-        this.orbitalAngle = angle;
-    	if (orbitPrimary != null)
-    	{
-            calculateOrbitalPeriod(mass);
-    	}
-    	calculatePeriodicConstant();
-    }
     
     /**
-     * Variant for sufficiently massive bodies - used for astronomical objects.
-     * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
-     */
-    private void calculateOrbitalPeriod(Mass mass) {
-        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram() + mass.asKilogram())) ) / (3600*24));
-    }
-    
-    /**
-     * Variant for small bodies with insignificant mass - used for player units.
+     * Variant for small bodies with insignificant mass - used as approximation for all units.
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod() {
@@ -226,5 +207,10 @@ public class OrbitalProperties
      */
 	public float gravitationalPotential(Mass mass, Length radius) {
     	return (float) (mass.asKilogram() / Math.pow(radius.asKilometres(), 2)); 
+	}
+
+	public void addAsSatellite(AstronomicalBody newSatellite) {
+        orbitPrimary.addSatellite(newSatellite);
+		
 	}
 }

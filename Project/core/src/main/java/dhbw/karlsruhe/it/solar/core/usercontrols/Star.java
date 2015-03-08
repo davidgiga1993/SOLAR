@@ -13,14 +13,12 @@ import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
  */
 public class Star extends AstronomicalBody
 {
-    private static final String TEXTURE_NAME = "GTypeMainSequence";
-
-    public Star(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary) {
-        this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius, null));
+    public Star(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary, StarType type) {
+        this(name, new OrbitalProperties(orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius, null), type);
     }
 
-    public Star(String name, OrbitalProperties orbit, BodyProperties body) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, TEXTURE_NAME);
+    public Star(String name, OrbitalProperties orbit, BodyProperties body, StarType type) {
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, getTextureNameForStarType(type));
     }
 		
     /**
@@ -34,7 +32,7 @@ public class Star extends AstronomicalBody
      */
     public Planet placeNewPlanet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Planet.PlanetType type, boolean planetaryRings, Mass massRings, Length radiusRings, PlanetaryRing.RingType ringType)
     {
-    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, orbitalAngle);
+    	OrbitalProperties orbit = new OrbitalProperties(this, orbitalRadius, orbitalAngle);
 		BodyProperties body = new BodyProperties(mass, radius, null);
         Planet newObject = new Planet(name, orbit, body, type);
         if(planetaryRings)
@@ -45,4 +43,25 @@ public class Star extends AstronomicalBody
         satellites.add(newObject);
         return newObject;
     }
+    
+	private static String getTextureNameForStarType(StarType type)
+	{
+		switch(type)
+		{
+			case GTypeMainSequence:
+				return "GTypeMainSequence";
+			default:
+				return "GTypeMainSequence";
+		}
+	}
+    
+    public enum StarType {
+    	OTypeMainSequence,
+    	BTypeMainSequence,
+    	ATypeMainSequence,
+    	FTypeMainSequence,
+		GTypeMainSequence,
+		KTypeMainSequence,
+		MTypeMainSequence,
+	}
 }

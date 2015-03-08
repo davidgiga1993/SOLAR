@@ -13,6 +13,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon.MoonType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Planet.PlanetType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing.RingType;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Star.StarType;
 
 /**
  * @author Andi
@@ -51,8 +52,8 @@ public class SolarSystem extends AstronomicalBody {
     	Star star;
     	Planet planet;
 
-    	star = placeNewStar("Sun", new Length(1392684f/2, Length.Unit.kilometres), new Mass(1, Mass.Unit.SOLAR_MASS), new Length(0, Length.Unit.kilometres), new Angle(0));
-    		planet = star.placeNewPlanet("Mercury", new Length(4879.4f/2, Length.Unit.kilometres), new Mass(0.055f, Mass.Unit.EARTH_MASS), new Length(0.38709893f, Length.Unit.astronomicalUnit), new Angle(170), PlanetType.MERCURIAN, false, null, null, null);
+    	star = CreateAstronomicalBody.named("Sun").withOrbitalProperties(this, new Length(0, Length.Unit.kilometres), new Angle(0)).andBodyProperties(new Length(1392684f/2, Length.Unit.kilometres), new Mass(1, Mass.Unit.SOLAR_MASS)).buildAs(StarType.GTypeMainSequence, this);
+    		CreateAstronomicalBody.named("Mercury").withOrbitalProperties(star, new Length(0.38709893f, Length.Unit.astronomicalUnit), new Angle(170)).andBodyProperties(new Length(4879.4f/2, Length.Unit.kilometres), new Mass(0.055f, Mass.Unit.EARTH_MASS)).buildAs(PlanetType.MERCURIAN, this);
 			planet = star.placeNewPlanet("Venus", new Length(12103.6f/2, Length.Unit.kilometres), new Mass(0.815f, Mass.Unit.EARTH_MASS), new Length(0.72333199f, Length.Unit.astronomicalUnit), new Angle(-45), PlanetType.VENUSIAN, false, null, null, null);
     		planet = star.placeNewPlanet("Earth", new Length(12756.32f/2, Length.Unit.kilometres), new Mass(1f, Mass.Unit.EARTH_MASS), new Length(1f, Length.Unit.astronomicalUnit), new Angle(-120), PlanetType.TERRAN, false, null, null, null);
     			planet.placeNewMoon("Moon", new Length(3476f/2, Length.Unit.kilometres), new Mass(0.0123f, Mass.Unit.EARTH_MASS), new Length(384399, Length.Unit.kilometres), new Angle(-30), MoonType.LUNAR, false, null, null, null);
@@ -170,24 +171,5 @@ public class SolarSystem extends AstronomicalBody {
 	private void diplaySystemCenter(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.circle(getX(), getY(), 10);
-	}
-    
-    /**
-     * Adds a new star with the specified parameters as a satellite orbiting the center of the solar system.
-     * @param name Desired name of the star
-     * @param mass Desired mass of the planet in multiples of Solar Masses
-     * @param orbitalRadius Desired orbital radius around the center of the solar system in multiples of Astronomical Units
-     * @param orbitalAngle Desired angle of the star's position on the map of the system
-     * @return created Star object
-     */
-    public Star placeNewStar(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle)
-    {
-    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, orbitalAngle);
-		BodyProperties body = new BodyProperties(mass, radius, null);
-        Star newObject = new Star(name, orbit, body);
-        newObject.setOrbitalPositionTotal();
-        satellites.add(newObject);
-        addMass(mass);
-        return newObject;
 	}
 }
