@@ -20,6 +20,12 @@ public class Moon extends AstronomicalBody
 		this.orbitColor = Color.GRAY;
 	}
 
+	@Override
+	protected void changeOrbitScale() {
+		super.changeOrbitScale();
+		orbitalRadiusInPixels += calculateOrbitOffset();
+	}
+
 	private static String getTextureNameForMoonType(MoonType type)
 	{
 		switch(type)

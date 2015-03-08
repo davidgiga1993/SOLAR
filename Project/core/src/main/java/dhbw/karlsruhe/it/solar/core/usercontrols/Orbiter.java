@@ -65,14 +65,24 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 	/**
 	 * Sets the orbital radius in pixels value relative to the scaling setting for the stage. 
 	 */
-	private void changeOrbitScale() {
-			orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
+	protected void changeOrbitScale() {
+		if(orbitalProperties == null) {
+			return;
+		}
+		orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
 	}
 		
 	@Override
 	public void updateScale() {
-		orbitalRadiusInPixels *= actorScale.orbitScale / currentOrbitScale;
+		changeOrbitScale();
 		super.updateScale();
+	}
+
+	protected float calculateOrbitOffset() {
+		AstronomicalBody primary = getPrimary();
+		float radius = primary.getWidth()/2;
+		float normRadius = (float) (primary.physicalProperties.getRadius().asKilometres() / SolarActor.stageScalingFactor);
+		return radius - normRadius;
 	}
 	
 	@Override
