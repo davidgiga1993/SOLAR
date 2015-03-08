@@ -16,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Star.StarType;
  * @author Andi
  *
  */
-public final class CreateAstronomicalBody {
+public final class CreateAnAstronomicalBody {
 	private String name;
 	private BodyProperties bodyProperties;
 	private OrbitalProperties orbitalProperties;
@@ -29,7 +29,7 @@ public final class CreateAstronomicalBody {
 	private Mass massOfRings;
 	private RingType typeOfRings;
 	
-	private CreateAstronomicalBody(String name) {
+	private CreateAnAstronomicalBody(String name) {
 		this.name = name;
 	}
 		
@@ -38,8 +38,8 @@ public final class CreateAstronomicalBody {
 	 * @param name Desired name of the body.
 	 * @return
 	 */
-	public static CreateAstronomicalBody named(String name) {
-		return new CreateAstronomicalBody(name);
+	public static CreateAnAstronomicalBody named(String name) {
+		return new CreateAnAstronomicalBody(name);
 	}
 	
 	/**
@@ -51,18 +51,31 @@ public final class CreateAstronomicalBody {
 	 * @param startingAngle Initial angle away from the x-axis from which the new astronomical body will start its orbit.
 	 * @return
 	 */
-	public CreatableProperties withOrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle startingAngle) {
+	public CreatableProperties whichHasTheFollowingOrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle startingAngle) {
 		this.orbitalProperties = new OrbitalProperties(orbitPrimary, orbitalRadius, startingAngle);
 		return new CreatableProperties();
 	}
 	
 	/**
-	 * Adds the necessary orbital parameters for the astronomical body. This variant assumes that there is no orbit and that the object is sitting on top of its primary. Only to be used for stars in single-star system.
-	 * @param system Map point on which the body will be placed.  
+	 * Adds the necessary orbital parameters for the astronomical body. This variant assumes that there is no orbit and that the object is sitting on top of its primary.
+	 * Will move together with its primary body. Only to be used for stars in single-star system.
+	 * @param system Object on which the body will be placed.  
 	 * @return
 	 */
-	public CreatableProperties withOrbitalProperties(AstronomicalBody system) {
+	public CreatableProperties whichIsStationaryAt(AstronomicalBody system) {
 		this.orbitalProperties = new OrbitalProperties(system, new Length(0, Length.Unit.kilometres), new Angle(0));
+		return new CreatableProperties();
+	}
+	
+	/**
+	 * Indicates that this astronomical body shares its orbit with another, larger body, causing the two to gravitationally interact.
+	 * The orbit display of this body will be hidden.
+	 * @param largerBody Object with which this new astronomical body is sharing its orbital properties.  
+	 * @return
+	 */
+	public CreatableProperties whichIsCoorbitalWith(AstronomicalBody largerBody, Angle angularDeviation) {
+		this.orbitalProperties = largerBody.orbitalProperties;
+		this.orbitalProperties.setCoorbital(angularDeviation);
 		return new CreatableProperties();
 	}
 	
@@ -70,13 +83,24 @@ public final class CreateAstronomicalBody {
 		private CreatableProperties() {}
 		
 		/**
+		 * Causes the astronomical body to move opposite the normal (prograde) direction on its orbit
+		 * Since the direction of the movement is linked to how that object formed, all major bodies of a solar system normally move prograde.
+		 * Retrograde direction indicates that the astronomical body did not originate in this position and was gravitationally captured by the primary body some time in the past.
+		 * @return
+		 */
+		public CreatableProperties whileMovingInRetrogradeDirection() {
+			CreateAnAstronomicalBody.this.orbitalProperties.setRetrograde();
+			return this;
+		}
+		
+		/**
 		 * Determines the physical properties of the celestial body such as its dimensions and mass.
 		 * @param bodyRadius Size of the astronomical body.
 		 * @param bodyMass Mass of the astronomical body.
 		 * @return
 		 */
-		public CreatableType andBodyProperties(Length bodyRadius, Mass bodyMass) {
-			CreateAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null);
+		public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass) {
+			CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null);
 			return new CreatableType();
 		}
 		
@@ -91,32 +115,11 @@ public final class CreateAstronomicalBody {
 			 * @return
 			 */
 			public CreatableType includingRings(Mass massOfRings, Length radiusOfRings, RingType typeOfRings) {
-				CreateAstronomicalBody.this.ringed = true;
-				CreateAstronomicalBody.this.massOfRings = massOfRings;
-				CreateAstronomicalBody.this.radiusOfRings = radiusOfRings;
-				CreateAstronomicalBody.this.typeOfRings = typeOfRings;
+				CreateAnAstronomicalBody.this.ringed = true;
+				CreateAnAstronomicalBody.this.massOfRings = massOfRings;
+				CreateAnAstronomicalBody.this.radiusOfRings = radiusOfRings;
+				CreateAnAstronomicalBody.this.typeOfRings = typeOfRings;
 				return this;		
-			}
-			
-			/**
-			 * Causes the astronomical body to move opposite the normal (prograde) direction on its orbit
-			 * Since the direction of the movement is linked to how that object formed, all major bodies of a solar system normally move prograde.
-			 * Retrograde direction indicates that the astronomical body did not originate in this position and was gravitationally captured by the primary body some time in the past.
-			 * @return
-			 */
-			public CreatableType whichMovesRetrograde() {
-				CreateAstronomicalBody.this.orbitalProperties.setRetrograde();
-				return this;
-			}
-			
-			/**
-			 * Indicates that this astronomical body shares its orbit with another, larger body, causing the two to gravitationally interact.
-			 * The orbit display of this body will be hidden.
-			 * @return
-			 */
-			public CreatableType whichIsCoorbital() {
-				CreateAstronomicalBody.this.orbitalProperties.setCoorbital();
-				return this;
 			}
 			
 			/**
@@ -126,8 +129,8 @@ public final class CreateAstronomicalBody {
 			 * @return
 			 */
 			public Star buildAs(StarType star, SolarSystem solarSystem) {
-				CreateAstronomicalBody.this.starType = star;
-				return CreateAstronomicalBody.this.buildStar(solarSystem);
+				CreateAnAstronomicalBody.this.starType = star;
+				return CreateAnAstronomicalBody.this.buildStar(solarSystem);
 			}
 			
 			/**
@@ -137,8 +140,8 @@ public final class CreateAstronomicalBody {
 			 * @return
 			 */
 			public Planet buildAs(PlanetType planet, SolarSystem solarSystem) {
-				CreateAstronomicalBody.this.planetType = planet;
-				return CreateAstronomicalBody.this.buildPlanet(solarSystem);
+				CreateAnAstronomicalBody.this.planetType = planet;
+				return CreateAnAstronomicalBody.this.buildPlanet(solarSystem);
 			}
 			
 			/**
@@ -148,8 +151,8 @@ public final class CreateAstronomicalBody {
 			 * @return
 			 */
 			public Moon buildAs(MoonType moon, SolarSystem solarSystem) {
-				CreateAstronomicalBody.this.moonType = moon;
-				return CreateAstronomicalBody.this.buildMoon(solarSystem);
+				CreateAnAstronomicalBody.this.moonType = moon;
+				return CreateAnAstronomicalBody.this.buildMoon(solarSystem);
 			}
 			
 			/**
@@ -159,8 +162,8 @@ public final class CreateAstronomicalBody {
 			 * @return
 			 */
 			public Asteroid buildAs(AsteroidType asteroid, SolarSystem solarSystem) {
-				CreateAstronomicalBody.this.asteroidType = asteroid;
-				return CreateAstronomicalBody.this.buildAsteroid(solarSystem);
+				CreateAnAstronomicalBody.this.asteroidType = asteroid;
+				return CreateAnAstronomicalBody.this.buildAsteroid(solarSystem);
 			}
 			
 		}
