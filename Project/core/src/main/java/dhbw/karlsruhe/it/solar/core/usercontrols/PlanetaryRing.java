@@ -14,8 +14,6 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
  */
 public class PlanetaryRing extends AstronomicalBody {
 
-	private float currentOffset = 0;
-
 	public PlanetaryRing(AstronomicalBody orbitPrimary, Mass mass, Length radius, RingType type) {
 		super(nameOfRings(orbitPrimary), orbitOfRings(orbitPrimary, radius), bodyOfRings(mass, radius), scaleOfRings(), textureOfRings(type));
 		label.hide();
@@ -52,6 +50,8 @@ public class PlanetaryRing extends AstronomicalBody {
 		radius += calculateOrbitOffset();
 		float width = radius * 2;
 		setSize(width, width);
+
+		// Note: this actually does work. however scaling the texture is not the same as scaling an annulus (2d-ring)
 	}
 
 	private static SolarActorScale scaleOfRings() {

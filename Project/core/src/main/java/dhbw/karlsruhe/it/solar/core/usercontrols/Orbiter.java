@@ -70,6 +70,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 			return;
 		}
 		orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
+		orbitalRadiusInPixels += calculateOrbitOffset();
 	}
 		
 	@Override
@@ -80,6 +81,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
 	protected float calculateOrbitOffset() {
 		AstronomicalBody primary = getPrimary();
+		if(primary == null) {
+			return 0;
+		}
 		float radius = primary.getWidth()/2;
 		float normRadius = (float) (primary.physicalProperties.getRadius().asKilometres() / SolarActor.stageScalingFactor);
 		return radius - normRadius;
