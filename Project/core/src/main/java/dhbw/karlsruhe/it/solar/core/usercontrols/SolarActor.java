@@ -140,7 +140,7 @@ public abstract class SolarActor extends Actor implements Telegraph {
 
     @Override
     public boolean handleMessage(Telegram telegram) {
-        if (telegram.message == SolarMessageType.GAME_SCALE_CHANGED && true || telegram.sender.equals(actorScale)) {
+        if (telegram.message == SolarMessageType.GAME_SCALE_CHANGED) {
             updateScale();
         }
         return false;

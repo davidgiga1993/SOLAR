@@ -1,16 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid;
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
+import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 
 public class OrbitalProperties
 {
@@ -190,9 +183,15 @@ public class OrbitalProperties
      */
 	public Length calculateMaxOrbitalRadius(Mass massOfSatellite)
 	{
-		if (orbitPrimary instanceof SolarSystem && orbitPrimary.getMass().asSolarMass() == massOfSatellite.asSolarMass())
+		if (orbitPrimary instanceof SolarSystem)
 		{
-			return new Length(1, Length.Unit.lightYear);
+			float primaryMass =  orbitPrimary.getMass().asSolarMass();
+			float satelliteMass = massOfSatellite.asSolarMass();
+			float difference = primaryMass - satelliteMass;
+			// if the difference is below a threshold we can safely assume it's not a twin star system
+			if (difference < 0.01f) {
+				return new Length(1, Length.Unit.lightYear);
+			}
 		}
 		return new Length(orbitalRadius.asKilometres() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.Unit.kilometres);
 	}
