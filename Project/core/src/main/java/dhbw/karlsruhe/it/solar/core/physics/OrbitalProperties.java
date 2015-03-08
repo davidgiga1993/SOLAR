@@ -236,7 +236,7 @@ public class OrbitalProperties
 	}
 	
 	public void setCoorbital(Angle angularDeviation) {
-		coorbital = true;
+		coorbital = true;	
 		orbitalAngle.changeBy(angularDeviation);
 	}
 }

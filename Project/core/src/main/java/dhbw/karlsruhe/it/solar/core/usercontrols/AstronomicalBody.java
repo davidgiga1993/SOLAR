@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
@@ -120,5 +121,9 @@ public abstract class AstronomicalBody extends Orbiter
 
 	public void addSatellite(AstronomicalBody newSatellite) {
        satellites.add(newSatellite);
+	}
+
+	public Angle getOrbitalAngle() {
+		return orbitalProperties.getOrbitalAngle();
 	}
 }

@@ -5,6 +5,7 @@ import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid.AsteroidType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon.MoonType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Planet.PlanetType;
@@ -74,7 +75,7 @@ public final class CreateAnAstronomicalBody {
 	 * @return
 	 */
 	public CreatableProperties whichIsCoorbitalWith(AstronomicalBody largerBody, Angle angularDeviation) {
-		this.orbitalProperties = largerBody.orbitalProperties;
+		this.orbitalProperties = new OrbitalProperties(largerBody.getPrimary(), new Length(largerBody.getOrbitalRadius().asKilometres(),dhbw.karlsruhe.it.solar.core.physics.Length.Unit.kilometres), new Angle(largerBody.getOrbitalAngle().inDegrees(), Unit.degree));
 		this.orbitalProperties.setCoorbital(angularDeviation);
 		return new CreatableProperties();
 	}
