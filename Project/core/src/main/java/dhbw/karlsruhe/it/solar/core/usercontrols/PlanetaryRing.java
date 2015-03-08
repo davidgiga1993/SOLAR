@@ -2,7 +2,6 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
@@ -103,6 +102,11 @@ public class PlanetaryRing extends AstronomicalBody {
 			default:
 				return "Rings_Jupiter";
 		}
+	}
+
+	@Override
+	protected boolean previewEnabled() {
+		return false;
 	}
 
 	@Override

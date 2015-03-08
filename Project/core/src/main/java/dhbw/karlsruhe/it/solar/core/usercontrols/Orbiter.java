@@ -1,17 +1,16 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import org.hamcrest.core.IsCollectionContaining;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 /**
@@ -23,7 +22,10 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
  */
 public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObject 
 {
+	protected static final float PREVIEW_PIXEL_WIDTH = 5.5f;
+
 	protected OrbitalProperties orbitalProperties;
+	protected PreviewActor preview;
 	float orbitalRadiusInPixels;
 	protected final Kinematic kinematic;
 
@@ -46,6 +48,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 			setKinematicValues();
 			changeOrbitScale();
 		}
+		preview = new PreviewActor(this, getWidth(), PREVIEW_PIXEL_WIDTH, Spacestation.SPACESTATION_ORBIT_COLOR);
 	}
 
 	protected void setKinematicValues() {
@@ -141,10 +144,20 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
     
 	@Override
 	public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
-		if (null != orbitalProperties )
-		{
+		if(previewEnabled() && !canBeSeen()) {
+			preview.drawLines(libGDXShapeRenderer, solarShapeRenderer);
+		}
+		if (orbitalProperties != null) {
 			displayOrbit(solarShapeRenderer);
 		}
+	}
+
+	protected boolean canBeSeen() {
+		return (getWidth() / SolarEngine.get().camera.zoom) > 1f;
+	}
+
+	protected boolean previewEnabled() {
+		return true;
 	}
 	
 	protected void displayOrbit(SolarShapeRenderer shapeRenderer)

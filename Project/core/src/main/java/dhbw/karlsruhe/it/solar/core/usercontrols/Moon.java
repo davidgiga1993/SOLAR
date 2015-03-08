@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 /**
  * @author Andi
@@ -18,6 +19,13 @@ public class Moon extends AstronomicalBody
 		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
 		label.setThreshold(0.4f);
 		this.orbitColor = Color.GRAY;
+		preview = new PreviewActor(this, getWidth(), 10, Color.GRAY);
+	}
+
+	@Override
+	protected boolean previewEnabled() {
+		// this needs to be refined in the future
+		return SolarEngine.get().camera.zoom < .3f;
 	}
 
 	private static String getTextureNameForMoonType(MoonType type)

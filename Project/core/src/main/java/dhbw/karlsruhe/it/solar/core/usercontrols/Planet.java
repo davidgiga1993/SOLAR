@@ -1,10 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.Color;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 /**
  * @author Andi
@@ -12,13 +11,13 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
  */
 public class Planet extends AstronomicalBody
 {
-
-    protected PreviewActor preview;
+	private AstronomicalBody outermostMoon;
 
 	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
 		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
-        preview = new PreviewActor(this, getWidth(), 5.5f);
+
 		this.segments = 2000;
+		preview.color = Color.TEAL;
 	}
 
 	private static String getTextureNameForPlanetType(PlanetType type)
@@ -62,24 +61,35 @@ public class Planet extends AstronomicalBody
     	OrbitalProperties orbit = new OrbitalProperties(this, orbitalRadius, orbitalAngle);
 		BodyProperties body = new BodyProperties(mass, radius, null);
         Moon newObject = new Moon(name, orbit, body, type);
-        if(planetaryRings)
-        {
-        newObject.setUpRings(new PlanetaryRing(newObject, massRings, radiusRings, ringType));
+        if(planetaryRings) {
+        	newObject.setUpRings(new PlanetaryRing(newObject, massRings, radiusRings, ringType));
         }
         newObject.setOrbitalPositionTotal();
         satellites.add(newObject);
+		if(outermostMoon == null || outermostMoon.orbitalProperties.getOrbitalRadius().asKilometres() < orbitalRadius.asKilometres()) {
+			outermostMoon = newObject;
+		}
         return newObject;
     }
 
-    @Override
-    public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
-        if(SolarEngine.get().camera.zoom > 5.5) {
-            preview.drawLines(libGDXShapeRenderer, solarShapeRenderer);
-        }
-        super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
-    }
+	@Override
+	public void addSatellite(AstronomicalBody newSatellite) {
+		super.addSatellite(newSatellite);
+		if(outermostMoon == null || outermostMoon.orbitalProperties.getOrbitalRadius().asKilometres() < newSatellite.orbitalProperties.getOrbitalRadius().asKilometres()) {
+			outermostMoon = newSatellite;
+		}
+	}
 
-    public enum PlanetType {
+	@Override
+	protected boolean canBeSeen() {
+		float size = getWidth();
+		if(outermostMoon != null) {
+			size = outermostMoon.orbitalRadiusInPixels * 2;
+		}
+		return (size / SolarEngine.get().camera.zoom) > 1f;
+	}
+
+	public enum PlanetType {
 		MERCURIAN,
 		VENUSIAN,
 		TERRAN,

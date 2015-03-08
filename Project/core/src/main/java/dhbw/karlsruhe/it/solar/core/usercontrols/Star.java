@@ -25,8 +25,13 @@ public class Star extends AstronomicalBody
 				return "GTypeMainSequence";
 		}
 	}
-    
-    public enum StarType {
+
+	@Override
+	protected boolean previewEnabled() {
+		return false;
+	}
+
+	public enum StarType {
     	OTypeMainSequence,
     	BTypeMainSequence,
     	ATypeMainSequence,

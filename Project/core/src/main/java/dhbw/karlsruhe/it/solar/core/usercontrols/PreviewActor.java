@@ -19,11 +19,14 @@ public class PreviewActor implements ShapeRenderable {
     private float absoluteRadius;
 
     private float relativeRadius = (float) (384399 / SolarActor.stageScalingFactor) * 2;
+    public Color color;
 
-    public PreviewActor(SolarActor parent, float relativeRadius, float zoomLevel) {
+    public PreviewActor(SolarActor parent, float relativeRadius, float zoomLevel, Color color) {
         this.parent = parent;
         this.zoomLevel = zoomLevel;
-        this.maxQuota = 155 / zoomLevel;
+        this.maxQuota = 2500 / zoomLevel;
+        this.color = color;
+        this.relativeRadius = this.relativeRadius > relativeRadius ? this.relativeRadius : relativeRadius;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class PreviewActor implements ShapeRenderable {
         absoluteRadius = relativeRadius * zoomQuota;
         float absoluteWidth = absoluteRadius * 2;
 
-        libGDXShapeRenderer.setColor(Color.TEAL);
+        libGDXShapeRenderer.setColor(color);
         libGDXShapeRenderer.rect(parent.getX()+parent.getOriginX() - absoluteRadius, parent.getY()+parent.getOriginY() - absoluteRadius, absoluteWidth, absoluteWidth);
     }
 }

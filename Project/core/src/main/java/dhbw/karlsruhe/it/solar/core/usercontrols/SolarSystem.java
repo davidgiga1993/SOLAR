@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
@@ -30,6 +29,11 @@ public class SolarSystem extends AstronomicalBody {
     public void draw(Batch batch, float parentAlpha) {
 
     }
+
+	@Override
+	protected boolean previewEnabled() {
+		return false;
+	}
 
 	@Override
 	public void act(float delta) {
@@ -59,7 +63,7 @@ public class SolarSystem extends AstronomicalBody {
      			CreateAstronomicalBody.named("Phobos").withOrbitalProperties(planet, new Length(9367, Length.Unit.kilometres), new Angle(0)).andBodyProperties(new Length(23f / 2, Length.Unit.kilometres), new Mass((float) (1.0659 * Math.pow(10, 16)), Mass.Unit.KILOGRAM)).buildAs(MoonType.IRREGULAR, this);     			
      			CreateAstronomicalBody.named("Deimos").withOrbitalProperties(planet, new Length(23463, Length.Unit.kilometres), new Angle(-123)).andBodyProperties(new Length(13f/2, Length.Unit.kilometres), new Mass((float) (1.4762 * Math.pow(10, 15)), Mass.Unit.KILOGRAM)).buildAs(MoonType.IRREGULAR, this);
     		CreateAstronomicalBody.named("Ceres").withOrbitalProperties(star, new Length(2.766f, Length.Unit.astronomicalUnit), new Angle(-170)).andBodyProperties(new Length(975f / 2, Length.Unit.kilometres), new Mass(0.00016f, Mass.Unit.EARTH_MASS)).buildAs(PlanetType.DWARFPLANET, this);
-    		planet = CreateAstronomicalBody.named("Jupiter").withOrbitalProperties(star, new Length(5.20336301f, Length.Unit.astronomicalUnit), new Angle(120)).andBodyProperties(new Length(142984f/2, Length.Unit.kilometres), new Mass(318f, Mass.Unit.EARTH_MASS)).includingRings(new Mass((float)(0.22*Math.pow(10, 16)),Mass.Unit.KILOGRAM), new Length(226000,Length.Unit.kilometres), RingType.JOVIAN).buildAs( PlanetType.JOVIAN, this);
+    		planet = CreateAstronomicalBody.named("Jupiter").withOrbitalProperties(star, new Length(5.20336301f, Length.Unit.astronomicalUnit), new Angle(120)).andBodyProperties(new Length(142984f/2, Length.Unit.kilometres), new Mass(318f, Mass.Unit.EARTH_MASS)).includingRings(new Mass((float)(0.22*Math.pow(10, 16)),Mass.Unit.KILOGRAM), new Length(226000,Length.Unit.kilometres), RingType.JOVIAN).buildAs(PlanetType.JOVIAN, this);
     			CreateAstronomicalBody.named("Metis").withOrbitalProperties(planet, new Length(127969, Length.Unit.kilometres), new Angle(192)).andBodyProperties(new Length(43f/2, Length.Unit.kilometres), new Mass(1.25f*(float)(Math.pow(10,17)), Mass.Unit.KILOGRAM)).buildAs(MoonType.IRREGULAR, this);
     			CreateAstronomicalBody.named("Adrastea").withOrbitalProperties(planet, new Length(128980, Length.Unit.kilometres), new Angle(23)).andBodyProperties(new Length(16.4f/2, Length.Unit.kilometres), new Mass(6.03f*(float)(Math.pow(10,15)), Mass.Unit.KILOGRAM)).buildAs(MoonType.IRREGULAR, this);
     			CreateAstronomicalBody.named("Amalthea").withOrbitalProperties(planet, new Length(181365, Length.Unit.kilometres), new Angle(-34)).andBodyProperties(new Length(167f/2, Length.Unit.kilometres), new Mass(0.00000035f, Mass.Unit.EARTH_MASS)).buildAs(MoonType.IRREGULAR, this);

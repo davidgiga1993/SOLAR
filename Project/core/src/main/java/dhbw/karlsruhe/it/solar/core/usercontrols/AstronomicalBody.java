@@ -1,13 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
 
 import java.util.ArrayList;
@@ -110,7 +105,7 @@ public abstract class AstronomicalBody extends Orbiter
         }
 	}
 
-	private void addAsSatellite() {
+	protected void addAsSatellite() {
         orbitalProperties.addAsSatellite(this);		
 	}
 
@@ -141,6 +136,6 @@ public abstract class AstronomicalBody extends Orbiter
 	}
 
 	public void addSatellite(AstronomicalBody newSatellite) {
-       satellites.add(newSatellite);		
+       satellites.add(newSatellite);
 	}
 }
