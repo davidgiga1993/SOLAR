@@ -24,6 +24,7 @@ public class GameStartStage extends BaseStage implements Telegraph
     private SolarSystem solarSystem;
     public static GameInputListener inputListener;
     private PlayerManager playerManager = new PlayerManager();
+
     private SolarShapeRenderer solarShapeRenderer = new SolarShapeRenderer();
     private ShapeRenderer libGDXShapeRenderer = new ShapeRenderer();
 
@@ -118,8 +119,11 @@ public class GameStartStage extends BaseStage implements Telegraph
             }
         }
         libGDXShapeRenderer.end();
-        // draw sprite batch stuff
+
+        // draw sprite batch and polygon batch stuff
+        SolarEngine.polygonBatch.begin();
         super.draw();
+        SolarEngine.polygonBatch.end();
     }
 
     @Override

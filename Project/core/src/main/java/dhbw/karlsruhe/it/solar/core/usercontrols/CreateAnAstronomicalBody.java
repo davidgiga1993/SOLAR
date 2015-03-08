@@ -1,10 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid.AsteroidType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon.MoonType;
@@ -26,7 +22,8 @@ public final class CreateAnAstronomicalBody {
 	private MoonType moonType;
 	private AsteroidType asteroidType;
 	private boolean ringed = false;
-	private Length radiusOfRings;
+	private Length outerRadiusOfRings;
+	private Length innerRadiusOfRings;
 	private Mass massOfRings;
 	private RingType typeOfRings;
 	
@@ -115,10 +112,11 @@ public final class CreateAnAstronomicalBody {
 			 * @param typeOfRings Appearance of the ring system.
 			 * @return
 			 */
-			public CreatableType includingRings(Mass massOfRings, Length radiusOfRings, RingType typeOfRings) {
+			public CreatableType includingRings(Mass massOfRings, Length innerRadiusOfRings, Length outerRadiusOfRings, RingType typeOfRings) {
 				CreateAnAstronomicalBody.this.ringed = true;
 				CreateAnAstronomicalBody.this.massOfRings = massOfRings;
-				CreateAnAstronomicalBody.this.radiusOfRings = radiusOfRings;
+				CreateAnAstronomicalBody.this.innerRadiusOfRings = innerRadiusOfRings;
+				CreateAnAstronomicalBody.this.outerRadiusOfRings = outerRadiusOfRings;
 				CreateAnAstronomicalBody.this.typeOfRings = typeOfRings;
 				return this;		
 			}
@@ -201,7 +199,7 @@ public final class CreateAnAstronomicalBody {
 	private void setUpRings(AstronomicalBody newBody) {
 		if(ringed)
 		{
-			newBody.setUpRings(new PlanetaryRing(newBody, massOfRings, radiusOfRings, typeOfRings));
+			newBody.setUpRings(new PlanetaryRing(newBody, massOfRings, innerRadiusOfRings, outerRadiusOfRings, typeOfRings));
 		}
 	}
 }

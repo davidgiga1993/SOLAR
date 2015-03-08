@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dhbw.karlsruhe.it.solar.core.solar.logic.GameLogicService;
 import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
@@ -38,6 +39,7 @@ public class SolarEngine extends Game implements InputProcessor
     public static final float HeightHalf = Height / 2;
 
     private SpriteBatch mainBatch;
+    public static PolygonSpriteBatch polygonBatch;
 
     public enum myKeys
     {
@@ -58,6 +60,7 @@ public class SolarEngine extends Game implements InputProcessor
         backgroundCamera = new OrthographicCamera(Width, Height);
 
         mainBatch = new SpriteBatch();
+        polygonBatch = new PolygonSpriteBatch();
 
 
         styles = new Styles(Textures);
@@ -73,6 +76,7 @@ public class SolarEngine extends Game implements InputProcessor
     public void dispose()
     {
         mainBatch.dispose();
+        polygonBatch.dispose();
         FontCacher.cleanUp();
         TextureCacher.cleanUp();
     }
