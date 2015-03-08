@@ -84,6 +84,27 @@ public final class CreateAstronomicalBody {
 			}
 			
 			/**
+			 * Causes the astronomical body to move opposite the normal (prograde) direction on its orbit
+			 * Since the direction of the movement is linked to how that object formed, all major bodies of a solar system normally move prograde.
+			 * Retrograde direction indicates that the astronomical body did not originate in this position and was gravitationally captured by the primary body some time in the past.
+			 * @return
+			 */
+			public CreatableType whichMovesRetrograde() {
+				CreateAstronomicalBody.this.orbitalProperties.setRetrograde();
+				return this;
+			}
+			
+			/**
+			 * Indicates that this astronomical body shares its orbit with another, larger body, causing the two to gravitationally interact.
+			 * The orbit display of this body will be hidden.
+			 * @return
+			 */
+			public CreatableType whichIsCoorbital() {
+				CreateAstronomicalBody.this.orbitalProperties.setCoorbital();
+				return this;
+			}
+			
+			/**
 			 * Determines which type of object is to be created.
 			 * @param type Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
 			 * @param solarSystem The star system to which the new object will be added.

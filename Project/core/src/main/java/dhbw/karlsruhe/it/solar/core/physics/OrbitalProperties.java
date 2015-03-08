@@ -14,12 +14,16 @@ public class OrbitalProperties
 	private Angle orbitalAngle;
 	private float orbitalPeriodInDays;
 	private Angle periodicConstant;
+	private boolean retrograde;
+	private boolean coorbital;
     
     public OrbitalProperties(AstronomicalBody orbitPrimary)
     {
     	this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = new Length();
         this.orbitalAngle = new Angle();
+        this.retrograde = false;
+        this.coorbital = false;
         this.orbitalPeriodInDays = Float.NaN;
         this.periodicConstant = new Angle(Float.NaN);
     }
@@ -29,6 +33,8 @@ public class OrbitalProperties
     	this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = orbitalRadius;
         this.orbitalAngle = angle;
+        this.retrograde = false;
+        this.coorbital = false;
     	if (orbitPrimary != null)
     	{
             calculateOrbitalPeriod();
@@ -87,6 +93,10 @@ public class OrbitalProperties
     
     public void updateOrbitalAngle(float increment)
     {
+    	if(retrograde)
+    	{
+    		increment = -increment;
+    	}
     	updateOrbitalAngle( new Angle( periodicConstant.inDegrees()*increment, Unit.degree));
     }
     
@@ -211,5 +221,21 @@ public class OrbitalProperties
 	public void addAsSatellite(AstronomicalBody newSatellite) {
         orbitPrimary.addSatellite(newSatellite);
 		
+	}
+	
+	public boolean isRetrograde() {
+		return retrograde;
+	}
+	
+	public void setRetrograde() {
+		retrograde = true;
+	}
+	
+	public boolean isCoorbital() {
+		return coorbital;
+	}
+	
+	public void setCoorbital() {
+		coorbital = true;
 	}
 }
