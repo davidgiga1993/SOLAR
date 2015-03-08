@@ -47,7 +47,9 @@ public class BaseNavigationLabel extends Label {
         GameStartStage.inputListener.interact(event, 0, 0);
     }
 
-    private void onRightClick() {
+    private void onRightClick(InputEvent event) {
+        event.setTarget(actor);
+        GameStartStage.inputListener.navigate(event, 0, 0);
     }
 
     protected void toggleChildren() {
@@ -103,7 +105,7 @@ public class BaseNavigationLabel extends Label {
                     break;
 
                 case Input.Buttons.RIGHT:
-                    onRightClick();
+                    onRightClick(event);
                     break;
 
                 default:

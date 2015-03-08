@@ -79,5 +79,4 @@ public class NavigationBar extends Window {
         contentCell.setActor(shipPane).expand();
     }
 
-    // TODO: Message Framework integration, listen to actorAddedEvent
 }

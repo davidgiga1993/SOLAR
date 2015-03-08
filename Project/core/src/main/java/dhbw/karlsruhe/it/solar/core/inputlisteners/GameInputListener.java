@@ -135,7 +135,7 @@ public class GameInputListener extends InputListener {
 		}
 	}
 
-    private void navigate(InputEvent event, float x, float y) {
+    public void navigate(InputEvent event, float x, float y) {
         Actor target = event.getTarget();
         if(target instanceof AstronomicalBody) {
             new MoveToAstronomicalBodyCommand(stage.selectedActors.getSpaceUnits(), (AstronomicalBody) target, stage.getHumanPlayer()).execute();
