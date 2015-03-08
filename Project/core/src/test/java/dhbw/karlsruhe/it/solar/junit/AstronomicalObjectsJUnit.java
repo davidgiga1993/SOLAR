@@ -40,7 +40,7 @@ public class AstronomicalObjectsJUnit
         GameStartStage.startGame();
     	solarSystem = new SolarSystem("Testsystem");
     	star =  CreateAstronomicalBody.named("Testsonne").withOrbitalProperties(solarSystem, new Length(0, Length.Unit.kilometres), new Angle(0)).andBodyProperties(new Length(1392684f/2, Length.Unit.kilometres), new Mass(1, Mass.Unit.KILOGRAM)).buildAs(StarType.GTypeMainSequence, solarSystem);
-	    planet = star.placeNewPlanet("Testplanet", new Length(10000.4f/2, Length.Unit.kilometres), new Mass(0.5f, Mass.Unit.EARTH_MASS), new Length(1.5f, Length.Unit.astronomicalUnit), new Angle(23), Planet.PlanetType.TERRAN, false, null, null, null);
+    	planet = CreateAstronomicalBody.named("Testplanet").withOrbitalProperties(star, new Length(1.5f, Length.Unit.astronomicalUnit), new Angle(23)).andBodyProperties(new Length(10000.4f/2, Length.Unit.kilometres), new Mass(0.5f, Mass.Unit.EARTH_MASS)).buildAs(Planet.PlanetType.TERRAN, solarSystem);
 	    planet.placeNewMoon("Testmond", new Length(4879.4f/2, Length.Unit.kilometres), new Mass(0.1f, Mass.Unit.EARTH_MASS), new Length(200000, Length.Unit.kilometres), new Angle(-50), Moon.MoonType.LUNAR, false, null, null, null);
 	    star.placeNewAsteroid("Testasteroid", new Length(1500.4f/2, Length.Unit.kilometres), new Mass(20000, Mass.Unit.KILOGRAM), new Length(900, Length.Unit.kilometres), new Angle(42));
     }

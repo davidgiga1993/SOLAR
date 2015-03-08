@@ -22,6 +22,10 @@ public final class CreateAstronomicalBody {
 	private StarType starType;
 	private PlanetType planetType;
 	private MoonType moonType;
+	private boolean ringed = false;
+	private Length radiusOfRings;
+	private Mass massOfRings;
+	private RingType typeOfRings;
 	
 	private CreateAstronomicalBody(String name) {
 		this.name = name;
@@ -68,11 +72,14 @@ public final class CreateAstronomicalBody {
 			 * Add a ring system to the astronomical object.
 			 * @param massOfRings Total mass of the ring system.
 			 * @param radiusOfRings Radius of the ring system.
-			 * @param typeOfRing Appearance of the ring system.
+			 * @param typeOfRings Appearance of the ring system.
 			 * @return
 			 */
-			public CreatableType includingRings(Mass massOfRings, Length radiusOfRings, RingType typeOfRing) {
-				CreateAstronomicalBody.this.bodyProperties.setUpRings(new PlanetaryRing(null, massOfRings, radiusOfRings, typeOfRing));
+			public CreatableType includingRings(Mass massOfRings, Length radiusOfRings, RingType typeOfRings) {
+				CreateAstronomicalBody.this.ringed = true;
+				CreateAstronomicalBody.this.massOfRings = massOfRings;
+				CreateAstronomicalBody.this.radiusOfRings = radiusOfRings;
+				CreateAstronomicalBody.this.typeOfRings = typeOfRings;
 				return this;		
 			}
 			
@@ -98,18 +105,45 @@ public final class CreateAstronomicalBody {
 				return CreateAstronomicalBody.this.buildPlanet(solarSystem);
 			}
 			
+			/**
+			 * Determines which type of object is to be created.
+			 * @param type Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
+			 * @param solarSystem The star system to which the new object will be added.
+			 * @return
+			 */
+			public Moon buildAs(MoonType type, SolarSystem solarSystem) {
+				CreateAstronomicalBody.this.moonType = type;
+				return CreateAstronomicalBody.this.buildMoon(solarSystem);
+			}
+			
 		}
 	}
 	
 	private Star buildStar(SolarSystem solarSystem) {
 		Star newBody = new Star(name, orbitalProperties, bodyProperties, starType);
+		setUpRings(newBody);
 		newBody.initializeAstronomicalBody(solarSystem);
 		return newBody;
 	}
 	
 	private Planet buildPlanet(SolarSystem solarSystem) {
 		Planet newBody = new Planet(name, orbitalProperties, bodyProperties, planetType);
+		setUpRings(newBody);		
 		newBody.initializeAstronomicalBody(solarSystem);
 		return newBody;
+	}
+	
+	private Moon buildMoon(SolarSystem solarSystem) {
+		Moon newBody = new Moon(name, orbitalProperties, bodyProperties, moonType);
+		setUpRings(newBody);		
+		newBody.initializeAstronomicalBody(solarSystem);
+		return newBody;
+	}
+	
+	private void setUpRings(AstronomicalBody newBody) {
+		if(ringed)
+		{
+			newBody.setUpRings(new PlanetaryRing(newBody, massOfRings, radiusOfRings, typeOfRings));
+		}
 	}
 }

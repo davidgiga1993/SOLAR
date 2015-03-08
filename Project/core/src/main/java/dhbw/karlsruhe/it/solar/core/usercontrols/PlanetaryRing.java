@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
@@ -53,6 +54,12 @@ public class PlanetaryRing extends AstronomicalBody {
 
 		// Note: this actually does work. however scaling the texture is not the same as scaling an annulus (2d-ring)
 	}
+	
+	@Override
+    public void setRingPrimary(AstronomicalBody body)
+    {
+    	orbitalProperties.setNewOrbitPrimary(body);
+    }
 
 	private static SolarActorScale scaleOfRings() {
 		return ConfigurationConstants.SCALE_FACTOR_PLANET;
@@ -67,6 +74,10 @@ public class PlanetaryRing extends AstronomicalBody {
 	}
 
 	private static String nameOfRings(AstronomicalBody orbitPrimary) {
+		if ( null == orbitPrimary)
+		{
+			return "Ring system";
+		}
 		return "Rings of " + orbitPrimary.getName();
 	}
 	
