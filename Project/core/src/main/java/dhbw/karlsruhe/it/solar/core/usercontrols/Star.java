@@ -11,13 +11,13 @@ import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 public class Star extends AstronomicalBody
 {
 
-    public Star(String name, OrbitalProperties orbit, BodyProperties body, StarType type) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, getTextureNameForStarType(type));
+    public Star(String name, OrbitalProperties orbit, BodyProperties body, StarType star) {
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, getTextureFromTypeOf(star));
     }
     
-	private static String getTextureNameForStarType(StarType type)
+	private static String getTextureFromTypeOf(StarType star)
 	{
-		switch(type)
+		switch(star)
 		{
 			case GTypeMainSequence:
 				return "GTypeMainSequence";

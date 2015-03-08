@@ -8,6 +8,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
 public class Angle {
 	
     public static final float DEGREE_IN_RADIANS = (float)( 180f / Math.PI);
+    public static final float RADIANS_CIRCLE = (float) (2 * Math.PI);
     
     private Unit unit;
     private float value;
@@ -72,10 +73,21 @@ public class Angle {
 	}
 
 	/**
-	 * make sure that no overflow happens.
+	 * Make sure that no overflow happens.
 	 */
 	private void preventOverflow() {
-        value = value < 360 ? value : value - 360;
+        switch(unit) {
+        case degree:
+            value = value < 360 ? value : value - 360;
+            value = value > - 360 ? value : value + 360;
+            break;
+        case radians:
+        	value = value < RADIANS_CIRCLE ? value : value - RADIANS_CIRCLE;
+        	value = value > - RADIANS_CIRCLE ? value : value + RADIANS_CIRCLE;
+        	break;
+        default:
+                value = Float.NaN;
+        }
 	}
 
 }

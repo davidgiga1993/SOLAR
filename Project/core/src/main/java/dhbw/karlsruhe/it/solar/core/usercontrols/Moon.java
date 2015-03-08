@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -11,12 +12,8 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
  */
 public class Moon extends AstronomicalBody
 {
-	public Moon(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary, MoonType type) {
-		this(name, new OrbitalProperties(orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius, null), type);
-	}
-
-	public Moon(String name, OrbitalProperties orbit, BodyProperties body, MoonType type) {
-		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureNameForMoonType(type));
+	public Moon(String name, OrbitalProperties orbit, BodyProperties body, MoonType moon) {
+		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureFromTypeOf(moon));
 		label.setThreshold(0.4f);
 		this.orbitColor = Color.GRAY;
 		preview = new PreviewActor(this, getWidth(), 10, Color.GRAY);
@@ -28,9 +25,9 @@ public class Moon extends AstronomicalBody
 		return SolarEngine.get().camera.zoom < .3f;
 	}
 
-	private static String getTextureNameForMoonType(MoonType type)
+	private static String getTextureFromTypeOf(MoonType moon)
 	{
-		switch(type)
+		switch(moon)
 		{
 			case LUNAR:
 				return "Lunar";
@@ -94,5 +91,4 @@ public class Moon extends AstronomicalBody
 		OBERONIAN,
 		TRITONIAN
 	}
-
 }

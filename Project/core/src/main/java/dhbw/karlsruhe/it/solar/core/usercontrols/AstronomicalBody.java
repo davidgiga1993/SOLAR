@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
@@ -32,28 +33,11 @@ public abstract class AstronomicalBody extends Orbiter
 		this.label = new BodyGameLabel(name);	
 		changeBodyScale();
 	}
-
+	
 	private void changeBodyScale() {
 		float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometres()) * actorScale.shapeScale * 2;
 		this.setSize(tSize, tSize);
 	}
-
-    /**
-     * Adds a new Asteroid with the specified parameters as a satellite orbiting the astronomical body.
-     * @param name Desired name of the Asteroid.
-	 * @param radius Desired radius of the Asteroid
-     * @param mass Desired mass of the Asteroid in kilogram
-     * @param orbitalRadius Desired orbital radius around the parent body in kilometers
-     * @param orbitalAngle Desired angle of the Asteroid's position on the map of the system relative to its parent body
-     * @return created Asteroid object
-     */
-    public Asteroid placeNewAsteroid(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle)
-    {
-        Asteroid newObject = new Asteroid(name, radius, mass, orbitalRadius, orbitalAngle, this);
-        newObject.setOrbitalPositionTotal();
-        satellites.add(newObject);
-        return newObject;
-    }
 
 	/**
 	 * Searches the satellites of a parent astronomical object for a satellite with a matching name.
@@ -137,5 +121,9 @@ public abstract class AstronomicalBody extends Orbiter
 
 	public void addSatellite(AstronomicalBody newSatellite) {
        satellites.add(newSatellite);
+	}
+
+	public Angle getOrbitalAngle() {
+		return orbitalProperties.getOrbitalAngle();
 	}
 }
