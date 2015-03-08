@@ -15,10 +15,6 @@ public class Planet extends AstronomicalBody
 
     protected PreviewActor preview;
 
-	public Planet(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, AstronomicalBody orbitPrimary, PlanetType type) {
-		this(name, new OrbitalProperties(mass, orbitPrimary, orbitalRadius, orbitalAngle), new BodyProperties(mass, radius, null), type);
-	}
-
 	public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType type) {
 		super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureNameForPlanetType(type));
         preview = new PreviewActor(this, getWidth(), 5.5f);
@@ -63,7 +59,7 @@ public class Planet extends AstronomicalBody
      */
     public Moon placeNewMoon(String name, Length radius, Mass mass, Length orbitalRadius, Angle orbitalAngle, Moon.MoonType type, boolean planetaryRings, Mass massRings, Length radiusRings, PlanetaryRing.RingType ringType)
     {
-    	OrbitalProperties orbit = new OrbitalProperties(mass, this, orbitalRadius, orbitalAngle);
+    	OrbitalProperties orbit = new OrbitalProperties(this, orbitalRadius, orbitalAngle);
 		BodyProperties body = new BodyProperties(mass, radius, null);
         Moon newObject = new Moon(name, orbit, body, type);
         if(planetaryRings)

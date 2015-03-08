@@ -1,5 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing;
 
 /**
@@ -38,5 +39,10 @@ public class BodyProperties
 
 	public PlanetaryRing getRings() {
 		return ring;
+	}
+
+	public void setRingPrimary(AstronomicalBody body) {
+		ring.setRingPrimary(body);
+		
 	} 
 }

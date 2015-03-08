@@ -25,7 +25,7 @@ public abstract class AstronomicalBody extends Orbiter
 
 	public AstronomicalBody(String name)
 	{
-		super(name, new OrbitalProperties(new Mass(0, Mass.Unit.KILOGRAM), null, new Length(0, Length.Unit.kilometres), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
+		super(name, new OrbitalProperties(null, new Length(0, Length.Unit.kilometres), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
 		this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres), null);
 	}
 
@@ -94,6 +94,25 @@ public abstract class AstronomicalBody extends Orbiter
     	physicalProperties.setUpRings(ring);
     	satellites.add(physicalProperties.getRings());
     }
+    
+    public void setRingPrimary(AstronomicalBody body)
+    {
+    	physicalProperties.setRingPrimary(body);
+    }
+    
+	public void initializeAstronomicalBody(SolarSystem solarSystem) {
+		setOrbitalPositionTotal();
+		addAsSatellite();
+        solarSystem.addMass(getMass());
+        if(null != physicalProperties.getRings())
+        {
+        	setRingPrimary(this);
+        }
+	}
+
+	private void addAsSatellite() {
+        orbitalProperties.addAsSatellite(this);		
+	}
 
 	public List<AstronomicalBody> getSatellites()
 	{
@@ -119,5 +138,9 @@ public abstract class AstronomicalBody extends Orbiter
 	
 	protected void addMass(Mass massToBeAddedToTheBody) {
 		physicalProperties.addMass(massToBeAddedToTheBody);
+	}
+
+	public void addSatellite(AstronomicalBody newSatellite) {
+       satellites.add(newSatellite);		
 	}
 }
