@@ -5,6 +5,7 @@ import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid.AsteroidType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon.MoonType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Planet.PlanetType;
 import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing.RingType;
@@ -22,6 +23,7 @@ public final class CreateAstronomicalBody {
 	private StarType starType;
 	private PlanetType planetType;
 	private MoonType moonType;
+	private AsteroidType asteroidType;
 	private boolean ringed = false;
 	private Length radiusOfRings;
 	private Mass massOfRings;
@@ -123,8 +125,8 @@ public final class CreateAstronomicalBody {
 			 * @param solarSystem The star system to which the new object will be added.
 			 * @return
 			 */
-			public Star buildAs(StarType type, SolarSystem solarSystem) {
-				CreateAstronomicalBody.this.starType = type;
+			public Star buildAs(StarType star, SolarSystem solarSystem) {
+				CreateAstronomicalBody.this.starType = star;
 				return CreateAstronomicalBody.this.buildStar(solarSystem);
 			}
 			
@@ -134,8 +136,8 @@ public final class CreateAstronomicalBody {
 			 * @param solarSystem The star system to which the new object will be added.
 			 * @return
 			 */
-			public Planet buildAs(PlanetType type, SolarSystem solarSystem) {
-				CreateAstronomicalBody.this.planetType = type;
+			public Planet buildAs(PlanetType planet, SolarSystem solarSystem) {
+				CreateAstronomicalBody.this.planetType = planet;
 				return CreateAstronomicalBody.this.buildPlanet(solarSystem);
 			}
 			
@@ -145,9 +147,20 @@ public final class CreateAstronomicalBody {
 			 * @param solarSystem The star system to which the new object will be added.
 			 * @return
 			 */
-			public Moon buildAs(MoonType type, SolarSystem solarSystem) {
-				CreateAstronomicalBody.this.moonType = type;
+			public Moon buildAs(MoonType moon, SolarSystem solarSystem) {
+				CreateAstronomicalBody.this.moonType = moon;
 				return CreateAstronomicalBody.this.buildMoon(solarSystem);
+			}
+			
+			/**
+			 * Determines which type of object is to be created.
+			 * @param type Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
+			 * @param solarSystem The star system to which the new object will be added.
+			 * @return
+			 */
+			public Asteroid buildAs(AsteroidType asteroid, SolarSystem solarSystem) {
+				CreateAstronomicalBody.this.asteroidType = asteroid;
+				return CreateAstronomicalBody.this.buildAsteroid(solarSystem);
 			}
 			
 		}
@@ -169,6 +182,13 @@ public final class CreateAstronomicalBody {
 	
 	private Moon buildMoon(SolarSystem solarSystem) {
 		Moon newBody = new Moon(name, orbitalProperties, bodyProperties, moonType);
+		setUpRings(newBody);		
+		newBody.initializeAstronomicalBody(solarSystem);
+		return newBody;
+	}
+	
+	private Asteroid buildAsteroid(SolarSystem solarSystem) {
+		Asteroid newBody = new Asteroid(name, orbitalProperties, bodyProperties, asteroidType);
 		setUpRings(newBody);		
 		newBody.initializeAstronomicalBody(solarSystem);
 		return newBody;
