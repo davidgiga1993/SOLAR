@@ -32,8 +32,6 @@ public class PlanetaryRing extends AstronomicalBody {
 	protected float outerRadiusPixels;
 
 	protected Mesh ringMesh;
-	protected float polygonWidth;
-	protected float polygonHeight;
 	private float[] vertices;
 	private short[] indices;
 
