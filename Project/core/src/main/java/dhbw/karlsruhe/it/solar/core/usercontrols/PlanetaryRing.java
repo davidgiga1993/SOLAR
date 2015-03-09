@@ -153,8 +153,6 @@ public class PlanetaryRing extends AstronomicalBody {
 		innerRadiusPixels += calculateOrbitOffset();
 
 		calculateVertices(innerRadiusPixels, outerRadiusPixels);
-
-		// Note: this actually does work. however scaling the texture is not the same as scaling an annulus (2d-ring)
 	}
 	
 	@Override
