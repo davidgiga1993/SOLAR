@@ -17,6 +17,9 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameStartStage extends BaseStage implements Telegraph
 {
     public Selection selectedActors = new Selection();
@@ -35,6 +38,8 @@ public class GameStartStage extends BaseStage implements Telegraph
 
     protected Player humanPlayer;
     protected Player aiPlayer;
+
+    private List<PlanetaryRing> ringList = new ArrayList<PlanetaryRing>();
 
     /**
      * Call this to initialize a new game.
@@ -113,17 +118,22 @@ public class GameStartStage extends BaseStage implements Telegraph
         libGDXShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         libGDXShapeRenderer.setProjectionMatrix(getCamera().combined);
         solarShapeRenderer.setProjectionMatrix(getCamera().combined);
+        ringList.clear();
         for (Actor child : getRoot().getChildren()) {
             if (child instanceof ShapeRenderable) {
                 ((ShapeRenderable) child).drawLines(libGDXShapeRenderer, solarShapeRenderer);
             }
+            if(child instanceof  PlanetaryRing) {
+                ringList.add((PlanetaryRing) child);
+            }
         }
         libGDXShapeRenderer.end();
-
         // draw sprite batch and polygon batch stuff
-        SolarEngine.polygonBatch.begin();
         super.draw();
-        SolarEngine.polygonBatch.end();
+
+        for (PlanetaryRing ring : ringList) {
+            ring.draw();
+        }
     }
 
     @Override

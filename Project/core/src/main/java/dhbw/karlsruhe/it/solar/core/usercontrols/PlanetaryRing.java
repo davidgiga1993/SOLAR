@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.graphics.AnnulusShader;
@@ -26,59 +28,72 @@ public class PlanetaryRing extends AstronomicalBody {
 
 	protected Length innerRadius;
 
+	protected float innerRadiusPixels;
+	protected float outerRadiusPixels;
+
 	protected Mesh ringMesh;
 	protected float polygonWidth;
 	protected float polygonHeight;
+	private float[] vertices;
+	private short[] indices;
 
 	public PlanetaryRing(AstronomicalBody orbitPrimary, Mass mass, Length innerRadius, Length outerRadius, RingType type) {
 		super(nameOfRings(orbitPrimary), orbitOfRings(orbitPrimary, outerRadius), bodyOfRings(mass, outerRadius), scaleOfRings(), textureOfRings(type));
 		this.innerRadius = innerRadius;
+		this.segments = 500;
 		label.hide();
 		this.setTouchable(Touchable.disabled);
 		updateScale();
-		ringMesh = createPolygonRegion(1, getWidth()/2,segments);
+
+		ringMesh = createPolygonRegion(innerRadiusPixels, outerRadiusPixels);
+
+		ringMesh.setVertices(vertices);
+		ringMesh.setIndices(indices);
 	}
 
-	private Mesh createPolygonRegion(float innerRadius, float outerRadius, int segments) {
-		float phi = 360f/segments;
+	private Mesh createPolygonRegion(float innerRadius, float outerRadius) {
+		return new Mesh(true, segments*2, segments*2+2, new VertexAttribute(VertexAttributes.Usage.Position, 2, "a_position"), new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, "a_texCoord"));
+	}
+
+	private void calculateVertices(float innerRadius, float outerRadius) {
+		double phi = (2*Math.PI)/segments;
 
 		float r = innerRadius;
 		float R = outerRadius;
 
-		float vertices[] = new float[segments*8];
-		short triangles[] = new short[segments*2];
-		short count = 0;
+		vertices = new float[segments*8];
+		indices = new short[segments*2+2];
 
-		for(int i = 0; i < vertices.length;) {
-			float sin = (float) Math.sin(phi*i);
-			float cos = (float) Math.cos(phi*i);
+		float u = solarActorTexture.getU();
+		float u2 = solarActorTexture.getU2();
+		float v = solarActorTexture.getV();
+		float v2 = solarActorTexture.getV2();
+
+		for(int i = 0, n = 0; i < vertices.length; n++) {
+			float sin = (float) Math.sin(phi*n);
+			float cos = (float) Math.cos(phi*n);
+
+			vertices[i++] = cos * R;
+			vertices[i++] = sin * R;
+
+			vertices[i++] = u;
+			vertices[i++] = v;
 
 			// position
 			vertices[i++] = cos * r;
 			vertices[i++] = sin * r;
 			// texture
-			vertices[i++] = 0;
-			vertices[i++] = 0;
+			vertices[i++] = u;
+			vertices[i++] = v2;
 
-
-			vertices[i++] = cos * R;
-			vertices[i++] = sin * R;
-
-			vertices[i++] = 1;
-			vertices[i++] = 0;
-
-			triangles[count] = count++;
-			triangles[count] = count++;
 		}
 
-		polygonWidth = vertices[6];
-		polygonHeight = outerRadius;
-
-		Mesh ringMesh = new Mesh(true, segments*2, segments*2, new VertexAttribute(VertexAttributes.Usage.Position, 2, "a_position"), new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, "a_texCoord"));
-		ringMesh.setVertices(vertices);
-		ringMesh.setIndices(triangles);
-
-		return ringMesh;
+		for(short i = 0; i < indices.length - 2; i++) {
+			indices[i] = i;
+		}
+		// get back to the first 2 vertices
+		indices[indices.length - 2] = 0;
+		indices[indices.length - 1] = 1;
 	}
 
 	@Override
@@ -86,25 +101,30 @@ public class PlanetaryRing extends AstronomicalBody {
 
 	}
 
-	@Override
-	public void draw(Batch batch, float parentAlpha) {
+	public void draw() {
+		Matrix4 combined = new Matrix4(SolarEngine.get().camera.combined);
 		AstronomicalBody primary = getPrimary();
 		float x = primary.getX() + primary.getOriginX();
 		float y = primary.getY() + primary.getOriginY();
+		// +2 to connect start and end
+		int vertexCount = (vertices.length / 4) + 2;
 
-		ringMesh.bind(RING_SHADER);
+		ringMesh.setVertices(vertices);
+
 		Gdx.gl.glEnable(GL20.GL_BLEND);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-		int vertexCount = segments*2;
 
 		RING_SHADER.begin();
 
-		RING_SHADER.setUniformMatrix("u_projTrans", SolarEngine.get().camera.combined);
-		RING_SHADER.setUniformf("u_center", x, y);
-
+		RING_SHADER.setUniformMatrix("u_projTrans", combined);
+		RING_SHADER.setUniformf("u_center", new Vector2(x,y));
 		ringMesh.render(RING_SHADER, GL20.GL_TRIANGLE_STRIP, 0, vertexCount);
 
 		RING_SHADER.end();
+	}
+
+	@Override
+	public void draw(Batch batch, float parentAlpha) {
 	}
 
 	@Override
@@ -126,11 +146,15 @@ public class PlanetaryRing extends AstronomicalBody {
 		// planetary rings must be shifted by an offset when the primary is scaled
 		// however they'll need to get scaled when the moon orbit changes
 		// so the size should be radius = radius * moonOrbitScale + delta_planetsize
-		float radius = SolarActor.scaleDistanceToStage(physicalProperties.getRadius().asKilometres());
-		radius *= ConfigurationConstants.SCALE_FACTOR_MOON.orbitScale;
-		radius += calculateOrbitOffset();
-		float width = radius * 2;
-		setSize(width, width);
+		outerRadiusPixels = SolarActor.scaleDistanceToStage(physicalProperties.getRadius().asKilometres());
+		outerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.orbitScale;
+		outerRadiusPixels += calculateOrbitOffset();
+
+		innerRadiusPixels = SolarActor.scaleDistanceToStage(innerRadius.asKilometres());
+		innerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.orbitScale;
+		innerRadiusPixels += calculateOrbitOffset();
+
+		calculateVertices(innerRadiusPixels, outerRadiusPixels);
 
 		// Note: this actually does work. however scaling the texture is not the same as scaling an annulus (2d-ring)
 	}

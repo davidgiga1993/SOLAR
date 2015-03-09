@@ -20,7 +20,7 @@ public class AnnulusShader extends ShaderProgram{
             "{ \n" +
             "	v_position = a_position + u_center; \n" +
             "   	v_texCoords = a_texCoord; \n" +
-            "   	gl_Position = u_projTrans * vec4(v_position.xy, 0.0, 1.1); \n" +
+            "   	gl_Position = u_projTrans * vec4(v_position.xy, 0.0, 1.0); \n" +
             "} \n";
     public static final String FRAGMENT_SHADER = "#ifdef GL_ES \n" +
             "	#define LOWP lowp \n" +
@@ -35,6 +35,7 @@ public class AnnulusShader extends ShaderProgram{
             "void main() \n" +
             "{ \n" +
             "  gl_FragColor = texture2D(u_texture, v_texCoords); \n" +
+//            "  gl_FragColor = vec4(1,0,0,1); \n" +
             "} \n";
 
     public AnnulusShader() {
