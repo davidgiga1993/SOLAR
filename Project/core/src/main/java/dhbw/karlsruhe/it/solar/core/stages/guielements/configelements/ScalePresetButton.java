@@ -41,22 +41,22 @@ public abstract class ScalePresetButton extends TextButton {
         ConfigurationConstants.SCALE_FACTOR_MOON.set(1,1);
         ConfigurationConstants.SCALE_FACTOR_PLANET.set(1, 1);
         ConfigurationConstants.SCALE_FACTOR_STAR.set(1,1);
-        ConfigurationConstants.SCALE_FACTOR_UNITS.set(500000,1);
+        ConfigurationConstants.SCALE_FACTOR_UNITS.set(20000,1);
     }
 
     public static void loadPreset2() {
-        ConfigurationConstants.SCALE_FACTOR_ASTEROID.set(2,2);
-        ConfigurationConstants.SCALE_FACTOR_MOON.set(80,20);
-        ConfigurationConstants.SCALE_FACTOR_PLANET.set(20,0.3f);
-        ConfigurationConstants.SCALE_FACTOR_STAR.set(20,1);
-        ConfigurationConstants.SCALE_FACTOR_UNITS.set(1000000,2);
+        ConfigurationConstants.SCALE_FACTOR_ASTEROID.set(6,1);
+        ConfigurationConstants.SCALE_FACTOR_MOON.set(12,1);
+        ConfigurationConstants.SCALE_FACTOR_PLANET.set(6,0.3f);
+        ConfigurationConstants.SCALE_FACTOR_STAR.set(6,1);
+        ConfigurationConstants.SCALE_FACTOR_UNITS.set(400000,2);
     }
 
     public static void loadPreset3() {
         ConfigurationConstants.SCALE_FACTOR_ASTEROID.set(3,3);
-        ConfigurationConstants.SCALE_FACTOR_MOON.set(500,50);
-        ConfigurationConstants.SCALE_FACTOR_PLANET.set(80,0.6f);
-        ConfigurationConstants.SCALE_FACTOR_STAR.set(24,1);
+        ConfigurationConstants.SCALE_FACTOR_MOON.set(100,6.8f);
+        ConfigurationConstants.SCALE_FACTOR_PLANET.set(40,0.5f);
+        ConfigurationConstants.SCALE_FACTOR_STAR.set(48,1);
         ConfigurationConstants.SCALE_FACTOR_UNITS.set(3500000,3);
     }
 }

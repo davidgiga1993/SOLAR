@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScalePresetButton;
 
 public class Solar
 {
@@ -16,11 +17,12 @@ public class Solar
         // cfg.useGL20 = false;
         cfg.width = 900;
         cfg.height = 600;
-        cfg.foregroundFPS = 0;
+        cfg.foregroundFPS = 120;
         cfg.vSyncEnabled = false;
         // cfg.samples = 16;
         
         Engine = new SolarEngine();
         new LwjglApplication(Engine, cfg);
+        ScalePresetButton.loadPreset1();
     }
 }
