@@ -6,9 +6,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 
 public class OrbitalProperties
-{
-	private static final float PI_SQUARE_TIMES_FOUR = 39.478417604357434475337963999505f;
-	
+{	
 	private AstronomicalBody orbitPrimary;
 	private Length orbitalRadius;
 	private Angle orbitalAngle;
@@ -48,7 +46,7 @@ public class OrbitalProperties
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod() {
-        orbitalPeriodInDays = (float) (Math.sqrt( (PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24));
+        orbitalPeriodInDays = (float) (Math.sqrt( (PhysicalConstants.PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24));
     }
     
     /**

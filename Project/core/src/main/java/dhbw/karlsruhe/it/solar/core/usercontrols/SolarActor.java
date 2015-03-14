@@ -49,16 +49,6 @@ public abstract class SolarActor extends Actor implements Telegraph {
     }
 
     /**
-     * Converts a distance measurement given in Astronomical Units (1 AU = distance Earth-Sun) to kilometers.
-     *
-     * @param AU Original distance in Astronomical Units
-     * @return Same distance converted into kilometers
-     */
-    protected static double convertAUIntoKilometer(double AU) {
-        return AU * 1.4960 * Math.pow(10, 8);
-    }
-
-    /**
      * Calculates distances with a scaling factor intended to govern the distances in the solar system. Only a placeholder method right now.
      *
      * @param distance original distance
