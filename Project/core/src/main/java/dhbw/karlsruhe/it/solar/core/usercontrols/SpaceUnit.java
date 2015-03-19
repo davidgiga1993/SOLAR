@@ -169,19 +169,6 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
     }
 
     /**
-     * If selected, the unit is highlighted by a selection box.
-     * @param shapeRenderer
-     */
-    private void displaySelectionBox(ShapeRenderer shapeRenderer)
-    {
-        if (selected)
-        {
-            shapeRenderer.setColor(Color.GREEN);
-            shapeRenderer.rect(getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), 1, 1, getRotation());
-        }
-    }
-
-    /**
      * @return Destination coordinates the spaceship object is heading to
      */
     public Vector2 getDestination()

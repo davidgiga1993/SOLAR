@@ -19,6 +19,6 @@ public final class ConfigurationConstants {
 
 	// GUI Settings
 
-	public static final int GUI_NAVIGATION_WIDTH = 125;
+	public static final int GUI_NAVIGATION_WIDTH = 175;
 
 }

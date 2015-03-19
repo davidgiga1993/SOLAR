@@ -1,10 +1,14 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
+import dhbw.karlsruhe.it.solar.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +22,7 @@ public abstract class AstronomicalBody extends Orbiter
 	protected BodyProperties physicalProperties;
 	protected List<AstronomicalBody> satellites = new ArrayList<AstronomicalBody>();
     protected BodyGameLabel label;
+    private Colony colony;
 
 	public AstronomicalBody(String name)
 	{
@@ -30,6 +35,7 @@ public abstract class AstronomicalBody extends Orbiter
 		super(name, orbit, scaleFactor);
 		setupSolarActorSprite(textureName);
 		this.physicalProperties = body;
+		this.colony = null;
 		this.label = new BodyGameLabel(name);	
 		changeBodyScale();
 	}
@@ -68,6 +74,14 @@ public abstract class AstronomicalBody extends Orbiter
         }
 	}
     
+	@Override
+	public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
+		if(null != colony) {
+			displaySelectionBox(libGDXShapeRenderer);
+		}
+		super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
+	}
+    
     protected void setUpRings(PlanetaryRing ring)
     {
     	physicalProperties.setUpRings(ring);
@@ -87,6 +101,10 @@ public abstract class AstronomicalBody extends Orbiter
         {
         	setRingPrimary(this);
         }
+	}
+	
+	public void establishColony(Player player, Population colonists) {
+		colony = new Colony(player, colonists);
 	}
 
 	protected void addAsSatellite() {
@@ -125,5 +143,16 @@ public abstract class AstronomicalBody extends Orbiter
 
 	public Angle getOrbitalAngle() {
 		return orbitalProperties.getOrbitalAngle();
+	}
+
+	public boolean isColonized() {
+		if(null != colony) {
+	        return true;			
+		}
+        return false;
+	}
+	
+	public String getPopulationNumbers() {
+		return colony.getPopulationNumbers();
 	}
 }

@@ -7,9 +7,12 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -105,10 +108,12 @@ public class GameStartStage extends BaseStage implements Telegraph
         placeNewShip("Destiny", new Vector2(1550, 1050), aiPlayer);
         placeNewStation("Deep Space Nine", new Vector2(1500, 0), humanPlayer);
         
+        // Create an example space station orbiting Earth and found a player colony on Earth
         Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), aiPlayer);
         AstronomicalBody primary = solarSystem.findSatelliteByName("Earth");
         if (null != primary) {
-            babylon.enterOrbit(primary);       	
+            babylon.enterOrbit(primary);
+            primary.establishColony(humanPlayer, new Population(7.125f, Unit.BILLION));
         }
     }
 

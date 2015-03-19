@@ -15,9 +15,11 @@ public class NavigationBar extends Window {
     private final Cell<ScrollPane> contentCell;
     private final ScrollPane shipPane;
     private final ScrollPane bodyPane;
+    private final ScrollPane colonyPane;
 
     private final BodyNavigationTable bodyTable;
     private final ShipNavigationTable shipTable;
+    private final ColonyNavigationTable colonyTable;
 
 
     public NavigationBar() {
@@ -27,6 +29,7 @@ public class NavigationBar extends Window {
         // Tab Buttons
         TextButton bodyButton = new TextButton("Bodies", SolarEngine.get().styles.tooltipSkin);
         TextButton shipButton = new TextButton("Units", SolarEngine.get().styles.tooltipSkin);
+        TextButton colonyButton = new TextButton("Colonies", SolarEngine.get().styles.tooltipSkin);
 
         // Button Listeners
         bodyButton.addListener(new ChangeListener() {
@@ -41,13 +44,21 @@ public class NavigationBar extends Window {
                 onShipClick();
             }
         });
+        colonyButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onColonyClick();
+            }
+        });
 
         // To be replaced with actual NavigationTables
         bodyTable = new BodyNavigationTable();
         shipTable = new ShipNavigationTable();
+        colonyTable = new ColonyNavigationTable();
 
         bodyPane = new ScrollPane(bodyTable);
         shipPane = new ScrollPane(shipTable);
+        colonyPane = new ScrollPane(colonyTable);
 
         // layout
         layoutTable = new Table();
@@ -55,6 +66,7 @@ public class NavigationBar extends Window {
         // 2 buttons up top
         layoutTable.add(bodyButton).top();
         layoutTable.add(shipButton).top();
+        layoutTable.add(colonyButton).top();
         // content below
         layoutTable.row().colspan(2);
         layoutTable.add(bodyPane).expand().top().fill();
@@ -77,6 +89,14 @@ public class NavigationBar extends Window {
      */
     private void onShipClick() {
         contentCell.setActor(shipPane).expand();
+    }
+    
+    /**
+     * Set's the contentCell to show the Colonies
+     */
+    private void onColonyClick() {
+    	colonyTable.buildColonyList();
+        contentCell.setActor(colonyPane).expand();
     }
 
 }

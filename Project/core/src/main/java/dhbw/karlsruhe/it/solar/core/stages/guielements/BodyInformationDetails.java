@@ -66,6 +66,12 @@ public class BodyInformationDetails extends InformationDetails {
         add(orbitalPeriodName);
         add(orbitalPeriodValue).width(VALUE_WIDTH);
         add(orbitalPeriodUnit).width(UNIT_WIDTH);
+        
+        //TODO: Proper implementation - how will this fit into the current design?
+        if(body.isColonized()) {
+            row();
+            add(new Label("Population: " + body.getPopulationNumbers(),SolarEngine.get().styles.defaultLabelStyle));	
+        }
     }
 
     private void initLabelsDefault(AstronomicalBody body) {
