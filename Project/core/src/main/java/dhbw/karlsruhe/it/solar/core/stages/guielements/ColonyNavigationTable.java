@@ -33,7 +33,7 @@ public class ColonyNavigationTable extends BaseNavigationTable {
 	private void addColonyToTable(Actor actor) {
 		if(!allColonies.contains(actor))	{
 			allColonies.add((AstronomicalBody) actor);
-			allLabels.add(new BaseNavigationLabel(((AstronomicalBody)actor).getName(), "", (SolarActor) actor));	
+			allLabels.add(new BaseNavigationLabel(((AstronomicalBody)actor).getColonyName(), "", (SolarActor) actor));	
 		}
 	}
 

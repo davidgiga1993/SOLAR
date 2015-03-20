@@ -189,22 +189,42 @@ public class GameInputListener extends InputListener {
 				sa = (SolarActor) a;
 				// insideRectangle to evaluate whether the actor is inside the selection.
 				if (sa.insideRectangle(stage.selectionRectangle.getRectangle())) {
-					//Actor will only be added to selection if owned by the player
-					if (sa instanceof Ownable && ((Ownable) sa).isOwnedBy(stage.getHumanPlayer())) {
-						// proceed according to state
-						switch(state) {
-							case ADD:
-								stage.selectedActors.add(sa);
-								break;
-							case REMOVE:
-								stage.selectedActors.remove(sa);
-								break;
-						}
-					}
+					updateSelectionRectangleForUnits(state, sa);
+					updateSelectionReactangleForColonies(state, sa);
 				}
 			}
 		}
 
+	}
+
+	private void updateSelectionRectangleForUnits(SelectionState state,
+			SolarActor sa) {
+		//Actor will only be added to selection if owned by the player
+		if (sa instanceof Ownable && ((Ownable) sa).isOwnedBy(stage.getHumanPlayer())) {
+			// proceed according to state
+			switch(state) {
+				case ADD:
+					stage.selectedActors.add(sa);
+					break;
+				case REMOVE:
+					stage.selectedActors.remove(sa);
+					break;
+			}
+		}
+	}
+
+	private void updateSelectionReactangleForColonies(SelectionState state, SolarActor sa) {
+		if (sa instanceof AstronomicalBody && ((AstronomicalBody)sa).isColonized() && ((AstronomicalBody)sa).isColonyOwnedBy(stage.getHumanPlayer())) {
+			// proceed according to state
+			switch(state) {
+				case ADD:
+					stage.selectedActors.add(sa);
+					break;
+				case REMOVE:
+					stage.selectedActors.remove(sa);
+					break;						
+		}
+		}
 	}
 
 	/**

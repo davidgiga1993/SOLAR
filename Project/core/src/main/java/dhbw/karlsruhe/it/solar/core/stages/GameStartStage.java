@@ -108,14 +108,22 @@ public class GameStartStage extends BaseStage implements Telegraph
         placeNewShip("Destiny", new Vector2(1550, 1050), aiPlayer);
         placeNewStation("Deep Space Nine", new Vector2(1500, 0), humanPlayer);
         
-        // Create an example space station orbiting Earth and found a player colony on Earth
+        // Create an example space station orbiting Earth
         Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), aiPlayer);
         AstronomicalBody primary = solarSystem.findSatelliteByName("Earth");
         if (null != primary) {
-            babylon.enterOrbit(primary);
-            primary.establishColony(humanPlayer, new Population(7.125f, Unit.BILLION));
+            babylon.enterOrbit(primary);        
         }
+        //place some example colonies
+        placeNewColony("Earth", "Earth", humanPlayer, new Population(7.125f, Unit.BILLION));
+        placeNewColony("Moon", "Tranquility Base", aiPlayer, new Population(31.415f, Unit.MILLION));
+        placeNewColony("Mars", "Utopia Planitia", humanPlayer, new Population(1.1235f, Unit.THOUSAND));
     }
+
+	private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
+		AstronomicalBody primary = solarSystem.findSatelliteByName(nameOfAstronomicalBody);
+        primary.establishColony(colonyName, foundingPlayer, colonists);
+	}
 
     @Override
     public void draw() {

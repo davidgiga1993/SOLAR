@@ -1,5 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
@@ -103,8 +104,10 @@ public abstract class AstronomicalBody extends Orbiter
         }
 	}
 	
-	public void establishColony(Player player, Population colonists) {
-		colony = new Colony(player, colonists);
+	public Colony establishColony(String colonyName, Player player, Population colonists) {
+		colony = new Colony(colonyName, player, colonists);
+		preview.color = Color.GREEN;
+		return colony;
 	}
 
 	protected void addAsSatellite() {
@@ -154,5 +157,13 @@ public abstract class AstronomicalBody extends Orbiter
 	
 	public String getPopulationNumbers() {
 		return colony.getPopulationNumbers();
+	}
+
+	public String getColonyName() {
+		return colony.getName();
+	}
+
+	public boolean isColonyOwnedBy(Player humanPlayer) {
+		return colony.isOwnedBy(humanPlayer);
 	}
 }
