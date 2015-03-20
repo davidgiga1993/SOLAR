@@ -48,7 +48,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 			setKinematicValues();
 			changeOrbitScale();
 		}
-		preview = new PreviewActor(this, getWidth(), PREVIEW_PIXEL_WIDTH, Spacestation.SPACESTATION_ORBIT_COLOR);
+		preview = new PreviewActor(this, getWidth(), PREVIEW_PIXEL_WIDTH, Spacestation.SPACEUNIT_ORBIT_COLOR);
 	}
 
 	protected void setKinematicValues() {

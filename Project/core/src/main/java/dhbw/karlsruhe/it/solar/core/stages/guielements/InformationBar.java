@@ -62,6 +62,7 @@ public class InformationBar extends Window implements Telegraph {
             newDetails = new InformationDetails();
         }
         detailsCell.setActor(newDetails);
+        actions.changedActor(actor);
     }
 
     @Override

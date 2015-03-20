@@ -175,4 +175,8 @@ public class SolarSystem extends AstronomicalBody {
         shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.circle(getX(), getY(), 10);
 	}
+
+	public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
+		return this;
+	}
 }

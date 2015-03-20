@@ -197,6 +197,7 @@ public class OrbitalProperties
 			float satelliteMass = massOfSatellite.asSolarMass();
 			float difference = primaryMass - satelliteMass;
 			// if the difference is below a threshold we can safely assume it's not a twin star system
+			// TODO: For a more precise check, avoid this calculation by having an attribute which knows the number of stars added during system creation?
 			if (difference < 0.01f) {
 				return new Length(1, Length.Unit.lightYear);
 			}
