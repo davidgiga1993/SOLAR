@@ -288,7 +288,7 @@ public class GameStartStage extends BaseStage implements Telegraph
         SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
     }
 
-	public SolarSystem getSolarSystem() {
-		return solarSystem;
+	public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
+		return solarSystem.calculateDominantGravitationSourceAt(unit);
 	}
 }

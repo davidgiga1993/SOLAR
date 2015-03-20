@@ -21,6 +21,7 @@ import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length.Unit;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -200,7 +201,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
      * Actor stops other movement actions and, starting from its current position, assumes a circular orbit around the parameter AstronomicalBody. 
      * @param orbitPrimary Object around which the actor will enter orbit.
      */
-    public void enterOrbit(AstronomicalBody orbitPrimary)
+	public void enterOrbit(AstronomicalBody orbitPrimary)
     {  	
     	stopMovement();
 		setNewOrbitalProperties(orbitPrimary);
@@ -210,6 +211,19 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
     	//TODO: Entferne Debugkommentare
         DecimalFormat df2 = new DecimalFormat("#.##");
         System.out.println(this.getName() + " tritt in Orbit ein um: " + orbitPrimary.getName() + " (" + orbitPrimary.getX() + "/" + orbitPrimary.getY()  + "). Orbitalradius: " + df2.format(orbitalProperties.getOrbitalRadius().asAstronomicalUnit()) + " / Periodendauer: " + orbitalProperties.getOrbitalPeriodInDays());	
+    }
+    
+    public void enterOrbit() {
+    	AstronomicalBody orbitPrimary = calculateDominantGravitationSource();    	
+    	stopMovement();
+		setNewOrbitalProperties(orbitPrimary);
+    	setKinematicValues();
+    	changeOrbitScaleSpaceUnit();   	
+    	
+    	//TODO: Entferne Debugkommentare
+        DecimalFormat df2 = new DecimalFormat("#.##");
+        System.out.println(this.getName() + " tritt in Orbit ein um: " + orbitPrimary.getName() + " (" + orbitPrimary.getX() + "/" + orbitPrimary.getY()  + "). Orbitalradius: " + df2.format(orbitalProperties.getOrbitalRadius().asAstronomicalUnit()) + " / Periodendauer: " + orbitalProperties.getOrbitalPeriodInDays());	
+  	
     }
     
     /**
@@ -345,12 +359,16 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
 	 * For this to be possible the astronomical body's gravitational field has to be dominant (i.e. noticeably stronger than that of its own primary body).
 	 * @return
 	 */
-    private boolean  isAbleToEnterOrbitAround(AstronomicalBody destination)
+    public boolean  isAbleToEnterOrbitAround(AstronomicalBody destination)
     {    	  
 		if( maxOrbitalRadiusFor(destination).asAstronomicalUnit() > physicalDistanceTo(destination).asAstronomicalUnit() )
 		{
 			return true;			
 		}
 		return false;
+	}
+
+	public AstronomicalBody calculateDominantGravitationSource() {
+		return ((GameStartStage)getStage()).calculateDominantGravitationSourceAt(this);
 	}
 }

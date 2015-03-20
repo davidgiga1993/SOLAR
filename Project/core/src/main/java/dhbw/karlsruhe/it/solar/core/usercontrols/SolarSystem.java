@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
@@ -174,9 +175,5 @@ public class SolarSystem extends AstronomicalBody {
 	private void diplaySystemCenter(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.circle(getX(), getY(), 10);
-	}
-
-	public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
-		return this;
 	}
 }

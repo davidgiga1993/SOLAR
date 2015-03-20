@@ -9,7 +9,6 @@ public class OrbitalInsertionCommand implements Command {
 
 	private SpaceUnit unit;
 	private AstronomicalBody orbitPrimary;
-	private SolarSystem system;
 	
 	public OrbitalInsertionCommand(SpaceUnit unit, AstronomicalBody orbitPrimary) {
 		this.unit = unit;
@@ -18,12 +17,10 @@ public class OrbitalInsertionCommand implements Command {
 	
 	public OrbitalInsertionCommand(SpaceUnit unit) {
 		this.unit = unit;
-		this.system = ((GameStartStage)unit.getStage()).getSolarSystem();
-		this.orbitPrimary = system.calculateDominantGravitationSourceAt(unit);
 	}
 	
 	@Override
 	public void execute() {
-    	unit.enterOrbit(orbitPrimary);
+    	unit.enterOrbit();
 	}
 }

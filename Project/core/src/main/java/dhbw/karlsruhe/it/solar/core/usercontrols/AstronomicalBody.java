@@ -65,6 +65,21 @@ public abstract class AstronomicalBody extends Orbiter
 		}
 		return null;
 	}
+	
+	public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
+		AstronomicalBody dominantSource = null;
+		for (AstronomicalBody satellite : satellites) {
+			if(unit.isAbleToEnterOrbitAround(satellite)) {
+				dominantSource = satellite;
+			}
+			AstronomicalBody dominantSatellite = null;
+			dominantSatellite = satellite.calculateDominantGravitationSourceAt(unit);
+			if(null != dominantSatellite) {
+				dominantSource = dominantSatellite;
+			}
+		}
+		return dominantSource;
+	}
     
     @Override
     protected void adjustLabelPosition() {
