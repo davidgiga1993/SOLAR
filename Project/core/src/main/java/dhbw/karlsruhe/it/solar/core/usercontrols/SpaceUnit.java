@@ -37,6 +37,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
 	    this.selected = false;
         this.owner = owner;
         this.speed = speed;
+        selectionColor = owner.getPlayerColor();
+        preview.color = selectionColor;
 	}
 
 	/**

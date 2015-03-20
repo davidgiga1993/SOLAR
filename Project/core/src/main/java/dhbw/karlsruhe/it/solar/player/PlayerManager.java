@@ -3,6 +3,8 @@ package dhbw.karlsruhe.it.solar.player;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.Color;
+
 /**
  * Created by Arga on 29.11.2014.
  */
@@ -15,8 +17,8 @@ public class PlayerManager {
         players = new ArrayList<Player>();
     }
 
-    public Player createPlayer(String name) {
-        Player newPlayer = new Player(count);
+    public Player createPlayer(String name, Color color) {
+        Player newPlayer = new Player(count, name, color);
         count++;
         players.add(newPlayer);
         return newPlayer;

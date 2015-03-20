@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -97,8 +98,8 @@ public class GameStartStage extends BaseStage implements Telegraph
         addSelectionRectangle();
 
 
-        humanPlayer = playerManager.createPlayer("Human Player");
-        aiPlayer = playerManager.createPlayer("CPU Player");
+        humanPlayer = playerManager.createPlayer("Human Player", Color.GREEN);
+        aiPlayer = playerManager.createPlayer("CPU Player", Color.RED);
     }
 
     public void init() {

@@ -2,11 +2,13 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
@@ -19,6 +21,7 @@ public abstract class SolarActor extends Actor implements Telegraph {
     protected boolean selected;
     protected TextureRegion solarActorTexture;
     protected Sprite solarActorSprite;
+    protected Color selectionColor;
 
     protected SolarActorScale actorScale;
     protected float currentShapeScale;
@@ -29,6 +32,7 @@ public abstract class SolarActor extends Actor implements Telegraph {
     public SolarActor(String name) {
         this.setName(name);
         SolarEngine.messageDispatcher.addListener(this, SolarMessageType.GAME_SCALE_CHANGED);
+        selectionColor = Color.GREEN;
     }
 
     @Override

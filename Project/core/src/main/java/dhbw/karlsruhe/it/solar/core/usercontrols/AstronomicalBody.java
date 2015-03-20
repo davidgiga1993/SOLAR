@@ -106,7 +106,8 @@ public abstract class AstronomicalBody extends Orbiter
 	
 	public Colony establishColony(String colonyName, Player player, Population colonists) {
 		colony = new Colony(colonyName, player, colonists);
-		preview.color = Color.GREEN;
+		selectionColor = player.getPlayerColor();
+		preview.color = selectionColor;
 		return colony;
 	}
 
