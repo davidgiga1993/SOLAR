@@ -63,8 +63,8 @@ public class InformationActions extends Table {
     
     private void onColonizeClick() {
     	//TODO: Adjust after implementing ColonizeCommand logic
-//    	ColonizeCommand colonize = new ColonizeCommand((SpaceUnit)selectedActor, null, null);
-//    	colonize.execute();
+    	ColonizeCommand colonize = new ColonizeCommand((SpaceUnit)selectedActor);
+    	colonize.execute();
     }
 
 	public void changedActor(SolarActor actor) {

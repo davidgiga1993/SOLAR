@@ -175,7 +175,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
 		//TODO: Remove, only test functionality. Replace with actual button command in infobar
     	if( null != orbitalProperties && !destination.isColonized() && destination.equals(orbitalProperties.getPrimary()))
     	{
-    		ColonizeCommand colonize = new ColonizeCommand(this, destination, new Population(10f, Population.Unit.THOUSAND));
+    		ColonizeCommand colonize = new ColonizeCommand(this);
     		colonize.execute();
     		return;
     	}
@@ -195,6 +195,10 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable
 
 	public void establishColony(AstronomicalBody destination, Population colonists) {
 		destination.establishColony("Testkolonie", owner, colonists);
+	}
+	
+	public void establishColony() {
+		orbitalProperties.getPrimary().establishColony("Testkolonie", owner, new Population(10f,Population.Unit.THOUSAND));
 	}
     
 	/**
