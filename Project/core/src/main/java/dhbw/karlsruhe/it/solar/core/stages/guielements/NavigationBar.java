@@ -95,7 +95,7 @@ public class NavigationBar extends Window {
      * Set's the contentCell to show the Colonies
      */
     private void onColonyClick() {
-    	colonyTable.buildColonyList();
+    colonyTable.buildColonyList();
         contentCell.setActor(colonyPane).expand();
     }
 

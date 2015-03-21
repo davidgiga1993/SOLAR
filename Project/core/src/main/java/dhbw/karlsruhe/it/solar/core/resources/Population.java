@@ -7,25 +7,25 @@ package dhbw.karlsruhe.it.solar.core.resources;
  * Th, 19. March 2015
  */
 public class Population {
-	private float value;
-	private Unit unit;
-	
-	public enum Unit {
-		THOUSAND,
-		MILLION,
-		BILLION
-	}
-	
-	public Population(float numberOfColonists, Unit populationUnit) {
-		value = numberOfColonists;
-		unit = populationUnit;
-	}
-	
-	private String formatValue() {
-		return String.format("%.02f", value);
-	}
-	
-	public float inThousands() {
+private float value;
+private Unit unit;
+
+public enum Unit {
+THOUSAND,
+MILLION,
+BILLION
+}
+
+public Population(float numberOfColonists, Unit populationUnit) {
+value = numberOfColonists;
+unit = populationUnit;
+}
+
+private String formatValue() {
+return String.format("%.02f", value);
+}
+
+public float inThousands() {
         switch(unit) {
         case THOUSAND:
             return value;
@@ -36,9 +36,9 @@ public class Population {
         default:
             return 0;
         }
-	}
-	
-	public float inMillions() {
+}
+
+public float inMillions() {
         switch(unit) {
         case THOUSAND:
             return value / 1000;
@@ -49,9 +49,9 @@ public class Population {
         default:
             return 0;
         }
-	}
-	
-	public float inBillions() {
+}
+
+public float inBillions() {
         switch(unit) {
         case THOUSAND:
             return value / (1000 * 1000);
@@ -62,10 +62,10 @@ public class Population {
         default:
             return 0;
         }
-	}
-	
-	@Override
-	public String toString() {
+}
+
+@Override
+public String toString() {
         switch(unit) {
         case THOUSAND:
             return formatValue() + " thousand";
@@ -76,6 +76,6 @@ public class Population {
         default:
             return "apparently zombified";
         }
-	}
+}
 
 }

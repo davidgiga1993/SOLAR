@@ -11,5 +11,7 @@ public class SolarMessageType {
     public static final int GAME_SCALE_CHANGED = 4;
 
 
-    private SolarMessageType() {}
+    private SolarMessageType() {
+    	
+    }
 }

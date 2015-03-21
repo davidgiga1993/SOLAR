@@ -5,7 +5,7 @@ package dhbw.karlsruhe.it.solar.core.ai.events;
  */
 public class TargetReachedEvent {
 
-    public Object target;
+    private Object target;
 
     public TargetReachedEvent(Object target) {
         this.target = target;

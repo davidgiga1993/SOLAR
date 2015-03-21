@@ -32,13 +32,6 @@ public class ShipNavigationTable extends BaseNavigationTable {
         }
     }
 
-    private void buildHierarchy() {
-        allLabels.clear();
-        for (SpaceUnit ship : allShips) {
-            allLabels.add(new BaseNavigationLabel(ship.getName(), "", ship));
-        }
-    }
-
     private void addSingleShip(SpaceUnit ship) {
         allShips.add(ship);
         allLabels.add(new BaseNavigationLabel(ship.getName(), "", ship));
