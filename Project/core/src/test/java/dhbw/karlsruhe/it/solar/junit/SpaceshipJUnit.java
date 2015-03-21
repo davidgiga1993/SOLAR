@@ -1,9 +1,14 @@
 package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.player.PlayerManager;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +48,8 @@ public class SpaceshipJUnit
     
     private Spaceship placeTestShip() throws Exception
     {
-    	return new Spaceship("Testschiff", new Length(1, Length.Unit.kilometres), new Length(2, Length.Unit.kilometres), null);
+    	final PlayerManager playerManager = new PlayerManager();
+    	return new Spaceship("Testschiff", new Length(1, Length.Unit.kilometres), new Length(2, Length.Unit.kilometres), playerManager.createPlayer("human", Color.BLUE));
     }
 
     @After
