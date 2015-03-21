@@ -10,9 +10,10 @@ public class StartStage extends HUDStage {
     private Label labelStart;
     private Label labelSettings;
     private Label labelExit;
+    private static final String stage = "StartStage";
 
-    public StartStage(final SolarEngine SE) {
-        super(SE, "StartStage");
+    public StartStage(final SolarEngine se) {
+        super(se, stage);
 
         Table menuTable = new Table();
         menuTable.setFillParent(true);
@@ -26,27 +27,27 @@ public class StartStage extends HUDStage {
         }
 
 
-        labelStart = new MenuButton("Start game", SE) {
+        labelStart = new MenuButton("Start game", se) {
             @Override
             protected void onClick() {
-                SE.stageManager.removeStage("StartStage");
+                se.stageManager.removeStage(stage);
                 GameStartStage.startGame();
             }
         };
 
-        labelSettings = new MenuButton("Settings", SE) {
+        labelSettings = new MenuButton("Settings", se) {
             @Override
             protected void onClick() {
-                SE.stageManager.removeStage("StartStage");
-                SE.stageManager.addStage(new GameOptionsStage(SE));
+                se.stageManager.removeStage(stage);
+                se.stageManager.addStage(new GameOptionsStage(se));
             }
         };
 
-        labelExit = new MenuButton("Exit", SE) {
+        labelExit = new MenuButton("Exit", se) {
             @Override
             protected void onClick() {
-                SE.stageManager.removeStage("StartStage");
-                SE.stageManager.addStage(new ExitStage(SE));
+                se.stageManager.removeStage(stage);
+                se.stageManager.addStage(new ExitStage(se));
             }
         };
 

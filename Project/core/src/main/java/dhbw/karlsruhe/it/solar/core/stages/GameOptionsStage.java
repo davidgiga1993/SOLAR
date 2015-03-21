@@ -7,16 +7,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
-public class GameOptionsStage extends HUDStage
-{
+public class GameOptionsStage extends HUDStage {
 
     private Label labelOption1;
     private Label labelBackground;
     private Label labelExit;
 
-    public GameOptionsStage(final SolarEngine SE)
-    {
-        super(SE, "GameOptions");
+    public GameOptionsStage(final SolarEngine se)    {
+        super(se, "GameOptions");
 
         Table menuTable = new Table();
         menuTable.setFillParent(true);
@@ -29,23 +27,23 @@ public class GameOptionsStage extends HUDStage
             menuTable.debug();
         }
 
-        labelOption1 = new MenuButton("Option 1", SE) {
+        labelOption1 = new MenuButton("Option 1", se) {
             @Override
             protected void onClick() {
             }
         };
 
-        labelBackground = new MenuButton("Choose Background", SE) {
+        labelBackground = new MenuButton("Choose Background", se) {
             @Override
             protected void onClick() {
-                SE.stageManager.swapCurrentStage(new GameOptionsBackgroundStage(SE));
+                se.stageManager.swapCurrentStage(new GameOptionsBackgroundStage(se));
             }
         };
 
-        labelExit = new MenuButton("Return", SE) {
+        labelExit = new MenuButton("Return", se) {
             @Override
             protected void onClick() {
-                SE.stageManager.swapCurrentStage(new StartStage(SE));
+                se.stageManager.swapCurrentStage(new StartStage(se));
             }
         };
 

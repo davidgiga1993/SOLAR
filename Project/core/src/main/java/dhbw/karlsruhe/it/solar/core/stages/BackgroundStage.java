@@ -10,16 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class BackgroundStage extends BaseBackgroundStage
-{
-    private final static String DEFAULT_BACKGROUND = "Hintergrund01.png";
-
+public class BackgroundStage extends BaseBackgroundStage {
     private Image backgroundImage;
     private Map<String, Texture> backgroundTextures;
+    private final static String DEFAULT_BACKGROUND = "Hintergrund01.png";
 
-    public BackgroundStage(SolarEngine SE)
-    {
-        super(SE, "Background");
+    public BackgroundStage(SolarEngine se)    {
+        super(se, "Background");
 
         loadTextures();
         changeBackground(DEFAULT_BACKGROUND);
