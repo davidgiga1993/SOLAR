@@ -20,5 +20,6 @@ public final class ConfigurationConstants {
 	// GUI Settings
 
 	public static final int GUI_NAVIGATION_WIDTH = 175;
+	public static final String HOMEWORLD = "Earth";
 
 }

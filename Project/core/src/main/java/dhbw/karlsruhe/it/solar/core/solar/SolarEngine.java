@@ -65,7 +65,7 @@ public class SolarEngine extends Game implements InputProcessor
         // Einstiegspunkt ins Spiel
         stageManager = new StageManager(this);
         stageManager.addStage(new BackgroundStage(this));
-        stageManager.StartGame();
+        stageManager.startGame();
     }
 
     // Anwendung wird beendet

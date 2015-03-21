@@ -7,81 +7,71 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StageManager extends BaseStage
-{
-    private List<BaseStage> Stages = new ArrayList<BaseStage>();
+public class StageManager extends BaseStage {
+    private List<BaseStage> stages = new ArrayList<BaseStage>();
 
-    public StageManager(SolarEngine SE)
-    {
-        super(SE, "StageManager");
+    public StageManager(SolarEngine se)   {
+        super(se, "StageManager");
     }
 
-    public void StartGame()
-    {
-        Stages.add(new StartStage(SE));
+    public void startGame()    {
+        stages.add(new StartStage(SE));
     }
 
     /**
      * Returns a stage with the given tag
      * 
-     * @param TAG
+     * @param tag
      * @return null if stage is not found
      */
-    public BaseStage getStage(String TAG)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            if (Stages.get(X).TAG.equals(TAG))
-                return getStage(X);
+    public BaseStage getStage(String tag)   {
+        for (int x = 0; x < stages.size(); x++)        {
+            if (stages.get(x).TAG.equals(tag)) {
+            	return getStage(x);            	
+            }
         }
         return null;
     }
 
-    public BaseStage getStage(int Index)
-    {
-        if (Index < Stages.size())
-            return Stages.get(Index);
+    public BaseStage getStage(int index)   {
+        if (index < stages.size()) {
+        	return stages.get(index);        	
+        }
         return null;
     }
 
     /**
      * Inserts a stage to position 0
      * 
-     * @param S
+     * @param s
      */
-    public void insertStageToBack(BaseStage S)
-    {
-        Stages.add(0, S);
+    public void insertStageToBack(BaseStage s)   {
+        stages.add(0, s);
     }
 
-    public void swapCurrentStage(BaseStage S)
-    {
-        Stages.remove(Stages.size() - 1);
-        Stages.add(S);
+    public void swapCurrentStage(BaseStage s)   {
+        stages.remove(stages.size() - 1);
+        stages.add(s);
     }
 
     /**
      * Adds a stage to the list
      * 
-     * @param S
+     * @param s
      */
-    public void addStage(BaseStage S)
-    {
-        Stages.add(S);
+    public void addStage(BaseStage s)   {
+        stages.add(s);
     }
 
     /**
      * Removes the stage with the given tag
      * 
-     * @param TAG
+     * @param tag
      */
-    public Stage removeStage(String TAG)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            if (Stages.get(X).TAG.equals(TAG))
-            {
-                return Stages.remove(X);
+    public Stage removeStage(String tag)   {
+        for (int x = 0; x < stages.size(); x++)	{
+            if (stages.get(x).TAG.equals(tag))	{
+                return stages.remove(x);
             }
         }
         return null;
@@ -90,107 +80,91 @@ public class StageManager extends BaseStage
     /**
      * Removes all stages from the list
      */
-    public void removeStages()
-    {
-        Stages.clear();
+    public void removeStages()    {
+        stages.clear();
     }
 
     @Override
-    public void draw()
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            Stages.get(X).act(Gdx.graphics.getDeltaTime());
-            Stages.get(X).draw();
+    public void draw()    {
+        for (int x = 0; x < stages.size(); x++)        {
+            stages.get(x).act(Gdx.graphics.getDeltaTime());
+            stages.get(x).draw();
         }
         super.draw();
     }
 
     @Override
-    public boolean keyDown(int keycode)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            if (Stages.get(X).keyDown(keycode))
-                break;
+    public boolean keyDown(int keycode)    {
+        for (int x = 0; x < stages.size(); x++)       {
+            if (stages.get(x).keyDown(keycode)) {
+            	break;            	
+            }
         }
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            if (Stages.get(X).keyUp(keycode))
-                break;
+    public boolean keyUp(int keycode)    {
+        for (int x = 0; x < stages.size(); x++)        {
+            if (stages.get(x).keyUp(keycode)) {
+            	break;            	
+            }
         }
         return false;
     }
 
     @Override
-    public boolean keyTyped(char character)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            if (Stages.get(X).keyTyped(character))
-                break;
+    public boolean keyTyped(char character)    {
+        for (int x = 0; x < stages.size(); x++)        {
+            if (stages.get(x).keyTyped(character)) {
+            	break;            	
+            }
         }
         return false;
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            Stages.get(X).touchDown(screenX, screenY, pointer, button);
+    public boolean touchDown(int screenX, int screenY, int pointer, int button)   {
+        for (int x = 0; x < stages.size(); x++)        {
+            stages.get(x).touchDown(screenX, screenY, pointer, button);
         }
         return false;
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            Stages.get(X).touchUp(screenX, screenY, pointer, button);
+    public boolean touchUp(int screenX, int screenY, int pointer, int button)    {
+        for (int x = 0; x < stages.size(); x++)        {
+            stages.get(x).touchUp(screenX, screenY, pointer, button);
         }
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            Stages.get(X).touchDragged(screenX, screenY, pointer);
+    public boolean touchDragged(int screenX, int screenY, int pointer)    {
+        for (int x = 0; x < stages.size(); x++)        {
+            stages.get(x).touchDragged(screenX, screenY, pointer);
         }
         return false;
     }
 
     @Override
-    public boolean mouseMoved(int screenX, int screenY)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            Stages.get(X).mouseMoved(screenX, screenY);
+    public boolean mouseMoved(int screenX, int screenY)    {
+        for (int x = 0; x < stages.size(); x++)       {
+            stages.get(x).mouseMoved(screenX, screenY);
         }
         return false;
     }
 
     @Override
-    public boolean scrolled(int amount)
-    {
-        for (int X = 0; X < Stages.size(); X++)
-        {
-            Stages.get(X).scrolled(amount);
+    public boolean scrolled(int amount)    {
+        for (int x = 0; x < stages.size(); x++)        {
+            stages.get(x).scrolled(amount);
         }
         return false;
     }
 
     public void resize(int width, int height) {
-        for(Stage stage : Stages) {
+        for(Stage stage : stages) {
             ((BaseStage) stage).resize(width, height);
         }
     }

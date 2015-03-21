@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
@@ -24,8 +25,7 @@ import dhbw.karlsruhe.it.solar.player.PlayerManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameStartStage extends BaseStage implements Telegraph
-{
+public class GameStartStage extends BaseStage implements Telegraph {
     public Selection selectedActors = new Selection();
     public SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
@@ -38,13 +38,26 @@ public class GameStartStage extends BaseStage implements Telegraph
     public static float gameSpeed = 0f;
     public static float oldGameSpeed = 1f;
 
-    public static Time gameTime = new Time();
+    public static final Time gameTime = new Time();
 
     protected Player humanPlayer;
     protected Player aiPlayer;
 
     private List<PlanetaryRing> ringList = new ArrayList<PlanetaryRing>();
 
+    public GameStartStage(SolarEngine se)   {
+        super(se, "GameStartStage");
+        se.Service.StartGame();
+        se.camera.zoom = 25;
+
+        gameStartStageListener();
+        addSelectionRectangle();
+
+
+        humanPlayer = playerManager.createPlayer("Human Player", Color.GREEN);
+        aiPlayer = playerManager.createPlayer("CPU Player", Color.RED);
+    }
+    
     /**
      * Call this to initialize a new game.
      */
@@ -85,21 +98,7 @@ public class GameStartStage extends BaseStage implements Telegraph
         manager.removeStage("GameStartStage").dispose();
 
         Gdx.input.setInputProcessor(engine);
-        engine.stageManager.StartGame();
-    }
-
-    public GameStartStage(SolarEngine SE)
-    {
-        super(SE, "GameStartStage");
-        SE.Service.StartGame();
-        SE.camera.zoom = 25;
-
-        gameStartStageListener();
-        addSelectionRectangle();
-
-
-        humanPlayer = playerManager.createPlayer("Human Player", Color.GREEN);
-        aiPlayer = playerManager.createPlayer("CPU Player", Color.RED);
+        engine.stageManager.startGame();
     }
 
     public void init() {
@@ -111,20 +110,20 @@ public class GameStartStage extends BaseStage implements Telegraph
         
         // Create an example space station orbiting Earth
         Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), aiPlayer);
-        AstronomicalBody primary = solarSystem.findSatelliteByName("Earth");
+        AstronomicalBody primary = solarSystem.findSatelliteByName(ConfigurationConstants.HOMEWORLD);
         if (null != primary) {
             babylon.enterOrbit(primary);        
         }
         //place some example colonies
-        placeNewColony("Earth", "Earth", humanPlayer, new Population(7.125f, Unit.BILLION));
+        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, humanPlayer, new Population(7.125f, Unit.BILLION));
         placeNewColony("Moon", "Tranquility Base", aiPlayer, new Population(31.415f, Unit.MILLION));
         placeNewColony("Mars", "Utopia Planitia", humanPlayer, new Population(1.1235f, Unit.THOUSAND));
     }
 
-	private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
-		AstronomicalBody primary = solarSystem.findSatelliteByName(nameOfAstronomicalBody);
+    private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
+        AstronomicalBody primary = solarSystem.findSatelliteByName(nameOfAstronomicalBody);
         primary.establishColony(colonyName, foundingPlayer, colonists);
-	}
+    }
 
     @Override
     public void draw() {
@@ -159,18 +158,17 @@ public class GameStartStage extends BaseStage implements Telegraph
 
     @Override
     public void act(float delta) {
-    	inputListener.handleContinuousInput(delta);
-        delta *= GameStartStage.gameSpeed;
-        gameTime.addDays(delta);
-        super.act(delta);
+        inputListener.handleContinuousInput(delta);
+        float newDelta = delta * GameStartStage.gameSpeed;
+        gameTime.addDays(newDelta);
+        super.act(newDelta);
     }
 
     /**
      * Initial demonstration object.
      * TODO: Remove
      */
-    private void addSelectionRectangle()
-    {
+    private void addSelectionRectangle()    {
         selectionRectangle = new SelectionRectangle();
         addActor(selectionRectangle);
     }
@@ -179,8 +177,7 @@ public class GameStartStage extends BaseStage implements Telegraph
      * Creates the solar system for the game.
      * Method called during startup of a game for creation of a new system map with a range of astronomical objects.
      */
-    private void systemCreation()
-    {
+    private void systemCreation()   {
         // Creates the Solar System for the game
         solarSystem = new SolarSystem(getGameName());
         solarSystem.createSolarSystem();
@@ -192,8 +189,7 @@ public class GameStartStage extends BaseStage implements Telegraph
      * Adds an astronomomical object and its satellites as new actors to the game.
      * @param body Astronomical Object to be added to the game.
      */
-    private void addSolarSystemActors(AstronomicalBody body)
-    {
+    private void addSolarSystemActors(AstronomicalBody body)    {
         if (body.getNumberOfSatellites() != 0)
         {
             for (AstronomicalBody astronomicalBody : body.getSatellites()) {
@@ -207,10 +203,8 @@ public class GameStartStage extends BaseStage implements Telegraph
      * @return Name of the Save Game / System Map currently being played. Currently a stub.
      * TODO: expand appropriately
      */
-    private String getGameName()
-    {
-        String name = "Sol";
-        return name;
+    private String getGameName()    {
+        return "Sol";
     }
 
     /**
@@ -218,8 +212,7 @@ public class GameStartStage extends BaseStage implements Telegraph
      * @param name Desired name of the spaceship.
      * @param startlocation Desired location at which the ship is to appear.
      */
-    private void placeNewShip(String name, Vector2 startlocation, Player owner)
-    {
+    private void placeNewShip(String name, Vector2 startlocation, Player owner)   {
         Spaceship newShip = Spaceship.placeNewShip(name, startlocation, owner);
         addActor(newShip);
     }
@@ -229,8 +222,7 @@ public class GameStartStage extends BaseStage implements Telegraph
      * @param name Desired name of the station.
      * @param startlocation Desired location at which the station is to appear.
      */
-    private Spacestation placeNewStation(String name, Vector2 startlocation, Player owner)
-    {
+    private Spacestation placeNewStation(String name, Vector2 startlocation, Player owner)    {
         Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
         addActor(newStation);
         return newStation;
@@ -242,10 +234,9 @@ public class GameStartStage extends BaseStage implements Telegraph
      * Handles selection and deselection of objects.
      * Handles movement orders.
      */
-    private void gameStartStageListener()
-    {
-    	inputListener = new GameInputListener(this);
-    	this.addListener(inputListener);
+    private void gameStartStageListener()    {
+        inputListener = new GameInputListener(this);
+        this.addListener(inputListener);
     }
 
     public Player getHumanPlayer() {
@@ -288,7 +279,7 @@ public class GameStartStage extends BaseStage implements Telegraph
         SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
     }
 
-	public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
-		return solarSystem.calculateDominantGravitationSourceAt(unit);
-	}
+    public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
+        return solarSystem.calculateDominantGravitationSourceAt(unit);
+    }
 }

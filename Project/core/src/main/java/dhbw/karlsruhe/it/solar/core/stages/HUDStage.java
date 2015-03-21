@@ -9,71 +9,61 @@ import com.badlogic.gdx.utils.Timer;
 import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
-public class HUDStage extends BaseGUIStage
-{
-    public HUDStage(SolarEngine SE, String TAG)
-    {
-        super(SE, TAG);
-        // setCamera(SE.HUDcamera);
+public class HUDStage extends BaseGUIStage {
+	
+    private Label fpsLabel;
+    private Label zoomLabel;
+    private Timer timer;
+    private boolean logData = true;
+    
+    public HUDStage(SolarEngine se, String tag)    {
+        super(se, tag);
 
         if (SolarEngine.DEBUG) {
             timer = new Timer();
             BitmapFont font = FontCacher.getFont("default");
-            FPSLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
-            FPSLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
-            zoomLabel = new Label("Zoom: ", SE.styles.defaultLabelStyle);
+            fpsLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
+            fpsLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
+            zoomLabel = new Label("Zoom: ", se.styles.defaultLabelStyle);
             zoomLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 45);
-            addActor(FPSLabel);
+            addActor(fpsLabel);
             addActor(zoomLabel);
-            BuildTimer();
+            buildTimer();
         }
-
     }
 
-    private Label FPSLabel;
-    private Label zoomLabel;
-    private Timer timer;
-
-    private boolean LogData = true;
-
-    public void Stop()
-    {
-        LogData = false;
+    public void stop()   {
+        logData = false;
     }
 
-    public void Start()
-    {
-        LogData = true;
-        BuildTimer();
+    public void start()    {
+        logData = true;
+        buildTimer();
     }
 
-    public void BuildTimer()
-    {
-        timer.scheduleTask(new Timer.Task()
-        {
-            public void run()
-            {
-                FPSLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
+    public void buildTimer()    {
+        timer.scheduleTask(new Timer.Task()       {
+            public void run()            {
+                fpsLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
                 zoomLabel.setText("Zoom: " + SE.camera.zoom);
 
-                if (LogData)
-                    BuildTimer();
+                if (logData) {
+                	buildTimer();                	
+                }
             }
         }, 1);
     }
 
     @Override
-    public boolean keyTyped(char character)
-    {
-        switch (character)
-        {
-        case '?':
-            if (LogData)
-                Stop();
-            else
-                Start();
-            return true;
-        }
-        return false;
+    public boolean keyTyped(char character)    {
+    	if ('?' == character) {
+    		if (logData) {
+    			stop();
+    			return true;
+    		}
+    		start();
+    		return true;
+    	}
+    	return false;
     }
 }

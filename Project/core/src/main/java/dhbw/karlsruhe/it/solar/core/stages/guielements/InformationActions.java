@@ -8,9 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import dhbw.karlsruhe.it.solar.core.commands.ColonizeCommand;
 import dhbw.karlsruhe.it.solar.core.commands.OrbitalInsertionCommand;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
 
