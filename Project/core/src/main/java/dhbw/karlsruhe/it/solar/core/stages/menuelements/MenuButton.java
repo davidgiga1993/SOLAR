@@ -35,19 +35,16 @@ public abstract class MenuButton extends Label{
 
     protected abstract void onClick();
 
-    private void animateLabelIn()
-    {
+    private void animateLabelIn()    {
         animateLabel(1.2f);
     }
 
-    private void animateLabelOut()
-    {
+    private void animateLabelOut()    {
         animateLabel(1);
     }
 
-    private void animateLabel(float Scale)
-    {
-        LabelFontScalerAction ac = new LabelFontScalerAction(Scale, getFontScaleX());
+    private void animateLabel(float scale)   {
+        LabelFontScalerAction ac = new LabelFontScalerAction(scale, getFontScaleX());
         ac.setDuration(0.7f);
         ac.setInterpolation(Interpolation.exp10);
         addAction(ac);

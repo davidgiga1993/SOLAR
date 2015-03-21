@@ -8,47 +8,42 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import dhbw.karlsruhe.it.solar.core.solar.logic.GameLogicService;
 import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 
-public class SolarEngine extends Game implements InputProcessor
-{
-    public static boolean DEBUG = false;
+public class SolarEngine extends Game implements InputProcessor {
+    public final static boolean DEBUG = false;
 
-    public GameLogicService Service = new GameLogicService();
-    public static final MessageDispatcher messageDispatcher = new MessageDispatcher();
+    public static final MessageDispatcher MESSAGE_DISPATCHER = new MessageDispatcher();
     
     public SolarCamera camera;
     public OrthographicCamera guiCamera;
     public OrthographicCamera backgroundCamera;
 
-    public TextureCacher Textures;
+    public TextureCacher textures;
     public Styles styles;
 
     // Stage manager
     public StageManager stageManager;
 
-    public static float Width = 900;
-    public static float Height = 600;
-    public static final float WidthHalf = Width / 2;
-    public static final float HeightHalf = Height / 2;
+    private static float Width = 900;
+    private static float Height = 600;
+    public static final float HALF_WIDTH = Width / 2;
+    public static final float HALF_HEIGHT = Height / 2;
 
     private SpriteBatch mainBatch;
 
-    public enum myKeys
-    {
+    public enum myKeys    {
         NONE, UP, DOWN, LEFT, RIGHT, PLUS, MINUS, SHIFT, CONTROL, ESC
     }
 
     private myKeys pressedKey = myKeys.NONE;
 
     @Override
-    public void create()
-    {
+    public void create()    {
         // Eingaben durch diese Klasse verarbeiten
         Gdx.input.setInputProcessor(this);
 
@@ -60,7 +55,7 @@ public class SolarEngine extends Game implements InputProcessor
         mainBatch = new SpriteBatch();
 
 
-        styles = new Styles(Textures);
+        styles = new Styles(textures);
 
         // Einstiegspunkt ins Spiel
         stageManager = new StageManager(this);
@@ -70,16 +65,14 @@ public class SolarEngine extends Game implements InputProcessor
 
     // Anwendung wird beendet
     @Override
-    public void dispose()
-    {
+    public void dispose()    {
         mainBatch.dispose();
         FontCacher.cleanUp();
         TextureCacher.cleanUp();
     }
 
     @Override
-    public void render()
-    {
+    public void render()    {
         // Reset farbe
         Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -97,21 +90,15 @@ public class SolarEngine extends Game implements InputProcessor
      * Camera movement controls.
      * Handle zoom and lateral camera movement based on pressed keys.
      */
-    private void handleInput()
-    {
-        if (pressedKey == myKeys.ESC)
-        {
-            if (stageManager.getStage("GameStartStage") != null)
-            {
+    private void handleInput()    {
+        if (pressedKey == myKeys.ESC && stageManager.getStage("GameStartStage") != null) {
                 stageManager.removeStages();
                 stageManager.addStage(new StartStage(this));
-            }
         }
     }
 
     @Override
-    public void resize(int width, int height)
-    {
+    public void resize(int width, int height)    {
         Width=width;
         Height=height;
         float ratio = (float) (Gdx.graphics.getHeight()) / (float) (Gdx.graphics.getWidth());
@@ -121,10 +108,6 @@ public class SolarEngine extends Game implements InputProcessor
         guiCamera.viewportWidth = width;
         guiCamera.viewportHeight = width*ratio;
         guiCamera.update();
-//        backgroundCamera.viewportWidth = width;
-//        backgroundCamera.viewportHeight = height;
-//        backgroundCamera.position.set(width/2, height/2, 0);
-//        backgroundCamera.update();
 
         stageManager.resize(width, (int) (width*ratio));
 
@@ -132,18 +115,15 @@ public class SolarEngine extends Game implements InputProcessor
     }
 
     @Override
-    public void pause()
-    {
+    public void pause()    {
     }
 
     @Override
-    public void resume()
-    {
+    public void resume()    {
     }
 
     @Override
-    public boolean keyDown(int keycode)
-    {        
+    public boolean keyDown(int keycode)    {        
         switch (keycode)
         {
         case Keys.NUM_8:
@@ -184,16 +164,16 @@ public class SolarEngine extends Game implements InputProcessor
         case Keys.ESCAPE:
             pressedKey = myKeys.ESC;
             break;
+        default:
+        	break;
         }
         stageManager.keyDown(keycode);
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode)
-    {
-        switch (keycode)
-        {
+    public boolean keyUp(int keycode)    {
+        switch (keycode)       {
         case Keys.NUM_8:
         case 152:
         case Keys.UP:
@@ -214,6 +194,7 @@ public class SolarEngine extends Game implements InputProcessor
         case Keys.CONTROL_LEFT:
         case Keys.CONTROL_RIGHT:
         case Keys.ESCAPE:
+        default:
             pressedKey = myKeys.NONE;
             break;
         }
@@ -222,43 +203,37 @@ public class SolarEngine extends Game implements InputProcessor
     }
 
     @Override
-    public boolean keyTyped(char character)
-    {
+    public boolean keyTyped(char character)    {
         stageManager.keyTyped(character);
         return false;
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button)
-    {
+    public boolean touchDown(int screenX, int screenY, int pointer, int button)   {
         stageManager.touchDown(screenX, screenY, pointer, button);
         return false;
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button)
-    {
+    public boolean touchUp(int screenX, int screenY, int pointer, int button)    {
         stageManager.touchUp(screenX, screenY, pointer, button);
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer)
-    {
+    public boolean touchDragged(int screenX, int screenY, int pointer)   {
         stageManager.touchDragged(screenX, screenY, pointer);
         return false;
     }
 
     @Override
-    public boolean mouseMoved(int screenX, int screenY)
-    {
+    public boolean mouseMoved(int screenX, int screenY)    {
         stageManager.mouseMoved(screenX, screenY);
         return false;
     }
 
     @Override
-    public boolean scrolled(int amount)
-    {
+    public boolean scrolled(int amount)    {
         stageManager.scrolled(amount);
         return false;
     }

@@ -76,7 +76,7 @@ public class TimeTable extends Table implements Telegraph {
         add(dateLabel);
         add(timeLabel).width(65).align(Align.right);
 
-        SolarEngine.messageDispatcher.addListener(this, SolarMessageType.GAME_SPEED_CHANGED);
+        SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.GAME_SPEED_CHANGED);
     }
 
     private void slowDown() {

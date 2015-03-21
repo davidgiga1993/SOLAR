@@ -23,7 +23,7 @@ public class Spacestation extends SpaceUnit  {
      * @param startlocation Desired location at which the station is to appear.
      */
     public static Spacestation placeNewStation(String name, Vector2 startlocation, Player owner)    {
-        Spacestation newStation = new Spacestation(name, new Length(1, Length.Unit.kilometres), new Length(1, Length.Unit.kilometres), owner);
+        Spacestation newStation = new Spacestation(name, new Length(1, Length.Unit.KILOMETERS), new Length(1, Length.Unit.KILOMETERS), owner);
         newStation.setPosition(startlocation.x, startlocation.y);
         newStation.kinematic.position = startlocation;
         newStation.setDestination(startlocation);

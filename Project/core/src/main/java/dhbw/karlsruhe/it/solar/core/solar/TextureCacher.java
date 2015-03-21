@@ -6,12 +6,13 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import java.util.HashMap;
 
-public class TextureCacher
-{
-    public static HashMap<String, NinePatch> ninePatchCache = new HashMap<String, NinePatch>();
-    public static TextureAtlas gameAtlas = new TextureAtlas(Gdx.files.internal("packed/texturePack.atlas"));
+public class TextureCacher {
+    public static final HashMap<String, NinePatch> ninePatchCache = new HashMap<String, NinePatch>();
+    public static final TextureAtlas gameAtlas = new TextureAtlas(Gdx.files.internal("packed/texturePack.atlas"));
 
-    private TextureCacher() {}
+    private TextureCacher() {
+    	
+    }
 
     public static void cleanUp() {
         gameAtlas.dispose();

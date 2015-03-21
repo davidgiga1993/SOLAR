@@ -6,41 +6,38 @@ package dhbw.karlsruhe.it.solar.core.physics;
  *
  */
 public class Angle {
-	
+    
     public static final float DEGREE_IN_RADIANS = (float)( 180f / Math.PI);
     public static final float RADIANS_CIRCLE = (float) (2 * Math.PI);
     
     private Unit unit;
     private float value;
     
-    public Angle()
-    {
-    	this.unit = Unit.degree;
-    	this.value = 0f;
+    public Angle()    {
+        this.unit = Unit.DEGREE;
+        this.value = 0f;
     }
     
-    public Angle(float value)
-    {
-    	this.unit = Unit.degree;
-    	this.value = value;
+    public Angle(float value)    {
+        this.unit = Unit.DEGREE;
+        this.value = value;
     }
     
-	public Angle (float value, Unit unit)
-	{
-		this.unit = unit;
-		this.value = value;
-	}
-	
+    public Angle (float value, Unit unit)    {
+        this.unit = unit;
+        this.value = value;
+    }
+    
     public enum Unit {
-        degree,
-        radians
+        DEGREE,
+        RADIANS
     }
     
     public float inDegrees() {
         switch(unit) {
-            case degree:
+            case DEGREE:
                 return value;
-            case radians:
+            case RADIANS:
                 return value * DEGREE_IN_RADIANS;
             default:
                 return Float.NaN;
@@ -49,45 +46,44 @@ public class Angle {
     
     public float inRadians() {
         switch(unit) {
-            case degree:
+            case DEGREE:
                 return value / DEGREE_IN_RADIANS;
-            case radians:
+            case RADIANS:
                 return value;
             default:
                 return Float.NaN;
         }
     }
 
-	public void changeBy(Angle change) {
+    public void changeBy(Angle change) {
         switch(unit) {
-        case degree:
+        case DEGREE:
             value += change.inDegrees();
             break;
-        case radians:
+        case RADIANS:
             value += change.inRadians();
             break;
         default:
             value = Float.NaN;
         }
-		preventOverflow();
-	}
+        preventOverflow();
+    }
 
-	/**
-	 * Make sure that no overflow happens.
-	 */
-	private void preventOverflow() {
+    /**
+     * Make sure that no overflow happens.
+     */
+    private void preventOverflow() {
         switch(unit) {
-        case degree:
+        case DEGREE:
             value = value < 360 ? value : value - 360;
             value = value > - 360 ? value : value + 360;
             break;
-        case radians:
-        	value = value < RADIANS_CIRCLE ? value : value - RADIANS_CIRCLE;
-        	value = value > - RADIANS_CIRCLE ? value : value + RADIANS_CIRCLE;
-        	break;
+        case RADIANS:
+            value = value < RADIANS_CIRCLE ? value : value - RADIANS_CIRCLE;
+            value = value > - RADIANS_CIRCLE ? value : value + RADIANS_CIRCLE;
+            break;
         default:
                 value = Float.NaN;
         }
-	}
-
+    }
 }

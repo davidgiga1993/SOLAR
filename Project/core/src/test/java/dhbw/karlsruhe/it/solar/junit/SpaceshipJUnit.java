@@ -49,7 +49,7 @@ public class SpaceshipJUnit
     private Spaceship placeTestShip() throws Exception
     {
     	final PlayerManager playerManager = new PlayerManager();
-    	return new Spaceship("Testschiff", new Length(1, Length.Unit.kilometres), new Length(2, Length.Unit.kilometres), playerManager.createPlayer("human", Color.BLUE));
+    	return new Spaceship("Testschiff", new Length(1, Length.Unit.KILOMETERS), new Length(2, Length.Unit.KILOMETERS), playerManager.createPlayer("human", Color.BLUE));
     }
 
     @After

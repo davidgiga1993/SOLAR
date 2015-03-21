@@ -146,7 +146,7 @@ public class Selection implements Telegraph {
 	}
 
 	private void selectionChanged() {
-		SolarEngine.messageDispatcher.dispatchMessage(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
+		SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
 	}
 
 	public int getNumberOfSelectedUnits() {

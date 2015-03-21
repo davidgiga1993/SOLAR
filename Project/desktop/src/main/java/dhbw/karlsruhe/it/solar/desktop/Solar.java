@@ -5,12 +5,10 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScalePresetButton;
 
-public class Solar
-{
-    public static SolarEngine Engine;
+public class Solar {
+    private static SolarEngine engine;
     
-    public static void main(String[] args)
-    {
+    public static void main(String[] args)    {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "Solar";
         cfg.useGL30 = false;
@@ -21,8 +19,8 @@ public class Solar
         cfg.vSyncEnabled = false;
         // cfg.samples = 16;
         
-        Engine = new SolarEngine();
-        new LwjglApplication(Engine, cfg);
+        engine = new SolarEngine();
+        new LwjglApplication(engine, cfg);
         ScalePresetButton.loadPreset1();
     }
 }

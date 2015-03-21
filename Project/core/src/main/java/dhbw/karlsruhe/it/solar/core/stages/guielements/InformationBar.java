@@ -32,7 +32,7 @@ public class InformationBar extends Window implements Telegraph {
     public InformationBar() {
         super("Information", SolarEngine.get().styles.tooltipSkin);
 
-        SolarEngine.messageDispatcher.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
+        SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
 
         overview = new InformationOverview(gameStage.selectedActors.getRepresentative());
         details = new InformationDetails();

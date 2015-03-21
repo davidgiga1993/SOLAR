@@ -47,7 +47,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public GameStartStage(SolarEngine se)   {
         super(se, "GameStartStage");
-        se.Service.StartGame();
         se.camera.zoom = 25;
 
         gameStartStageListener();
@@ -247,7 +246,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     @Override
     public void addActor(Actor actor) {
         super.addActor(actor);
-        SolarEngine.messageDispatcher.dispatchMessage(this, SolarMessageType.NEW_ACTOR_ADDED, actor);
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.NEW_ACTOR_ADDED, actor);
     }
 
     @Override
@@ -261,12 +260,12 @@ public class GameStartStage extends BaseStage implements Telegraph {
             newSpeed = 0;
         }
         GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10)/10;
-        SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
     }
 
     public static void setTimeSpeed(float newSpeed) {
         GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10)/10;
-        SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED,new Float(GameStartStage.gameSpeed));
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED,new Float(GameStartStage.gameSpeed));
     }
 
     public static void togglePause() {
@@ -276,7 +275,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
             GameStartStage.oldGameSpeed = GameStartStage.gameSpeed;
             GameStartStage.gameSpeed = 0;
         }
-        SolarEngine.messageDispatcher.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
     }
 
     public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {

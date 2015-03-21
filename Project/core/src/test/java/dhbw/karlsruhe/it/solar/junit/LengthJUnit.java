@@ -10,19 +10,19 @@ import static org.junit.Assert.assertEquals;
 
 public class LengthJUnit {
 
-    Length km = new Length(1, Length.Unit.kilometres);
-    Length ld = new Length(1, Length.Unit.lunarDistance);
-    Length au = new Length(1, Length.Unit.astronomicalUnit);
-    Length ly = new Length(1, Length.Unit.lightYear);
-    Length pc = new Length(1, Length.Unit.parsec);
+    Length km = new Length(1, Length.Unit.KILOMETERS);
+    Length ld = new Length(1, Length.Unit.LUNAR_DISTANCE);
+    Length au = new Length(1, Length.Unit.ASTRONOMICAL_UNITS);
+    Length ly = new Length(1, Length.Unit.LIGHTYEAR);
+    Length pc = new Length(1, Length.Unit.PARSEC);
 
     @Before
     public void setUp() {
-        km = new Length(1, Length.Unit.kilometres);
-        ld = new Length(1, Length.Unit.lunarDistance);
-        au = new Length(1, Length.Unit.astronomicalUnit);
-        ly = new Length(1, Length.Unit.lightYear);
-        pc = new Length(1, Length.Unit.parsec);
+        km = new Length(1, Length.Unit.KILOMETERS);
+        ld = new Length(1, Length.Unit.LUNAR_DISTANCE);
+        au = new Length(1, Length.Unit.ASTRONOMICAL_UNITS);
+        ly = new Length(1, Length.Unit.LIGHTYEAR);
+        pc = new Length(1, Length.Unit.PARSEC);
     }
 
     @After
@@ -38,7 +38,7 @@ public class LengthJUnit {
         assertEquals((float)(9.4605284*Math.pow(10,12)), ly.asKilometres(), 0.00001);
         assertEquals(Float.NaN, pc.asKilometres(), 0.00001);
 
-        Length reallyBig = new Length(100000000000000000f, Length.Unit.astronomicalUnit);
+        Length reallyBig = new Length(100000000000000000f, Length.Unit.ASTRONOMICAL_UNITS);
         assertEquals(14959787070000000000000000.0f, reallyBig.asKilometres(), 0.0001f);
     }
 

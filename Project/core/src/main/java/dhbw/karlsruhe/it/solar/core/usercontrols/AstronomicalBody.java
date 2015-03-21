@@ -24,8 +24,8 @@ public abstract class AstronomicalBody extends Orbiter  {
     private Colony colony;
 
     public AstronomicalBody(String name)    {
-        super(name, new OrbitalProperties(null, new Length(0, Length.Unit.kilometres), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
-        this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.kilometres), null);
+        super(name, new OrbitalProperties(null, new Length(0, Length.Unit.KILOMETERS), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
+        this.physicalProperties = new BodyProperties(new Mass(1, Mass.Unit.KILOGRAM), new Length(1, Length.Unit.KILOMETERS), null);
     }
 
     public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)    {

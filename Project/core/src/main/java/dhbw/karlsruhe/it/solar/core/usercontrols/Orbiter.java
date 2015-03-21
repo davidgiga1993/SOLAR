@@ -87,7 +87,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
                return 0;
           }
           float radius = primary.getWidth()/2;
-          float normRadius = (float) (primary.physicalProperties.getRadius().asKilometres() / SolarActor.stageScalingFactor);
+          float normRadius = (float) (primary.physicalProperties.getRadius().asKilometres() / SolarActor.STAGESCALINGFACTOR);
           return radius - normRadius;
      }
      

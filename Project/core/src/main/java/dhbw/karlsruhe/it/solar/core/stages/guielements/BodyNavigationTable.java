@@ -44,10 +44,9 @@ public class BodyNavigationTable extends BaseNavigationTable {
         }
 
         for (AstronomicalBody child : group) {
-        	if(child instanceof PlanetaryRing)
-        	{
-        		continue;
-        	}
+            if(child instanceof PlanetaryRing) {
+                continue;
+            }
             // Process current level
             BodyNavigationLabel label = new BodyNavigationLabel(child.getName(), tab, child, this);
             allLabels.add(label);

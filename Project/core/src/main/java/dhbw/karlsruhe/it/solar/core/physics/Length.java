@@ -17,13 +17,12 @@ public class Length {
     public static final float PARSEC_IN_ASTRONOMICAL_UNITS = 206264.80599999f;
     public static final float PARSEC_IN_LIGHT_YEARS = 3.2615637732f;
 
-    protected Unit unit = Unit.astronomicalUnit;
+    protected Unit unit = Unit.ASTRONOMICAL_UNITS;
     protected float value = 0f;
     
-    public Length()
-    {
-    	this.value = 0;
-    	this.unit = Unit.kilometres;
+    public Length()    {
+        this.value = 0;
+        this.unit = Unit.KILOMETERS;
     }
 
     public Length(float value, Unit unit) {
@@ -38,14 +37,14 @@ public class Length {
 
     public float asKilometres() {
         switch(unit) {
-            case kilometres:
+            case KILOMETERS:
                 return value;
-            case lunarDistance:
+            case LUNAR_DISTANCE:
                 return value * LUNAR_DISTANCE_IN_KILOMETRES;
-            case astronomicalUnit:
+            case ASTRONOMICAL_UNITS:
                 return value * ASTRONOMICAL_UNIT_IN_KILOMETRES;
-            case lightYear:
-            	return value * LIGHT_YEAR_IN_KILOMETERS;
+            case LIGHTYEAR:
+                return value * LIGHT_YEAR_IN_KILOMETERS;
             default:
                 return Float.NaN;
         }
@@ -53,15 +52,15 @@ public class Length {
 
     public float asLunarDistance() {
         switch(unit) {
-            case kilometres:
+            case KILOMETERS:
                 return value / LUNAR_DISTANCE_IN_KILOMETRES;
-            case lunarDistance:
+            case LUNAR_DISTANCE:
                 return value;
-            case astronomicalUnit:
+            case ASTRONOMICAL_UNITS:
                 return value * ASTRONOMICAL_UNIT_IN_LUNAR_DISTANCES;
-            case lightYear:
+            case LIGHTYEAR:
                 return value * LIGHT_YEAR_IN_LUNAR_DISTANCES;
-            case parsec:
+            case PARSEC:
                 return value * PARSEC_IN_LUNAR_DISTANCES;
             default:
                 return Float.NaN;
@@ -70,15 +69,15 @@ public class Length {
 
     public float asAstronomicalUnit() {
         switch(unit) {
-            case kilometres:
+            case KILOMETERS:
                 return value / ASTRONOMICAL_UNIT_IN_KILOMETRES;
-            case lunarDistance:
+            case LUNAR_DISTANCE:
                 return value / ASTRONOMICAL_UNIT_IN_LUNAR_DISTANCES;
-            case astronomicalUnit:
+            case ASTRONOMICAL_UNITS:
                 return value;
-            case lightYear:
+            case LIGHTYEAR:
                 return value * LIGHT_YEARS_IN_ASTRONOMICAL_UNITS;
-            case parsec:
+            case PARSEC:
                 return value * PARSEC_IN_ASTRONOMICAL_UNITS;
             default:
                 return Float.NaN;
@@ -87,15 +86,15 @@ public class Length {
 
     public float asLightYear() {
         switch (unit) {
-        	case kilometres:
-        		return value / LIGHT_YEAR_IN_KILOMETERS;
-            case lunarDistance:
+            case KILOMETERS:
+                return value / LIGHT_YEAR_IN_KILOMETERS;
+            case LUNAR_DISTANCE:
                 return value / LIGHT_YEAR_IN_LUNAR_DISTANCES;
-            case astronomicalUnit:
+            case ASTRONOMICAL_UNITS:
                 return value / LIGHT_YEARS_IN_ASTRONOMICAL_UNITS;
-            case lightYear:
+            case LIGHTYEAR:
                 return value;
-            case parsec:
+            case PARSEC:
                 return value * PARSEC_IN_LIGHT_YEARS;
             default:
                 return Float.NaN;
@@ -103,17 +102,16 @@ public class Length {
     }
 
     public enum Unit {
-        kilometres,
-        lunarDistance,
-        astronomicalUnit,
-        lightYear,
-        parsec
+        KILOMETERS,
+        LUNAR_DISTANCE,
+        ASTRONOMICAL_UNITS,
+        LIGHTYEAR,
+        PARSEC
     }
 
-	public static Length calculateDistance(SolarActor actorOne, SolarActor actorTwo)
-	{
-		double directDistance = Math.sqrt( Math.pow(actorTwo.getX() - actorOne.getX(),2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
-		
-		return new Length( (float)directDistance, Unit.kilometres);
-	}
+    public static Length calculateDistance(SolarActor actorOne, SolarActor actorTwo)    {
+        double directDistance = Math.sqrt( Math.pow(actorTwo.getX() - actorOne.getX(),2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
+        
+        return new Length( (float)directDistance, Unit.KILOMETERS);
+    }
 }

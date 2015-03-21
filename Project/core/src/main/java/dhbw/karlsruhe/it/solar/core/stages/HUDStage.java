@@ -23,9 +23,9 @@ public class HUDStage extends BaseGUIStage {
             timer = new Timer();
             BitmapFont font = FontCacher.getFont("default");
             fpsLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
-            fpsLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 18);
+            fpsLabel.setPosition(SolarEngine.HALF_WIDTH-100, SolarEngine.HALF_HEIGHT - 18);
             zoomLabel = new Label("Zoom: ", se.styles.defaultLabelStyle);
-            zoomLabel.setPosition(SolarEngine.WidthHalf-100, SolarEngine.HeightHalf - 45);
+            zoomLabel.setPosition(SolarEngine.HALF_WIDTH-100, SolarEngine.HALF_HEIGHT - 45);
             addActor(fpsLabel);
             addActor(zoomLabel);
             buildTimer();

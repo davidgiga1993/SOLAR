@@ -18,7 +18,7 @@ public class SolarActorScale implements Telegraph {
     }
 
     public void set(float shapeScale, float orbitScale) {
-        SolarEngine.messageDispatcher.dispatchMessage(this, SolarMessageType.GAME_SCALE_CHANGED);
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.GAME_SCALE_CHANGED);
         this.shapeScale = shapeScale;
         this.orbitScale = orbitScale;
     }

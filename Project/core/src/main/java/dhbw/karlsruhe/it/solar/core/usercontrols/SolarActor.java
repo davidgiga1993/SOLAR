@@ -27,11 +27,11 @@ public abstract class SolarActor extends Actor implements Telegraph {
     protected float currentShapeScale;
     protected float currentOrbitScale;
     
-    final static double stageScalingFactor = 2 * Math.pow(10, 4);
+    public static final double STAGESCALINGFACTOR = 2 * Math.pow(10, 4);
 
     public SolarActor(String name) {
         this.setName(name);
-        SolarEngine.messageDispatcher.addListener(this, SolarMessageType.GAME_SCALE_CHANGED);
+        SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.GAME_SCALE_CHANGED);
         selectionColor = Color.GREEN;
     }
 
@@ -60,11 +60,11 @@ public abstract class SolarActor extends Actor implements Telegraph {
      */
     protected static float scaleDistanceToStage(double distance) {
         //TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
-        return (float) (distance / stageScalingFactor);
+        return (float) (distance / STAGESCALINGFACTOR);
     }
     
     protected static float inverseStagescaling(float stageDistance) {
-    	return stageDistance * (float)stageScalingFactor;
+    return stageDistance * (float)STAGESCALINGFACTOR;
     }
 
     public boolean insideRectangle(Rectangle rect) {
@@ -121,13 +121,12 @@ public abstract class SolarActor extends Actor implements Telegraph {
      * @param textureName Identifier used by the texture atlas to locate the texture.
      */
     protected void setupSolarActorSprite(String textureName) {
-	    solarActorTexture = TextureCacher.gameAtlas.findRegion(textureName);
+        solarActorTexture = TextureCacher.gameAtlas.findRegion(textureName);
         solarActorSprite = new Sprite(solarActorTexture);
     }
     
     @Override
-    public void draw(Batch batch, float parentAlpha)
-    {
+    public void draw(Batch batch, float parentAlpha)    {
         solarActorSprite.setPosition(getX(), getY());
         solarActorSprite.draw(batch);
     }

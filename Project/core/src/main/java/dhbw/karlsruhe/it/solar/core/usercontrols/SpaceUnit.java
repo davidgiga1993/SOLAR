@@ -234,7 +234,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       */
      private Length getPhysicalLength(AstronomicalBody orbitPrimary,
                Vector2 distance) {
-          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().orbitScale, Unit.kilometres);
+          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().orbitScale, Unit.KILOMETERS);
      }
 
      /**
@@ -243,7 +243,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       * @return Angle which has been calculated.
       */
      private Angle getAngleToXAxis(Vector2 distance) {
-          return new Angle(distance.angle() + 180, Angle.Unit.degree);
+          return new Angle(distance.angle() + 180, Angle.Unit.DEGREE);
      }
 
      private Length physicalDistanceTo(AstronomicalBody destination) {
