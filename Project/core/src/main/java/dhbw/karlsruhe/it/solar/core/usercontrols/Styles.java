@@ -11,17 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
-public class Styles
-{
+public class Styles  {
     public TextButtonStyle textButtonStyle;
-
     public LabelStyle defaultLabelStyle;
     public TextField.TextFieldStyle defaultTextFieldStyle;
 
     public Skin tooltipSkin;
 
-    public Styles(TextureCacher loader)
-    {
+    public Styles(TextureCacher loader)    {
         BitmapFont defaultFont = new BitmapFont();
         FontCacher.addFont(defaultFont, "default");
         defaultLabelStyle = new LabelStyle(defaultFont, new Color(0.8f, 0.8f, 0.8f, 1f));

@@ -15,7 +15,7 @@ public class StageManager extends BaseStage {
     }
 
     public void startGame()    {
-        stages.add(new StartStage(SE));
+        stages.add(new StartStage(se));
     }
 
     /**
@@ -26,7 +26,7 @@ public class StageManager extends BaseStage {
      */
     public BaseStage getStage(String tag)   {
         for (int x = 0; x < stages.size(); x++)        {
-            if (stages.get(x).TAG.equals(tag)) {
+            if (stages.get(x).tag.equals(tag)) {
             	return getStage(x);            	
             }
         }
@@ -70,7 +70,7 @@ public class StageManager extends BaseStage {
      */
     public Stage removeStage(String tag)   {
         for (int x = 0; x < stages.size(); x++)	{
-            if (stages.get(x).TAG.equals(tag))	{
+            if (stages.get(x).tag.equals(tag))	{
                 return stages.remove(x);
             }
         }

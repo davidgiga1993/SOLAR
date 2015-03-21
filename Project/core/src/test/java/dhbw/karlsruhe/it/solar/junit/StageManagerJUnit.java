@@ -54,7 +54,7 @@ public class StageManagerJUnit
 		StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.insertStageToBack(new TestStage("TestBack"));
-        if (Manager.getStage(0).TAG.equals("TestBack") == false)
+        if (Manager.getStage(0).getTag().equals("TestBack") == false)
             return false;
         return true;
 	}
@@ -79,7 +79,7 @@ public class StageManagerJUnit
         Manager.addStage(new TestStage("Test0"));
         Manager.addStage(new TestStage("Test1"));
         Manager.swapCurrentStage(new TestStage("TestBack"));
-        if (Manager.getStage(1).TAG.equals("TestBack") == false)
+        if (Manager.getStage(1).getTag().equals("TestBack") == false)
             return false;
         return true;
 	}

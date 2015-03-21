@@ -45,7 +45,7 @@ public class HUDStage extends BaseGUIStage {
         timer.scheduleTask(new Timer.Task()       {
             public void run()            {
                 fpsLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
-                zoomLabel.setText("Zoom: " + SE.camera.zoom);
+                zoomLabel.setText("Zoom: " + se.camera.zoom);
 
                 if (logData) {
                 	buildTimer();                	

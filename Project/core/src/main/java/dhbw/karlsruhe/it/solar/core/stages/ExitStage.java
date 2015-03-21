@@ -7,16 +7,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
-public class ExitStage extends HUDStage
-{
+public class ExitStage extends HUDStage  {
 
     private Label labelAreYouSure;
     private Label labelYes;
     private Label labelNo;
 
-    public ExitStage(final SolarEngine SE)
-    {
-        super(SE, "Exit");
+    public ExitStage(final SolarEngine se)    {
+        super(se, "Exit");
 
         Table menuTable = new Table();
         menuTable.setFillParent(true);
@@ -29,19 +27,19 @@ public class ExitStage extends HUDStage
             menuTable.debug();
         }
 
-        labelAreYouSure = new Label("Are you sure?", SE.styles.defaultLabelStyle);
+        labelAreYouSure = new Label("Are you sure?", se.styles.defaultLabelStyle);
 
-        labelYes = new MenuButton("Yes", SE) {
+        labelYes = new MenuButton("Yes", se) {
             @Override
             protected void onClick() {
                 Gdx.app.exit();
             }
         };
 
-        labelNo = new MenuButton("No", SE) {
+        labelNo = new MenuButton("No", se) {
             @Override
             protected void onClick() {
-                SE.stageManager.swapCurrentStage(new StartStage(SE));
+                se.stageManager.swapCurrentStage(new StartStage(se));
             }
         };
 

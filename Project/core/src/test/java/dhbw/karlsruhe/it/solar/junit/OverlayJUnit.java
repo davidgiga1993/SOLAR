@@ -135,7 +135,7 @@ public class OverlayJUnit
         Manager.addStage(new TestStage(TestSuite.getEngine(), "Overlay 1"));
         Manager.addStage(new TestStage(TestSuite.getEngine(), "Overlay 2"));
         Manager.swapCurrentStage(new TestStage(TestSuite.getEngine(), "Overlay 2"));
-        if (Manager.getStage(1).TAG.equals("Overlay 2") == false)
+        if (Manager.getStage(1).getTag().equals("Overlay 2") == false)
             return false;
         return true;
 	}
