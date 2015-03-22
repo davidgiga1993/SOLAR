@@ -83,8 +83,8 @@ public abstract class SolarActor extends Actor implements Telegraph {
     }
 
     public void updateScale() {
-        float width = getWidth() / currentShapeScale * actorScale.shapeScale;
-        float height = getHeight() / currentShapeScale * actorScale.shapeScale;
+        float width = getWidth() / currentShapeScale * actorScale.getShapeScale();
+        float height = getHeight() / currentShapeScale * actorScale.getShapeScale();
         setSize(width, height);
         setActorScale(actorScale);
     }
@@ -107,8 +107,8 @@ public abstract class SolarActor extends Actor implements Telegraph {
 
     public void setActorScale(SolarActorScale scale) {
         actorScale = scale;
-        currentOrbitScale = scale.orbitScale;
-        currentShapeScale = scale.shapeScale;
+        currentOrbitScale = scale.getOrbitScale();
+        currentShapeScale = scale.getShapeScale();
     }
 
     public TextureRegion getSolarActorTexture() {

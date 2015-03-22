@@ -42,10 +42,10 @@ public class AISpaceshipModule implements AIModule {
         kinematic.update(steering, time);
         
         // output
-        output.position = kinematic.getPosition();
-        output.rotation = kinematic.getRotation();
+        output.setPosition(kinematic.getPosition());
+        output.setRotation(kinematic.getRotation());
 
-        if(steering.reached && !targetReached) {
+        if(steering.isReached() && !targetReached) {
             fireTargetReached();
             targetReached = true;
         }

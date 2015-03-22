@@ -44,7 +44,7 @@ public class Kinematic {
     }
 
     public void update(Steering steering, float time) {
-        float steeringLen = steering.linear.len();
+        float steeringLen = steering.getLengthLinear();
         if (steeringLen == 0) {
             velocity.setZero();
             isMoving = false;
@@ -56,7 +56,7 @@ public class Kinematic {
         Vector2 distance = new Vector2(velocity).scl(time);
         position.add(distance);
 
-        velocity.add(steering.linear.scl(time));
+        velocity.add(steering.scaleLinear(time));
 
         if (velocity.len() > maxSpeed) {
             velocity.nor().scl(maxSpeed);

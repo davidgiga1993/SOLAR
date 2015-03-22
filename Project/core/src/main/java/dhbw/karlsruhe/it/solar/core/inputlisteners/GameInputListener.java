@@ -85,7 +85,7 @@ public class GameInputListener extends InputListener {
         }
         switch(button) {
         case Input.Buttons.LEFT:
-            stage.selectionRectangle.setStart(x,y);
+            stage.startOfSelectionRectangle(x, y);
             break;
         case Input.Buttons.MIDDLE:
             break;
@@ -100,7 +100,7 @@ public class GameInputListener extends InputListener {
     @Override
     public void touchDragged(InputEvent event, float x, float y, int pointer) {
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-            stage.selectionRectangle.updateEnd(x, y);
+            stage.updateEndOfSelectionRectangle(x, y);
         }
         super.touchDragged(event, x, y, pointer);
     }
@@ -109,7 +109,7 @@ public class GameInputListener extends InputListener {
     public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
         switch(button) {
         case Input.Buttons.LEFT:
-            stage.selectionRectangle.hide();
+            stage.hideSelectionRectangle();
             interact(event, x, y);
             break;
         case Input.Buttons.MIDDLE:
@@ -125,14 +125,14 @@ public class GameInputListener extends InputListener {
     public void navigate(InputEvent event, float x, float y) {
         Actor target = event.getTarget();
         if(target instanceof AstronomicalBody) {
-            new MoveToAstronomicalBodyCommand(stage.selectedActors.getSpaceUnits(), (AstronomicalBody) target, stage.getHumanPlayer()).execute();
+            new MoveToAstronomicalBodyCommand(stage.getSelectedSpaceUnits(), (AstronomicalBody) target, stage.getHumanPlayer()).execute();
             return;
         }
         if(target instanceof KinematicObject) {
-            new MoveToKineticObjectCommand(stage.selectedActors.getSpaceUnits(), (KinematicObject) target, stage.getHumanPlayer()).execute();
+            new MoveToKineticObjectCommand(stage.getSelectedSpaceUnits(), (KinematicObject) target, stage.getHumanPlayer()).execute();
             return;
         }
-        new MoveCommand(stage.selectedActors.getSpaceUnits(), x, y, stage.getHumanPlayer()).execute();
+        new MoveCommand(stage.getSelectedSpaceUnits(), x, y, stage.getHumanPlayer()).execute();
     }
 
     /**
@@ -157,15 +157,15 @@ public class GameInputListener extends InputListener {
         SelectionState state;
         if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
             state = SelectionState.ADD;
-            stage.selectedActors.add(event.getTarget());
+            stage.addToSelectedActors(event.getTarget());
         } else if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
             state = SelectionState.REMOVE;
-            stage.selectedActors.remove(event.getTarget());
+            stage.removeFromSelectedActors(event.getTarget());
         } else {
             // Create: clear & add
-            stage.selectedActors.clear();
+            stage.clearSelectedActors();
             state = SelectionState.ADD;
-            stage.selectedActors.add(event.getTarget());
+            stage.addToSelectedActors(event.getTarget());
         }
 
         // iterate every actor of the stage
@@ -175,7 +175,7 @@ public class GameInputListener extends InputListener {
             if (a instanceof SolarActor) {
                 sa = (SolarActor) a;
                 // insideRectangle to evaluate whether the actor is inside the selection.
-                if (sa.insideRectangle(stage.selectionRectangle.getRectangle())) {
+                if (sa.insideRectangle(stage.getSelectionRectangle())) {
                     updateSelectionRectangleForUnits(state, sa);
                     updateSelectionReactangleForColonies(state, sa);
                 }
@@ -191,10 +191,10 @@ public class GameInputListener extends InputListener {
             // proceed according to state
             switch(state) {
                 case ADD:
-                    stage.selectedActors.add(sa);
+                    stage.addToSelectedActors(sa);
                     break;
                 case REMOVE:
-                    stage.selectedActors.remove(sa);
+                    stage.removeFromSelectedActors(sa);
                     break;
                 default:
                     break;
@@ -207,10 +207,10 @@ public class GameInputListener extends InputListener {
             // proceed according to state
             switch(state) {
                 case ADD:
-                    stage.selectedActors.add(sa);
+                    stage.addToSelectedActors(sa);
                     break;
                 case REMOVE:
-                    stage.selectedActors.remove(sa);
+                    stage.removeFromSelectedActors(sa);
                     break;        
                 default:
                     break;

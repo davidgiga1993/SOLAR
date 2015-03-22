@@ -22,7 +22,7 @@ public class ShipNavigationTable extends BaseNavigationTable {
 
 
     public void buildShipList() {
-        GameStartStage gameStartStage = (GameStartStage) SolarEngine.get().stageManager.getStage("GameStartStage");
+        GameStartStage gameStartStage = (GameStartStage) SolarEngine.get().getStage("GameStartStage");
         for (Actor actor : gameStartStage.getActors()) {
             if (actor instanceof SpaceUnit && ((SpaceUnit) actor).isOwnedBy(gameStartStage.getHumanPlayer())) {
                 allShips.add((SpaceUnit) actor);

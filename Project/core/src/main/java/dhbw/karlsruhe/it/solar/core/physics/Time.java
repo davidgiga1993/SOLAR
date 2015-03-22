@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
  */
 public class Time {
 
-    public double currentDay = 1;
+    private double currentDay = 1;
     private GregorianCalendar cal = new GregorianCalendar(2500,GregorianCalendar.JANUARY,1);
 
     public Time() {

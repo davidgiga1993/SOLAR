@@ -67,7 +67,7 @@ public class SelectionRectangle extends Actor implements ShapeRenderable  {
      
      public void setStart(float x, float y)     {
           if(!isInitialized) {
-               Stage stage = SolarEngine.get().stageManager.getStage("GameHUD");
+               Stage stage = SolarEngine.get().getStage("GameHUD");
                stage.addActor(widthLabel);
                stage.addActor(heightLabel);
                isInitialized = true;

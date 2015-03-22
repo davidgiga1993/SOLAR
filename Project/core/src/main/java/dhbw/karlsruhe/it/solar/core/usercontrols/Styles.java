@@ -12,19 +12,17 @@ import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 public class Styles  {
-    public TextButtonStyle textButtonStyle;
-    public LabelStyle defaultLabelStyle;
-    public TextField.TextFieldStyle defaultTextFieldStyle;
+	private static final BitmapFont defaultFont = new BitmapFont();
+    public static final TextButtonStyle textButtonStyle = null;
+    public static final LabelStyle defaultLabelStyle = new LabelStyle(defaultFont, new Color(0.8f, 0.8f, 0.8f, 1f));
+    public static final TextField.TextFieldStyle defaultTextFieldStyle = new TextField.TextFieldStyle(defaultFont, new Color(0,.5f,.5f,1f), null, null, null);
 
-    public Skin tooltipSkin;
+    public static final Skin tooltipSkin = new Skin(Gdx.files.internal("data/skin/uiskin.json"));;
 
     public Styles(TextureCacher loader)    {
         BitmapFont defaultFont = new BitmapFont();
         FontCacher.addFont(defaultFont, "default");
-        defaultLabelStyle = new LabelStyle(defaultFont, new Color(0.8f, 0.8f, 0.8f, 1f));
-        defaultTextFieldStyle = new TextField.TextFieldStyle(defaultFont, new Color(0,.5f,.5f,1f), null, null, null);
         TextureAtlas guiAtlas = new TextureAtlas(Gdx.files.internal("data/skin/uiskin.atlas"));
-        tooltipSkin = new Skin(Gdx.files.internal("data/skin/uiskin.json"));
         tooltipSkin.addRegions(guiAtlas);
         // textButtonStyle = new TextButtonStyle(new NinePatchDrawable(loader.NinePatchMap.get("button_regular")), new NinePatchDrawable(loader.NinePatchMap.get("button_selected")), new NinePatchDrawable(loader.NinePatchMap.get("button_active")), new BitmapFont());
     }

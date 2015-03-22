@@ -46,7 +46,7 @@ public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
 
         Steering steering = super.getSteering(character);
         if (futurePosition.sub(character.getPosition()).len() < reachedRadius) {
-            steering.reached = true;
+            steering.setReached();
         }
 
         return steering;

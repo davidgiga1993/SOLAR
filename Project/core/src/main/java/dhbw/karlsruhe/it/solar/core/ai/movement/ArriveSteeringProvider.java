@@ -27,9 +27,9 @@ public class ArriveSteeringProvider implements SteeringProvider {
         float distance = direction.len();
 
         if (distance < radius) {
-            output.linear.setZero();
-            output.angular = character.getAngleOfPosition();
-            output.reached = true;
+            output.setLinearZero();
+            output.setAngular(character.getAngleOfPosition());
+            output.setReached();
             return output;
         }
 
@@ -42,16 +42,16 @@ public class ArriveSteeringProvider implements SteeringProvider {
 
         Vector2 targetVelocity = direction.nor().scl(targetSpeed);
 
-        output.linear = targetVelocity.sub(character.getVelocity());
-        output.linear.scl(1/timeToTarget);
+        output.setLinear( targetVelocity.sub(character.getVelocity()) );
+        output.scaleLinear(1/timeToTarget);
 
-        if (output.linear.len() > character.getMaxAcceleration()) {
-            output.linear.nor().scl(character.getMaxAcceleration());
+        if (output.getLengthLinear() > character.getMaxAcceleration()) {
+            output.normalizeLinear(character.getMaxAcceleration());
         }
 
-        output.angular = direction.angle();
+        output.setAngular(direction.angle());
 
-        output.reached = false;
+        output.resetReached();
         return output;
     }
 

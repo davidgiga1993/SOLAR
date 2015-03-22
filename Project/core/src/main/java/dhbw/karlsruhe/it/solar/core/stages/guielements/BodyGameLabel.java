@@ -16,7 +16,7 @@ public class BodyGameLabel extends Label {
     public BodyGameLabel(CharSequence text) {
         super(text, SolarEngine.get().getDefaultLabelStyle());
         setAlignment(Align.center);
-        SolarEngine.get().stageManager.getStage("GameHUD").addActor(this);
+        SolarEngine.get().getStage("GameHUD").addActor(this);
         this.gameCamera = SolarEngine.get().getCamera();
     }
 

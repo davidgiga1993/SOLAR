@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
 import dhbw.karlsruhe.it.solar.core.stages.BaseStage;
+import dhbw.karlsruhe.it.solar.core.stages.GameOptionsStage;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -35,7 +36,7 @@ public class SolarEngine extends Game implements InputProcessor {
     private Styles styles;
 
     // Stage manager
-    public StageManager stageManager;
+    private StageManager stageManager;
 
     private static float Width = 900;
     private static float Height = 600;
@@ -301,5 +302,25 @@ public class SolarEngine extends Game implements InputProcessor {
     public void swapCurrentStage(BaseStage newStage) {
     	stageManager.swapCurrentStage(newStage);
     }
+    
+    public void removeStage(String name) {
+    	stageManager.removeStage(name);
+    }
+    
+    public void disposeOfStage(String name) {
+    	stageManager.removeStage(name).dispose();
+    }
+    
+    public void addStage(BaseStage newStage) {
+    	stageManager.addStage(newStage);
+    }
+
+	public BaseStage getStage(String tag) {
+		return stageManager.getStage(tag);
+	}
+	
+	public void startGame() {
+		stageManager.startGame();
+	}
    
 }

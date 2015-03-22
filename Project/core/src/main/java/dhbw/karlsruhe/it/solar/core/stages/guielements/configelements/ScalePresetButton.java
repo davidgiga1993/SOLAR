@@ -28,7 +28,7 @@ public abstract class ScalePresetButton extends TextButton {
     public abstract void onClick();
 
     public void applyPreset() {
-        Array<Actor> actors = SolarEngine.get().stageManager.getStage("GameStartStage").getActors();
+        Array<Actor> actors = SolarEngine.get().getStage("GameStartStage").getActors();
         for (Actor a : actors) {
             if (a instanceof SolarActor) {
                 ((SolarActor) a).updateScale();

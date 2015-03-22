@@ -36,14 +36,14 @@ public class GameOptionsStage extends HUDStage {
         labelBackground = new MenuButton("Choose Background", se) {
             @Override
             protected void onClick() {
-                se.stageManager.swapCurrentStage(new GameOptionsBackgroundStage(se));
+                se.swapCurrentStage(new GameOptionsBackgroundStage(se));
             }
         };
 
         labelExit = new MenuButton("Return", se) {
             @Override
             protected void onClick() {
-                se.stageManager.swapCurrentStage(new StartStage(se));
+                se.swapCurrentStage(new StartStage(se));
             }
         };
 

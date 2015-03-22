@@ -45,7 +45,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
         this.owner = owner;
         this.speed = speed;
         selectionColor = owner.getPlayerColor();
-        preview.color = selectionColor;
+        preview.setColor(selectionColor);
           orbitColor = SPACEUNIT_ORBIT_COLOR;
      }
 
@@ -97,9 +97,9 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
              return;
           }
         aiOutput = aiModule.act(delta);
-        setPosition(aiOutput.position.x-getOriginX(), aiOutput.position.y-getOriginY());
+        setPosition(aiOutput.getPosition().x-getOriginX(), aiOutput.getPosition().y-getOriginY());
         // TODO: fix rotation offset of space unit... +90° necessary atm.
-        setRotation(aiOutput.rotation + 90);
+        setRotation(aiOutput.getRotation() + 90);
         super.act(delta);
     }
     
@@ -108,8 +108,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
           if(null != orbitalProperties)          {
                changeOrbitScaleSpaceUnit();
           }
-        float width = getWidth() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
-        float height = getHeight() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
+        float width = getWidth() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
+        float height = getHeight() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
         setActorScale(ConfigurationConstants.SCALE_FACTOR_UNITS);
         setSize(width, height);
      }
@@ -121,7 +121,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       */
      private void changeOrbitScaleSpaceUnit() {
           setOrbitScale();
-          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
+          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.getOrbitScale();
      }
      
      /**
@@ -129,7 +129,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       * @param scale Scale value is derived from the configuration constants of the appropriate satellite to the orbital Primary body.
       */
      private void setOrbitScale() {
-          currentOrbitScale = orbitalProperties.getOrbitalSpaceUnitScaleFactor().orbitScale;
+          currentOrbitScale = orbitalProperties.getOrbitalSpaceUnitScaleFactor().getOrbitScale();
         actorScale = new SolarActorScale(currentShapeScale, currentOrbitScale);
     }
      
@@ -234,7 +234,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       */
      private Length getPhysicalLength(AstronomicalBody orbitPrimary,
                Vector2 distance) {
-          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().orbitScale, Unit.KILOMETERS);
+          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().getOrbitScale(), Unit.KILOMETERS);
      }
 
      /**
@@ -261,8 +261,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      */
     public void setSize(Length width, Length height) {
         // convert to pixels and scale with scale setting
-        float pWidth = scaleDistanceToStage(width.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
-        float pHeight = scaleDistanceToStage(height.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.shapeScale;
+        float pWidth = scaleDistanceToStage(width.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
+        float pHeight = scaleDistanceToStage(height.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
         // call super
         super.setSize(pWidth , pHeight);
     }

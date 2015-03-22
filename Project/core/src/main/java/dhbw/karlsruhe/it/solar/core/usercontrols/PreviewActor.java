@@ -19,7 +19,7 @@ public class PreviewActor implements ShapeRenderable {
     private float absoluteRadius;
 
     private float relativeRadius = (float) (384399 / SolarActor.STAGESCALINGFACTOR) * 2;
-    public Color color;
+    private Color color;
 
     public PreviewActor(SolarActor parent, float relativeRadius, float zoomLevel, Color color) {
         this.parent = parent;
@@ -39,5 +39,9 @@ public class PreviewActor implements ShapeRenderable {
 
         libGDXShapeRenderer.setColor(color);
         libGDXShapeRenderer.rect(parent.getX()+parent.getOriginX() - absoluteRadius, parent.getY()+parent.getOriginY() - absoluteRadius, absoluteWidth, absoluteWidth);
+    }
+    
+    public void setColor(Color newColor) {
+    	this.color = newColor;
     }
 }

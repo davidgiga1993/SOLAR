@@ -9,9 +9,9 @@ import java.util.List;
 
 public class MoveCommand implements Command {
 
-	public List<SpaceUnit> units;
-	public Vector2 destination;
-	public Player commander;
+	private List<SpaceUnit> units;
+	private Vector2 destination;
+	private Player commander;
 	
 	public MoveCommand(List<SpaceUnit> units, float x, float y, Player commander) {
 		this.units = units;
@@ -31,5 +31,4 @@ public class MoveCommand implements Command {
 	public void action(SpaceUnit unit) {
 		unit.setDestination(destination);
 	}
-
 }

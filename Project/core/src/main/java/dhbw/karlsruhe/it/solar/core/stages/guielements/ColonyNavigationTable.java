@@ -21,7 +21,7 @@ public class ColonyNavigationTable extends BaseNavigationTable {
     }
 
     public void buildColonyList() {
-        GameStartStage gameStartStage = (GameStartStage) SolarEngine.get().stageManager.getStage("GameStartStage");
+        GameStartStage gameStartStage = (GameStartStage) SolarEngine.get().getStage("GameStartStage");
         for (Actor actor : gameStartStage.getActors()) {
             if (actor instanceof AstronomicalBody && ((AstronomicalBody) actor).isColonized()) {
             	addColonyToTable(actor);

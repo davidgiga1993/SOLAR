@@ -14,12 +14,12 @@ public class ShapeScaleSlider extends ScaleSlider {
 
     @Override
     protected void initialize() {
-        scaleSlider.setValue(scale.shapeScale);
-        curValue.setText(""+scale.shapeScale);
+        scaleSlider.setValue(scale.getShapeScale());
+        curValue.setText(""+scale.getShapeScale());
     }
 
     @Override
     protected void updateScale(float value) {
-        scale.set(value, scale.orbitScale);
+        scale.set(value, scale.getOrbitScale());
     }
 }

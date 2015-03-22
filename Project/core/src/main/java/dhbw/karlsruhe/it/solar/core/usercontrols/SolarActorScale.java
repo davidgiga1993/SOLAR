@@ -9,8 +9,8 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
  * Created by Arga on 11.02.2015.
  */
 public class SolarActorScale implements Telegraph {
-    public float shapeScale;
-    public float orbitScale;
+    private float shapeScale;
+    private float orbitScale;
 
     public SolarActorScale(float shapeScale, float orbitScale) {
         this.shapeScale = shapeScale;
@@ -26,5 +26,13 @@ public class SolarActorScale implements Telegraph {
     @Override
     public boolean handleMessage(Telegram telegram) {
         return true;
+    }
+    
+    public float getShapeScale() {
+    	return shapeScale;
+    }
+    
+    public float getOrbitScale() {
+    	return orbitScale;
     }
 }

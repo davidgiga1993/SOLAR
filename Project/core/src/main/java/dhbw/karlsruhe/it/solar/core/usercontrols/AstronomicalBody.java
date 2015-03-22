@@ -38,7 +38,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
     
     private void changeBodyScale() {
-        float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometres()) * actorScale.shapeScale * 2;
+        float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometres()) * actorScale.getShapeScale() * 2;
         this.setSize(tSize, tSize);
     }
 
@@ -115,7 +115,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     public Colony establishColony(String colonyName, Player player, Population colonists) {
         colony = new Colony(colonyName, player, colonists);
         selectionColor = player.getPlayerColor();
-        preview.color = selectionColor;
+        preview.setColor(selectionColor);
         return colony;
     }
 

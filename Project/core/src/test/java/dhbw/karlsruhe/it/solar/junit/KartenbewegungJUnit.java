@@ -39,7 +39,7 @@ public class KartenbewegungJUnit
 			
 			@Override
 			public void run() {
-				engine.stageManager.removeStage("StartStage");
+				engine.removeStage("StartStage");
 				GameStartStage.startGame();
 			}
 		};

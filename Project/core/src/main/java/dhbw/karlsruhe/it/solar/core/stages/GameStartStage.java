@@ -6,8 +6,10 @@ import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
@@ -26,17 +28,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameStartStage extends BaseStage implements Telegraph {
-    public Selection selectedActors = new Selection();
-    public SelectionRectangle selectionRectangle;
+    private Selection selectedActors = new Selection();
+    private SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
-    public static GameInputListener inputListener;
+    private static GameInputListener inputListener;
     private PlayerManager playerManager = new PlayerManager();
 
     private SolarShapeRenderer solarShapeRenderer = new SolarShapeRenderer();
     private ShapeRenderer libGDXShapeRenderer = new ShapeRenderer();
 
-    public static float gameSpeed = 0f;
-    public static float oldGameSpeed = 1f;
+    private static float gameSpeed = 0f;
+    private static float oldGameSpeed = 1f;
 
     public static final Time gameTime = new Time();
 
@@ -64,15 +66,15 @@ public class GameStartStage extends BaseStage implements Telegraph {
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
         GameStartStage gameStage = new GameStartStage(engine);
-        engine.stageManager.addStage(gameStage);
+        engine.addStage(gameStage);
 
         if (SolarEngine.DEBUG) {
             HUDStage hudStage = new HUDStage(engine, "HUD");
-            engine.stageManager.addStage(hudStage);
+            engine.addStage(hudStage);
         }
 
         GameHUDStage gameHUDStage = new GameHUDStage(engine);
-        engine.stageManager.addStage(gameHUDStage);
+        engine.addStage(gameHUDStage);
 
         gameHUDStage.init();
         gameStage.init();
@@ -86,18 +88,17 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public static void endGame() {
         SolarEngine engine = SolarEngine.get();
-        StageManager manager = engine.stageManager;
 
-        manager.removeStage("GameHUD").dispose();
+        engine.disposeOfStage("GameHUD");
 
         if(SolarEngine.DEBUG) {
-            manager.removeStage("HUD").dispose();
+        	engine.disposeOfStage("HUD");
         }
 
-        manager.removeStage("GameStartStage").dispose();
+        engine.disposeOfStage("GameStartStage");
 
         Gdx.input.setInputProcessor(engine);
-        engine.stageManager.startGame();
+        engine.startGame();
     }
 
     public void init() {
@@ -280,5 +281,53 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
         return solarSystem.calculateDominantGravitationSourceAt(unit);
+    }
+    
+    public List<SpaceUnit> getSelectedSpaceUnits() {
+    	return selectedActors.getSpaceUnits();
+    }
+    
+    public void addToSelectedActors(Actor newlySelected) {
+    	selectedActors.add(newlySelected);
+    }
+    
+    public void removeFromSelectedActors(Actor deselectedActor) {
+    	selectedActors.remove(deselectedActor);
+    }
+    
+    public void clearSelectedActors() {
+    	selectedActors.clear();
+    }
+    
+    public SolarActor getRepresentativeOfSelectedActors() {
+    	return selectedActors.getRepresentative();
+    }
+    
+    public void startOfSelectionRectangle(float x, float y) {
+    	selectionRectangle.setStart(x,y);
+    }
+    
+    public void updateEndOfSelectionRectangle(float x, float y) {
+    	selectionRectangle.updateEnd(x, y);
+    }
+    
+    public void hideSelectionRectangle() {
+    	selectionRectangle.hide();
+    }
+    
+    public Rectangle getSelectionRectangle() {
+    	return selectionRectangle.getRectangle();
+    }
+    
+    public static void inputListenerInteract(InputEvent event) {
+    	inputListener.interact(event, 0, 0);
+    }
+    
+    public static void inputListenerNavigate(InputEvent event) {
+    	inputListener.navigate(event, 0, 0);
+    }
+    
+    public static float getGameSpeed() {
+    	return gameSpeed;
     }
 }

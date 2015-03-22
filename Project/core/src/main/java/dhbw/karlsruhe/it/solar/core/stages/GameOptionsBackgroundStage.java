@@ -36,8 +36,8 @@ public class GameOptionsBackgroundStage extends HUDStage {
         labelExit = new MenuButton("Return", se) {
             @Override
             protected void onClick() {
-                se.stageManager.removeStage("GameOptionsBackgroundStage");
-                se.stageManager.addStage(new GameOptionsStage(se));
+                se.removeStage("GameOptionsBackgroundStage");
+                se.addStage(new GameOptionsStage(se));
             }
         };
 
@@ -52,7 +52,7 @@ public class GameOptionsBackgroundStage extends HUDStage {
     }
 
     public void changeBackground(String name) {
-        BackgroundStage backgroundStage = (BackgroundStage) SolarEngine.get().stageManager.getStage("Background");
+        BackgroundStage backgroundStage = (BackgroundStage) SolarEngine.get().getStage("Background");
         if(backgroundStage == null) {
             System.out.println(this.getClass().getCanonicalName() + "change Background failed; backgroundStage not found");
         }

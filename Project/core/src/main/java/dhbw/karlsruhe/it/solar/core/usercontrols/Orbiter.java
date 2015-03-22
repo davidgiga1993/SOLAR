@@ -87,7 +87,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
           if(orbitalProperties == null) {
                return;
           }
-          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.orbitScale;
+          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.getOrbitScale();
           orbitalRadiusInPixels += calculateOrbitOffset();
      }
           

@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Created by Arga on 16.11.2014.
  */
 public class FontCacher {
-    public static HashMap<String, BitmapFont> cache = new HashMap<String, BitmapFont>();
+    public static final HashMap<String, BitmapFont> cache = new HashMap<String, BitmapFont>();
 
     private FontCacher() {}
 

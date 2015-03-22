@@ -16,7 +16,7 @@ public class Planet extends AstronomicalBody  {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureFromTypeOf(planet));
 
         this.segments = 2000;
-        preview.color = Color.TEAL;
+        preview.setColor(Color.TEAL);
     }
 
     private static String getTextureFromTypeOf(PlanetType planet)    {

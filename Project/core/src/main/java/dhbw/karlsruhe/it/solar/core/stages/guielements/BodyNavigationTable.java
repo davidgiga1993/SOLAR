@@ -24,7 +24,7 @@ public class BodyNavigationTable extends BaseNavigationTable {
     protected void init() {
         // Find all stars
         List<AstronomicalBody> stars = new ArrayList<AstronomicalBody>();
-        GameStartStage gameStage = (GameStartStage) SolarEngine.get().stageManager.getStage("GameStartStage");
+        GameStartStage gameStage = (GameStartStage) SolarEngine.get().getStage("GameStartStage");
         for (Actor actor : gameStage.getActors()) {
             if (actor instanceof Star) {
                 stars.add((AstronomicalBody) actor);

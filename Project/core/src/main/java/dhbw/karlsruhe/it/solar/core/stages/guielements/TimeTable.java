@@ -25,7 +25,7 @@ public class TimeTable extends Table implements Telegraph {
     TextButton speed10Button = new TextButton("10x", SolarEngine.get().getTooltipSkin());
     TextButton speed50Button = new TextButton("50x", SolarEngine.get().getTooltipSkin());
 
-    Label speedLabel = new Label(String.valueOf(GameStartStage.gameSpeed), SolarEngine.get().getDefaultLabelStyle());
+    Label speedLabel = new Label(String.valueOf(GameStartStage.getGameSpeed()), SolarEngine.get().getDefaultLabelStyle());
     Label dateLabel = new Label("Date: ", SolarEngine.get().getDefaultLabelStyle());
     TimeLabel timeLabel = new TimeLabel();
 

@@ -30,7 +30,7 @@ public class StartStage extends HUDStage {
         labelStart = new MenuButton("Start game", se) {
             @Override
             protected void onClick() {
-                se.stageManager.removeStage(stage);
+                se.removeStage(stage);
                 GameStartStage.startGame();
             }
         };
@@ -38,16 +38,16 @@ public class StartStage extends HUDStage {
         labelSettings = new MenuButton("Settings", se) {
             @Override
             protected void onClick() {
-                se.stageManager.removeStage(stage);
-                se.stageManager.addStage(new GameOptionsStage(se));
+                se.removeStage(stage);
+                se.addStage(new GameOptionsStage(se));
             }
         };
 
         labelExit = new MenuButton("Exit", se) {
             @Override
             protected void onClick() {
-                se.stageManager.removeStage(stage);
-                se.stageManager.addStage(new ExitStage(se));
+                se.removeStage(stage);
+                se.addStage(new ExitStage(se));
             }
         };
 

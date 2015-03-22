@@ -23,7 +23,7 @@ public class InformationBar extends Window implements Telegraph {
     protected Cell<InformationDetails> detailsCell;
     protected Cell<InformationActions> actionCell;
 
-    GameStartStage gameStage = (GameStartStage) SolarEngine.get().stageManager.getStage("GameStartStage");
+    GameStartStage gameStage = (GameStartStage) SolarEngine.get().getStage("GameStartStage");
 
     private final InformationOverview overview;
     private final InformationDetails details;
@@ -34,7 +34,7 @@ public class InformationBar extends Window implements Telegraph {
 
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
 
-        overview = new InformationOverview(gameStage.selectedActors.getRepresentative());
+        overview = new InformationOverview(gameStage.getRepresentativeOfSelectedActors());
         details = new InformationDetails();
         actions = new InformationActions();
 

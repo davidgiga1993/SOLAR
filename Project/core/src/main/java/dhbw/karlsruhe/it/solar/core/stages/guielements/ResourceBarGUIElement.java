@@ -13,9 +13,9 @@ import dhbw.karlsruhe.it.solar.player.resources.Resource;
  */
 public class ResourceBarGUIElement {
 
-    public final SolarEngine engine = SolarEngine.get();
+	public final static SolarEngine engine = SolarEngine.get();
 
-    public Table resourceBar;
+    private Table resourceBar;
 
 
     public ResourceBarGUIElement(Label.LabelStyle labelStyle, Stage stage) {

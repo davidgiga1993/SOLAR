@@ -44,12 +44,12 @@ public class BaseNavigationLabel extends Label {
         // replace the actor with the actor represented by this NavigationLabel
         event.setTarget(actor);
         // and let the GameInputListener do his job
-        GameStartStage.inputListener.interact(event, 0, 0);
+        GameStartStage.inputListenerInteract(event);
     }
 
     private void onRightClick(InputEvent event) {
         event.setTarget(actor);
-        GameStartStage.inputListener.navigate(event, 0, 0);
+        GameStartStage.inputListenerNavigate(event);
     }
 
     protected void toggleChildren() {

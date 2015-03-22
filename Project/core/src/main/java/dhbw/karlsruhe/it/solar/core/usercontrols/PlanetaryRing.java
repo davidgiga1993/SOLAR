@@ -144,11 +144,11 @@ public class PlanetaryRing extends AstronomicalBody {
         // however they'll need to get scaled when the moon orbit changes
         // so the size should be radius = radius * moonOrbitScale + delta_planetsize
         outerRadiusPixels = SolarActor.scaleDistanceToStage(physicalProperties.getRadius().asKilometres());
-        outerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.orbitScale;
+        outerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.getOrbitScale();
         outerRadiusPixels += calculateOrbitOffset();
 
         innerRadiusPixels = SolarActor.scaleDistanceToStage(innerRadius.asKilometres());
-        innerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.orbitScale;
+        innerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.getOrbitScale();
         innerRadiusPixels += calculateOrbitOffset();
 
         calculateVertices(innerRadiusPixels, outerRadiusPixels);

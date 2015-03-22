@@ -22,8 +22,8 @@ import java.util.List;
 public class ScaleDialog {
 
     private Stage stage;
-    public Tooltip scaleDialog;
-    public List<ScaleSlider> scaleSliders;
+    private Tooltip scaleDialog;
+    private List<ScaleSlider> scaleSliders;
 
     public ScaleDialog(Stage stage) {
         this.stage = stage;
