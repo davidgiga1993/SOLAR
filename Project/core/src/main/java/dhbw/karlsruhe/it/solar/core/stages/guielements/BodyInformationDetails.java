@@ -16,20 +16,20 @@ public class BodyInformationDetails extends InformationDetails {
 
     private static final float UNIT_WIDTH = 20;
 
-    private static Label orbitalRadiusName = new Label("Average Orbital Radius", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label orbitalPeriodName = new Label("Orbital Period", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label radiusName = new Label("Radius", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label massName = new Label("Mass", SolarEngine.get().styles.defaultLabelStyle);
+    private static Label orbitalRadiusName = new Label("Average Orbital Radius", SolarEngine.get().getDefaultLabelStyle());
+    private static Label orbitalPeriodName = new Label("Orbital Period", SolarEngine.get().getDefaultLabelStyle());
+    private static Label radiusName = new Label("Radius", SolarEngine.get().getDefaultLabelStyle());
+    private static Label massName = new Label("Mass", SolarEngine.get().getDefaultLabelStyle());
 
-    private static Label radiusValue = new Label("", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label massValue = new Label("", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label orbitalRadiusValue = new Label("", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label orbitalPeriodValue = new Label("", SolarEngine.get().styles.defaultLabelStyle);
+    private static Label radiusValue = new Label("", SolarEngine.get().getDefaultLabelStyle());
+    private static Label massValue = new Label("", SolarEngine.get().getDefaultLabelStyle());
+    private static Label orbitalRadiusValue = new Label("", SolarEngine.get().getDefaultLabelStyle());
+    private static Label orbitalPeriodValue = new Label("", SolarEngine.get().getDefaultLabelStyle());
 
-    private static Label radiusUnit = new Label("km", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label massUnit = new Label("S", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label orbitalRadiusUnit = new Label("AU", SolarEngine.get().styles.defaultLabelStyle);
-    private static Label orbitalPeriodUnit = new Label("d", SolarEngine.get().styles.defaultLabelStyle);
+    private static Label radiusUnit = new Label("km", SolarEngine.get().getDefaultLabelStyle());
+    private static Label massUnit = new Label("S", SolarEngine.get().getDefaultLabelStyle());
+    private static Label orbitalRadiusUnit = new Label("AU", SolarEngine.get().getDefaultLabelStyle());
+    private static Label orbitalPeriodUnit = new Label("d", SolarEngine.get().getDefaultLabelStyle());
 
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     private static DecimalFormat df4 = new DecimalFormat("#.####");
@@ -70,7 +70,7 @@ public class BodyInformationDetails extends InformationDetails {
         //TODO: Proper implementation - how will this fit into the current design?
         if(body.isColonized()) {
             row();
-            add(new Label("Population: " + body.getPopulationNumbers(),SolarEngine.get().styles.defaultLabelStyle));	
+            add(new Label("Population: " + body.getPopulationNumbers(),SolarEngine.get().getDefaultLabelStyle()));	
         }
     }
 

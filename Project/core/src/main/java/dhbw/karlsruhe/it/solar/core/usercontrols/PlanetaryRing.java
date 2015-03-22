@@ -100,7 +100,7 @@ public class PlanetaryRing extends AstronomicalBody {
     }
 
     public void draw() {
-        Matrix4 combined = new Matrix4(SolarEngine.get().camera.combined);
+        Matrix4 combined = new Matrix4(SolarEngine.get().getCameraCombined());
         AstronomicalBody primary = getPrimary();
         float x = primary.getX() + primary.getOriginX();
         float y = primary.getY() + primary.getOriginY();
@@ -129,14 +129,13 @@ public class PlanetaryRing extends AstronomicalBody {
     protected void actOrbitalMovement(float delta) {
         orbitalProperties.updateOrbitalAngle(delta);
         
-        kinematic.position.x = orbitalProperties.getPrimaryX();
-        kinematic.position.y = orbitalProperties.getPrimaryY();
-        this.setPosition(kinematic.position.x  - getWidth() / 2, kinematic.position.y  - getHeight() / 2);
+        kinematic.setPosition(getCenterOfOrbit());
+        this.setPosition(getReAdjustedPosition().x, getReAdjustedPosition().y);
 
         adjustLabelPosition();
 
-        kinematic.rotation = orbitalProperties.getOrbitalAngle().inDegrees() + 90f;
-        kinematic.velocity.setAngle(kinematic.rotation);
+        kinematic.setRotation(orbitalProperties.getOrbitalAngle().inDegrees() + 90f);
+        kinematic.setVelocityAngle(kinematic.getRotation());
     }
     
     @Override

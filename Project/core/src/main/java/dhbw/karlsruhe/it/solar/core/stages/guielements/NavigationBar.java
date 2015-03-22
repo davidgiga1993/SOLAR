@@ -23,13 +23,13 @@ public class NavigationBar extends Window {
 
 
     public NavigationBar() {
-        super("Navigation", SolarEngine.get().styles.tooltipSkin);
+        super("Navigation", SolarEngine.get().getTooltipSkin());
         setMovable(false);
 
         // Tab Buttons
-        TextButton bodyButton = new TextButton("Bodies", SolarEngine.get().styles.tooltipSkin);
-        TextButton shipButton = new TextButton("Units", SolarEngine.get().styles.tooltipSkin);
-        TextButton colonyButton = new TextButton("Colonies", SolarEngine.get().styles.tooltipSkin);
+        TextButton bodyButton = new TextButton("Bodies", SolarEngine.get().getTooltipSkin());
+        TextButton shipButton = new TextButton("Units", SolarEngine.get().getTooltipSkin());
+        TextButton colonyButton = new TextButton("Colonies", SolarEngine.get().getTooltipSkin());
 
         // Button Listeners
         bodyButton.addListener(new ChangeListener() {

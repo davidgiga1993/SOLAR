@@ -8,7 +8,15 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
+import dhbw.karlsruhe.it.solar.core.stages.BaseStage;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -19,12 +27,12 @@ public class SolarEngine extends Game implements InputProcessor {
 
     public static final MessageDispatcher MESSAGE_DISPATCHER = new MessageDispatcher();
     
-    public SolarCamera camera;
-    public OrthographicCamera guiCamera;
-    public OrthographicCamera backgroundCamera;
+    private SolarCamera camera;
+    private OrthographicCamera guiCamera;
+    private OrthographicCamera backgroundCamera;
 
-    public TextureCacher textures;
-    public Styles styles;
+    private TextureCacher textures;
+    private Styles styles;
 
     // Stage manager
     public StageManager stageManager;
@@ -240,6 +248,58 @@ public class SolarEngine extends Game implements InputProcessor {
 
     public static SolarEngine get() {
         return (SolarEngine) Gdx.app.getApplicationListener();
+    }
+    
+    public void moveSolarCamera(float x, float y) {
+    	camera.moveTo(x,y);
+    }
+    
+    public void moveSolarCamera(Actor target) {
+    	camera.moveTo(target);
+    }
+    
+    public void zoomSolarCameraTo(float zoomTarget) {
+    	camera.zoomTo(zoomTarget);
+    }
+    
+    public void setZoomSolarCameraTo(float newZoom) {
+    	camera.setZoom(newZoom);
+    }
+    
+    public float getSolarCameraZoom() {
+    	return camera.zoom;
+    }
+    
+    public void translateSolarCamera(Vector2 vec) {
+    	camera.translate(vec);
+    }
+    
+    public SolarCamera getCamera() {
+    	return camera;
+    }
+    
+    public Matrix4 getCameraCombined() {
+    	return camera.combined;
+    }
+    
+    public OrthographicCamera getGUICamera() {
+    	return guiCamera;
+    }
+    
+    public OrthographicCamera getBackgroundCamera() {
+    	return backgroundCamera;
+    }
+    
+    public LabelStyle getDefaultLabelStyle() {
+    	return styles.defaultLabelStyle;
+    }
+    
+    public Skin getTooltipSkin() {
+    	return styles.tooltipSkin;
+    }
+    
+    public void swapCurrentStage(BaseStage newStage) {
+    	stageManager.swapCurrentStage(newStage);
     }
    
 }

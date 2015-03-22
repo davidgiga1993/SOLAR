@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
@@ -226,5 +227,9 @@ public class OrbitalProperties {
     public void setCoorbital(Angle angularDeviation) {
         coorbital = true;    
         orbitalAngle.changeBy(angularDeviation);
+    }
+    
+    public Vector2 getOrbitalPositionTotal(float orbitalRadiusInPixels, Angle deltaAlpha) {
+    	return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
 }

@@ -11,7 +11,7 @@ public abstract class BaseStage extends Stage  {
     protected final String tag;
 
     public BaseStage(SolarEngine se, String tag)    {
-        this(se, tag, se.camera);
+        this(se, tag, se.getCamera());
     }
     
     public BaseStage(SolarEngine se, String tag, Camera cam) {

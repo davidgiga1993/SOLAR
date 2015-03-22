@@ -44,7 +44,7 @@ public class InformationOverview extends Table {
 
     private void loadContent() {
         loadIcon(actor.getSolarActorTexture());
-        name = new Label(actor.getName(), SolarEngine.get().styles.defaultLabelStyle);
+        name = new Label(actor.getName(), SolarEngine.get().getDefaultLabelStyle());
         add(name).width(TEXT_WIDTH);
     }
 

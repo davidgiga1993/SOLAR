@@ -45,7 +45,7 @@ public class KartenbewegungJUnit
 		};
 		TestHelper.sendRunnableToOpenGL(startGame);
 		
-        float startZoom = engine.camera.zoom;
+        float startZoom = engine.getSolarCameraZoom();
         Robot robot;
         try
         {
@@ -53,14 +53,14 @@ public class KartenbewegungJUnit
             robot.keyPress(KeyEvent.VK_E);
             Thread.sleep(700);
             robot.keyRelease(KeyEvent.VK_E);
-            if(startZoom <= engine.camera.zoom)
+            if(startZoom <= engine.getSolarCameraZoom())
                 fail("Zoom not working");
 
-            startZoom = engine.camera.zoom;
+            startZoom = engine.getSolarCameraZoom();
             robot.keyPress(KeyEvent.VK_Q);
             Thread.sleep(700);
             robot.keyRelease(KeyEvent.VK_Q);
-            if(startZoom >= engine.camera.zoom)
+            if(startZoom >= engine.getSolarCameraZoom())
                 fail("Zoom not working");
             
         }

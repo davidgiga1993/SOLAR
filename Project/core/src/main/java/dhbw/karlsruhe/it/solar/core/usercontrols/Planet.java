@@ -58,7 +58,7 @@ public class Planet extends AstronomicalBody  {
         if(outermostMoon != null) {
             size = outermostMoon.orbitalRadiusInPixels * 2;
         }
-        return (size / SolarEngine.get().camera.zoom) > 1f;
+        return (size / SolarEngine.get().getSolarCameraZoom()) > 1f;
     }
 
     public enum PlanetType {

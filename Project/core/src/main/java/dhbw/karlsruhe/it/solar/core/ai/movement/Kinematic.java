@@ -6,18 +6,16 @@ import com.badlogic.gdx.math.Vector2;
  * Created by Arga on 13.02.2015.
  */
 public class Kinematic {
-    public Vector2 position;
+    private Vector2 position;
 
     /**
      * This float holds the orientation angle in radians
      */
-    public float rotation;
-    public Vector2 velocity;
-
-    public float maxSpeed;
-    public float maxAcceleration = 1000f;
-
-    public boolean isMoving = false;
+    private float rotation;
+    private Vector2 velocity;
+    private float maxSpeed;
+    private float maxAcceleration = 1000f;
+    private boolean isMoving = false;
 
 
     /**
@@ -63,6 +61,68 @@ public class Kinematic {
         if (velocity.len() > maxSpeed) {
             velocity.nor().scl(maxSpeed);
         }
+    }
+    
+    public Vector2 getPosition() {
+    	return position;
+    }
+    
+    public void setPosition(Vector2 newValue) {
+    	position.x = newValue.x;
+    	position.y = newValue.y;
+    }
+    
+    public float getAngleOfPosition() {
+    	return position.angle();
+    }
+    
+    public float getXPosition() {
+    	return position.x;
+    }
+    
+    public float getYPosition() {
+    	return position.y;
+    }
+    
+    public float getRotation() {
+    	return rotation;
+    }
+    
+    public void setRotation(float value) {
+    	this.rotation = value;
+    }
+    
+    public Vector2 getVelocity() {
+    	return velocity;
+    }
+    
+    public float getSpeed() {
+    	return velocity.len();
+    }
+    
+    public void setVelocity(Vector2 newVelocity) {
+    	this.velocity.x = newVelocity.x;
+    	this.velocity.y = newVelocity.y; 
+    }
+    
+    public void setVelocityAngle(float degrees) {
+    	velocity.setAngle(degrees);
+    }
+    
+    public float getMaxSpeed() {
+    	return maxSpeed;
+    }
+    
+    public void setMaxSpeed(float newMaximum) {
+    	this.maxSpeed = newMaximum;
+    }
+    
+    public float getMaxAcceleration() {
+    	return maxAcceleration;
+    }
+    
+    public boolean isMoving() {
+    	return isMoving;
     }
 
 

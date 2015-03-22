@@ -26,7 +26,7 @@ public class Spaceship extends SpaceUnit  {
     public static Spaceship placeNewShip(String name, Vector2 startlocation, Player owner)    {
         Spaceship newShip = new Spaceship(name, new Length(1, Length.Unit.KILOMETERS), new Length(1, Length.Unit.KILOMETERS), owner);
         newShip.setPosition(startlocation.x, startlocation.y);
-        newShip.kinematic.position = startlocation;
+        newShip.setKinematicPosition(startlocation);
         newShip.setDestination(startlocation);
         return newShip;
     }

@@ -3,10 +3,12 @@ package dhbw.karlsruhe.it.solar.core.inputlisteners;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToAstronomicalBodyCommand;
@@ -222,12 +224,12 @@ public class GameInputListener extends InputListener {
      */
     private void moveCamera(Actor target, float x, float y, boolean shouldModifyZoom) {
         if(target instanceof Group) {
-            se.camera.moveTo(x, y);
+            se.moveSolarCamera(x, y);
             return;
         }
-        se.camera.moveTo(target);
+        se.moveSolarCamera(target);;
         if(shouldModifyZoom) {
-            se.camera.zoomTo(target.getWidth() / 25);
+            se.zoomSolarCameraTo(target.getWidth() / 25);
         }
     }
 
@@ -262,13 +264,13 @@ public class GameInputListener extends InputListener {
         }
         x *= delta;
         y *= delta;
-        se.camera.translate(x * se.camera.zoom, y * se.camera.zoom);
+        se.translateSolarCamera(new Vector2(x * se.getSolarCameraZoom(), y * se.getSolarCameraZoom()));
     }
 
     private void modifyZoom(float cameraModifier) {
         // using a linear zoom is necessary because the perception of the world changes with it's zoom
         // using a constant zoom would feel good while having a close look at things, but very slow when watching the whole solar system
-        se.camera.setZoom(se.camera.zoom * cameraModifier);
+        se.setZoomSolarCameraTo(se.getSolarCameraZoom() * cameraModifier);
     }
 
     private enum SelectionState {

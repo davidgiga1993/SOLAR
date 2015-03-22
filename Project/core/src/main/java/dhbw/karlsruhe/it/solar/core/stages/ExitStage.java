@@ -27,7 +27,7 @@ public class ExitStage extends HUDStage  {
             menuTable.debug();
         }
 
-        labelAreYouSure = new Label("Are you sure?", se.styles.defaultLabelStyle);
+        labelAreYouSure = new Label("Are you sure?", se.getDefaultLabelStyle());
 
         labelYes = new MenuButton("Yes", se) {
             @Override
@@ -39,7 +39,7 @@ public class ExitStage extends HUDStage  {
         labelNo = new MenuButton("No", se) {
             @Override
             protected void onClick() {
-                se.stageManager.swapCurrentStage(new StartStage(se));
+                se.swapCurrentStage(new StartStage(se));
             }
         };
 

@@ -23,7 +23,7 @@ public class BaseNavigationLabel extends Label {
     protected String tab;
 
     public BaseNavigationLabel(CharSequence text, String tab, SolarActor actor) {
-        super(tab + text, SolarEngine.get().styles.defaultLabelStyle);
+        super(tab + text, SolarEngine.get().getDefaultLabelStyle());
         this.actor = actor;
         this.tab = tab;
         this.name = text;

@@ -38,11 +38,11 @@ public class ScaleDialog {
         Table contentTable = new Table();
         contentTable.setFillParent(true);
 
-        Label shapeLabel = new Label("Body Size", SolarEngine.get().styles.defaultLabelStyle);
+        Label shapeLabel = new Label("Body Size", SolarEngine.get().getDefaultLabelStyle());
         shapeLabel.setAlignment(Align.center);
-        Label orbitLabel = new Label("Orbit Size", SolarEngine.get().styles.defaultLabelStyle);
+        Label orbitLabel = new Label("Orbit Size", SolarEngine.get().getDefaultLabelStyle());
         orbitLabel.setAlignment(Align.center);
-        Label presetLabel = new Label("Load a Preset", SolarEngine.get().styles.defaultLabelStyle);
+        Label presetLabel = new Label("Load a Preset", SolarEngine.get().getDefaultLabelStyle());
         presetLabel.setAlignment(Align.center);
 
         scaleSliders = new ArrayList<ScaleSlider>();

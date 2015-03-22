@@ -25,7 +25,7 @@ public class Spacestation extends SpaceUnit  {
     public static Spacestation placeNewStation(String name, Vector2 startlocation, Player owner)    {
         Spacestation newStation = new Spacestation(name, new Length(1, Length.Unit.KILOMETERS), new Length(1, Length.Unit.KILOMETERS), owner);
         newStation.setPosition(startlocation.x, startlocation.y);
-        newStation.kinematic.position = startlocation;
+        newStation.setKinematicPosition(startlocation);
         newStation.setDestination(startlocation);
         return newStation;
     }

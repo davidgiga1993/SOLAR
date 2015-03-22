@@ -24,28 +24,28 @@ public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
         // Min-Distance = distanceToCenter - radius
         // so the time to travel there at max speed gives us a very rough estimation
         Vector2 centerOfOrbit = target.getCenterOfOrbit();
-        Vector2 directionToCenter = new Vector2(centerOfOrbit).sub(character.position);
+        Vector2 directionToCenter = new Vector2(centerOfOrbit).sub(character.getPosition());
         float distanceToCenter = directionToCenter.len();
-        float timeToTravel = distanceToCenter / character.maxSpeed;
+        float timeToTravel = distanceToCenter / character.getMaxSpeed();
 
         // Calculate target's position at that moment
         Vector2 futurePosition = target.calculateFuturePosition(timeToTravel);
 
         // Calculate the distance between the character and the target's future position
-        Vector2 directionToFuturePosition = new Vector2(futurePosition).sub(character.position);
+        Vector2 directionToFuturePosition = new Vector2(futurePosition).sub(character.getPosition());
         float newDistance = directionToFuturePosition.len();
 
         // Calculate the time error (e.g. waiting or missing) in this estimation
         float timeError = newDistance - distanceToCenter;
-        timeError /= character.maxSpeed;
+        timeError /= character.getMaxSpeed();
 
         // Add the time error to our initial estimation and calculate the corrected future position
         futurePosition = target.calculateFuturePosition(timeError + timeToTravel);
 
-        super.target = new Kinematic(futurePosition, 0, target.getKinematic().maxSpeed);
+        super.target = new Kinematic(futurePosition, 0, target.getKinematic().getMaxSpeed());
 
         Steering steering = super.getSteering(character);
-        if (futurePosition.sub(character.position).len() < reachedRadius) {
+        if (futurePosition.sub(character.getPosition()).len() < reachedRadius) {
             steering.reached = true;
         }
 

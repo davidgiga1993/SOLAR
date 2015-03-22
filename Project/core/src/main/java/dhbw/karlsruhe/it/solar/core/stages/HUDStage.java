@@ -24,7 +24,7 @@ public class HUDStage extends BaseGUIStage {
             BitmapFont font = FontCacher.getFont("default");
             fpsLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
             fpsLabel.setPosition(SolarEngine.HALF_WIDTH-100, SolarEngine.HALF_HEIGHT - 18);
-            zoomLabel = new Label("Zoom: ", se.styles.defaultLabelStyle);
+            zoomLabel = new Label("Zoom: ", se.getDefaultLabelStyle());
             zoomLabel.setPosition(SolarEngine.HALF_WIDTH-100, SolarEngine.HALF_HEIGHT - 45);
             addActor(fpsLabel);
             addActor(zoomLabel);
@@ -45,7 +45,7 @@ public class HUDStage extends BaseGUIStage {
         timer.scheduleTask(new Timer.Task()       {
             public void run()            {
                 fpsLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
-                zoomLabel.setText("Zoom: " + se.camera.zoom);
+                zoomLabel.setText("Zoom: " + se.getSolarCameraZoom());
 
                 if (logData) {
                 	buildTimer();                	

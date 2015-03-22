@@ -19,14 +19,14 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
  */
 public class TimeTable extends Table implements Telegraph {
 
-    TextButton fasterButton = new TextButton(">>", SolarEngine.get().styles.tooltipSkin);
-    TextButton slowerButton = new TextButton("<<", SolarEngine.get().styles.tooltipSkin);
-    TextButton speed1Button = new TextButton("1x", SolarEngine.get().styles.tooltipSkin);
-    TextButton speed10Button = new TextButton("10x", SolarEngine.get().styles.tooltipSkin);
-    TextButton speed50Button = new TextButton("50x", SolarEngine.get().styles.tooltipSkin);
+    TextButton fasterButton = new TextButton(">>", SolarEngine.get().getTooltipSkin());
+    TextButton slowerButton = new TextButton("<<", SolarEngine.get().getTooltipSkin());
+    TextButton speed1Button = new TextButton("1x", SolarEngine.get().getTooltipSkin());
+    TextButton speed10Button = new TextButton("10x", SolarEngine.get().getTooltipSkin());
+    TextButton speed50Button = new TextButton("50x", SolarEngine.get().getTooltipSkin());
 
-    Label speedLabel = new Label(String.valueOf(GameStartStage.gameSpeed), SolarEngine.get().styles.defaultLabelStyle);
-    Label dateLabel = new Label("Date: ", SolarEngine.get().styles.defaultLabelStyle);
+    Label speedLabel = new Label(String.valueOf(GameStartStage.gameSpeed), SolarEngine.get().getDefaultLabelStyle());
+    Label dateLabel = new Label("Date: ", SolarEngine.get().getDefaultLabelStyle());
     TimeLabel timeLabel = new TimeLabel();
 
     public TimeTable() {

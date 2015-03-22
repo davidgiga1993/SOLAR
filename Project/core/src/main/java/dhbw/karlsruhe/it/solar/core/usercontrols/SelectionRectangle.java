@@ -19,8 +19,8 @@ public class SelectionRectangle extends Actor implements ShapeRenderable  {
      private Vector2 mousePosition;
      private boolean isInitialized = false;
      
-     private Label widthLabel = new Label("", SolarEngine.get().styles.defaultLabelStyle);
-     private Label heightLabel = new Label("", SolarEngine.get().styles.defaultLabelStyle);
+     private Label widthLabel = new Label("", SolarEngine.get().getDefaultLabelStyle());
+     private Label heightLabel = new Label("", SolarEngine.get().getDefaultLabelStyle());
 
      public SelectionRectangle() {
           this.visible = false;

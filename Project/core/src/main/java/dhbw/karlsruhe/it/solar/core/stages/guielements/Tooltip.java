@@ -17,7 +17,7 @@ public class Tooltip extends Window {
     }
 
     public Tooltip(String title) {
-        this(title, SolarEngine.get().styles.tooltipSkin);
+        this(title, SolarEngine.get().getTooltipSkin());
     }
 
 

@@ -21,7 +21,7 @@ public class Moon extends AstronomicalBody {
     @Override
     protected boolean previewEnabled() {
         // this needs to be refined in the future
-        return SolarEngine.get().camera.zoom < .3f;
+        return SolarEngine.get().getSolarCameraZoom() < .3f;
     }
 
     private static String getTextureFromTypeOf(MoonType moon)    {

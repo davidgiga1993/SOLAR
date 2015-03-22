@@ -30,9 +30,9 @@ public class AISpaceshipModule implements AIModule {
         kinematic = object.getKinematic();
         output = new AIOutput();
 
-        pursueSteeringProvider = new PursueSteeringProvider(10, kinematic.maxSpeed * .5f);
-        arriveSteeringProvider = new ArriveSteeringProvider(10, kinematic.maxSpeed * .5f);
-        orbitalArriveSteeringProvider = new OrbitalArriveSteeringProvider(10, kinematic.maxSpeed * .5f);
+        pursueSteeringProvider = new PursueSteeringProvider(10, kinematic.getMaxSpeed() * .5f);
+        arriveSteeringProvider = new ArriveSteeringProvider(10, kinematic.getMaxSpeed() * .5f);
+        orbitalArriveSteeringProvider = new OrbitalArriveSteeringProvider(10, kinematic.getMaxSpeed() * .5f);
     }
 
     @Override
@@ -42,8 +42,8 @@ public class AISpaceshipModule implements AIModule {
         kinematic.update(steering, time);
         
         // output
-        output.position = kinematic.position;
-        output.rotation = kinematic.rotation;
+        output.position = kinematic.getPosition();
+        output.rotation = kinematic.getRotation();
 
         if(steering.reached && !targetReached) {
             fireTargetReached();
@@ -85,12 +85,12 @@ public class AISpaceshipModule implements AIModule {
 
     @Override
     public void setPosition(Vector2 position) {
-        kinematic.position = position;
+        kinematic.setPosition(position);
     }
 
     @Override
     public boolean isMoving() {
-        return kinematic.isMoving;
+        return kinematic.isMoving();
     }
 
     @Override

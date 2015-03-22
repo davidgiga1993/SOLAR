@@ -12,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 public class PreviewActor implements ShapeRenderable {
 
     protected SolarActor parent;
-    protected OrthographicCamera camera = SolarEngine.get().camera;
+    protected OrthographicCamera camera = SolarEngine.get().getCamera();
     protected float zoomLevel;
     protected float maxQuota;
 

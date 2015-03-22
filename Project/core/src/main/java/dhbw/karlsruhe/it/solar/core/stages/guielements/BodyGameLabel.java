@@ -14,10 +14,10 @@ public class BodyGameLabel extends Label {
     protected OrthographicCamera gameCamera;
 
     public BodyGameLabel(CharSequence text) {
-        super(text, SolarEngine.get().styles.defaultLabelStyle);
+        super(text, SolarEngine.get().getDefaultLabelStyle());
         setAlignment(Align.center);
         SolarEngine.get().stageManager.getStage("GameHUD").addActor(this);
-        this.gameCamera = SolarEngine.get().camera;
+        this.gameCamera = SolarEngine.get().getCamera();
     }
 
     public void setThreshold(float threshold) {

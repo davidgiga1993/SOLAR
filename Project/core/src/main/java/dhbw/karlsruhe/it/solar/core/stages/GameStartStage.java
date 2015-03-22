@@ -47,7 +47,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public GameStartStage(SolarEngine se)   {
         super(se, "GameStartStage");
-        se.camera.zoom = 25;
+        se.setZoomSolarCameraTo(25);
 
         gameStartStageListener();
         addSelectionRectangle();

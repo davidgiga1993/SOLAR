@@ -11,7 +11,7 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 public class TimeLabel extends Label {
 
     public TimeLabel() {
-        super("", SolarEngine.get().styles.defaultLabelStyle);
+        super("", SolarEngine.get().getDefaultLabelStyle());
         setAlignment(Align.right);
     }
 

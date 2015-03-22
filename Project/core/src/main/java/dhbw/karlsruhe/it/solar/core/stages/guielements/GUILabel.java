@@ -12,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
  */
 public class GUILabel extends Label implements GUIActor {
 
-    final Tooltip tooltip = new Tooltip("Test", SolarEngine.get().styles.tooltipSkin);
+    final Tooltip tooltip = new Tooltip("Test", SolarEngine.get().getTooltipSkin());
     private InputListener tooltipInputListener;
     private boolean tooltipIsEnabled = false;
 

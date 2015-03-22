@@ -14,7 +14,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 public abstract class MenuButton extends Label{
 
     public MenuButton(CharSequence text, final SolarEngine engine) {
-        super(text, engine.styles.defaultLabelStyle);
+        super(text, engine.getDefaultLabelStyle());
 
         addListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {

@@ -58,8 +58,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
           this.setSize(width, length);
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
         this.destination = new Vector2(getX(), getY());
-        kinematic.maxSpeed = speed;
-        kinematic.rotation = getRotation();        
+        kinematic.setMaxSpeed(speed);
+        kinematic.setRotation(getRotation());        
         initializeAIModule();
      }
 
@@ -153,7 +153,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
          }
          //TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination.getKinematic());
-        this.destination = destination.getKinematic().position;
+        this.destination = destination.getKinematic().getPosition();
         System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.toString() + ".");
     }
     
@@ -168,7 +168,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
              return;
           }
         this.aiModule.setTarget(destination);
-        this.destination = destination.getKinematic().position;
+        this.destination = destination.getKinematic().getPosition();
      }
 
      public void establishColony(AstronomicalBody destination, Population colonists) {
@@ -185,7 +185,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      */
      public void enterOrbit(AstronomicalBody orbitPrimary)    {       
          stopMovement();
-          setNewOrbitalProperties(orbitPrimary);
+         setNewOrbitalProperties(orbitPrimary);
          setKinematicValues();
          changeOrbitScaleSpaceUnit();        
     }
@@ -193,7 +193,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
     public void enterOrbit() {
          AstronomicalBody orbitPrimary = calculateDominantGravitationSource();         
          stopMovement();
-          setNewOrbitalProperties(orbitPrimary);
+         setNewOrbitalProperties(orbitPrimary);
          setKinematicValues();
          changeOrbitScaleSpaceUnit();             
     }
@@ -304,8 +304,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
     public void leaveOrbit() {
           orbitalProperties = null;
         System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
-        kinematic.maxSpeed = speed;
-        aiModule.setPosition(kinematic.position);
+        kinematic.setMaxSpeed(speed);
+        aiModule.setPosition(kinematic.getPosition());
     }
     
      /**

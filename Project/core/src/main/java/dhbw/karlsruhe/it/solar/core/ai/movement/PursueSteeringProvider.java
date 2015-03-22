@@ -17,10 +17,10 @@ public class PursueSteeringProvider extends ArriveSteeringProvider {
 
     @Override
     public Steering getSteering(final Kinematic character) {
-        Vector2 direction = new Vector2(pursueTarget.position).sub(character.position);
+        Vector2 direction = new Vector2(pursueTarget.getPosition()).sub(character.getPosition());
         float distance = direction.len();
 
-        float speed = character.velocity.len();
+        float speed = character.getSpeed();
 
         float prediction;
         if (speed <= distance / maxPrediction) {
@@ -29,9 +29,9 @@ public class PursueSteeringProvider extends ArriveSteeringProvider {
             prediction = distance / speed;
         }
 
-        Vector2 predictedMovement = new Vector2(pursueTarget.velocity).scl(prediction);
-        Vector2 predictedPosition = new Vector2(pursueTarget.position).add(predictedMovement);
-        target.position = predictedPosition;
+        Vector2 predictedMovement = new Vector2(pursueTarget.getVelocity()).scl(prediction);
+        Vector2 predictedPosition = new Vector2(pursueTarget.getPosition()).add(predictedMovement);
+        target.setPosition(predictedPosition);
 
         return super.getSteering(character);
     }

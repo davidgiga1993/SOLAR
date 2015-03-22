@@ -15,7 +15,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 public abstract class ScalePresetButton extends TextButton {
 
     public ScalePresetButton(String text) {
-        super(text, SolarEngine.get().styles.tooltipSkin);
+        super(text, SolarEngine.get().getTooltipSkin());
         this.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {

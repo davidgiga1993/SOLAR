@@ -28,8 +28,8 @@ public class InformationActions extends Table {
         defaults().width(ACTION_CELL_WIDTH).height(ACTION_CELL_HEIGHT);
         
         // Action Command Buttons
-        orbitalInsertion = new TextButton("Enter Orbit", SolarEngine.get().styles.tooltipSkin);
-        colonize = new TextButton("Establish Colony", SolarEngine.get().styles.tooltipSkin);
+        orbitalInsertion = new TextButton("Enter Orbit", SolarEngine.get().getTooltipSkin());
+        colonize = new TextButton("Establish Colony", SolarEngine.get().getTooltipSkin());
         
         // Button Listeners
         orbitalInsertion.addListener(new ChangeListener() {

@@ -49,10 +49,26 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
      protected void setKinematicValues() {
           float orbitalSpeed = calculateOrbitalSpeed();
-          kinematic.position = new Vector2(getX() + getWidth()/2, getY() + getHeight()/2);
-          kinematic.rotation = 0;
-          kinematic.velocity = new Vector2(1,0).scl(orbitalSpeed);
-          kinematic.maxSpeed = orbitalSpeed;
+          kinematic.setPosition(getAdjustedPosition());
+          kinematic.setRotation(0f);
+          kinematic.setVelocity(new Vector2(1,0).scl(orbitalSpeed));
+          kinematic.setMaxSpeed(orbitalSpeed);
+     }
+     
+     /**
+      * Calculates the center of an object texture based on its x/y position coordinates which correspond to the lower left corner of the texture.
+      * @return Position coordinates of the center of the object's texture.
+      */
+     protected Vector2 getAdjustedPosition() {
+    	 return new Vector2(getX() + getWidth()/2, getY() + getHeight()/2);
+     }
+     
+     /**
+      * Calculates the x/y game coordinates for an object based on its kinematic position values which correspond to the center of its texture.
+      * @return Position coordinates for the game logic which correspond to the lower left corner of an object.
+      */
+     protected Vector2 getReAdjustedPosition() {
+    	 return new Vector2(kinematic.getXPosition()  - getWidth() / 2, kinematic.getYPosition()  - getHeight() / 2);
      }
 
      /**
@@ -105,8 +121,8 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
         adjustLabelPosition();
 
-          kinematic.rotation = orbitalProperties.getOrbitalAngle().inDegrees() + 90f;
-          kinematic.velocity.setAngle(kinematic.rotation);
+          kinematic.setRotation(orbitalProperties.getOrbitalAngle().inDegrees() + 90f);
+          kinematic.setVelocityAngle(kinematic.getRotation());
      }
 
      /**
@@ -120,9 +136,8 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      * Calculates the current position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
      */
     protected void setOrbitalPositionTotal()    {
-          kinematic.position.x = orbitalProperties.calculateOrbitalPositionX(orbitalRadiusInPixels, new Angle());
-          kinematic.position.y = orbitalProperties.calculateOrbitalPositionY(orbitalRadiusInPixels, new Angle());
-         this.setPosition(kinematic.position.x  - getWidth() / 2, kinematic.position.y  - getHeight() / 2);
+         kinematic.setPosition(orbitalProperties.getOrbitalPositionTotal(orbitalRadiusInPixels, new Angle()));
+         this.setPosition(getReAdjustedPosition().x, getReAdjustedPosition().y);
     }
     
     public Vector2 calculateFuturePosition(float delta) {
@@ -160,7 +175,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
     }
 
      protected boolean canBeSeen() {
-          return (getWidth() / SolarEngine.get().camera.zoom) > 1f;
+          return (getWidth() / SolarEngine.get().getSolarCameraZoom()) > 1f;
      }
 
      protected boolean previewEnabled() {
@@ -189,5 +204,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      
      public AstronomicalBody getPrimary() {
           return orbitalProperties.getPrimary();
+     }
+     
+     public void setKinematicPosition(Vector2 position) {
+    	 kinematic.setPosition(position);
      }
 }
