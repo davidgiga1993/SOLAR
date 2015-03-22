@@ -90,8 +90,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
 
     @Override
     public void act(float delta) {
-        if(null != orbitalProperties)
-        {
+        if(null != orbitalProperties)        {
                changeOrbitScaleSpaceUnit();
              super.act(delta);
              return;
@@ -273,8 +272,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      * @param shapeRenderer
      */
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer)    {
-        if (destination != null && this.aiModule.isMoving())
-        {
+        if (destination != null && this.aiModule.isMoving())        {
             shapeRenderer.setColor(Color.GREEN);
             shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destination.x, destination.y);
             shapeRenderer.circle(destination.x, destination.y, 10);

@@ -96,14 +96,8 @@ public class BaseNavigationLabel extends Label {
         public void clicked(InputEvent event, float x, float y) {
             switch(event.getButton()) {
                 case Input.Buttons.LEFT:
-                    // decide whether it was a click on the label or the expand indicator
-                    if(!children.isEmpty() && x < getX() + 6 + tab.length() * 4) {
-                        toggleChildren();
-                    } else {
-                        onLeftClick(event);
-                    }
+                	handleLeftClickButton(event, x);
                     break;
-
                 case Input.Buttons.RIGHT:
                     onRightClick(event);
                     break;
@@ -112,5 +106,18 @@ public class BaseNavigationLabel extends Label {
                     break;
             }
         }
+
+        /**
+         * Decides whether it was a click on the label or the expand indicator
+         * @param event
+         * @param x
+         */
+		private void handleLeftClickButton(InputEvent event, float x) {
+			if(!children.isEmpty() && x < getX() + 6 + tab.length() * 4) {
+			    toggleChildren();
+			} else {
+			    onLeftClick(event);
+			}
+		}
     }
 }

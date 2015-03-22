@@ -167,8 +167,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      * @param shapeRenderer
      */
     protected void displaySelectionBox(ShapeRenderer shapeRenderer)    {
-        if (selected)
-        {
+        if (selected)        {
             shapeRenderer.setColor(selectionColor);
             shapeRenderer.rect(getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), 1, 1, getRotation());
         }

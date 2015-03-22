@@ -63,7 +63,7 @@ public class PlanetaryRing extends AstronomicalBody {
         indices = new short[segments*2+2];
 
         float u = solarActorTexture.getU();
-        float u2 = solarActorTexture.getU2();
+//        float u2 = solarActorTexture.getU2();
         float v = solarActorTexture.getV();
         float v2 = solarActorTexture.getV2();
 

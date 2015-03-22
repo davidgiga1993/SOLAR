@@ -15,8 +15,8 @@ public class SolarCamera extends OrthographicCamera {
     protected Vector2 movementTarget = null;
     protected float zoomTarget;
     protected boolean zoomTargetActive = false;
-    protected final float timeToTranslate = 0.1f;
-    protected final float timeToZoom = 0.25f;
+    protected static final float timeToTranslate = 0.1f;
+    protected static final float timeToZoom = 0.25f;
 
     public SolarCamera(float viewportWidth, float viewportHeight) {
         super(viewportWidth, viewportHeight);

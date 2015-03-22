@@ -8,6 +8,10 @@ import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScalePrese
 public class Solar {
     private static SolarEngine engine;
     
+    private Solar() {
+    	
+    }
+    
     public static void main(String[] args)    {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "Solar";

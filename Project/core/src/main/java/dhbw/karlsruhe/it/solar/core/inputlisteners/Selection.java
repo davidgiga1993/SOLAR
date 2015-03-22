@@ -64,8 +64,9 @@ public class Selection implements Telegraph {
 	 * @see dhbw.karlsruhe.it.solar.core.inputlisteners.Selection.add(dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor add)
 	 */
 	public void add(Actor actor) {
-		if (actor instanceof SolarActor)
-			add((SolarActor) actor);
+		if (actor instanceof SolarActor) {
+			add((SolarActor) actor);			
+		}
 	}
 	
 	/**

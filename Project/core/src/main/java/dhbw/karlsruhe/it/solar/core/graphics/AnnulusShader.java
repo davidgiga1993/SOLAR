@@ -40,6 +40,8 @@ public class AnnulusShader extends ShaderProgram{
 
     public AnnulusShader() {
         super(VERTEX_SHADER, FRAGMENT_SHADER);
-        if (isCompiled() == false) throw new IllegalArgumentException("Error compiling shader: " + getLog());
+        if (isCompiled() == false) {
+        	throw new IllegalArgumentException("Error compiling shader: " + getLog());
+        }
     }
 }

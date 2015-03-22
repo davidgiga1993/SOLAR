@@ -190,8 +190,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * @param body Astronomical Object to be added to the game.
      */
     private void addSolarSystemActors(AstronomicalBody body)    {
-        if (body.getNumberOfSatellites() != 0)
-        {
+        if (body.getNumberOfSatellites() != 0)       {
             for (AstronomicalBody astronomicalBody : body.getSatellites()) {
                 addActor(astronomicalBody);
                 addSolarSystemActors(astronomicalBody);

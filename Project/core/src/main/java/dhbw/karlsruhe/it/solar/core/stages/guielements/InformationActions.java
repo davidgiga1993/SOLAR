@@ -55,14 +55,14 @@ public class InformationActions extends Table {
     
     private void onOrbitalInsertionClick() {
 		//TODO: Very rough implementation. More elegant solution: Approach AI?
-    	OrbitalInsertionCommand orbitalInsertion = new OrbitalInsertionCommand((SpaceUnit)selectedActor);
-    	orbitalInsertion.execute();
+    	OrbitalInsertionCommand orbitalCommand = new OrbitalInsertionCommand((SpaceUnit)selectedActor);
+    	orbitalCommand.execute();
     }
     
     private void onColonizeClick() {
     	//TODO: Adjust after implementing ColonizeCommand logic
-    	ColonizeCommand colonize = new ColonizeCommand((SpaceUnit)selectedActor);
-    	colonize.execute();
+    	ColonizeCommand colonizeCommand = new ColonizeCommand((SpaceUnit)selectedActor);
+    	colonizeCommand.execute();
     }
 
 	public void changedActor(SolarActor actor) {

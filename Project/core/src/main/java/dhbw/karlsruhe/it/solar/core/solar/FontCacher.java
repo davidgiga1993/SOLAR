@@ -4,14 +4,17 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Arga on 16.11.2014.
  */
 public class FontCacher {
-    public static final HashMap<String, BitmapFont> cache = new HashMap<String, BitmapFont>();
+    public static final Map<String, BitmapFont> cache = new HashMap<String, BitmapFont>();
 
-    private FontCacher() {}
+    private FontCacher() {
+    	
+    }
 
     /**
      * Disposes all Fonts and removes them from the cache

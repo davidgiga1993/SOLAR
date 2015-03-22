@@ -15,7 +15,9 @@ public final class ConfigurationConstants {
 	public static final SolarActorScale SCALE_FACTOR_UNITS = new SolarActorScale(4000000,1);
 	public static final boolean SCALE_DIALOG_ENABLED = true;
 
-	private ConfigurationConstants() {}
+	private ConfigurationConstants() {
+		
+	}
 
 	// GUI Settings
 

@@ -106,8 +106,7 @@ public abstract class AstronomicalBody extends Orbiter  {
         setOrbitalPositionTotal();
         addAsSatellite();
         solarSystem.addMass(getMass());
-        if(null != physicalProperties.getRings())
-        {
+        if(null != physicalProperties.getRings())      {
             setRingPrimary(this);
         }
     }
