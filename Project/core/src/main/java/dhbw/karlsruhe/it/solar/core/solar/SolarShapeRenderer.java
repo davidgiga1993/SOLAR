@@ -19,12 +19,10 @@ public class SolarShapeRenderer extends ShapeRenderer {
 
     /**
      * Some orbits are to big, so that the precision of circle(..) is not sufficient. This method provides a higher accuracy.
-     * @param centerX
-     * @param centerY
      * @param radius
      * @param segments
      */
-    public void orbit(float centerX, float centerY, float radius, int segments) {
+    public void orbit(float radius, int segments) {
         double theta = 2 * MathUtils.PI / (segments);
         // precalculate the sine and cosine
         double c = Math.cos(theta);
@@ -41,8 +39,8 @@ public class SolarShapeRenderer extends ShapeRenderer {
         for(int ii = 0; ++ii < segments;) {
             //output vertex
             renderer.color(color);
-            vx = (float) x + centerX;
-            vy = (float) y + centerY;
+            vx = (float) x;
+            vy = (float) y;
             renderer.vertex(vx, vy, 0);
             //apply the rotation matrix
             t = x;
@@ -54,8 +52,8 @@ public class SolarShapeRenderer extends ShapeRenderer {
 
 
 
-    public void orbit(float centerX, float centerY, float radius) {
-        orbit(centerX, centerY, radius, (int) Math.sqrt(radius));
+    public void orbit(float radius) {
+        orbit(radius, (int) Math.sqrt(radius));
     }
 
     protected void check(int segments) {

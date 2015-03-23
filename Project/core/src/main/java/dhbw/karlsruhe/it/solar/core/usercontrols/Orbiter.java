@@ -32,9 +32,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      protected int segments = 250;
      protected Color orbitColor = Color.TEAL;
 
-    protected Matrix4 transform = new Matrix4();
+    protected Matrix4 orbitTransform = new Matrix4();
 
-     public Orbiter(String name)     {
+    public Orbiter(String name)     {
           this(name, null, ConfigurationConstants.SCALE_FACTOR_STAR);
      }
      
@@ -186,9 +186,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      
      protected void displayOrbit(SolarShapeRenderer shapeRenderer)     {
           if(!orbitalProperties.isCoorbital())          {
-              shapeRenderer.setTransformMatrix(transform.setToTranslation(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), 0));
+              shapeRenderer.setTransformMatrix(orbitTransform.setToTranslation(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), 0));
               shapeRenderer.setColor(orbitColor);
-              shapeRenderer.orbit(0, 0, orbitalRadiusInPixels, segments);
+              shapeRenderer.orbit(orbitalRadiusInPixels, segments);
           }
      }
      
