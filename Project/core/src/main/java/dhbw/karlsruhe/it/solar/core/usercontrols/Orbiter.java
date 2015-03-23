@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
@@ -30,6 +31,8 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
      protected int segments = 250;
      protected Color orbitColor = Color.TEAL;
+
+    protected Matrix4 transform = new Matrix4();
 
      public Orbiter(String name)     {
           this(name, null, ConfigurationConstants.SCALE_FACTOR_STAR);
@@ -183,8 +186,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      
      protected void displayOrbit(SolarShapeRenderer shapeRenderer)     {
           if(!orbitalProperties.isCoorbital())          {
-               shapeRenderer.setColor(orbitColor);
-               shapeRenderer.orbit(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), orbitalRadiusInPixels, segments);
+              shapeRenderer.setTransformMatrix(transform.setToTranslation(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), 0));
+              shapeRenderer.setColor(orbitColor);
+              shapeRenderer.orbit(0, 0, orbitalRadiusInPixels, segments);
           }
      }
      
