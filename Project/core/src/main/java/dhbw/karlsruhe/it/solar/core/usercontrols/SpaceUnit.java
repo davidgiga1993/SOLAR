@@ -162,7 +162,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
           }
           if( isAbleToEnterOrbitAround(destination) )          {
                //TODO: Very rough implementation. More elegant solution: Approach AI?
-              OrbitalInsertionCommand orbitalInsertion = new OrbitalInsertionCommand(this, destination);
+              OrbitalInsertionCommand orbitalInsertion = new OrbitalInsertionCommand(this);
               orbitalInsertion.execute();
              return;
           }

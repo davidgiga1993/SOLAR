@@ -27,7 +27,7 @@ public class StageManager extends BaseStage {
     public BaseStage getStage(String tag)   {
         for (int x = 0; x < stages.size(); x++)        {
             if (stages.get(x).tag.equals(tag)) {
-            	return getStage(x);            	
+                return getStage(x);                
             }
         }
         return null;
@@ -35,7 +35,7 @@ public class StageManager extends BaseStage {
 
     public BaseStage getStage(int index)   {
         if (index < stages.size()) {
-        	return stages.get(index);        	
+            return stages.get(index);            
         }
         return null;
     }
@@ -69,8 +69,8 @@ public class StageManager extends BaseStage {
      * @param tag
      */
     public Stage removeStage(String tag)   {
-        for (int x = 0; x < stages.size(); x++)	{
-            if (stages.get(x).tag.equals(tag))	{
+        for (int x = 0; x < stages.size(); x++)    {
+            if (stages.get(x).tag.equals(tag))    {
                 return stages.remove(x);
             }
         }
@@ -97,7 +97,7 @@ public class StageManager extends BaseStage {
     public boolean keyDown(int keycode)    {
         for (int x = 0; x < stages.size(); x++)       {
             if (stages.get(x).keyDown(keycode)) {
-            	break;            	
+                break;                
             }
         }
         return false;
@@ -107,7 +107,7 @@ public class StageManager extends BaseStage {
     public boolean keyUp(int keycode)    {
         for (int x = 0; x < stages.size(); x++)        {
             if (stages.get(x).keyUp(keycode)) {
-            	break;            	
+                break;                
             }
         }
         return false;
@@ -117,7 +117,7 @@ public class StageManager extends BaseStage {
     public boolean keyTyped(char character)    {
         for (int x = 0; x < stages.size(); x++)        {
             if (stages.get(x).keyTyped(character)) {
-            	break;            	
+                break;
             }
         }
         return false;

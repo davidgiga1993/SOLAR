@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
@@ -19,8 +20,8 @@ public class SelectionRectangle extends Actor implements ShapeRenderable  {
      private Vector2 mousePosition;
      private boolean isInitialized = false;
      
-     private Label widthLabel = new Label("", SolarEngine.get().getDefaultLabelStyle());
-     private Label heightLabel = new Label("", SolarEngine.get().getDefaultLabelStyle());
+     private Label widthLabel = new Label("", Styles.DEFAULTLABEL_STYLE);
+     private Label heightLabel = new Label("", Styles.DEFAULTLABEL_STYLE);
 
      public SelectionRectangle() {
           this.visible = false;

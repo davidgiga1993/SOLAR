@@ -8,9 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUILabel;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * Created by Arga on 11.02.2015.
@@ -34,8 +35,8 @@ public abstract class ScaleSlider extends WidgetGroup {
         super();
         this.scale = scale;
         this.solarActorType = solarActorType;
-        Label textLabel = new Label(solarActorType.getSimpleName() + ": ", SolarEngine.get().getDefaultLabelStyle());
-        curValue =  new GUILabel("", SolarEngine.get().getDefaultLabelStyle(), stage);
+        Label textLabel = new Label(solarActorType.getSimpleName() + ": ", Styles.DEFAULTLABEL_STYLE);
+        curValue =  new GUILabel("", Styles.DEFAULTLABEL_STYLE, stage);
         curValue.disableTooltips();
         curValue.setAlignment(Align.right);
         float step = (maxValue - minValue) / 100;
@@ -43,7 +44,7 @@ public abstract class ScaleSlider extends WidgetGroup {
         if(step <= 0) {
             step = 0.1f;
         }
-        scaleSlider = new Slider(minValue, maxValue, step, false, SolarEngine.get().getTooltipSkin());
+        scaleSlider = new Slider(minValue, maxValue, step, false, Styles.TOOLTIPSKIN);
 
 
         scaleSlider.addListener(new ChangeListener() {

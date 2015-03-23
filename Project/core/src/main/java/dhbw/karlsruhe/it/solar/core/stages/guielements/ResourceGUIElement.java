@@ -3,7 +3,8 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 import dhbw.karlsruhe.it.solar.player.resources.Resource;
 
 /**
@@ -20,7 +21,7 @@ public class ResourceGUIElement extends HorizontalGroup implements GUIActor {
         super();
         this.resource = resource;
 
-        label = new GUILabel(buildLabelString(), SolarEngine.get().getDefaultLabelStyle(), stage);
+        label = new GUILabel(buildLabelString(), Styles.DEFAULTLABEL_STYLE, stage);
         label.tooltip.setTitle("Resource");
         sprite = new GUIImage(resource.getIcon());
 

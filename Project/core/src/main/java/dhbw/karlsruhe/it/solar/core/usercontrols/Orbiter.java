@@ -60,7 +60,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
       * @return Position coordinates of the center of the object's texture.
       */
      protected Vector2 getAdjustedPosition() {
-    	 return new Vector2(getX() + getWidth()/2, getY() + getHeight()/2);
+         return new Vector2(getX() + getWidth()/2, getY() + getHeight()/2);
      }
      
      /**
@@ -68,7 +68,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
       * @return Position coordinates for the game logic which correspond to the lower left corner of an object.
       */
      protected Vector2 getReAdjustedPosition() {
-    	 return new Vector2(kinematic.getXPosition()  - getWidth() / 2, kinematic.getYPosition()  - getHeight() / 2);
+         return new Vector2(kinematic.getXPosition()  - getWidth() / 2, kinematic.getYPosition()  - getHeight() / 2);
      }
 
      /**
@@ -206,6 +206,6 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      }
      
      public void setKinematicPosition(Vector2 position) {
-    	 kinematic.setPosition(position);
+         kinematic.setPosition(position);
      }
 }

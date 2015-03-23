@@ -42,6 +42,6 @@ public class PreviewActor implements ShapeRenderable {
     }
     
     public void setColor(Color newColor) {
-    	this.color = newColor;
+        this.color = newColor;
     }
 }

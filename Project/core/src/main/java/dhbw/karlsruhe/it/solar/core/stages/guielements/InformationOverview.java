@@ -7,8 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * Created by Arga on 24.02.2015.
@@ -44,7 +45,7 @@ public class InformationOverview extends Table {
 
     private void loadContent() {
         loadIcon(actor.getSolarActorTexture());
-        name = new Label(actor.getName(), SolarEngine.get().getDefaultLabelStyle());
+        name = new Label(actor.getName(), Styles.DEFAULTLABEL_STYLE);
         add(name).width(TEXT_WIDTH);
     }
 

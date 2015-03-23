@@ -10,7 +10,6 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 
 public class ColonyNavigationTable extends BaseNavigationTable {
 
@@ -24,22 +23,22 @@ public class ColonyNavigationTable extends BaseNavigationTable {
         GameStartStage gameStartStage = (GameStartStage) SolarEngine.get().getStage("GameStartStage");
         for (Actor actor : gameStartStage.getActors()) {
             if (actor instanceof AstronomicalBody && ((AstronomicalBody) actor).isColonized()) {
-            	addColonyToTable(actor);
+                addColonyToTable(actor);
             }
         }
         buildTable();
     }
 
-	private void addColonyToTable(Actor actor) {
-		if(!allColonies.contains(actor))	{
-			allColonies.add((AstronomicalBody) actor);
-			allLabels.add(new BaseNavigationLabel(((AstronomicalBody)actor).getColonyName(), "", (SolarActor) actor));	
-		}
-	}
+    private void addColonyToTable(Actor actor) {
+        if(!allColonies.contains(actor))    {
+            allColonies.add((AstronomicalBody) actor);
+            allLabels.add(new BaseNavigationLabel(((AstronomicalBody)actor).getColonyName(), "", (SolarActor) actor));    
+        }
+    }
 
-	@Override
-	public boolean handleMessage(Telegram telegram) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean handleMessage(Telegram telegram) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }

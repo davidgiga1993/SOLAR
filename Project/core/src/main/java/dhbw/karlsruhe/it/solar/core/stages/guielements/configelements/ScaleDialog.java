@@ -5,13 +5,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.Tooltip;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +39,11 @@ public class ScaleDialog {
         Table contentTable = new Table();
         contentTable.setFillParent(true);
 
-        Label shapeLabel = new Label("Body Size", SolarEngine.get().getDefaultLabelStyle());
+        Label shapeLabel = new Label("Body Size", Styles.DEFAULTLABEL_STYLE);
         shapeLabel.setAlignment(Align.center);
-        Label orbitLabel = new Label("Orbit Size", SolarEngine.get().getDefaultLabelStyle());
+        Label orbitLabel = new Label("Orbit Size", Styles.DEFAULTLABEL_STYLE);
         orbitLabel.setAlignment(Align.center);
-        Label presetLabel = new Label("Load a Preset", SolarEngine.get().getDefaultLabelStyle());
+        Label presetLabel = new Label("Load a Preset", Styles.DEFAULTLABEL_STYLE);
         presetLabel.setAlignment(Align.center);
 
         scaleSliders = new ArrayList<ScaleSlider>();

@@ -77,7 +77,7 @@ public class Mass {
     }
 
 
-	public void addMass(Mass massToBeAddedToTheBody) {
+    public void addMass(Mass massToBeAddedToTheBody) {
         switch(unit) {
         case KILOGRAM:
             value += massToBeAddedToTheBody.asKilogram();
@@ -90,6 +90,6 @@ public class Mass {
             break;
         default:
             break;
-    }		
-	}
+    }        
+    }
 }

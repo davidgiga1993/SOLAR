@@ -20,39 +20,39 @@ public class Steering {
     }
     
     public boolean isReached() {
-    	return reached;
+        return reached;
     }
     
     public void setLinearZero() {
-    	linear.setZero();
+        linear.setZero();
     }
     
     public void setAngular(float newAngle) {
-    	angular = newAngle;
+        angular = newAngle;
     }
     
-	public void setReached() {
-		reached = true;
-	}
-	
-	public void resetReached() {
-		reached = false;
-	}
-	
-	public void setLinear(Vector2 newVector) {
-		linear = newVector;
-	}
-	
-	public float getLengthLinear() {
-		return linear.len();
-	}
-	
-	public void normalizeLinear(float maxAcceleration) {
-		linear.nor().scl(maxAcceleration);
-	}
-	
-	public Vector2 scaleLinear(float newScalar) {
-		return linear.scl(newScalar);	
-	}
+    public void setReached() {
+        reached = true;
+    }
+    
+    public void resetReached() {
+        reached = false;
+    }
+    
+    public void setLinear(Vector2 newVector) {
+        linear = newVector;
+    }
+    
+    public float getLengthLinear() {
+        return linear.len();
+    }
+    
+    public void normalizeLinear(float maxAcceleration) {
+        linear.nor().scl(maxAcceleration);
+    }
+    
+    public Vector2 scaleLinear(float newScalar) {
+        return linear.scl(newScalar);    
+    }
 
 }

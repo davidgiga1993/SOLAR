@@ -6,11 +6,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
+
 import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class HUDStage extends BaseGUIStage {
-	
+    
     private Label fpsLabel;
     private Label zoomLabel;
     private Timer timer;
@@ -24,7 +26,7 @@ public class HUDStage extends BaseGUIStage {
             BitmapFont font = FontCacher.getFont("default");
             fpsLabel = new Label("DEBUG MODE", new LabelStyle(font, new Color(125, 125, 125, 255)));
             fpsLabel.setPosition(SolarEngine.HALF_WIDTH-100, SolarEngine.HALF_HEIGHT - 18);
-            zoomLabel = new Label("Zoom: ", se.getDefaultLabelStyle());
+            zoomLabel = new Label("Zoom: ", Styles.DEFAULTLABEL_STYLE);
             zoomLabel.setPosition(SolarEngine.HALF_WIDTH-100, SolarEngine.HALF_HEIGHT - 45);
             addActor(fpsLabel);
             addActor(zoomLabel);
@@ -48,7 +50,7 @@ public class HUDStage extends BaseGUIStage {
                 zoomLabel.setText("Zoom: " + se.getSolarCameraZoom());
 
                 if (logData) {
-                	buildTimer();                	
+                    buildTimer();                    
                 }
             }
         }, 1);
@@ -56,14 +58,14 @@ public class HUDStage extends BaseGUIStage {
 
     @Override
     public boolean keyTyped(char character)    {
-    	if ('?' == character) {
-    		if (logData) {
-    			stop();
-    			return true;
-    		}
-    		start();
-    		return true;
-    	}
-    	return false;
+        if ('?' == character) {
+            if (logData) {
+                stop();
+                return true;
+            }
+            start();
+            return true;
+        }
+        return false;
     }
 }

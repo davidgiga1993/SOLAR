@@ -4,9 +4,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class BaseNavigationLabel extends Label {
     protected String tab;
 
     public BaseNavigationLabel(CharSequence text, String tab, SolarActor actor) {
-        super(tab + text, SolarEngine.get().getDefaultLabelStyle());
+        super(tab + text, Styles.DEFAULTLABEL_STYLE);
         this.actor = actor;
         this.tab = tab;
         this.name = text;
@@ -96,7 +97,7 @@ public class BaseNavigationLabel extends Label {
         public void clicked(InputEvent event, float x, float y) {
             switch(event.getButton()) {
                 case Input.Buttons.LEFT:
-                	handleLeftClickButton(event, x);
+                    handleLeftClickButton(event, x);
                     break;
                 case Input.Buttons.RIGHT:
                     onRightClick(event);
@@ -112,12 +113,12 @@ public class BaseNavigationLabel extends Label {
          * @param event
          * @param x
          */
-		private void handleLeftClickButton(InputEvent event, float x) {
-			if(!children.isEmpty() && x < getX() + 6 + tab.length() * 4) {
-			    toggleChildren();
-			} else {
-			    onLeftClick(event);
-			}
-		}
+        private void handleLeftClickButton(InputEvent event, float x) {
+            if(!children.isEmpty() && x < getX() + 6 + tab.length() * 4) {
+                toggleChildren();
+            } else {
+                onLeftClick(event);
+            }
+        }
     }
 }

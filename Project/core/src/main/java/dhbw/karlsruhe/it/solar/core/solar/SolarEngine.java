@@ -11,29 +11,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
 import dhbw.karlsruhe.it.solar.core.stages.BaseStage;
-import dhbw.karlsruhe.it.solar.core.stages.GameOptionsStage;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
-
 
 public class SolarEngine extends Game implements InputProcessor {
-    public final static boolean DEBUG = false;
+    public static final boolean DEBUG = false;
 
     public static final MessageDispatcher MESSAGE_DISPATCHER = new MessageDispatcher();
     
     private SolarCamera camera;
     private OrthographicCamera guiCamera;
     private OrthographicCamera backgroundCamera;
-
-    private TextureCacher textures;
-    private Styles styles;
 
     // Stage manager
     private StageManager stageManager;
@@ -62,9 +53,6 @@ public class SolarEngine extends Game implements InputProcessor {
         backgroundCamera = new OrthographicCamera(Width, Height);
 
         mainBatch = new SpriteBatch();
-
-
-        styles = new Styles(textures);
 
         // Einstiegspunkt ins Spiel
         stageManager = new StageManager(this);
@@ -174,7 +162,7 @@ public class SolarEngine extends Game implements InputProcessor {
             pressedKey = myKeys.ESC;
             break;
         default:
-        	break;
+            break;
         }
         stageManager.keyDown(keycode);
         return false;
@@ -183,26 +171,6 @@ public class SolarEngine extends Game implements InputProcessor {
     @Override
     public boolean keyUp(int keycode)    {
         switch (keycode)       {
-        case Keys.NUM_8:
-        case 152:
-        case Keys.UP:
-        case Keys.NUM_2:
-        case 146:
-        case Keys.DOWN:
-        case Keys.NUM_4:
-        case 148:
-        case Keys.LEFT:
-        case Keys.NUM_6:
-        case 150:
-        case Keys.RIGHT:
-        case 70:
-        case Keys.PLUS:
-        case Keys.MINUS:
-        case Keys.SHIFT_LEFT:
-        case Keys.SHIFT_RIGHT:
-        case Keys.CONTROL_LEFT:
-        case Keys.CONTROL_RIGHT:
-        case Keys.ESCAPE:
         default:
             pressedKey = myKeys.NONE;
             break;
@@ -252,75 +220,67 @@ public class SolarEngine extends Game implements InputProcessor {
     }
     
     public void moveSolarCamera(float x, float y) {
-    	camera.moveTo(x,y);
+        camera.moveTo(x,y);
     }
     
     public void moveSolarCamera(Actor target) {
-    	camera.moveTo(target);
+        camera.moveTo(target);
     }
     
     public void zoomSolarCameraTo(float zoomTarget) {
-    	camera.zoomTo(zoomTarget);
+        camera.zoomTo(zoomTarget);
     }
     
     public void setZoomSolarCameraTo(float newZoom) {
-    	camera.setZoom(newZoom);
+        camera.setZoom(newZoom);
     }
     
     public float getSolarCameraZoom() {
-    	return camera.zoom;
+        return camera.zoom;
     }
     
     public void translateSolarCamera(Vector2 vec) {
-    	camera.translate(vec);
+        camera.translate(vec);
     }
     
     public SolarCamera getCamera() {
-    	return camera;
+        return camera;
     }
     
     public Matrix4 getCameraCombined() {
-    	return camera.combined;
+        return camera.combined;
     }
     
     public OrthographicCamera getGUICamera() {
-    	return guiCamera;
+        return guiCamera;
     }
     
     public OrthographicCamera getBackgroundCamera() {
-    	return backgroundCamera;
-    }
-    
-    public LabelStyle getDefaultLabelStyle() {
-    	return styles.defaultLabelStyle;
-    }
-    
-    public Skin getTooltipSkin() {
-    	return styles.tooltipSkin;
+        return backgroundCamera;
     }
     
     public void swapCurrentStage(BaseStage newStage) {
-    	stageManager.swapCurrentStage(newStage);
+        stageManager.swapCurrentStage(newStage);
     }
     
     public void removeStage(String name) {
-    	stageManager.removeStage(name);
+        stageManager.removeStage(name);
     }
     
     public void disposeOfStage(String name) {
-    	stageManager.removeStage(name).dispose();
+        stageManager.removeStage(name).dispose();
     }
     
     public void addStage(BaseStage newStage) {
-    	stageManager.addStage(newStage);
+        stageManager.addStage(newStage);
     }
 
-	public BaseStage getStage(String tag) {
-		return stageManager.getStage(tag);
-	}
-	
-	public void startGame() {
-		stageManager.startGame();
-	}
+    public BaseStage getStage(String tag) {
+        return stageManager.getStage(tag);
+    }
+    
+    public void startGame() {
+        stageManager.startGame();
+    }
    
 }

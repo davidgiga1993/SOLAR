@@ -5,6 +5,7 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
@@ -12,6 +13,7 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * Created by Arga on 24.02.2015.
@@ -30,7 +32,7 @@ public class InformationBar extends Window implements Telegraph {
     private final InformationActions actions;
 
     public InformationBar() {
-        super("Information", SolarEngine.get().getTooltipSkin());
+        super("Information", Styles.TOOLTIPSKIN);
 
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
 

@@ -10,21 +10,21 @@ import java.util.Map;
  * Created by Arga on 16.11.2014.
  */
 public class FontCacher {
-    public static final Map<String, BitmapFont> cache = new HashMap<String, BitmapFont>();
+    public static final Map<String, BitmapFont> CACHE = new HashMap<String, BitmapFont>();
 
     private FontCacher() {
-    	
+        
     }
 
     /**
      * Disposes all Fonts and removes them from the cache
      */
     public static void cleanUp() {
-        Collection<BitmapFont> fonts = cache.values();
+        Collection<BitmapFont> fonts = CACHE.values();
         for(BitmapFont font : fonts) {
             font.dispose();
         }
-        cache.clear();
+        CACHE.clear();
     }
 
     /**
@@ -33,7 +33,7 @@ public class FontCacher {
      * @param tag give it a name :)
      */
     public static void addFont(BitmapFont font, String tag) {
-        cache.put(tag, font);
+        CACHE.put(tag, font);
     }
 
     /**
@@ -42,7 +42,7 @@ public class FontCacher {
      * @return BitmapFont or NULL
      */
     public static BitmapFont getFont(String tag) {
-        return cache.get(tag);
+        return CACHE.get(tag);
     }
 
 

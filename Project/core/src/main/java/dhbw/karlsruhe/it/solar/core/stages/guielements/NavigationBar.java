@@ -3,7 +3,8 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * Created by Arga on 22.02.2015.
@@ -23,13 +24,13 @@ public class NavigationBar extends Window {
 
 
     public NavigationBar() {
-        super("Navigation", SolarEngine.get().getTooltipSkin());
+        super("Navigation", Styles.TOOLTIPSKIN);
         setMovable(false);
 
         // Tab Buttons
-        TextButton bodyButton = new TextButton("Bodies", SolarEngine.get().getTooltipSkin());
-        TextButton shipButton = new TextButton("Units", SolarEngine.get().getTooltipSkin());
-        TextButton colonyButton = new TextButton("Colonies", SolarEngine.get().getTooltipSkin());
+        TextButton bodyButton = new TextButton("Bodies", Styles.TOOLTIPSKIN);
+        TextButton shipButton = new TextButton("Units", Styles.TOOLTIPSKIN);
+        TextButton colonyButton = new TextButton("Colonies", Styles.TOOLTIPSKIN);
 
         // Button Listeners
         bodyButton.addListener(new ChangeListener() {

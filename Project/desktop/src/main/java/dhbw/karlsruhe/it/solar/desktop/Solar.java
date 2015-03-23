@@ -9,7 +9,7 @@ public class Solar {
     private static SolarEngine engine;
     
     private Solar() {
-    	
+        
     }
     
     public static void main(String[] args)    {

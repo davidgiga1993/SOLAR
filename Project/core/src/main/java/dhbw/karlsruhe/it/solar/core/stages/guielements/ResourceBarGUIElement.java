@@ -13,7 +13,7 @@ import dhbw.karlsruhe.it.solar.player.resources.Resource;
  */
 public class ResourceBarGUIElement {
 
-	public final static SolarEngine engine = SolarEngine.get();
+    public static final SolarEngine ENGINE = SolarEngine.get();
 
     private Table resourceBar;
 
@@ -38,7 +38,7 @@ public class ResourceBarGUIElement {
             }
 
             public TextureRegion getIcon() {
-                return TextureCacher.gameAtlas.findRegion("resource_placeholder");
+                return TextureCacher.GAMEATLAS.findRegion("resource_placeholder");
             }
         };
         resourceBar.add(new ResourceGUIElement(re, stage));

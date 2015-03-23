@@ -5,14 +5,15 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * Created by Arga on 16.11.2014.
  */
 public class GUILabel extends Label implements GUIActor {
 
-    final Tooltip tooltip = new Tooltip("Test", SolarEngine.get().getTooltipSkin());
+    final Tooltip tooltip = new Tooltip("Test", Styles.TOOLTIPSKIN);
     private InputListener tooltipInputListener;
     private boolean tooltipIsEnabled = false;
 

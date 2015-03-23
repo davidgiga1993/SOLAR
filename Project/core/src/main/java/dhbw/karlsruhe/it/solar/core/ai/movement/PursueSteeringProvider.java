@@ -8,7 +8,8 @@ import com.badlogic.gdx.math.Vector2;
 public class PursueSteeringProvider extends ArriveSteeringProvider {
 
     protected Kinematic pursueTarget;
-    protected float maxPrediction = 5; // 5 days of maximum prediction
+    // 5 days of maximum prediction
+    protected float maxPrediction = 5;
 
     public PursueSteeringProvider(float radius, float slowRadius) {
         super(radius, slowRadius);

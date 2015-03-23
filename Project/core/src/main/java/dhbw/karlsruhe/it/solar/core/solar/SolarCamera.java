@@ -15,8 +15,8 @@ public class SolarCamera extends OrthographicCamera {
     protected Vector2 movementTarget = null;
     protected float zoomTarget;
     protected boolean zoomTargetActive = false;
-    protected static final float timeToTranslate = 0.1f;
-    protected static final float timeToZoom = 0.25f;
+    protected static final float TIME_TO_TRANSLATE = 0.1f;
+    protected static final float TIME_TO_ZOOM = 0.25f;
 
     public SolarCamera(float viewportWidth, float viewportHeight) {
         super(viewportWidth, viewportHeight);
@@ -68,13 +68,13 @@ public class SolarCamera extends OrthographicCamera {
     }
 
     private void smoothZoom(float delta) {
-        float zoomDelta = (zoomTarget - zoom) / timeToZoom;
+        float zoomDelta = (zoomTarget - zoom) / TIME_TO_ZOOM;
         zoom += zoomDelta * delta;
     }
 
     private void smoothTranslation(float delta) {
         translationTarget = new Vector2(movementTarget).sub(position.x, position.y);
-        float scl = translationTarget.len() / timeToTranslate;
+        float scl = translationTarget.len() / TIME_TO_TRANSLATE;
         Vector2 translation = new Vector2(translationTarget).nor().scl(scl * delta);
         super.translate(translation.x, translation.y);
     }

@@ -29,10 +29,10 @@ public class SolarActorScale implements Telegraph {
     }
     
     public float getShapeScale() {
-    	return shapeScale;
+        return shapeScale;
     }
     
     public float getOrbitScale() {
-    	return orbitScale;
+        return orbitScale;
     }
 }

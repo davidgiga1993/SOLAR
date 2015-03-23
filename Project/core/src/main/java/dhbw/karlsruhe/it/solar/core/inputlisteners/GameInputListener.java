@@ -66,12 +66,6 @@ public class GameInputListener extends InputListener {
     }
 
     @Override
-    public boolean mouseMoved(InputEvent event, float x, float y) {
-        // TODO Auto-generated method stub
-        return super.mouseMoved(event, x, y);
-    }
-
-    @Override
     public boolean scrolled(InputEvent event, float x, float y, int amount) {
         float amountF = (float) amount / 10;
         modifyZoom(1 + amountF);
@@ -227,7 +221,7 @@ public class GameInputListener extends InputListener {
             se.moveSolarCamera(x, y);
             return;
         }
-        se.moveSolarCamera(target);;
+        se.moveSolarCamera(target);
         if(shouldModifyZoom) {
             se.zoomSolarCameraTo(target.getWidth() / 25);
         }
@@ -240,32 +234,60 @@ public class GameInputListener extends InputListener {
     public void handleContinuousInput(float delta) {
         // delta / (1/60) = delta * 60
         float cameraModifier = 0.02f * (delta * 60);
-        if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E))        {
-            modifyZoom(1 - cameraModifier);
-        }
-        if (Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(Keys.Q))        {
-            modifyZoom(1 + cameraModifier);
-        }
+        handleZoomIn(cameraModifier);
+        handleZoomOut(cameraModifier);
         float x = 0;
         float y = 0;
-        if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))        {
-            // same goes for camera translation, it has to be a function of the current zoom, since we don't want to wait for
-            // hours to move the camera a few pixels while looking at the whole solar system
-            y += CAMERA_TRANSLATION_FACTOR;
-        }
-        if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))       {
-            y -= CAMERA_TRANSLATION_FACTOR;
-        }
-        if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))        {
-            x -= CAMERA_TRANSLATION_FACTOR;
-        }
-        if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))        {
-            x += CAMERA_TRANSLATION_FACTOR;
-        }
+        y = handleKeyUp(y);
+        y = handleKeyDown(y);
+        x = handleKeyLeft(x);
+        x = handleKeyRight(x);
         x *= delta;
         y *= delta;
         se.translateSolarCamera(new Vector2(x * se.getSolarCameraZoom(), y * se.getSolarCameraZoom()));
     }
+
+	private float handleKeyRight(float x) {
+		if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))        {
+            x += CAMERA_TRANSLATION_FACTOR;
+        }
+		return x;
+	}
+
+	private float handleKeyLeft(float x) {
+		if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))        {
+            x -= CAMERA_TRANSLATION_FACTOR;
+        }
+		return x;
+	}
+
+	private float handleKeyDown(float y) {
+		if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))       {
+            y -= CAMERA_TRANSLATION_FACTOR;
+        }
+		return y;
+	}
+
+	private float handleKeyUp(float y) {
+		if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))        {
+            // same goes for camera translation, it has to be a function of the current zoom, since we don't want to wait for
+            // hours to move the camera a few pixels while looking at the whole solar system
+            y += CAMERA_TRANSLATION_FACTOR;
+        }
+		return y;
+	}
+
+	private void handleZoomOut(float cameraModifier) {
+		if (Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(Keys.Q))        {
+            modifyZoom(1 + cameraModifier);
+        }
+	}
+
+	private void handleZoomIn(float cameraModifier) {
+		if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E))        {
+            modifyZoom(1 - cameraModifier);
+        }
+	}
 
     private void modifyZoom(float cameraModifier) {
         // using a linear zoom is necessary because the perception of the world changes with it's zoom

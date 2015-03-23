@@ -10,18 +10,18 @@ public class AIOutput {
     private float rotation;
     
     public void setPosition(Vector2 newPosition) {
-    	position = newPosition;
+        position = newPosition;
     }
     
     public void setRotation(float newRotation) {
-    	rotation = newRotation;
+        rotation = newRotation;
     }
     
     public Vector2 getPosition() {
-    	return position;
+        return position;
     }
     
     public float getRotation() {
-    	return rotation;
+        return rotation;
     }
 }

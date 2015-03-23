@@ -121,7 +121,7 @@ public abstract class SolarActor extends Actor implements Telegraph {
      * @param textureName Identifier used by the texture atlas to locate the texture.
      */
     protected void setupSolarActorSprite(String textureName) {
-        solarActorTexture = TextureCacher.gameAtlas.findRegion(textureName);
+        solarActorTexture = TextureCacher.GAMEATLAS.findRegion(textureName);
         solarActorSprite = new Sprite(solarActorTexture);
     }
     

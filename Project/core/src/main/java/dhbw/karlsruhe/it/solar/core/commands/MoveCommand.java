@@ -9,26 +9,26 @@ import java.util.List;
 
 public class MoveCommand implements Command {
 
-	private List<SpaceUnit> units;
-	private Vector2 destination;
-	private Player commander;
-	
-	public MoveCommand(List<SpaceUnit> units, float x, float y, Player commander) {
-		this.units = units;
-		destination = new Vector2(x, y);
-		this.commander = commander;
-	}
-	
-	@Override
-	public void execute() {
-		for(SpaceUnit unit : units) {
-			if (unit.isOwnedBy(commander)) {
-				action(unit);
-			}
-		}
-	}
+    private List<SpaceUnit> units;
+    private Vector2 destination;
+    private Player commander;
+    
+    public MoveCommand(List<SpaceUnit> units, float x, float y, Player commander) {
+        this.units = units;
+        destination = new Vector2(x, y);
+        this.commander = commander;
+    }
+    
+    @Override
+    public void execute() {
+        for(SpaceUnit unit : units) {
+            if (unit.isOwnedBy(commander)) {
+                action(unit);
+            }
+        }
+    }
 
-	public void action(SpaceUnit unit) {
-		unit.setDestination(destination);
-	}
+    public void action(SpaceUnit unit) {
+        unit.setDestination(destination);
+    }
 }

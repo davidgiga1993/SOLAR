@@ -40,7 +40,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private static float gameSpeed = 0f;
     private static float oldGameSpeed = 1f;
 
-    public static final Time gameTime = new Time();
+    public static final Time GAMETIME = new Time();
 
     protected Player humanPlayer;
     protected Player aiPlayer;
@@ -92,7 +92,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         engine.disposeOfStage("GameHUD");
 
         if(SolarEngine.DEBUG) {
-        	engine.disposeOfStage("HUD");
+            engine.disposeOfStage("HUD");
         }
 
         engine.disposeOfStage("GameStartStage");
@@ -160,7 +160,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void act(float delta) {
         inputListener.handleContinuousInput(delta);
         float newDelta = delta * GameStartStage.gameSpeed;
-        gameTime.addDays(newDelta);
+        GAMETIME.addDays(newDelta);
         super.act(newDelta);
     }
 
@@ -283,50 +283,50 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
     
     public List<SpaceUnit> getSelectedSpaceUnits() {
-    	return selectedActors.getSpaceUnits();
+        return selectedActors.getSpaceUnits();
     }
     
     public void addToSelectedActors(Actor newlySelected) {
-    	selectedActors.add(newlySelected);
+        selectedActors.add(newlySelected);
     }
     
     public void removeFromSelectedActors(Actor deselectedActor) {
-    	selectedActors.remove(deselectedActor);
+        selectedActors.remove(deselectedActor);
     }
     
     public void clearSelectedActors() {
-    	selectedActors.clear();
+        selectedActors.clear();
     }
     
     public SolarActor getRepresentativeOfSelectedActors() {
-    	return selectedActors.getRepresentative();
+        return selectedActors.getRepresentative();
     }
     
     public void startOfSelectionRectangle(float x, float y) {
-    	selectionRectangle.setStart(x,y);
+        selectionRectangle.setStart(x,y);
     }
     
     public void updateEndOfSelectionRectangle(float x, float y) {
-    	selectionRectangle.updateEnd(x, y);
+        selectionRectangle.updateEnd(x, y);
     }
     
     public void hideSelectionRectangle() {
-    	selectionRectangle.hide();
+        selectionRectangle.hide();
     }
     
     public Rectangle getSelectionRectangle() {
-    	return selectionRectangle.getRectangle();
+        return selectionRectangle.getRectangle();
     }
     
     public static void inputListenerInteract(InputEvent event) {
-    	inputListener.interact(event, 0, 0);
+        inputListener.interact(event, 0, 0);
     }
     
     public static void inputListenerNavigate(InputEvent event) {
-    	inputListener.navigate(event, 0, 0);
+        inputListener.navigate(event, 0, 0);
     }
     
     public static float getGameSpeed() {
-    	return gameSpeed;
+        return gameSpeed;
     }
 }

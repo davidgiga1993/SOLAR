@@ -64,65 +64,65 @@ public class Kinematic {
     }
     
     public Vector2 getPosition() {
-    	return position;
+        return position;
     }
     
     public void setPosition(Vector2 newValue) {
-    	position.x = newValue.x;
-    	position.y = newValue.y;
+        position.x = newValue.x;
+        position.y = newValue.y;
     }
     
     public float getAngleOfPosition() {
-    	return position.angle();
+        return position.angle();
     }
     
     public float getXPosition() {
-    	return position.x;
+        return position.x;
     }
     
     public float getYPosition() {
-    	return position.y;
+        return position.y;
     }
     
     public float getRotation() {
-    	return rotation;
+        return rotation;
     }
     
     public void setRotation(float value) {
-    	this.rotation = value;
+        this.rotation = value;
     }
     
     public Vector2 getVelocity() {
-    	return velocity;
+        return velocity;
     }
     
     public float getSpeed() {
-    	return velocity.len();
+        return velocity.len();
     }
     
     public void setVelocity(Vector2 newVelocity) {
-    	this.velocity.x = newVelocity.x;
-    	this.velocity.y = newVelocity.y; 
+        this.velocity.x = newVelocity.x;
+        this.velocity.y = newVelocity.y; 
     }
     
     public void setVelocityAngle(float degrees) {
-    	velocity.setAngle(degrees);
+        velocity.setAngle(degrees);
     }
     
     public float getMaxSpeed() {
-    	return maxSpeed;
+        return maxSpeed;
     }
     
     public void setMaxSpeed(float newMaximum) {
-    	this.maxSpeed = newMaximum;
+        this.maxSpeed = newMaximum;
     }
     
     public float getMaxAcceleration() {
-    	return maxAcceleration;
+        return maxAcceleration;
     }
     
     public boolean isMoving() {
-    	return isMoving;
+        return isMoving;
     }
 
 

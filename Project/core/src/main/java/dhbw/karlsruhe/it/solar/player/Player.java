@@ -38,10 +38,10 @@ public class Player {
     }
     
     public Color getPlayerColor() {
-    	return playerColor;
+        return playerColor;
     }
     
     public String getName() {
-    	return name;
+        return name;
     }
 }
