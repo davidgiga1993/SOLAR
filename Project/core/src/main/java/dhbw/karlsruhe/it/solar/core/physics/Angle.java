@@ -11,7 +11,7 @@ public class Angle {
     public static final float RADIANS_CIRCLE = (float) (2 * Math.PI);
     
     private Unit unit;
-    private float value;
+    private double value;
     
     public Angle()    {
         this.unit = Unit.DEGREE;
@@ -36,9 +36,9 @@ public class Angle {
     public float inDegrees() {
         switch(unit) {
             case DEGREE:
-                return value;
+                return (float) value;
             case RADIANS:
-                return value * DEGREE_IN_RADIANS;
+                return (float) value * DEGREE_IN_RADIANS;
             default:
                 return Float.NaN;
         }
@@ -47,9 +47,9 @@ public class Angle {
     public float inRadians() {
         switch(unit) {
             case DEGREE:
-                return value / DEGREE_IN_RADIANS;
+                return (float) value / DEGREE_IN_RADIANS;
             case RADIANS:
-                return value;
+                return (float) value;
             default:
                 return Float.NaN;
         }
