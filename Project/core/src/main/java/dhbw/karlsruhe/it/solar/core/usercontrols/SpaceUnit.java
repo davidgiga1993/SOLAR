@@ -326,4 +326,11 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      public AstronomicalBody calculateDominantGravitationSource() {
           return ((GameStartStage)getStage()).calculateDominantGravitationSourceAt(this);
      }
+
+    public boolean colonizeConditionsAreMet() {
+        if(null!=orbitalProperties) {
+            return true;
+        }
+        return false;
+    }
 }

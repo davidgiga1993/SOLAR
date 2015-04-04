@@ -12,6 +12,8 @@ public class ColonizeCommand implements Command {
     
     @Override
     public void execute() {
-        unit.establishColony();
+        if(unit.colonizeConditionsAreMet()) {
+            unit.establishColony();            
+        }
     }
 }
