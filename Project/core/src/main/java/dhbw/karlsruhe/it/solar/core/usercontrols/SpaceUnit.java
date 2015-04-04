@@ -328,7 +328,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      }
 
     public boolean isInOrbit() {
-        return null!=orbitalProperties;
+        return (null!=orbitalProperties);
     }
 
     public boolean isPlayerAlsoShipOwner() {

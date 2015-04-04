@@ -2,10 +2,12 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -111,7 +113,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
     
     public Colony establishColony(String colonyName, Player player, Population colonists) {
-        colony = new Colony(colonyName, player, colonists);
+        colony = new Colony(colonyName, this, player, colonists);
         selectionColor = player.getPlayerColor();
         preview.setColor(selectionColor);
         return colony;
@@ -167,5 +169,18 @@ public abstract class AstronomicalBody extends Orbiter  {
 
      public boolean isColonyOwnedBy(Player humanPlayer) {
         return colony.isOwnedBy(humanPlayer);
+    }
+
+    public Colony getColony() {
+        return colony;
+    }
+
+    public void abandonColony() {
+        colony = null;
+        ((GameStartStage)getStage()).refreshSelection(this);
+    }
+
+    public boolean isPlayerAlsoColonyOwner() {
+        return ((GameStartStage)getStage()).isThisThePlayer(colony.getOwner());
     }
 }

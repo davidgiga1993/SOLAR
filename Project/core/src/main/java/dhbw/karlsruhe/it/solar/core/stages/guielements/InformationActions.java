@@ -5,9 +5,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import dhbw.karlsruhe.it.solar.core.commands.AbandonColonyCommand;
 import dhbw.karlsruhe.it.solar.core.commands.ColonizeCommand;
 import dhbw.karlsruhe.it.solar.core.commands.OrbitalInsertionCommand;
 import dhbw.karlsruhe.it.solar.core.commands.SelfDestructCommand;
+import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
@@ -74,8 +77,14 @@ public class InformationActions extends Table {
     }
     
     private void onSelfDestructClick() {
-        SelfDestructCommand selfDestruct = new SelfDestructCommand((SpaceUnit)selectedActor);
-        selfDestruct.execute();
+        if (selectedActor instanceof SpaceUnit) {
+            SelfDestructCommand selfDestruct = new SelfDestructCommand((SpaceUnit)selectedActor);
+            selfDestruct.execute(); 
+        }
+        if (selectedActor instanceof AstronomicalBody && ((AstronomicalBody) selectedActor).isColonized()) {
+            AbandonColonyCommand selfDestruct = new AbandonColonyCommand((AstronomicalBody)selectedActor);
+            selfDestruct.execute();
+        }       
     }
 
     public void changedActor(SolarActor actor) {
@@ -87,10 +96,15 @@ public class InformationActions extends Table {
         hideAllButtons();
         if(selectedActor instanceof SpaceUnit) {
             orbitalInsertion.setVisible(true);
+            selfDestruct.setText("Self Destruct");
             selfDestruct.setVisible(true);
         }
         if(selectedActor instanceof Spaceship) {
             colonize.setVisible(true);
+        }
+        if(selectedActor instanceof AstronomicalBody && ((AstronomicalBody)selectedActor).isColonized()) {
+            selfDestruct.setText("Abandon Colony");
+            selfDestruct.setVisible(true);
         }
     }
 

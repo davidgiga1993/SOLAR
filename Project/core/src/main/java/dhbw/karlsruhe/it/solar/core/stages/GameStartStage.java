@@ -339,4 +339,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
         selectedActors.remove(spaceUnit);
         SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, spaceUnit);        
     }
+
+    public void refreshSelection(SolarActor actor) {
+        selectedActors.remove(actor);
+        selectedActors.add(actor);
+    }
 }

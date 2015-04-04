@@ -1,6 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -13,12 +16,14 @@ public class Colony implements Ownable {
     
     private String name;
     private Player owner;
+    private AstronomicalBody primary;
     private Population population;
     
-    public Colony(String colonyName, Player colonyFounder, Population colonists)    {
+    public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
         owner = colonyFounder;
         population = colonists;
+        primary = colonyPlace;
     }
     
     public String getPopulationNumbers() {
@@ -29,8 +34,20 @@ public class Colony implements Ownable {
     public boolean isOwnedBy(Player player) {
         return owner.equals(player);
     }
+    
+    public Player getOwner() {
+        return owner;
+    }
 
     public String getName() {
         return name;
+    }
+
+    public boolean isPlayerAlsoColonyOwner() {
+        return primary.isPlayerAlsoColonyOwner();
+    }
+
+    public void abandonColony() {
+        primary.abandonColony();  
     }
 }
