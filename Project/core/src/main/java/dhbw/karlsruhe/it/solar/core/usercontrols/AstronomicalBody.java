@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
@@ -178,6 +180,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     public void abandonColony() {
         colony = null;
         ((GameStartStage)getStage()).refreshSelection(this);
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, this);  
     }
 
     public boolean isPlayerAlsoColonyOwner() {

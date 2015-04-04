@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -123,8 +124,8 @@ public class BaseNavigationLabel extends Label {
         }
     }
 
-    public boolean isOfActor(SpaceUnit unit) {
-        if(name.equals(unit.getName())) {
+    public boolean isOfActor(Actor actor) {
+        if(name.equals(actor.getName())) {
             return true;
         }
         return false;

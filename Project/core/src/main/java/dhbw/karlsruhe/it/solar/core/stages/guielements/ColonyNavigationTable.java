@@ -7,9 +7,11 @@ import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 
 public class ColonyNavigationTable extends BaseNavigationTable {
 
@@ -35,10 +37,19 @@ public class ColonyNavigationTable extends BaseNavigationTable {
             allLabels.add(new BaseNavigationLabel(((AstronomicalBody)actor).getColonyName(), "", (SolarActor) actor));    
         }
     }
+    
+    private void removeSingleColony(Actor actor) {
+        allColonies.remove(actor);
+        allLabels.remove(getLabelOfActor(actor));
+    }
 
     @Override
     public boolean handleMessage(Telegram telegram) {
-        // TODO Auto-generated method stub
+        if(telegram.extraInfo instanceof AstronomicalBody && SolarMessageType.ACTOR_REMOVED == telegram.message) {
+            removeSingleColony((AstronomicalBody)telegram.extraInfo);
+            buildTable();
+            return true;
+        }
         return false;
     }
 }

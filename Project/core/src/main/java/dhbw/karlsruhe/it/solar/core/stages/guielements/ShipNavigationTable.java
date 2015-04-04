@@ -56,14 +56,4 @@ public class ShipNavigationTable extends BaseNavigationTable {
         allShips.remove(unit);
         allLabels.remove(getLabelOfActor(unit));
     }
-
-
-    private BaseNavigationLabel getLabelOfActor(SpaceUnit unit) {
-        for (BaseNavigationLabel unitLabel : allLabels) {
-            if(unitLabel.isOfActor(unit)) {
-                return unitLabel;
-            }
-        }
-        return null;
-    }
 }
