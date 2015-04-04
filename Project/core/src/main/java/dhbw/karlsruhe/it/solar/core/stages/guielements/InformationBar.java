@@ -35,6 +35,7 @@ public class InformationBar extends Window implements Telegraph {
         super("Information", Styles.TOOLTIPSKIN);
 
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
+        SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.ACTOR_REMOVED);
 
         overview = new InformationOverview(gameStage.getRepresentativeOfSelectedActors());
         details = new InformationDetails();
@@ -66,11 +67,21 @@ public class InformationBar extends Window implements Telegraph {
         detailsCell.setActor(newDetails);
         actions.changedActor(actor);
     }
+    
+    private void selectionRemoved() {
+        overview.changeActor(null);
+        detailsCell.setActor(new InformationDetails());  
+        actions.changedActor(null);
+    }
 
     @Override
     public boolean handleMessage(Telegram telegram) {
         if(telegram.message == SolarMessageType.PLAYER_SELECTION_CHANGED) {
             onSelectionChange((Selection) telegram.sender);
+            return true;
+        }
+        if(telegram.message == SolarMessageType.ACTOR_REMOVED) {
+            selectionRemoved();
             return true;
         }
         return false;

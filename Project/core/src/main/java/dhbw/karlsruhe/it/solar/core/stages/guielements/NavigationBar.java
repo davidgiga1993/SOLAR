@@ -89,6 +89,7 @@ public class NavigationBar extends Window {
      * Set's the contentCell to show the Ships
      */
     private void onShipClick() {
+        shipTable.buildShipList();
         contentCell.setActor(shipPane).expand();
     }
     

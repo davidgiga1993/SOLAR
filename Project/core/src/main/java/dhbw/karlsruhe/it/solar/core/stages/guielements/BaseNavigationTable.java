@@ -22,6 +22,7 @@ public abstract class BaseNavigationTable extends Table implements Telegraph {
         pad(5);
         defaults().expandX().fillX();
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.NEW_ACTOR_ADDED);
+        SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.ACTOR_REMOVED);
     }
 
     public void buildTable() {

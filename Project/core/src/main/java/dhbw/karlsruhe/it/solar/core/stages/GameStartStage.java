@@ -42,7 +42,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public static final Time GAMETIME = new Time();
 
-    protected Player humanPlayer;
+    protected Player currentPlayer;
     protected Player aiPlayer;
 
     private List<PlanetaryRing> ringList = new ArrayList<PlanetaryRing>();
@@ -55,7 +55,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         addSelectionRectangle();
 
 
-        humanPlayer = playerManager.createPlayer("Human Player", Color.GREEN);
+        currentPlayer = playerManager.createPlayer("Human Player", Color.GREEN);
         aiPlayer = playerManager.createPlayer("CPU Player", Color.RED);
     }
     
@@ -103,10 +103,10 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public void init() {
         systemCreation();
-        placeNewShip("Event Horizon", new Vector2(1200, 500), humanPlayer);
-        placeNewShip("Nostromo", new Vector2(1500, 1000), humanPlayer);
+        placeNewShip("Event Horizon", new Vector2(1200, 500), currentPlayer);
+        placeNewShip("Nostromo", new Vector2(1500, 1000), currentPlayer);
         placeNewShip("Destiny", new Vector2(1550, 1050), aiPlayer);
-        placeNewStation("Deep Space Nine", new Vector2(1500, 0), humanPlayer);
+        placeNewStation("Deep Space Nine", new Vector2(1500, 0), currentPlayer);
         
         // Create an example space station orbiting Earth
         Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), aiPlayer);
@@ -115,9 +115,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
             babylon.enterOrbit(primary);        
         }
         //place some example colonies
-        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, humanPlayer, new Population(7.125f, Unit.BILLION));
+        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, currentPlayer, new Population(7.125f, Unit.BILLION));
         placeNewColony("Moon", "Tranquility Base", aiPlayer, new Population(31.415f, Unit.MILLION));
-        placeNewColony("Mars", "Utopia Planitia", humanPlayer, new Population(1.1235f, Unit.THOUSAND));
+        placeNewColony("Mars", "Utopia Planitia", currentPlayer, new Population(1.1235f, Unit.THOUSAND));
     }
 
     private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
@@ -239,7 +239,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     public Player getHumanPlayer() {
-        return humanPlayer;
+        return currentPlayer;
     }
 
 
@@ -328,5 +328,14 @@ public class GameStartStage extends BaseStage implements Telegraph {
     
     public static float getGameSpeed() {
         return gameSpeed;
+    }
+
+    public boolean isThisThePlayer(Player owner) {
+        return currentPlayer.equals(owner);
+    }
+
+    public void removeShip(SpaceUnit spaceUnit) {
+        spaceUnit.remove();
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, spaceUnit);        
     }
 }

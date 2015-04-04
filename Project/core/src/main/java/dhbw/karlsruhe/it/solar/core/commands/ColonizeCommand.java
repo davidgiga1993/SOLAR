@@ -12,8 +12,12 @@ public class ColonizeCommand implements Command {
     
     @Override
     public void execute() {
-        if(unit.colonizeConditionsAreMet()) {
+        if(colonizeConditionsAreMet()) {
             unit.establishColony();            
         }
+    }
+
+    private boolean colonizeConditionsAreMet() {
+        return (unit.isInOrbit() && unit.isPlayerAlsoShipOwner());
     }
 }

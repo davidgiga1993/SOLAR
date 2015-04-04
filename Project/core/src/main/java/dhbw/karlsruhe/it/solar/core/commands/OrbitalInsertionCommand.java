@@ -12,6 +12,12 @@ public class OrbitalInsertionCommand implements Command {
     
     @Override
     public void execute() {
+        if(orbitalInsertionConditionsAreMet()) {
         unit.enterOrbit();
+        }
+    }
+
+    private boolean orbitalInsertionConditionsAreMet() {
+        return (unit.isPlayerAlsoShipOwner() && !unit.isInOrbit());
     }
 }

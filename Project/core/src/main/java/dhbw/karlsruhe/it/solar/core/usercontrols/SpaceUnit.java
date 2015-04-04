@@ -89,7 +89,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
 
     @Override
     public void act(float delta) {
-        if(null != orbitalProperties)        {
+        if(isInOrbit())        {
                changeOrbitScaleSpaceUnit();
              super.act(delta);
              return;
@@ -103,7 +103,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
     
      @Override
      public void updateScale() {
-          if(null != orbitalProperties)          {
+          if(isInOrbit())          {
                changeOrbitScaleSpaceUnit();
           }
         float width = getWidth() / currentShapeScale * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
@@ -136,7 +136,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      * @param destination Desired destination coordinates
      */
     public void setDestination(Vector2 destination)    {
-         if(null != orbitalProperties)        {
+         if(isInOrbit())        {
               leaveOrbit();
          }
          //TODO: Entferne Debug-konsolenausgabe
@@ -146,7 +146,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
     }
     
     public void setDestination(KinematicObject destination)    {
-         if(null != orbitalProperties)         {
+         if(isInOrbit())         {
               leaveOrbit();     
          }
          //TODO: Entferne Debug-konsolenausgabe
@@ -299,7 +299,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
     }
     
     public void leaveOrbit() {
-          orbitalProperties = null;
+        orbitalProperties = null;
         System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
         kinematic.setMaxSpeed(speed);
         aiModule.setPosition(kinematic.getPosition());
@@ -311,7 +311,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       * @return
       */
      private boolean isAlreadyInOrbitOfBodyOtherThan(AstronomicalBody destination) {
-         return null != orbitalProperties && destination != orbitalProperties.getPrimary();
+         return isInOrbit() && destination != orbitalProperties.getPrimary();
      }
      
      /**
@@ -327,10 +327,15 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
           return ((GameStartStage)getStage()).calculateDominantGravitationSourceAt(this);
      }
 
-    public boolean colonizeConditionsAreMet() {
-        if(null!=orbitalProperties) {
-            return true;
-        }
-        return false;
+    public boolean isInOrbit() {
+        return null!=orbitalProperties;
+    }
+
+    public boolean isPlayerAlsoShipOwner() {
+        return ((GameStartStage)getStage()).isThisThePlayer(owner);
+    }
+
+    public void removeShip() {
+        ((GameStartStage)getStage()).removeShip(this);
     }
 }

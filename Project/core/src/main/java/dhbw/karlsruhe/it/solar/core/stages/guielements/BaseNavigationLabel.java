@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.util.ArrayList;
@@ -120,5 +121,12 @@ public class BaseNavigationLabel extends Label {
                 onLeftClick(event);
             }
         }
+    }
+
+    public boolean isOfActor(SpaceUnit unit) {
+        if(name.equals(unit.getName())) {
+            return true;
+        }
+        return false;
     }
 }
