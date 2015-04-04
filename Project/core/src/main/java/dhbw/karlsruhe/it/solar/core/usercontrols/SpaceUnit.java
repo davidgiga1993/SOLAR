@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
@@ -14,8 +13,8 @@ import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.commands.OrbitalInsertionCommand;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Length.Unit;
+import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
@@ -312,10 +311,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       * @return
       */
      private boolean isAlreadyInOrbitOfBodyOtherThan(AstronomicalBody destination) {
-          if(null != orbitalProperties && destination != orbitalProperties.getPrimary()) {
-                    return true;
-          }
-          return false;
+         return null != orbitalProperties && destination != orbitalProperties.getPrimary();
      }
      
      /**
@@ -323,12 +319,9 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       * For this to be possible the astronomical body's gravitational field has to be dominant (i.e. noticeably stronger than that of its own primary body).
       * @return
       */
-    public boolean  isAbleToEnterOrbitAround(AstronomicalBody destination)    {           
-          if( maxOrbitalRadiusFor(destination).asAstronomicalUnit() > physicalDistanceTo(destination).asAstronomicalUnit() )          {
-               return true;               
-          }
-          return false;
-     }
+    public boolean  isAbleToEnterOrbitAround(AstronomicalBody destination)    {
+        return maxOrbitalRadiusFor(destination).asAstronomicalUnit() > physicalDistanceTo(destination).asAstronomicalUnit();
+    }
 
      public AstronomicalBody calculateDominantGravitationSource() {
           return ((GameStartStage)getStage()).calculateDominantGravitationSourceAt(this);

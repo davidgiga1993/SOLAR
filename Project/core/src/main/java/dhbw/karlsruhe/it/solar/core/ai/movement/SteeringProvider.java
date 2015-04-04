@@ -9,11 +9,11 @@ public interface SteeringProvider {
      * @param position aktuelle Position des ansteuernden Objektes
      * @return berechneter Kurs
      */
-    public Steering getSteering(final Kinematic position);
+    Steering getSteering(final Kinematic position);
 
     /**
      * Setzt das Ziel der Kursberechnung
      * @param newTarget
      */
-    public void setTarget(Kinematic newTarget);
+    void setTarget(Kinematic newTarget);
 }

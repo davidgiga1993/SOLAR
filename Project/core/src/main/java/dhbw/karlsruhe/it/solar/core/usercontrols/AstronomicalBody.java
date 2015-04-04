@@ -2,7 +2,6 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
@@ -155,10 +154,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public boolean isColonized() {
-        if(null != colony) {
-            return true;            
-        }
-        return false;
+        return null != colony;
     }
     
     public String getPopulationNumbers() {

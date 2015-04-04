@@ -9,5 +9,5 @@ public interface Ownable {
      * @param player
      * @return
      */
-    public boolean isOwnedBy(Player player);
+    boolean isOwnedBy(Player player);
 }

@@ -11,11 +11,7 @@ public class GUIInputListener extends InputListener {
 
     @Override
     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        if (event.getTarget() instanceof GUIActor) {
-            // handle input
-            return true;
-        }
-        return false;
+        return event.getTarget() instanceof GUIActor;
     }
 
     @Override

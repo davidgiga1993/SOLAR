@@ -30,9 +30,7 @@ public class StageManagerJUnit
     	StageManager Manager = new StageManager(TestSuite.getEngine());
         BaseStage TestStage = new TestStage("Test");
         Manager.addStage(TestStage);
-        if (Manager.getStage("Test") == null)
-            return false;
-        return true;
+        return Manager.getStage("Test") != null;
     }
 
     @Test
@@ -54,10 +52,8 @@ public class StageManagerJUnit
 		StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.insertStageToBack(new TestStage("TestBack"));
-        if (Manager.getStage(0).getTag().equals("TestBack") == false)
-            return false;
-        return true;
-	}
+        return Manager.getStage(0).getTag().equals("TestBack") != false;
+    }
 
     @Test
     public void testSwapCurrentStage()
@@ -79,10 +75,8 @@ public class StageManagerJUnit
         Manager.addStage(new TestStage("Test0"));
         Manager.addStage(new TestStage("Test1"));
         Manager.swapCurrentStage(new TestStage("TestBack"));
-        if (Manager.getStage(1).getTag().equals("TestBack") == false)
-            return false;
-        return true;
-	}
+        return Manager.getStage(1).getTag().equals("TestBack") != false;
+    }
 
     @Test
     public void testAddStage()
@@ -112,10 +106,8 @@ public class StageManagerJUnit
         	return false;
         if (Manager.getStage("Test2") == null)
         	return false;
-        if (Manager.getStage("Test3") == null)
-        	return false;
-        return true;
-	}
+        return Manager.getStage("Test3") != null;
+    }
 
     @Test
     public void testRemoveStage()
@@ -147,10 +139,8 @@ public class StageManagerJUnit
         	return false;
         if (Manager.getStage("Test2") == null)
         	return false;
-        if (Manager.getStage("Test3") == null)
-        	return false;
-        return true;
-	}
+        return Manager.getStage("Test3") != null;
+    }
 
     @Test
     public void testRemoveStages()
@@ -175,10 +165,8 @@ public class StageManagerJUnit
         Manager.addStage(new TestStage("Test3"));
         
         Manager.removeStages();
-        
-        if(Manager.getStage(0) != null)
-            return false;
-        return true;
-	}
+
+        return Manager.getStage(0) == null;
+    }
 
 }

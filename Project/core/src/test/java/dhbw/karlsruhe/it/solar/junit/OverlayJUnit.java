@@ -39,10 +39,8 @@ public class OverlayJUnit
 		StageManager Manager = new StageManager(TestSuite.getEngine());
         BaseStage Overlay = new TestStage(TestSuite.getEngine(), "Overlay");
         Manager.addStage(Overlay);
-        if (Manager.getStage("Overlay") == null)
-            return false;
-        return true;
-	}
+        return Manager.getStage("Overlay") != null;
+    }
     
     /**
 	 * Noch mehr Overlays hinzufügen und überprüfen ob diese richtig angezeigt werden.
@@ -76,10 +74,8 @@ public class OverlayJUnit
         	return false;
         if (Manager.getStage("Overlay 3") == null)
         	return false;
-        if (Manager.getStage("Overlay 4") == null)
-        	return false;
-        return true;
-	}
+        return Manager.getStage("Overlay 4") != null;
+    }
     
     /**
 	 * Alle Overlays entferenn und überprüfen ob diese richtig entfernt wurden.
@@ -112,9 +108,8 @@ public class OverlayJUnit
         Manager.removeStages();
         
         if (Manager.getStage("Overlay 2") != null) return false;
-        if (Manager.getStage("Overlay 3") != null) return false;
-        return true;
-	}
+        return Manager.getStage("Overlay 3") == null;
+    }
 
     @Test
     public void testChangingCurrentStage()
@@ -135,10 +130,8 @@ public class OverlayJUnit
         Manager.addStage(new TestStage(TestSuite.getEngine(), "Overlay 1"));
         Manager.addStage(new TestStage(TestSuite.getEngine(), "Overlay 2"));
         Manager.swapCurrentStage(new TestStage(TestSuite.getEngine(), "Overlay 2"));
-        if (Manager.getStage(1).getTag().equals("Overlay 2") == false)
-            return false;
-        return true;
-	}
+        return Manager.getStage(1).getTag().equals("Overlay 2") != false;
+    }
     
     @Test
     public void testAddGroup()
@@ -161,9 +154,7 @@ public class OverlayJUnit
         Group TestGroup = new Group();
         Manager.addActor(TestGroup);
 
-        if (TestGroup.hasParent() == false)
-            return false;
-        return true;
-	}
+        return TestGroup.hasParent() != false;
+    }
 
 }

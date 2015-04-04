@@ -85,11 +85,7 @@ public class SolarCamera extends OrthographicCamera {
      */
     public void moveTo(Actor actor) {
         lockTarget = actor;
-        if(actor != null) {
-            isLocked = true;
-        } else {
-            isLocked = false;
-        }
+        isLocked = actor != null;
     }
 
     /**

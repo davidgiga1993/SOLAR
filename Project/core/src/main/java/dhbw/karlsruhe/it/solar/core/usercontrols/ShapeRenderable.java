@@ -7,5 +7,5 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
  * Created by Arga on 28.11.2014.
  */
 public interface ShapeRenderable {
-    public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer);
+    void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer);
 }
