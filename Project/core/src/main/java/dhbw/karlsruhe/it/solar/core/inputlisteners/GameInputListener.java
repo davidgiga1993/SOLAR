@@ -123,14 +123,14 @@ public class GameInputListener extends InputListener {
     public void navigate(InputEvent event, float x, float y) {
         Actor target = event.getTarget();
         if(target instanceof AstronomicalBody) {
-            new MoveToAstronomicalBodyCommand(stage.getSelectedSpaceUnits(), (AstronomicalBody) target, stage.getHumanPlayer()).execute();
+            new MoveToAstronomicalBodyCommand(stage.getSelectedSpaceUnits(), (AstronomicalBody) target, stage.getPlayerOnThisPlatform()).execute();
             return;
         }
         if(target instanceof KinematicObject) {
-            new MoveToKineticObjectCommand(stage.getSelectedSpaceUnits(), (KinematicObject) target, stage.getHumanPlayer()).execute();
+            new MoveToKineticObjectCommand(stage.getSelectedSpaceUnits(), (KinematicObject) target, stage.getPlayerOnThisPlatform()).execute();
             return;
         }
-        new MoveCommand(stage.getSelectedSpaceUnits(), x, y, stage.getHumanPlayer()).execute();
+        new MoveCommand(stage.getSelectedSpaceUnits(), x, y, stage.getPlayerOnThisPlatform()).execute();
     }
 
     /**
@@ -185,7 +185,7 @@ public class GameInputListener extends InputListener {
     private void updateSelectionRectangleForUnits(SelectionState state,
             SolarActor sa) {
         //Actor will only be added to selection if owned by the player
-        if (sa instanceof Ownable && ((Ownable) sa).isOwnedBy(stage.getHumanPlayer())) {
+        if (sa instanceof Ownable && ((Ownable) sa).isOwnedBy(stage.getPlayerOnThisPlatform())) {
             // proceed according to state
             switch(state) {
                 case ADD:
@@ -201,7 +201,7 @@ public class GameInputListener extends InputListener {
     }
 
     private void updateSelectionReactangleForColonies(SelectionState state, SolarActor sa) {
-        if (sa instanceof AstronomicalBody && ((AstronomicalBody)sa).isColonized() && ((AstronomicalBody)sa).isColonyOwnedBy(stage.getHumanPlayer())) {
+        if (sa instanceof AstronomicalBody && ((AstronomicalBody)sa).isColonized() && ((AstronomicalBody)sa).isColonyOwnedBy(stage.getPlayerOnThisPlatform())) {
             // proceed according to state
             switch(state) {
                 case ADD:

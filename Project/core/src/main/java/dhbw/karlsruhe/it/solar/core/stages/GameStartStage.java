@@ -42,9 +42,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public static final Time GAMETIME = new Time();
 
-    protected Player currentPlayer;
-    protected Player aiPlayer;
-
     private List<PlanetaryRing> ringList = new ArrayList<PlanetaryRing>();
 
     public GameStartStage(SolarEngine se)   {
@@ -53,10 +50,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         gameStartStageListener();
         addSelectionRectangle();
-
-
-        currentPlayer = playerManager.createPlayer("Human Player", Color.GREEN);
-        aiPlayer = playerManager.createPlayer("CPU Player", Color.RED);
+        
+        playerManager.initializePlayers();
     }
     
     /**
@@ -103,21 +98,21 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public void init() {
         systemCreation();
-        placeNewShip("Event Horizon", new Vector2(1200, 500), currentPlayer);
-        placeNewShip("Nostromo", new Vector2(1500, 1000), currentPlayer);
-        placeNewShip("Destiny", new Vector2(1550, 1050), aiPlayer);
-        placeNewStation("Deep Space Nine", new Vector2(1500, 0), currentPlayer);
+        placeNewShip("Event Horizon", new Vector2(1200, 500), playerManager.getPlayerNumber(0));
+        placeNewShip("Nostromo", new Vector2(1500, 1000), playerManager.getPlayerNumber(0));
+        placeNewShip("Destiny", new Vector2(1550, 1050), playerManager.getPlayerNumber(1));
+        placeNewStation("Deep Space Nine", new Vector2(1500, 0), playerManager.getPlayerNumber(0));
         
         // Create an example space station orbiting Earth
-        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), aiPlayer);
+        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), playerManager.getPlayerNumber(1));
         AstronomicalBody primary = solarSystem.findSatelliteByName(ConfigurationConstants.HOMEWORLD);
         if (null != primary) {
             babylon.enterOrbit(primary);        
         }
         //place some example colonies
-        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, currentPlayer, new Population(7.125f, Unit.BILLION));
-        placeNewColony("Moon", "Tranquility Base", aiPlayer, new Population(31.415f, Unit.MILLION));
-        placeNewColony("Mars", "Utopia Planitia", currentPlayer, new Population(1.1235f, Unit.THOUSAND));
+        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7.125f, Unit.BILLION));
+        placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(31.415f, Unit.MILLION));
+        placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(1.1235f, Unit.THOUSAND));
     }
 
     private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
@@ -238,8 +233,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
         this.addListener(inputListener);
     }
 
-    public Player getHumanPlayer() {
-        return currentPlayer;
+    public Player getPlayerOnThisPlatform() {
+        return playerManager.getPlayerOnThisPlatform();
     }
 
 
@@ -330,8 +325,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
         return gameSpeed;
     }
 
-    public boolean isThisThePlayer(Player owner) {
-        return currentPlayer.equals(owner);
+    public boolean isThisPlayerOnThisPlatform(Player player) {
+        return playerManager.isThisPlayerOnThisPlatform(player);
     }
 
     public void removeShip(SpaceUnit spaceUnit) {
@@ -343,5 +338,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void refreshSelection(SolarActor actor) {
         selectedActors.remove(actor);
         selectedActors.add(actor);
+    }
+
+    public List<Player> getPlayers() {
+        return playerManager.getPlayersInGame();
     }
 }

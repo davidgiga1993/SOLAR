@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.Array;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
+import dhbw.karlsruhe.it.solar.player.Player;
 
 /**
  * Tries to save current game state to a XML file.
@@ -24,17 +25,20 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
  * created: 2015-04-05
  */
 @XmlRootElement( name = "SaveGame")
-@XmlSeeAlso({ AstroBodyInfo.class, SpaceUnitInfo.class})
+@XmlSeeAlso({ AstroBodyInfo.class, SpaceUnitInfo.class, PlayerInfo.class})
 public class SaveGame {
     private static final String path = "C:\\Users\\Andi\\Desktop\\Studienarbeit\\SaveGames\\SolarSystem.xml";
     
     private Array<Actor> saveGameActors;
     private List<SpaceUnit> spaceUnits;
     private List<AstronomicalBody> spaceObjects;
-    @XmlElement(name ="Astronomical Body")
-    private List<AstroBodyInfo> bodies;
+    private List<Player> ingamePlayers;
+    @XmlElement(name ="Player")
+    private List<PlayerInfo> players;
     @XmlElement(name ="Space Unit")
     private List<SpaceUnitInfo> units;
+    @XmlElement(name ="Astronomical Body")
+    private List<AstroBodyInfo> bodies;
     
     public SaveGame() {
     }
@@ -46,8 +50,10 @@ public class SaveGame {
         bodies = createAstroBodyInfo();
         spaceUnits = filterOutUnits();
         units = createSpaceUnitInfo();
-    }
-    
+        ingamePlayers = stage.getPlayers();
+        players = createPlayerInfo();
+    }  
+
     public void saveToXML() {
         File file = new File(path);
         try {
@@ -58,6 +64,14 @@ public class SaveGame {
         } catch (JAXBException e) {
             System.out.println(e);
         }
+    }
+    
+    private List<PlayerInfo> createPlayerInfo() {
+        List<PlayerInfo> newList = new ArrayList<PlayerInfo>();
+        for(Player player : ingamePlayers) {
+            newList.add(new PlayerInfo(player));
+        }
+        return newList;
     }
 
     private List<AstronomicalBody> filterOutAstroBodies() {

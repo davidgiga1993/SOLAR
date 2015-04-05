@@ -3,6 +3,8 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
@@ -328,10 +330,14 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      }
 
     public boolean isPlayerAlsoShipOwner() {
-        return ((GameStartStage)getStage()).isThisThePlayer(owner);
+        return ((GameStartStage)getStage()).isThisPlayerOnThisPlatform(owner);
     }
 
     public void removeShip() {
         ((GameStartStage)getStage()).removeShip(this);
+    }
+
+    public Player getOwner() {
+        return owner;
     }
 }

@@ -180,7 +180,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public boolean isPlayerAlsoColonyOwner() {
-        return ((GameStartStage)getStage()).isThisThePlayer(colony.getOwner());
+        return ((GameStartStage)getStage()).isThisPlayerOnThisPlatform(colony.getOwner());
     }
     
     public BodyType getBodyType() {
