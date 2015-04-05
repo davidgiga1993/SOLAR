@@ -64,9 +64,9 @@ public final class CreateAnAstronomicalBody {
      * @param largerBody Object with which this new astronomical body is sharing its orbital properties.  
      * @return
      */
-    public CreatableProperties whichIsCoorbitalWith(AstronomicalBody largerBody, Angle angularDeviation) {
-        this.orbitalProperties = new OrbitalProperties(largerBody.getPrimary(), new Length(largerBody.getOrbitalRadius().asKilometres(),dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit.KILOMETERS), new Angle(largerBody.getOrbitalAngle().inDegrees(), AngularUnit.DEGREE));
-        this.orbitalProperties.setCoorbital(angularDeviation);
+    public CreatableProperties whichIsCoorbitalWith(AstronomicalBody dominantBody, Angle angularDeviation) {
+        this.orbitalProperties = new OrbitalProperties(dominantBody.getPrimary(), new Length(dominantBody.getOrbitalRadius().asKilometres(),dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit.KILOMETERS), new Angle(dominantBody.getOrbitalAngle().inDegrees(), AngularUnit.DEGREE));
+        this.orbitalProperties.setCoorbital(dominantBody, angularDeviation);
         return new CreatableProperties();
     }
     

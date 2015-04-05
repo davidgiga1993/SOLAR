@@ -50,4 +50,11 @@ public class BodyProperties {
     public void setBodyType(BodyType type) {
         this.type = type;
     }
+
+    public boolean hasRings() {
+        if(null!= ring) {
+            return true;
+        }
+        return false;
+    }
 }

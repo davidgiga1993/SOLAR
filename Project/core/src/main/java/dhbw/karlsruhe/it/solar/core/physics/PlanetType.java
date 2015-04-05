@@ -1,12 +1,15 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Handles the characteristics common to all planets. Governs the type of planet.
  * @author Andi
  * Created 2015-04-05
  */
-public class PlanetType extends BodyType {
+public class PlanetType extends BodyType{
 
+    @XmlElement(name = "Type")
     private TypeOfPlanet planetType;
     
     public PlanetType(TypeOfPlanet planetType) {

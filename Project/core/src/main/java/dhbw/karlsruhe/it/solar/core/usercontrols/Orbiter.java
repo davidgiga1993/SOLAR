@@ -5,10 +5,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
+import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -220,4 +222,22 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      public boolean isInOrbit() {
          return (null!=orbitalProperties);
      }
+
+    public boolean isInRetrogradeOrbit() {
+        if(isInOrbit() && orbitalProperties.isRetrograde()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isInCoorbitalOrbit() {
+        if(isInOrbit() && orbitalProperties.isCoorbital()) {
+            return true;
+        }
+        return false;
+    }
+
+    public Coorbital getCoorbitalInformation() {
+        return orbitalProperties.getCoorbitalInformation();
+    }
 }

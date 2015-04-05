@@ -186,4 +186,12 @@ public abstract class AstronomicalBody extends Orbiter  {
     public BodyType getBodyType() {
         return physicalProperties.getBodyType();
     }
+
+    public PlanetaryRing getRings() {
+        return physicalProperties.getRings();
+    }
+    
+    public boolean hasRingSystem() {
+        return physicalProperties.hasRings();
+    }
 }

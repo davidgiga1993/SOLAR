@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Handles the characteristics common to all stars. Governs the type of star.
  * @author Andi
@@ -7,6 +9,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
  */
 public class StarType extends BodyType {
 
+    @XmlElement(name = "Type")
     private TypeOfStar starType;
     
     public StarType(TypeOfStar starType) {

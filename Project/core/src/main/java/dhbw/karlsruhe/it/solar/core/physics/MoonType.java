@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Handles the characteristics common to all moons. Governs the type of moon.
  * @author Andi
@@ -7,6 +9,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
  */
 public class MoonType extends BodyType {
 
+    @XmlElement(name = "Type")
     private TypeOfMoon satelliteType;
     
     public MoonType(TypeOfMoon satelliteType) {

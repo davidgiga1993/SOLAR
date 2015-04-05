@@ -14,9 +14,6 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.BodyType;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
@@ -27,7 +24,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
  * created: 2015-04-05
  */
 @XmlRootElement( name = "SaveGame")
-@XmlSeeAlso({ AstroBodyInfo.class, SpaceUnitInfo.class, OrbitalPropertyInfo.class, Length.class, Angle.class, BodyPropertyInfo.class, BodyType.class})
+@XmlSeeAlso({ AstroBodyInfo.class, SpaceUnitInfo.class})
 public class SaveGame {
     private static final String path = "C:\\Users\\Andi\\Desktop\\Studienarbeit\\SaveGames\\SolarSystem.xml";
     

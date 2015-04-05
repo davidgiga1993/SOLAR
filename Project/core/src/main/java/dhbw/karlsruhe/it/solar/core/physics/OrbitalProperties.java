@@ -1,7 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
@@ -15,14 +13,14 @@ public class OrbitalProperties {
     private float orbitalPeriodInDays;
     private Angle periodicConstant;
     private boolean retrograde;
-    private boolean coorbital;
+    private Coorbital coorbital;
     
     public OrbitalProperties(AstronomicalBody orbitPrimary)    {
         this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = new Length();
         this.orbitalAngle = new Angle();
         this.retrograde = false;
-        this.coorbital = false;
+        this.coorbital = null;
         this.orbitalPeriodInDays = Float.NaN;
         this.periodicConstant = new Angle(Float.NaN);
     }
@@ -32,7 +30,7 @@ public class OrbitalProperties {
         this.orbitalRadius = orbitalRadius;
         this.orbitalAngle = angle;
         this.retrograde = false;
-        this.coorbital = false;
+        this.coorbital = null;
         if (orbitPrimary != null)       {
             calculateOrbitalPeriod();
         }
@@ -223,15 +221,22 @@ public class OrbitalProperties {
     }
     
     public boolean isCoorbital() {
-        return coorbital;
+        if(null != coorbital) {
+            return true;
+        }
+        return false;
     }
     
-    public void setCoorbital(Angle angularDeviation) {
-        coorbital = true;    
+    public void setCoorbital(Orbiter dominantBody, Angle angularDeviation) {
+        coorbital = new Coorbital(dominantBody, angularDeviation);    
         orbitalAngle.changeBy(angularDeviation);
     }
     
     public Vector2 getOrbitalPositionTotal(float orbitalRadiusInPixels, Angle deltaAlpha) {
         return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
+    }
+
+    public Coorbital getCoorbitalInformation() {
+        return coorbital;
     }
 }

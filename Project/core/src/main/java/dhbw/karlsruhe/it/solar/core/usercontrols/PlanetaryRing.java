@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,12 +12,14 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.graphics.AnnulusShader;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing.RingType;
 
 /**
  * Defines the behavior of planetary ring systems for giant planets.
@@ -27,6 +31,7 @@ public class PlanetaryRing extends AstronomicalBody {
     private static final AnnulusShader RING_SHADER = new AnnulusShader();
 
     protected Length innerRadius;
+    private RingType type;
 
     protected float innerRadiusPixels;
     protected float outerRadiusPixels;
@@ -37,6 +42,7 @@ public class PlanetaryRing extends AstronomicalBody {
 
     public PlanetaryRing(AstronomicalBody orbitPrimary, Mass mass, Length innerRadius, Length outerRadius, RingType type) {
         super(nameOfRings(orbitPrimary), orbitOfRings(orbitPrimary, outerRadius), bodyOfRings(mass, outerRadius), scaleOfRings(), textureOfRings(type));
+        this.type = type;
         this.innerRadius = innerRadius;
         this.segments = 500;
         label.hide();
@@ -211,5 +217,13 @@ public class PlanetaryRing extends AstronomicalBody {
             updateScale();
         }
         return false;
+    }
+
+    public Length getInnerRadius() {
+        return innerRadius;
+    }
+
+    public RingType getType() {
+        return type;
     }
 }

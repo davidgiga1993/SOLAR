@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Handles the characteristics common to all asteroids. Governs the type of asteroid.
  * @author Andi
@@ -7,6 +9,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
  */
 public class AsteroidType extends BodyType {
     
+    @XmlElement(name = "Type")
     private SpectralType spectralType;
     
     public AsteroidType(SpectralType classification) {
