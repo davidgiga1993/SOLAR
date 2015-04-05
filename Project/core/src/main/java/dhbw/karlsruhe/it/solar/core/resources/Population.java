@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
+import javax.xml.bind.annotation.XmlElement;
+
 
 /**
  * Populatio Resource: Each colony has a certain number of inhabitants. Behavior of population is governed by this class.
@@ -7,7 +9,9 @@ package dhbw.karlsruhe.it.solar.core.resources;
  * Th, 19. March 2015
  */
 public class Population {
+    @XmlElement
     private float value;
+    @XmlElement(name="pop_unit")
     private Unit unit;
 
     public enum Unit {

@@ -47,4 +47,8 @@ public class Colony implements Ownable {
     public void abandonColony() {
         primary.abandonColony();  
     }
+
+    public Population getPopulation() {
+        return population;
+    }
 }
