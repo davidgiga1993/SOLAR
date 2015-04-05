@@ -21,15 +21,21 @@ public class BodyPropertyInfo {
     private Length radius;
     @XmlElement(name = "Mass")
     private Mass mass;
-    @XmlElement(name = "Planetary Rings")
+    @XmlElement(name = "PlanetaryRings")
     private RingSystemInfo ring;
     
-    public BodyPropertyInfo(AstronomicalBody body) {
+    public BodyPropertyInfo() {
+        
+    }
+    
+    public void fillBodyPropertyInfo(AstronomicalBody body) {
         this.radius = body.getRadius();
         this.mass = body.getMass();
         this.type = body.getBodyType();
         if(body.hasRingSystem()) {
-            this.ring = new RingSystemInfo(body.getRings());            
+            RingSystemInfo ringInfo = new RingSystemInfo();
+            ringInfo.fillRingSystemInfo(body.getRings());
+            this.ring = ringInfo;            
         }
     }
 }

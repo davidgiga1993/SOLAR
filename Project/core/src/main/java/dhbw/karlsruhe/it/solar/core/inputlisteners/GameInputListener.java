@@ -14,6 +14,7 @@ import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToAstronomicalBodyCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToKineticObjectCommand;
 import dhbw.karlsruhe.it.solar.core.savegames.SaveGame;
+import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
@@ -58,9 +59,8 @@ public class GameInputListener extends InputListener {
             Gdx.app.postRunnable(new Runnable() {
                 @Override
                 public void run() {
-                    SaveGame save = new SaveGame();
-                    save.assignInformation(stage);
-                    save.saveToXML();
+//                    SaveGameManager save = new SaveGameManager(stage);
+//                    save.saveToXML();
                     GameStartStage.endGame();
                 }
             });

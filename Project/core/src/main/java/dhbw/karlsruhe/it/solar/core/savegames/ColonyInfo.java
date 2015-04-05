@@ -12,14 +12,18 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 @XmlSeeAlso({Population.class})
 public class ColonyInfo {
     
-    @XmlElement(name="Colony Name")
+    @XmlElement(name="ColonyName")
     private String name;
-    @XmlElement(name = "Colony Owner")
+    @XmlElement(name = "ColonyOwner")
     private String ownerName;
     @XmlElement(name = "Population")
     private Population pop;
 
-    public ColonyInfo(Colony colony) {
+    public ColonyInfo() {
+        
+    }
+    
+    public void fillColonyInfo(Colony colony) {
         this.name = colony.getName();
         this.ownerName = colony.getOwner().getName();
         this.pop = colony.getPopulation();

@@ -12,6 +12,10 @@ public class PlanetType extends BodyType{
     @XmlElement(name = "Type")
     private TypeOfPlanet planetType;
     
+    public PlanetType() {
+        
+    }
+    
     public PlanetType(TypeOfPlanet planetType) {
         this.planetType = planetType;
     } 

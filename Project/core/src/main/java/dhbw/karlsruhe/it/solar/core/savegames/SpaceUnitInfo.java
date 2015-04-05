@@ -15,22 +15,28 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Spacestation;
 @XmlSeeAlso({OrbitalPropertyInfo.class})
 public class SpaceUnitInfo {
     
-    @XmlElement(name = "Unit Name")
+    @XmlElement(name = "UnitName")
     private String name;
     @XmlElement(name = "ShipType")
     private String type;
-    @XmlElement(name = "Unit Owner")
+    @XmlElement(name = "UnitOwner")
     private String ownerName;
-    @XmlElement(name = "Orbital Properties")
+    @XmlElement(name = "OrbitalProperties")
     private OrbitalPropertyInfo orbit;
-    @XmlElement(name = "Absolute Position")
+    @XmlElement(name = "AbsolutePosition")
     private Vector2 position;
 
-    public SpaceUnitInfo(SpaceUnit unit) {
+    public SpaceUnitInfo() {
+        
+    }
+    
+    public void fillSpaceUnitInfo(SpaceUnit unit) {
         this.name = unit.getName();
         this.ownerName = unit.getOwner().getName();
         if(unit.isInOrbit()) {
-            this.orbit = new OrbitalPropertyInfo(unit);  
+            OrbitalPropertyInfo orbitalInfo = new OrbitalPropertyInfo();
+            orbitalInfo.fillOrbitalPropertyInfo(unit);
+            this.orbit = orbitalInfo;
             return;
         }
         this.position = new Vector2(unit.getX(),unit.getY());

@@ -7,10 +7,14 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 public class Coorbital {
     
     private Orbiter dominantBody;
-    @XmlElement(name = "Name of Dominant Body")
+    @XmlElement(name = "NameOfDominantBody")
     private String nameOfDominantBody;
     @XmlElement(name = "AngularDeviation")
     private Angle angularDeviation;
+    
+    public Coorbital() {
+        
+    }
     
     public Coorbital(Orbiter dominantBody, Angle angularDeviation) {
         this.dominantBody = dominantBody;

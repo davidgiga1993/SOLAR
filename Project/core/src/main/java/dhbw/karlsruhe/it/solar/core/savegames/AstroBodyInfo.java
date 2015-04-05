@@ -13,19 +13,29 @@ public class AstroBodyInfo {
     
     @XmlElement(name = "Name")
     private String name;
-    @XmlElement (name ="Body Properties")
+    @XmlElement (name ="BodyProperties")
     private BodyPropertyInfo body;
-    @XmlElement (name ="Orbital Properties")
+    @XmlElement (name ="OrbitalProperties")
     private OrbitalPropertyInfo orbit;
-    @XmlElement(name = "Player Colony")
+    @XmlElement(name = "PlayerColony")
     private ColonyInfo colony;
 
-    public AstroBodyInfo(AstronomicalBody body) {
+    public AstroBodyInfo() {
+        
+    }
+    
+    public void fillAstroBodyInfo(AstronomicalBody body) {
         this.name = body.getName();
-        this.orbit = new OrbitalPropertyInfo(body);
-        this.body = new BodyPropertyInfo(body);
+        OrbitalPropertyInfo orbitalInfo = new OrbitalPropertyInfo();
+        orbitalInfo.fillOrbitalPropertyInfo(body);
+        this.orbit = orbitalInfo;
+        BodyPropertyInfo bodyInfo = new BodyPropertyInfo();
+        bodyInfo.fillBodyPropertyInfo(body);
+        this.body = bodyInfo;
         if(body.isColonized()) {
-            this.colony = new ColonyInfo(body.getColony());            
+            ColonyInfo colonyInfo = new ColonyInfo();
+            colonyInfo.fillColonyInfo(body.getColony());
+            this.colony = colonyInfo;            
         }
     }
 

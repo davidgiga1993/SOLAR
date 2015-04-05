@@ -12,6 +12,10 @@ public class StarType extends BodyType {
     @XmlElement(name = "Type")
     private TypeOfStar starType;
     
+    public StarType() {
+        
+    }
+    
     public StarType(TypeOfStar starType) {
         this.starType = starType;
     } 

@@ -12,6 +12,10 @@ public class AsteroidType extends BodyType {
     @XmlElement(name = "Type")
     private SpectralType spectralType;
     
+    public AsteroidType() {
+        
+    }
+    
     public AsteroidType(SpectralType classification) {
         this.spectralType = classification;
     }

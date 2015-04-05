@@ -9,16 +9,20 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing.RingType;
 
 public class RingSystemInfo {
 
-    @XmlElement(name = "Mass of Ring System")
+    @XmlElement(name = "MassOfRingSystem")
     private Mass mass;
-    @XmlElement(name = "Innermost Ring")
+    @XmlElement(name = "InnermostRing")
     protected Length innerRadius;
-    @XmlElement(name = "Outermost Ring")
+    @XmlElement(name = "OutermostRing")
     private Length outerRadius;
-    @XmlElement(name = "Type of Ring System")
+    @XmlElement(name = "TypeOfRingSystem")
     private RingType type;
+ 
+    public RingSystemInfo() {
+        
+    }
     
-    public RingSystemInfo(PlanetaryRing rings) {
+    public void fillRingSystemInfo(PlanetaryRing rings) {
         this.mass = rings.getMass();
         this.innerRadius = rings.getInnerRadius();
         this.outerRadius = rings.getRadius();

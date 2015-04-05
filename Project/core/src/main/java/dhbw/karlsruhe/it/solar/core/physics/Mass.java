@@ -14,6 +14,10 @@ public class Mass {
     protected float value;
     @XmlElement(name = "mass_unit")
     protected MassUnit unit;
+    
+    public Mass() {
+        
+    }
 
     public Mass(float value, MassUnit unit) {
         setValue(value, unit);

@@ -17,6 +17,8 @@ import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
+import dhbw.karlsruhe.it.solar.core.savegames.SaveGame;
+import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -97,6 +99,13 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     public void init() {
+        SaveGameManager loadedGame = new SaveGameManager(this);
+        loadedGame.loadGameFromXML();
+        
+//        initExampleSystem();
+    }
+
+    private void initExampleSystem() {
         systemCreation();
         placeNewShip("Event Horizon", new Vector2(1200, 500), playerManager.getPlayerNumber(0));
         placeNewShip("Nostromo", new Vector2(1500, 1000), playerManager.getPlayerNumber(0));

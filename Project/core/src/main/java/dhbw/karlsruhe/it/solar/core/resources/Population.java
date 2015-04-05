@@ -19,6 +19,10 @@ public class Population {
         MILLION,
         BILLION
     }
+    
+    public Population() {
+        
+    }
 
     public Population(float numberOfColonists, Unit populationUnit) {
         value = numberOfColonists;

@@ -8,12 +8,16 @@ import dhbw.karlsruhe.it.solar.player.Player;
 
 public class PlayerInfo {
     
-    @XmlElement(name = "Player Name")
+    @XmlElement(name = "PlayerName")
     private String name;
-    @XmlElement(name = "Player Color")
+    @XmlElement(name = "PlayerColor")
     private Color color;
+    
+    public PlayerInfo() {
+        
+    }
 
-    public PlayerInfo(Player player) {
+    public void fillInInfos(Player player) {
         this.name = player.getName();
         this.color = player.getPlayerColor();
     }

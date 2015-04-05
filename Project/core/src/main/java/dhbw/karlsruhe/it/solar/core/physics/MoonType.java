@@ -12,6 +12,10 @@ public class MoonType extends BodyType {
     @XmlElement(name = "Type")
     private TypeOfMoon satelliteType;
     
+    public MoonType() {
+        
+    }
+    
     public MoonType(TypeOfMoon satelliteType) {
         this.satelliteType = satelliteType;
     } 

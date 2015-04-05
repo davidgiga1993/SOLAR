@@ -16,16 +16,20 @@ public class OrbitalPropertyInfo {
     
     @XmlElement(name = "Primary")
     private String orbitPrimary;
-    @XmlElement(name = "Orbital Radius")
+    @XmlElement(name = "OrbitalRadius")
     private Length orbitalRadius;
-    @XmlElement(name = "Polar Angle")
+    @XmlElement(name = "PolarAngle")
     private Angle orbitalAngle;
     @XmlElement(name = "Retrograde")
     private boolean retrograde;
-    @XmlElement(name = "Coorbital Info")
+    @XmlElement(name = "CoorbitalInfo")
     private Coorbital coorbital;
 
-    public OrbitalPropertyInfo(Orbiter orbiter) {
+    public OrbitalPropertyInfo() {
+        
+    }
+    
+    public void fillOrbitalPropertyInfo(Orbiter orbiter) {
         if(orbiter.isInOrbit()) {
             this.coorbital = orbiter.getCoorbitalInformation();
             if(null==coorbital) {
