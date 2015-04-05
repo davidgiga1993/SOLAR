@@ -212,4 +212,12 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
      public void setKinematicPosition(Vector2 position) {
          kinematic.setPosition(position);
      }
+     
+     public Angle getOrbitalAngle() {
+         return orbitalProperties.getOrbitalAngle();
+     }
+     
+     public boolean isInOrbit() {
+         return (null!=orbitalProperties);
+     }
 }

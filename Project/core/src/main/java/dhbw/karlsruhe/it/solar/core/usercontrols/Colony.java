@@ -1,9 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 

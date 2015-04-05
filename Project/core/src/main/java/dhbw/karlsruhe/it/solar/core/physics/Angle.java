@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * 
  * @author Andi
@@ -10,31 +12,33 @@ public class Angle {
     public static final float DEGREE_IN_RADIANS = (float)( 180f / Math.PI);
     public static final float RADIANS_CIRCLE = (float) (2 * Math.PI);
     
-    private Unit unit;
+    @XmlElement
     private double value;
+    @XmlElement(name = "angular_unit")
+    private AngularUnit angularUnit;
     
     public Angle()    {
-        this.unit = Unit.DEGREE;
+        this.angularUnit = AngularUnit.DEGREE;
         this.value = 0f;
     }
     
     public Angle(float value)    {
-        this.unit = Unit.DEGREE;
+        this.angularUnit = AngularUnit.DEGREE;
         this.value = value;
     }
     
-    public Angle (float value, Unit unit)    {
-        this.unit = unit;
+    public Angle (float value, AngularUnit unit)    {
+        this.angularUnit = unit;
         this.value = value;
     }
     
-    public enum Unit {
+    public enum AngularUnit {
         DEGREE,
         RADIANS
     }
     
     public float inDegrees() {
-        switch(unit) {
+        switch(angularUnit) {
             case DEGREE:
                 return (float) value;
             case RADIANS:
@@ -45,7 +49,7 @@ public class Angle {
     }
     
     public float inRadians() {
-        switch(unit) {
+        switch(angularUnit) {
             case DEGREE:
                 return (float) value / DEGREE_IN_RADIANS;
             case RADIANS:
@@ -56,7 +60,7 @@ public class Angle {
     }
 
     public void changeBy(Angle change) {
-        switch(unit) {
+        switch(angularUnit) {
         case DEGREE:
             value += change.inDegrees();
             break;
@@ -73,7 +77,7 @@ public class Angle {
      * Make sure that no overflow happens.
      */
     private void preventOverflow() {
-        switch(unit) {
+        switch(angularUnit) {
         case DEGREE:
             value = value < 360 ? value : value - 360;
             value = value > - 360 ? value : value + 360;

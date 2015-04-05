@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 /**
@@ -17,20 +19,22 @@ public class Length {
     public static final float PARSEC_IN_ASTRONOMICAL_UNITS = 206264.80599999f;
     public static final float PARSEC_IN_LIGHT_YEARS = 3.2615637732f;
 
-    protected Unit unit = Unit.ASTRONOMICAL_UNITS;
+    @XmlElement
     protected float value = 0f;
+    @XmlElement(name="distance_unit")
+    protected DistanceUnit unit = DistanceUnit.ASTRONOMICAL_UNITS;
     
     public Length()    {
         this.value = 0;
-        this.unit = Unit.KILOMETERS;
+        this.unit = DistanceUnit.KILOMETERS;
     }
 
-    public Length(float value, Unit unit) {
+    public Length(float value, DistanceUnit unit) {
         this.value = value;
         this.unit = unit;
     }
 
-    public void set(float value, Unit unit) {
+    public void set(float value, DistanceUnit unit) {
         this.value = value;
         this.unit = unit;
     }
@@ -101,7 +105,7 @@ public class Length {
         }
     }
 
-    public enum Unit {
+    public enum DistanceUnit {
         KILOMETERS,
         LUNAR_DISTANCE,
         ASTRONOMICAL_UNITS,
@@ -112,6 +116,6 @@ public class Length {
     public static Length calculateDistance(SolarActor actorOne, SolarActor actorTwo)    {
         double directDistance = Math.sqrt( Math.pow(actorTwo.getX() - actorOne.getX(),2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
         
-        return new Length( (float)directDistance, Unit.KILOMETERS);
+        return new Length( (float)directDistance, DistanceUnit.KILOMETERS);
     }
 }

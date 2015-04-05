@@ -11,8 +11,8 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
  *
  */
 public class Moon extends AstronomicalBody {
-    public Moon(String name, OrbitalProperties orbit, BodyProperties body, MoonType moon) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureFromTypeOf(moon));
+    public Moon(String name, OrbitalProperties orbit, BodyProperties body) {
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureFromTypeOf((MoonType)body.getBodyType()));
         label.setThreshold(0.4f);
         this.orbitColor = Color.GRAY;
         preview = new PreviewActor(this, getWidth(), 10, Color.GRAY);
@@ -25,7 +25,7 @@ public class Moon extends AstronomicalBody {
     }
 
     private static String getTextureFromTypeOf(MoonType moon)    {
-        switch(moon)        {
+        switch(moon.getSatelliteType())        {
             case LUNAR:
                 return "Lunar";
             case IONIAN:
@@ -65,27 +65,5 @@ public class Moon extends AstronomicalBody {
             default:
                 return "IrregularSatellite";
         }
-    }
-
-    public enum MoonType {
-        IRREGULAR,
-        LUNAR,
-        IONIAN,
-        EUROPAN,
-        GANYMEDIAN,
-        CALLISTOAN,
-        MIMANTEAN,
-        ENCELADEAN,
-        TETHYAN,
-        DIONEAN,
-        RHEAN,
-        TITANEAN,
-        IAPETIAN,
-        MIRANDAN,
-        ARIELIAN,
-        UMBRELIAN,
-        TITANIAN,
-        OBERONIAN,
-        TRITONIAN
     }
 }

@@ -12,15 +12,15 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 public class Planet extends AstronomicalBody  {
     private AstronomicalBody outermostMoon;
 
-    public Planet(String name, OrbitalProperties orbit, BodyProperties body, PlanetType planet) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureFromTypeOf(planet));
+    public Planet(String name, OrbitalProperties orbit, BodyProperties body) {
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureFromTypeOf((PlanetType)body.getBodyType()));
 
         this.segments = 2000;
         preview.setColor(Color.TEAL);
     }
 
     private static String getTextureFromTypeOf(PlanetType planet)    {
-        switch(planet)        {
+        switch(planet.getPlanetType())        {
             case MARTIAN:
                 return "Martian";
             case MERCURIAN:
@@ -60,17 +60,4 @@ public class Planet extends AstronomicalBody  {
         }
         return (size / SolarEngine.get().getSolarCameraZoom()) > 1f;
     }
-
-    public enum PlanetType {
-        MERCURIAN,
-        VENUSIAN,
-        TERRAN,
-        MARTIAN,
-        DWARFPLANET,
-        JOVIAN,
-        SATURNIAN,
-        URANIAN,
-        NEPTUNIAN
-    }
-
 }

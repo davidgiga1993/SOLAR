@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.physics.AsteroidType;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 
@@ -9,32 +10,16 @@ import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
  *
  */
 public class Asteroid extends AstronomicalBody  {    
-    public Asteroid(String name, OrbitalProperties orbit, BodyProperties body, AsteroidType asteroid) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_ASTEROID, getTextureFromTypeOf(asteroid));
+    public Asteroid(String name, OrbitalProperties orbit, BodyProperties body) {
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_ASTEROID, getTextureFromTypeOf((AsteroidType)body.getBodyType()));
     }
     
     private static String getTextureFromTypeOf(AsteroidType asteroid) {
-        switch(asteroid)        {
+        switch(asteroid.getSpectralType())        {
         case DTYPE:
             return "IrregularSatellite";
         default:
             return "IrregularSatellite";
         }
-    }
-
-    public enum AsteroidType {
-        BTYPE,
-        FTYPE,
-        GTYPE,
-        CTYPE,
-        STYPE,
-        MTYPE,
-        ETYPE,
-        PTYPE,
-        ATYPE,
-        DTYPE,
-        QTYPE,
-        RTYPE,
-        VTYPE
     }
 }

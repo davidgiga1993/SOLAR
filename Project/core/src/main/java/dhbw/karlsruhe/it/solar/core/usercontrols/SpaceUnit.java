@@ -13,7 +13,7 @@ import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.commands.OrbitalInsertionCommand;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Length.Unit;
+import dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -232,7 +232,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       */
      private Length getPhysicalLength(AstronomicalBody orbitPrimary,
                Vector2 distance) {
-          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().getOrbitScale(), Unit.KILOMETERS);
+          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().getOrbitScale(), DistanceUnit.KILOMETERS);
      }
 
      /**
@@ -241,7 +241,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       * @return Angle which has been calculated.
       */
      private Angle getAngleToXAxis(Vector2 distance) {
-          return new Angle(distance.angle() + 180, Angle.Unit.DEGREE);
+          return new Angle(distance.angle() + 180, Angle.AngularUnit.DEGREE);
      }
 
      private Length physicalDistanceTo(AstronomicalBody destination) {
@@ -326,10 +326,6 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      public AstronomicalBody calculateDominantGravitationSource() {
           return ((GameStartStage)getStage()).calculateDominantGravitationSourceAt(this);
      }
-
-    public boolean isInOrbit() {
-        return (null!=orbitalProperties);
-    }
 
     public boolean isPlayerAlsoShipOwner() {
         return ((GameStartStage)getStage()).isThisThePlayer(owner);

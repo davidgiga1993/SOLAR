@@ -2,15 +2,9 @@ package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid.AsteroidType;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Moon.MoonType;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Planet.PlanetType;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Star.StarType;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 
 import org.junit.After;
@@ -42,10 +36,10 @@ public class AstronomicalObjectsJUnit
     public void runSetUp() {
         GameStartStage.startGame();
     	solarSystem = new SolarSystem("Testsystem");
-    	star =  CreateAnAstronomicalBody.named("Testsonne").whichHasTheFollowingOrbitalProperties(solarSystem, new Length(0, Length.Unit.KILOMETERS), new Angle(0)).andHasTheFollowingBodyProperties(new Length(1392684f/2, Length.Unit.KILOMETERS), new Mass(1, Mass.Unit.KILOGRAM)).buildAs(StarType.GTYPE, solarSystem);
-    	planet = CreateAnAstronomicalBody.named("Testplanet").whichHasTheFollowingOrbitalProperties(star, new Length(1.5f, Length.Unit.ASTRONOMICAL_UNITS), new Angle(23)).andHasTheFollowingBodyProperties(new Length(10000.4f/2, Length.Unit.KILOMETERS), new Mass(0.5f, Mass.Unit.EARTH_MASS)).buildAs(PlanetType.TERRAN, solarSystem);
-    	CreateAnAstronomicalBody.named("Testmond").whichHasTheFollowingOrbitalProperties(planet, new Length(200000, Length.Unit.KILOMETERS), new Angle(-50)).andHasTheFollowingBodyProperties(new Length(4879.4f/2, Length.Unit.KILOMETERS), new Mass(0.1f, Mass.Unit.EARTH_MASS)).buildAs(MoonType.LUNAR, solarSystem);
-    	CreateAnAstronomicalBody.named("Testasteroid").whichHasTheFollowingOrbitalProperties(star, new Length(900, Length.Unit.KILOMETERS), new Angle(42)).andHasTheFollowingBodyProperties(new Length(1500.4f/2, Length.Unit.KILOMETERS), new Mass(20000, Mass.Unit.KILOGRAM)).buildAs(AsteroidType.DTYPE, solarSystem);
+    	star =  CreateAnAstronomicalBody.named("Testsonne").whichHasTheFollowingOrbitalProperties(solarSystem, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle(0)).andHasTheFollowingBodyProperties(new Length(1392684f/2, Length.DistanceUnit.KILOMETERS), new Mass(1, Mass.MassUnit.KILOGRAM)).buildAs(new StarType(StarType.TypeOfStar.GTYPE), solarSystem);
+    	planet = CreateAnAstronomicalBody.named("Testplanet").whichHasTheFollowingOrbitalProperties(star, new Length(1.5f, Length.DistanceUnit.ASTRONOMICAL_UNITS), new Angle(23)).andHasTheFollowingBodyProperties(new Length(10000.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.5f, Mass.MassUnit.EARTH_MASS)).buildAs(new PlanetType(PlanetType.TypeOfPlanet.TERRAN), solarSystem);
+    	CreateAnAstronomicalBody.named("Testmond").whichHasTheFollowingOrbitalProperties(planet, new Length(200000, Length.DistanceUnit.KILOMETERS), new Angle(-50)).andHasTheFollowingBodyProperties(new Length(4879.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.1f, Mass.MassUnit.EARTH_MASS)).buildAs(new MoonType(MoonType.TypeOfMoon.LUNAR), solarSystem);
+    	CreateAnAstronomicalBody.named("Testasteroid").whichHasTheFollowingOrbitalProperties(star, new Length(900, Length.DistanceUnit.KILOMETERS), new Angle(42)).andHasTheFollowingBodyProperties(new Length(1500.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(20000, Mass.MassUnit.KILOGRAM)).buildAs(new AsteroidType(AsteroidType.SpectralType.DTYPE), solarSystem);
     	}
 
     @After

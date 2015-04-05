@@ -10,6 +10,7 @@ public class BodyProperties {
     private Mass mass;
     private Length radius;
     private PlanetaryRing ring;
+    private BodyType type;
 
     public BodyProperties(Mass mass, Length radius, PlanetaryRing ring) {
         this.mass = mass;
@@ -40,5 +41,13 @@ public class BodyProperties {
 
     public void setRingPrimary(AstronomicalBody body) {
         ring.setRingPrimary(body);
-    } 
+    }
+
+    public BodyType getBodyType() {
+        return type;
+    }
+    
+    public void setBodyType(BodyType type) {
+        this.type = type;
+    }
 }

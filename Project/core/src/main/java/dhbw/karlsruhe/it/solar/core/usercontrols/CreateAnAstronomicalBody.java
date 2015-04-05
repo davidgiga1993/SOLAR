@@ -1,12 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import dhbw.karlsruhe.it.solar.core.physics.*;
-import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid.AsteroidType;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Moon.MoonType;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Planet.PlanetType;
+import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing.RingType;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Star.StarType;
 
 /**
  * Builder pattern class designed to take over the creation of all actors of type astronomical body.
@@ -17,10 +13,7 @@ public final class CreateAnAstronomicalBody {
     private String name;
     private BodyProperties bodyProperties;
     private OrbitalProperties orbitalProperties;
-    private StarType starType;
-    private PlanetType planetType;
-    private MoonType moonType;
-    private AsteroidType asteroidType;
+    private BodyType type;
     private boolean ringed = false;
     private Length outerRadiusOfRings;
     private Length innerRadiusOfRings;
@@ -61,7 +54,7 @@ public final class CreateAnAstronomicalBody {
      * @return
      */
     public CreatableProperties whichIsStationaryAt(AstronomicalBody system) {
-        this.orbitalProperties = new OrbitalProperties(system, new Length(0, Length.Unit.KILOMETERS), new Angle(0));
+        this.orbitalProperties = new OrbitalProperties(system, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle(0));
         return new CreatableProperties();
     }
     
@@ -72,7 +65,7 @@ public final class CreateAnAstronomicalBody {
      * @return
      */
     public CreatableProperties whichIsCoorbitalWith(AstronomicalBody largerBody, Angle angularDeviation) {
-        this.orbitalProperties = new OrbitalProperties(largerBody.getPrimary(), new Length(largerBody.getOrbitalRadius().asKilometres(),dhbw.karlsruhe.it.solar.core.physics.Length.Unit.KILOMETERS), new Angle(largerBody.getOrbitalAngle().inDegrees(), Unit.DEGREE));
+        this.orbitalProperties = new OrbitalProperties(largerBody.getPrimary(), new Length(largerBody.getOrbitalRadius().asKilometres(),dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit.KILOMETERS), new Angle(largerBody.getOrbitalAngle().inDegrees(), AngularUnit.DEGREE));
         this.orbitalProperties.setCoorbital(angularDeviation);
         return new CreatableProperties();
     }
@@ -132,7 +125,7 @@ public final class CreateAnAstronomicalBody {
              * @return
              */
             public Star buildAs(StarType star, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.starType = star;
+                CreateAnAstronomicalBody.this.type = star;
                 return CreateAnAstronomicalBody.this.buildStar(solarSystem);
             }
             
@@ -143,7 +136,7 @@ public final class CreateAnAstronomicalBody {
              * @return
              */
             public Planet buildAs(PlanetType planet, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.planetType = planet;
+                CreateAnAstronomicalBody.this.type = planet;
                 return CreateAnAstronomicalBody.this.buildPlanet(solarSystem);
             }
             
@@ -154,7 +147,7 @@ public final class CreateAnAstronomicalBody {
              * @return
              */
             public Moon buildAs(MoonType moon, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.moonType = moon;
+                CreateAnAstronomicalBody.this.type = moon;
                 return CreateAnAstronomicalBody.this.buildMoon(solarSystem);
             }
             
@@ -165,7 +158,7 @@ public final class CreateAnAstronomicalBody {
              * @return
              */
             public Asteroid buildAs(AsteroidType asteroid, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.asteroidType = asteroid;
+                CreateAnAstronomicalBody.this.type = asteroid;
                 return CreateAnAstronomicalBody.this.buildAsteroid(solarSystem);
             }
             
@@ -173,28 +166,32 @@ public final class CreateAnAstronomicalBody {
     }
     
     private Star buildStar(SolarSystem solarSystem) {
-        Star newBody = new Star(name, orbitalProperties, bodyProperties, starType);
+        bodyProperties.setBodyType(type);
+        Star newBody = new Star(name, orbitalProperties, bodyProperties);
         setUpRings(newBody);
         newBody.initializeAstronomicalBody(solarSystem);
         return newBody;
     }
     
     private Planet buildPlanet(SolarSystem solarSystem) {
-        Planet newBody = new Planet(name, orbitalProperties, bodyProperties, planetType);
+        bodyProperties.setBodyType(type);
+        Planet newBody = new Planet(name, orbitalProperties, bodyProperties);
         setUpRings(newBody);        
         newBody.initializeAstronomicalBody(solarSystem);
         return newBody;
     }
     
     private Moon buildMoon(SolarSystem solarSystem) {
-        Moon newBody = new Moon(name, orbitalProperties, bodyProperties, moonType);
+        bodyProperties.setBodyType(type);
+        Moon newBody = new Moon(name, orbitalProperties, bodyProperties);
         setUpRings(newBody);        
         newBody.initializeAstronomicalBody(solarSystem);
         return newBody;
     }
     
     private Asteroid buildAsteroid(SolarSystem solarSystem) {
-        Asteroid newBody = new Asteroid(name, orbitalProperties, bodyProperties, asteroidType);
+        bodyProperties.setBodyType(type);
+        Asteroid newBody = new Asteroid(name, orbitalProperties, bodyProperties);
         setUpRings(newBody);        
         newBody.initializeAstronomicalBody(solarSystem);
         return newBody;

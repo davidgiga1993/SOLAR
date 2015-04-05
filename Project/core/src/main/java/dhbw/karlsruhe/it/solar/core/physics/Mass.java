@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Created by Arga on 25.11.2014.
  */
@@ -8,14 +10,16 @@ public class Mass {
     public static final float SOLAR_MASS_IN_KILOGRAM = 1.98855e30f;
     public static final float EARTH_MASS_IN_KILOGRAM = 5.97219e24f;
     public static final float SOLAR_MASS_IN_EARTH_MASS = 333000;
+    @XmlElement
     protected float value;
-    protected Unit unit;
+    @XmlElement(name = "mass_unit")
+    protected MassUnit unit;
 
-    public Mass(float value, Unit unit) {
+    public Mass(float value, MassUnit unit) {
         setValue(value, unit);
     }
 
-    public void setValue(float value, Unit unit) {
+    public void setValue(float value, MassUnit unit) {
         this.value = value;
         this.unit = unit;
     }
@@ -70,7 +74,7 @@ public class Mass {
     }
 
 
-    public enum Unit {
+    public enum MassUnit {
         KILOGRAM,
         SOLAR_MASS,
         EARTH_MASS,

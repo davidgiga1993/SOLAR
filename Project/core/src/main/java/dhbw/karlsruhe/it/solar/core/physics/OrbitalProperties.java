@@ -1,12 +1,14 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.physics.Angle.Unit;
+import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 
-public class OrbitalProperties {    
+public class OrbitalProperties {   
     private AstronomicalBody orbitPrimary;
     private Length orbitalRadius;
     private Angle orbitalAngle;
@@ -53,7 +55,7 @@ public class OrbitalProperties {
      */
     private void calculatePeriodicConstant()    {
         if ( 0 != orbitalPeriodInDays )       {
-            periodicConstant = new Angle(360 / orbitalPeriodInDays , Unit.DEGREE);
+            periodicConstant = new Angle(360 / orbitalPeriodInDays , AngularUnit.DEGREE);
             return;
         }
         periodicConstant = new Angle();
@@ -85,7 +87,7 @@ public class OrbitalProperties {
         if(retrograde)       {
             change = -increment;
         }
-        updateOrbitalAngle( new Angle( periodicConstant.inDegrees()*change, Unit.DEGREE));
+        updateOrbitalAngle( new Angle( periodicConstant.inDegrees()*change, AngularUnit.DEGREE));
     }
     
     public float getPrimaryX()    {
@@ -143,7 +145,7 @@ public class OrbitalProperties {
     }
     
     private Angle predictedChangeInOrbitalAngle(float delta) {
-        return new Angle( periodicConstant.inDegrees() * delta, Unit.DEGREE );
+        return new Angle( periodicConstant.inDegrees() * delta, AngularUnit.DEGREE );
     }
     
     /**
@@ -189,10 +191,10 @@ public class OrbitalProperties {
             // if the difference is below a threshold we can safely assume it's not a twin star system
             // TODO: For a more precise check, avoid this calculation by having an attribute which knows the number of stars added during system creation?
             if (difference < 0.01f) {
-                return new Length(1, Length.Unit.LIGHTYEAR);
+                return new Length(1, Length.DistanceUnit.LIGHTYEAR);
             }
         }
-        return new Length(orbitalRadius.asKilometres() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.Unit.KILOMETERS);
+        return new Length(orbitalRadius.asKilometres() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.DistanceUnit.KILOMETERS);
     }
     
     
