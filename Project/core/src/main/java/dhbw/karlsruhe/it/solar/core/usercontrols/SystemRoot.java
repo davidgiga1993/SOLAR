@@ -2,6 +2,8 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+
 /**
  * Created by Arga on 23.11.2014.
  */

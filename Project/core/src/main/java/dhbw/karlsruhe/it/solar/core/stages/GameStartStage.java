@@ -12,16 +12,27 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstroBodyManager;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
+import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
+import dhbw.karlsruhe.it.solar.core.savegames.ColonyInfo;
+import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.SaveGame;
 import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
+import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
+import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
+import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
@@ -52,8 +63,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         gameStartStageListener();
         addSelectionRectangle();
-        
-        playerManager.initializePlayers();
     }
     
     /**
@@ -106,6 +115,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     private void initExampleSystem() {
+        playerManager.initializePlayers();
         systemCreation();
         placeNewShip("Event Horizon", new Vector2(1200, 500), playerManager.getPlayerNumber(0));
         placeNewShip("Nostromo", new Vector2(1500, 1000), playerManager.getPlayerNumber(0));
@@ -114,7 +124,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         
         // Create an example space station orbiting Earth
         Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), playerManager.getPlayerNumber(1));
-        AstronomicalBody primary = solarSystem.findSatelliteByName(ConfigurationConstants.HOMEWORLD);
+        AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(ConfigurationConstants.HOMEWORLD);
         if (null != primary) {
             babylon.enterOrbit(primary);        
         }
@@ -125,7 +135,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
-        AstronomicalBody primary = solarSystem.findSatelliteByName(nameOfAstronomicalBody);
+        AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(nameOfAstronomicalBody);
         primary.establishColony(colonyName, foundingPlayer, colonists);
     }
 
@@ -168,46 +178,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
         super.act(newDelta);
     }
 
-    /**
-     * Initial demonstration object.
-     * TODO: Remove
-     */
     private void addSelectionRectangle()    {
         selectionRectangle = new SelectionRectangle();
         addActor(selectionRectangle);
-    }
-
-    /**
-     * Creates the solar system for the game.
-     * Method called during startup of a game for creation of a new system map with a range of astronomical objects.
-     */
-    private void systemCreation()   {
-        // Creates the Solar System for the game
-        solarSystem = new SolarSystem(getGameName());
-        solarSystem.createSolarSystem();
-        addActor(solarSystem);
-        addSolarSystemActors(solarSystem);
-    }
-
-    /**
-     * Adds an astronomomical object and its satellites as new actors to the game.
-     * @param body Astronomical Object to be added to the game.
-     */
-    private void addSolarSystemActors(AstronomicalBody body)    {
-        if (body.getNumberOfSatellites() != 0)       {
-            for (AstronomicalBody astronomicalBody : body.getSatellites()) {
-                addActor(astronomicalBody);
-                addSolarSystemActors(astronomicalBody);
-            }
-        }
-    }
-
-    /**
-     * @return Name of the Save Game / System Map currently being played. Currently a stub.
-     * TODO: expand appropriately
-     */
-    private String getGameName()    {
-        return "Sol";
     }
 
     /**
@@ -351,5 +324,73 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public List<Player> getPlayers() {
         return playerManager.getPlayersInGame();
+    }
+
+    public void initPlayers(List<PlayerInfo> players) {
+        for (PlayerInfo playerInfo : players) {
+            playerManager.createNewPlayer(playerInfo);
+        }
+        playerManager.initPlayerOnThisPlatform(0);
+    }
+
+    public void initAstroBodies(List<AstroBodyInfo> astroBodies) {
+        AstroBodyManager astroBodyManager = new AstroBodyManager();
+        AstroBodyInfo system = astroBodies.remove(0);
+        solarSystem = new SolarSystem(system.getName());
+        astroBodyManager.initSolarSystem(solarSystem);
+        addActor(solarSystem);
+        for (AstroBodyInfo body : astroBodies) {
+               addActor(astroBodyManager.createNewBody(body));
+               initColonies(body);
+        }
+        
+    }
+
+    private void initColonies(AstroBodyInfo body) {
+        if(body.isColonized()) {
+            ColonyInfo colony = body.getColonyInfo();
+            placeNewColony(body.getName(), colony.getColonyName(), playerManager.getPlayerFromName(colony.getNameOfOwner()), colony.getPopulation());;
+           }
+    }
+
+    public void initUnits(List<SpaceUnitInfo> spaceUnits) {
+        for (SpaceUnitInfo unit : spaceUnits) {
+//            spaceUnitManager.placeNewUnit(unit);
+        }        
+    }
+    
+    /**
+     * Creates the solar system for the game.
+     * Method called during startup of a game for creation of a new system map with a range of astronomical objects.
+     */
+    private void systemCreation()   {
+        // TODO: Remove - Old method, Creates the Solar System for the game
+        solarSystem = new SolarSystem(getGameName());
+        solarSystem.createSolarSystem();
+        addActor(solarSystem);
+        addSolarSystemActors(solarSystem);
+    }
+
+    /**
+     * Adds an astronomomical object and its satellites as new actors to the game.
+     * @param body Astronomical Object to be added to the game.
+     */
+    private void addSolarSystemActors(AstronomicalBody body)    {
+     // TODO: Remove - Old method
+        if (body.getNumberOfSatellites() != 0)       {
+            for (AstronomicalBody astronomicalBody : body.getSatellites()) {
+                addActor(astronomicalBody);
+                addSolarSystemActors(astronomicalBody);
+            }
+        }
+    }
+    
+    /**
+     * @return Name of the Save Game / System Map currently being played. Currently a stub.
+     * TODO: expand appropriately
+     */
+    private String getGameName()    {
+        // TODO: Remove - Old method
+        return "Solar System";
     }
 }

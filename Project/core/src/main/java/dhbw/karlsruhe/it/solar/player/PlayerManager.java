@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 
+import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
+
 /**
  * Created by Arga on 29.11.2014.
  */
@@ -25,6 +27,7 @@ public class PlayerManager {
         return newPlayer;
     }
 
+    // TODO: old method, remove
     public void initializePlayers() {
         createPlayer("Player One", Color.GREEN);
         createPlayer("Player Two(AI)", Color.RED);
@@ -46,5 +49,22 @@ public class PlayerManager {
 
     public List<Player> getPlayersInGame() {
         return playersInGame;
+    }
+
+    public void createNewPlayer(PlayerInfo player) {
+        createPlayer(player.getPlayerName(), player.getPlayerColor());  
+    }
+    
+    public void initPlayerOnThisPlatform(int number) {
+        playerOnThisPlatform = playersInGame.get(number);
+    }
+
+    public Player getPlayerFromName(String nameOfOwner) {
+        for (Player player : playersInGame) {
+            if(player.getName().equals(nameOfOwner)) {
+                return player;
+            }
+        }
+        return null;
     }
 }

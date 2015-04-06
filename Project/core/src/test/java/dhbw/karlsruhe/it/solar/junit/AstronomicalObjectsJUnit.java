@@ -2,6 +2,12 @@ package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Asteroid;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
@@ -71,7 +77,7 @@ public class AstronomicalObjectsJUnit
     @Test
     public void testStarCreation()
     {   	
-        Actor object = solarSystem.findSatelliteByName("Testsonne");
+        Actor object = solarSystem.findAstronomicalBodyByName("Testsonne");
         assertEquals(true, object instanceof Star);
         assertEquals("Testsonne", object.getName());
      }
@@ -84,7 +90,7 @@ public class AstronomicalObjectsJUnit
     @Test
     public void testPlanetCreation()
     {   	
-        Actor object = star.findSatelliteByName("Testplanet");
+        Actor object = star.findAstronomicalBodyByName("Testplanet");
         assertEquals(true, object instanceof Planet);
         assertEquals("Testplanet", object.getName());
     }
@@ -97,7 +103,7 @@ public class AstronomicalObjectsJUnit
     @Test
     public void testMoonCreation()
     {   	
-        Actor object = planet.findSatelliteByName("Testmond");
+        Actor object = planet.findAstronomicalBodyByName("Testmond");
         assertEquals(true, object instanceof Moon);
         assertEquals("Testmond", object.getName());
     }
@@ -110,7 +116,7 @@ public class AstronomicalObjectsJUnit
     @Test
     public void testAsteroidCreation()
     {   	
-        Actor object = star.findSatelliteByName("Testasteroid");
+        Actor object = star.findAstronomicalBodyByName("Testasteroid");
         assertEquals(true, object instanceof Asteroid);
         assertEquals("Testasteroid", object.getName());
     }

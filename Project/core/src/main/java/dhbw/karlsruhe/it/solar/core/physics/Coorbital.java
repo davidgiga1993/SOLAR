@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
 
 import javax.xml.bind.annotation.XmlElement;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 
 public class Coorbital {
@@ -20,5 +21,13 @@ public class Coorbital {
         this.dominantBody = dominantBody;
         this.nameOfDominantBody = dominantBody.getName();
         this.angularDeviation = angularDeviation;
+    }
+
+    public Angle getAngularDeviation() {
+        return angularDeviation;
+    }
+
+    public String getNameOfDominantBody() {
+        return nameOfDominantBody;
     }
 }

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import com.badlogic.gdx.math.Vector2;
 
-import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spacestation;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
+import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
+import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({OrbitalPropertyInfo.class})

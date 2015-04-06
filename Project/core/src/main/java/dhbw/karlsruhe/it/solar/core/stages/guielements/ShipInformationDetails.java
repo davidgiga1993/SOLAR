@@ -1,6 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
-import dhbw.karlsruhe.it.solar.core.usercontrols.Spaceship;
+import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
 
 /**
  * Created by Arga on 24.02.2015.

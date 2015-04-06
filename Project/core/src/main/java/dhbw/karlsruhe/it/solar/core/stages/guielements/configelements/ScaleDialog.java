@@ -7,11 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.Tooltip;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Planet;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Star;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.util.ArrayList;

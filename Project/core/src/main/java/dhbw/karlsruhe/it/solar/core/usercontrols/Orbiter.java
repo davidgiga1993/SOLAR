@@ -9,12 +9,14 @@ import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 
 /**
  * 
@@ -28,7 +30,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
      protected OrbitalProperties orbitalProperties;
      protected PreviewActor preview;
-     float orbitalRadiusInPixels;
+     protected float orbitalRadiusInPixels;
      protected final Kinematic kinematic;
 
      protected int segments = 250;
@@ -108,7 +110,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
                return 0;
           }
           float radius = primary.getWidth()/2;
-          float normRadius = (float) (primary.physicalProperties.getRadius().asKilometres() / SolarActor.STAGESCALINGFACTOR);
+          float normRadius = (float) (primary.getRadius().asKilometres() / SolarActor.STAGESCALINGFACTOR);
           return radius - normRadius;
      }
      
@@ -239,5 +241,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
 
     public Coorbital getCoorbitalInformation() {
         return orbitalProperties.getCoorbitalInformation();
+    }
+    
+    public float getOrbitalRadiusInPixels() {
+        return orbitalRadiusInPixels;
     }
 }

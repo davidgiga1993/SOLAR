@@ -15,11 +15,11 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 public class OrbitalPropertyInfo {
     
     @XmlElement(name = "Primary")
-    private String orbitPrimary;
+    private String orbitPrimaryName;
     @XmlElement(name = "OrbitalRadius")
     private Length orbitalRadius;
     @XmlElement(name = "PolarAngle")
-    private Angle orbitalAngle;
+    private Angle polarAngle;
     @XmlElement(name = "Retrograde")
     private boolean retrograde;
     @XmlElement(name = "CoorbitalInfo")
@@ -33,12 +33,39 @@ public class OrbitalPropertyInfo {
         if(orbiter.isInOrbit()) {
             this.coorbital = orbiter.getCoorbitalInformation();
             if(null==coorbital) {
-                this.orbitPrimary = orbiter.getPrimary().getName();
+                this.orbitPrimaryName = orbiter.getPrimary().getName();
                 this.orbitalRadius = orbiter.getOrbitalRadius();
-                this.orbitalAngle = orbiter.getOrbitalAngle();
+                this.polarAngle = orbiter.getOrbitalAngle();
             }
             this.retrograde = orbiter.isInRetrogradeOrbit();               
         }
+    }
+
+    public boolean isStationary() {
+        if (orbitalRadius.asKilometres() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public String getPrimary() {
+        return orbitPrimaryName;
+    }
+
+    public Coorbital getCoorbital() {
+        return coorbital;
+    }
+
+    public boolean isRetrograde() {
+        return retrograde;
+    }
+
+    public Length getOrbitalRadius() {
+        return orbitalRadius;
+    }
+
+    public Angle getPolarAngle() {
+        return polarAngle;
     }
 
 }

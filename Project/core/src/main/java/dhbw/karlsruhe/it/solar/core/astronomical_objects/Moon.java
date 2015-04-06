@@ -1,10 +1,11 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.Color;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.usercontrols.PreviewActor;
 
 /**
  * @author Andi

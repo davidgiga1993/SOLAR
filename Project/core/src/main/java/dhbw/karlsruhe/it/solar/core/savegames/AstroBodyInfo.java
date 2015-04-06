@@ -5,7 +5,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.physics.Angle;
+import dhbw.karlsruhe.it.solar.core.physics.BodyType;
+import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
+import dhbw.karlsruhe.it.solar.core.physics.Length;
+import dhbw.karlsruhe.it.solar.core.physics.Mass;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({OrbitalPropertyInfo.class, BodyPropertyInfo.class, ColonyInfo.class})
@@ -37,6 +42,58 @@ public class AstroBodyInfo {
             colonyInfo.fillColonyInfo(body.getColony());
             this.colony = colonyInfo;            
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isStationary() {
+       return orbit.isStationary();
+    }
+
+    public String getPrimary() {
+        return orbit.getPrimary();
+    }
+
+    public Coorbital getCoorbital() {
+        return orbit.getCoorbital();
+    }
+
+    public boolean isRetrograde() {
+        return orbit.isRetrograde();
+    }
+
+    public Length getOrbitalRadius() {
+        return orbit.getOrbitalRadius();
+    }
+
+    public Angle getPolarAngle() {
+        return orbit.getPolarAngle();
+    }
+
+    public Length getRadius() {
+        return body.getRadius();
+    }
+
+    public Mass getMass() {
+        return body.getMass();
+    }
+
+    public BodyType getType() {
+        return body.getType();
+    }
+
+    public RingSystemInfo getRingSystem() {
+        return body.getRingSystem();
+    }
+
+    public boolean isColonized() {
+        return (null!=colony);
+    }
+    
+    public ColonyInfo getColonyInfo() {
+        return colony;
     }
 
 }

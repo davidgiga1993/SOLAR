@@ -3,9 +3,9 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
-import dhbw.karlsruhe.it.solar.core.usercontrols.Asteroid;
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Moon;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Asteroid;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.text.DecimalFormat;

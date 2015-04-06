@@ -22,4 +22,12 @@ public class PlayerInfo {
         this.color = player.getPlayerColor();
     }
 
+    public String getPlayerName() {
+        return name;
+    }
+
+    public Color getPlayerColor() {
+        return color;
+    }
+
 }

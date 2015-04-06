@@ -1,13 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -15,13 +10,14 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 /**
- * Tries to save current game state to a XML file.
+ * Contains the necessary information for converting a game state from the stage into a XML save file and back.
  * @author Andi
  * created: 2015-04-05
  */
@@ -67,7 +63,7 @@ public class SaveGame {
     private List<AstronomicalBody> filterOutAstroBodies() {
         List<AstronomicalBody> newList = new ArrayList<AstronomicalBody>();
         for (Actor actor : saveGameActors) {
-            if(actor instanceof AstronomicalBody) {
+            if(actor instanceof AstronomicalBody && !(actor instanceof PlanetaryRing)) {
                 newList.add((AstronomicalBody)actor);
             }
         }
@@ -102,5 +98,17 @@ public class SaveGame {
             newList.add(si);
         }
         return newList;
+    }
+
+    public List<PlayerInfo> getPlayers() {
+        return players;
+    }
+
+    public List<AstroBodyInfo> getAstroBodies() {
+        return bodies;
+    }
+
+    public List<SpaceUnitInfo> getSpaceUnits() {
+        return units;
     }
 }

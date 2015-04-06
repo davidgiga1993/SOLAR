@@ -3,6 +3,12 @@ package dhbw.karlsruhe.it.solar.core.physics;
 import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Asteroid;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 

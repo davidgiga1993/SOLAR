@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;

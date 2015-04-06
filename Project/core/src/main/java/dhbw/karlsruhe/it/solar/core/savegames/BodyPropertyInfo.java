@@ -5,11 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.physics.BodyType;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class})
@@ -37,5 +37,21 @@ public class BodyPropertyInfo {
             ringInfo.fillRingSystemInfo(body.getRings());
             this.ring = ringInfo;            
         }
+    }
+
+    public Length getRadius() {
+        return radius;
+    }
+
+    public Mass getMass() {
+        return mass;
+    }
+    
+    public BodyType getType() {
+        return type;
+    }
+
+    public RingSystemInfo getRingSystem() {
+        return ring;
     }
 }

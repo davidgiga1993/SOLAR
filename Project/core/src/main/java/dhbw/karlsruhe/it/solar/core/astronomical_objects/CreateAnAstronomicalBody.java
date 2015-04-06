@@ -1,8 +1,8 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing.RingType;
 
 /**
  * Builder pattern class designed to take over the creation of all actors of type astronomical body.

@@ -1,12 +1,13 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
-import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing.RingType;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
 
 /**
  * @author Andi

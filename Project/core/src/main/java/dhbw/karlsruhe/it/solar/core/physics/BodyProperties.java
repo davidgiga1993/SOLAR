@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import dhbw.karlsruhe.it.solar.core.usercontrols.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.usercontrols.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 
 /**
  * Created by Arga on 25.11.2014.

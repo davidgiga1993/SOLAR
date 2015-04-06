@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.Color;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
@@ -47,7 +47,7 @@ public class Planet extends AstronomicalBody  {
     @Override
     public void addSatellite(AstronomicalBody newSatellite) {
         super.addSatellite(newSatellite);
-        if(outermostMoon == null || outermostMoon.orbitalProperties.getOrbitalRadius().asKilometres() < newSatellite.orbitalProperties.getOrbitalRadius().asKilometres()) {
+        if(outermostMoon == null || outermostMoon.getOrbitalRadius().asKilometres() < newSatellite.getOrbitalRadius().asKilometres()) {
             outermostMoon = newSatellite;
         }
     }
@@ -56,7 +56,7 @@ public class Planet extends AstronomicalBody  {
     protected boolean canBeSeen() {
         float size = getWidth();
         if(outermostMoon != null) {
-            size = outermostMoon.orbitalRadiusInPixels * 2;
+            size = outermostMoon.getOrbitalRadiusInPixels() * 2;
         }
         return (size / SolarEngine.get().getSolarCameraZoom()) > 1f;
     }

@@ -30,4 +30,16 @@ public class ColonyInfo {
         
     }
 
+    public String getColonyName() {
+        return name;
+    }
+
+    public String getNameOfOwner() {
+        return ownerName;
+    }
+
+    public Population getPopulation() {
+        return pop;
+    }
+
 }

@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.commands;
 
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SpaceUnit;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 import java.util.List;

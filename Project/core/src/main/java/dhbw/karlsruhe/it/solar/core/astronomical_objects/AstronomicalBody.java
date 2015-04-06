@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -9,8 +9,12 @@ import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 import java.util.ArrayList;
@@ -50,13 +54,18 @@ public abstract class AstronomicalBody extends Orbiter  {
      * @param name Searched for key word
      * @return Satellite object with matching name or null if no satellite was found
      */
-    public AstronomicalBody findSatelliteByName(String name)    {
+    public AstronomicalBody findAstronomicalBodyByName(String name)    {
+        
+        if(this.getName().equals(name)) {
+            return this;
+        }
+        
         AstronomicalBody searchedBody;
         for (AstronomicalBody satellite : satellites) {
             if (satellite.getName().equals(name)) {
                 return satellite;
             }
-            searchedBody = satellite.findSatelliteByName(name);
+            searchedBody = satellite.findAstronomicalBodyByName(name);
             if (null != searchedBody && searchedBody.getName().equals(name)) {
                 return searchedBody;
             }

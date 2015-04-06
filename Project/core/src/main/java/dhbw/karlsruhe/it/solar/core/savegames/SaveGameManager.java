@@ -10,6 +10,11 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 
+/**
+ * Handles the saving and loading process of the game which creates XML save files out of the game state and back.
+ * @author Andi
+ * created 2015-04-06
+ */
 public class SaveGameManager {
     
     private static final String path = "C:\\Users\\Andi\\Desktop\\Studienarbeit\\SaveGames\\SolarSystem.xml";
@@ -47,7 +52,8 @@ public class SaveGameManager {
     }
     
     private void handOverToGameStartStage(SaveGame save) {
-        // TODO Auto-generated method stub
-        
+        stage.initPlayers(save.getPlayers());
+        stage.initAstroBodies(save.getAstroBodies());
+        stage.initUnits(save.getSpaceUnits());       
     }
 }
