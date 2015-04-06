@@ -33,6 +33,12 @@ public class SpaceUnitInfo {
     public void fillSpaceUnitInfo(SpaceUnit unit) {
         this.name = unit.getName();
         this.ownerName = unit.getOwner().getName();
+        if(unit instanceof Spaceship) {
+            type = "Ship";
+        }
+        if(unit instanceof Spacestation) {
+            type = "Station";
+        }
         if(unit.isInOrbit()) {
             OrbitalPropertyInfo orbitalInfo = new OrbitalPropertyInfo();
             orbitalInfo.fillOrbitalPropertyInfo(unit);
@@ -40,13 +46,27 @@ public class SpaceUnitInfo {
             return;
         }
         this.position = new Vector2(unit.getX(),unit.getY());
-        if(unit instanceof Spaceship) {
-            type = "Ship";
-        }
-        if(unit instanceof Spacestation) {
-            type = "Station";
-        }
         
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Vector2 getLocation() {
+        return position;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public OrbitalPropertyInfo getOrbitInfo() {
+        return orbit;
+    }
+
+    public String getType() {
+        return type;
     }
 
 }

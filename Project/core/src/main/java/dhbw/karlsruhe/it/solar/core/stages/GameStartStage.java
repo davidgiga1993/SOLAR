@@ -31,6 +31,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnitManager;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
 import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
@@ -334,13 +335,13 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     public void initAstroBodies(List<AstroBodyInfo> astroBodies) {
-        AstroBodyManager astroBodyManager = new AstroBodyManager();
+        AstroBodyManager manager = new AstroBodyManager();
         AstroBodyInfo system = astroBodies.remove(0);
         solarSystem = new SolarSystem(system.getName());
-        astroBodyManager.initSolarSystem(solarSystem);
+        manager.initSolarSystem(solarSystem);
         addActor(solarSystem);
         for (AstroBodyInfo body : astroBodies) {
-               addActor(astroBodyManager.createNewBody(body));
+               addActor(manager.createNewBody(body));
                initColonies(body);
         }
         
@@ -354,8 +355,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     public void initUnits(List<SpaceUnitInfo> spaceUnits) {
+        SpaceUnitManager manager = new SpaceUnitManager(playerManager,solarSystem);
         for (SpaceUnitInfo unit : spaceUnits) {
-//            spaceUnitManager.placeNewUnit(unit);
+           addActor(manager.createNewUnit(unit));
         }        
     }
     

@@ -58,7 +58,7 @@ public abstract class SolarActor extends Actor implements Telegraph {
      * @param distance original distance
      * @return scaled down distance
      */
-    protected static float scaleDistanceToStage(double distance) {
+    public static float scaleDistanceToStage(double distance) {
         //TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
         return (float) (distance / STAGESCALINGFACTOR);
     }

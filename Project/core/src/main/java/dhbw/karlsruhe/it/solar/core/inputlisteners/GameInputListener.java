@@ -14,6 +14,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToAstronomicalBodyCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToKineticObjectCommand;
+import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;

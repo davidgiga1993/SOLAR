@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.space_units;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
@@ -120,7 +119,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
     
      /**
       * Sets the orbital radius relative to the parameter scaling setting.
-      * Different implementation to AstronomicalBody since space units have different orbit scaling depending on what type of object they orbit
+      * Different implementation to AstronomicalBody since space units have different orbit scaling depending on what type of object they orbit. 
       * The method getOrbitalSpaceUnitScaleFactor() determines the appropriate scale setting for the object the unit is trying to orbit.
       */
      private void changeOrbitScaleSpaceUnit() {
@@ -133,8 +132,8 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
       * @param scale Scale value is derived from the configuration constants of the appropriate satellite to the orbital Primary body.
       */
      private void setOrbitScale() {
-          currentOrbitScale = orbitalProperties.getOrbitalSpaceUnitScaleFactor().getOrbitScale();
-        actorScale = new SolarActorScale(currentShapeScale, currentOrbitScale);
+         currentOrbitScale = orbitalProperties.getOrbitalSpaceUnitScaleFactor().getOrbitScale();
+         actorScale = new SolarActorScale(currentShapeScale, currentOrbitScale);
     }
      
     /**

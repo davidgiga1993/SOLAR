@@ -17,7 +17,7 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
  */
 public class SaveGameManager {
     
-    private static final String path = "C:\\Users\\Andi\\Desktop\\Studienarbeit\\SaveGames\\SolarSystem.xml";
+    private static final String path = "SaveGames\\SolarSystem.xml";
     private GameStartStage stage;
     
     public SaveGameManager(GameStartStage stage) {

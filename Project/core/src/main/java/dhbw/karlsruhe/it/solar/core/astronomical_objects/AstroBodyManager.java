@@ -28,10 +28,19 @@ public class AstroBodyManager {
        
     }
     
+    /**
+     * Required setting for the manager. The manager needs to know the stellar system as the system root.
+     * @param system 
+     */
     public void initSolarSystem(SolarSystem system) {
         this.system = system;
     }
 
+    /**
+     * Creates a new Astronomical Body based on the information contained in the parameter.
+     * @param body Information which will be used to construct a new celestial body.
+     * @return Newly created Astronomical Body object.
+     */
     public AstronomicalBody createNewBody(AstroBodyInfo body) {
         this.body = body;      
         return extractType();              
