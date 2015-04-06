@@ -14,3 +14,12 @@ Project/Solar-android/bin/*
 Project/.idea/*
 SOLAR/*
 Solar/*
+
+Project/assets/data/Rings_Uranus_old.png
+Project/assets/data/Rings_Jupiter_old.png
+Project/assets/data/Rings_Saturn_old.png
+Project/assets/data/Rings_Neptune_old.png
+Project/UML/PhysicsPackage2.uml
+shaders.txt
+*.uml
+Project/target/MANIFEST.MF
