@@ -40,7 +40,7 @@ public class KartenbewegungJUnit
 			@Override
 			public void run() {
 				engine.removeStage("StartStage");
-				GameStartStage.startGame();
+				GameStartStage.startNewGame();
 			}
 		};
 		TestHelper.sendRunnableToOpenGL(startGame);

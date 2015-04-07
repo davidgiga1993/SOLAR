@@ -58,8 +58,8 @@ public class GameInputListener extends InputListener {
             Gdx.app.postRunnable(new Runnable() {
                 @Override
                 public void run() {
-//                    SaveGameManager save = new SaveGameManager(stage);
-//                    save.saveToXML();
+                    SaveGameManager save = new SaveGameManager(stage);
+                    save.saveCurrentGame();
                     GameStartStage.endGame();
                 }
             });

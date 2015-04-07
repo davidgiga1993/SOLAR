@@ -4,14 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstroBodyManager;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
@@ -20,11 +17,9 @@ import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.ColonyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
-import dhbw.karlsruhe.it.solar.core.savegames.SaveGame;
 import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
 import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -32,8 +27,6 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnitManager;
-import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
-import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
@@ -67,11 +60,34 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
     
     /**
-     * Call this to initialize a new game.
+     * Initialize a new game creating a new system.
      */
-    public static void startGame(){
+    public static void startNewGame() {
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
+        GameStartStage gameStage = initGameStartStage(engine);
+        GameHUDStage gameHUDStage = initGameHUDStage(engine);
+        
+        gameStage.initNewGame();
+        
+        initMultiplexer(gameStage, gameHUDStage);       
+    }
+    
+    /**
+     * Initialize a game using the previously saved game state.
+     */
+    public static void startCurrentGame() {
+        SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
+
+        GameStartStage gameStage = initGameStartStage(engine);
+        GameHUDStage gameHUDStage = initGameHUDStage(engine);
+        
+        gameStage.initCurrentGame();
+        
+        initMultiplexer(gameStage, gameHUDStage);
+    }
+
+    private static GameStartStage initGameStartStage(SolarEngine engine) {
         GameStartStage gameStage = new GameStartStage(engine);
         engine.addStage(gameStage);
 
@@ -79,18 +95,23 @@ public class GameStartStage extends BaseStage implements Telegraph {
             HUDStage hudStage = new HUDStage(engine, "HUD");
             engine.addStage(hudStage);
         }
+        return gameStage;
+    }
 
-        GameHUDStage gameHUDStage = new GameHUDStage(engine);
-        engine.addStage(gameHUDStage);
-
-        gameHUDStage.init();
-        gameStage.init();
-
+    private static void initMultiplexer(GameStartStage gameStage,
+            GameHUDStage gameHUDStage) {
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(gameHUDStage);
         multiplexer.addProcessor(gameStage);
         Gdx.input.setInputProcessor(multiplexer);
+    }
 
+    private static GameHUDStage initGameHUDStage(SolarEngine engine) {
+        GameHUDStage gameHUDStage = new GameHUDStage(engine);
+        engine.addStage(gameHUDStage);
+
+        gameHUDStage.init();
+        return gameHUDStage;
     }
 
     public static void endGame() {
@@ -108,31 +129,14 @@ public class GameStartStage extends BaseStage implements Telegraph {
         engine.startGame();
     }
 
-    public void init() {
+    public void initCurrentGame() {
         SaveGameManager loadedGame = new SaveGameManager(this);
-        loadedGame.loadGameFromXML();
-        
-//        initExampleSystem();
+        loadedGame.loadCurrentGame();
     }
-
-    private void initExampleSystem() {
-        playerManager.initializePlayers();
-        systemCreation();
-        placeNewShip("Event Horizon", new Vector2(1200, 500), playerManager.getPlayerNumber(0));
-        placeNewShip("Nostromo", new Vector2(1500, 1000), playerManager.getPlayerNumber(0));
-        placeNewShip("Destiny", new Vector2(1550, 1050), playerManager.getPlayerNumber(1));
-        placeNewStation("Deep Space Nine", new Vector2(1500, 0), playerManager.getPlayerNumber(0));
-        
-        // Create an example space station orbiting Earth
-        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), playerManager.getPlayerNumber(1));
-        AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(ConfigurationConstants.HOMEWORLD);
-        if (null != primary) {
-            babylon.enterOrbit(primary);        
-        }
-        //place some example colonies
-        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7.125f, Unit.BILLION));
-        placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(31.415f, Unit.MILLION));
-        placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(1.1235f, Unit.THOUSAND));
+    
+    public void initNewGame() {
+        SaveGameManager loadedGame = new SaveGameManager(this);
+        loadedGame.loadNewGame();        
     }
 
     private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
@@ -182,29 +186,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private void addSelectionRectangle()    {
         selectionRectangle = new SelectionRectangle();
         addActor(selectionRectangle);
-    }
-
-    /**
-     * Adds a new spaceship object to the game.
-     * @param name Desired name of the spaceship.
-     * @param startlocation Desired location at which the ship is to appear.
-     */
-    private void placeNewShip(String name, Vector2 startlocation, Player owner)   {
-        Spaceship newShip = Spaceship.placeNewShip(name, startlocation, owner);
-        addActor(newShip);
-    }
-    
-    /**
-     * Adds a new space station object to the game.
-     * @param name Desired name of the station.
-     * @param startlocation Desired location at which the station is to appear.
-     */
-    private Spacestation placeNewStation(String name, Vector2 startlocation, Player owner)    {
-        Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
-        addActor(newStation);
-        return newStation;
-    }
-    
+    }    
 
     /**
      * Waits for mouse input in the game and interprets it accordingly.
@@ -327,6 +309,10 @@ public class GameStartStage extends BaseStage implements Telegraph {
         return playerManager.getPlayersInGame();
     }
 
+    /**
+     * Converts player information in the form of PlayerInfo into players on the game stage. Part of the loading process.
+     * @param players
+     */
     public void initPlayers(List<PlayerInfo> players) {
         for (PlayerInfo playerInfo : players) {
             playerManager.createNewPlayer(playerInfo);
@@ -334,6 +320,10 @@ public class GameStartStage extends BaseStage implements Telegraph {
         playerManager.initPlayerOnThisPlatform(0);
     }
 
+    /**
+     * Converts astronomical body information in the form of AstroBodyInfo into celestial objects on the game stage. Part of the loading process.
+     * @param astroBodies
+     */
     public void initAstroBodies(List<AstroBodyInfo> astroBodies) {
         AstroBodyManager manager = new AstroBodyManager();
         AstroBodyInfo system = astroBodies.remove(0);
@@ -354,45 +344,14 @@ public class GameStartStage extends BaseStage implements Telegraph {
            }
     }
 
+    /**
+     * Converts unit information in the form of SpaceUnitInfo into space unit objects on the game stage. Part of the loading process.
+     * @param spaceUnits
+     */
     public void initUnits(List<SpaceUnitInfo> spaceUnits) {
         SpaceUnitManager manager = new SpaceUnitManager(playerManager,solarSystem);
         for (SpaceUnitInfo unit : spaceUnits) {
            addActor(manager.createNewUnit(unit));
         }        
-    }
-    
-    /**
-     * Creates the solar system for the game.
-     * Method called during startup of a game for creation of a new system map with a range of astronomical objects.
-     */
-    private void systemCreation()   {
-        // TODO: Remove - Old method, Creates the Solar System for the game
-        solarSystem = new SolarSystem(getGameName());
-        solarSystem.createSolarSystem();
-        addActor(solarSystem);
-        addSolarSystemActors(solarSystem);
-    }
-
-    /**
-     * Adds an astronomomical object and its satellites as new actors to the game.
-     * @param body Astronomical Object to be added to the game.
-     */
-    private void addSolarSystemActors(AstronomicalBody body)    {
-     // TODO: Remove - Old method
-        if (body.getNumberOfSatellites() != 0)       {
-            for (AstronomicalBody astronomicalBody : body.getSatellites()) {
-                addActor(astronomicalBody);
-                addSolarSystemActors(astronomicalBody);
-            }
-        }
-    }
-    
-    /**
-     * @return Name of the Save Game / System Map currently being played. Currently a stub.
-     * TODO: expand appropriately
-     */
-    private String getGameName()    {
-        // TODO: Remove - Old method
-        return "Solar System";
     }
 }

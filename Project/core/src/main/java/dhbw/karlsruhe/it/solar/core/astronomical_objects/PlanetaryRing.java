@@ -1,7 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,7 +12,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.graphics.AnnulusShader;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;

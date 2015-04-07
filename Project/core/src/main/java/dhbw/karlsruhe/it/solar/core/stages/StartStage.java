@@ -7,7 +7,8 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
 public class StartStage extends HUDStage {
-    private Label labelStart;
+    private Label labelContinue;
+    private Label labelNewGame;
     private Label labelSettings;
     private Label labelExit;
     private static final String STAGE = "StartStage";
@@ -27,11 +28,19 @@ public class StartStage extends HUDStage {
         }
 
 
-        labelStart = new MenuButton("Start game", se) {
+        labelContinue = new MenuButton("Continue Game", se) {
             @Override
             protected void onClick() {
                 se.removeStage(STAGE);
-                GameStartStage.startGame();
+                GameStartStage.startCurrentGame();
+            }
+        };
+        
+        labelNewGame = new MenuButton("Start New Game", se) {
+            @Override
+            protected void onClick() {
+                se.removeStage(STAGE);
+                GameStartStage.startNewGame();
             }
         };
 
@@ -51,7 +60,9 @@ public class StartStage extends HUDStage {
             }
         };
 
-        menuTable.add(labelStart).expandX().pad(10f).height(25);
+        menuTable.add(labelContinue).expandX().pad(10f).height(25);
+        menuTable.row();
+        menuTable.add(labelNewGame).expandX().pad(10f).height(25);
         menuTable.row();
         menuTable.add(labelSettings).expandX().pad(10f).height(25);
         menuTable.row();
