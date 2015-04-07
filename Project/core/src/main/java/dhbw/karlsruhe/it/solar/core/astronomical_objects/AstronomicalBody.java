@@ -183,9 +183,9 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public void abandonColony() {
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, this);  
         colony = null;
         ((GameStartStage)getStage()).refreshSelection(this);
-        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, this);  
     }
 
     public boolean isPlayerAlsoColonyOwner() {

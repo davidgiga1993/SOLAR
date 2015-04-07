@@ -12,7 +12,6 @@ import dhbw.karlsruhe.it.solar.core.commands.OrbitalInsertionCommand;
 import dhbw.karlsruhe.it.solar.core.commands.SelfDestructCommand;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 

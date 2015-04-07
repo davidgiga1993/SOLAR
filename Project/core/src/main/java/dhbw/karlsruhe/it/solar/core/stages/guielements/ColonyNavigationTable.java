@@ -39,7 +39,16 @@ public class ColonyNavigationTable extends BaseNavigationTable {
     
     private void removeSingleColony(Actor actor) {
         allColonies.remove(actor);
-        allLabels.remove(getLabelOfActor(actor));
+        allLabels.remove(getLabelOfColony(((AstronomicalBody)actor).getColonyName()));
+    }
+
+    private BaseNavigationLabel getLabelOfColony(String colonyName) {
+        for (BaseNavigationLabel colonyLabel : allLabels) {
+            if(colonyLabel.name.equals(colonyName)) {
+                return colonyLabel;
+            }
+        }
+        return null;
     }
 
     @Override
