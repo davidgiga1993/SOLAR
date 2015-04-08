@@ -111,4 +111,15 @@ public class SaveGame {
     public List<SpaceUnitInfo> getSpaceUnits() {
         return units;
     }
+
+    public List<MissionInfoExtended> getMissions() {
+        List<MissionInfoExtended> missionList = new ArrayList<MissionInfoExtended>();
+        for (SpaceUnitInfo unit : units) {
+            MissionInfo mission = unit.getMissionInfo();
+            if(null!=mission) {
+                missionList.add(new MissionInfoExtended(unit.getName(), mission));
+            }
+        }
+        return missionList;
+    }
 }

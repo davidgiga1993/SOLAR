@@ -12,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
 import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({OrbitalPropertyInfo.class})
+@XmlSeeAlso({OrbitalPropertyInfo.class, MissionInfo.class})
 public class SpaceUnitInfo {
     
     @XmlElement(name = "UnitName")
@@ -25,6 +25,8 @@ public class SpaceUnitInfo {
     private OrbitalPropertyInfo orbit;
     @XmlElement(name = "AbsolutePosition")
     private Vector2 position;
+    @XmlElement(name = "Destination")
+    private MissionInfo mission;
 
     public SpaceUnitInfo() {
         
@@ -39,14 +41,18 @@ public class SpaceUnitInfo {
         if(unit instanceof Spacestation) {
             type = "Station";
         }
+        if(unit.isOnMission()) {
+            MissionInfo missionInfo = new MissionInfo();
+            missionInfo.fillMissionInfo(unit);
+            this.mission = missionInfo;
+        }
         if(unit.isInOrbit()) {
             OrbitalPropertyInfo orbitalInfo = new OrbitalPropertyInfo();
             orbitalInfo.fillOrbitalPropertyInfo(unit);
             this.orbit = orbitalInfo;
             return;
         }
-        this.position = new Vector2(unit.getX(),unit.getY());
-        
+        this.position = new Vector2(unit.getX(),unit.getY());      
     }
 
     public String getName() {
@@ -67,6 +73,10 @@ public class SpaceUnitInfo {
 
     public String getType() {
         return type;
+    }
+
+    public MissionInfo getMissionInfo() {
+        return mission;
     }
 
 }

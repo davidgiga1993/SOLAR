@@ -9,8 +9,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.utils.Array;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstroBodyManager;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
@@ -22,6 +24,7 @@ import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.ColonyInfo;
+import dhbw.karlsruhe.it.solar.core.savegames.MissionInfoExtended;
 import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
 import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
@@ -36,7 +39,6 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
 
-import java.nio.file.attribute.PosixFilePermission;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -359,6 +361,47 @@ public class GameStartStage extends BaseStage implements Telegraph {
         for (SpaceUnitInfo unit : spaceUnits) {
            addActor(manager.createNewUnit(unit));
         }        
+    } 
+
+    /**
+     * Converts mission information in the form of MissionInfoExtended into orders to space units. Part of the loading process.
+     * @param listOfMissions
+     */
+    public void assignMission(List<MissionInfoExtended> listOfMissions) {     
+        for (MissionInfoExtended mission : listOfMissions) {
+            assignDestination(mission);         
+        }   
+    }
+
+    private void assignDestination(MissionInfoExtended mission) {
+        SpaceUnit unit = (SpaceUnit)findActorByName(mission.getUnitName());
+        
+        if(mission.isMissionTargetAnObject()) {
+            assignObjectTarget(mission, unit);
+            return;
+        }
+        unit.setDestination(mission.getDestinationCoordinates());
+    }
+
+    private void assignObjectTarget(MissionInfoExtended mission, SpaceUnit unit) {
+        SolarActor target = (SolarActor)findActorByName(mission.getDestinationName());
+        if(target instanceof AstronomicalBody) {
+            unit.setDestination((AstronomicalBody)target);
+            return;
+        }
+        if(target instanceof KinematicObject) {
+            unit.setDestination((KinematicObject)target);
+            return;
+        }
+    }
+
+    private Actor findActorByName(String unitName) {
+        for (Actor gameActor : getActors()) {
+            if(unitName.equals(gameActor.getName())) {
+                return gameActor;
+            }
+        }
+        return null;
     }
     
     /**

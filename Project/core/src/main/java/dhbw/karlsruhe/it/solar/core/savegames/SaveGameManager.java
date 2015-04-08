@@ -64,6 +64,12 @@ public class SaveGameManager {
     private void handOverToGameStartStage(SaveGame save) {
         stage.initPlayers(save.getPlayers());
         stage.initAstroBodies(save.getAstroBodies());
-        stage.initUnits(save.getSpaceUnits());       
+        stage.initUnits(save.getSpaceUnits());
+        stage.assignMission(save.getMissions());
+    }
+
+    public boolean isThereACurrentSaveGame() {
+        File path = new File(PATH);
+        return (path.exists() && !path.isDirectory());
     }
 }

@@ -3,6 +3,8 @@ package dhbw.karlsruhe.it.solar.core.stages;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
+import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
@@ -60,8 +62,10 @@ public class StartStage extends HUDStage {
             }
         };
 
-        menuTable.add(labelContinue).expandX().pad(10f).height(25);
-        menuTable.row();
+        if(isThereACurrentSaveGame()) {
+            menuTable.add(labelContinue).expandX().pad(10f).height(25);
+            menuTable.row();            
+        }
         menuTable.add(labelNewGame).expandX().pad(10f).height(25);
         menuTable.row();
         menuTable.add(labelSettings).expandX().pad(10f).height(25);
@@ -69,6 +73,10 @@ public class StartStage extends HUDStage {
         menuTable.add(labelExit).expandX().pad(10f).height(25);
 
         addActor(menuTable);
+    }
+
+    private boolean isThereACurrentSaveGame() {
+        return new SaveGameManager(null).isThereACurrentSaveGame();
     }
 
 

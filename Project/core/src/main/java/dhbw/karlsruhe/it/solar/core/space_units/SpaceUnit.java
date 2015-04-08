@@ -37,6 +37,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
 
     protected Player owner;
     protected Vector2 destination;
+    protected String nameOfDestination;
      protected float speed;
     AIModule aiModule;
     AIOutput aiOutput;
@@ -144,20 +145,17 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
          if(isInOrbit())        {
               leaveOrbit();
          }
-         //TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination);
         this.destination = destination;
-        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + " (" + destination.x + "/" + destination.y  + ").");
     }
     
     public void setDestination(KinematicObject destination)    {
          if(isInOrbit())         {
               leaveOrbit();     
          }
-         //TODO: Entferne Debug-konsolenausgabe
         this.aiModule.setTarget(destination.getKinematic());
         this.destination = destination.getKinematic().getPosition();
-        System.out.println("Neues Ziel gesetzt f\u00fcr " + this.getName() + ": " + destination.toString() + ".");
+        this.nameOfDestination = destination.getName();
     }
     
     public void setDestination(AstronomicalBody destination) {
@@ -172,6 +170,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
           }
         this.aiModule.setTarget(destination);
         this.destination = destination.getKinematic().getPosition();
+        this.nameOfDestination = destination.getName();
      }
 
      public void establishColony(AstronomicalBody destination, Population colonists) {
@@ -207,6 +206,7 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      private void stopMovement() {
           //TODO: Tell the AIModule to fuck off or something like that.
          destination = null;
+         nameOfDestination = null;
          this.aiModule.setTarget(this);
      }
      
@@ -342,5 +342,13 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
 
     public Player getOwner() {
         return owner;
+    }
+
+    public boolean isOnMission() {
+        return null != destination;
+    }
+
+    public String getNameOfDestination() {
+        return nameOfDestination;
     }
 }

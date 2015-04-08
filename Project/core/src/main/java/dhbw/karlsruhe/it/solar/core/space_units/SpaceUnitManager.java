@@ -6,8 +6,10 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.savegames.MissionInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.OrbitalPropertyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
@@ -26,6 +28,7 @@ public class SpaceUnitManager {
     private OrbitalPropertyInfo orbitInfo;
     private Vector2 startlocation;
     private AstronomicalBody primary;
+    private MissionInfo mission;
     
     
     public SpaceUnitManager(PlayerManager playerManager, SolarSystem solarSystem) {
@@ -44,6 +47,7 @@ public class SpaceUnitManager {
         this.owner = playerManager.getPlayerFromName(unit.getOwnerName());
         this.orbitInfo = unit.getOrbitInfo();
         this.startlocation = unit.getLocation();
+        this.mission = unit.getMissionInfo();
         
         return createUnitBasedOnType(unit, type);         
     }
@@ -87,7 +91,7 @@ public class SpaceUnitManager {
         Spaceship ship;
         
         if(null!=startlocation) {
-            ship = Spaceship.placeNewShip(name, startlocation, owner);  
+            ship = Spaceship.placeNewShip(name, startlocation, owner);
             return ship;
         }
         
