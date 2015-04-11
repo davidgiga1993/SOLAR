@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
+import dhbw.karlsruhe.it.solar.core.physics.Biosphere.BiosphereType;
 
 /**
  * Builder pattern class designed to take over the creation of all actors of type astronomical body.
@@ -15,10 +16,15 @@ public final class CreateAnAstronomicalBody {
     private OrbitalProperties orbitalProperties;
     private BodyType type;
     private boolean ringed = false;
+    private boolean atmosphere = false;
     private Length outerRadiusOfRings;
     private Length innerRadiusOfRings;
     private Mass massOfRings;
     private RingType typeOfRings;
+    private Pressure surfacePressure;
+    private AtmosphericComposition atmosphericComposition;
+    private Hydrosphere hydro;
+    private Biosphere bio;
     
     private CreateAnAstronomicalBody(String name) {
         this.name = name;
@@ -92,8 +98,8 @@ public final class CreateAnAstronomicalBody {
          * @param bodyMass Mass of the astronomical body.
          * @return
          */
-        public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass) {
-            CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null);
+        public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass, SurfaceTemperatures temperatures) {
+            CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null, null, temperatures);
             return new CreatableType();
         }
         
@@ -117,6 +123,41 @@ public final class CreateAnAstronomicalBody {
                 CreateAnAstronomicalBody.this.typeOfRings = typeOfRings;
                 return this;        
             }
+                        
+            /**
+             * Add an atmosphere to the astronomical object.
+             * @param surfacePressure
+             * @param atmosphericComposition
+             * @return
+             */
+            public CreatableType withAnAtmosphereOf(Pressure surfacePressure, AtmosphericComposition atmosphericComposition) {
+                CreateAnAstronomicalBody.this.atmosphere = true;
+                CreateAnAstronomicalBody.this.surfacePressure = surfacePressure;
+                CreateAnAstronomicalBody.this.atmosphericComposition = atmosphericComposition;
+                return this;        
+            }     
+            
+            /**
+             * Add a biosphere of natural lifeforms to the planet
+             * @param bioType
+             * @param biosphereCoverage
+             * @return
+             */
+            public CreatableType addBiosphere(BiosphereType bioType, float biosphereCoverage) {
+                CreateAnAstronomicalBody.this.bio = new Biosphere(bioType,biosphereCoverage);             
+                return this;        
+            }    
+            
+            /**
+             * Add a hydrosphere to the astronomical object
+             * @param surfacePressure
+             * @param atmosphericComposition
+             * @return
+             */
+            public CreatableType withAHydrosphereOf(Hydrosphere hydro) {
+                CreateAnAstronomicalBody.this.hydro = hydro;
+                return this;        
+            }  
             
             /**
              * Determines which type of object is to be created.
@@ -168,35 +209,60 @@ public final class CreateAnAstronomicalBody {
     private Star buildStar(SolarSystem solarSystem) {
         bodyProperties.setBodyType(type);
         Star newBody = new Star(name, orbitalProperties, bodyProperties);
-        setUpRings(newBody);
-        newBody.initializeAstronomicalBody(solarSystem);
+        setupBody(solarSystem, newBody);
         return newBody;
     }
     
     private Planet buildPlanet(SolarSystem solarSystem) {
         bodyProperties.setBodyType(type);
         Planet newBody = new Planet(name, orbitalProperties, bodyProperties);
-        setUpRings(newBody);        
-        newBody.initializeAstronomicalBody(solarSystem);
+        setupBody(solarSystem, newBody);
         return newBody;
     }
     
     private Moon buildMoon(SolarSystem solarSystem) {
         bodyProperties.setBodyType(type);
         Moon newBody = new Moon(name, orbitalProperties, bodyProperties);
-        setUpRings(newBody);        
-        newBody.initializeAstronomicalBody(solarSystem);
+        setupBody(solarSystem, newBody);
         return newBody;
     }
     
     private Asteroid buildAsteroid(SolarSystem solarSystem) {
         bodyProperties.setBodyType(type);
         Asteroid newBody = new Asteroid(name, orbitalProperties, bodyProperties);
-        setUpRings(newBody);        
-        newBody.initializeAstronomicalBody(solarSystem);
+        setupBody(solarSystem, newBody);
         return newBody;
     }
     
+    private void setupBody(SolarSystem solarSystem, AstronomicalBody newBody) {
+        setUpRings(newBody);
+        setUpAtmosphere(newBody);
+        setUpHydrosphere(newBody);
+        setUpBiosphere(newBody);
+        newBody.initializeAstronomicalBody(solarSystem);
+    }
+    
+    private void setUpBiosphere(AstronomicalBody newBody) {
+        if(null != bio) {
+            newBody.setUpBiosphere(bio);
+        }
+        
+    }
+    
+    private void setUpHydrosphere(AstronomicalBody newBody) {
+        if(null != hydro) {
+            newBody.setUpHydrosphere(hydro);
+        }
+        
+    }
+
+    private void setUpAtmosphere(AstronomicalBody newBody) {
+        if(atmosphere) {
+            newBody.setUpAtmosphere(new Atmosphere(surfacePressure,atmosphericComposition));
+        }
+        
+    }
+
     private void setUpRings(AstronomicalBody newBody) {
         if(ringed)        {
             newBody.setUpRings(new PlanetaryRing(newBody, massOfRings, innerRadiusOfRings, outerRadiusOfRings, typeOfRings));

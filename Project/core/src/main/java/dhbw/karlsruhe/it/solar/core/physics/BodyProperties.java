@@ -11,11 +11,19 @@ public class BodyProperties {
     private Length radius;
     private PlanetaryRing ring;
     private BodyType type;
+    private Atmosphere atmosphere;
+    private SurfaceTemperatures temperatures;
+    private Hydrosphere hydro;
+    private Biosphere bio;
+    private SurfaceGravity gravity;
 
-    public BodyProperties(Mass mass, Length radius, PlanetaryRing ring) {
+    public BodyProperties(Mass mass, Length radius, PlanetaryRing ring, Atmosphere atmosphere, SurfaceTemperatures temperatures) {
         this.mass = mass;
         this.radius = radius;
         this.ring = ring;
+        this.atmosphere = atmosphere;
+        this.temperatures = temperatures;
+        this.gravity = new SurfaceGravity(mass, radius);
     }
     
     public Mass getMass()    {
@@ -56,5 +64,33 @@ public class BodyProperties {
             return true;
         }
         return false;
+    }
+
+    public void setUpAtmosphere(Atmosphere atmosphere) {
+        this.atmosphere = atmosphere;
+    }
+
+    public Atmosphere getAtmosphere() {
+        return atmosphere;
+    }
+
+    public SurfaceTemperatures getTemperatures() {
+        return temperatures;
+    }
+
+    public Hydrosphere getHydrosphere() {
+        return hydro;
+    }
+
+    public void setUpHydrosphere(Hydrosphere hydro) {
+        this.hydro = hydro;
+    }
+
+    public Biosphere getBiosphere() {
+        return bio;
+    }
+
+    public void setUpBiosphere(Biosphere bio) {
+        this.bio = bio;
     }
 }

@@ -6,6 +6,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
 public class PhysicalConstants {
 	public static final float GRAVITATIONAL_CONSTANT = 0.00000000006673f;
 	public static final float PI_SQUARE_TIMES_FOUR = 39.478417604357434475337963999505f;
+	public static final float EARTH_SURFACE_GRAVITY = 9.80665f;
 
     private PhysicalConstants() {
         

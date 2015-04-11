@@ -18,6 +18,7 @@ public class Length {
     public static final float LIGHT_YEARS_IN_ASTRONOMICAL_UNITS = 63241.0770842f;
     public static final float PARSEC_IN_ASTRONOMICAL_UNITS = 206264.80599999f;
     public static final float PARSEC_IN_LIGHT_YEARS = 3.2615637732f;
+    public static final float KILOMETER_IN_METERS = 1000;
 
     @XmlElement
     protected float value = 0f;
@@ -103,6 +104,23 @@ public class Length {
             default:
                 return Float.NaN;
         }
+    }
+    
+    public float asMetres() {
+        switch (unit) {
+        case KILOMETERS:
+            return value * KILOMETER_IN_METERS;
+        case LUNAR_DISTANCE:
+            return value * LUNAR_DISTANCE_IN_KILOMETRES * KILOMETER_IN_METERS;
+        case ASTRONOMICAL_UNITS:
+            return value * ASTRONOMICAL_UNIT_IN_KILOMETRES * KILOMETER_IN_METERS;
+        case LIGHTYEAR:
+            return value * LIGHT_YEAR_IN_KILOMETERS * KILOMETER_IN_METERS;
+        case PARSEC:
+            return value * PARSEC_IN_LIGHT_YEARS * LIGHT_YEAR_IN_KILOMETERS * KILOMETER_IN_METERS;
+        default:
+            return Float.NaN;
+    }
     }
 
     public enum DistanceUnit {

@@ -11,6 +11,7 @@ import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 public class StartStage extends HUDStage {
     private Label labelContinue;
     private Label labelNewGame;
+    private Label labelScenario;
     private Label labelSettings;
     private Label labelExit;
     private static final String STAGE = "StartStage";
@@ -45,6 +46,14 @@ public class StartStage extends HUDStage {
                 GameStartStage.startNewGame();
             }
         };
+        
+        labelScenario = new MenuButton("Scenario: Sol System", se) {
+            @Override
+            protected void onClick() {
+                se.removeStage(STAGE);
+                GameStartStage.startSolarScenario();
+            }
+        };
 
         labelSettings = new MenuButton("Settings", se) {
             @Override
@@ -67,6 +76,8 @@ public class StartStage extends HUDStage {
             menuTable.row();            
         }
         menuTable.add(labelNewGame).expandX().pad(10f).height(25);
+        menuTable.row();
+        menuTable.add(labelScenario).expandX().pad(10f).height(25);
         menuTable.row();
         menuTable.add(labelSettings).expandX().pad(10f).height(25);
         menuTable.row();

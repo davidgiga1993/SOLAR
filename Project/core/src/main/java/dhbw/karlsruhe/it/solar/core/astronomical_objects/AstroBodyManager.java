@@ -4,13 +4,17 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBod
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody.CreatableProperties.CreatableType;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.AsteroidType;
+import dhbw.karlsruhe.it.solar.core.physics.Atmosphere;
+import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
 import dhbw.karlsruhe.it.solar.core.physics.BodyType;
 import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
+import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
 import dhbw.karlsruhe.it.solar.core.physics.MoonType;
 import dhbw.karlsruhe.it.solar.core.physics.PlanetType;
 import dhbw.karlsruhe.it.solar.core.physics.StarType;
+import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperatures;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.RingSystemInfo;
 
@@ -66,19 +70,43 @@ public class AstroBodyManager {
     private CreatableType extractRings() {
         RingSystemInfo rings = body.getRingSystem();
         if(null!=rings) {
-            return extractBodyProperties().includingRings(rings.getMass(), rings.getInnerRadius(), rings.getOuterRadius(), rings.getType());            
+            return extractAtmosphere().includingRings(rings.getMass(), rings.getInnerRadius(), rings.getOuterRadius(), rings.getType());            
         }
-        return extractBodyProperties();
+        return extractAtmosphere();
     }
     
+    private CreatableType extractAtmosphere() {
+        Atmosphere atmosphere = body.getAtmosphere();
+        if(null!=atmosphere) {
+            return extractHydrophere().withAnAtmosphereOf(atmosphere.getPressure(),atmosphere.getComposition());            
+        }
+        return extractHydrophere();
+    }
+    
+    private CreatableType extractHydrophere() {
+        Hydrosphere hydrosphere = body.getHydrosphere();
+        if(null!=hydrosphere) {
+            return extractBiosphere().withAHydrosphereOf(hydrosphere);            
+        }
+        return extractBiosphere();
+    }
+    
+    private CreatableType extractBiosphere() {
+        Biosphere biosphere = body.getBiosphere();
+        if(null!=biosphere) {
+            return extractBodyProperties().addBiosphere(biosphere.getBioType(),biosphere.getBioCover());            
+        }
+        return extractBodyProperties();
+    }   
 
     private CreatableType extractBodyProperties() {
         Length radius = body.getRadius();
         Mass mass = body.getMass();
+        SurfaceTemperatures temperatures = body.getTemperatures();
         if(body.isRetrograde()) {
-            return extractOrbitalProperties().whileMovingInRetrogradeDirection().andHasTheFollowingBodyProperties(radius, mass);
+            return extractOrbitalProperties().whileMovingInRetrogradeDirection().andHasTheFollowingBodyProperties(radius, mass, temperatures);
         }
-        return extractOrbitalProperties().andHasTheFollowingBodyProperties(radius, mass);
+        return extractOrbitalProperties().andHasTheFollowingBodyProperties(radius, mass, temperatures);
     }
 
     private CreatableProperties extractOrbitalProperties() {

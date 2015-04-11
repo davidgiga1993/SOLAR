@@ -32,7 +32,7 @@ public abstract class AstronomicalBody extends Orbiter  {
 
     public AstronomicalBody(String name)    {
         super(name, new OrbitalProperties(null, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
-        this.physicalProperties = new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null);
+        this.physicalProperties = new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null, null, null);
     }
 
     public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)    {
@@ -202,5 +202,33 @@ public abstract class AstronomicalBody extends Orbiter  {
     
     public boolean hasRingSystem() {
         return physicalProperties.hasRings();
+    }
+    
+    public void setUpAtmosphere(Atmosphere atmosphere) {
+        physicalProperties.setUpAtmosphere(atmosphere);        
+    }
+
+    public Atmosphere getAtmosphere() {
+        return physicalProperties.getAtmosphere();
+    }
+
+    public SurfaceTemperatures getTemperatures() {
+        return physicalProperties.getTemperatures();
+    }
+
+    public Hydrosphere getHydrosphere() {
+        return physicalProperties.getHydrosphere();
+    }
+
+    public void setUpHydrosphere(Hydrosphere hydro) {
+        physicalProperties.setUpHydrosphere(hydro);
+    }
+
+    public Biosphere getBiosphere() {
+        return physicalProperties.getBiosphere();
+    }
+
+    public void setUpBiosphere(Biosphere bio) {
+        physicalProperties.setUpBiosphere(bio);
     }
 }

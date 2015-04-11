@@ -173,7 +173,7 @@ public class PlanetaryRing extends AstronomicalBody {
     }
 
     private static BodyProperties bodyOfRings(Mass mass, Length radius) {
-        return new BodyProperties(mass, radius, null);
+        return new BodyProperties(mass, radius, null, null, null);
     }
 
     private static String nameOfRings(AstronomicalBody orbitPrimary) {

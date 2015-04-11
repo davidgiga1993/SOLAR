@@ -10,9 +10,9 @@ public class Mass {
     public static final float SOLAR_MASS_IN_KILOGRAM = 1.98855e30f;
     public static final float EARTH_MASS_IN_KILOGRAM = 5.97219e24f;
     public static final float SOLAR_MASS_IN_EARTH_MASS = 333000;
-    @XmlElement
+    @XmlElement(name = "Mass_Value")
     protected float value;
-    @XmlElement(name = "mass_unit")
+    @XmlElement(name = "Mass_Unit")
     protected MassUnit unit;
     
     public Mass() {

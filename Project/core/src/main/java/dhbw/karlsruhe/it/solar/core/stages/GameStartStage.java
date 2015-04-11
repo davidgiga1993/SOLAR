@@ -405,6 +405,20 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
     
     /**
+     * Initialize a new game creating a new system.
+     */
+    public static void startSolarScenario() {
+        SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
+
+        GameStartStage gameStage = initGameStartStage(engine);
+        GameHUDStage gameHUDStage = initGameHUDStage(engine);
+        
+        gameStage.initExampleSystem();
+        
+        initMultiplexer(gameStage, gameHUDStage);       
+    }
+    
+    /**
      * Old method retained for code maintenance purposes. Manually initializes an example system without the use of a save file.
      */
     private void initExampleSystem() {
