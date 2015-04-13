@@ -99,7 +99,7 @@ public final class CreateAnAstronomicalBody {
          * @return
          */
         public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass, SurfaceTemperatures temperatures) {
-            CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null, null, temperatures);
+            CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null, temperatures);
             return new CreatableType();
         }
         
@@ -239,6 +239,7 @@ public final class CreateAnAstronomicalBody {
         setUpAtmosphere(newBody);
         setUpHydrosphere(newBody);
         setUpBiosphere(newBody);
+        newBody.calculateLifeRating();
         newBody.initializeAstronomicalBody(solarSystem);
     }
     
@@ -259,8 +260,7 @@ public final class CreateAnAstronomicalBody {
     private void setUpAtmosphere(AstronomicalBody newBody) {
         if(atmosphere) {
             newBody.setUpAtmosphere(new Atmosphere(surfacePressure,atmosphericComposition));
-        }
-        
+        }     
     }
 
     private void setUpRings(AstronomicalBody newBody) {

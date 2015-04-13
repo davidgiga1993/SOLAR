@@ -16,12 +16,12 @@ public class BodyProperties {
     private Hydrosphere hydro;
     private Biosphere bio;
     private SurfaceGravity gravity;
+    private LifeRating rating;
 
-    public BodyProperties(Mass mass, Length radius, PlanetaryRing ring, Atmosphere atmosphere, SurfaceTemperatures temperatures) {
+    public BodyProperties(Mass mass, Length radius, PlanetaryRing ring, SurfaceTemperatures temperatures) {
         this.mass = mass;
         this.radius = radius;
         this.ring = ring;
-        this.atmosphere = atmosphere;
         this.temperatures = temperatures;
         this.gravity = new SurfaceGravity(mass, radius);
     }
@@ -92,5 +92,13 @@ public class BodyProperties {
 
     public void setUpBiosphere(Biosphere bio) {
         this.bio = bio;
+    }
+
+    public void calculateLifeRating() {
+        this.rating = new FuzzyLogic(gravity, atmosphere, temperatures, hydro, bio).calculateLifeRating();
+    }
+
+    public LifeRating getLifeRating() {
+        return rating;
     }
 }

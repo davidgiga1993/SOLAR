@@ -1,0 +1,192 @@
+package dhbw.karlsruhe.it.solar.core.physics;
+
+import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
+import dhbw.karlsruhe.it.solar.core.physics.SurfaceGravity.GravUnit;
+import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
+import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
+
+public class FuzzyLogic {
+       
+    private static final float LIFERATING_NEUTRAL_VALUE = 0.1f;
+    private static final float LIFERATING_POSITIVE_WEIGHT = 0.9f;
+    private static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(1f,GravUnit.G);
+    private static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.75f, true);
+    private static final SurfaceTemperatures OPTIMAL_TEMPERATURES = new SurfaceTemperatures(new Temperature(248f,TempUnit.KELVIN),new Temperature(288f,TempUnit.KELVIN),new Temperature(328f,TempUnit.KELVIN));
+    private static final Pressure OPTIMAL_SURFACE_PRESSURE = new Pressure(1f, PressureUnit.STANDARDATMOSPHERE);
+    private static final Pressure OPTIMAL_OXYGEN_PARTIAL_PRESSURE = new Pressure(0.23f, PressureUnit.BAR);
+    
+    private SurfaceGravity gravity;
+    private Atmosphere atmosphere;
+    private SurfaceTemperatures temperatures;
+    private Hydrosphere hydrosphere;
+    private Biosphere biosphere;
+ 
+    public FuzzyLogic(SurfaceGravity gravity, Atmosphere atmosphere,
+            SurfaceTemperatures temperatures, Hydrosphere hydro, Biosphere bio) {
+        this.gravity = gravity;
+        this.atmosphere = atmosphere;
+        this.temperatures = temperatures;
+        this.hydrosphere = hydro;
+        this.biosphere = bio;
+    }
+
+    public LifeRating calculateLifeRating() {
+        float fuzzyLogic = (1 - negativeLRInfluences()) * ( LIFERATING_NEUTRAL_VALUE + LIFERATING_POSITIVE_WEIGHT*positiveLRInfluences());
+        return new LifeRating(fuzzyLogic);
+    }
+    
+    private float positiveLRInfluences() {
+        return 0.2f*( gravityOptimal() + atmosphereBreathable() + temperatureOptimal() + hydrosphereOptimal() + biosphereOptimal() );
+    }
+
+    private float negativeLRInfluences() {
+        float value = gravityTooHigh() + temperaturesExtreme();
+        if(value < 1)
+            return value;
+        return 1;
+    }
+
+    private float temperaturesExtreme() {
+        float tpProductMinimum = (temperatures.getMinimumTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMinimumTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure());
+        float tpProductMaximum = (temperatures.getMaximumTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMaximumTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure());
+        float minimumDeviation = OPTIMAL_TEMPERATURES.getMinimumTemperature().inCelsius()*OPTIMAL_SURFACE_PRESSURE.asBar();
+        float maximumDeviation = OPTIMAL_TEMPERATURES.getMaximumTemperature().inCelsius()*OPTIMAL_SURFACE_PRESSURE.asBar();
+        
+        if(tpProductMinimum < -2*minimumDeviation) {
+            return 1;
+        }
+        if(tpProductMinimum < -minimumDeviation) {
+            return -(tpProductMinimum + minimumDeviation)/minimumDeviation;
+        }
+        if(tpProductMaximum > maximumDeviation) {
+            return (tpProductMaximum - maximumDeviation)/maximumDeviation;
+        }
+        if(tpProductMaximum > 2*maximumDeviation) {
+            return 1;
+        }
+        return 0;
+    }
+
+    private float biosphereOptimal() {
+        if(null!=biosphere) {
+            return biosphere.getUseableBioCover();            
+        }
+        return 0;
+    }
+    
+    private float hydrosphereOptimal() {
+        if(null!=hydrosphere) {
+            return optimalWaterCover();            
+        }
+        return 0;
+    }
+
+    private float optimalWaterCover() {
+        if( hydrosphere.getWaterCover() <= OPTIMAL_HYDROSPHERE.getWaterCover()) {
+            return hydrosphere.getWaterCover() / OPTIMAL_HYDROSPHERE.getWaterCover();
+        }
+        return 1f;
+    }
+    
+    private float temperatureOptimal() {
+        float tpProduct = (temperatures.getMeanTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMeanTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure());
+        float maximumDeviation = OPTIMAL_TEMPERATURES.getMeanTemperature().inCelsius()*OPTIMAL_SURFACE_PRESSURE.asBar();
+        
+        if(tpProduct <= -maximumDeviation) {
+            return 0;
+        }
+        if(tpProduct <= 0) {
+            return 1+tpProduct/maximumDeviation;
+        }
+        if(tpProduct < maximumDeviation) {
+            return 1-tpProduct/maximumDeviation;
+        }
+        return 0;
+    }
+
+    private float getSurfacePressure() {
+        if(null!=atmosphere) {
+            return atmosphere.getPressure().asBar();            
+        }
+        return 0;
+    }
+    
+    
+    private float atmosphereBreathable() {
+        if(null!=atmosphere) {
+            return (1-toxicConcentration())*oxygenConcentrationOptimal();            
+        }
+        return 0;
+    }
+    
+    private float oxygenConcentrationOptimal() {
+        if(atmosphere.getOxygenPartialPressure().asBar() < OPTIMAL_OXYGEN_PARTIAL_PRESSURE.asBar()) {
+            return atmosphere.getOxygenPartialPressure().asBar()/OPTIMAL_OXYGEN_PARTIAL_PRESSURE.asBar();
+        }
+        if(atmosphere.getOxygenPartialPressure().asBar() < 2*OPTIMAL_OXYGEN_PARTIAL_PRESSURE.asBar()) {
+            return 1-(atmosphere.getOxygenPartialPressure().asBar()-OPTIMAL_OXYGEN_PARTIAL_PRESSURE.asBar())/OPTIMAL_OXYGEN_PARTIAL_PRESSURE.asBar();
+        }
+        return 0;
+    }
+
+    private float toxicConcentration() {
+        float toxicLevel = 0;
+        for (AtmosphericGas gas : atmosphere.getListOfAtmosphericGases()) {
+            toxicLevel = replaceIfHigher(toxicLevel, gas);
+        }
+        return toxicLevel;
+    }
+
+    private float replaceIfHigher(float toxicLevel, AtmosphericGas gas) {
+        float currentLevel;
+        currentLevel = toxicGasConcentration(gas);
+        if(currentLevel > toxicLevel) {
+            toxicLevel = currentLevel;
+        }
+        return toxicLevel;
+    }
+
+    private float toxicGasConcentration(AtmosphericGas gas) {
+        if(belowDangerousThesholdOf(gas)) {
+            return 0;
+        }
+        if(belowLethalThresholdOf(gas)) {
+            return (gas.partialPressure(atmosphere.getPressure()).asBar() - gas.getDangerousThreshold().asBar())/gas.getLethalThreshold().asBar();
+        }
+        return 1f;
+    }
+
+    private boolean belowDangerousThesholdOf(AtmosphericGas gas) {
+        if(gas.partialPressure(atmosphere.getPressure()).asBar() < gas.getDangerousThreshold().asBar()) {
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean belowLethalThresholdOf(AtmosphericGas gas) {
+        if(gas.partialPressure(atmosphere.getPressure()).asBar() < gas.getLethalThreshold().asBar()) {
+            return true;
+        }
+        return false;
+    }
+
+    public float gravityOptimal() {
+        if (gravity.inG() <= OPTIMAL_GRAVITY.inG()) {
+            return gravity.inG()/OPTIMAL_GRAVITY.inG();
+        }
+        if (gravity.inG() < 3*OPTIMAL_GRAVITY.inG()) {
+            return ( 1 - (gravity.inG() - OPTIMAL_GRAVITY.inG())/(2*OPTIMAL_GRAVITY.inG()));
+        }
+        return 0;
+    }
+    
+    public float gravityTooHigh() {
+        if (gravity.inG() < OPTIMAL_GRAVITY.inG()) {
+            return 0;
+        }
+        if (gravity.inG() < 3*OPTIMAL_GRAVITY.inG()) {
+            return (gravity.inG()-OPTIMAL_GRAVITY.inG())/(2*OPTIMAL_GRAVITY.inG());
+        }
+        return 1;
+    }
+}

@@ -28,11 +28,11 @@ public abstract class AstronomicalBody extends Orbiter  {
     protected BodyProperties physicalProperties;
     protected List<AstronomicalBody> satellites = new ArrayList<AstronomicalBody>();
     protected BodyGameLabel label;
-    private Colony colony;
+    protected Colony colony;
 
     public AstronomicalBody(String name)    {
         super(name, new OrbitalProperties(null, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
-        this.physicalProperties = new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null, null, null);
+        this.physicalProperties = new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null, null);
     }
 
     public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)    {
@@ -230,5 +230,13 @@ public abstract class AstronomicalBody extends Orbiter  {
 
     public void setUpBiosphere(Biosphere bio) {
         physicalProperties.setUpBiosphere(bio);
+    }
+
+    public void calculateLifeRating() {
+        physicalProperties.calculateLifeRating();        
+    }
+
+    public LifeRating getLifeRating() {
+        return physicalProperties.getLifeRating();
     }
 }

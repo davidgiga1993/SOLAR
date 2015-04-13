@@ -52,6 +52,24 @@ public class BodyInformationDetails extends InformationDetails {
             initLabelsDefault(body);
         }
 
+        orbitalInformation();
+        bodyInformation(body);
+        colonyInformation(body);
+    }
+
+    private void colonyInformation(AstronomicalBody body) {
+        //TODO: Proper implementation - how will this fit into the current design?
+        if(body.isColonized()) {
+            row();
+            add(new Label("Population: " + body.getPopulationNumbers(),Styles.DEFAULTLABEL_STYLE));
+        }        
+    }
+
+    private void bodyInformation(AstronomicalBody body) {
+        add(new Label("Life Rating: " + body.getLifeRating().inPercent(),Styles.DEFAULTLABEL_STYLE));      
+    }
+
+    private void orbitalInformation() {
         add(radiusName);
         add(radiusValue).width(VALUE_WIDTH);
         add(radiusUnit).width(UNIT_WIDTH);
@@ -67,12 +85,6 @@ public class BodyInformationDetails extends InformationDetails {
         add(orbitalPeriodName);
         add(orbitalPeriodValue).width(VALUE_WIDTH);
         add(orbitalPeriodUnit).width(UNIT_WIDTH);
-        
-        //TODO: Proper implementation - how will this fit into the current design?
-        if(body.isColonized()) {
-            row();
-            add(new Label("Population: " + body.getPopulationNumbers(),Styles.DEFAULTLABEL_STYLE));
-        }
     }
 
     private void initLabelsDefault(AstronomicalBody body) {

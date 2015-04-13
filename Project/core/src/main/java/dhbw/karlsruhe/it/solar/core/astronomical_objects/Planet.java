@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.Color;
+
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -14,7 +15,6 @@ public class Planet extends AstronomicalBody  {
 
     public Planet(String name, OrbitalProperties orbit, BodyProperties body) {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureFromTypeOf((PlanetType)body.getBodyType()));
-
         this.segments = 2000;
         preview.setColor(Color.TEAL);
     }

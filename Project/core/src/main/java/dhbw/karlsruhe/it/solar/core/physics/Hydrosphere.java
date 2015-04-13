@@ -7,7 +7,7 @@ public class Hydrosphere {
     @XmlElement(name = "Water_Cover")
     private float waterCover;
     @XmlElement(name = "Liquid_Water")
-    private boolean liquid;
+    private boolean liquidWater;
     
     public Hydrosphere() {
         
@@ -15,12 +15,16 @@ public class Hydrosphere {
     
     public Hydrosphere(float waterCover) {
         this.waterCover = waterCover;
-        this.liquid = false;
+        this.liquidWater = false;
     }
     
     public Hydrosphere(float waterCover, boolean liquid) {
         this.waterCover = waterCover;
-        this.liquid = liquid;
+        this.liquidWater = liquid;
+    }
+
+    public float getWaterCover() {
+        return waterCover;
     }
 
 }

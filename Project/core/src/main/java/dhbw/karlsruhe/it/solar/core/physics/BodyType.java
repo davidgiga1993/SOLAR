@@ -14,5 +14,5 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlTransient
 @XmlSeeAlso({AsteroidType.class, MoonType.class, PlanetType.class, StarType.class})
 public abstract class BodyType {
-    
+        
 }

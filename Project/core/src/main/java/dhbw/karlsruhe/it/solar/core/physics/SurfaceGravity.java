@@ -9,6 +9,11 @@ public class SurfaceGravity {
         calculateSurfaceGravity(mass, radius);
     }
     
+    public SurfaceGravity(float value, GravUnit unit) {
+        this.value = value;
+        this.unit = unit;
+    }
+
     private void calculateSurfaceGravity(Mass mass, Length radius) {
         this.value = ( (PhysicalConstants.GRAVITATIONAL_CONSTANT * mass.asKilogram()) / ((float)Math.pow(radius.asMetres(), 2) ) );
         this.unit = GravUnit.MS2;
@@ -19,7 +24,7 @@ public class SurfaceGravity {
         case G:
             return value;
         case MS2:
-            return value / PhysicalConstants.EARTH_SURFACE_GRAVITY;
+            return value / PhysicalConstants.EARTH_SURFACE_GRAVITY.value;
         default:
             return Float.NaN;
         }
@@ -28,7 +33,7 @@ public class SurfaceGravity {
     public float inMS2() {
         switch(unit) {
         case G:
-            return value * PhysicalConstants.EARTH_SURFACE_GRAVITY;
+            return value * PhysicalConstants.EARTH_SURFACE_GRAVITY.value;
         case MS2:
             return value;
         default:

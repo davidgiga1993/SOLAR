@@ -31,4 +31,19 @@ public class Biosphere {
         TERRAN,
         ALIEN
     }
+    
+    private float compatibilityWithTerranBiomes() {
+        switch(type) {
+            case ALIEN:
+                return 0.5f;
+            case TERRAN:
+                return 1f;
+            default:
+                return 0;
+        }
+    }
+
+    public float getUseableBioCover() {
+        return bioCover*compatibilityWithTerranBiomes();
+    }
 }

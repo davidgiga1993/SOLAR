@@ -91,7 +91,7 @@ public class Pressure {
         PASCAL,
         KILOPASCAL,
         BAR,
-        STANDARDATMOSPHERE
+        STANDARDATMOSPHERE,
     }
 
 }

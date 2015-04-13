@@ -32,4 +32,22 @@ public class SurfaceTemperatures {
         this.tempMaximum = null;
     }
 
+    public Temperature getMeanTemperature() {
+        return meanTemperature;
+    }
+
+    public Temperature getMinimumTemperature() {
+        if(null!=tempMinimum) {
+            return tempMinimum;
+        }
+        return meanTemperature;
+    }
+
+    public Temperature getMaximumTemperature() {
+        if(null!=tempMaximum) {
+            return tempMaximum;
+        }
+        return meanTemperature;
+    }
+
 }

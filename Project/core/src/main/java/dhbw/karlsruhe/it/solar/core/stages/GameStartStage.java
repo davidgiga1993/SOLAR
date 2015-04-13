@@ -405,7 +405,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
     
     /**
-     * Initialize a new game creating a new system.
+     * Old method / Scenario : Creates the solar system with code lines, doesn't use savegame mechanic.
      */
     public static void startSolarScenario() {
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
