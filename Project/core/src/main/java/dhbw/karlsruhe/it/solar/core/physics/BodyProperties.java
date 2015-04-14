@@ -101,4 +101,8 @@ public class BodyProperties {
     public LifeRating getLifeRating() {
         return rating;
     }
+
+    public SurfaceGravity getSurfaceGravity() {
+        return gravity;
+    }
 }

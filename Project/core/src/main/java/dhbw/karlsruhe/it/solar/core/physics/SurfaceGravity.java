@@ -19,6 +19,15 @@ public class SurfaceGravity {
         this.unit = GravUnit.MS2;
     }
     
+    @Override
+    public String toString() {
+        return formatValue() + " g";
+    }
+
+    private String formatValue() {
+        return String.format("%.02f", inG());
+    }
+    
     public float inG() {
         switch(unit) {
         case G:

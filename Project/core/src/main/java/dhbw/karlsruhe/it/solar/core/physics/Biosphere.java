@@ -46,4 +46,13 @@ public class Biosphere {
     public float getUseableBioCover() {
         return bioCover*compatibilityWithTerranBiomes();
     }
+    
+    @Override
+    public String toString() {
+        return formatValue() + " % Bio Cover";
+    }
+
+    private String formatValue() {
+        return String.format("%.00f", bioCover*100);
+    }
 }

@@ -26,5 +26,21 @@ public class Hydrosphere {
     public float getWaterCover() {
         return waterCover;
     }
+    
+    @Override
+    public String toString() {
+        return formatValue() + " % Water Cover" + liquidMsg();
+    }
+
+    private String liquidMsg() {
+        if(liquidWater) {
+            return ", occurence of liquid water";
+        }
+        return "";
+    }
+
+    private String formatValue() {
+        return String.format("%.02f", waterCover);
+    }
 
 }

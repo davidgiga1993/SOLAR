@@ -49,5 +49,14 @@ public class SurfaceTemperatures {
         }
         return meanTemperature;
     }
+    
+    @Override
+    public String toString() {
+        return "min: " + formatValue(getMinimumTemperature()) + " K, mean: " + formatValue(getMeanTemperature()) + " K, max: " + formatValue(getMaximumTemperature()) + " K";
+    }
+
+    private String formatValue(Temperature temp) {
+        return String.format("%.00f", temp.inKelvin());
+    }
 
 }

@@ -25,7 +25,7 @@ public class Temperature {
            case KELVIN:
                return value;
            case CELSIUS:
-               return value - KELVIN_TO_CELSIUS;
+               return value + KELVIN_TO_CELSIUS;
            default:
                return Float.NaN;
        }
@@ -34,7 +34,7 @@ public class Temperature {
     public float inCelsius() {
         switch(unit) {
             case KELVIN:
-                return value + KELVIN_TO_CELSIUS;
+                return value - KELVIN_TO_CELSIUS;
             case CELSIUS:
                 return value;
             default:

@@ -96,5 +96,39 @@ public class AtmosphericGas {
         }
         return false;
     }
+    
+    @Override
+    public String toString() {
+        return ", " + typeToString() + " (" + formatValue() + "%)";
+    }
+    
+    private String typeToString() {
+        switch(type) {
+            case ARGON:
+                return "Argon";
+            case CARBON_DIOXIDE:
+                return "Carbon Dioxide";
+            case HELIUM:
+                return "Helium";
+            case HYDROGEN:
+                return "Hydrogen";
+            case METHANE:
+                return "Methane";
+            case NITROGEN:
+                return "Nitrogen";
+            case OXYGEN:
+                return "Oxygen";
+            case SULFUR_DIOXIDE:
+                return "Sulfur Dioxide";
+            case WATER_VAPOR:
+                return "Water Vapor";
+            default:
+                return "unknown";            
+        }
+    }
+
+    private String formatValue() {
+        return String.format("%.00f", percentage*100);
+    }
 
 }

@@ -32,4 +32,12 @@ public class AtmosphericComposition {
         }
         return new Pressure(0f,PressureUnit.PASCAL);
     }
+
+    public String listAtmosphericGases() {
+        String listOfGases = "";
+        for (AtmosphericGas gas : gases) {
+            listOfGases += gas.toString();
+        }
+        return listOfGases;
+    }
 }

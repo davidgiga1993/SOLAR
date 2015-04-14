@@ -239,4 +239,8 @@ public abstract class AstronomicalBody extends Orbiter  {
     public LifeRating getLifeRating() {
         return physicalProperties.getLifeRating();
     }
+
+    public SurfaceGravity getSurfaceGravity() {
+        return physicalProperties.getSurfaceGravity();
+    }
 }

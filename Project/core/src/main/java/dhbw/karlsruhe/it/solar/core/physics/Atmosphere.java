@@ -42,4 +42,13 @@ public class Atmosphere {
     public Pressure getOxygenPartialPressure() {
         return composition.getOxygenPartialPressure(surfacePressure);
     }
+    
+    @Override
+    public String toString() {
+        return formatValue() + " bar SurfacePressure, " + composition.listAtmosphericGases();
+    }
+
+    private String formatValue() {
+        return String.format("%.02f", surfacePressure.asBar());
+    }
 }
