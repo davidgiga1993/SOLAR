@@ -10,13 +10,14 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
+import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 
 public class OrbitalProperties {   
     private AstronomicalBody orbitPrimary;
     private Length orbitalRadius;
     private Angle orbitalAngle;
-    private float orbitalPeriodInDays;
+    private Time orbitalPeriodInDays;
     private Angle periodicConstant;
     private boolean retrograde;
     private Coorbital coorbital;
@@ -27,7 +28,7 @@ public class OrbitalProperties {
         this.orbitalAngle = new Angle();
         this.retrograde = false;
         this.coorbital = null;
-        this.orbitalPeriodInDays = Float.NaN;
+        this.orbitalPeriodInDays = new Time(0f,TimeUnit.HOURS);
         this.periodicConstant = new Angle(Float.NaN);
     }
     
@@ -39,8 +40,8 @@ public class OrbitalProperties {
         this.coorbital = null;
         if (orbitPrimary != null)       {
             calculateOrbitalPeriod();
+            calculatePeriodicConstant();
         }
-        calculatePeriodicConstant();
     }
     
     
@@ -49,7 +50,7 @@ public class OrbitalProperties {
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod() {
-        orbitalPeriodInDays = (float) (Math.sqrt( (PhysicalConstants.PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24));
+        orbitalPeriodInDays = new Time((float) (Math.sqrt( (PhysicalConstants.PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24)), TimeUnit.DAYS);
     }
     
     /**
@@ -58,8 +59,8 @@ public class OrbitalProperties {
      * The Periodic Constant is consequently the fraction of those values.
      */
     private void calculatePeriodicConstant()    {
-        if ( 0 != orbitalPeriodInDays )       {
-            periodicConstant = new Angle(360 / orbitalPeriodInDays , AngularUnit.DEGREE);
+        if ( 0 != orbitalPeriodInDays.inDays() )       {
+            periodicConstant = new Angle(360 / orbitalPeriodInDays.inDays() , AngularUnit.DEGREE);
             return;
         }
         periodicConstant = new Angle();
@@ -69,7 +70,7 @@ public class OrbitalProperties {
         return orbitalAngle;
     }
     
-    public float getOrbitalPeriodInDays()    {
+    public Time getOrbitalPeriod()    {
         return orbitalPeriodInDays;
     }
     
@@ -244,5 +245,9 @@ public class OrbitalProperties {
 
     public Coorbital getCoorbitalInformation() {
         return coorbital;
+    }
+
+    public String getNameOfPrimary() {
+        return orbitPrimary.getName();
     }
 }

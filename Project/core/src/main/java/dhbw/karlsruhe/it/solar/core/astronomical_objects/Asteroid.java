@@ -9,9 +9,13 @@ import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
  * @author Andi
  *
  */
-public class Asteroid extends AstronomicalBody  {    
+public class Asteroid extends AstronomicalBody  { 
+    
+    AsteroidType type;
+    
     public Asteroid(String name, OrbitalProperties orbit, BodyProperties body) {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_ASTEROID, getTextureFromTypeOf((AsteroidType)body.getBodyType()));
+        this.type = (AsteroidType)body.getBodyType();
     }
     
     private static String getTextureFromTypeOf(AsteroidType asteroid) {
@@ -21,5 +25,10 @@ public class Asteroid extends AstronomicalBody  {
         default:
             return "IrregularSatellite";
         }
+    }
+    
+    @Override
+    public String getTypeName() {
+        return type.resolveTypeName();
     }
 }

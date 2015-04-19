@@ -39,5 +39,14 @@ public class AsteroidType extends BodyType {
         RTYPE,
         VTYPE
     }
+
+    public String resolveTypeName() {
+        switch(spectralType)        {
+        case DTYPE:
+            return "D-Type Asteroid";
+        default:
+            return "Anomaly: Unknown Type of Asteroid";
+        }
+    }
     
 }

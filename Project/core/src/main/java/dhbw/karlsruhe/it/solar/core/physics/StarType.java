@@ -33,4 +33,13 @@ public class StarType extends BodyType {
             KTYPE,
             MTYPE,
         }
+
+    public String resolveTypeName() {
+        switch(starType)        {
+            case GTYPE:
+                return "G-Type Main-Sequence Star";
+            default:
+                return "Anomaly: Unknown Type of Star";
+        }
+    }
 }

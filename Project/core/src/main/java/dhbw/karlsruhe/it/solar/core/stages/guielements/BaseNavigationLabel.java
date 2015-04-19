@@ -42,7 +42,7 @@ public class BaseNavigationLabel extends Label {
         }
     }
 
-    private void onLeftClick(InputEvent event) {
+    protected void onLeftClick(InputEvent event) {
         // replace the actor with the actor represented by this NavigationLabel
         event.setTarget(actor);
         // and let the GameInputListener do his job

@@ -79,7 +79,7 @@ public class OrbitalInformationDetails extends InformationDetails {
         float radiusFloat = body.getRadius().asKilometres();
         float massFloat = body.getMass().asSolarMass();
         float orbitalRadiusFloat = body.getOrbitalRadius().asAstronomicalUnit();
-        float orbitalPeriodFloat = body.getOrbitalPeriodInDays();
+        float orbitalPeriodFloat = body.getOrbitalPeriod().inDays();
 
         String radius = df2.format(radiusFloat);
         String mass = dfE.format(massFloat);

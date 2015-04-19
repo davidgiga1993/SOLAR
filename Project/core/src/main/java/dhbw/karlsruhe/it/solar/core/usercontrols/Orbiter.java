@@ -14,6 +14,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
@@ -25,7 +26,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
  * Orbiter contains all relevant information necessary for an actor to be able to orbit another Orbiter actor in the game.
  * Therefore it handles all methods and information relating to the game's orbital mechanics.
  */
-public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObject  {
+public abstract class Orbiter extends SolarActor implements ShapeRenderable, KinematicObject  {
      protected static final float PREVIEW_PIXEL_WIDTH = 5.5f;
 
      protected OrbitalProperties orbitalProperties;
@@ -47,7 +48,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
           setActorScale(scaleFactor);
           this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, 0);
           this.orbitalProperties = orbit;     
-          if(null != orbitalProperties)          {
+          if(null != orbitalProperties && null != orbitalProperties.getPrimary())          {
                setKinematicValues();
                changeOrbitScale();
           }
@@ -84,7 +85,7 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
       * @return Total Movement speed of the orbital object on the game map. Unit: Scale-Adjusted Kilometres per Day.
       */
      private float calculateOrbitalSpeed() {
-          return (float) ((2 * Math.PI * scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres())) / orbitalProperties.getOrbitalPeriodInDays());
+          return (float) ((2 * Math.PI * scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres())) / orbitalProperties.getOrbitalPeriod().inDays());
      }
      
      /**
@@ -205,8 +206,8 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
           return orbitalProperties.getOrbitalRadius();
      }
 
-     public float getOrbitalPeriodInDays() {
-          return orbitalProperties.getOrbitalPeriodInDays();
+     public Time getOrbitalPeriod() {
+          return orbitalProperties.getOrbitalPeriod();
      }
      
      public AstronomicalBody getPrimary() {
@@ -245,5 +246,9 @@ public class Orbiter extends SolarActor implements ShapeRenderable, KinematicObj
     
     public float getOrbitalRadiusInPixels() {
         return orbitalRadiusInPixels;
+    }
+    
+    public String getNameOfPrimary() {
+        return orbitalProperties.getNameOfPrimary();
     }
 }

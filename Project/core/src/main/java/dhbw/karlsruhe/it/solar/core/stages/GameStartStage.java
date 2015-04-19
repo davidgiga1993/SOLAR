@@ -19,7 +19,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
-import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.physics.CalendarTime;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
@@ -55,7 +55,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private static float gameSpeed = 0f;
     private static float oldGameSpeed = 1f;
 
-    public static final Time GAMETIME = new Time();
+    public static final CalendarTime GAMETIME = new CalendarTime();
 
     private List<PlanetaryRing> ringList = new ArrayList<PlanetaryRing>();
 
@@ -486,5 +486,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
         Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
         addActor(newStation);
         return newStation;
+    }
+
+    public static void inputListenerMoveCamera(SolarActor target) {
+        inputListener.moveCamera(target);
     }
 }

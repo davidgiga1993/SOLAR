@@ -24,4 +24,9 @@ public class SystemRoot extends AstronomicalBody {
     public void updateScale() {
         // nothing to do
     }
+
+    @Override
+    public String getTypeName() {
+        return null;
+    }
 }

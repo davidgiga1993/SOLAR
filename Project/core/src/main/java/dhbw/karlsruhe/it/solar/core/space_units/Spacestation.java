@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.space_units;
 
 import com.badlogic.gdx.math.Vector2;
+
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -28,5 +29,10 @@ public class Spacestation extends SpaceUnit  {
         newStation.setKinematicPosition(startlocation);
         newStation.setDestination(startlocation);
         return newStation;
+    }
+
+    @Override
+    public String getTypeName() {
+        return "Space Station";
     }
 }

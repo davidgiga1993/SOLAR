@@ -30,5 +30,10 @@ public class Spaceship extends SpaceUnit  {
         newShip.setDestination(startlocation);
         return newShip;
     }
+    
+    @Override
+    public String getTypeName() {
+        return "Space Ship";
+    }
 
 }

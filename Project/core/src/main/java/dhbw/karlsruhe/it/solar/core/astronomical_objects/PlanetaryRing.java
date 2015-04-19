@@ -225,4 +225,9 @@ public class PlanetaryRing extends AstronomicalBody {
     public RingType getType() {
         return type;
     }
+
+    @Override
+    public String getTypeName() {
+        return "Planetary Ring System";
+    }
 }

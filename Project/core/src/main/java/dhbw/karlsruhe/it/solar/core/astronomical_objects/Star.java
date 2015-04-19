@@ -10,9 +10,12 @@ import dhbw.karlsruhe.it.solar.core.physics.StarType;
  *
  */
 public class Star extends AstronomicalBody  {
+    
+    private StarType type;
 
     public Star(String name, OrbitalProperties orbit, BodyProperties body) {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, getTextureFromTypeOf((StarType)body.getBodyType()));
+        this.type = (StarType)body.getBodyType();
     }
     
     private static String getTextureFromTypeOf(StarType star)    {
@@ -27,5 +30,10 @@ public class Star extends AstronomicalBody  {
     @Override
     protected boolean previewEnabled() {
         return false;
+    }
+    
+    @Override
+    public String getTypeName() {
+        return type.resolveTypeName();
     }
 }

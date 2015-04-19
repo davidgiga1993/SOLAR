@@ -12,10 +12,12 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
  */
 public class Planet extends AstronomicalBody  {
     private AstronomicalBody outermostMoon;
+    private PlanetType type;
 
     public Planet(String name, OrbitalProperties orbit, BodyProperties body) {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureFromTypeOf((PlanetType)body.getBodyType()));
         this.segments = 2000;
+        this.type = (PlanetType)body.getBodyType();
         preview.setColor(Color.TEAL);
     }
 
@@ -59,5 +61,10 @@ public class Planet extends AstronomicalBody  {
             size = outermostMoon.getOrbitalRadiusInPixels() * 2;
         }
         return (size / SolarEngine.get().getSolarCameraZoom()) > 1f;
+    }
+    
+    @Override
+    public String getTypeName() {
+        return type.resolveTypeName();
     }
 }

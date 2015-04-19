@@ -14,10 +14,11 @@ public class BodyInformationDetails extends InformationDetails {
 
     public BodyInformationDetails(AstronomicalBody body) {
         super();
+        detailsTable.setDebug(true);
 
-        detailsTable.add(new OrbitalInformationDetails(body)).left();
-        detailsTable.add(new LifeRatingInformationDetails(body)).right();
-        detailsTable.add(new ColonyInformationDetails(body)).right();
+        detailsTable.add(new OrbitalInformationDetails(body)).expand();
+        detailsTable.add(new LifeRatingInformationDetails(body)).expand();
+        detailsTable.add(new ColonyInformationDetails(body)).expand();
         
         add(detailsTable).expand().fill();
     }

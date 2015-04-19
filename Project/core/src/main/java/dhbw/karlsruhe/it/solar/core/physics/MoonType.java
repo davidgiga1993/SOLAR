@@ -44,5 +44,34 @@ public class MoonType extends BodyType {
         TITANIAN,
         OBERONIAN,
         TRITONIAN
-    }  
+    }
+
+    public String resolveTypeName() {
+        switch(satelliteType)        {
+            case LUNAR:
+            case IONIAN:
+                return "Terrestrial Moon";
+            case EUROPAN:
+            case GANYMEDIAN:
+            case CALLISTOAN:
+            case MIMANTEAN:
+            case ENCELADEAN:
+            case TETHYAN:
+            case DIONEAN:
+            case RHEAN:
+            case TITANEAN:
+            case IAPETIAN:
+            case MIRANDAN:
+            case ARIELIAN:
+            case UMBRELIAN:
+            case TITANIAN:
+            case OBERONIAN:
+            case TRITONIAN:
+                return "Ice Moon";
+            case IRREGULAR:
+                return "Captured D-Type Asteroid";
+            default:
+                return "Anomaly: Unknown Type of Moon";
+        }
+    }
 }

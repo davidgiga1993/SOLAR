@@ -32,8 +32,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1199.505</x>
-            <y>499.505</y>
+            <x>1199.01</x>
+            <y>499.01</y>
         </AbsolutePosition>
         <Destination>
             <TargetLocation>
@@ -47,8 +47,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1499.505</x>
-            <y>999.505</y>
+            <x>1499.01</x>
+            <y>999.01</y>
         </AbsolutePosition>
         <Destination>
             <TargetLocation>
@@ -62,8 +62,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player Two(AI)</UnitOwner>
         <AbsolutePosition>
-            <x>1549.505</x>
-            <y>1049.505</y>
+            <x>1549.01</x>
+            <y>1049.01</y>
         </AbsolutePosition>
         <Destination>
             <TargetLocation>
@@ -77,8 +77,8 @@
         <ShipType>Station</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1499.505</x>
-            <y>-0.49499997</y>
+            <x>1499.01</x>
+            <y>-0.98999995</y>
         </AbsolutePosition>
         <Destination>
             <TargetLocation>
@@ -94,11 +94,11 @@
         <OrbitalProperties>
             <Primary>Earth</Primary>
             <OrbitalRadius>
-                <value>297383.8</value>
+                <value>288053.6</value>
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>177.79248046875</value>
+                <value>175.7479248046875</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>

@@ -245,4 +245,9 @@ public class SolarSystem extends AstronomicalBody {
         list.add(new AtmosphericGas(GasType.SULFUR_DIOXIDE,0.00015f));
         return new AtmosphericComposition(list);
     }
+
+    @Override
+    public String getTypeName() {
+        return "Solar System";
+    }
 }

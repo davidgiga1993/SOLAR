@@ -1,28 +1,84 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import java.util.GregorianCalendar;
+import javax.xml.bind.annotation.XmlElement;
 
-/**
- * Created by Arga on 04.03.2015.
- */
 public class Time {
-
-    private double currentDay = 1;
-    private GregorianCalendar cal = new GregorianCalendar(2500,GregorianCalendar.JANUARY,1);
-
+    
+    private static final float HOURS_PER_DAY = 24f;
+    private static final float DAYS_PER_YEAR = 365.25f;
+    
+    @XmlElement(name = "Time_Value")
+    private float value;
+    @XmlElement(name = "Time_Unit")
+    private TimeUnit unit;
+    
+    public Time(float value, TimeUnit unit) {
+        this.value = value;
+        this.unit = unit;
+    }
+    
     public Time() {
-        cal.setLenient(true);
+
     }
 
-    public void addDays(float daysToAdd) {
-        int temp = (int) (currentDay + daysToAdd) - (int) currentDay;
-        cal.add(GregorianCalendar.DATE, temp);
-        currentDay += daysToAdd;
+    public float inHours() {
+        switch (unit) {
+            case HOURS:
+                return value;
+            case DAYS:
+                return value * HOURS_PER_DAY;
+            case YEARS:
+                return value * HOURS_PER_DAY * DAYS_PER_YEAR;
+            default:
+                return Float.NaN;
+        }
     }
-
+    
+    public float inDays() {
+        switch (unit) {
+            case HOURS:
+                return value / HOURS_PER_DAY;
+            case DAYS:
+                return value;
+            case YEARS:
+                return value * DAYS_PER_YEAR;
+            default:
+                return Float.NaN;
+        }
+    }
+    
+    public float inYears() {
+        switch (unit) {
+            case HOURS:
+                return value / ( DAYS_PER_YEAR * HOURS_PER_DAY );
+            case DAYS:
+                return value / DAYS_PER_YEAR;
+            case YEARS:
+                return value;
+            default:
+                return Float.NaN;
+        }
+    }
+    
     @Override
     public String toString() {
-        return cal.get(GregorianCalendar.DATE) + "." + (cal.get(GregorianCalendar.MONTH)+1) + "." + cal.get(GregorianCalendar.YEAR);
-        //return String.valueOf((int) currentDay);
+        if( this.inDays() > DAYS_PER_YEAR ) {
+            return formatValue(this.inYears()) + " Years";
+        }
+        if( this.inHours() > HOURS_PER_DAY ) {
+            return formatValue(this.inDays()) + " Days";
+        }      
+        return formatValue(this.inHours()) + " Hours";
     }
+    
+    private String formatValue(float value) {
+        return String.format("%.01f", value);
+    }
+    
+    public enum TimeUnit {
+        HOURS,
+        DAYS,
+        YEARS
+    }
+
 }

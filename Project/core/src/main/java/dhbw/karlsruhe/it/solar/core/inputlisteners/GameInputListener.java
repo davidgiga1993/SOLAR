@@ -303,4 +303,8 @@ public class GameInputListener extends InputListener {
         REMOVE
     }
 
+    public void moveCamera(SolarActor target) {
+        moveCamera(target, 0, 0, true);
+    }
+
 }

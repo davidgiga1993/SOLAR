@@ -34,6 +34,8 @@ public abstract class SolarActor extends Actor implements Telegraph {
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.GAME_SCALE_CHANGED);
         selectionColor = Color.GREEN;
     }
+    
+    public abstract String getTypeName();
 
     @Override
     public String toString() {

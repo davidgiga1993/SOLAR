@@ -12,8 +12,12 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.PreviewActor;
  *
  */
 public class Moon extends AstronomicalBody {
+    
+    MoonType type;
+    
     public Moon(String name, OrbitalProperties orbit, BodyProperties body) {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, getTextureFromTypeOf((MoonType)body.getBodyType()));
+        this.type = (MoonType)body.getBodyType();        
         label.setThreshold(0.4f);
         this.orbitColor = Color.GRAY;
         preview = new PreviewActor(this, getWidth(), 10, Color.GRAY);
@@ -66,5 +70,10 @@ public class Moon extends AstronomicalBody {
             default:
                 return "IrregularSatellite";
         }
+    }
+    
+    @Override
+    public String getTypeName() {
+        return type.resolveTypeName();
     }
 }

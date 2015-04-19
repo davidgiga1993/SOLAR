@@ -32,7 +32,7 @@ import dhbw.karlsruhe.it.solar.player.Player;
  * SpaceUnit is supposed to define all shared properties of player unit objects such as ships or stations into one superclass
  * derived from SolarActor from which the individual unit subclasses can inherit.
  */
-public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
+public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
      public static final Color SPACEUNIT_ORBIT_COLOR = new Color(0, 0.5f, 0, 1);
 
     protected Player owner;
@@ -350,5 +350,15 @@ public class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
 
     public String getNameOfDestination() {
         return nameOfDestination;
+    }
+
+    public String getMission() {
+        if(null!=nameOfDestination) {
+            return nameOfDestination;
+        }
+        if(null!=destination) {
+            return destination.x + "/" + destination.y;
+        }
+        return "Idle";
     }
 }
