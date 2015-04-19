@@ -46,6 +46,9 @@ public class InfoBarDetailsTable extends Table {
         add(new Label("Surface Gravity: ", Styles.DEFAULTLABEL_STYLE)).left();
         add(new Label(((AstronomicalBody)selectedActor).getSurfaceGravity().toString(), Styles.DEFAULTLABEL_STYLE)).right();
         row();
+        add(new Label("Temperatures: ", Styles.DEFAULTLABEL_STYLE)).left();
+        add(new Label(((AstronomicalBody)selectedActor).getLifeRating().temperatureFuzzy(), Styles.DEFAULTLABEL_STYLE)).right();
+        row();
         add(new Label("Atmosphere: ", Styles.DEFAULTLABEL_STYLE)).left();
         add(new Label(((AstronomicalBody)selectedActor).getLifeRating().atmosphereFuzzy(), Styles.DEFAULTLABEL_STYLE)).right();
     }

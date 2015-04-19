@@ -7,13 +7,16 @@ import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 public class FuzzyLogic {
        
-    private static final float LIFERATING_NEUTRAL_VALUE = 0.1f;
-    private static final float LIFERATING_POSITIVE_WEIGHT = 0.9f;
+    private static final float LIFERATING_NEUTRAL_VALUE = 0.04f;
+    private static final float LIFERATING_POSITIVE_WEIGHT = 0.95f;
+    private static final float LIFERATING_MINIMUM_VALUE = 0.01f;
     private static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(1f,GravUnit.G);
     private static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.75f, true);
-    private static final SurfaceTemperatures OPTIMAL_TEMPERATURES = new SurfaceTemperatures(new Temperature(248f,TempUnit.KELVIN),new Temperature(288f,TempUnit.KELVIN),new Temperature(328f,TempUnit.KELVIN));
+    private static final SurfaceTemperatures OPTIMAL_TEMPERATURES = new SurfaceTemperatures(new Temperature(258f,TempUnit.KELVIN),new Temperature(288f,TempUnit.KELVIN),new Temperature(318f,TempUnit.KELVIN));
     private static final Pressure OPTIMAL_SURFACE_PRESSURE = new Pressure(1f, PressureUnit.STANDARDATMOSPHERE);
-    private static final Pressure OPTIMAL_OXYGEN_PARTIAL_PRESSURE = new Pressure(0.22f, PressureUnit.BAR);
+    private static final Pressure OPTIMAL_OXYGEN_PARTIAL_PRESSURE = new Pressure(0.23f, PressureUnit.BAR);
+    private static final float MINIMUM_TEMPERATURE_THESHOLD = 125f;
+    private static final float MAXIMUM_TEMPERATURE_THESHOLD = 225f;
     
     private SurfaceGravity gravity;
     private Atmosphere atmosphere;
@@ -57,7 +60,27 @@ public class FuzzyLogic {
     }
 
     private float lifeRatingFormula() {
-        return (1 - negativeLRInfluences()) * ( LIFERATING_NEUTRAL_VALUE + LIFERATING_POSITIVE_WEIGHT*positiveLRInfluences());
+        return LIFERATING_MINIMUM_VALUE + (1 - negativeLRInfluences()) * ( LIFERATING_NEUTRAL_VALUE + LIFERATING_POSITIVE_WEIGHT*positiveLRInfluences());
+    }
+    
+    private float positiveLRInfluences() {
+        float hasAtmo = hasAtmosphere();
+        float extreme = temperaturesExtreme();
+        return 0.2f/0.96f*(2*atmosphereBreathable + 0.25f*hasAtmosphere() + gravityOptimal + 0.5f*hydrosphereOptimal + 0.25f*biosphereOptimal + temperatureOptimal);
+    }
+
+    private float negativeLRInfluences() {
+        float value = gravityTooHigh + 2*temperaturesExtreme();
+        if(value < 1)
+            return value;
+        return 1;
+    }
+    
+    private float hasAtmosphere() {
+        if(null==atmosphere) {
+            return 0;
+        }
+        return 1;
     }
     
     private void calculateFuzzyBiosphere() {
@@ -110,9 +133,6 @@ public class FuzzyLogic {
         if(tempTooCold == 1) {
             fuzzyTemp = FuzzyTemperature.EXTREMELY_COLD;
         }
-        if(temperatureOptimal > 0.95) {
-            fuzzyTemp = FuzzyTemperature.OPTIMAL;
-        }
         if(tempTooHot > 0.05) {
             fuzzyTemp = FuzzyTemperature.HOT;
         }
@@ -121,6 +141,9 @@ public class FuzzyLogic {
         }
         if(tempTooHot == 1) {
             fuzzyTemp = FuzzyTemperature.EXTREMELY_HOT;
+        }
+        if(temperatureOptimal > 0.95) {
+            fuzzyTemp = FuzzyTemperature.OPTIMAL;
         }
     }
 
@@ -141,6 +164,9 @@ public class FuzzyLogic {
         }
         if(oxygenTooLow > 0.75) {
             fuzzyAtmo = FuzzyAtmosphere.LOW_OXYGEN;
+        }
+        if(oxygenTooLow == 1f) {
+            fuzzyAtmo = FuzzyAtmosphere.NO_OXYGEN;
         }
         if(oxygenOptimal > 0.95) {
             fuzzyAtmo = FuzzyAtmosphere.OPTIMAL_BREATHABLE;
@@ -174,34 +200,21 @@ public class FuzzyLogic {
             fuzzyGravity = FuzzyGravity.TOO_HIGH;
         }
     }
-    
-    private float positiveLRInfluences() {
-        return 0.2f*( gravityOptimal + atmosphereBreathable + temperatureOptimal + hydrosphereOptimal + biosphereOptimal );
-    }
-    
-    private float negativeLRInfluences() {
-        float value = gravityTooHigh + temperaturesExtreme();
-        if(value < 1)
-            return value;
-        return 1;
-    }
 
     private float temperaturesExtreme() {
         float tpProductMinimum = (temperatures.getMinimumTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMinimumTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure().asBar());
         float tpProductMaximum = (temperatures.getMaximumTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMaximumTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure().asBar());
-        float minimumDeviation = OPTIMAL_TEMPERATURES.getMinimumTemperature().inKelvin()*OPTIMAL_SURFACE_PRESSURE.asBar();
-        float maximumDeviation = OPTIMAL_TEMPERATURES.getMaximumTemperature().inKelvin()*OPTIMAL_SURFACE_PRESSURE.asBar();
         
-        if(tpProductMinimum < -2*minimumDeviation) {
+        if(tpProductMinimum < -2*MINIMUM_TEMPERATURE_THESHOLD) {
             return 1;
         }
-        if(tpProductMinimum < -minimumDeviation) {
-            return -(tpProductMinimum + minimumDeviation)/minimumDeviation;
+        if(tpProductMinimum < -MINIMUM_TEMPERATURE_THESHOLD) {
+            return -(tpProductMinimum + MINIMUM_TEMPERATURE_THESHOLD)/MINIMUM_TEMPERATURE_THESHOLD;
         }
-        if(tpProductMaximum > maximumDeviation) {
-            return (tpProductMaximum - maximumDeviation)/maximumDeviation;
+        if(tpProductMaximum > MAXIMUM_TEMPERATURE_THESHOLD) {
+            return (tpProductMaximum - MAXIMUM_TEMPERATURE_THESHOLD)/MAXIMUM_TEMPERATURE_THESHOLD;
         }
-        if(tpProductMaximum > 2*maximumDeviation) {
+        if(tpProductMaximum > 2*MAXIMUM_TEMPERATURE_THESHOLD) {
             return 1;
         }
         return 0;
@@ -220,42 +233,39 @@ public class FuzzyLogic {
     
     private float temperatureOptimal() {
         float tpProduct = (temperatures.getMeanTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMeanTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure().asBar());
-        float maximumDeviation = OPTIMAL_TEMPERATURES.getMeanTemperature().inKelvin()*OPTIMAL_SURFACE_PRESSURE.asBar();
         
-        if(tpProduct <= -maximumDeviation) {
+        if(tpProduct <= -MINIMUM_TEMPERATURE_THESHOLD) {
             return 0;
         }
         if(tpProduct <= 0) {
-            return 1+tpProduct/maximumDeviation;
+            return 1+tpProduct/MINIMUM_TEMPERATURE_THESHOLD;
         }
-        if(tpProduct < maximumDeviation) {
-            return 1-tpProduct/maximumDeviation;
+        if(tpProduct < MAXIMUM_TEMPERATURE_THESHOLD) {
+            return 1-tpProduct/MAXIMUM_TEMPERATURE_THESHOLD;
         }
         return 0;
     }
     
     private float temperatureTooCold() {
         float tpProduct = (temperatures.getMinimumTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMinimumTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure().asBar());
-        float maximumDeviation = OPTIMAL_TEMPERATURES.getMinimumTemperature().inKelvin()*OPTIMAL_SURFACE_PRESSURE.asBar();
         
-        if(tpProduct < -maximumDeviation) {
+        if(tpProduct < -MINIMUM_TEMPERATURE_THESHOLD) {
             return 1;
         }
         if(tpProduct < 0) {
-            return 1 + tpProduct/maximumDeviation;
+            return -tpProduct/MINIMUM_TEMPERATURE_THESHOLD;
         }
         return 0;
     }
     
     private float temperatureTooHot() {
         float tpProduct = (temperatures.getMaximumTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMaximumTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure().asBar());
-        float maximumDeviation = OPTIMAL_TEMPERATURES.getMaximumTemperature().inKelvin()*OPTIMAL_SURFACE_PRESSURE.asBar();
         
-        if(tpProduct > maximumDeviation) {
+        if(tpProduct > MAXIMUM_TEMPERATURE_THESHOLD) {
             return 1;
         }
         if(tpProduct > 0) {
-            return 1 - tpProduct/maximumDeviation;
+            return tpProduct/MAXIMUM_TEMPERATURE_THESHOLD;
         }
         return 0;      
     }
@@ -360,6 +370,7 @@ public class FuzzyLogic {
         NONE,
         LETHAL_GAS_CONCENTRATION,
         DANGEROUS_GAS_CONCENTRATION,
+        NO_OXYGEN,
         LOW_OXYGEN,
         SLIGHTLY_LOW_OXYGEN,
         OPTIMAL_BREATHABLE,

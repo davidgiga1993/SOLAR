@@ -43,12 +43,35 @@ public class LifeRating {
                 return "Lethal";
             case DANGEROUS_GAS_CONCENTRATION:
                 return "Hazardous";
+            case NO_OXYGEN:
+                return "No Oxygen";
             case LOW_OXYGEN:
                 return "Oxygen Deficient";
             case SLIGHTLY_LOW_OXYGEN:
                 return "Low on Oxygen";
             case OPTIMAL_BREATHABLE:
                 return "Optimal";
+            default:
+                return "Anomaly: Unknown";
+        }
+    }
+
+    public String temperatureFuzzy() {
+        switch(temperature) {
+            case EXTREMELY_COLD:
+                return "Extremely Cold";
+            case TOO_COLD:
+                return "Too Cold";
+            case COLD:
+                return "Cold";
+            case OPTIMAL:
+                return "Optimal";
+            case HOT:
+                return "Hot";
+            case TOO_HOT:
+                return "Too Hot";
+            case EXTREMELY_HOT:
+                return "Extremely Hot";
             default:
                 return "Anomaly: Unknown";
         }

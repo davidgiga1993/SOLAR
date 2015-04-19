@@ -35,12 +35,6 @@
             <x>1199.505</x>
             <y>499.505</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1200.0</x>
-                <y>500.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Nostromo</UnitName>
@@ -50,12 +44,6 @@
             <x>1499.505</x>
             <y>999.505</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1500.0</x>
-                <y>1000.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Destiny</UnitName>
@@ -65,12 +53,6 @@
             <x>1549.505</x>
             <y>1049.505</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1550.0</x>
-                <y>1050.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Deep Space Nine</UnitName>
@@ -80,12 +62,6 @@
             <x>1499.505</x>
             <y>-0.49499997</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1500.0</x>
-                <y>0.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Babylon 5</UnitName>
@@ -112,8 +88,8 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.991214E30</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.991214E30</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
         </BodyProperties>
         <OrbitalProperties>
@@ -140,15 +116,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0</Mass_Value>
-                <Mass_Unit>SOLAR_MASS</Mass_Unit>
+                <value>1.0</value>
+                <mass_unit>SOLAR_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>5778.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Solar System</Primary>
@@ -174,23 +144,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.055</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.055</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>100.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>340.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>700.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -216,35 +172,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.815</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.815</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>92.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>0.965</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.035</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>SULFUR_DIOXIDE</Type>
-                        <Volume_Percentage>1.5E-4</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>737.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -270,59 +200,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>101.325</Pressure_Value>
-                    <Pressure_Unit>KILOPASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.7808</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.2095</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>ARGON</Type>
-                        <Volume_Percentage>0.0093</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>WATER_VAPOR</Type>
-                        <Volume_Percentage>0.01</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>3.9E-4</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>184.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>288.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>330.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>0.708</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
-            <Biosphere>
-                <Biosphere_Coverage>0.9</Biosphere_Coverage>
-                <Type_of_Biosphere>TERRAN</Type_of_Biosphere>
-            </Biosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -356,23 +236,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.0123</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.0123</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>70.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>220.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>390.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Earth</Primary>
@@ -406,51 +272,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.107</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.107</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>0.636</Pressure_Value>
-                    <Pressure_Unit>KILOPASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>0.96</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>ARGON</Type>
-                        <Volume_Percentage>0.019</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.019</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.00145</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>130.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>210.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>308.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>0.1</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -484,15 +308,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.06589997E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.06589997E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>233.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Mars</Primary>
@@ -518,15 +336,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.47619999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.47619999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>233.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Mars</Primary>
@@ -552,19 +364,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.6E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.6E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>168.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -590,13 +392,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>318.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>318.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>2.19999996E15</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>2.19999996E15</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>92000.0</value>
@@ -608,32 +410,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>JOVIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.898</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.102</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.003</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>165.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -659,15 +435,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.24999998E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.24999998E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>123.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -693,15 +463,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0299999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.0299999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>122.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -727,15 +491,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.5E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.5E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>120.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -761,15 +519,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.4E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.4E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -795,23 +547,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.015</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.015</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>90.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>110.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>130.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -837,27 +575,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.008</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.008</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>50.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>102.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>125.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -883,27 +603,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.025</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.025</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>70.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>110.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>152.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -929,27 +631,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.018</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.018</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>80.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>134.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>165.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -975,15 +659,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0900001E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.0900001E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1009,15 +687,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.12E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.12E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1043,15 +715,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.3000002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.3000002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1077,15 +743,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.6599996E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.6599996E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1111,15 +771,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.00000008E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.00000008E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1145,15 +799,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.29999993E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.29999993E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1169,7 +817,7 @@
         </OrbitalProperties>
     </AstronomicalBody>
     <AstronomicalBody>
-        <Name>Pasiphae</Name>
+        <Name>Pasiphea</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
                 <Type>IRREGULAR</Type>
@@ -1179,15 +827,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.91999985E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.91999985E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1213,15 +855,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.7700004E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.7700004E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>124.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1247,13 +883,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>95.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>95.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>3.0E19</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>3.0E19</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>66900.0</value>
@@ -1265,32 +901,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>SATURNIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.96</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.03</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.004</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>134.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -1316,15 +926,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.9499997E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.9499997E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1350,15 +954,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.6E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.6E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>81.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1384,15 +982,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.3E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.3E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>74.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1418,15 +1010,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.2E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.2E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1452,15 +1038,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.2E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.2E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1486,15 +1066,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>9.0E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>9.0E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1518,19 +1092,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.0E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1556,27 +1120,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.8E-5</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.8E-5</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>32.9</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>75.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>145.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1602,19 +1148,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.00132</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.00132</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>86.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1640,15 +1176,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.04640009E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.04640009E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1672,15 +1202,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.54769997E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.54769997E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1704,19 +1228,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>87.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1742,15 +1256,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.09999997E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.09999997E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1774,13 +1282,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>9.9999998E12</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>9.9999998E12</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>1615.0</value>
@@ -1792,24 +1300,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>NEPTUNIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>53.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>99.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1835,39 +1325,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.023</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.023</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>146.7</Pressure_Value>
-                    <Pressure_Unit>KILOPASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.984</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.014</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.002</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>93.7</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1893,19 +1353,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>9.4E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>9.4E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>93.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1931,27 +1381,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>90.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>110.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>130.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1977,15 +1409,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.30000011E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.30000011E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2011,15 +1437,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.20000004E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.20000004E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2045,15 +1465,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.39E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.39E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>75.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2079,15 +1493,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.1999999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.1999999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2113,15 +1521,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.09999999E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.09999999E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2147,15 +1549,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.5999997E14</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.5999997E14</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2181,15 +1577,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.70000005E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.70000005E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2215,15 +1605,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.9000004E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.9000004E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2249,15 +1633,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.8999999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.8999999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>78.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2283,13 +1661,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>14.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>14.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>8.9999998E15</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>8.9999998E15</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>26840.0</value>
@@ -2301,32 +1679,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>URANIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.83</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.15</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.023</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>76.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -2352,15 +1704,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.4960001E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.4960001E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2386,15 +1732,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.3952E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.3952E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2420,15 +1760,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>9.2917005E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>9.2917005E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2454,15 +1788,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.43199979E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.43199979E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2488,15 +1816,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.78339996E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.78339996E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2522,15 +1844,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.7E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.7E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2556,23 +1872,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.8E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.8E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>76.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>89.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2598,23 +1900,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.54769987E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.54769987E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>76.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>89.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2640,23 +1928,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.20000004E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.20000004E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>76.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>89.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2682,23 +1956,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.56679992E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.56679992E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>76.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>89.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2724,23 +1984,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.79999996E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.79999996E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>76.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>89.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2766,23 +2012,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.9E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.9E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>76.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>89.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2808,15 +2040,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.99999995E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.99999995E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2842,19 +2068,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0E-5</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.0E-5</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>60.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2880,19 +2096,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.2E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.2E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>60.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2918,19 +2124,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>75.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2956,27 +2152,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>60.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>70.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>89.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3002,19 +2180,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.6E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.6E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>75.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3040,15 +2208,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.2E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.2E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3074,15 +2236,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.2999999E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.2999999E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3108,15 +2264,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0000001E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.0000001E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3142,15 +2292,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.89999996E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.89999996E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3176,15 +2320,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.9E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.9E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>65.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3210,15 +2348,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.4999998E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.4999998E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3244,15 +2376,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.5000006E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.5000006E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3278,15 +2404,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.4999999E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.4999999E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3312,15 +2432,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.4000001E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.4000001E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>64.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3346,13 +2460,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>17.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>17.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>8.0E14</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>8.0E14</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>40900.0</value>
@@ -3364,32 +2478,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>NEPTUNIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.8</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.19</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.015</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>72.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -3415,15 +2503,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.8999999E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.8999999E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3449,15 +2531,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.69999991E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.69999991E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3483,15 +2559,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.7E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.7E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3517,15 +2587,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.5E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.5E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3551,15 +2615,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.0E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>7.0E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3585,15 +2643,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.25000003E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.25000003E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3619,15 +2671,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.4E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>7.4E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3653,19 +2699,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.00358</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.00358</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>38.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3691,15 +2727,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.5E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.5E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>50.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3725,15 +2755,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.9920002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.9920002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3759,15 +2783,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.9920002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.9920002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3793,15 +2811,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.9920002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.9920002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3827,15 +2839,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.49870006E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.49870006E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3861,15 +2867,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.6485E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.6485E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3895,27 +2895,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.0022</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.0022</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Min_Temperature>
-                    <Temperature_Value>33.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Min_Temperature>
-                <Mean_Temperature>
-                    <Temperature_Value>44.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-                <Max_Temperature>
-                    <Temperature_Value>55.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Max_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -3941,19 +2923,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.5E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.5E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>53.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -3979,19 +2951,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.25E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.25E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4017,19 +2979,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.7E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.7E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4055,19 +3007,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.8000008E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.8000008E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4093,19 +3035,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.7E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.7E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>51.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4131,19 +3063,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>7.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>49.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4169,19 +3091,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>49.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Haumea</Primary>
@@ -4207,19 +3119,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>49.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Haumea</Primary>
@@ -4245,19 +3147,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>49.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4283,19 +3175,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.0028</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.0028</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>30.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4321,19 +3203,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.0E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Surface_Temperatures>
-                <Mean_Temperature>
-                    <Temperature_Value>30.0</Temperature_Value>
-                    <Temperature_Unit>KELVIN</Temperature_Unit>
-                </Mean_Temperature>
-            </Surface_Temperatures>
-            <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Eris</Primary>
