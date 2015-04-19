@@ -7,7 +7,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 
 public class AtmosphericGas {
     
-    private static final Pressure ASPHYXIATION_ONLY = new Pressure( Float.NaN, PressureUnit.BAR);
+    private static final Pressure ASPHYXIATION_ONLY = null;
     private static final Pressure CARBON_DIOXIDE_POISONING_SYMPTOMS = new Pressure( 0.01f, PressureUnit.BAR);
     private static final Pressure CARBON_DIOXIDE_POISONING_FATAL = new Pressure( 0.1f, PressureUnit.BAR);
     private static final Pressure METHANE_FLAMMABLE = new Pressure( 0.05f, PressureUnit.BAR);

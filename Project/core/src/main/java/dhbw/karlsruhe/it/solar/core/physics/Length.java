@@ -19,6 +19,8 @@ public class Length {
     public static final float PARSEC_IN_ASTRONOMICAL_UNITS = 206264.80599999f;
     public static final float PARSEC_IN_LIGHT_YEARS = 3.2615637732f;
     public static final float KILOMETER_IN_METERS = 1000;
+    public static final float MILLION = 1000000;
+    public static final float THOUSAND = 1000;
 
     @XmlElement
     protected float value = 0f;
@@ -135,5 +137,30 @@ public class Length {
         double directDistance = Math.sqrt( Math.pow(actorTwo.getX() - actorOne.getX(),2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
         
         return new Length( (float)directDistance, DistanceUnit.KILOMETERS);
+    }
+    
+    @Override
+    public String toString() {
+        if( this.asLightYear() > 0.5f ) {
+            return formatValue(this.asLightYear()) + " l.y.";
+        }
+        if( this.asAstronomicalUnit() > 0.5f ) {
+            return formatValue(this.asAstronomicalUnit()) + " AU";
+        }    
+        if(this.asKilometres() > MILLION) {
+            return formatValue(this.asKilometres()/MILLION) + " M km";            
+        }
+        if(this.asKilometres() > 10*THOUSAND) {
+            return formatValue(this.asKilometres()/THOUSAND) + " k km";            
+        }
+        return formatValueNoDecimal(this.asKilometres()) + " km";
+    }
+    
+    private String formatValueNoDecimal(float value) {
+        return String.format("%.00f", value);
+    }
+
+    private String formatValue(float value) {
+        return String.format("%.01f", value);
     }
 }
