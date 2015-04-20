@@ -7,16 +7,24 @@ import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 public class FuzzyLogic {
        
-    private static final float LIFERATING_NEUTRAL_VALUE = 0.04f;
-    private static final float LIFERATING_POSITIVE_WEIGHT = 0.95f;
-    private static final float LIFERATING_MINIMUM_VALUE = 0.01f;
     private static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(1f,GravUnit.G);
     private static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.75f, true);
     private static final SurfaceTemperatures OPTIMAL_TEMPERATURES = new SurfaceTemperatures(new Temperature(258f,TempUnit.KELVIN),new Temperature(288f,TempUnit.KELVIN),new Temperature(318f,TempUnit.KELVIN));
     private static final Pressure OPTIMAL_SURFACE_PRESSURE = new Pressure(1f, PressureUnit.STANDARDATMOSPHERE);
     private static final Pressure OPTIMAL_OXYGEN_PARTIAL_PRESSURE = new Pressure(0.23f, PressureUnit.BAR);
-    private static final float MINIMUM_TEMPERATURE_THESHOLD = 125f;
-    private static final float MAXIMUM_TEMPERATURE_THESHOLD = 225f;
+    private static final float MINIMUM_TEMPERATURE_THESHOLD = 145f;
+    private static final float MAXIMUM_TEMPERATURE_THESHOLD = 155f;
+    private static final float LR_EXTREME_TEMP_WEIGHT = 2f;
+    private static final float LR_GRAV_WEIGHT = 1f;
+    private static final float LR_TEMP_WEIGHT = 1f;
+    private static final float LR_BIO_WEIGHT = 0.45f;
+    private static final float LR_HYDRO_WEIGHT = 0.25f;
+    private static final float LR_HAS_ATMO_WEIGHT = 0.3f;
+    private static final float LR_ATMO_WEIGHT = 2f;
+    private static final float LR_POSITIVE_NORMALIZATION = 0.208f;
+    private static final float LR_NEUTRAL_VALUE = 0.04f;
+    private static final float LR_POSITIVE_WEIGHT = 0.95f;
+    private static final float LR_MINIMUM_VALUE = 0.01f;
     
     private SurfaceGravity gravity;
     private Atmosphere atmosphere;
@@ -30,7 +38,7 @@ public class FuzzyLogic {
     private FuzzyAtmosphere fuzzyAtmo;
     private float atmosphereBreathable;
     private FuzzyTemperature fuzzyTemp;
-    private float temperatureOptimal;
+    private float temperatureOptimal;  
     private FuzzyHydrosphere fuzzyHydro;
     private float hydrosphereOptimal;
     private FuzzyBiosphere fuzzyBio;
@@ -60,17 +68,15 @@ public class FuzzyLogic {
     }
 
     private float lifeRatingFormula() {
-        return LIFERATING_MINIMUM_VALUE + (1 - negativeLRInfluences()) * ( LIFERATING_NEUTRAL_VALUE + LIFERATING_POSITIVE_WEIGHT*positiveLRInfluences());
+        return LR_MINIMUM_VALUE + (1 - negativeLRInfluences()) * ( LR_NEUTRAL_VALUE + LR_POSITIVE_WEIGHT*positiveLRInfluences());
     }
     
     private float positiveLRInfluences() {
-        float hasAtmo = hasAtmosphere();
-        float extreme = temperaturesExtreme();
-        return 0.2f/0.96f*(2*atmosphereBreathable + 0.25f*hasAtmosphere() + gravityOptimal + 0.5f*hydrosphereOptimal + 0.25f*biosphereOptimal + temperatureOptimal);
+        return LR_POSITIVE_NORMALIZATION*(LR_ATMO_WEIGHT*atmosphereBreathable + LR_HAS_ATMO_WEIGHT*hasAtmosphere() + LR_GRAV_WEIGHT*gravityOptimal + LR_HYDRO_WEIGHT*hydrosphereOptimal + LR_BIO_WEIGHT*biosphereOptimal + LR_TEMP_WEIGHT*temperatureOptimal);
     }
 
     private float negativeLRInfluences() {
-        float value = gravityTooHigh + 2*temperaturesExtreme();
+        float value = gravityTooHigh + LR_EXTREME_TEMP_WEIGHT*temperaturesExtreme();
         if(value < 1)
             return value;
         return 1;
@@ -120,29 +126,28 @@ public class FuzzyLogic {
     }
 
     private void calculateFuzzyTemperature() {
-        float tempTooCold = temperatureTooCold();
+        float temperatureTooCold = temperatureTooCold();
         temperatureOptimal = temperatureOptimal();
-        float tempTooHot = temperatureTooHot();
+        float temperatureTooHot = temperatureTooHot();
+        float extreme = temperaturesExtreme();
         
-        if(tempTooCold > 0.05) {
-            fuzzyTemp = FuzzyTemperature.COLD;
-        }
-        if(tempTooCold > 0.75) {
+        fuzzyTemp = FuzzyTemperature.COLD;
+        if(temperatureTooCold > 0.75) {
             fuzzyTemp = FuzzyTemperature.TOO_COLD;
         }
-        if(tempTooCold == 1) {
+        if(extreme < 0.5 && temperatureTooCold == 1) {
             fuzzyTemp = FuzzyTemperature.EXTREMELY_COLD;
         }
-        if(tempTooHot > 0.05) {
+        if(temperatureTooHot > 0.1) {
             fuzzyTemp = FuzzyTemperature.HOT;
         }
-        if(tempTooHot > 0.75) {
+        if(temperatureTooHot > 0.75) {
             fuzzyTemp = FuzzyTemperature.TOO_HOT;
         }
-        if(tempTooHot == 1) {
+        if(extreme > 0.5 && temperatureTooHot == 1) {
             fuzzyTemp = FuzzyTemperature.EXTREMELY_HOT;
         }
-        if(temperatureOptimal > 0.95) {
+        if(temperatureOptimal > 0.9) {
             fuzzyTemp = FuzzyTemperature.OPTIMAL;
         }
     }
@@ -168,7 +173,7 @@ public class FuzzyLogic {
         if(oxygenTooLow == 1f) {
             fuzzyAtmo = FuzzyAtmosphere.NO_OXYGEN;
         }
-        if(oxygenOptimal > 0.95) {
+        if(oxygenOptimal > 0.90) {
             fuzzyAtmo = FuzzyAtmosphere.OPTIMAL_BREATHABLE;
         }
         if(toxicGas > 0.05) {
