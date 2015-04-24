@@ -29,18 +29,11 @@ public class Hydrosphere {
     
     @Override
     public String toString() {
-        return formatValue() + " % Water Cover" + liquidMsg();
-    }
-
-    private String liquidMsg() {
-        if(liquidWater) {
-            return ", occurence of liquid water";
-        }
-        return "";
+        return "covers " + formatValue() + " %";
     }
 
     private String formatValue() {
-        return String.format("%.02f", waterCover);
+        return String.format("%.00f", waterCover*100);
     }
 
 }

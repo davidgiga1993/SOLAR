@@ -93,5 +93,17 @@ public class Pressure {
         BAR,
         STANDARDATMOSPHERE,
     }
+    
+    @Override
+    public String toString() {
+        if(0.01f < this.asBar()) {
+            return formatValue(this.asBar()) + " bar";            
+        }
+        return formatValue(this.asPascal()) + " Pa";    
+    }
+
+    private String formatValue(float value) {
+        return String.format("%.02f", value);
+    }
 
 }

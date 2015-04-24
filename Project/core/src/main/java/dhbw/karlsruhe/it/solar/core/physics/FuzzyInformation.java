@@ -7,17 +7,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
  * @author Andi
  * created 2015-04-24
  */
-public class FuzzyString {
+public class FuzzyInformation {
     
+    private String physicalValues;
     private String information;
     private LabelStyle font;
     
-    public FuzzyString(String information, LabelStyle font) {
+    public FuzzyInformation(String value, String information, LabelStyle font) {
+        this.physicalValues = value;
         this.information = information;
         this.font = font;
     }
+    
+    public String getPhyicalValue() {
+        return physicalValues;
+    }
 
-    public String getInfo() {
+    public String getFuzzyInfo() {
         return information;
     }
 

@@ -37,6 +37,7 @@ public class FuzzyLogic {
     private float gravityTooHigh;
     private FuzzyAtmosphere fuzzyAtmo;
     private float atmosphereBreathable;
+    private AtmosphericGas toxicGas;
     private FuzzyTemperature fuzzyTemp;
     private float temperatureOptimal;  
     private FuzzyHydrosphere fuzzyHydro;
@@ -62,7 +63,7 @@ public class FuzzyLogic {
         calculateFuzzyBiosphere();
         
         LifeRating rating = new LifeRating(lifeRatingFormula());
-        rating.setFuzzyEnums(fuzzyGravity, fuzzyTemp, fuzzyAtmo, fuzzyHydro, fuzzyBio);
+        rating.setFuzzyEnums(fuzzyGravity, fuzzyTemp, fuzzyAtmo, toxicGas, fuzzyHydro, fuzzyBio);
         
         return rating;
     }
@@ -303,6 +304,7 @@ public class FuzzyLogic {
         float toxicLevel = 0;
         for (AtmosphericGas gas : atmosphere.getListOfAtmosphericGases()) {
             toxicLevel = replaceToxicGasConcentrationIfHigher(toxicLevel, gas);
+            toxicGas = gas;
         }
         return toxicLevel;
     }

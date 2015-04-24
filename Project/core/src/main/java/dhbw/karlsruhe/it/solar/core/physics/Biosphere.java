@@ -49,7 +49,7 @@ public class Biosphere {
     
     @Override
     public String toString() {
-        return formatValue() + " % Bio Cover";
+        return "covers " + formatValue() + " %";
     }
 
     private String formatValue() {

@@ -16,6 +16,24 @@ public class PlanetType extends BodyType{
         
     }
     
+    @Override
+    public boolean hasSurface() {
+        switch(planetType)        {
+            case MARTIAN:
+            case MERCURIAN:
+            case VENUSIAN:
+            case TERRAN:
+            case DWARFPLANET:
+                return true;
+            case JOVIAN:
+            case SATURNIAN:
+            case NEPTUNIAN:
+            case URANIAN:
+            default:
+                return false;
+        }
+    }
+    
     public PlanetType(TypeOfPlanet planetType) {
         this.planetType = planetType;
     } 

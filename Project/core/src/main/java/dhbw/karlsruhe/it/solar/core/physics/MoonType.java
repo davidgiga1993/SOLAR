@@ -16,6 +16,11 @@ public class MoonType extends BodyType {
         
     }
     
+    @Override
+    public boolean hasSurface() {
+        return true;
+    }
+    
     public MoonType(TypeOfMoon satelliteType) {
         this.satelliteType = satelliteType;
     } 

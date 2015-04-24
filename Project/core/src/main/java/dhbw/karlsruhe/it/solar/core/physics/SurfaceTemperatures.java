@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
+
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Temperature.class})
 public class SurfaceTemperatures {
@@ -52,11 +54,11 @@ public class SurfaceTemperatures {
     
     @Override
     public String toString() {
-        return "min: " + formatValue(getMinimumTemperature()) + " K, mean: " + formatValue(getMeanTemperature()) + " K, max: " + formatValue(getMaximumTemperature()) + " K";
+        return formatValue(getMeanTemperature()) + " °C";
     }
 
     private String formatValue(Temperature temp) {
-        return String.format("%.00f", temp.inKelvin());
+        return String.format("%.00f", temp.inCelsius());
     }
 
 }

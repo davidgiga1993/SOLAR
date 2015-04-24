@@ -16,6 +16,11 @@ public class StarType extends BodyType {
         
     }
     
+    @Override
+    public boolean hasSurface() {
+        return false;
+    }
+    
     public StarType(TypeOfStar starType) {
         this.starType = starType;
     } 
@@ -37,9 +42,9 @@ public class StarType extends BodyType {
     public String resolveTypeName() {
         switch(starType)        {
             case GTYPE:
-                return "G-Type Main-Sequence Star";
+                return "G-Type Dwarf Star";
             default:
-                return "Anomaly: Unknown Type of Star";
+                return "Anomaly: Unknown Type";
         }
     }
 }

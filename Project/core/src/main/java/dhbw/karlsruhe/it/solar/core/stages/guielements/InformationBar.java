@@ -21,17 +21,14 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 public class InformationBar extends Window implements Telegraph {
    
     private final static float IMAGE_SIZE = 130;
-    private final static float CELL_SIZE = 200;
-    private final static float ACTION_TABLE_SIZE = 420;
-    private final static float CELL_PADDING = 20;
-    private final static float BUTTON_WIDTH = 130;
-    private final static float BUTTON_HEIGHT = 30;
-    private final static float BUTTON_PADDING = 5;
-    
+    public final static float CELL_SIZE = 215;
+    public final static float PADDING = 20;
+    public final static float BUTTON_WIDTH = 130;
+    public final static float BUTTON_HEIGHT = 30;
+    public final static float BUTTON_PADDING = 5;
+    public final static String TAB = "            ";
+     
     private Table contentTable = new Table();
-    private final InfoBarOverviewTable overviewTable = new InfoBarOverviewTable();
-    private final InfoBarDetailsTable detailsTable = new InfoBarDetailsTable();
-    private final InfoBarActionTable actionTable = new InfoBarActionTable(BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_PADDING);
     
     private SolarActor selectedActor; 
     Image selectedImage = new Image();
@@ -40,9 +37,7 @@ public class InformationBar extends Window implements Telegraph {
         super("Information", Styles.TOOLTIPSKIN);
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
         
-        add(contentTable).expand();
-        contentTable.setDebug(true);
-        loadEmptyContent();
+        add(contentTable).expandX().fillX();
     }
 
     @Override
@@ -57,31 +52,15 @@ public class InformationBar extends Window implements Telegraph {
     public void onSelectionChange(Selection newSelection) {
         selectedActor = newSelection.getRepresentative();
         contentTable.clear();
-        contentTable.setDebug(true);
         if(null!=selectedActor) {
-            overviewTable.update(selectedActor);
-            detailsTable.update(selectedActor);
-            actionTable.update(selectedActor);
             loadContent();
-        }
-        if(null==selectedActor) {
-            actionTable.hideAllButtons();
-            loadEmptyContent();            
         }
     }
 
     private void loadContent() {
-        contentTable.add(loadImage()).width(IMAGE_SIZE).height(IMAGE_SIZE);
-        contentTable.add(overviewTable).width(CELL_SIZE).padLeft(CELL_PADDING);
-        contentTable.add(detailsTable).width(CELL_SIZE).padLeft(CELL_PADDING);
-        contentTable.add(actionTable).width(ACTION_TABLE_SIZE).padLeft(CELL_PADDING);
-    }
-
-    private void loadEmptyContent() {
-        contentTable.add().width(IMAGE_SIZE).height(IMAGE_SIZE);
-        contentTable.add().width(CELL_SIZE).padLeft(CELL_PADDING);
-        contentTable.add().width(CELL_SIZE).padLeft(CELL_PADDING);
-        contentTable.add().width(ACTION_TABLE_SIZE).padLeft(CELL_PADDING);
+        contentTable.add(loadImage()).width(IMAGE_SIZE).height(IMAGE_SIZE).left();
+        contentTable.add(new InfoBarDetailsTable(selectedActor)).padLeft(PADDING).expandX().fillX();
+        contentTable.add(new InfoBarActionTable(selectedActor)).padLeft(PADDING).right();
     }
 
     private Image loadImage() { 

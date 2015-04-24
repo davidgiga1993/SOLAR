@@ -27,12 +27,28 @@ public class InfoBarActionTable extends Table {
     
     private SolarActor selectedActor; 
     
-    public InfoBarActionTable(float buttonWidth, float buttonHeight, float buttonPadding) {
+    public InfoBarActionTable(SolarActor selectedActor) {
         addButtonListeners(); 
-        add(orbitalInsertion).left().width(buttonWidth).height(buttonHeight).pad(buttonPadding);
-        add(colonize).width(buttonWidth).height(buttonHeight).pad(buttonPadding);
-        add(selfDestruct).right().width(buttonWidth).height(buttonHeight).pad(buttonPadding);
+        add(orbitalInsertion).width(InformationBar.BUTTON_WIDTH).height(InformationBar.BUTTON_HEIGHT).pad(InformationBar.BUTTON_PADDING);
+        row();
+        add(colonize).width(InformationBar.BUTTON_WIDTH).height(InformationBar.BUTTON_HEIGHT).pad(InformationBar.BUTTON_PADDING);
+        row();
+        add(selfDestruct).width(InformationBar.BUTTON_WIDTH).height(InformationBar.BUTTON_HEIGHT).pad(InformationBar.BUTTON_PADDING);
         hideAllButtons();
+        this.selectedActor = selectedActor;
+        hideAllButtons();
+        if(selectedActor instanceof SpaceUnit) {
+            orbitalInsertion.setVisible(true);
+            selfDestruct.setText("Self Destruct");
+            selfDestruct.setVisible(true);
+        }
+        if(selectedActor instanceof Spaceship) {
+            colonize.setVisible(true);
+        }
+        if(selectedActor instanceof AstronomicalBody && ((AstronomicalBody)selectedActor).isColonized()) {
+            selfDestruct.setText("Abandon Colony");
+            selfDestruct.setVisible(true);
+        }
     }
     
     private void addButtonListeners() {
@@ -85,20 +101,6 @@ public class InfoBarActionTable extends Table {
     }
 
     public void update(SolarActor selectedActor) {
-        this.selectedActor = selectedActor;
-        hideAllButtons();
-        if(selectedActor instanceof SpaceUnit) {
-            orbitalInsertion.setVisible(true);
-            selfDestruct.setText("Self Destruct");
-            selfDestruct.setVisible(true);
-        }
-        if(selectedActor instanceof Spaceship) {
-            colonize.setVisible(true);
-        }
-        if(selectedActor instanceof AstronomicalBody && ((AstronomicalBody)selectedActor).isColonized()) {
-            selfDestruct.setText("Abandon Colony");
-            selfDestruct.setVisible(true);
-        }
     }
 
 }

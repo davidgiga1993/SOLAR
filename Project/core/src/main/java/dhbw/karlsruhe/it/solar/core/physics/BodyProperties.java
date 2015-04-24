@@ -1,7 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import java.util.List;
+
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 /**
  * Created by Arga on 25.11.2014.
@@ -104,5 +107,24 @@ public class BodyProperties {
 
     public SurfaceGravity getSurfaceGravity() {
         return gravity;
+    }
+
+    public Pressure getSurfacePressure() {
+        return atmosphere.getPressure();
+    }
+
+    public boolean hasAtmosphere() {
+        if(null != atmosphere) {
+            return true;
+        }
+        return false;
+    }
+
+    public List<AtmosphericGas> getListOfAtmosphericGases() {
+        return atmosphere.getListOfAtmosphericGases();
+    }
+
+    public boolean hasSurface() {
+        return type.hasSurface();
     }
 }

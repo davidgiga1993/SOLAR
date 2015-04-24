@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
@@ -242,5 +243,45 @@ public abstract class AstronomicalBody extends Orbiter  {
 
     public SurfaceGravity getSurfaceGravity() {
         return physicalProperties.getSurfaceGravity();
+    }
+
+    public FuzzyInformation gravityFuzzy() {
+        return getLifeRating().gravityFuzzy(this);
+    }
+
+    public FuzzyInformation temperatureFuzzy() {
+        return getLifeRating().temperatureFuzzy(this);
+    }
+
+    public FuzzyInformation atmosphereFuzzy() {
+        return getLifeRating().atmosphereFuzzy(this);
+    }
+
+    public FuzzyInformation hydrosphereFuzzy() {
+        return getLifeRating().hydrosphereFuzzy(this);
+    }
+
+    public FuzzyInformation biosphereFuzzy() {
+        return getLifeRating().biosphereFuzzy(this);
+    }
+
+    public FuzzyInformation ratingFuzzy() {
+        return getLifeRating().lifeRatingFuzzy(this);
+    }
+
+    public Pressure getSurfacePressure() {
+        return physicalProperties.getSurfacePressure();
+    }
+
+    public boolean hasAtmosphere() {
+        return physicalProperties.hasAtmosphere();
+    }
+
+    public List<AtmosphericGas> getListOfAtmosphericGases() {
+        return physicalProperties.getListOfAtmosphericGases();
+    }
+
+    public boolean hasSurface() {
+        return physicalProperties.hasSurface();
     }
 }

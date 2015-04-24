@@ -97,11 +97,6 @@ public class AtmosphericGas {
         return false;
     }
     
-    @Override
-    public String toString() {
-        return ", " + typeToString() + " (" + formatValue() + "%)";
-    }
-    
     private String typeToString() {
         switch(type) {
             case ARGON:
@@ -119,7 +114,7 @@ public class AtmosphericGas {
             case OXYGEN:
                 return "Oxygen";
             case SULFUR_DIOXIDE:
-                return "Sulfur Dioxide";
+                return "Sulfur Dioxode";
             case WATER_VAPOR:
                 return "Water Vapor";
             default:
@@ -127,8 +122,41 @@ public class AtmosphericGas {
         }
     }
 
-    private String formatValue() {
-        return String.format("%.00f", percentage*100);
+    private String formatValue(float value) {
+        return String.format("%.01f", value);
+    }
+
+    public String getName() {
+        return typeToString();
+    }
+
+    public String getCompositionPercentage() {
+        return formatValue(percentage*100) + " %";
+    }
+
+    public String getShortName() {
+        switch(type) {
+            case ARGON:
+                return "Ar";
+            case CARBON_DIOXIDE:
+                return "CO2";
+            case HELIUM:
+                return "He";
+            case HYDROGEN:
+                return "H2";
+            case METHANE:
+                return "CH4";
+            case NITROGEN:
+                return "N2";
+            case OXYGEN:
+                return "O2";
+            case SULFUR_DIOXIDE:
+                return "SO2";
+            case WATER_VAPOR:
+                return "H2O";
+            default:
+                return "unknown";            
+        }
     }
 
 }

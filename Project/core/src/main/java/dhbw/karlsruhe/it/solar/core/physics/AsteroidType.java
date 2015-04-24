@@ -48,5 +48,10 @@ public class AsteroidType extends BodyType {
             return "Anomaly: Unknown Type of Asteroid";
         }
     }
+
+    @Override
+    public boolean hasSurface() {
+        return true;
+    }
     
 }
