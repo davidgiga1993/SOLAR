@@ -107,9 +107,9 @@ public class LifeRating {
             case NONE:
                 return new FuzzyInformation(hydroValue, "None", Styles.MENUELABEL_RED);
             case FROZEN:
-                return new FuzzyInformation(hydroValue, "Frozen Crust", Styles.MENUELABEL_ORANGE);
+                return new FuzzyInformation(hydroValue, "Frozen", Styles.MENUELABEL_ORANGE);
             case SUBSURFACE_OCEAN:
-                return new FuzzyInformation(hydroValue, "Subsurface Ocean", Styles.MENUELABEL_YELLOW);
+                return new FuzzyInformation(hydroValue, "SS Ocean", Styles.MENUELABEL_YELLOW);
             case ARID:
                 return new FuzzyInformation(hydroValue, "Too Arid", Styles.MENUELABEL_YELLOW);
             case HUMID:

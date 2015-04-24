@@ -220,9 +220,9 @@ public abstract class AstronomicalBody extends Orbiter  {
     public Hydrosphere getHydrosphere() {
         return physicalProperties.getHydrosphere();
     }
-
-    public void setUpHydrosphere(Hydrosphere hydro) {
-        physicalProperties.setUpHydrosphere(hydro);
+    
+    public void setUpHydrosphere(float liquidWaterCover, float iceCover, boolean subsurfaceOcean) {
+        physicalProperties.setUpHydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);
     }
 
     public Biosphere getBiosphere() {
@@ -283,5 +283,15 @@ public abstract class AstronomicalBody extends Orbiter  {
 
     public boolean hasSurface() {
         return physicalProperties.hasSurface();
+    }
+
+    public void determineHydrosphere(float liquidWaterCover, float iceCover, boolean subsurfaceOcean) {
+        if(physicalProperties.consistsPartiallyOfWaterIce()) {
+                setUpHydrosphere(0, 1, subsurfaceOcean);
+                return;
+            }
+            if( 0 < liquidWaterCover || 0 < iceCover) {
+                setUpHydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);   
+            }
     }
 }

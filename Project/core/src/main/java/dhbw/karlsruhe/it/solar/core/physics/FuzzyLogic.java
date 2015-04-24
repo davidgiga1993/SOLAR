@@ -8,7 +8,7 @@ import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 public class FuzzyLogic {
        
     private static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(1f,GravUnit.G);
-    private static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.75f, true);
+    private static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.65f, 0.1f, true);
     private static final SurfaceTemperatures OPTIMAL_TEMPERATURES = new SurfaceTemperatures(new Temperature(258f,TempUnit.KELVIN),new Temperature(288f,TempUnit.KELVIN),new Temperature(318f,TempUnit.KELVIN));
     private static final Pressure OPTIMAL_SURFACE_PRESSURE = new Pressure(1f, PressureUnit.STANDARDATMOSPHERE);
     private static final Pressure OPTIMAL_OXYGEN_PARTIAL_PRESSURE = new Pressure(0.23f, PressureUnit.BAR);
@@ -116,14 +116,27 @@ public class FuzzyLogic {
             return;
         }
         hydrosphereOptimal = hydrosphereOptimal();
-        
-        if(hydrosphereOptimal < 0.5) {
+ 
+        if(hydrosphere.getWaterCover() > 0.5) {
+            fuzzyHydro = FuzzyHydrosphere.HUMID;
+            return;
+        }
+        if(hydrosphere.getWaterCover() < 0.5) {
             fuzzyHydro = FuzzyHydrosphere.ARID;            
         }
-        if(hydrosphereOptimal > 0.5) {
-            fuzzyHydro = FuzzyHydrosphere.HUMID;            
+        if(hydrosphere.getIceCover() > 0.5) {
+            fuzzyHydro = FuzzyHydrosphere.FROZEN;            
         }
-        
+        if(hydrosphere.getSubsurfaceOcean()) {
+            fuzzyHydro = FuzzyHydrosphere.SUBSURFACE_OCEAN;            
+        }
+    }    
+
+    private float hydrosphereOptimal() {
+        if( hydrosphere.getWaterCover() <= OPTIMAL_HYDROSPHERE.getWaterCover()) {
+            return (hydrosphere.getWaterCover() + hydrosphere.getIceCover() )/ OPTIMAL_HYDROSPHERE.getWaterCover();
+        }
+        return 1f;
     }
 
     private void calculateFuzzyTemperature() {
@@ -229,13 +242,6 @@ public class FuzzyLogic {
         private float biosphereOptimal() {
             return biosphere.getUseableBioCover();            
         }
-
-    private float hydrosphereOptimal() {
-        if( hydrosphere.getWaterCover() <= OPTIMAL_HYDROSPHERE.getWaterCover()) {
-            return hydrosphere.getWaterCover() / OPTIMAL_HYDROSPHERE.getWaterCover();
-        }
-        return 1f;
-    }
     
     private float temperatureOptimal() {
         float tpProduct = (temperatures.getMeanTemperature().inKelvin()-OPTIMAL_TEMPERATURES.getMeanTemperature().inKelvin()) * 0.5f*(OPTIMAL_SURFACE_PRESSURE.asBar() + getSurfacePressure().asBar());

@@ -78,18 +78,26 @@ public class AstroBodyManager {
     private CreatableType extractAtmosphere() {
         Atmosphere atmosphere = body.getAtmosphere();
         if(null!=atmosphere) {
-            return extractHydrophere().withAnAtmosphereOf(atmosphere.getPressure(),atmosphere.getComposition());            
+            return extractSubsurfaceOcean().withAnAtmosphereOf(atmosphere.getPressure(),atmosphere.getComposition());            
         }
-        return extractHydrophere();
+        return extractSubsurfaceOcean();
     }
     
-    private CreatableType extractHydrophere() {
+    private CreatableType extractSubsurfaceOcean() {
         Hydrosphere hydrosphere = body.getHydrosphere();
-        if(null!=hydrosphere) {
-            return extractBiosphere().withAHydrosphereOf(hydrosphere);            
+        if(null!=hydrosphere && hydrosphere.getSubsurfaceOcean()) {
+            return extractOceansAndIceCaps().whichHasASubsurfaceOcean();
+        }
+        return extractOceansAndIceCaps();
+    }
+    
+    private CreatableType extractOceansAndIceCaps() {
+        Hydrosphere hydrosphere = body.getHydrosphere();
+        if(null!=hydrosphere && ( hydrosphere.getWaterCover() > 0 || hydrosphere.getIceCover() > 0 )) {
+            return extractBiosphere().withOceanCoverAndIceCapOf(hydrosphere.getWaterCover(), hydrosphere.getIceCover());            
         }
         return extractBiosphere();
-    }
+    }   
     
     private CreatableType extractBiosphere() {
         Biosphere biosphere = body.getBiosphere();

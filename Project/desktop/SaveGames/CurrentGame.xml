@@ -316,8 +316,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>0.708</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.608</Water_Cover>
+                <Ice_Cover>0.1</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
             <Biosphere>
                 <Biosphere_Coverage>0.9</Biosphere_Coverage>
@@ -448,8 +449,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>0.1</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.1</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -493,6 +495,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Mars</Primary>
@@ -527,6 +534,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Mars</Primary>
@@ -562,8 +574,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -668,6 +681,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -702,6 +720,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -736,6 +759,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -770,6 +798,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -855,8 +888,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -901,8 +935,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -947,8 +982,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -984,6 +1020,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1018,6 +1059,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1052,6 +1098,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1086,6 +1137,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1120,6 +1176,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1154,6 +1215,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1188,6 +1254,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1222,6 +1293,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1325,6 +1401,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1359,6 +1440,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1393,6 +1479,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1427,6 +1518,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1461,6 +1557,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1495,6 +1596,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1528,8 +1634,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1574,8 +1681,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1612,8 +1720,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1649,6 +1758,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1681,6 +1795,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1714,8 +1833,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1751,6 +1871,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1807,8 +1932,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1865,8 +1991,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1903,8 +2030,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1949,8 +2077,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -1986,6 +2115,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2020,6 +2154,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2054,6 +2193,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2088,6 +2232,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2122,6 +2271,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2156,6 +2310,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2190,6 +2349,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2224,6 +2388,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2258,6 +2427,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2361,6 +2535,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2395,6 +2574,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2429,6 +2613,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2463,6 +2652,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2497,6 +2691,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2531,6 +2730,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2573,6 +2777,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Max_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2615,6 +2824,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Max_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2657,6 +2871,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Max_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2699,6 +2918,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Max_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2741,6 +2965,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Max_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2783,6 +3012,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Max_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2817,6 +3051,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2852,8 +3091,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -2890,8 +3130,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -2928,8 +3169,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -2974,8 +3216,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -3012,8 +3255,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -3049,6 +3293,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3083,6 +3332,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3117,6 +3371,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3151,6 +3410,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3185,6 +3449,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3219,6 +3488,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3253,6 +3527,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3287,6 +3566,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3321,6 +3605,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3424,6 +3713,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3458,6 +3752,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3492,6 +3791,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3526,6 +3830,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3560,6 +3869,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3594,6 +3908,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3628,6 +3947,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3663,8 +3987,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -3700,6 +4025,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3734,6 +4064,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3768,6 +4103,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3802,6 +4142,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3836,6 +4181,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3870,6 +4220,11 @@
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
+            <Hydrosphere>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
+            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3913,8 +4268,9 @@
                 </Max_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>0.0</Ice_Cover>
+                <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -3951,8 +4307,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -3989,8 +4346,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4027,8 +4385,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4065,8 +4424,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4103,8 +4463,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4141,8 +4502,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4179,8 +4541,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4217,8 +4580,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4255,8 +4619,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4293,8 +4658,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
@@ -4331,8 +4697,9 @@
                 </Mean_Temperature>
             </Surface_Temperatures>
             <Hydrosphere>
-                <Water_Cover>1.0</Water_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Water_Cover>0.0</Water_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
+                <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>

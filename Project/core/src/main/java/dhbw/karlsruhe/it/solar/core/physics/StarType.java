@@ -20,6 +20,11 @@ public class StarType extends BodyType {
     public boolean hasSurface() {
         return false;
     }
+     
+    @Override
+    public boolean consistsPartiallyOfWaterIce() {
+        return false;
+    }
     
     public StarType(TypeOfStar starType) {
         this.starType = starType;
@@ -27,6 +32,15 @@ public class StarType extends BodyType {
     
     public TypeOfStar getStarType() {
         return starType;
+    }
+    
+    public String resolveTypeName() {
+        switch(starType)        {
+        case GTYPE:
+            return "G-Type Dwarf Star";
+        default:
+            return "Anomaly: Unknown Type";
+        }
     }
     
     public enum TypeOfStar {
@@ -38,13 +52,4 @@ public class StarType extends BodyType {
             KTYPE,
             MTYPE,
         }
-
-    public String resolveTypeName() {
-        switch(starType)        {
-            case GTYPE:
-                return "G-Type Dwarf Star";
-            default:
-                return "Anomaly: Unknown Type";
-        }
-    }
 }

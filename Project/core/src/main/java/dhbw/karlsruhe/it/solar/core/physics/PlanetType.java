@@ -16,6 +16,20 @@ public class PlanetType extends BodyType{
         
     }
     
+    public PlanetType(TypeOfPlanet planetType) {
+        this.planetType = planetType;
+    } 
+    
+    @Override
+    public boolean consistsPartiallyOfWaterIce() {
+        switch(planetType)        {
+            case DWARFPLANET:
+                return true;
+            default:
+                return false;
+            }
+    }
+    
     @Override
     public boolean hasSurface() {
         switch(planetType)        {
@@ -34,12 +48,28 @@ public class PlanetType extends BodyType{
         }
     }
     
-    public PlanetType(TypeOfPlanet planetType) {
-        this.planetType = planetType;
-    } 
-    
     public TypeOfPlanet getPlanetType() {
         return planetType;
+    }
+    
+    public String resolveTypeName() {
+        switch(planetType)        {
+        case MARTIAN:
+        case MERCURIAN:
+        case VENUSIAN:
+        case TERRAN:
+            return "Terrestrial Planet";
+        case JOVIAN:
+        case SATURNIAN:
+            return "Gas Giant";
+        case NEPTUNIAN:
+        case URANIAN:
+            return "Ice Giant";
+        case DWARFPLANET:
+            return "Dwarf Planet";
+        default:
+            return "Anomaly: Unknown Type of Planet";
+        }
     }
     
     public enum TypeOfPlanet {
@@ -53,24 +83,4 @@ public class PlanetType extends BodyType{
             URANIAN,
             NEPTUNIAN
         }
-
-    public String resolveTypeName() {
-        switch(planetType)        {
-            case MARTIAN:
-            case MERCURIAN:
-            case VENUSIAN:
-            case TERRAN:
-                return "Terrestrial Planet";
-            case JOVIAN:
-            case SATURNIAN:
-                return "Gas Giant";
-            case NEPTUNIAN:
-            case URANIAN:
-                return "Ice Giant";
-            case DWARFPLANET:
-                return "Dwarf Planet";
-            default:
-                return "Anomaly: Unknown Type of Planet";
-        }
-    }
 }

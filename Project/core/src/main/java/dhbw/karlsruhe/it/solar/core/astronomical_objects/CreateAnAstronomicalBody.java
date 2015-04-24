@@ -23,7 +23,9 @@ public final class CreateAnAstronomicalBody {
     private RingType typeOfRings;
     private Pressure surfacePressure;
     private AtmosphericComposition atmosphericComposition;
-    private Hydrosphere hydro;
+    private float liquidWaterCover;
+    private float iceCover;
+    private boolean subsurfaceOcean;
     private Biosphere bio;
     
     private CreateAnAstronomicalBody(String name) {
@@ -149,15 +151,27 @@ public final class CreateAnAstronomicalBody {
             }    
             
             /**
-             * Add a hydrosphere to the astronomical object
-             * @param surfacePressure
-             * @param atmosphericComposition
+             * Adds liquid water oceans and ice caps to the astronomical object. Used to add water to terrestrial planets or moons.
+             * @param liquidWaterCover
+             * @param iceCover
              * @return
              */
-            public CreatableType withAHydrosphereOf(Hydrosphere hydro) {
-                CreateAnAstronomicalBody.this.hydro = hydro;
+            public CreatableType withOceanCoverAndIceCapOf(float liquidWaterCover, float iceCover) {
+                CreateAnAstronomicalBody.this.liquidWaterCover = liquidWaterCover;
+                CreateAnAstronomicalBody.this.iceCover = iceCover;
                 return this;        
-            }  
+            }
+            
+            /**
+             * Adds a subsurface ocean to an astronomical object.
+             * @param liquidWaterCover
+             * @param iceCover
+             * @return
+             */
+            public CreatableType whichHasASubsurfaceOcean() {
+                CreateAnAstronomicalBody.this.subsurfaceOcean = true;
+                return this;        
+            }
             
             /**
              * Determines which type of object is to be created.
@@ -251,10 +265,7 @@ public final class CreateAnAstronomicalBody {
     }
     
     private void setUpHydrosphere(AstronomicalBody newBody) {
-        if(null != hydro) {
-            newBody.setUpHydrosphere(hydro);
-        }
-        
+        newBody.determineHydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);
     }
 
     private void setUpAtmosphere(AstronomicalBody newBody) {

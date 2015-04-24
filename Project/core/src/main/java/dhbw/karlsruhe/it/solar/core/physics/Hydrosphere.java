@@ -6,21 +6,19 @@ public class Hydrosphere {
     
     @XmlElement(name = "Water_Cover")
     private float waterCover;
-    @XmlElement(name = "Liquid_Water")
-    private boolean liquidWater;
+    @XmlElement(name = "Ice_Cover")
+    private float iceCover;
+    @XmlElement(name = "Subsurface_Ocean")
+    private boolean subsurfaceOcean;
     
     public Hydrosphere() {
         
     }
     
-    public Hydrosphere(float waterCover) {
+    public Hydrosphere(float waterCover, float iceCover, boolean subsurfaceOcean) {
         this.waterCover = waterCover;
-        this.liquidWater = false;
-    }
-    
-    public Hydrosphere(float waterCover, boolean liquid) {
-        this.waterCover = waterCover;
-        this.liquidWater = liquid;
+        this.iceCover = iceCover;
+        this.subsurfaceOcean = subsurfaceOcean;
     }
 
     public float getWaterCover() {
@@ -29,11 +27,22 @@ public class Hydrosphere {
     
     @Override
     public String toString() {
-        return "covers " + formatValue() + " %";
+        if(waterCover > iceCover) {
+            return formatValue((waterCover+iceCover)*100) + " % Ocean";
+        }
+        return formatValue((iceCover+waterCover)*100) + " % Ice Cap";            
     }
 
-    private String formatValue() {
-        return String.format("%.00f", waterCover*100);
+    private String formatValue(float value) {
+        return String.format("%.00f", value);
+    }
+
+    public float getIceCover() {
+        return iceCover;
+    }
+
+    public boolean getSubsurfaceOcean() {
+        return subsurfaceOcean;
     }
 
 }

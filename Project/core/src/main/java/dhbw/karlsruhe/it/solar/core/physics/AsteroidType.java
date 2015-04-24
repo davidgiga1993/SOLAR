@@ -19,9 +19,28 @@ public class AsteroidType extends BodyType {
     public AsteroidType(SpectralType classification) {
         this.spectralType = classification;
     }
+        
+    @Override
+    public boolean consistsPartiallyOfWaterIce() {
+        return false;
+    }
+    
+    @Override
+    public boolean hasSurface() {
+        return true;
+    }
     
     public SpectralType getSpectralType() {
         return spectralType;
+    }
+    
+    public String resolveTypeName() {
+        switch(spectralType)        {
+        case DTYPE:
+            return "D-Type Asteroid";
+        default:
+            return "Anomaly: Unknown Type of Asteroid";
+        }
     }
 
     public enum SpectralType {
@@ -38,20 +57,5 @@ public class AsteroidType extends BodyType {
         QTYPE,
         RTYPE,
         VTYPE
-    }
-
-    public String resolveTypeName() {
-        switch(spectralType)        {
-        case DTYPE:
-            return "D-Type Asteroid";
-        default:
-            return "Anomaly: Unknown Type of Asteroid";
-        }
-    }
-
-    @Override
-    public boolean hasSurface() {
-        return true;
-    }
-    
+    }    
 }

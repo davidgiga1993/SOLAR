@@ -21,6 +21,17 @@ public class MoonType extends BodyType {
         return true;
     }
     
+    @Override
+    public boolean consistsPartiallyOfWaterIce() {
+        switch(satelliteType)        {
+            case LUNAR:
+            case IONIAN:
+                return false;
+            default:
+                return true;
+        }
+    }
+    
     public MoonType(TypeOfMoon satelliteType) {
         this.satelliteType = satelliteType;
     } 
@@ -29,28 +40,6 @@ public class MoonType extends BodyType {
         return satelliteType;
     }
     
-    public enum TypeOfMoon {
-        IRREGULAR,
-        LUNAR,
-        IONIAN,
-        EUROPAN,
-        GANYMEDIAN,
-        CALLISTOAN,
-        MIMANTEAN,
-        ENCELADEAN,
-        TETHYAN,
-        DIONEAN,
-        RHEAN,
-        TITANEAN,
-        IAPETIAN,
-        MIRANDAN,
-        ARIELIAN,
-        UMBRELIAN,
-        TITANIAN,
-        OBERONIAN,
-        TRITONIAN
-    }
-
     public String resolveTypeName() {
         switch(satelliteType)        {
             case LUNAR:
@@ -78,5 +67,27 @@ public class MoonType extends BodyType {
             default:
                 return "Anomaly: Unknown Type of Moon";
         }
+    }
+    
+    public enum TypeOfMoon {
+        IRREGULAR,
+        LUNAR,
+        IONIAN,
+        EUROPAN,
+        GANYMEDIAN,
+        CALLISTOAN,
+        MIMANTEAN,
+        ENCELADEAN,
+        TETHYAN,
+        DIONEAN,
+        RHEAN,
+        TITANEAN,
+        IAPETIAN,
+        MIRANDAN,
+        ARIELIAN,
+        UMBRELIAN,
+        TITANIAN,
+        OBERONIAN,
+        TRITONIAN
     }
 }
