@@ -190,6 +190,9 @@ public class FuzzyLogic {
         if(oxygenOptimal > 0.90) {
             fuzzyAtmo = FuzzyAtmosphere.OPTIMAL_BREATHABLE;
         }
+        if(atmosphere.getPressure().asPascal() < 1f) {
+            fuzzyAtmo = FuzzyAtmosphere.TRACE;
+        }        
         if(toxicGas > 0.05) {
             fuzzyAtmo = FuzzyAtmosphere.DANGEROUS_GAS_CONCENTRATION;
         }
@@ -381,6 +384,7 @@ public class FuzzyLogic {
     
     public enum FuzzyAtmosphere {
         NONE,
+        TRACE,
         LETHAL_GAS_CONCENTRATION,
         DANGEROUS_GAS_CONCENTRATION,
         NO_OXYGEN,

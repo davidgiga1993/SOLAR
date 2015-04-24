@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
-import dhbw.karlsruhe.it.solar.core.physics.StarType;
 
 /**
  * @author Andi

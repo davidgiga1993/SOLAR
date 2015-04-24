@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
 import java.util.List;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 

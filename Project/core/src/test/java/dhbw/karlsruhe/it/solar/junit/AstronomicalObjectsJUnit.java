@@ -3,11 +3,15 @@ package dhbw.karlsruhe.it.solar.junit;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Asteroid;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AsteroidType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.MoonType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.StarType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;

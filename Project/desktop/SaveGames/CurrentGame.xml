@@ -177,6 +177,30 @@
                 <Mass_Value>0.055</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>1.0E-14</Pressure_Value>
+                    <Pressure_Unit>BAR</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>OXYGEN</Type>
+                        <Volume_Percentage>0.42</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>SODIUM</Type>
+                        <Volume_Percentage>0.29</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>HELIUM</Type>
+                        <Volume_Percentage>0.06</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>POTASSIUM</Type>
+                        <Volume_Percentage>0.005</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Min_Temperature>
                     <Temperature_Value>100.0</Temperature_Value>
@@ -575,7 +599,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -831,6 +855,18 @@
                 <Mass_Value>0.015</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>2.9999999E-4</Pressure_Value>
+                    <Pressure_Unit>PASCAL</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>SULFUR_DIOXIDE</Type>
+                        <Volume_Percentage>0.99</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Min_Temperature>
                     <Temperature_Value>90.0</Temperature_Value>
@@ -873,6 +909,18 @@
                 <Mass_Value>0.008</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>1.0E-12</Pressure_Value>
+                    <Pressure_Unit>BAR</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>OXYGEN</Type>
+                        <Volume_Percentage>0.99</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Min_Temperature>
                     <Temperature_Value>50.0</Temperature_Value>
@@ -889,7 +937,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -920,6 +968,18 @@
                 <Mass_Value>0.025</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>2.5E-6</Pressure_Value>
+                    <Pressure_Unit>PASCAL</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>OXYGEN</Type>
+                        <Volume_Percentage>0.99</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Min_Temperature>
                     <Temperature_Value>70.0</Temperature_Value>
@@ -936,7 +996,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -967,6 +1027,22 @@
                 <Mass_Value>0.018</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>7.5E-12</Pressure_Value>
+                    <Pressure_Unit>BAR</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>OXYGEN</Type>
+                        <Volume_Percentage>0.98</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>CARBON_DIOXIDE</Type>
+                        <Volume_Percentage>0.02</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Min_Temperature>
                     <Temperature_Value>80.0</Temperature_Value>
@@ -983,7 +1059,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1635,7 +1711,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1666,6 +1742,30 @@
                 <Mass_Value>1.8E-5</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>1.0E-12</Pressure_Value>
+                    <Pressure_Unit>BAR</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>WATER_VAPOR</Type>
+                        <Volume_Percentage>0.91</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>NITROGEN</Type>
+                        <Volume_Percentage>0.04</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>CARBON_DIOXIDE</Type>
+                        <Volume_Percentage>0.032</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>METHANE</Type>
+                        <Volume_Percentage>0.0017</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Min_Temperature>
                     <Temperature_Value>32.9</Temperature_Value>
@@ -1682,7 +1782,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1992,7 +2092,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3980,6 +4080,22 @@
                 <Mass_Value>0.00358</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>1.4E-5</Pressure_Value>
+                    <Pressure_Unit>BAR</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>NITROGEN</Type>
+                        <Volume_Percentage>0.99</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>METHANE</Type>
+                        <Volume_Percentage>0.01</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Mean_Temperature>
                     <Temperature_Value>38.0</Temperature_Value>
@@ -3988,7 +4104,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4269,7 +4385,7 @@
             </Surface_Temperatures>
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.0</Ice_Cover>
+                <Ice_Cover>1.0</Ice_Cover>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>

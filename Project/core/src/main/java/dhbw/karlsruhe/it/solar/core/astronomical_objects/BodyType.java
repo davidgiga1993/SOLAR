@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.core.physics;
+package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

@@ -6,10 +6,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Atmosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
-import dhbw.karlsruhe.it.solar.core.physics.BodyType;
 import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;

@@ -16,6 +16,8 @@ public class AtmosphericGas {
     private static final Pressure ACUTE_OXYGEN_TOXICITY = new Pressure( 1.6f, PressureUnit.BAR);
     private static final Pressure SULFUR_DIOXIDE_TOXICITY = new Pressure( 5f/1000000f, PressureUnit.BAR);
     private static final Pressure ACUTE_SULFUR_DIOXIDE_TOXICITY = new Pressure( 500f/1000000f, PressureUnit.BAR);
+    private static final Pressure ALKALI_METAL_LOW = new Pressure( 0f, PressureUnit.BAR);
+    private static final Pressure ALKALI_METAL_HIGH = new Pressure( 5f/1000000f, PressureUnit.BAR);
 
     @XmlElement(name = "Type")
     private GasType type;
@@ -43,6 +45,8 @@ public class AtmosphericGas {
         METHANE,
         NITROGEN,
         OXYGEN,
+        POTASSIUM,
+        SODIUM,
         SULFUR_DIOXIDE,
         WATER_VAPOR
     }
@@ -60,6 +64,10 @@ public class AtmosphericGas {
             return METHANE_FLAMMABLE;
         case OXYGEN:
             return OXYGEN_TOXICITY;
+        case POTASSIUM:
+            return ALKALI_METAL_LOW;
+        case SODIUM:
+            return ALKALI_METAL_LOW;
         case SULFUR_DIOXIDE:
             return SULFUR_DIOXIDE_TOXICITY;
         default:
@@ -79,6 +87,10 @@ public class AtmosphericGas {
             return METHANE_EXPLOSIVE;
         case OXYGEN:
             return ACUTE_OXYGEN_TOXICITY;
+        case POTASSIUM:
+            return ALKALI_METAL_HIGH;
+        case SODIUM:
+            return ALKALI_METAL_HIGH;
         case SULFUR_DIOXIDE:
             return ACUTE_SULFUR_DIOXIDE_TOXICITY;
         default:
@@ -113,6 +125,10 @@ public class AtmosphericGas {
                 return "Nitrogen";
             case OXYGEN:
                 return "Oxygen";
+            case POTASSIUM:
+                return "Potassium";
+            case SODIUM:
+                return "Sodium";
             case SULFUR_DIOXIDE:
                 return "Sulfur Dioxode";
             case WATER_VAPOR:
@@ -150,6 +166,10 @@ public class AtmosphericGas {
                 return "N2";
             case OXYGEN:
                 return "O2";
+            case POTASSIUM:
+                return "K";
+            case SODIUM:
+                return "Na";
             case SULFUR_DIOXIDE:
                 return "SO2";
             case WATER_VAPOR:

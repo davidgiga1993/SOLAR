@@ -99,7 +99,10 @@ public class Pressure {
         if(0.01f < this.asBar()) {
             return formatValue(this.asBar()) + " bar";            
         }
-        return formatValue(this.asPascal()) + " Pa";    
+        if(0.01f < this.asPascal()) {         
+            return formatValue(this.asPascal()) + " Pa";    
+        }
+        return "Trace";
     }
 
     private String formatValue(float value) {

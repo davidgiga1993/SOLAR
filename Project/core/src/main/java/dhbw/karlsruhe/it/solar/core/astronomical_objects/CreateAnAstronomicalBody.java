@@ -137,7 +137,7 @@ public final class CreateAnAstronomicalBody {
                 CreateAnAstronomicalBody.this.surfacePressure = surfacePressure;
                 CreateAnAstronomicalBody.this.atmosphericComposition = atmosphericComposition;
                 return this;        
-            }     
+            }
             
             /**
              * Add a biosphere of natural lifeforms to the planet
