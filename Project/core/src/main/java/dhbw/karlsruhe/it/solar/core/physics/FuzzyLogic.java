@@ -394,7 +394,9 @@ public class FuzzyLogic {
     public enum FuzzyHydrosphere {
         NONE,
         ARID,
-        HUMID
+        HUMID,
+        SUBSURFACE_OCEAN,
+        FROZEN
     }
     
     public enum FuzzyBiosphere {

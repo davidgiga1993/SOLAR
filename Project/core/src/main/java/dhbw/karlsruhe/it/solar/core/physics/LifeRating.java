@@ -1,10 +1,13 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+
 import dhbw.karlsruhe.it.solar.core.physics.FuzzyLogic.FuzzyAtmosphere;
 import dhbw.karlsruhe.it.solar.core.physics.FuzzyLogic.FuzzyBiosphere;
 import dhbw.karlsruhe.it.solar.core.physics.FuzzyLogic.FuzzyGravity;
 import dhbw.karlsruhe.it.solar.core.physics.FuzzyLogic.FuzzyHydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.FuzzyLogic.FuzzyTemperature;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class LifeRating {
     
@@ -35,73 +38,111 @@ public class LifeRating {
         this.biosphere = fuzzyBio;       
     }
 
-    public String atmosphereFuzzy() {
+    public FuzzyString atmosphereFuzzy() {
         switch(atmosphere) {
             case NONE:
-                return "None";
+                return new FuzzyString("None", Styles.MENUELABEL_RED);
             case LETHAL_GAS_CONCENTRATION:
-                return "Lethal";
+                return new FuzzyString("Lethal", Styles.MENUELABEL_RED);
             case DANGEROUS_GAS_CONCENTRATION:
-                return "Hazardous";
+                return new FuzzyString("Hazardous", Styles.MENUELABEL_ORANGE);
             case NO_OXYGEN:
-                return "No Oxygen";
+                return new FuzzyString("No Oxygen", Styles.MENUELABEL_ORANGE);
             case LOW_OXYGEN:
-                return "Oxygen Deficient";
+                return new FuzzyString("Trace Oxygen", Styles.MENUELABEL_ORANGE);
             case SLIGHTLY_LOW_OXYGEN:
-                return "Low on Oxygen";
+                return new FuzzyString("Low Oxygen", Styles.MENUELABEL_YELLOW);
             case OPTIMAL_BREATHABLE:
-                return "Optimal";
+                return new FuzzyString("Optimal", Styles.MENUELABEL_GREEN);
             default:
-                return "Anomaly: Unknown";
+                return new FuzzyString("Unknown Anomaly", Styles.MENUELABEL_RED);
         }
     }
 
-    public String temperatureFuzzy() {
+    public FuzzyString temperatureFuzzy() {
         switch(temperature) {
             case EXTREMELY_COLD:
-                return "Extremely Cold";
+                return new FuzzyString("Extremely Cold", Styles.MENUELABEL_RED);
             case TOO_COLD:
-                return "Too Cold";
+                return new FuzzyString("Too Cold", Styles.MENUELABEL_ORANGE);
             case COLD:
-                return "Cold";
+                return new FuzzyString("Cold", Styles.MENUELABEL_YELLOW);
             case OPTIMAL:
-                return "Optimal";
+                return new FuzzyString("Optimal", Styles.MENUELABEL_GREEN);
             case HOT:
-                return "Hot";
+                return new FuzzyString("Hot", Styles.MENUELABEL_YELLOW);
             case TOO_HOT:
-                return "Too Hot";
+                return new FuzzyString("Too Hot", Styles.MENUELABEL_ORANGE);
             case EXTREMELY_HOT:
-                return "Extremely Hot";
+                return new FuzzyString("Extremely Hot", Styles.MENUELABEL_RED);
             default:
-                return "Anomaly: Unknown";
+                return new FuzzyString("Unknown Anomaly", Styles.MENUELABEL_RED);
         }
     }
 
-    public CharSequence hydrosphereFuzzy() {
+    public FuzzyString hydrosphereFuzzy() {
         switch(hydrosphere) {
             case NONE:
-                return "No Water";
+                return new FuzzyString("None", Styles.MENUELABEL_RED);
+            case FROZEN:
+                return new FuzzyString("Frozen Crust", Styles.MENUELABEL_ORANGE);
+            case SUBSURFACE_OCEAN:
+                return new FuzzyString("Subsurface Ocean", Styles.MENUELABEL_YELLOW);
             case ARID:
-                return "Too Arid";
+                return new FuzzyString("Too Arid", Styles.MENUELABEL_YELLOW);
             case HUMID:
-                return "Optimal";
+                return new FuzzyString("Optimal", Styles.MENUELABEL_GREEN);
             default:
-                return "Anomaly: Unknown";
+                return new FuzzyString("Unknown Anomaly", Styles.MENUELABEL_RED);
         }
     }
 
-    public CharSequence biosphereFuzzy() {
+    public FuzzyString biosphereFuzzy() {
         switch(biosphere) {
-            case DANGEROUS_ALIEN:
-                return "Too Dangerous";
             case LIFELESS:
-                return "Lifeless";
+                return new FuzzyString("None", Styles.MENUELABEL_RED);
+            case DANGEROUS_ALIEN:
+                return new FuzzyString("Too Dangerous", Styles.MENUELABEL_ORANGE);
             case SPARSE:
-                return "Too Sparse";
+                return new FuzzyString("Too Sparse", Styles.MENUELABEL_YELLOW);
             case LUSH:
-                return "Optimal";
+                return new FuzzyString("Optimal", Styles.MENUELABEL_GREEN);
             default:
-                return "Anomaly: Unknown";
+                return new FuzzyString("Unknown Anomaly", Styles.MENUELABEL_RED);
+        }
+    }
+
+    public static LabelStyle determineStyle(float value) {
+        if(value > 0.80) {
+            return Styles.MENUELABEL_GREEN;
+        }
+        if(value > 0.3) {
+            return Styles.MENUELABEL_YELLOW;
+        }
+        if(value > 0.1) {
+            return Styles.MENUELABEL_ORANGE;
+        }
+        return Styles.MENUELABEL_RED;
+    }
+
+    public LabelStyle getLRStyle() {
+        return determineStyle(rating);
+    }
+
+    public FuzzyString gravityFuzzy() {
+        switch(gravity) {
+            case TOO_HIGH:
+                return new FuzzyString("Too High", Styles.MENUELABEL_RED);
+            case SLIGHTLY_HIGH:
+                return new FuzzyString("High", Styles.MENUELABEL_ORANGE);
+            case OPTIMAL:
+                return new FuzzyString("Optimal", Styles.MENUELABEL_GREEN);
+            case SLIGHTLY_LOW:
+                return new FuzzyString("Low", Styles.MENUELABEL_YELLOW);
+            case TOO_LOW:
+                return new FuzzyString("Too Low", Styles.MENUELABEL_ORANGE);
+            default:
+                return new FuzzyString("Unknown Anomaly", Styles.MENUELABEL_RED);
         }
     }
 }

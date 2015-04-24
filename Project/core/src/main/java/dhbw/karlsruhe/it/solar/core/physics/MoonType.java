@@ -69,7 +69,7 @@ public class MoonType extends BodyType {
             case TRITONIAN:
                 return "Ice Moon";
             case IRREGULAR:
-                return "Captured Asteroid";
+                return "Irregular Shaped";
             default:
                 return "Anomaly: Unknown Type of Moon";
         }

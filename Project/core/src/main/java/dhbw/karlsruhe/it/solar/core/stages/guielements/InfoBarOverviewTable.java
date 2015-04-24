@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
@@ -24,6 +25,11 @@ public class InfoBarOverviewTable extends Table {
     }
     
     private void generateMissionInfo() {
+        if(selectedActor instanceof AstronomicalBody) {
+            add(new Label("Life Rating: ", style)).left();
+            add(new Label(((AstronomicalBody)selectedActor).getLifeRating().inPercent(), ((AstronomicalBody)selectedActor).getLifeRating().getLRStyle())).right();               
+            row();
+        }
         if(((Orbiter)selectedActor).isInOrbit()) {
             add(new Label("In Orbit of: ",style)).left();
             add(new Label(((Orbiter)selectedActor).getNameOfPrimary(),style)).right();
@@ -55,7 +61,7 @@ public class InfoBarOverviewTable extends Table {
         row();
         generateMissionInfo();
         row();
-        add(new InfoBarNavigationLabel("Show On Map", selectedActor, boldedStyle));
+        add(new InfoBarNavigationLabel("Show On Map", selectedActor, boldedStyle)).left();
     }
 
 }
