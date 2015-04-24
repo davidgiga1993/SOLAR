@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
@@ -15,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialo
 
 public class GameHUDStage extends BaseGUIStage{
 
-
+    private static final int INFOBAR_HEIGHT = 160;
     private NavigationBar navigationBar;
     private Table resourceBar;
     private InformationBar bottomBar;
@@ -48,8 +49,8 @@ super(solarEngine, "GameHUD");
         int maxHeight = Gdx.graphics.getHeight() - (50+150);
         guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(maxHeight).top().fill();
         guiTable.add(new Actor()).expandX();
-        guiTable.row().maxHeight(150);
-        guiTable.add(bottomBar).height(150).colspan(2).expandX().fill();
+        guiTable.row().maxHeight(INFOBAR_HEIGHT);
+        guiTable.add(bottomBar).height(INFOBAR_HEIGHT).colspan(2).expandX().fill();
 
 
         addActor(guiTable);

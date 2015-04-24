@@ -7,8 +7,8 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 public class InfoBarNavigationLabel extends BaseNavigationLabel {
     
-    public InfoBarNavigationLabel(CharSequence name, String tab, SolarActor actor) {
-        super(name, tab, actor);
+    public InfoBarNavigationLabel(CharSequence name, SolarActor actor, LabelStyle style) {
+        super(name, actor, style);
     }
     
     @Override

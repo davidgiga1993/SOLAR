@@ -76,4 +76,32 @@ public class LifeRating {
                 return "Anomaly: Unknown";
         }
     }
+
+    public CharSequence hydrosphereFuzzy() {
+        switch(hydrosphere) {
+            case NONE:
+                return "No Water";
+            case ARID:
+                return "Too Arid";
+            case HUMID:
+                return "Optimal";
+            default:
+                return "Anomaly: Unknown";
+        }
+    }
+
+    public CharSequence biosphereFuzzy() {
+        switch(biosphere) {
+            case DANGEROUS_ALIEN:
+                return "Too Dangerous";
+            case LIFELESS:
+                return "Lifeless";
+            case SPARSE:
+                return "Too Sparse";
+            case LUSH:
+                return "Optimal";
+            default:
+                return "Anomaly: Unknown";
+        }
+    }
 }

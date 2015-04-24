@@ -25,9 +25,17 @@ public class BaseNavigationLabel extends Label {
     protected String tab;
 
     public BaseNavigationLabel(CharSequence text, String tab, SolarActor actor) {
-        super(tab + text, Styles.DEFAULTLABEL_STYLE);
+        super(tab + text, Styles.MENUELABEL_STYLE);
         this.actor = actor;
         this.tab = tab;
+        this.name = text;
+        addListener(new NavigationLabelListener());
+    }
+    
+    public BaseNavigationLabel(CharSequence text, SolarActor actor, LabelStyle style) {
+        super(text, style);
+        this.actor = actor;
+        this.tab = "";
         this.name = text;
         addListener(new NavigationLabelListener());
     }

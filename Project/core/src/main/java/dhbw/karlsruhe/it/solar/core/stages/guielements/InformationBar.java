@@ -20,7 +20,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class InformationBar extends Window implements Telegraph {
    
-    private final static float IMAGE_SIZE = 120;
+    private final static float IMAGE_SIZE = 130;
     private final static float CELL_SIZE = 200;
     private final static float ACTION_TABLE_SIZE = 420;
     private final static float CELL_PADDING = 20;
