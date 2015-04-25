@@ -13,10 +13,10 @@ import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere.BiosphereType;
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
+import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas.GasType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
 
 /**
  * @author Andi
@@ -25,7 +25,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
 public class SolarSystem extends AstronomicalBody {
     
     public SolarSystem(String name)   {
-        super(name, new OrbitalProperties(new SystemRoot(0,0), new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()),  new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null, null), ConfigurationConstants.SCALE_FACTOR_STAR, "GTypeMainSequence");
+        super(name, generateSolarSystemOrbitalInformation(),  new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null, null), ConfigurationConstants.SCALE_FACTOR_STAR, "GTypeMainSequence");
         setPosition(0, 0);
     }
     
@@ -53,6 +53,14 @@ public class SolarSystem extends AstronomicalBody {
     public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
         super.drawLines(libGDXShapeRenderer,solarShapeRenderer);
         diplaySystemCenter(libGDXShapeRenderer);
+    }
+    
+    /**
+     * Hard-coded values for the solar system. Would need to be expanded for custom-generated ones.
+     * @return
+     */
+    private static OrbitalProperties generateSolarSystemOrbitalInformation() {
+        return new OrbitalProperties(new Time(2.25f*(float)Math.pow(10,8), TimeUnit.YEARS), new Length(27200f, Length.DistanceUnit.LIGHTYEAR));
     }
 
     private void diplaySystemCenter(ShapeRenderer shapeRenderer) {

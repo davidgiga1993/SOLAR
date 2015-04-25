@@ -14,7 +14,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Mass.MassUnit;
 public class SystemRoot extends AstronomicalBody {
 
     public SystemRoot(float x, float y) {
-        super("SystemRoot", null, null,  null, null);
+        super("Milky Way Galaxy", null, null,  null, null);
         this.setPosition(x,y);
     }
 

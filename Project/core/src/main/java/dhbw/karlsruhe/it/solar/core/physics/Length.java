@@ -141,6 +141,9 @@ public class Length {
     
     @Override
     public String toString() {
+        if( this.asLightYear() > THOUSAND ) {
+            return formatValue(this.asLightYear()/THOUSAND) + " k l.y.";
+        }
         if( this.asLightYear() > 0.5f ) {
             return formatValue(this.asLightYear()) + " l.y.";
         }

@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
 
 /**
  * Created by Arga on 24.02.2015.
@@ -43,10 +43,9 @@ public class InfoBarOverviewTable extends Table {
     }
     
     private void generateMissionInfo() {
-        if(((Orbiter)selectedActor).isInOrbit() && !(selectedActor instanceof SolarSystem)) {
+        if(((Orbiter)selectedActor).isInOrbit()) {
             add(new Label("In Orbit of: ",style)).left();
-            add(new BaseNavigationLabel(((Orbiter)selectedActor).getNameOfPrimary(),((Orbiter)selectedActor).getPrimary(), style)).right().expand();
-            row();
+            addNavigationLabelForPrimary();
             add(new Label("Orbital Period: ",style)).left();
             add(new Label(((Orbiter)selectedActor).getOrbitalPeriod().toString(),style)).right();
             row();
@@ -62,6 +61,16 @@ public class InfoBarOverviewTable extends Table {
             //TODO: Implementiere ETA-Funktionalität aus der AI-Berechnung raus (Schätzung okay)
             add(new Label("Unknown",style)).right();            
         }
+    }
+
+    private void addNavigationLabelForPrimary() {
+        if(((Orbiter)selectedActor).getPrimary() instanceof SystemRoot) {
+            add(new Label(((Orbiter)selectedActor).getNameOfPrimary(), style)).right().expand();
+            row();
+            return;
+        }
+        add(new BaseNavigationLabel(((Orbiter)selectedActor).getNameOfPrimary(),((Orbiter)selectedActor).getPrimary(), style)).right().expand();
+        row();
     }
 
     private void onShowOnMapClick() {

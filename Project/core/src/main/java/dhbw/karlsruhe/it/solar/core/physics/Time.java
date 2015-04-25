@@ -6,6 +6,8 @@ public class Time {
     
     private static final float HOURS_PER_DAY = 24f;
     private static final float DAYS_PER_YEAR = 365.25f;
+    private static final float ONE_THOUSAND = 1000f;
+    private static final float ONE_MILLION = 1000000f;
     
     @XmlElement(name = "Time_Value")
     private float value;
@@ -62,6 +64,12 @@ public class Time {
     
     @Override
     public String toString() {
+        if( this.inYears() > ONE_MILLION) {
+            return formatValue(this.inYears()/ONE_MILLION) + " M Years";
+        }
+        if( this.inYears() > ONE_THOUSAND ) {
+            return formatValue(this.inYears()/ONE_THOUSAND) + " k Years";
+        }
         if( this.inDays() > DAYS_PER_YEAR ) {
             return formatValue(this.inYears()) + " Years";
         }

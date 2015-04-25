@@ -44,7 +44,21 @@ public class OrbitalProperties {
         }
     }
     
-    
+    /**
+     * Special constructor used for the solar system - describes orbit around a galactic core!
+     * @param time
+     * @param length
+     */
+    public OrbitalProperties(Time time, Length length) {
+        this.orbitPrimary = new SystemRoot(0,0);
+        this.orbitalRadius = length;
+        this.orbitalAngle = new Angle();
+        this.retrograde = false;
+        this.coorbital = null;
+        this.orbitalPeriodInDays = time;
+        this.periodicConstant = new Angle();
+    }
+
     /**
      * Variant for small bodies with insignificant mass - used as approximation for all units.
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
