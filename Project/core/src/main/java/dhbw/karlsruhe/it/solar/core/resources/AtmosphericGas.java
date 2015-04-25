@@ -10,6 +10,8 @@ public class AtmosphericGas {
     private static final Pressure ASPHYXIATION_ONLY = null;
     private static final Pressure CARBON_DIOXIDE_POISONING_SYMPTOMS = new Pressure( 0.01f, PressureUnit.BAR);
     private static final Pressure CARBON_DIOXIDE_POISONING_FATAL = new Pressure( 0.1f, PressureUnit.BAR);
+    private static final Pressure CARBON_MONOXIDE_POISONING_SYMPTOMS = new Pressure( 35/1000000f, PressureUnit.BAR);
+    private static final Pressure CARBON_MONOXIDE_POISONING_FATAL = new Pressure( 667/1000000f, PressureUnit.BAR);
     private static final Pressure METHANE_FLAMMABLE = new Pressure( 0.05f, PressureUnit.BAR);
     private static final Pressure METHANE_EXPLOSIVE = new Pressure( 0.15f, PressureUnit.BAR);
     private static final Pressure OXYGEN_TOXICITY = new Pressure( 0.5f, PressureUnit.BAR);
@@ -40,6 +42,7 @@ public class AtmosphericGas {
     public enum GasType {
         ARGON,
         CARBON_DIOXIDE,
+        CARBON_MONOXIDE,
         HELIUM,
         HYDROGEN,
         METHANE,
@@ -60,6 +63,8 @@ public class AtmosphericGas {
         switch(type) {
         case CARBON_DIOXIDE:
             return CARBON_DIOXIDE_POISONING_SYMPTOMS;
+        case CARBON_MONOXIDE:
+            return CARBON_MONOXIDE_POISONING_SYMPTOMS;    
         case METHANE:
             return METHANE_FLAMMABLE;
         case OXYGEN:
@@ -83,6 +88,8 @@ public class AtmosphericGas {
         switch(type) {
         case CARBON_DIOXIDE:
             return CARBON_DIOXIDE_POISONING_FATAL;
+        case CARBON_MONOXIDE:
+            return CARBON_MONOXIDE_POISONING_FATAL;  
         case METHANE:
             return METHANE_EXPLOSIVE;
         case OXYGEN:
@@ -99,7 +106,14 @@ public class AtmosphericGas {
     }
 
     public Pressure partialPressure(Pressure pressure) {
-        return new Pressure(percentage * pressure.asBar(), PressureUnit.BAR);
+        if(null==pressure) {
+            return gasGiantPartialPressureAtOneBarDepthLevel(pressure);            
+        }
+        return new Pressure(percentage*pressure.asBar(), PressureUnit.BAR);
+    }
+
+    private Pressure gasGiantPartialPressureAtOneBarDepthLevel(Pressure pressure) {
+        return new Pressure(percentage, PressureUnit.BAR);
     }
     
     public boolean isOxygen() {
@@ -113,6 +127,8 @@ public class AtmosphericGas {
         switch(type) {
             case ARGON:
                 return "Argon";
+            case CARBON_MONOXIDE:
+                return "Carbon Monoxide";  
             case CARBON_DIOXIDE:
                 return "Carbon Dioxide";
             case HELIUM:
@@ -154,6 +170,8 @@ public class AtmosphericGas {
         switch(type) {
             case ARGON:
                 return "Ar";
+            case CARBON_MONOXIDE:
+                return "CO";
             case CARBON_DIOXIDE:
                 return "CO2";
             case HELIUM:

@@ -12,6 +12,8 @@ public class Pressure {
     private static final float STANDARDATMOSPHERE_IN_PASCAL = 101325f;
     private static final float KILOPASCAL_IN_PASCAL = 1000f;
     private static final float BAR_IN_PASCAL = 100000f;
+    private static final float THOUSAND = 1000f;
+    private static final float MILLION = 1000000f;
     
     @XmlElement(name = "Pressure_Value")
     private float value;
@@ -102,7 +104,13 @@ public class Pressure {
         if(0.01f < this.asPascal()) {         
             return formatValue(this.asPascal()) + " Pa";    
         }
-        return "Trace";
+        if(0.01f < this.asPascal()*THOUSAND) {         
+            return formatValue(this.asPascal()*THOUSAND) + " x10^-3 Pa";    
+        } 
+        if(0.01f < this.asPascal()*MILLION) {         
+            return formatValue(this.asPascal()*MILLION) + " x10^-6 Pa";    
+        }   
+        return formatValue(this.asPascal()*MILLION*THOUSAND) + " x10^-9 Pa";    
     }
 
     private String formatValue(float value) {

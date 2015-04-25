@@ -49,7 +49,9 @@ public class LifeRating {
             case NONE:
                 return new FuzzyInformation("", "None", Styles.MENUELABEL_RED);
             case TRACE:
-                return new FuzzyInformation("", "Only Traces", Styles.MENUELABEL_RED);              
+                return new FuzzyInformation("", "Only Traces", Styles.MENUELABEL_RED);     
+            case GAS_GIANT:
+                return new FuzzyInformation("", "Gas Giant", Styles.MENUELABEL_RED);   
             case LETHAL_GAS_CONCENTRATION:
                 return new FuzzyInformation(getLethalGas(), "Lethal", Styles.MENUELABEL_RED);
             case DANGEROUS_GAS_CONCENTRATION:

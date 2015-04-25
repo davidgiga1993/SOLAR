@@ -41,7 +41,7 @@ public class InfoBarLifeRatingDetails extends Table {
         add(new Label(rating.getPhyicalValue(),style)).right();  
         add(new Label(rating.getFuzzyInfo(),rating.getStyle())).right(); 
         row();
-        add(new Label("Surface Gravity: ", style)).left();
+        add(new Label("Gravity: ", style)).left();
         add(new Label(gravity.getPhyicalValue(), style)).padLeft(InformationBar.PADDING).expand();
         add(new Label(gravity.getFuzzyInfo(), gravity.getStyle())).padLeft(InformationBar.PADDING).right();
         row();

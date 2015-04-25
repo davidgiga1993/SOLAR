@@ -72,8 +72,11 @@ public class AstroBodyManager {
     
     private CreatableType extractAtmosphere() {
         Atmosphere atmosphere = body.getAtmosphere();
-        if(null!=atmosphere) {
+        if(null!=atmosphere && null!=atmosphere.getPressure()) {
             return extractSubsurfaceOcean().withAnAtmosphereOf(atmosphere.getPressure(),atmosphere.getComposition());            
+        }
+        if(null!=atmosphere) {
+            return extractSubsurfaceOcean().withAGasGiantAtmosphereOf(atmosphere.getComposition());            
         }
         return extractSubsurfaceOcean();
     }

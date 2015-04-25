@@ -172,6 +172,11 @@ public class FuzzyLogic {
             atmosphereBreathable = 0;
             return;
         }
+        if(null == atmosphere.getPressure()) {
+            fuzzyAtmo = FuzzyAtmosphere.GAS_GIANT;
+            atmosphereBreathable = 0;
+            return;
+        }
         float oxygenOptimal = oxygenConcentrationOptimal();
         float toxicGas = toxicGasConcentration();
         float oxygenTooLow = oxygenConcentrationLow();
@@ -286,7 +291,7 @@ public class FuzzyLogic {
     }
 
     private Pressure getSurfacePressure() {
-        if(null!=atmosphere) {
+        if(null!=atmosphere && null!=atmosphere.getPressure()) {
             return atmosphere.getPressure();            
         }
         return new Pressure(0f,PressureUnit.BAR);
@@ -391,6 +396,7 @@ public class FuzzyLogic {
         LOW_OXYGEN,
         SLIGHTLY_LOW_OXYGEN,
         OPTIMAL_BREATHABLE,
+        GAS_GIANT
     }
     
     public enum FuzzyTemperature {
