@@ -9,7 +9,7 @@ public class FuzzyLogic {
        
     private static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(1f,GravUnit.G);
     private static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.65f, 0.1f, true);
-    private static final SurfaceTemperatures OPTIMAL_TEMPERATURES = new SurfaceTemperatures(new Temperature(258f,TempUnit.KELVIN),new Temperature(288f,TempUnit.KELVIN),new Temperature(318f,TempUnit.KELVIN));
+    private static final SurfaceTemperature OPTIMAL_TEMPERATURES = new SurfaceTemperature(new Temperature(258f,TempUnit.KELVIN),new Temperature(288f,TempUnit.KELVIN),new Temperature(318f,TempUnit.KELVIN));
     private static final Pressure OPTIMAL_SURFACE_PRESSURE = new Pressure(1f, PressureUnit.STANDARDATMOSPHERE);
     private static final Pressure OPTIMAL_OXYGEN_PARTIAL_PRESSURE = new Pressure(0.23f, PressureUnit.BAR);
     private static final float MINIMUM_TEMPERATURE_THESHOLD = 145f;
@@ -28,7 +28,7 @@ public class FuzzyLogic {
     
     private SurfaceGravity gravity;
     private Atmosphere atmosphere;
-    private SurfaceTemperatures temperatures;
+    private SurfaceTemperature temperatures;
     private Hydrosphere hydrosphere;
     private Biosphere biosphere;
     
@@ -46,7 +46,7 @@ public class FuzzyLogic {
     private float biosphereOptimal;
  
     public FuzzyLogic(SurfaceGravity gravity, Atmosphere atmosphere,
-            SurfaceTemperatures temperatures, Hydrosphere hydro, Biosphere bio) {
+            SurfaceTemperature temperatures, Hydrosphere hydro, Biosphere bio) {
         this.gravity = gravity;
         this.atmosphere = atmosphere;
         this.temperatures = temperatures;
@@ -133,8 +133,11 @@ public class FuzzyLogic {
     }    
 
     private float hydrosphereOptimal() {
+        if( hydrosphere.getSubsurfaceOcean() && hydrosphere.getWaterCover() <= OPTIMAL_HYDROSPHERE.getWaterCover()) {
+            return (hydrosphere.getWaterCover() + (hydrosphere.getIceCover())/2 )/ (OPTIMAL_HYDROSPHERE.getWaterCover()+OPTIMAL_HYDROSPHERE.getIceCover()/2);
+        }
         if( hydrosphere.getWaterCover() <= OPTIMAL_HYDROSPHERE.getWaterCover()) {
-            return (hydrosphere.getWaterCover() + hydrosphere.getIceCover() )/ OPTIMAL_HYDROSPHERE.getWaterCover();
+            return (hydrosphere.getWaterCover() + (hydrosphere.getIceCover())/4 )/ (OPTIMAL_HYDROSPHERE.getWaterCover()+OPTIMAL_HYDROSPHERE.getIceCover()/2);
         }
         return 1f;
     }
@@ -145,25 +148,31 @@ public class FuzzyLogic {
         float temperatureTooHot = temperatureTooHot();
         float extreme = temperaturesExtreme();
         
-        fuzzyTemp = FuzzyTemperature.COLD;
-        if(temperatureTooCold > 0.75) {
-            fuzzyTemp = FuzzyTemperature.TOO_COLD;
-        }
         if(extreme < 0.5 && temperatureTooCold == 1) {
             fuzzyTemp = FuzzyTemperature.EXTREMELY_COLD;
-        }
-        if(temperatureTooHot > 0.1) {
-            fuzzyTemp = FuzzyTemperature.HOT;
-        }
-        if(temperatureTooHot > 0.75) {
-            fuzzyTemp = FuzzyTemperature.TOO_HOT;
+            return;
         }
         if(extreme > 0.5 && temperatureTooHot == 1) {
             fuzzyTemp = FuzzyTemperature.EXTREMELY_HOT;
+            return;
         }
         if(temperatureOptimal > 0.9) {
             fuzzyTemp = FuzzyTemperature.OPTIMAL;
+            return;
         }
+        if(temperatureTooCold > 0.75) {
+            fuzzyTemp = FuzzyTemperature.TOO_COLD;
+            return;
+        }
+        if(temperatureTooHot > 0.75) {
+            fuzzyTemp = FuzzyTemperature.TOO_HOT;
+            return;
+        }
+        if(temperatureTooCold > 0.1) {
+            fuzzyTemp = FuzzyTemperature.COLD;
+            return;
+        }
+        fuzzyTemp = FuzzyTemperature.HOT;
     }
 
     private void calculateFuzzyAtmosphere() {

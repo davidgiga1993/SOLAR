@@ -117,10 +117,10 @@
             </Mass>
         </BodyProperties>
         <OrbitalProperties>
-            <Primary>SystemRoot</Primary>
+            <Primary>Milky Way Galaxy</Primary>
             <OrbitalRadius>
-                <value>0.0</value>
-                <distance_unit>KILOMETERS</distance_unit>
+                <value>27200.0</value>
+                <distance_unit>LIGHTYEAR</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
                 <value>0.0</value>
@@ -133,7 +133,9 @@
         <Name>Sun</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="starType">
-                <Type>GTYPE</Type>
+                <Morgan_Keenan_Spectral_Type>G</Morgan_Keenan_Spectral_Type>
+                <Spectral_Type_Subdivision>TWO</Spectral_Type_Subdivision>
+                <Luminosity_Class>MAIN_SEQUENCE_STAR</Luminosity_Class>
             </Type>
             <Radius>
                 <value>696342.0</value>
@@ -143,9 +145,25 @@
                 <Mass_Value>1.0</Mass_Value>
                 <Mass_Unit>SOLAR_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>HYDROGEN</Type>
+                        <Volume_Percentage>0.7346</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>HELIUM</Type>
+                        <Volume_Percentage>0.2485</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>OXYGEN</Type>
+                        <Volume_Percentage>0.0077</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Mean_Temperature>
-                    <Temperature_Value>5778.0</Temperature_Value>
+                    <Temperature_Value>5797.0</Temperature_Value>
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>
@@ -646,10 +664,6 @@
                 <TypeOfRingSystem>JOVIAN</TypeOfRingSystem>
             </PlanetaryRings>
             <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
                 <Atmospheric_Composition>
                     <gases>
                         <Type>HYDROGEN</Type>
@@ -1418,10 +1432,6 @@
                 <TypeOfRingSystem>SATURNIAN</TypeOfRingSystem>
             </PlanetaryRings>
             <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
                 <Atmospheric_Composition>
                     <gases>
                         <Type>HYDROGEN</Type>
@@ -2576,10 +2586,6 @@
                 <TypeOfRingSystem>URANIAN</TypeOfRingSystem>
             </PlanetaryRings>
             <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
                 <Atmospheric_Composition>
                     <gases>
                         <Type>HYDROGEN</Type>
@@ -3754,10 +3760,6 @@
                 <TypeOfRingSystem>NEPTUNIAN</TypeOfRingSystem>
             </PlanetaryRings>
             <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
                 <Atmospheric_Composition>
                     <gases>
                         <Type>HYDROGEN</Type>
@@ -4369,6 +4371,26 @@
                 <Mass_Value>0.0022</Mass_Value>
                 <Mass_Unit>EARTH_MASS</Mass_Unit>
             </Mass>
+            <Atmosphere>
+                <Surface_Pressure>
+                    <Pressure_Value>0.3</Pressure_Value>
+                    <Pressure_Unit>PASCAL</Pressure_Unit>
+                </Surface_Pressure>
+                <Atmospheric_Composition>
+                    <gases>
+                        <Type>NITROGEN</Type>
+                        <Volume_Percentage>0.9</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>METHANE</Type>
+                        <Volume_Percentage>0.09</Volume_Percentage>
+                    </gases>
+                    <gases>
+                        <Type>CARBON_MONOXIDE</Type>
+                        <Volume_Percentage>0.01</Volume_Percentage>
+                    </gases>
+                </Atmospheric_Composition>
+            </Atmosphere>
             <Surface_Temperatures>
                 <Min_Temperature>
                     <Temperature_Value>33.0</Temperature_Value>

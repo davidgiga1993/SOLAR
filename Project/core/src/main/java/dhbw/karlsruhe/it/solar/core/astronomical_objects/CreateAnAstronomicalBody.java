@@ -100,7 +100,7 @@ public final class CreateAnAstronomicalBody {
          * @param bodyMass Mass of the astronomical body.
          * @return
          */
-        public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass, SurfaceTemperatures temperatures) {
+        public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass, SurfaceTemperature temperatures) {
             CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null, temperatures);
             return new CreatableType();
         }
@@ -233,6 +233,7 @@ public final class CreateAnAstronomicalBody {
     
     private Star buildStar(SolarSystem solarSystem) {
         bodyProperties.setBodyType(type);
+        bodyProperties.setStellarSurfaceTemperature();
         Star newBody = new Star(name, orbitalProperties, bodyProperties);
         setupBody(solarSystem, newBody);
         return newBody;

@@ -14,7 +14,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperatures;
+import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperature;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({OrbitalPropertyInfo.class, BodyPropertyInfo.class, ColonyInfo.class})
@@ -104,7 +104,7 @@ public class AstroBodyInfo {
         return body.getAtmosphere();
     }
 
-    public SurfaceTemperatures getTemperatures() {
+    public SurfaceTemperature getTemperatures() {
         return body.getTemperatures();
     }
 

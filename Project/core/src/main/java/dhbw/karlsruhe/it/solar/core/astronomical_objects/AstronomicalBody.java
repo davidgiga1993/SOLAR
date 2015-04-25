@@ -207,7 +207,7 @@ public abstract class AstronomicalBody extends Orbiter  {
         return physicalProperties.getAtmosphere();
     }
 
-    public SurfaceTemperatures getTemperatures() {
+    public SurfaceTemperature getTemperatures() {
         return physicalProperties.getTemperatures();
     }
 

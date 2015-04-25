@@ -10,13 +10,13 @@ import javax.xml.bind.annotation.XmlElement;
 public class AsteroidType extends BodyType {
     
     @XmlElement(name = "Type")
-    private SpectralType spectralType;
+    private AsteroidSpectralType spectralType;
     
     public AsteroidType() {
         
     }
     
-    public AsteroidType(SpectralType classification) {
+    public AsteroidType(AsteroidSpectralType classification) {
         this.spectralType = classification;
     }
         
@@ -30,7 +30,7 @@ public class AsteroidType extends BodyType {
         return true;
     }
     
-    public SpectralType getSpectralType() {
+    public AsteroidSpectralType getSpectralType() {
         return spectralType;
     }
     
@@ -43,7 +43,7 @@ public class AsteroidType extends BodyType {
         }
     }
 
-    public enum SpectralType {
+    public enum AsteroidSpectralType {
         BTYPE,
         FTYPE,
         GTYPE,

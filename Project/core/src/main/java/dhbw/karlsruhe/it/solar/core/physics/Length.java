@@ -144,10 +144,10 @@ public class Length {
         if( this.asLightYear() > THOUSAND ) {
             return formatValue(this.asLightYear()/THOUSAND) + " k l.y.";
         }
-        if( this.asLightYear() > 0.5f ) {
+        if( this.asLightYear() > 0.1f ) {
             return formatValue(this.asLightYear()) + " l.y.";
         }
-        if( this.asAstronomicalUnit() > 0.5f ) {
+        if( this.asAstronomicalUnit() > 0.1f ) {
             return formatValue(this.asAstronomicalUnit()) + " AU";
         }    
         if(this.asKilometres() > MILLION) {

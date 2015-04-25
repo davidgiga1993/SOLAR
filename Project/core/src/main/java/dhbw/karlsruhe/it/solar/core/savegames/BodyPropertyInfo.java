@@ -13,10 +13,10 @@ import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperatures;
+import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperature;
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, SurfaceTemperatures.class, Hydrosphere.class, Biosphere.class})
+@XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, SurfaceTemperature.class, Hydrosphere.class, Biosphere.class})
 public class BodyPropertyInfo {
     
     @XmlElement(name = "Type")
@@ -30,7 +30,7 @@ public class BodyPropertyInfo {
     @XmlElement(name = "Atmosphere")
     private Atmosphere atmosphere;
     @XmlElement(name = "Surface_Temperatures")
-    private SurfaceTemperatures temperatures;
+    private SurfaceTemperature temperatures;
     @XmlElement(name = "Hydrosphere")
     private Hydrosphere hydro;
     @XmlElement(name = "Biosphere")
@@ -75,7 +75,7 @@ public class BodyPropertyInfo {
         return atmosphere;
     }
 
-    public SurfaceTemperatures getTemperatures() {
+    public SurfaceTemperature getTemperatures() {
         return temperatures;
     }
 

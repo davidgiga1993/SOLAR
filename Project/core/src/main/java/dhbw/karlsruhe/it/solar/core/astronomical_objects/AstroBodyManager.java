@@ -9,7 +9,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperatures;
+import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperature;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.RingSystemInfo;
 
@@ -108,7 +108,7 @@ public class AstroBodyManager {
     private CreatableType extractBodyProperties() {
         Length radius = body.getRadius();
         Mass mass = body.getMass();
-        SurfaceTemperatures temperatures = body.getTemperatures();
+        SurfaceTemperature temperatures = body.getTemperatures();
         if(body.isRetrograde()) {
             return extractOrbitalProperties().whileMovingInRetrogradeDirection().andHasTheFollowingBodyProperties(radius, mass, temperatures);
         }

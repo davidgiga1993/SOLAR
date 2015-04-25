@@ -9,7 +9,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Temperature.class})
-public class SurfaceTemperatures {
+public class SurfaceTemperature {
     
     @XmlElement(name = "Min_Temperature")
     private Temperature tempMinimum;
@@ -18,17 +18,17 @@ public class SurfaceTemperatures {
     @XmlElement(name = "Max_Temperature")
     private Temperature tempMaximum;
     
-    public SurfaceTemperatures() {
+    public SurfaceTemperature() {
         
     }
     
-    public SurfaceTemperatures(Temperature tempMinimum, Temperature meanTemperature, Temperature tempMaximum) {
+    public SurfaceTemperature(Temperature tempMinimum, Temperature meanTemperature, Temperature tempMaximum) {
         this.tempMinimum = tempMinimum;
         this.meanTemperature = meanTemperature;
         this.tempMaximum = tempMaximum;
     }
 
-    public SurfaceTemperatures(Temperature temperature) {
+    public SurfaceTemperature(Temperature temperature) {
         this.tempMinimum = null;
         this.meanTemperature = temperature;
         this.tempMaximum = null;

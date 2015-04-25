@@ -133,7 +133,9 @@
         <Name>Sun</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="starType">
-                <Type>GTYPE</Type>
+                <Morgan_Keenan_Spectral_Type>G</Morgan_Keenan_Spectral_Type>
+                <Spectral_Type_Subdivision>TWO</Spectral_Type_Subdivision>
+                <Luminosity_Class>MAIN_SEQUENCE_STAR</Luminosity_Class>
             </Type>
             <Radius>
                 <value>696342.0</value>
@@ -161,7 +163,7 @@
             </Atmosphere>
             <Surface_Temperatures>
                 <Mean_Temperature>
-                    <Temperature_Value>5778.0</Temperature_Value>
+                    <Temperature_Value>5797.0</Temperature_Value>
                     <Temperature_Unit>KELVIN</Temperature_Unit>
                 </Mean_Temperature>
             </Surface_Temperatures>

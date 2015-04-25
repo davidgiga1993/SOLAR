@@ -5,6 +5,8 @@ import java.util.List;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.StarType;
 import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 /**
@@ -16,17 +18,17 @@ public class BodyProperties {
     private PlanetaryRing ring;
     private BodyType type;
     private Atmosphere atmosphere;
-    private SurfaceTemperatures temperatures;
+    private SurfaceTemperature temperature;
     private Hydrosphere hydro;
     private Biosphere bio;
     private SurfaceGravity gravity;
     private LifeRating rating;
 
-    public BodyProperties(Mass mass, Length radius, PlanetaryRing ring, SurfaceTemperatures temperatures) {
+    public BodyProperties(Mass mass, Length radius, PlanetaryRing ring, SurfaceTemperature temperatures) {
         this.mass = mass;
         this.radius = radius;
         this.ring = ring;
-        this.temperatures = temperatures;
+        this.temperature = temperatures;
         this.gravity = new SurfaceGravity(mass, radius);
     }
     
@@ -78,8 +80,8 @@ public class BodyProperties {
         return atmosphere;
     }
 
-    public SurfaceTemperatures getTemperatures() {
-        return temperatures;
+    public SurfaceTemperature getTemperatures() {
+        return temperature;
     }
 
     public Hydrosphere getHydrosphere() {
@@ -99,7 +101,7 @@ public class BodyProperties {
     }
 
     public void calculateLifeRating() {
-        this.rating = new FuzzyLogic(gravity, atmosphere, temperatures, hydro, bio).calculateLifeRating();
+        this.rating = new FuzzyLogic(gravity, atmosphere, temperature, hydro, bio).calculateLifeRating();
     }
 
     public LifeRating getLifeRating() {
@@ -131,5 +133,13 @@ public class BodyProperties {
 
     public boolean consistsPartiallyOfWaterIce() {
         return type.consistsPartiallyOfWaterIce();
+    }
+
+    /**
+     * Calculates the surface temperature of that body under the assumption that it is a star conducting nuclear fusion at its core.
+     * The calculation requires this body to have a valid star type, consisting of spectral type classification, numeric digit subdivision and a roman numeral luminosity type qualifier.
+     */
+    public void setStellarSurfaceTemperature() {
+        temperature = new SurfaceTemperature(Star.getBlackBodyTemperature((StarType)type));     
     }
 }
