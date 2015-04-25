@@ -1,9 +1,11 @@
 package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody.CreatableProperties.CreatableType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere.BiosphereType;
+import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 
 /**
  * Builder pattern class designed to take over the creation of all actors of type astronomical body.
@@ -138,6 +140,18 @@ public final class CreateAnAstronomicalBody {
                 CreateAnAstronomicalBody.this.atmosphericComposition = atmosphericComposition;
                 return this;        
             }
+
+            /**
+             * Creates an atmosphere for gas giants without surface pressure.
+             * @param createAtmosphereOfNeptune
+             * @return
+             */
+            public CreatableType withAGasGiantAtmosphereOf(AtmosphericComposition atmosphericComposition) {
+                CreateAnAstronomicalBody.this.atmosphere = true;
+                CreateAnAstronomicalBody.this.surfacePressure = new Pressure(1f,PressureUnit.BAR);
+                CreateAnAstronomicalBody.this.atmosphericComposition = atmosphericComposition;
+                return this;  
+            }
             
             /**
              * Add a biosphere of natural lifeforms to the planet
@@ -215,8 +229,7 @@ public final class CreateAnAstronomicalBody {
             public Asteroid buildAs(AsteroidType asteroid, SolarSystem solarSystem) {
                 CreateAnAstronomicalBody.this.type = asteroid;
                 return CreateAnAstronomicalBody.this.buildAsteroid(solarSystem);
-            }
-            
+            }            
         }
     }
     

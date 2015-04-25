@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
 import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
@@ -25,7 +26,7 @@ public class InfoBarPhysicalCharacteristics extends Table {
         add(new Label(selectedActor.getMass().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
         row();
         if(selectedActor.hasAtmosphere()) {
-            add(new Label("Atmosphere:", Styles.MENUELABEL_STYLE)).left();
+            addAtmosphereLabel();
             listAtmosphericComposition();
             row();
             if(selectedActor.hasSurface()) {
@@ -33,6 +34,14 @@ public class InfoBarPhysicalCharacteristics extends Table {
                 add(new Label(selectedActor.getSurfacePressure().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();                
             }
         }
+    }
+
+    private void addAtmosphereLabel() {
+        if(selectedActor instanceof Star) {
+            add(new Label("Photosphere:", Styles.MENUELABEL_STYLE)).left();
+            return;
+        }
+        add(new Label("Atmosphere:", Styles.MENUELABEL_STYLE)).left();
     }
 
     private void listAtmosphericComposition() {
