@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -21,7 +22,7 @@ public class InfoBarDetailsTable extends Table {
         row();
         add(new InfoBarOverviewTable(selectedActor)).width(InformationBar.CELL_SIZE);
         
-        if(selectedActor instanceof AstronomicalBody) {
+        if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
             add(new InfoBarPhysicalCharacteristics((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE);
             add(new InfoBarLifeRatingDetails((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE);
             add().padLeft(InformationBar.PADDING).expand().fill();

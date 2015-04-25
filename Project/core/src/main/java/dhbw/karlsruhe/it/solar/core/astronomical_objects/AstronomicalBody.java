@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
@@ -31,11 +30,6 @@ public abstract class AstronomicalBody extends Orbiter  {
     protected BodyGameLabel label;
     protected Colony colony;
 
-    public AstronomicalBody(String name)    {
-        super(name, new OrbitalProperties(null, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()), ConfigurationConstants.SCALE_FACTOR_STAR);
-        this.physicalProperties = new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null, null);
-    }
-
     public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)    {
         super(name, orbit, scaleFactor);
         setupSolarActorSprite(textureName);
@@ -45,7 +39,7 @@ public abstract class AstronomicalBody extends Orbiter  {
         changeBodyScale();
     }
     
-    private void changeBodyScale() {
+    protected void changeBodyScale() {
         float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometres()) * actorScale.getShapeScale() * 2;
         this.setSize(tSize, tSize);
     }

@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
@@ -42,9 +43,9 @@ public class InfoBarOverviewTable extends Table {
     }
     
     private void generateMissionInfo() {
-        if(((Orbiter)selectedActor).isInOrbit()) {
+        if(((Orbiter)selectedActor).isInOrbit() && !(selectedActor instanceof SolarSystem)) {
             add(new Label("In Orbit of: ",style)).left();
-            add(new Label(((Orbiter)selectedActor).getNameOfPrimary(),style)).right().expand();
+            add(new BaseNavigationLabel(((Orbiter)selectedActor).getNameOfPrimary(),((Orbiter)selectedActor).getPrimary(), style)).right().expand();
             row();
             add(new Label("Orbital Period: ",style)).left();
             add(new Label(((Orbiter)selectedActor).getOrbitalPeriod().toString(),style)).right();

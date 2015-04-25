@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere.BiosphereType;
@@ -24,9 +25,8 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
 public class SolarSystem extends AstronomicalBody {
     
     public SolarSystem(String name)   {
-        super(name);
+        super(name, new OrbitalProperties(new SystemRoot(0,0), new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()),  new BodyProperties(new Mass(1, Mass.MassUnit.KILOGRAM), new Length(1, Length.DistanceUnit.KILOMETERS), null, null), ConfigurationConstants.SCALE_FACTOR_STAR, "GTypeMainSequence");
         setPosition(0, 0);
-        orbitalProperties.setNewOrbitPrimary(new SystemRoot(0,0));
     }
     
     @Override
