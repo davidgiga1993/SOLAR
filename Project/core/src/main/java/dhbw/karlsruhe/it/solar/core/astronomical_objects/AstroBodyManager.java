@@ -107,7 +107,7 @@ public class AstroBodyManager {
     
     private CreatableType extractTidalLock() {
         if(body.isTidallyLockedToStar()) {
-            return extractBodyProperties().whichIsTidallyLockedToItsStar();            
+            return extractBodyProperties().whichIsTidallyLockedToItsPrimary();            
         }
         return extractBodyProperties();
     }  

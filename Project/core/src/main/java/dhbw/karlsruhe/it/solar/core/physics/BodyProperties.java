@@ -150,7 +150,7 @@ public class BodyProperties {
      */
     public void calculateSurfaceTemperature(AstronomicalBody body) {
         temperature = new SurfaceTemperature();
-        temperature.calculateSurfaceTemperature(body, albedo, tidallyLockedToStar);
+        temperature.calculateSurfaceTemperature(body, albedo);
     }
 
     public Albedo getAlbedo() {
@@ -163,5 +163,9 @@ public class BodyProperties {
 
     public void tidallyLockedToStar() {
         tidallyLockedToStar = true;
+    }
+
+    public Pressure getH2OPartialPressure() {
+        return atmosphere.getH2OPartialPressure();
     }
 }

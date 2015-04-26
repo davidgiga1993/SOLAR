@@ -42,4 +42,9 @@ public class Atmosphere {
     public Pressure getOxygenPartialPressure() {
         return composition.getOxygenPartialPressure(surfacePressure);
     }
+    
+
+    public Pressure getH2OPartialPressure() {
+        return composition.getH2OPartialPressure(surfacePressure);
+    }
 }

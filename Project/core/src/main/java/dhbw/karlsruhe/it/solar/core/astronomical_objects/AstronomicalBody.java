@@ -336,4 +336,8 @@ public abstract class AstronomicalBody extends Orbiter  {
     public void tidallyLockedToStar() {
         physicalProperties.tidallyLockedToStar();
     }
+
+    public BodyProperties getPhysicalProperties() {
+        return physicalProperties;
+    }
 }

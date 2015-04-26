@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import javax.xml.bind.annotation.XmlElement;
 
+import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Pressure;
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 
@@ -20,6 +21,15 @@ public class AtmosphericGas {
     private static final Pressure ACUTE_SULFUR_DIOXIDE_TOXICITY = new Pressure( 500f/1000000f, PressureUnit.BAR);
     private static final Pressure ALKALI_METAL_LOW = new Pressure( 0f, PressureUnit.BAR);
     private static final Pressure ALKALI_METAL_HIGH = new Pressure( 5f/1000000f, PressureUnit.BAR);
+    private static final float CO2_SATURATION_LEVEL = 557f;
+    private static final float CO2_SCALAR = 1.2f;
+    private static final float H2O_CO2_RELATION = 3700f;
+    private static final float H2O_SATURATION_LEVEL = 300f;
+    private static final float H2O_SCALAR = 8.9f;
+    private static final float CH4_SATURATION_LEVEL = 300f;
+    private static final float CH4_SCALAR = 1.54f;
+    private static final float N2O_SATURATION_LEVEL = 300f;
+    private static final float N2O_SCALAR = 30f;
 
     @XmlElement(name = "Type")
     private GasType type;
@@ -47,6 +57,7 @@ public class AtmosphericGas {
         HYDROGEN,
         METHANE,
         NITROGEN,
+        NITROUS_OXIDE,
         OXYGEN,
         POTASSIUM,
         SODIUM,
@@ -117,10 +128,11 @@ public class AtmosphericGas {
     }
     
     public boolean isOxygen() {
-        if(type == GasType.OXYGEN) {
-            return true;
-        }
-        return false;
+        return type.equals(GasType.OXYGEN);
+    }
+    
+    public boolean isWaterVapor() {
+        return type.equals(GasType.WATER_VAPOR);
     }
     
     private String typeToString() {
@@ -139,6 +151,8 @@ public class AtmosphericGas {
                 return "Methane";
             case NITROGEN:
                 return "Nitrogen";
+            case NITROUS_OXIDE:
+                return "Nitrous Oxide";
             case OXYGEN:
                 return "Oxygen";
             case POTASSIUM:
@@ -182,6 +196,8 @@ public class AtmosphericGas {
                 return "CH4";
             case NITROGEN:
                 return "N2";
+            case NITROUS_OXIDE:
+                return "N2O";
             case OXYGEN:
                 return "O2";
             case POTASSIUM:
@@ -197,4 +213,46 @@ public class AtmosphericGas {
         }
     }
 
+    /**
+     * Calculates a fictional greenhouse effect value for that atmospheric gas.
+     * Formula uses an unrealistic saturation principle with data points derived from the bodies of the solar system.
+     * Not a scientifically correct calculation! Only a quick and dirty approximation.
+     * @param surfacePressure
+     * @return
+     */
+    public float greenhouseEffect(BodyProperties body) {
+        switch(type) {
+            case CARBON_DIOXIDE:
+                return saturationCO2(body);
+            case METHANE:
+                return saturationCH4(partialPressure(body.getSurfacePressure()));
+            case WATER_VAPOR:
+                return saturationH2O(partialPressure(body.getSurfacePressure()));
+            case NITROUS_OXIDE:
+                return saturationN2O(partialPressure(body.getSurfacePressure()));
+            default:
+                return 0;            
+        }
+    }
+
+    private float saturationN2O(Pressure partialPressureN2O) {
+        return saturationFormula(N2O_SATURATION_LEVEL, N2O_SCALAR, partialPressureN2O);
+    }
+
+    private float saturationH2O(Pressure partialPressureH2O) {
+        return saturationFormula(H2O_SATURATION_LEVEL, H2O_SCALAR, partialPressureH2O);
+    }
+
+    private float saturationCH4(Pressure partialPressureCH4) {
+        return saturationFormula(CH4_SATURATION_LEVEL, CH4_SCALAR, partialPressureCH4);
+    }
+
+    private float saturationCO2(BodyProperties body) {
+        return saturationFormula(CO2_SATURATION_LEVEL, CO2_SCALAR + H2O_CO2_RELATION * body.getH2OPartialPressure().asBar(), partialPressure(body.getSurfacePressure()));
+    }
+    
+    private float saturationFormula(float saturationLevel, float scalar, Pressure partialPressure) {
+        float zwischenergebnis = saturationLevel - saturationLevel/(scalar * partialPressure.asBar() + 1);
+        return zwischenergebnis;
+    }
 }

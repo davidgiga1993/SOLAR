@@ -128,7 +128,7 @@ public final class CreateAnAstronomicalBody {
                 return this;        
             }
             
-            public CreatableType whichIsTidallyLockedToItsStar() {
+            public CreatableType whichIsTidallyLockedToItsPrimary() {
                 CreateAnAstronomicalBody.this.tidallyLockedToStar = true;
                 return this;        
             }

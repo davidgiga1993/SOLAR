@@ -32,4 +32,13 @@ public class AtmosphericComposition {
         }
         return new Pressure(0f,PressureUnit.PASCAL);
     }
+
+    public Pressure getH2OPartialPressure(Pressure atmosphericPressure) {
+        for (AtmosphericGas gas : gases) {
+            if( gas.isWaterVapor() ) {
+                return gas.partialPressure(atmosphericPressure);
+            }
+        }
+        return new Pressure(0f,PressureUnit.PASCAL);
+    }
 }
