@@ -24,7 +24,7 @@ public class BodyProperties {
     private SurfaceGravity gravity;
     private LifeRating rating;
     private Albedo albedo;
-    private boolean tidallyLockedToStar;
+    private boolean tidallyLocked;
 
     public BodyProperties(Mass mass, Length radius, Albedo albedo) {
         this.mass = mass;
@@ -157,15 +157,19 @@ public class BodyProperties {
         return albedo;
     }
 
-    public boolean isTidallyLockedToStar() {
-        return tidallyLockedToStar;
+    public boolean isTidallyLocked() {
+        return tidallyLocked;
     }
 
-    public void tidallyLockedToStar() {
-        tidallyLockedToStar = true;
+    public void tidalLockedToPrimary() {
+        tidallyLocked = true;
     }
 
     public Pressure getH2OPartialPressure() {
         return atmosphere.getH2OPartialPressure();
+    }
+
+    public boolean isRounded() {
+        return type.isRounded();
     }
 }

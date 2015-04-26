@@ -17,5 +17,7 @@ public abstract class BodyType {
 
     public abstract boolean hasSurface();
 
-    public abstract boolean consistsPartiallyOfWaterIce();    
+    public abstract boolean consistsPartiallyOfWaterIce();
+
+    public abstract boolean isRounded();
 }

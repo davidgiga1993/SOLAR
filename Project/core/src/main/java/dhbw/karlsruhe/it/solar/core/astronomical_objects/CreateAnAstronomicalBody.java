@@ -27,7 +27,7 @@ public final class CreateAnAstronomicalBody {
     private float iceCover;
     private boolean subsurfaceOcean;
     private Biosphere bio;
-    private boolean tidallyLockedToStar;
+    private boolean tidallyLocked;
     
     private CreateAnAstronomicalBody(String name) {
         this.name = name;
@@ -129,7 +129,7 @@ public final class CreateAnAstronomicalBody {
             }
             
             public CreatableType whichIsTidallyLockedToItsPrimary() {
-                CreateAnAstronomicalBody.this.tidallyLockedToStar = true;
+                CreateAnAstronomicalBody.this.tidallyLocked = true;
                 return this;        
             }
                         
@@ -222,6 +222,7 @@ public final class CreateAnAstronomicalBody {
              */
             public Moon buildAs(MoonType moon, SolarSystem solarSystem) {
                 CreateAnAstronomicalBody.this.type = moon;
+                CreateAnAstronomicalBody.this.tidallyLocked = true;
                 return CreateAnAstronomicalBody.this.buildMoon(solarSystem);
             }
             
@@ -271,8 +272,8 @@ public final class CreateAnAstronomicalBody {
         setUpAtmosphere(newBody);
         setUpHydrosphere(newBody);
         setUpBiosphere(newBody);
-        if(tidallyLockedToStar) {
-            newBody.tidallyLockedToStar();            
+        if(tidallyLocked) {
+            newBody.tidalLockToPrimary();            
         }
         newBody.calculateSurfaceTemperature();
         newBody.calculateLifeRating();

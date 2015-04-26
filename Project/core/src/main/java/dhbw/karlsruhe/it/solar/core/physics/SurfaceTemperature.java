@@ -15,6 +15,7 @@ public class SurfaceTemperature {
     
     private static final float MEAN_BODY_DISTRIBUTION = 1 - 1 / (float)(2*Math.sqrt(2));
     private static final float INTERNAL_HEAT_SCALAR = 7.72757f * (float)Math.pow(10,-6);
+    private static final float TIDAL_HEATING_SCALAR = 80;
     @XmlElement(name = "Min_Temperature")
     private Temperature tempMinimum;
     @XmlElement(name = "Mean_Temperature")
@@ -70,11 +71,13 @@ public class SurfaceTemperature {
     }
 
     private float calculateAdditionalTemperatureInfluences(AstronomicalBody body) {
-        return greenhouseEffect(body) + internalHeat(body.getMass()) + tidalForces();
+        return greenhouseEffect(body) + internalHeat(body.getMass()) + tidalHeating(body);
     }
 
-    private float tidalForces() {
-        // TODO Auto-generated method stub
+    private float tidalHeating(AstronomicalBody body) {
+        if(body.isTidallyLockedToPlanet() && body.isRounded()) {
+            return TIDAL_HEATING_SCALAR * body.getPrimary().getRadius().asKilometers() / body.getOrbitalRadius().asKilometers();
+        }
         return 0;
     }
 
@@ -85,7 +88,7 @@ public class SurfaceTemperature {
      * @return
      */
     private float internalHeat(Mass bodyMass) {
-        if(bodyMass.asEarthMass()>10f) {
+        if(bodyMass.asEarthMass()>5f) {
             return INTERNAL_HEAT_SCALAR*(float)Math.sqrt(Math.sqrt(bodyMass.asKilogram()));            
         }
         return 0;

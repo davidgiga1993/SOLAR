@@ -83,4 +83,9 @@ public class PlanetType extends BodyType{
             URANIAN,
             NEPTUNIAN
         }
+
+    @Override
+    public boolean isRounded() {
+        return true;
+    }
 }

@@ -152,4 +152,9 @@ public class StarType extends BodyType {
     public SpectralTypeSubdivision getSpectralSubdivision() {
         return spectral_subdivision;
     }
+
+    @Override
+    public boolean isRounded() {
+        return true;
+    }
 }

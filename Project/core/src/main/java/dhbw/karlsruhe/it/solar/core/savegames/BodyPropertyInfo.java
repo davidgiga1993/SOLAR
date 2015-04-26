@@ -31,8 +31,8 @@ public class BodyPropertyInfo {
     private Atmosphere atmosphere;
     @XmlElement(name = "Albedo")
     private Albedo albedo;
-    @XmlElement(name = "Tidally_Locked_To_Star")
-    private boolean tidallyLockedToStar;
+    @XmlElement(name = "Tidally_Locked")
+    private boolean tidallyLocked;
     @XmlElement(name = "Hydrosphere")
     private Hydrosphere hydro;
     @XmlElement(name = "Biosphere")
@@ -50,7 +50,7 @@ public class BodyPropertyInfo {
         this.albedo = body.getAlbedo();
         this.hydro = body.getHydrosphere();
         this.bio = body.getBiosphere();
-        this.tidallyLockedToStar = body.isTidallyLockedToStar();
+        this.tidallyLocked = body.isTidallyLocked();
         if(body.hasRingSystem()) {
             RingSystemInfo ringInfo = new RingSystemInfo();
             ringInfo.fillRingSystemInfo(body.getRings());
@@ -90,7 +90,7 @@ public class BodyPropertyInfo {
         return bio;
     }
 
-    public boolean isTidallyLockedToStar() {
-        return tidallyLockedToStar;
+    public boolean isTidallyLocked() {
+        return tidallyLocked;
     }
 }

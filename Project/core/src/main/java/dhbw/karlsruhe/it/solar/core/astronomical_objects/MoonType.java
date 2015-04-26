@@ -90,4 +90,32 @@ public class MoonType extends BodyType {
         OBERONIAN,
         TRITONIAN
     }
+
+    @Override
+    public boolean isRounded() {
+        switch(satelliteType)        {
+            case LUNAR:
+            case IONIAN:
+            case EUROPAN:
+            case GANYMEDIAN:
+            case CALLISTOAN:
+            case MIMANTEAN:
+            case ENCELADEAN:
+            case TETHYAN:
+            case DIONEAN:
+            case RHEAN:
+            case TITANEAN:
+            case IAPETIAN:
+            case MIRANDAN:
+            case ARIELIAN:
+            case UMBRELIAN:
+            case TITANIAN:
+            case OBERONIAN:
+            case TRITONIAN:
+                return true;
+            case IRREGULAR:
+            default:
+                return false;
+        }
+    }
 }

@@ -116,8 +116,8 @@ public class AstroBodyInfo {
         return body.getBiosphere();
     }
 
-    public boolean isTidallyLockedToStar() {
-        return body.isTidallyLockedToStar();
+    public boolean isTidallyLocked() {
+        return body.isTidallyLocked();
     }
 
 }

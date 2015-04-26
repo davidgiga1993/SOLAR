@@ -252,7 +252,6 @@ public class AtmosphericGas {
     }
     
     private float saturationFormula(float saturationLevel, float scalar, Pressure partialPressure) {
-        float zwischenergebnis = saturationLevel - saturationLevel/(scalar * partialPressure.asBar() + 1);
-        return zwischenergebnis;
+        return saturationLevel - saturationLevel/(scalar * partialPressure.asBar() + 1);
     }
 }

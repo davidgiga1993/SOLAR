@@ -329,15 +329,27 @@ public abstract class AstronomicalBody extends Orbiter  {
         return getStar().getRadius();
     }
 
-    public boolean isTidallyLockedToStar() {
-        return physicalProperties.isTidallyLockedToStar();
+    public boolean isTidallyLocked() {
+        return physicalProperties.isTidallyLocked();
     }
 
-    public void tidallyLockedToStar() {
-        physicalProperties.tidallyLockedToStar();
+    public void tidalLockToPrimary() {
+        physicalProperties.tidalLockedToPrimary();
     }
 
     public BodyProperties getPhysicalProperties() {
         return physicalProperties;
+    }
+
+    public boolean isTidallyLockedToStar() {
+        return physicalProperties.isTidallyLocked() && orbitalProperties.orbitingStar();
+    }
+
+    public boolean isTidallyLockedToPlanet() {
+        return physicalProperties.isTidallyLocked() && this instanceof Moon;
+    }
+
+    public boolean isRounded() {
+        return physicalProperties.isRounded();
     }
 }

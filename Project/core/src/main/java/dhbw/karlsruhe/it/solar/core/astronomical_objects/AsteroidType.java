@@ -57,5 +57,10 @@ public class AsteroidType extends BodyType {
         QTYPE,
         RTYPE,
         VTYPE
+    }
+
+    @Override
+    public boolean isRounded() {
+        return false;
     }    
 }

@@ -264,4 +264,8 @@ public class OrbitalProperties {
     public String getNameOfPrimary() {
         return orbitPrimary.getName();
     }
+
+    public boolean orbitingStar() {
+        return orbitPrimary instanceof Star;
+    }
 }
