@@ -125,7 +125,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
       */
      private void changeOrbitScaleSpaceUnit() {
           setOrbitScale();
-          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.getOrbitScale();
+          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometers()) * actorScale.getOrbitScale();
      }
      
      /**
@@ -264,8 +264,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      */
     public void setSize(Length width, Length height) {
         // convert to pixels and scale with scale setting
-        float pWidth = scaleDistanceToStage(width.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
-        float pHeight = scaleDistanceToStage(height.asKilometres()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
+        float pWidth = scaleDistanceToStage(width.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
+        float pHeight = scaleDistanceToStage(height.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
         // call super
         super.setSize(pWidth , pHeight);
     }

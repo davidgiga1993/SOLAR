@@ -17,7 +17,7 @@ public class SurfaceGravity {
     }
 
     private void calculateSurfaceGravity(Mass mass, Length radius) {
-        this.value = ( (PhysicalConstants.GRAVITATIONAL_CONSTANT * mass.asKilogram()) / ((float)Math.pow(radius.asMetres(), 2) ) );
+        this.value = ( (PhysicalConstants.GRAVITATIONAL_CONSTANT * mass.asKilogram()) / ((float)Math.pow(radius.asMeters(), 2) ) );
         this.unit = GravUnit.MS2;
     }
     

@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.physics.Albedo;
 import dhbw.karlsruhe.it.solar.core.physics.Atmosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperature;
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, SurfaceTemperature.class, Hydrosphere.class, Biosphere.class})
+@XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, Albedo.class, Hydrosphere.class, Biosphere.class})
 public class BodyPropertyInfo {
     
     @XmlElement(name = "Type")
@@ -29,8 +29,10 @@ public class BodyPropertyInfo {
     private RingSystemInfo ring;
     @XmlElement(name = "Atmosphere")
     private Atmosphere atmosphere;
-    @XmlElement(name = "Surface_Temperatures")
-    private SurfaceTemperature temperatures;
+    @XmlElement(name = "Albedo")
+    private Albedo albedo;
+    @XmlElement(name = "Tidally_Locked_To_Star")
+    private boolean tidallyLockedToStar;
     @XmlElement(name = "Hydrosphere")
     private Hydrosphere hydro;
     @XmlElement(name = "Biosphere")
@@ -45,9 +47,10 @@ public class BodyPropertyInfo {
         this.mass = body.getMass();
         this.type = body.getBodyType();
         this.atmosphere = body.getAtmosphere();
-        this.temperatures = body.getTemperatures();
+        this.albedo = body.getAlbedo();
         this.hydro = body.getHydrosphere();
         this.bio = body.getBiosphere();
+        this.tidallyLockedToStar = body.isTidallyLockedToStar();
         if(body.hasRingSystem()) {
             RingSystemInfo ringInfo = new RingSystemInfo();
             ringInfo.fillRingSystemInfo(body.getRings());
@@ -75,8 +78,8 @@ public class BodyPropertyInfo {
         return atmosphere;
     }
 
-    public SurfaceTemperature getTemperatures() {
-        return temperatures;
+    public Albedo getAlbedo() {
+        return albedo;
     }
 
     public Hydrosphere getHydrosphere() {
@@ -85,5 +88,9 @@ public class BodyPropertyInfo {
 
     public Biosphere getBiosphere() {
         return bio;
+    }
+
+    public boolean isTidallyLockedToStar() {
+        return tidallyLockedToStar;
     }
 }

@@ -42,7 +42,7 @@ public class OrbitalPropertyInfo {
     }
 
     public boolean isStationary() {
-        if (orbitalRadius.asKilometres() == 0) {
+        if (orbitalRadius.asKilometers() == 0) {
             return true;
         }
         return false;

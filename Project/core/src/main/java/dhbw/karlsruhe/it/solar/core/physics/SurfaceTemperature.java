@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 
 @XmlAccessorType(XmlAccessType.NONE)
@@ -54,11 +55,49 @@ public class SurfaceTemperature {
     
     @Override
     public String toString() {
-        return formatValue(getMeanTemperature()) + " °C";
+        return formatValue(getMeanTemperature()) + " K";
     }
 
     private String formatValue(Temperature temp) {
-        return String.format("%.00f", temp.inCelsius());
+        return String.format("%.00f", temp.inKelvin());
+    }
+
+    public void calculateSurfaceTemperature(AstronomicalBody body, Albedo albedo) {
+        meanTemperature = new Temperature( calculateTemperatureSolarRadiation(body, albedo) + calculateAdditionalTemperatureInfluences(), TempUnit.KELVIN);      
+    }
+
+    private float calculateAdditionalTemperatureInfluences() {
+        return greenhouseEffect() + geothermalActivity() + tidalForces();
+    }
+
+    private float tidalForces() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    private float geothermalActivity() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    private float greenhouseEffect() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    private float calculateTemperatureSolarRadiation(AstronomicalBody body, Albedo albedo) {
+        if(body.isTidallyLockedToStar()) {
+            return body.getTemperatureOfStar().inKelvin() * (float)Math.sqrt(getRelativeTemperatureValueTidallyLocked(body.getRadiusOfStar(), albedo, body.getMeanDistanceToStar())) / 1.543f;            
+        }
+        return body.getTemperatureOfStar().inKelvin() * (float)Math.sqrt(getRelativeTemperatureValue(body.getRadiusOfStar(), albedo, body.getMeanDistanceToStar()));
+    }
+
+    private double getRelativeTemperatureValueTidallyLocked(Length radiusOfStar, Albedo albedo, Length orbitalDistance) {
+        return radiusOfStar.asMeters()/orbitalDistance.asMeters() * Math.sqrt(( 1 - albedo.getAlbedoValue()) / 2);
+    }
+
+    private double getRelativeTemperatureValue(Length radiusOfStar, Albedo albedo, Length orbitalDistance) {
+        return radiusOfStar.asMeters() * Math.sqrt( 1 - albedo.getAlbedoValue()) / (2*orbitalDistance.asMeters());
     }
 
 }

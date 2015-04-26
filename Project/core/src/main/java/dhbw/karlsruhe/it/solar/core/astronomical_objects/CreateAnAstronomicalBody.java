@@ -27,6 +27,7 @@ public final class CreateAnAstronomicalBody {
     private float iceCover;
     private boolean subsurfaceOcean;
     private Biosphere bio;
+    private boolean tidallyLockedToStar;
     
     private CreateAnAstronomicalBody(String name) {
         this.name = name;
@@ -73,7 +74,7 @@ public final class CreateAnAstronomicalBody {
      * @return
      */
     public CreatableProperties whichIsCoorbitalWith(AstronomicalBody dominantBody, Angle angularDeviation) {
-        this.orbitalProperties = new OrbitalProperties(dominantBody.getPrimary(), new Length(dominantBody.getOrbitalRadius().asKilometres(),dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit.KILOMETERS), new Angle(dominantBody.getOrbitalAngle().inDegrees(), AngularUnit.DEGREE));
+        this.orbitalProperties = new OrbitalProperties(dominantBody.getPrimary(), new Length(dominantBody.getOrbitalRadius().asKilometers(),dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit.KILOMETERS), new Angle(dominantBody.getOrbitalAngle().inDegrees(), AngularUnit.DEGREE));
         this.orbitalProperties.setCoorbital(dominantBody, angularDeviation);
         return new CreatableProperties();
     }
@@ -98,10 +99,11 @@ public final class CreateAnAstronomicalBody {
          * Determines the physical properties of the celestial body such as its dimensions and mass.
          * @param bodyRadius Size of the astronomical body.
          * @param bodyMass Mass of the astronomical body.
+         * @param tidallyLockedToStar 
          * @return
          */
-        public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass, SurfaceTemperature temperatures) {
-            CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, null, temperatures);
+        public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass, Albedo albedo) {
+            CreateAnAstronomicalBody.this.bodyProperties = new BodyProperties(bodyMass, bodyRadius, albedo);
             return new CreatableType();
         }
         
@@ -123,6 +125,11 @@ public final class CreateAnAstronomicalBody {
                 CreateAnAstronomicalBody.this.innerRadiusOfRings = innerRadiusOfRings;
                 CreateAnAstronomicalBody.this.outerRadiusOfRings = outerRadiusOfRings;
                 CreateAnAstronomicalBody.this.typeOfRings = typeOfRings;
+                return this;        
+            }
+            
+            public CreatableType whichIsTidallyLockedToItsStar() {
+                CreateAnAstronomicalBody.this.tidallyLockedToStar = true;
                 return this;        
             }
                         
@@ -233,7 +240,6 @@ public final class CreateAnAstronomicalBody {
     
     private Star buildStar(SolarSystem solarSystem) {
         bodyProperties.setBodyType(type);
-        bodyProperties.setStellarSurfaceTemperature();
         Star newBody = new Star(name, orbitalProperties, bodyProperties);
         setupBody(solarSystem, newBody);
         return newBody;
@@ -265,6 +271,10 @@ public final class CreateAnAstronomicalBody {
         setUpAtmosphere(newBody);
         setUpHydrosphere(newBody);
         setUpBiosphere(newBody);
+        if(tidallyLockedToStar) {
+            newBody.tidallyLockedToStar();            
+        }
+        newBody.calculateSurfaceTemperature();
         newBody.calculateLifeRating();
         newBody.initializeAstronomicalBody(solarSystem);
     }

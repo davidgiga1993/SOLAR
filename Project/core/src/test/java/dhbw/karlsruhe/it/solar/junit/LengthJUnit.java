@@ -32,14 +32,14 @@ public class LengthJUnit {
 
     @Test
     public void testAsKilometres() {
-        assertEquals(1, km.asKilometres(), 0.00001f);
-        assertEquals(384400, ld.asKilometres(), 0.00001f);
-        assertEquals(149597870.7f, au.asKilometres(), 0.00001f);
-        assertEquals((float)(9.4605284*Math.pow(10,12)), ly.asKilometres(), 0.00001);
-        assertEquals(Float.NaN, pc.asKilometres(), 0.00001);
+        assertEquals(1, km.asKilometers(), 0.00001f);
+        assertEquals(384400, ld.asKilometers(), 0.00001f);
+        assertEquals(149597870.7f, au.asKilometers(), 0.00001f);
+        assertEquals((float)(9.4605284*Math.pow(10,12)), ly.asKilometers(), 0.00001);
+        assertEquals(Float.NaN, pc.asKilometers(), 0.00001);
 
         Length reallyBig = new Length(100000000000000000f, Length.DistanceUnit.ASTRONOMICAL_UNITS);
-        assertEquals(14959787070000000000000000.0f, reallyBig.asKilometres(), 0.0001f);
+        assertEquals(14959787070000000000000000.0f, reallyBig.asKilometers(), 0.0001f);
     }
 
 

@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
+import dhbw.karlsruhe.it.solar.core.physics.Albedo;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Atmosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
@@ -14,7 +15,6 @@ import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperature;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({OrbitalPropertyInfo.class, BodyPropertyInfo.class, ColonyInfo.class})
@@ -104,8 +104,8 @@ public class AstroBodyInfo {
         return body.getAtmosphere();
     }
 
-    public SurfaceTemperature getTemperatures() {
-        return body.getTemperatures();
+    public Albedo getAlbedo() {
+        return body.getAlbedo();
     }
 
     public Hydrosphere getHydrosphere() {
@@ -114,6 +114,10 @@ public class AstroBodyInfo {
 
     public Biosphere getBiosphere() {
         return body.getBiosphere();
+    }
+
+    public boolean isTidallyLockedToStar() {
+        return body.isTidallyLockedToStar();
     }
 
 }

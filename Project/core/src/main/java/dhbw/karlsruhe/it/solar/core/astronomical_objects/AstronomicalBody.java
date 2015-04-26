@@ -40,7 +40,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
     
     protected void changeBodyScale() {
-        float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometres()) * actorScale.getShapeScale() * 2;
+        float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometers()) * actorScale.getShapeScale() * 2;
         this.setSize(tSize, tSize);
     }
 
@@ -287,5 +287,53 @@ public abstract class AstronomicalBody extends Orbiter  {
             if( 0 < liquidWaterCover || 0 < iceCover) {
                 setUpHydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);   
             }
+    }
+
+    public void calculateSurfaceTemperature() {
+        if(this instanceof Star) {
+            physicalProperties.setStellarSurfaceTemperature();
+            return;
+        }
+        physicalProperties.calculateSurfaceTemperature(this);
+    }
+
+    public Star getStar() {
+        if(this instanceof SolarSystem) {
+            return null;
+        }
+        if(getPrimary() instanceof Star) {
+            return (Star)getPrimary();
+        }
+        return getPrimary().getStar();
+    }
+
+    public Length getMeanDistanceToStar() {
+        if(this instanceof SolarSystem) {
+            return null;
+        }
+        if(getPrimary() instanceof Star) {
+            return this.getOrbitalRadius();
+        }
+        return getPrimary().getMeanDistanceToStar();
+    }
+
+    public Albedo getAlbedo() {
+        return physicalProperties.getAlbedo();
+    }
+
+    public Temperature getTemperatureOfStar() {
+        return getStar().getTemperatures().getMeanTemperature();
+    }
+
+    public Length getRadiusOfStar() {
+        return getStar().getRadius();
+    }
+
+    public boolean isTidallyLockedToStar() {
+        return physicalProperties.isTidallyLockedToStar();
+    }
+
+    public void tidallyLockedToStar() {
+        physicalProperties.tidallyLockedToStar();
     }
 }

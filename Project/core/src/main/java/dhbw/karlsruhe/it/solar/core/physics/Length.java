@@ -42,7 +42,7 @@ public class Length {
         this.unit = unit;
     }
 
-    public float asKilometres() {
+    public float asKilometers() {
         switch(unit) {
             case KILOMETERS:
                 return value;
@@ -108,21 +108,8 @@ public class Length {
         }
     }
     
-    public float asMetres() {
-        switch (unit) {
-        case KILOMETERS:
-            return value * KILOMETER_IN_METERS;
-        case LUNAR_DISTANCE:
-            return value * LUNAR_DISTANCE_IN_KILOMETRES * KILOMETER_IN_METERS;
-        case ASTRONOMICAL_UNITS:
-            return value * ASTRONOMICAL_UNIT_IN_KILOMETRES * KILOMETER_IN_METERS;
-        case LIGHTYEAR:
-            return value * LIGHT_YEAR_IN_KILOMETERS * KILOMETER_IN_METERS;
-        case PARSEC:
-            return value * PARSEC_IN_LIGHT_YEARS * LIGHT_YEAR_IN_KILOMETERS * KILOMETER_IN_METERS;
-        default:
-            return Float.NaN;
-    }
+    public float asMeters() {
+        return this.asKilometers()*KILOMETER_IN_METERS;
     }
 
     public enum DistanceUnit {
@@ -150,13 +137,13 @@ public class Length {
         if( this.asAstronomicalUnit() > 0.1f ) {
             return formatValue(this.asAstronomicalUnit()) + " AU";
         }    
-        if(this.asKilometres() > MILLION) {
-            return formatValue(this.asKilometres()/MILLION) + " M km";            
+        if(this.asKilometers() > MILLION) {
+            return formatValue(this.asKilometers()/MILLION) + " M km";            
         }
-        if(this.asKilometres() > 10*THOUSAND) {
-            return formatValue(this.asKilometres()/THOUSAND) + " k km";            
+        if(this.asKilometers() > 10*THOUSAND) {
+            return formatValue(this.asKilometers()/THOUSAND) + " k km";            
         }
-        return formatValueNoDecimal(this.asKilometres()) + " km";
+        return formatValueNoDecimal(this.asKilometers()) + " km";
     }
     
     private String formatValueNoDecimal(float value) {

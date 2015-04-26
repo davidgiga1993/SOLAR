@@ -23,13 +23,14 @@ public class BodyProperties {
     private Biosphere bio;
     private SurfaceGravity gravity;
     private LifeRating rating;
+    private Albedo albedo;
+    private boolean tidallyLockedToStar;
 
-    public BodyProperties(Mass mass, Length radius, PlanetaryRing ring, SurfaceTemperature temperatures) {
+    public BodyProperties(Mass mass, Length radius, Albedo albedo) {
         this.mass = mass;
         this.radius = radius;
-        this.ring = ring;
-        this.temperature = temperatures;
         this.gravity = new SurfaceGravity(mass, radius);
+        this.albedo = albedo;
     }
     
     public Mass getMass()    {
@@ -141,5 +142,26 @@ public class BodyProperties {
      */
     public void setStellarSurfaceTemperature() {
         temperature = new SurfaceTemperature(Star.getBlackBodyTemperature((StarType)type));     
+    }
+
+    /**
+     * Calculates the surface temperature of a planetary body.
+     * @param starsInSystem
+     */
+    public void calculateSurfaceTemperature(AstronomicalBody body) {
+        temperature = new SurfaceTemperature();
+        temperature.calculateSurfaceTemperature(body, albedo, tidallyLockedToStar);
+    }
+
+    public Albedo getAlbedo() {
+        return albedo;
+    }
+
+    public boolean isTidallyLockedToStar() {
+        return tidallyLockedToStar;
+    }
+
+    public void tidallyLockedToStar() {
+        tidallyLockedToStar = true;
     }
 }

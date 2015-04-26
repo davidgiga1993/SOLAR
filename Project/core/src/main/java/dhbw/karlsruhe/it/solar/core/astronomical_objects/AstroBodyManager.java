@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody.CreatableProperties;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody.CreatableProperties.CreatableType;
+import dhbw.karlsruhe.it.solar.core.physics.Albedo;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Atmosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
@@ -9,7 +10,6 @@ import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.SurfaceTemperature;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.RingSystemInfo;
 
@@ -100,19 +100,26 @@ public class AstroBodyManager {
     private CreatableType extractBiosphere() {
         Biosphere biosphere = body.getBiosphere();
         if(null!=biosphere) {
-            return extractBodyProperties().addBiosphere(biosphere.getBioType(),biosphere.getBioCover());            
+            return extractTidalLock().addBiosphere(biosphere.getBioType(),biosphere.getBioCover());            
+        }
+        return extractTidalLock();
+    }  
+    
+    private CreatableType extractTidalLock() {
+        if(body.isTidallyLockedToStar()) {
+            return extractBodyProperties().whichIsTidallyLockedToItsStar();            
         }
         return extractBodyProperties();
-    }   
+    }  
 
     private CreatableType extractBodyProperties() {
         Length radius = body.getRadius();
         Mass mass = body.getMass();
-        SurfaceTemperature temperatures = body.getTemperatures();
+        Albedo albedo = body.getAlbedo();
         if(body.isRetrograde()) {
-            return extractOrbitalProperties().whileMovingInRetrogradeDirection().andHasTheFollowingBodyProperties(radius, mass, temperatures);
+            return extractOrbitalProperties().whileMovingInRetrogradeDirection().andHasTheFollowingBodyProperties(radius, mass, albedo);
         }
-        return extractOrbitalProperties().andHasTheFollowingBodyProperties(radius, mass, temperatures);
+        return extractOrbitalProperties().andHasTheFollowingBodyProperties(radius, mass, albedo);
     }
 
     private CreatableProperties extractOrbitalProperties() {

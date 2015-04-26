@@ -85,7 +85,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
       * @return Total Movement speed of the orbital object on the game map. Unit: Scale-Adjusted Kilometres per Day.
       */
      private float calculateOrbitalSpeed() {
-          return (float) ((2 * Math.PI * scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres())) / orbitalProperties.getOrbitalPeriod().inDays());
+          return (float) ((2 * Math.PI * scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometers())) / orbitalProperties.getOrbitalPeriod().inDays());
      }
      
      /**
@@ -95,7 +95,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
           if(orbitalProperties == null) {
                return;
           }
-          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometres()) * actorScale.getOrbitScale();
+          orbitalRadiusInPixels = scaleDistanceToStage(orbitalProperties.getOrbitalRadius().asKilometers()) * actorScale.getOrbitScale();
           orbitalRadiusInPixels += calculateOrbitOffset();
      }
           
@@ -111,7 +111,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
                return 0;
           }
           float radius = primary.getWidth()/2;
-          float normRadius = (float) (primary.getRadius().asKilometres() / SolarActor.STAGESCALINGFACTOR);
+          float normRadius = (float) (primary.getRadius().asKilometers() / SolarActor.STAGESCALINGFACTOR);
           return radius - normRadius;
      }
      

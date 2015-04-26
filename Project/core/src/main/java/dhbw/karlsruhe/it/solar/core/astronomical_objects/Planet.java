@@ -49,7 +49,7 @@ public class Planet extends AstronomicalBody  {
     @Override
     public void addSatellite(AstronomicalBody newSatellite) {
         super.addSatellite(newSatellite);
-        if(outermostMoon == null || outermostMoon.getOrbitalRadius().asKilometres() < newSatellite.getOrbitalRadius().asKilometres()) {
+        if(outermostMoon == null || outermostMoon.getOrbitalRadius().asKilometers() < newSatellite.getOrbitalRadius().asKilometers()) {
             outermostMoon = newSatellite;
         }
     }

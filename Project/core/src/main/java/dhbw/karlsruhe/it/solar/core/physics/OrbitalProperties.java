@@ -64,7 +64,7 @@ public class OrbitalProperties {
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod() {
-        orbitalPeriodInDays = new Time((float) (Math.sqrt( (PhysicalConstants.PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometres() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24)), TimeUnit.DAYS);
+        orbitalPeriodInDays = new Time((float) (Math.sqrt( (PhysicalConstants.PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometers() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24)), TimeUnit.DAYS);
     }
     
     /**
@@ -213,7 +213,7 @@ public class OrbitalProperties {
                 return new Length(1, Length.DistanceUnit.LIGHTYEAR);
             }
         }
-        return new Length(orbitalRadius.asKilometres() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.DistanceUnit.KILOMETERS);
+        return new Length(orbitalRadius.asKilometers() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.DistanceUnit.KILOMETERS);
     }
     
     
@@ -225,7 +225,7 @@ public class OrbitalProperties {
      * @return Value of the gravitational potential.
      */
     public float gravitationalPotential(Mass mass, Length radius) {
-        return (float) (mass.asKilogram() / Math.pow(radius.asKilometres(), 2)); 
+        return (float) (mass.asKilogram() / Math.pow(radius.asKilometers(), 2)); 
     }
 
     public void addAsSatellite(AstronomicalBody newSatellite) {
