@@ -17,7 +17,6 @@ public class InfoBarDetailsTable extends Table {
     
     public InfoBarDetailsTable(SolarActor selectedActor) {
         clear();         
-        setDebug(true);
         add(new BaseNavigationLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
         row();
         add(new InfoBarOverviewTable(selectedActor)).width(InformationBar.CELL_SIZE);

@@ -15,6 +15,7 @@ public class SystemRoot extends AstronomicalBody {
 
     public SystemRoot(float x, float y) {
         super("Milky Way Galaxy", null, null,  null, null);
+        label.hide();
         this.setPosition(x,y);
     }
 
