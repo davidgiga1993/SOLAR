@@ -32,60 +32,36 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1199.505</x>
-            <y>499.505</y>
+            <x>1112.005</x>
+            <y>412.005</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1200.0</x>
-                <y>500.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Nostromo</UnitName>
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1499.505</x>
-            <y>999.505</y>
+            <x>1412.005</x>
+            <y>912.005</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1500.0</x>
-                <y>1000.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Destiny</UnitName>
         <ShipType>Ship</ShipType>
         <UnitOwner>Player Two(AI)</UnitOwner>
         <AbsolutePosition>
-            <x>1549.505</x>
-            <y>1049.505</y>
+            <x>1462.005</x>
+            <y>962.005</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1550.0</x>
-                <y>1050.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Deep Space Nine</UnitName>
         <ShipType>Station</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1499.505</x>
-            <y>-0.49499997</y>
+            <x>1412.005</x>
+            <y>-87.995</y>
         </AbsolutePosition>
-        <Destination>
-            <TargetLocation>
-                <x>1500.0</x>
-                <y>0.0</y>
-            </TargetLocation>
-        </Destination>
     </SpaceUnit>
     <SpaceUnit>
         <UnitName>Babylon 5</UnitName>
@@ -94,11 +70,11 @@
         <OrbitalProperties>
             <Primary>Earth</Primary>
             <OrbitalRadius>
-                <value>297383.8</value>
+                <value>288053.6</value>
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>177.79248046875</value>
+                <value>175.7479248046875</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -112,19 +88,15 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.991214E30</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.991214E30</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.0</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
-            <Primary>Milky Way Galaxy</Primary>
+            <Primary>SystemRoot</Primary>
             <OrbitalRadius>
-                <value>27200.0</value>
-                <distance_unit>LIGHTYEAR</distance_unit>
+                <value>0.0</value>
+                <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
                 <value>0.0</value>
@@ -137,38 +109,16 @@
         <Name>Sun</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="starType">
-                <Morgan_Keenan_Spectral_Type>G</Morgan_Keenan_Spectral_Type>
-                <Spectral_Type_Subdivision>TWO</Spectral_Type_Subdivision>
-                <Luminosity_Class>MAIN_SEQUENCE_STAR</Luminosity_Class>
+                <Type>GTYPE</Type>
             </Type>
             <Radius>
                 <value>696342.0</value>
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0</Mass_Value>
-                <Mass_Unit>SOLAR_MASS</Mass_Unit>
+                <value>1.0</value>
+                <mass_unit>SOLAR_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.7346</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.2485</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.0077</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.0</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Solar System</Primary>
@@ -194,37 +144,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.055</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.055</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0E-14</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.42</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>SODIUM</Type>
-                        <Volume_Percentage>0.29</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.06</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>POTASSIUM</Type>
-                        <Volume_Percentage>0.005</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.068</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>true</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -250,33 +172,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.815</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.815</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>92.0</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>0.965</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.035</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>SULFUR_DIOXIDE</Type>
-                        <Volume_Percentage>1.5E-4</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.9</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -302,50 +200,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>101.325</Pressure_Value>
-                    <Pressure_Unit>KILOPASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.7808</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.2095</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>ARGON</Type>
-                        <Volume_Percentage>0.0093</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>WATER_VAPOR</Type>
-                        <Volume_Percentage>0.01</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>3.9E-4</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.306</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.608</Water_Cover>
-                <Ice_Cover>0.1</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
-            <Biosphere>
-                <Biosphere_Coverage>0.9</Biosphere_Coverage>
-                <Type_of_Biosphere>TERRAN</Type_of_Biosphere>
-            </Biosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -379,13 +236,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.0123</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.0123</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.136</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Earth</Primary>
@@ -419,42 +272,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.107</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.107</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>0.636</Pressure_Value>
-                    <Pressure_Unit>KILOPASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>0.96</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>ARGON</Type>
-                        <Volume_Percentage>0.019</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.019</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.00145</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.25</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>0.1</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -488,18 +308,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.06589997E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.06589997E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.071</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Mars</Primary>
@@ -525,18 +336,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.47619999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.47619999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.068</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Mars</Primary>
@@ -562,18 +364,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.6E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.6E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.09</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -599,13 +392,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>318.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>318.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>2.19999996E15</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>2.19999996E15</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>92000.0</value>
@@ -617,26 +410,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>JOVIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.898</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.102</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.003</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.343</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -662,18 +435,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.24999998E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.24999998E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.061</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -699,18 +463,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0299999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.0299999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.1</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -736,18 +491,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.5E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.5E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.09</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -773,18 +519,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.4E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.4E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.047</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -810,25 +547,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.015</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.015</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>2.9999999E-4</Pressure_Value>
-                    <Pressure_Unit>PASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>SULFUR_DIOXIDE</Type>
-                        <Volume_Percentage>0.99</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.63</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -854,30 +575,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.008</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.008</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0E-12</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.99</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.67</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -903,30 +603,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.025</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.025</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>2.5E-6</Pressure_Value>
-                    <Pressure_Unit>PASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.99</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.43</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -952,34 +631,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.018</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.018</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>7.5E-12</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>OXYGEN</Type>
-                        <Volume_Percentage>0.98</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>0.02</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.22</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1005,18 +659,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0900001E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.0900001E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1042,18 +687,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.12E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.12E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1079,18 +715,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.3000002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.3000002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1116,18 +743,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.6599996E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.6599996E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1153,18 +771,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.00000008E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.00000008E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1190,18 +799,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.29999993E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.29999993E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1217,7 +817,7 @@
         </OrbitalProperties>
     </AstronomicalBody>
     <AstronomicalBody>
-        <Name>Pasiphae</Name>
+        <Name>Pasiphea</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
                 <Type>IRREGULAR</Type>
@@ -1227,18 +827,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.91999985E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.91999985E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.1</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1264,18 +855,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.7700004E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.7700004E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Jupiter</Primary>
@@ -1301,13 +883,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>95.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>95.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>3.0E19</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>3.0E19</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>66900.0</value>
@@ -1319,26 +901,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>SATURNIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.96</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.03</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.004</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.342</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -1364,18 +926,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.9499997E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.9499997E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.5</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1401,18 +954,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.6E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.6E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.4</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1438,18 +982,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.3E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.3E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.6</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1475,18 +1010,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.2E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.2E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.6</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1512,18 +1038,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.2E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.2E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.71</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1549,18 +1066,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>9.0E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>9.0E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.73</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1584,18 +1092,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.0E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.962</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1621,42 +1120,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.8E-5</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.8E-5</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.0E-12</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>WATER_VAPOR</Type>
-                        <Volume_Percentage>0.91</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.04</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>CARBON_DIOXIDE</Type>
-                        <Volume_Percentage>0.032</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.0017</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.99</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1682,18 +1148,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.00132</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.00132</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.8</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1719,18 +1176,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.04640009E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.04640009E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.8</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1754,18 +1202,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.54769997E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.54769997E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.99</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1789,18 +1228,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.55</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1826,18 +1256,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.09999997E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.09999997E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.6</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Retrograde>false</Retrograde>
@@ -1861,13 +1282,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>9.9999998E12</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>9.9999998E12</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>1615.0</value>
@@ -1879,15 +1300,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>NEPTUNIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Albedo>
-                <Albedo>0.65</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1913,38 +1325,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.023</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.023</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>146.7</Pressure_Value>
-                    <Pressure_Unit>KILOPASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.984</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.014</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.002</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.22</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -1970,18 +1353,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>9.4E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>9.4E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.25</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2007,18 +1381,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.23</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2044,18 +1409,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.30000011E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.30000011E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2081,18 +1437,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.20000004E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.20000004E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2118,18 +1465,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.39E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.39E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.081</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2155,18 +1493,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.1999999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.1999999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2192,18 +1521,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.09999999E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.09999999E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2229,18 +1549,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.5999997E14</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.5999997E14</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2266,18 +1577,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.70000005E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.70000005E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2303,18 +1605,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.9000004E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.9000004E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2340,18 +1633,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.8999999E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.8999999E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.06</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Saturn</Primary>
@@ -2377,13 +1661,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>14.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>14.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>8.9999998E15</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>8.9999998E15</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>26840.0</value>
@@ -2395,26 +1679,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>URANIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.83</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.15</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.023</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.3</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -2440,18 +1704,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.4960001E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>4.4960001E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2477,18 +1732,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.3952E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.3952E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2514,18 +1760,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>9.2917005E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>9.2917005E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2551,18 +1788,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.43199979E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.43199979E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2588,18 +1816,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.78339996E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.78339996E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2625,18 +1844,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.7E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.7E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2662,18 +1872,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.8E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.8E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2699,18 +1900,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.54769987E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.54769987E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.07</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2736,18 +1928,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.20000004E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.20000004E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.07</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2773,18 +1956,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.56679992E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.56679992E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2810,18 +1984,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.79999996E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.79999996E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.08</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2847,18 +2012,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.9E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.9E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.11</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2884,18 +2040,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.99999995E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.99999995E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.103</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2921,18 +2068,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.0E-5</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.0E-5</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.32</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2958,18 +2096,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.2E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.2E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.39</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -2995,18 +2124,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.16</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3032,18 +2152,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.27</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3069,18 +2180,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>4.6E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>4.6E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.24</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3106,18 +2208,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.2E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.2E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3143,18 +2236,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.2999999E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.2999999E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3180,18 +2264,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0000001E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>6.0000001E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3217,18 +2292,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.89999996E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.89999996E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3254,18 +2320,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.9E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.9E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3291,18 +2348,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.4999998E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.4999998E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3328,18 +2376,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.5000006E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.5000006E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3365,18 +2404,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.4999999E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.4999999E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3402,18 +2432,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.4000001E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.4000001E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Uranus</Primary>
@@ -3439,13 +2460,13 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>17.0</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>17.0</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
             <PlanetaryRings>
                 <MassOfRingSystem>
-                    <Mass_Value>8.0E14</Mass_Value>
-                    <Mass_Unit>KILOGRAM</Mass_Unit>
+                    <value>8.0E14</value>
+                    <mass_unit>KILOGRAM</mass_unit>
                 </MassOfRingSystem>
                 <InnermostRing>
                     <value>40900.0</value>
@@ -3457,26 +2478,6 @@
                 </OutermostRing>
                 <TypeOfRingSystem>NEPTUNIAN</TypeOfRingSystem>
             </PlanetaryRings>
-            <Atmosphere>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>HYDROGEN</Type>
-                        <Volume_Percentage>0.8</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>HELIUM</Type>
-                        <Volume_Percentage>0.19</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.015</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.29</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -3502,18 +2503,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.8999999E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.8999999E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.072</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3539,18 +2531,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.69999991E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>3.69999991E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.091</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3576,18 +2559,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.7E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.7E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.09</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3613,18 +2587,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.5E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.5E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.079</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3650,18 +2615,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.0E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>7.0E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.091</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3687,18 +2643,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.25000003E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.25000003E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.09</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3724,18 +2671,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.4E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>7.4E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.096</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3761,34 +2699,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.00358</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.00358</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>1.4E-5</Pressure_Value>
-                    <Pressure_Unit>BAR</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.99</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.01</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.756</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3814,18 +2727,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.5E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.5E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.155</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3851,18 +2755,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.9920002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.9920002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.16</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3888,18 +2783,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.9920002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.9920002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.16</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3925,18 +2811,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>8.9920002E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>8.9920002E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.16</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3962,18 +2839,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.49870006E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>1.49870006E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.16</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -3999,18 +2867,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.6485E17</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>2.6485E17</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.16</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Neptune</Primary>
@@ -4036,38 +2895,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.0022</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.0022</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Atmosphere>
-                <Surface_Pressure>
-                    <Pressure_Value>0.3</Pressure_Value>
-                    <Pressure_Unit>PASCAL</Pressure_Unit>
-                </Surface_Pressure>
-                <Atmospheric_Composition>
-                    <gases>
-                        <Type>NITROGEN</Type>
-                        <Volume_Percentage>0.9</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>METHANE</Type>
-                        <Volume_Percentage>0.09</Volume_Percentage>
-                    </gases>
-                    <gases>
-                        <Type>CARBON_MONOXIDE</Type>
-                        <Volume_Percentage>0.01</Volume_Percentage>
-                    </gases>
-                </Atmospheric_Composition>
-            </Atmosphere>
-            <Albedo>
-                <Albedo>0.49</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>true</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4093,18 +2923,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>2.5E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>2.5E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.372</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4130,18 +2951,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>5.25E15</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>5.25E15</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.372</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4167,18 +2979,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.7E-8</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.7E-8</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4204,18 +3007,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.8000008E16</Mass_Value>
-                <Mass_Unit>KILOGRAM</Mass_Unit>
+                <value>7.8000008E16</value>
+                <mass_unit>KILOGRAM</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4241,18 +3035,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>1.7E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>1.7E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.04</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Pluto</Primary>
@@ -4278,18 +3063,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>7.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>7.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.7</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4315,18 +3091,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-7</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-7</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.8</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Haumea</Primary>
@@ -4352,18 +3119,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.8</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Haumea</Primary>
@@ -4389,18 +3147,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>3.0E-4</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>3.0E-4</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.81</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4426,18 +3175,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>0.0028</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>0.0028</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.96</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4463,18 +3203,9 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </Radius>
             <Mass>
-                <Mass_Value>6.0E-6</Mass_Value>
-                <Mass_Unit>EARTH_MASS</Mass_Unit>
+                <value>6.0E-6</value>
+                <mass_unit>EARTH_MASS</mass_unit>
             </Mass>
-            <Albedo>
-                <Albedo>0.96</Albedo>
-            </Albedo>
-            <Tidally_Locked_To_Star>false</Tidally_Locked_To_Star>
-            <Hydrosphere>
-                <Water_Cover>0.0</Water_Cover>
-                <Ice_Cover>1.0</Ice_Cover>
-                <Subsurface_Ocean>false</Subsurface_Ocean>
-            </Hydrosphere>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Eris</Primary>
