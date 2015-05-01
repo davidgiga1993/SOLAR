@@ -24,6 +24,7 @@ public class BodyProperties {
     private SurfaceGravity gravity;
     private LifeRating rating;
     private Albedo albedo;
+    private Time siderealRotationPeriod;
     private boolean tidallyLocked;
 
     public BodyProperties(Mass mass, Length radius, Albedo albedo) {
@@ -42,8 +43,7 @@ public class BodyProperties {
     }
 
     public void addMass(Mass massToBeAddedToTheBody) {
-        mass.addMass(massToBeAddedToTheBody);
-        
+        mass.addMass(massToBeAddedToTheBody);       
     }
 
     public void setUpRings(PlanetaryRing newRing) {
@@ -161,8 +161,9 @@ public class BodyProperties {
         return tidallyLocked;
     }
 
-    public void tidalLockedToPrimary() {
+    public void tidalLockedToPrimary(Time orbitalPeriod) {
         tidallyLocked = true;
+        siderealRotationPeriod = orbitalPeriod;
     }
 
     public Pressure getH2OPartialPressure() {
@@ -171,5 +172,13 @@ public class BodyProperties {
 
     public boolean isRounded() {
         return type.isRounded();
+    }
+
+    public Time getRotationPeriod() {
+        return siderealRotationPeriod;
+    }
+
+    public void setUpSiderealRotationPeriod(Time rotationPeriod) {
+        this.siderealRotationPeriod = rotationPeriod;
     }
 }

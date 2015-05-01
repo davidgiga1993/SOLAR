@@ -105,12 +105,12 @@ public class Pressure {
             return formatValue(this.asPascal()) + " Pa";    
         }
         if(0.01f < this.asPascal()*THOUSAND) {         
-            return formatValue(this.asPascal()*THOUSAND) + " x10^-3 Pa";    
+            return formatValue(this.asPascal()*THOUSAND) + " mPa";    
         } 
         if(0.01f < this.asPascal()*MILLION) {         
-            return formatValue(this.asPascal()*MILLION) + " x10^-6 Pa";    
+            return formatValue(this.asPascal()*MILLION) + " microPa";    
         }   
-        return formatValue(this.asPascal()*MILLION*THOUSAND) + " x10^-9 Pa";    
+        return formatValue(this.asPascal()*MILLION*THOUSAND) + " nPa";    
     }
 
     private String formatValue(float value) {

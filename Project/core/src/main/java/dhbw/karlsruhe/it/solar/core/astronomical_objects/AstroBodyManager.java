@@ -10,6 +10,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.RingSystemInfo;
 
@@ -107,7 +108,15 @@ public class AstroBodyManager {
     
     private CreatableType extractTidalLock() {
         if(body.isTidallyLocked()) {
-            return extractBodyProperties().whichIsTidallyLockedToItsPrimary();            
+            return extractSiderealRotationPeriod().whichIsTidallyLockedToItsPrimary();            
+        }
+        return extractSiderealRotationPeriod();
+    }  
+    
+    private CreatableType extractSiderealRotationPeriod() {
+        Time rotationPeriod = body.getSiderealRotationPeriod();
+        if(null!=rotationPeriod) {
+            return extractBodyProperties().whichRotatesEvery(rotationPeriod);                        
         }
         return extractBodyProperties();
     }  

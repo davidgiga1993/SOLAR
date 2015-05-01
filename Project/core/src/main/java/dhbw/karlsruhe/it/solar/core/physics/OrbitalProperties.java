@@ -17,7 +17,7 @@ public class OrbitalProperties {
     private AstronomicalBody orbitPrimary;
     private Length orbitalRadius;
     private Angle orbitalAngle;
-    private Time orbitalPeriodInDays;
+    private Time orbitalPeriod;
     private Angle periodicConstant;
     private boolean retrograde;
     private Coorbital coorbital;
@@ -28,7 +28,7 @@ public class OrbitalProperties {
         this.orbitalAngle = new Angle();
         this.retrograde = false;
         this.coorbital = null;
-        this.orbitalPeriodInDays = new Time(0f,TimeUnit.HOURS);
+        this.orbitalPeriod = new Time(0f,TimeUnit.HOURS);
         this.periodicConstant = new Angle(Float.NaN);
     }
     
@@ -55,7 +55,7 @@ public class OrbitalProperties {
         this.orbitalAngle = new Angle();
         this.retrograde = false;
         this.coorbital = null;
-        this.orbitalPeriodInDays = time;
+        this.orbitalPeriod = time;
         this.periodicConstant = new Angle();
     }
 
@@ -64,7 +64,7 @@ public class OrbitalProperties {
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
      */
     private void calculateOrbitalPeriod() {
-        orbitalPeriodInDays = new Time((float) (Math.sqrt( (PhysicalConstants.PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometers() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24)), TimeUnit.DAYS);
+        orbitalPeriod = new Time((float) (Math.sqrt( (PhysicalConstants.PI_SQUARE_TIMES_FOUR * Math.pow(orbitalRadius.asKilometers() * 1000,3)) / (PhysicalConstants.GRAVITATIONAL_CONSTANT * (orbitPrimary.getMass().asKilogram())) ) / (3600*24)), TimeUnit.DAYS);
     }
     
     /**
@@ -73,8 +73,8 @@ public class OrbitalProperties {
      * The Periodic Constant is consequently the fraction of those values.
      */
     private void calculatePeriodicConstant()    {
-        if ( 0 != orbitalPeriodInDays.inDays() )       {
-            periodicConstant = new Angle(360 / orbitalPeriodInDays.inDays() , AngularUnit.DEGREE);
+        if ( 0 != orbitalPeriod.inDays() )       {
+            periodicConstant = new Angle(360 / orbitalPeriod.inDays() , AngularUnit.DEGREE);
             return;
         }
         periodicConstant = new Angle();
@@ -85,7 +85,7 @@ public class OrbitalProperties {
     }
     
     public Time getOrbitalPeriod()    {
-        return orbitalPeriodInDays;
+        return orbitalPeriod;
     }
     
     public Length getOrbitalRadius()    {

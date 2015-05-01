@@ -6,7 +6,6 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * 
@@ -16,9 +15,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 public class InfoBarDetailsTable extends Table {
     
     public InfoBarDetailsTable(SolarActor selectedActor) {
-        clear();         
-        add(new BaseNavigationLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
-        row();
+        clear();
         add(new InfoBarOverviewTable(selectedActor)).width(InformationBar.CELL_SIZE);
         
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {

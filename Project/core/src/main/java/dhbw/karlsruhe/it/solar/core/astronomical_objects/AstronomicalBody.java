@@ -334,7 +334,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public void tidalLockToPrimary() {
-        physicalProperties.tidalLockedToPrimary();
+        physicalProperties.tidalLockedToPrimary(orbitalProperties.getOrbitalPeriod());
     }
 
     public BodyProperties getPhysicalProperties() {
@@ -351,5 +351,13 @@ public abstract class AstronomicalBody extends Orbiter  {
 
     public boolean isRounded() {
         return physicalProperties.isRounded();
+    }
+
+    public Time getRotationPeriod() {
+        return physicalProperties.getRotationPeriod();
+    }
+
+    public void setSiderealRotationPeriod(Time rotationPeriod) {
+        physicalProperties.setUpSiderealRotationPeriod(rotationPeriod);
     }
 }

@@ -140,6 +140,9 @@ public class FuzzyAtmosphere extends FuzzyValue {
         if(fuzzyValueTooHigh > 0.05) {
             return getDangerousGas();
         }
+        if(fuzzyValueTooLow == 1f) {
+            return "";
+        }
         return atmosphere.getOxygenPartialPressure().toString() + " O2";
     }
 }

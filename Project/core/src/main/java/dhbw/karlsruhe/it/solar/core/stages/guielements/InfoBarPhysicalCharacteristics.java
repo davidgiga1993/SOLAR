@@ -19,26 +19,32 @@ public class InfoBarPhysicalCharacteristics extends Table {
     }
     
     private void generatePhysicalDetails() {
+        add(new Label("Sidereal Rotation Period: ", Styles.MENUELABEL_STYLE)).left();
+        add(new Label(selectedActor.getRotationPeriod().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
+        row();
         add(new Label("Mean Radius: ", Styles.MENUELABEL_STYLE)).expand().left();
         add(new Label(selectedActor.getRadius().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
         row();
         add(new Label("Mass: ", Styles.MENUELABEL_STYLE)).left();
         add(new Label(selectedActor.getMass().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
         row();
+        add(new Label("Albedo: ", Styles.MENUELABEL_STYLE)).left();
+        add(new Label(selectedActor.getAlbedo().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
+        row();
         if(selectedActor.hasAtmosphere()) {
             addAtmosphereLabel();
             listAtmosphericComposition();
-            row();
-            if(selectedActor.hasSurface()) {
-                add(new Label(InformationBar.TAB + "Surface Pressure: ", Styles.MENUELABEL_STYLE)).left();
-                add(new Label(selectedActor.getSurfacePressure().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();                
-            }
         }
     }
 
     private void addAtmosphereLabel() {
         if(selectedActor instanceof Star) {
             add(new Label("Photosphere:", Styles.MENUELABEL_STYLE)).left();
+            return;
+        }
+        if(selectedActor.hasSurface()) {
+            add(new Label("Atmo -Surface Pressure: ", Styles.MENUELABEL_STYLE)).left();
+            add(new Label(selectedActor.getSurfacePressure().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right(); 
             return;
         }
         add(new Label("Atmosphere:", Styles.MENUELABEL_STYLE)).left();

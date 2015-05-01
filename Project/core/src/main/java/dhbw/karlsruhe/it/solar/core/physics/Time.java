@@ -64,6 +64,9 @@ public class Time {
     
     @Override
     public String toString() {
+        if(this.value < 0) {
+            return "-" + new Time(-value, unit).toString();
+        }
         if( this.inYears() > ONE_MILLION) {
             return formatValue(this.inYears()/ONE_MILLION) + " M Years";
         }
@@ -73,7 +76,7 @@ public class Time {
         if( this.inDays() > DAYS_PER_YEAR ) {
             return formatValue(this.inYears()) + " Years";
         }
-        if( this.inHours() > HOURS_PER_DAY ) {
+        if( this.inHours() > HOURS_PER_DAY*2 ) {
             return formatValue(this.inDays()) + " Days";
         }      
         return formatValue(this.inHours()) + " Hours";

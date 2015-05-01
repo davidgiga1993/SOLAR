@@ -15,6 +15,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({OrbitalPropertyInfo.class, BodyPropertyInfo.class, ColonyInfo.class})
@@ -118,6 +119,10 @@ public class AstroBodyInfo {
 
     public boolean isTidallyLocked() {
         return body.isTidallyLocked();
+    }
+
+    public Time getSiderealRotationPeriod() {
+        return body.getSiderealRotationPeriod();
     }
 
 }

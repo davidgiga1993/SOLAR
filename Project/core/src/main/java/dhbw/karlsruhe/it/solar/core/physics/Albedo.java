@@ -22,5 +22,14 @@ public class Albedo {
     public float getAlbedoValue() {
         return value;
     }
+    
+    @Override
+    public String toString() {
+        return formatValue(value) + " Bond";
+    }
+   
+    private String formatValue(float value) {
+        return String.format("%.02f", value);
+    }
 
 }

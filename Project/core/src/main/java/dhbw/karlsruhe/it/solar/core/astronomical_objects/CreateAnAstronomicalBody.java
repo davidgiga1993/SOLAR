@@ -29,6 +29,7 @@ public final class CreateAnAstronomicalBody {
     private boolean subsurfaceOcean = false;
     private Biosphere bio;
     private boolean tidallyLocked;
+    private Time rotationPeriod;
     
     private CreateAnAstronomicalBody(String name) {
         this.name = name;
@@ -129,9 +130,19 @@ public final class CreateAnAstronomicalBody {
                 return this;        
             }
             
+            /**
+             * Body will complete one rotation around itself per complete orbit around its primary object.
+             * This is the final effect of tidal forces caused by the gravitational interaction between primary and satellite.
+             * @return
+             */
             public CreatableType whichIsTidallyLockedToItsPrimary() {
                 CreateAnAstronomicalBody.this.tidallyLocked = true;
                 return this;        
+            }
+            
+            public CreatableType whichRotatesEvery(Time siderealRotationPeriod) {
+                CreateAnAstronomicalBody.this.rotationPeriod = siderealRotationPeriod;
+                return this;
             }
                         
             /**
@@ -274,12 +285,18 @@ public final class CreateAnAstronomicalBody {
         setUpAtmosphere(newBody);
         setUpHydrosphere(newBody);
         setUpBiosphere(newBody);
-        if(tidallyLocked) {
-            newBody.tidalLockToPrimary();            
-        }
+        setUpBodyRotation(newBody);
         newBody.calculateSurfaceTemperature();
         newBody.calculateLifeRating();
         newBody.initializeAstronomicalBody(solarSystem);
+    }
+
+    private void setUpBodyRotation(AstronomicalBody newBody) {
+        if(tidallyLocked) {
+            newBody.tidalLockToPrimary();
+            return;
+        }
+        newBody.setSiderealRotationPeriod(rotationPeriod);
     }
     
     private void setUpBiosphere(AstronomicalBody newBody) {

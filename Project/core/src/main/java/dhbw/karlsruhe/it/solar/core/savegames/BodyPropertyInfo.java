@@ -14,9 +14,10 @@ import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, Albedo.class, Hydrosphere.class, Biosphere.class})
+@XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, Albedo.class, Hydrosphere.class, Biosphere.class, Time.class})
 public class BodyPropertyInfo {
     
     @XmlElement(name = "Type")
@@ -36,7 +37,9 @@ public class BodyPropertyInfo {
     @XmlElement(name = "Hydrosphere")
     private Hydrosphere hydro;
     @XmlElement(name = "Biosphere")
-    private Biosphere bio;   
+    private Biosphere bio;  
+    @XmlElement(name = "Sidereal_Rotation_Period")
+    private Time rotation;   
     
     public BodyPropertyInfo() {
         
@@ -51,6 +54,9 @@ public class BodyPropertyInfo {
         this.hydro = body.getHydrosphere();
         this.bio = body.getBiosphere();
         this.tidallyLocked = body.isTidallyLocked();
+        if(body.getRotationPeriod() != body.getOrbitalPeriod()) {
+            this.rotation = body.getRotationPeriod();            
+        }
         if(body.hasRingSystem()) {
             RingSystemInfo ringInfo = new RingSystemInfo();
             ringInfo.fillRingSystemInfo(body.getRings());
@@ -92,5 +98,9 @@ public class BodyPropertyInfo {
 
     public boolean isTidallyLocked() {
         return tidallyLocked;
+    }
+
+    public Time getSiderealRotationPeriod() {
+        return rotation;
     }
 }

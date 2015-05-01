@@ -28,6 +28,8 @@ public class InfoBarOverviewTable extends Table {
     public InfoBarOverviewTable(SolarActor selectedActor) {
         this.selectedActor = selectedActor; 
         clear();
+        add(new BaseNavigationLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
+        row();
         add(new Label("Type: ",style)).left();
         add(new Label(selectedActor.getTypeName(),style)).right();
         row();

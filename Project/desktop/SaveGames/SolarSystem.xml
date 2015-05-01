@@ -169,6 +169,10 @@
                 <Albedo>0.0</Albedo>
             </Albedo>
             <Tidally_Locked>false</Tidally_Locked>
+            <Sidereal_Rotation_Period>
+                <Time_Value>25.05</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Solar System</Primary>
@@ -224,7 +228,11 @@
             <Albedo>
                 <Albedo>0.068</Albedo>
             </Albedo>
-            <Tidally_Locked>true</Tidally_Locked>
+            <Tidally_Locked>false</Tidally_Locked>
+            <Sidereal_Rotation_Period>
+                <Time_Value>58.646</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -277,6 +285,10 @@
                 <Albedo>0.9</Albedo>
             </Albedo>
             <Tidally_Locked>false</Tidally_Locked>
+            <Sidereal_Rotation_Period>
+                <Time_Value>-243.0185</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -347,6 +359,10 @@
                 <Biosphere_Coverage>0.91</Biosphere_Coverage>
                 <Type_of_Biosphere>TERRAN</Type_of_Biosphere>
             </Biosphere>
+            <Sidereal_Rotation_Period>
+                <Time_Value>0.9972697</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -457,6 +473,10 @@
                 <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
+            <Sidereal_Rotation_Period>
+                <Time_Value>1.025957</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -579,6 +599,10 @@
                 <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
+            <Sidereal_Rotation_Period>
+                <Time_Value>0.3781</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -642,6 +666,10 @@
                 <Albedo>0.343</Albedo>
             </Albedo>
             <Tidally_Locked>false</Tidally_Locked>
+            <Sidereal_Rotation_Period>
+                <Time_Value>9.925</Time_Value>
+                <Time_Unit>HOURS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -1359,6 +1387,10 @@
                 <Albedo>0.342</Albedo>
             </Albedo>
             <Tidally_Locked>false</Tidally_Locked>
+            <Sidereal_Rotation_Period>
+                <Time_Value>10.55</Time_Value>
+                <Time_Unit>HOURS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -2461,6 +2493,10 @@
                 <Albedo>0.3</Albedo>
             </Albedo>
             <Tidally_Locked>false</Tidally_Locked>
+            <Sidereal_Rotation_Period>
+                <Time_Value>0.71833</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -3550,6 +3586,10 @@
                 <Albedo>0.29</Albedo>
             </Albedo>
             <Tidally_Locked>false</Tidally_Locked>
+            <Sidereal_Rotation_Period>
+                <Time_Value>0.6713</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4156,6 +4196,10 @@
                 <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
+            <Sidereal_Rotation_Period>
+                <Time_Value>-6.38723</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4384,6 +4428,10 @@
                 <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
+            <Sidereal_Rotation_Period>
+                <Time_Value>0.163146</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4498,6 +4546,10 @@
                 <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
+            <Sidereal_Rotation_Period>
+                <Time_Value>7.771</Time_Value>
+                <Time_Unit>HOURS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
@@ -4536,6 +4588,10 @@
                 <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
+            <Sidereal_Rotation_Period>
+                <Time_Value>25.9</Time_Value>
+                <Time_Unit>HOURS</Time_Unit>
+            </Sidereal_Rotation_Period>
         </BodyProperties>
         <OrbitalProperties>
             <Primary>Sun</Primary>
