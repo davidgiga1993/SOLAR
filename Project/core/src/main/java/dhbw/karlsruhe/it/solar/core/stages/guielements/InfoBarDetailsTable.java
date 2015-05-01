@@ -23,7 +23,8 @@ public class InfoBarDetailsTable extends Table {
         
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
             add(new InfoBarPhysicalCharacteristics((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE);
-            add(new InfoBarLifeRatingDetails((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE);
+            //TODO: Remove debug-expansion of liferating bar
+            add(new InfoBarLifeRatingDetails((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(1.6f*InformationBar.CELL_SIZE);
             add().padLeft(InformationBar.PADDING).expand().fill();
         }
         if(selectedActor instanceof SpaceUnit) {

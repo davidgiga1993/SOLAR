@@ -25,7 +25,8 @@ public final class CreateAnAstronomicalBody {
     private AtmosphericComposition atmosphericComposition;
     private float liquidWaterCover;
     private float iceCover;
-    private boolean subsurfaceOcean;
+    private boolean liquidWater = false;
+    private boolean subsurfaceOcean = false;
     private Biosphere bio;
     private boolean tidallyLocked;
     
@@ -178,6 +179,7 @@ public final class CreateAnAstronomicalBody {
             public CreatableType withOceanCoverAndIceCapOf(float liquidWaterCover, float iceCover) {
                 CreateAnAstronomicalBody.this.liquidWaterCover = liquidWaterCover;
                 CreateAnAstronomicalBody.this.iceCover = iceCover;
+                CreateAnAstronomicalBody.this.liquidWater = true;
                 return this;        
             }
             
@@ -288,7 +290,7 @@ public final class CreateAnAstronomicalBody {
     }
     
     private void setUpHydrosphere(AstronomicalBody newBody) {
-        newBody.determineHydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);
+        newBody.determineHydrosphere(liquidWaterCover, iceCover, liquidWater, subsurfaceOcean);
     }
 
     private void setUpAtmosphere(AstronomicalBody newBody) {

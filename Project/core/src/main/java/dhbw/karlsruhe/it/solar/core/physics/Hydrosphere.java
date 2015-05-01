@@ -8,6 +8,8 @@ public class Hydrosphere {
     private float waterCover;
     @XmlElement(name = "Ice_Cover")
     private float iceCover;
+    @XmlElement(name = "Liquid_Water")
+    private boolean liquidWater;
     @XmlElement(name = "Subsurface_Ocean")
     private boolean subsurfaceOcean;
     
@@ -15,9 +17,10 @@ public class Hydrosphere {
         
     }
     
-    public Hydrosphere(float waterCover, float iceCover, boolean subsurfaceOcean) {
+    public Hydrosphere(float waterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
         this.waterCover = waterCover;
         this.iceCover = iceCover;
+        this.liquidWater = liquidWater;
         this.subsurfaceOcean = subsurfaceOcean;
     }
 
@@ -43,6 +46,13 @@ public class Hydrosphere {
 
     public boolean getSubsurfaceOcean() {
         return subsurfaceOcean;
+    }
+
+    public boolean hasLiquidWater() {
+        if(subsurfaceOcean || liquidWater) {
+            return true;
+        }
+        return false;
     }
 
 }

@@ -62,7 +62,11 @@ public class AtmosphericGas {
         POTASSIUM,
         SODIUM,
         SULFUR_DIOXIDE,
-        WATER_VAPOR
+        WATER_VAPOR;
+    }
+    
+    public static float getOxygenToxicPartialPressure() {
+        return OXYGEN_TOXICITY.asBar();
     }
     
     /**

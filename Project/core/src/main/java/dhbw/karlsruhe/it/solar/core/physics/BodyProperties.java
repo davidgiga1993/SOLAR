@@ -89,8 +89,8 @@ public class BodyProperties {
         return hydro;
     }
 
-    public void setUpHydrosphere(float liquidWaterCover, float iceCover, boolean subsurfaceOcean) {
-        this.hydro = new Hydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);
+    public void setUpHydrosphere(float liquidWaterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
+        this.hydro = new Hydrosphere(liquidWaterCover, iceCover, liquidWater, subsurfaceOcean);
     }
 
     public Biosphere getBiosphere() {

@@ -215,8 +215,8 @@ public abstract class AstronomicalBody extends Orbiter  {
         return physicalProperties.getHydrosphere();
     }
     
-    public void setUpHydrosphere(float liquidWaterCover, float iceCover, boolean subsurfaceOcean) {
-        physicalProperties.setUpHydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);
+    public void setUpHydrosphere(float liquidWaterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
+        physicalProperties.setUpHydrosphere(liquidWaterCover, iceCover, liquidWater, subsurfaceOcean);
     }
 
     public Biosphere getBiosphere() {
@@ -240,23 +240,23 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public FuzzyInformation gravityFuzzy() {
-        return getLifeRating().gravityFuzzy(this);
+        return getLifeRating().gravityFuzzy();
     }
 
     public FuzzyInformation temperatureFuzzy() {
-        return getLifeRating().temperatureFuzzy(this);
+        return getLifeRating().temperatureFuzzy();
     }
 
     public FuzzyInformation atmosphereFuzzy() {
-        return getLifeRating().atmosphereFuzzy(this);
+        return getLifeRating().atmosphereFuzzy();
     }
 
     public FuzzyInformation hydrosphereFuzzy() {
-        return getLifeRating().hydrosphereFuzzy(this);
+        return getLifeRating().hydrosphereFuzzy();
     }
 
     public FuzzyInformation biosphereFuzzy() {
-        return getLifeRating().biosphereFuzzy(this);
+        return getLifeRating().biosphereFuzzy();
     }
 
     public FuzzyInformation ratingFuzzy() {
@@ -279,13 +279,13 @@ public abstract class AstronomicalBody extends Orbiter  {
         return physicalProperties.hasSurface();
     }
 
-    public void determineHydrosphere(float liquidWaterCover, float iceCover, boolean subsurfaceOcean) {
+    public void determineHydrosphere(float liquidWaterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
         if(physicalProperties.consistsPartiallyOfWaterIce()) {
-                setUpHydrosphere(0, 1, subsurfaceOcean);
+                setUpHydrosphere(0, 1, liquidWater, subsurfaceOcean);
                 return;
             }
             if( 0 < liquidWaterCover || 0 < iceCover) {
-                setUpHydrosphere(liquidWaterCover, iceCover, subsurfaceOcean);   
+                setUpHydrosphere(liquidWaterCover, iceCover, liquidWater, subsurfaceOcean);   
             }
     }
 
