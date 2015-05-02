@@ -19,11 +19,11 @@ public class InfoBarPhysicalCharacteristics extends Table {
     }
     
     private void generatePhysicalDetails() {
-        add(new Label("Sidereal Rotation Period: ", Styles.MENUELABEL_STYLE)).left();
-        add(new Label(selectedActor.getRotationPeriod().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
-        row();
         add(new Label("Mean Radius: ", Styles.MENUELABEL_STYLE)).expand().left();
         add(new Label(selectedActor.getRadius().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
+        row();
+        add(new Label("Rotation: ", Styles.MENUELABEL_STYLE)).left();
+        rotationInfo();   
         row();
         add(new Label("Mass: ", Styles.MENUELABEL_STYLE)).left();
         add(new Label(selectedActor.getMass().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();   
@@ -35,6 +35,14 @@ public class InfoBarPhysicalCharacteristics extends Table {
             addAtmosphereLabel();
             listAtmosphericComposition();
         }
+    }
+
+    private void rotationInfo() {
+        if(selectedActor.isTidallyLocked()) {
+            add(new Label(selectedActor.getRotationPeriod().toString() + " (synchronous)", Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();            
+            return;
+        }
+        add(new Label(selectedActor.getRotationPeriod().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right();
     }
 
     private void addAtmosphereLabel() {

@@ -16,50 +16,28 @@ public class SurfaceTemperature {
     private static final float ROTATION_SCALAR = 1/(3*(float)Math.sqrt(2));
     private static final float INTERNAL_HEAT_SCALAR = 7.72757f * (float)Math.pow(10,-6);
     private static final float TIDAL_HEATING_SCALAR = 100;
-    @XmlElement(name = "Min_Temperature")
-    private Temperature tempMinimum;
     @XmlElement(name = "Mean_Temperature")
     private Temperature meanTemperature;
-    @XmlElement(name = "Max_Temperature")
-    private Temperature tempMaximum;
     
     public SurfaceTemperature() {
         
     }
-    
-    public SurfaceTemperature(Temperature tempMinimum, Temperature meanTemperature, Temperature tempMaximum) {
-        this.tempMinimum = tempMinimum;
-        this.meanTemperature = meanTemperature;
-        this.tempMaximum = tempMaximum;
-    }
 
     public SurfaceTemperature(Temperature temperature) {
-        this.tempMinimum = null;
         this.meanTemperature = temperature;
-        this.tempMaximum = null;
     }
-
+    
+    public float inKelvin() {
+        return meanTemperature.inKelvin();
+    }
+    
     public Temperature getMeanTemperature() {
-        return meanTemperature;
-    }
-
-    public Temperature getMinimumTemperature() {
-        if(null!=tempMinimum) {
-            return tempMinimum;
-        }
-        return meanTemperature;
-    }
-
-    public Temperature getMaximumTemperature() {
-        if(null!=tempMaximum) {
-            return tempMaximum;
-        }
         return meanTemperature;
     }
     
     @Override
     public String toString() {
-        return formatValue(getMeanTemperature()) + " K";
+        return formatValue(meanTemperature) + " K";
     }
 
     private String formatValue(Temperature temp) {
