@@ -28,11 +28,11 @@ public class FuzzyTemperature extends FuzzyValue {
     }
       
     private float temperaturesExtremelyHigh() {
-        return calculateHighFuzzyValue((temperature.inKelvin()-FuzzyLogic.MAXIMUM_TEMPERATURE_THRESHOLD.inKelvin()) * 0.5f*(FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar() + pressure.asBar()), FuzzyLogic.MAXIMUM_TEMPERATURE_THRESHOLD.inKelvin()*FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar(), 0);
+        return calculateHighFuzzyValue((temperature.inKelvin()-FuzzyLogic.MAXIMUM_TEMPERATURE_THRESHOLD.inKelvin()) * 0.5f*(FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar() + 2*pressure.asBar()), FuzzyLogic.MAXIMUM_TEMPERATURE_THRESHOLD.inKelvin()*FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar(), 0);
     }
     
     private float temperaturesExtremelyLow() {
-        return calculateLowFuzzyValue((temperature.inKelvin()-FuzzyLogic.MINIMUM_TEMPERATURE_THRESHOLD.inKelvin()) * 0.5f*(FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar() + pressure.asBar()), -FuzzyLogic.MINIMUM_TEMPERATURE_THRESHOLD.inKelvin()*FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar(), 0);            
+        return calculateLowFuzzyValue((temperature.inKelvin()-FuzzyLogic.MINIMUM_TEMPERATURE_THRESHOLD.inKelvin()) * 0.5f*(FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar() + 2*pressure.asBar()), -FuzzyLogic.MINIMUM_TEMPERATURE_THRESHOLD.inKelvin()*FuzzyLogic.OPTIMAL_SURFACE_PRESSURE.asBar(), 0);            
     }
    
     public float extreme() {

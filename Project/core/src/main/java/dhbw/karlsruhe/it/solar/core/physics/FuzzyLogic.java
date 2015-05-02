@@ -8,7 +8,7 @@ public class FuzzyLogic {
        
     public static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(0.91f,GravUnit.G);
     public static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.68f, 0.1f, true, false);
-    public static final SurfaceTemperature MINIMUM_TEMPERATURE_THRESHOLD = new SurfaceTemperature(new Temperature(168f,TempUnit.KELVIN));
+    public static final SurfaceTemperature MINIMUM_TEMPERATURE_THRESHOLD = new SurfaceTemperature(new Temperature(170f,TempUnit.KELVIN));
     public static final SurfaceTemperature MAXIMUM_TEMPERATURE_THRESHOLD = new SurfaceTemperature( new Temperature(318f,TempUnit.KELVIN));
     public static final SurfaceTemperature OPTIMAL_TEMPERATURE = new SurfaceTemperature(new Temperature(290f,TempUnit.KELVIN));
     public static final Pressure OPTIMAL_SURFACE_PRESSURE = new Pressure(1f, PressureUnit.STANDARDATMOSPHERE);
