@@ -45,6 +45,7 @@ public class FuzzyBiosphere extends FuzzyValue {
     }
     
     private String bioValueDisplay() {
-        return getBioValue() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
+        return getBioValue();
+//        return getBioValue() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
     }
 }

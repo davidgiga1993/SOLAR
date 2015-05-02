@@ -51,6 +51,7 @@ public class FuzzyHydrosphere extends FuzzyValue {
     }
     
     private String hydroValueDisplay() {
-        return getHydroValue() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
+        return getHydroValue();
+//        return getHydroValue() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
     }
 }

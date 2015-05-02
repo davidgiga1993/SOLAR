@@ -124,7 +124,8 @@ public class FuzzyAtmosphere extends FuzzyValue {
     }
     
     private String atmoValueDisplay() {
-        return getAtmoValue() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
+        return getAtmoValue();
+//        return getAtmoValue() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
     }
        
     private String getAtmoValue() {

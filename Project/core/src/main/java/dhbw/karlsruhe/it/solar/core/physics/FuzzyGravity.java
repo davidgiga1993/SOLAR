@@ -48,6 +48,7 @@ public class FuzzyGravity extends FuzzyValue {
     }
 
     private String gravityValueDisplay() {
-        return gravity.toString() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
+        return gravity.toString();
+//        return gravity.toString() + " ( " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " )";
     }
 }

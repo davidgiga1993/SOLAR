@@ -67,6 +67,7 @@ public class FuzzyTemperature extends FuzzyValue {
     
 
     private String tempValueDisplay() {
-        return temperature.toString() + " ( " + formatValue(fuzzyValueExtremelyLow) + " / " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " / " + formatValue(fuzzyValueExtremelyHigh) + " )";
+        return temperature.toString();
+//        return temperature.toString() + " ( " + formatValue(fuzzyValueExtremelyLow) + " / " + formatValue(fuzzyValueTooLow) + " / " + formatValue(fuzzyValueOptimal) + " / " + formatValue(fuzzyValueTooHigh) + " / " + formatValue(fuzzyValueExtremelyHigh) + " )";
     }
 }
