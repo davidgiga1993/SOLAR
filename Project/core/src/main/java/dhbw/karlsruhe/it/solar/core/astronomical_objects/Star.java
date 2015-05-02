@@ -58,7 +58,7 @@ public class Star extends AstronomicalBody  {
             case F:
                 return new Temperature(6033f+getSubdivisionTemperatureDifference(star, F_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);       
             case G:
-                return new Temperature(5335f+getSubdivisionTemperatureDifference(star, G_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(5316f+getSubdivisionTemperatureDifference(star, G_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
             case K:
                 return new Temperature(3880f+getSubdivisionTemperatureDifference(star, K_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
             case M:

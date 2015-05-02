@@ -43,7 +43,7 @@ public class InfoBarPhysicalCharacteristics extends Table {
             return;
         }
         if(selectedActor.hasSurface()) {
-            add(new Label("Atmo -Surface Pressure: ", Styles.MENUELABEL_STYLE)).left();
+            add(new Label("Atmo: Surface Pressure: ", Styles.MENUELABEL_STYLE)).left();
             add(new Label(selectedActor.getSurfacePressure().toString(), Styles.MENUELABEL_STYLE)).padLeft(InformationBar.PADDING).right(); 
             return;
         }

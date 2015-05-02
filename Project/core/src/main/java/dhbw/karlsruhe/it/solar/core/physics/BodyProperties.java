@@ -7,6 +7,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.StarType;
+import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 /**
@@ -114,7 +115,10 @@ public class BodyProperties {
     }
 
     public Pressure getSurfacePressure() {
-        return atmosphere.getPressure();
+        if(null!=atmosphere && null!=atmosphere.getPressure()) {
+            return atmosphere.getPressure();            
+        }
+        return new Pressure(0f,PressureUnit.BAR);
     }
 
     public boolean hasAtmosphere() {
@@ -150,7 +154,7 @@ public class BodyProperties {
      */
     public void calculateSurfaceTemperature(AstronomicalBody body) {
         temperature = new SurfaceTemperature();
-        temperature.calculateSurfaceTemperature(body, albedo);
+        temperature.calculateSurfaceTemperature(body);
     }
 
     public Albedo getAlbedo() {
@@ -180,5 +184,9 @@ public class BodyProperties {
 
     public void setUpSiderealRotationPeriod(Time rotationPeriod) {
         this.siderealRotationPeriod = rotationPeriod;
+    }
+
+    public Time getRotationPeriodAbsolute() {
+        return siderealRotationPeriod.absolute();
     }
 }

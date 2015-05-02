@@ -8,18 +8,17 @@ public class FuzzyLogic {
        
     public static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(0.91f,GravUnit.G);
     public static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.68f, 0.1f, true, false);
-    public static final SurfaceTemperature OPTIMAL_TEMPERATURE = new SurfaceTemperature(new Temperature(258f,TempUnit.KELVIN), new Temperature(290f,TempUnit.KELVIN), new Temperature(318f,TempUnit.KELVIN));
+    public static final SurfaceTemperature OPTIMAL_TEMPERATURE = new SurfaceTemperature(new Temperature(168f,TempUnit.KELVIN), new Temperature(290f,TempUnit.KELVIN), new Temperature(318f,TempUnit.KELVIN));
     public static final Pressure OPTIMAL_SURFACE_PRESSURE = new Pressure(1f, PressureUnit.STANDARDATMOSPHERE);
     public static final Pressure OPTIMAL_OXYGEN_PARTIAL_PRESSURE = new Pressure(0.223f, PressureUnit.BAR);
-    private static final float LR_EXTREME_TEMP_WEIGHT = 2f;
     private static final float LR_GRAV_WEIGHT = 1f;
     private static final float LR_TEMP_WEIGHT = 1f;
-    private static final float LR_BIO_WEIGHT = 0.45f;
-    private static final float LR_HYDRO_WEIGHT = 0.25f;
-    private static final float LR_ATMO_WEIGHT = 2f;
-    private static final float LR_POSITIVE_NORMALIZATION = 0.237f;
-    private static final float LR_NEUTRAL_VALUE = 0.04f;
+    private static final float LR_ATMO_WEIGHT = 1f;
+    private static final float LR_HYDRO_WEIGHT = 1f;
+    private static final float LR_BIO_WEIGHT = 1f;
+    private static final float LR_POSITIVE_NORMALIZATION = 0.225f;
     private static final float LR_POSITIVE_WEIGHT = 0.95f;
+    private static final float LR_NEUTRAL_VALUE = 0.04f;
     private static final float LR_MINIMUM_VALUE = 0.01f;
     
     private SurfaceGravity gravity;
@@ -65,7 +64,7 @@ public class FuzzyLogic {
     }
 
     private float negativeLRInfluences() {
-        float value = fuzzyGravity.tooHigh() + LR_EXTREME_TEMP_WEIGHT*fuzzyTemp.extreme();
+        float value = fuzzyGravity.tooHigh() + fuzzyTemp.extreme();
         if(value < 1)
             return value;
         return 1;

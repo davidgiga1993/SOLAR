@@ -13,7 +13,7 @@ import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 @XmlSeeAlso({Temperature.class})
 public class SurfaceTemperature {
     
-    private static final float MEAN_BODY_DISTRIBUTION = 1 - 1 / (float)(2*Math.sqrt(2));
+    private static final float ROTATION_SCALAR = 1/(3*(float)Math.sqrt(2));
     private static final float INTERNAL_HEAT_SCALAR = 7.72757f * (float)Math.pow(10,-6);
     private static final float TIDAL_HEATING_SCALAR = 80;
     @XmlElement(name = "Min_Temperature")
@@ -66,8 +66,8 @@ public class SurfaceTemperature {
         return String.format("%.00f", temp.inKelvin());
     }
 
-    public void calculateSurfaceTemperature(AstronomicalBody body, Albedo albedo) {
-        meanTemperature = new Temperature( calculateThermalEquilibrium(body, albedo) + calculateAdditionalTemperatureInfluences(body), TempUnit.KELVIN);      
+    public void calculateSurfaceTemperature(AstronomicalBody body) {
+        meanTemperature = new Temperature( calculateThermalEquilibrium(body) + calculateAdditionalTemperatureInfluences(body), TempUnit.KELVIN);      
     }
 
     private float calculateAdditionalTemperatureInfluences(AstronomicalBody body) {
@@ -75,7 +75,7 @@ public class SurfaceTemperature {
     }
 
     private float tidalHeating(AstronomicalBody body) {
-        if(body.isTidallyLockedToPlanet() && body.isRounded()) {
+        if(body.isRounded()) {
             return TIDAL_HEATING_SCALAR * body.getPrimary().getRadius().asKilometers() / body.getOrbitalRadius().asKilometers();
         }
         return 0;
@@ -118,19 +118,42 @@ public class SurfaceTemperature {
      * @param albedo
      * @return
      */
-    private float calculateThermalEquilibrium(AstronomicalBody body, Albedo albedo) {
-        if(body.isTidallyLockedToStar()) {
-            return body.getTemperatureOfStar().inKelvin() * MEAN_BODY_DISTRIBUTION * (float)Math.sqrt(getMaximumTemperatureValueTidallyLocked(body.getRadiusOfStar(), albedo, body.getMeanDistanceToStar()));            
-        }
-        return body.getTemperatureOfStar().inKelvin() * (float)Math.sqrt(getRelativeTemperatureValue(body.getRadiusOfStar(), albedo, body.getMeanDistanceToStar()));
+    private float calculateThermalEquilibrium(AstronomicalBody body) {
+        return body.getTemperatureOfStar().inKelvin() * (float)Math.sqrt(getRelativeTemperatureValue(body.getRadiusOfStar(), body.getAlbedo(), body.getMeanDistanceToStar())) * rotationRatioNormalizer(body);
     }
 
-    private double getMaximumTemperatureValueTidallyLocked(Length radiusOfStar, Albedo albedo, Length orbitalDistance) {
-        return radiusOfStar.asMeters()/orbitalDistance.asMeters() * Math.sqrt(( 1 - albedo.getAlbedoValue()) / 2);
+    /**
+     * Slow rotation causes the planet to cool off disproportionately on its night side if it does not have a thick atmosphere.
+     * While the body will also heat up on the day side where it is noon, the end result averaged as the surface temperature of the entire planet is a cooler surface.
+     * Values not chosen according to actual physical formula - formula cobbled together as an assumption and then resulting values adjusted via scalar.
+     * @param body
+     * @return
+     */
+    private float rotationRatioNormalizer(AstronomicalBody body) {
+        return 1 - ROTATION_SCALAR * rotationImpact(body) * atmosphericConvection(body.getSurfacePressure());
+    }
+
+    private float rotationImpact(AstronomicalBody body) {
+        float daylight = lengthOfDayLight(body);
+        if(daylight > 3) {
+            return 1 - 1/(daylight/3);            
+        }
+        return 0;
+    }
+    
+    private float lengthOfDayLight(AstronomicalBody body) {
+        return body.getOrbitalPeriodAroundSun().inDays() / actualDaysPerYear(body) / 2;
+    }
+
+    private float actualDaysPerYear(AstronomicalBody body) {
+        return (1 - body.solarRotationRatio()) / body.solarRotationRatio();
+    }
+
+    private float atmosphericConvection(Pressure pressure) {
+        return 1/(1+pressure.asBar());
     }
 
     private double getRelativeTemperatureValue(Length radiusOfStar, Albedo albedo, Length orbitalDistance) {
         return radiusOfStar.asMeters() * Math.sqrt( 1 - albedo.getAlbedoValue()) / (2*orbitalDistance.asMeters());
     }
-
 }

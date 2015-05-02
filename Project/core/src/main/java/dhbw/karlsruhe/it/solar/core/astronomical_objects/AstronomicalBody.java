@@ -341,14 +341,6 @@ public abstract class AstronomicalBody extends Orbiter  {
         return physicalProperties;
     }
 
-    public boolean isTidallyLockedToStar() {
-        return physicalProperties.isTidallyLocked() && orbitalProperties.orbitingStar();
-    }
-
-    public boolean isTidallyLockedToPlanet() {
-        return physicalProperties.isTidallyLocked() && this instanceof Moon;
-    }
-
     public boolean isRounded() {
         return physicalProperties.isRounded();
     }
@@ -359,5 +351,21 @@ public abstract class AstronomicalBody extends Orbiter  {
 
     public void setSiderealRotationPeriod(Time rotationPeriod) {
         physicalProperties.setUpSiderealRotationPeriod(rotationPeriod);
+    }
+
+    /**
+     * Gets the ratio between the body's orbital rotation around the sun and its rotation around its own axis.
+     * Needed for example for the temperature distribution across the body.
+     * @return 1 for synchronous rotation, ca. 0 for vastly quicker rotation.
+     */
+    public float solarRotationRatio() {
+        return physicalProperties.getRotationPeriodAbsolute().inDays() / getOrbitalPeriodAroundSun().inDays();            
+    }
+    
+    public Time getOrbitalPeriodAroundSun() {
+        if(orbitalProperties.orbitingStar()) {
+            return orbitalProperties.getOrbitalPeriod();
+        }
+        return getPrimary().getOrbitalPeriodAroundSun();
     }
 }

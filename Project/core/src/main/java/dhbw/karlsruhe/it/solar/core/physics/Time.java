@@ -76,7 +76,7 @@ public class Time {
         if( this.inDays() > DAYS_PER_YEAR ) {
             return formatValue(this.inYears()) + " Years";
         }
-        if( this.inHours() > HOURS_PER_DAY*2 ) {
+        if( this.inHours() > HOURS_PER_DAY + 1 ) {
             return formatValue(this.inDays()) + " Days";
         }      
         return formatValue(this.inHours()) + " Hours";
@@ -90,6 +90,13 @@ public class Time {
         HOURS,
         DAYS,
         YEARS
+    }
+
+    public Time absolute() {
+        if(value < 0 ) {
+            return new Time(-value, unit);
+        }
+        return this;
     }
 
 }
