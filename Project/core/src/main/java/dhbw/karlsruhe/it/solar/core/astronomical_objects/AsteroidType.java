@@ -10,14 +10,17 @@ import javax.xml.bind.annotation.XmlElement;
 public class AsteroidType extends BodyType {
     
     @XmlElement(name = "Type")
-    private AsteroidSpectralType spectralType;
+    private TypeOfAsteroid typeOfAsteroid;
+    @XmlElement(name = "Texture")
+    private TextureTypeOfAsteroid textureOfAsteroid;
     
     public AsteroidType() {
         
     }
     
-    public AsteroidType(AsteroidSpectralType classification) {
-        this.spectralType = classification;
+    public AsteroidType(TypeOfAsteroid typeOfAsteroid, TextureTypeOfAsteroid textureOfAsteroid) {
+        this.typeOfAsteroid = typeOfAsteroid;
+        this.textureOfAsteroid = textureOfAsteroid;
     }
         
     @Override
@@ -30,12 +33,12 @@ public class AsteroidType extends BodyType {
         return true;
     }
     
-    public AsteroidSpectralType getSpectralType() {
-        return spectralType;
+    public TypeOfAsteroid getSpectralType() {
+        return typeOfAsteroid;
     }
     
     public String resolveTypeName() {
-        switch(spectralType)        {
+        switch(typeOfAsteroid)        {
         case DTYPE:
             return "D-Type Asteroid";
         default:
@@ -43,7 +46,22 @@ public class AsteroidType extends BodyType {
         }
     }
 
-    public enum AsteroidSpectralType {
+    @Override
+    public boolean isRounded() {
+        return false;
+    }
+
+    @Override
+    public String getTexture() {
+        switch(textureOfAsteroid)        {
+            case PHOEBE_DEFAULT_IMAGE:
+                return "IrregularSatellite";
+            default:
+                return "IrregularSatellite";
+            }
+    }    
+    
+    public enum TypeOfAsteroid {
         BTYPE,
         FTYPE,
         GTYPE,
@@ -58,9 +76,8 @@ public class AsteroidType extends BodyType {
         RTYPE,
         VTYPE
     }
-
-    @Override
-    public boolean isRounded() {
-        return false;
-    }    
+    
+    public enum TextureTypeOfAsteroid {
+        PHOEBE_DEFAULT_IMAGE
+    }
 }

@@ -13,17 +13,8 @@ public class Asteroid extends AstronomicalBody  {
     AsteroidType type;
     
     public Asteroid(String name, OrbitalProperties orbit, BodyProperties body) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_ASTEROID, getTextureFromTypeOf((AsteroidType)body.getBodyType()));
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_ASTEROID, body.getTexture());
         this.type = (AsteroidType)body.getBodyType();
-    }
-    
-    private static String getTextureFromTypeOf(AsteroidType asteroid) {
-        switch(asteroid.getSpectralType())        {
-        case DTYPE:
-            return "IrregularSatellite";
-        default:
-            return "IrregularSatellite";
-        }
     }
     
     @Override

@@ -10,60 +10,73 @@ import javax.xml.bind.annotation.XmlElement;
 public class PlanetType extends BodyType{
 
     @XmlElement(name = "Type")
-    private TypeOfPlanet planetType;
+    private TypeOfPlanet typeOfPlanet;
+    @XmlElement(name = "Texture")
+    private TextureTypeOfPlanet textureOfPlanet;
     
     public PlanetType() {
         
     }
     
-    public PlanetType(TypeOfPlanet planetType) {
-        this.planetType = planetType;
+    public PlanetType(TypeOfPlanet planetMainType, TextureTypeOfPlanet planetTexture) {
+        this.typeOfPlanet = planetMainType;
+        this.textureOfPlanet = planetTexture;
     } 
     
     @Override
     public boolean consistsPartiallyOfWaterIce() {
-        switch(planetType)        {
-            case DWARFPLANET:
-                return true;
-            default:
-                return false;
-            }
+        if(typeOfPlanet == TypeOfPlanet.DWARFPLANET) {
+            return true;
+        }
+        return false;
     }
     
     @Override
     public boolean hasSurface() {
-        switch(planetType)        {
-            case MARTIAN:
-            case MERCURIAN:
-            case VENUSIAN:
-            case TERRAN:
+        switch(typeOfPlanet)        {
+            case TERRESTRIAL:
             case DWARFPLANET:
                 return true;
-            case JOVIAN:
-            case SATURNIAN:
-            case NEPTUNIAN:
-            case URANIAN:
+            case GASGIANT:
+            case ICEGIANT:
             default:
                 return false;
         }
     }
     
-    public TypeOfPlanet getPlanetType() {
-        return planetType;
+    @Override
+    public String getTexture() {
+        switch(textureOfPlanet)        {
+            case MERCURIAN:
+                return "Mercurian";
+            case VENUSIAN:
+                return "Venusian";
+            case TERRAN:
+                return "Terran";
+            case MARTIAN:
+                return "Martian";
+            case JOVIAN:
+                return "Jovian";
+            case SATURNIAN:
+                return "Saturn";
+            case URANIAN:
+                return "Uranian";
+            case NEPTUNIAN:
+                return "Neptunian";
+            case DWARFPLANET:
+                return "DwarfPlanet";
+            default:
+                return "DwarfPlanet";
+        }
     }
     
     public String resolveTypeName() {
-        switch(planetType)        {
-        case MARTIAN:
-        case MERCURIAN:
-        case VENUSIAN:
-        case TERRAN:
+        switch(typeOfPlanet)        {
+        case TERRESTRIAL:
             return "Terrestrial Planet";
-        case JOVIAN:
-        case SATURNIAN:
+        case GASGIANT:
             return "Gas Giant";
-        case NEPTUNIAN:
-        case URANIAN:
+        case ICEGIANT:
             return "Ice Giant";
         case DWARFPLANET:
             return "Dwarf Planet";
@@ -72,20 +85,27 @@ public class PlanetType extends BodyType{
         }
     }
     
-    public enum TypeOfPlanet {
-            MERCURIAN,
-            VENUSIAN,
-            TERRAN,
-            MARTIAN,
-            DWARFPLANET,
-            JOVIAN,
-            SATURNIAN,
-            URANIAN,
-            NEPTUNIAN
-        }
-
     @Override
     public boolean isRounded() {
         return true;
+    }
+    
+    public enum TypeOfPlanet {
+        TERRESTRIAL,
+        GASGIANT,
+        ICEGIANT,
+        DWARFPLANET
+    }
+    
+    public enum TextureTypeOfPlanet {
+        MERCURIAN,
+        VENUSIAN,
+        TERRAN,
+        MARTIAN,
+        JOVIAN,
+        SATURNIAN,
+        URANIAN,
+        NEPTUNIAN,
+        DWARFPLANET
     }
 }

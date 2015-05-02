@@ -191,7 +191,8 @@
         <Name>Mercury</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>MERCURIAN</Type>
+                <Type>TERRESTRIAL</Type>
+                <Texture>MERCURIAN</Texture>
             </Type>
             <Radius>
                 <value>2439.7</value>
@@ -251,7 +252,8 @@
         <Name>Venus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>VENUSIAN</Type>
+                <Type>TERRESTRIAL</Type>
+                <Texture>VENUSIAN</Texture>
             </Type>
             <Radius>
                 <value>6051.8</value>
@@ -307,7 +309,8 @@
         <Name>Earth</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>TERRAN</Type>
+                <Type>TERRESTRIAL</Type>
+                <Texture>TERRAN</Texture>
             </Type>
             <Radius>
                 <value>6378.16</value>
@@ -389,7 +392,8 @@
         <Name>Moon</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>LUNAR</Type>
+                <Type>TERRESTRIAL_MOON</Type>
+                <Texture>LUNAR</Texture>
             </Type>
             <Radius>
                 <value>1738.0</value>
@@ -429,7 +433,8 @@
         <Name>Mars</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>MARTIAN</Type>
+                <Type>TERRESTRIAL</Type>
+                <Texture>MARTIAN</Texture>
             </Type>
             <Radius>
                 <value>3396.2</value>
@@ -503,7 +508,8 @@
         <Name>Phobos</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>11.5</value>
@@ -541,7 +547,8 @@
         <Name>Deimos</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>6.5</value>
@@ -580,6 +587,7 @@
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
                 <Type>DWARFPLANET</Type>
+                <Texture>DWARFPLANET</Texture>
             </Type>
             <Radius>
                 <value>487.5</value>
@@ -621,7 +629,8 @@
         <Name>Jupiter</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>JOVIAN</Type>
+                <Type>GASGIANT</Type>
+                <Texture>JOVIAN</Texture>
             </Type>
             <Radius>
                 <value>71492.0</value>
@@ -688,7 +697,8 @@
         <Name>Metis</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>21.5</value>
@@ -726,7 +736,8 @@
         <Name>Adrastea</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>8.2</value>
@@ -764,7 +775,8 @@
         <Name>Amalthea</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>83.5</value>
@@ -802,7 +814,8 @@
         <Name>Thebe</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>49.0</value>
@@ -840,7 +853,8 @@
         <Name>Io</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IONIAN</Type>
+                <Type>TERRESTRIAL_MOON</Type>
+                <Texture>IONIAN</Texture>
             </Type>
             <Radius>
                 <value>1821.5</value>
@@ -884,7 +898,8 @@
         <Name>Europa</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>EUROPAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>EUROPAN</Texture>
             </Type>
             <Radius>
                 <value>1561.0</value>
@@ -934,7 +949,8 @@
         <Name>Ganymede</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>GANYMEDIAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>GANYMEDIAN</Texture>
             </Type>
             <Radius>
                 <value>2631.0</value>
@@ -984,7 +1000,8 @@
         <Name>Callisto</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>CALLISTOAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>CALLISTOAN</Texture>
             </Type>
             <Radius>
                 <value>2410.0</value>
@@ -1038,7 +1055,8 @@
         <Name>Leda</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>10.0</value>
@@ -1076,7 +1094,8 @@
         <Name>Himalia</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>85.0</value>
@@ -1114,7 +1133,8 @@
         <Name>Lysithea</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>18.0</value>
@@ -1152,7 +1172,8 @@
         <Name>Elara</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>43.0</value>
@@ -1190,7 +1211,8 @@
         <Name>Ananke</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>14.0</value>
@@ -1228,7 +1250,8 @@
         <Name>Carme</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>23.0</value>
@@ -1266,7 +1289,8 @@
         <Name>Pasiphae</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>28.0</value>
@@ -1304,7 +1328,8 @@
         <Name>Sinope</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>19.0</value>
@@ -1342,7 +1367,8 @@
         <Name>Saturn</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>SATURNIAN</Type>
+                <Type>GASGIANT</Type>
+                <Texture>SATURNIAN</Texture>
             </Type>
             <Radius>
                 <value>60268.0</value>
@@ -1409,7 +1435,8 @@
         <Name>Pan</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>14.2</value>
@@ -1447,7 +1474,8 @@
         <Name>Atlas</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>15.3</value>
@@ -1485,7 +1513,8 @@
         <Name>Prometheus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>50.0</value>
@@ -1523,7 +1552,8 @@
         <Name>Pandora</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>42.0</value>
@@ -1561,7 +1591,8 @@
         <Name>Janus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>89.5</value>
@@ -1599,7 +1630,8 @@
         <Name>Epimetheus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>58.0</value>
@@ -1635,7 +1667,8 @@
         <Name>Mimas</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>MIMANTEAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>MIMANTEAN</Texture>
             </Type>
             <Radius>
                 <value>198.2</value>
@@ -1673,7 +1706,8 @@
         <Name>Enceladus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>ENCELADEAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>ENCELADEAN</Texture>
             </Type>
             <Radius>
                 <value>252.1</value>
@@ -1735,7 +1769,8 @@
         <Name>Tethys</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>TETHYAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>TETHYAN</Texture>
             </Type>
             <Radius>
                 <value>533.0</value>
@@ -1773,7 +1808,8 @@
         <Name>Telesto</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>12.4</value>
@@ -1809,7 +1845,8 @@
         <Name>Calypso</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>10.7</value>
@@ -1845,7 +1882,8 @@
         <Name>Dione</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>DIONEAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>DIONEAN</Texture>
             </Type>
             <Radius>
                 <value>561.7</value>
@@ -1883,7 +1921,8 @@
         <Name>Helene</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>17.6</value>
@@ -1919,7 +1958,8 @@
         <Name>Rhea</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>RHEAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>RHEAN</Texture>
             </Type>
             <Radius>
                 <value>764.5</value>
@@ -1972,7 +2012,8 @@
         <Name>Titan</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>TITANEAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>TITANEAN</Texture>
             </Type>
             <Radius>
                 <value>2575.0</value>
@@ -2030,7 +2071,8 @@
         <Name>Hyperion</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>133.0</value>
@@ -2068,7 +2110,8 @@
         <Name>Iapetus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IAPETIAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>IAPETIAN</Texture>
             </Type>
             <Radius>
                 <value>718.0</value>
@@ -2106,7 +2149,8 @@
         <Name>Kiviuq</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>8.0</value>
@@ -2144,7 +2188,8 @@
         <Name>Ijiraq</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>6.0</value>
@@ -2182,7 +2227,8 @@
         <Name>Phoebe</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>106.0</value>
@@ -2220,7 +2266,8 @@
         <Name>Paaliaq</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>11.0</value>
@@ -2258,7 +2305,8 @@
         <Name>Albiorix</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>16.0</value>
@@ -2296,7 +2344,8 @@
         <Name>Erriapus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>5.0</value>
@@ -2334,7 +2383,8 @@
         <Name>Tarvos</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>7.5</value>
@@ -2372,7 +2422,8 @@
         <Name>Siarnaq</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>20.0</value>
@@ -2410,7 +2461,8 @@
         <Name>Ymir</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>9.0</value>
@@ -2448,7 +2500,8 @@
         <Name>Uranus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>URANIAN</Type>
+                <Type>ICEGIANT</Type>
+                <Texture>URANIAN</Texture>
             </Type>
             <Radius>
                 <value>25559.0</value>
@@ -2515,7 +2568,8 @@
         <Name>Cordelia</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>20.1</value>
@@ -2553,7 +2607,8 @@
         <Name>Ophelia</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>21.4</value>
@@ -2591,7 +2646,8 @@
         <Name>Bianca</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>25.7</value>
@@ -2629,7 +2685,8 @@
         <Name>Cressida</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>39.8</value>
@@ -2667,7 +2724,8 @@
         <Name>Desdemona</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>32.0</value>
@@ -2705,7 +2763,8 @@
         <Name>Juliet</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>46.5</value>
@@ -2743,7 +2802,8 @@
         <Name>Portia</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>67.0</value>
@@ -2781,7 +2841,8 @@
         <Name>Rosalind</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>36.0</value>
@@ -2819,7 +2880,8 @@
         <Name>Cupid</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>9.0</value>
@@ -2857,7 +2919,8 @@
         <Name>Belinda</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>40.3</value>
@@ -2895,7 +2958,8 @@
         <Name>Perdita</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>15.0</value>
@@ -2933,7 +2997,8 @@
         <Name>Puck</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>81.0</value>
@@ -2971,7 +3036,8 @@
         <Name>Mab</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>8.0</value>
@@ -3009,7 +3075,8 @@
         <Name>Miranda</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>MIRANDAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>MIRANDAN</Texture>
             </Type>
             <Radius>
                 <value>236.0</value>
@@ -3047,7 +3114,8 @@
         <Name>Ariel</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>ARIELIAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>ARIELIAN</Texture>
             </Type>
             <Radius>
                 <value>579.0</value>
@@ -3085,7 +3153,8 @@
         <Name>Umbriel</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>UMBRELIAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>UMBRELIAN</Texture>
             </Type>
             <Radius>
                 <value>584.5</value>
@@ -3123,7 +3192,8 @@
         <Name>Titania</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>TITANIAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>TITANIAN</Texture>
             </Type>
             <Radius>
                 <value>789.0</value>
@@ -3161,7 +3231,8 @@
         <Name>Oberon</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>OBERONIAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>OBERONIAN</Texture>
             </Type>
             <Radius>
                 <value>761.5</value>
@@ -3199,7 +3270,8 @@
         <Name>Francisco</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>11.0</value>
@@ -3237,7 +3309,8 @@
         <Name>Caliban</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>36.0</value>
@@ -3275,7 +3348,8 @@
         <Name>Stephano</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>16.0</value>
@@ -3313,7 +3387,8 @@
         <Name>Trinculo</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>9.0</value>
@@ -3351,7 +3426,8 @@
         <Name>Sycorax</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>75.0</value>
@@ -3389,7 +3465,8 @@
         <Name>Margaret</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>10.0</value>
@@ -3427,7 +3504,8 @@
         <Name>Prospero</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>25.0</value>
@@ -3465,7 +3543,8 @@
         <Name>Setebos</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>23.5</value>
@@ -3503,7 +3582,8 @@
         <Name>Ferdinand</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>10.5</value>
@@ -3541,7 +3621,8 @@
         <Name>Neptune</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
-                <Type>NEPTUNIAN</Type>
+                <Type>ICEGIANT</Type>
+                <Texture>NEPTUNIAN</Texture>
             </Type>
             <Radius>
                 <value>24764.0</value>
@@ -3608,7 +3689,8 @@
         <Name>Naiad</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>33.0</value>
@@ -3646,7 +3728,8 @@
         <Name>Thalassa</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>41.0</value>
@@ -3684,7 +3767,8 @@
         <Name>Despina</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>90.0</value>
@@ -3722,7 +3806,8 @@
         <Name>Galatea</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>88.0</value>
@@ -3760,7 +3845,8 @@
         <Name>Larissa</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>97.0</value>
@@ -3798,7 +3884,8 @@
         <Name>Polyphemus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>10.0</value>
@@ -3836,7 +3923,8 @@
         <Name>Proteus</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>210.0</value>
@@ -3874,7 +3962,8 @@
         <Name>Triton</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>TRITONIAN</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>TRITONIAN</Texture>
             </Type>
             <Radius>
                 <value>1353.5</value>
@@ -3928,7 +4017,8 @@
         <Name>Nereid</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>170.0</value>
@@ -3966,7 +4056,8 @@
         <Name>Halimede</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>31.0</value>
@@ -4004,7 +4095,8 @@
         <Name>Sao</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>22.0</value>
@@ -4042,7 +4134,8 @@
         <Name>Laomedeia</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>21.0</value>
@@ -4080,7 +4173,8 @@
         <Name>Psamathe</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>19.0</value>
@@ -4118,7 +4212,8 @@
         <Name>Neso</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>30.0</value>
@@ -4157,6 +4252,7 @@
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
                 <Type>DWARFPLANET</Type>
+                <Texture>DWARFPLANET</Texture>
             </Type>
             <Radius>
                 <value>1155.0</value>
@@ -4218,7 +4314,8 @@
         <Name>Charon</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>ICE_MOON</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>603.5</value>
@@ -4256,7 +4353,8 @@
         <Name>Styx</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>12.5</value>
@@ -4294,7 +4392,8 @@
         <Name>Nix</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>45.0</value>
@@ -4332,7 +4431,8 @@
         <Name>Kerberos</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>20.0</value>
@@ -4370,7 +4470,8 @@
         <Name>Hydra</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>60.0</value>
@@ -4409,6 +4510,7 @@
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
                 <Type>DWARFPLANET</Type>
+                <Texture>DWARFPLANET</Texture>
             </Type>
             <Radius>
                 <value>800.0</value>
@@ -4450,7 +4552,8 @@
         <Name>Namaka</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>100.0</value>
@@ -4488,7 +4591,8 @@
         <Name>Hi'iaka</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>190.0</value>
@@ -4527,6 +4631,7 @@
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
                 <Type>DWARFPLANET</Type>
+                <Texture>DWARFPLANET</Texture>
             </Type>
             <Radius>
                 <value>750.0</value>
@@ -4569,6 +4674,7 @@
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="planetType">
                 <Type>DWARFPLANET</Type>
+                <Texture>DWARFPLANET</Texture>
             </Type>
             <Radius>
                 <value>1163.0</value>
@@ -4610,7 +4716,8 @@
         <Name>Dysnomia</Name>
         <BodyProperties>
             <Type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="moonType">
-                <Type>IRREGULAR</Type>
+                <Type>IRREGULAR_SHAPED</Type>
+                <Texture>PHOEBE_DEFAULT_IRREGULAR</Texture>
             </Type>
             <Radius>
                 <value>342.0</value>

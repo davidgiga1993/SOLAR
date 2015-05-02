@@ -15,35 +15,10 @@ public class Planet extends AstronomicalBody  {
     private PlanetType type;
 
     public Planet(String name, OrbitalProperties orbit, BodyProperties body) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, getTextureFromTypeOf((PlanetType)body.getBodyType()));
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_PLANET, body.getTexture());
         this.segments = 2000;
         this.type = (PlanetType)body.getBodyType();
         preview.setColor(Color.TEAL);
-    }
-
-    private static String getTextureFromTypeOf(PlanetType planet)    {
-        switch(planet.getPlanetType())        {
-            case MARTIAN:
-                return "Martian";
-            case MERCURIAN:
-                return "Mercurian";
-            case DWARFPLANET:
-                return "DwarfPlanet";
-            case JOVIAN:
-                return "Jovian";
-            case VENUSIAN:
-                return "Venusian";
-            case NEPTUNIAN:
-                return "Neptunian";
-            case SATURNIAN:
-                return "Saturn";
-            case URANIAN:
-                return "Uranian";
-            case TERRAN:
-                return "Terran";
-            default:
-                return "DwarfPlanet";
-        }
     }
 
     @Override

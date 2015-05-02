@@ -19,22 +19,12 @@ public class Star extends AstronomicalBody  {
     private static final float G_TYPE_TEMPERATURE_RANGE = 595/9;
     private static final float K_TYPE_TEMPERATURE_RANGE = 1360/9;   
     private static final float M_TYPE_TEMPERATURE_RANGE = 1350/9;
-    
-    
+     
     private StarType type;
 
     public Star(String name, OrbitalProperties orbit, BodyProperties body) {
-        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, getTextureFromTypeOf((StarType)body.getBodyType()));
+        super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_STAR, body.getTexture());
         this.type = (StarType)body.getBodyType();
-    }
-    
-    private static String getTextureFromTypeOf(StarType star)    {
-        switch(star.getSpectralType())        {
-            case G:
-                return "GTypeMainSequence";
-            default:
-                return "GTypeMainSequence";
-        }
     }
 
     @Override

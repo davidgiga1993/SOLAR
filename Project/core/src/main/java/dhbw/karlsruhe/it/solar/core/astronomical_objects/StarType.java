@@ -157,4 +157,14 @@ public class StarType extends BodyType {
     public boolean isRounded() {
         return true;
     }
+
+    @Override
+    public String getTexture() {
+        switch(sprectralType) {
+            case G:
+                return "GTypeMainSequence";
+            default:
+                return "GTypeMainSequence";
+        }
+    }
 }

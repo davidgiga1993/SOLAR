@@ -189,4 +189,8 @@ public class BodyProperties {
     public Time getRotationPeriodAbsolute() {
         return siderealRotationPeriod.absolute();
     }
+
+    public String getTexture() {
+        return type.getTexture();
+    }
 }

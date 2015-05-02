@@ -20,4 +20,6 @@ public abstract class BodyType {
     public abstract boolean consistsPartiallyOfWaterIce();
 
     public abstract boolean isRounded();
+
+    public abstract String getTexture();
 }
