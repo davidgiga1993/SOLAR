@@ -38,7 +38,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     protected Player owner;
     protected Vector2 destination;
     protected String nameOfDestination;
-     protected float speed;
+    protected float speed;
     AIModule aiModule;
     AIOutput aiOutput;
     

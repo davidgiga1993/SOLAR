@@ -15,7 +15,7 @@ public class SurfaceTemperature {
     
     private static final float ROTATION_SCALAR = 1/(3*(float)Math.sqrt(2));
     private static final float INTERNAL_HEAT_SCALAR = 7.72757f * (float)Math.pow(10,-6);
-    private static final float TIDAL_HEATING_SCALAR = 80;
+    private static final float TIDAL_HEATING_SCALAR = 100;
     @XmlElement(name = "Min_Temperature")
     private Temperature tempMinimum;
     @XmlElement(name = "Mean_Temperature")

@@ -1,11 +1,13 @@
 package dhbw.karlsruhe.it.solar.player;
 
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 import dhbw.karlsruhe.it.solar.player.resources.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 /**
  * Created by Arga on 29.11.2014.
@@ -43,5 +45,21 @@ public class Player {
     
     public String getName() {
         return name;
+    }
+
+    public LabelStyle getColorStyle() {
+        if(playerColor == Color.RED) {
+            return Styles.MENUELABEL_RED;
+        }
+        if(playerColor == Color.YELLOW) {
+            return Styles.MENUELABEL_YELLOW;
+        }
+        if(playerColor == Color.ORANGE) {
+            return Styles.MENUELABEL_ORANGE;
+        }
+        if(playerColor == Color.GREEN) {
+            return Styles.MENUELABEL_GREEN;
+        }
+        return Styles.MENUELABEL_STYLE;
     }
 }
