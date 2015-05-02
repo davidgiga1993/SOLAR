@@ -19,8 +19,8 @@ public class InfoBarDetailsTable extends Table {
         add(new InfoBarOverviewTable(selectedActor)).width(InformationBar.CELL_SIZE);
         
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
-            add(new InfoBarPhysicalCharacteristics((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE);
-            add(new InfoBarLifeRatingDetails((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE);
+            add(new InfoBarPhysicalCharacteristics((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE).top();
+            add(new InfoBarLifeRatingDetails((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE).top();
             add(new InfoBarColonyDetails(((AstronomicalBody)selectedActor).getColony())).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE).top();
             add().padLeft(InformationBar.PADDING).expand().fill();
         }

@@ -22,8 +22,14 @@ public class InfoBarLifeRatingDetails extends Table {
 
     public InfoBarLifeRatingDetails(AstronomicalBody selectedActor) {
         this.selectedActor = selectedActor;
-        fetchFuzzyInformation();
-        generateBodyDetails();   
+        
+        if(selectedActor.isColonizable()) {
+            fetchFuzzyInformation();
+            generateBodyDetails();      
+            return;
+        }
+        
+        add(new Label("No Surface", Styles.BOLDLABEL_STYLE));
     }
     
     private void fetchFuzzyInformation() {

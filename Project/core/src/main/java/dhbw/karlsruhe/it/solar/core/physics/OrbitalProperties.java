@@ -268,4 +268,12 @@ public class OrbitalProperties {
     public boolean orbitingStar() {
         return orbitPrimary instanceof Star;
     }
+
+    public boolean primaryIsColonizable() {
+        return orbitPrimary.isColonizable();
+    }
+
+    public boolean primaryIsClaimable() {
+        return !orbitPrimary.isColonized();
+    }
 }

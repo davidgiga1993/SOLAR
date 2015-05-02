@@ -18,6 +18,6 @@ public class ColonizeCommand implements Command {
     }
 
     private boolean colonizeConditionsAreMet() {
-        return (unit.isInOrbit() && unit.isPlayerAlsoShipOwner());
+        return (unit.isInOrbit() && unit.isInOrbitAroundColonizableWorld() && unit.isInOrbitAroundClaimableWorld() && unit.isPlayerAlsoShipOwner());
     }
 }

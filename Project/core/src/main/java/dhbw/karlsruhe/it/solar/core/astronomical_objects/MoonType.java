@@ -115,6 +115,11 @@ public class MoonType extends BodyType {
         }
     }
     
+    @Override
+    public boolean isColonizable() {
+        return true;
+    }
+    
     public enum TextureTypeOfMoon {
         PHOEBE_DEFAULT_IRREGULAR,
         LUNAR,

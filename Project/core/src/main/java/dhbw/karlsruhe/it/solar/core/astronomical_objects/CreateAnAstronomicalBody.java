@@ -287,7 +287,9 @@ public final class CreateAnAstronomicalBody {
         setUpBiosphere(newBody);
         setUpBodyRotation(newBody);
         newBody.calculateSurfaceTemperature();
-        newBody.calculateLifeRating();
+        if(newBody.isColonizable()) {
+            newBody.calculateLifeRating();            
+        }
         newBody.initializeAstronomicalBody(solarSystem);
     }
 

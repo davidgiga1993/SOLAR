@@ -22,4 +22,6 @@ public abstract class BodyType {
     public abstract boolean isRounded();
 
     public abstract String getTexture();
+
+    public abstract boolean isColonizable();
 }

@@ -84,6 +84,20 @@ public class PlanetType extends BodyType{
             return "Anomaly: Unknown Type of Planet";
         }
     }
+
+    @Override
+    public boolean isColonizable() {
+        switch(typeOfPlanet)        {
+        case TERRESTRIAL:
+        case DWARFPLANET:
+            return true;
+        case GASGIANT:
+        case ICEGIANT:
+            return false;
+        default:
+            return false;
+        }
+    }
     
     @Override
     public boolean isRounded() {

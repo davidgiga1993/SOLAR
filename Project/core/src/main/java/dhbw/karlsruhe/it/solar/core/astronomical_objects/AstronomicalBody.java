@@ -368,4 +368,8 @@ public abstract class AstronomicalBody extends Orbiter  {
         }
         return getPrimary().getOrbitalPeriodAroundSun();
     }
+
+    public boolean isColonizable() {
+        return physicalProperties.isColonizable();
+    }
 }

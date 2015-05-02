@@ -80,4 +80,9 @@ public class AsteroidType extends BodyType {
     public enum TextureTypeOfAsteroid {
         PHOEBE_DEFAULT_IMAGE
     }
+
+    @Override
+    public boolean isColonizable() {
+        return true;
+    }
 }

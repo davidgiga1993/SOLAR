@@ -361,4 +361,12 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         }
         return "Idle";
     }
+
+    public boolean isInOrbitAroundColonizableWorld() {
+        return orbitalProperties.primaryIsColonizable();
+    }
+
+    public boolean isInOrbitAroundClaimableWorld() {
+        return orbitalProperties.primaryIsClaimable();
+    }
 }

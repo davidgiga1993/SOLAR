@@ -193,4 +193,8 @@ public class BodyProperties {
     public String getTexture() {
         return type.getTexture();
     }
+
+    public boolean isColonizable() {
+        return type.isColonizable();
+    }
 }

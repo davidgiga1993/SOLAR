@@ -167,4 +167,9 @@ public class StarType extends BodyType {
                 return "GTypeMainSequence";
         }
     }
+
+    @Override
+    public boolean isColonizable() {
+        return false;
+    }
 }
