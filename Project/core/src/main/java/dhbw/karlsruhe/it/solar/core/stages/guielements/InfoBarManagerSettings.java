@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import dhbw.karlsruhe.it.solar.core.stages.GameHUDStage;
 
 /**
@@ -9,16 +11,17 @@ import dhbw.karlsruhe.it.solar.core.stages.GameHUDStage;
  */
 public class InfoBarManagerSettings {
     
-    private boolean displayExtraData;
-    private boolean displayLifeRating;
-    private boolean displayColonyDetails;
+    @XmlElement(name ="Display_Extra_Setting")
+    private boolean displayExtraData = true;
+    @XmlElement(name ="Display_Liferating_Setting")
+    private boolean displayLifeRating = true;
+    @XmlElement(name ="Display_Colonydetails_Setting")
+    private boolean displayColonyDetails = true;
     private int maximumNumberOfColumns;
     private LastInfoBarButtonToggled lastButton;
     
     public InfoBarManagerSettings() {
-        this.displayExtraData = true;
-        this.displayLifeRating = true;
-        this.displayColonyDetails = true;
+
     }
     
     public void toggleDisplayExtraData() {

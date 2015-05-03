@@ -16,8 +16,8 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 public class InfoBarManager extends Table {
     
     private SolarActor selectedActor;
-    private final InfoBarManagerSettings settings = new InfoBarManagerSettings();
-    private final InfoBarDetailsTable table = new InfoBarDetailsTable(settings);
+    private InfoBarManagerSettings settings;
+    private final InfoBarDetailsTable table = new InfoBarDetailsTable();
     private final InfoBarMenueButtons buttons = new InfoBarMenueButtons(this);
     
     
@@ -79,13 +79,18 @@ public class InfoBarManager extends Table {
         reload(); 
     }
     
-    private void reload() {
+    public void reload() {
         clear();
         createInfoBarMenueButtons();
         createInfoBarDetailsTable();
     }
 
-    public void update() {
-        reload();
+    public InfoBarManagerSettings getSettings() {
+        return settings;
+    }
+
+    public void initSettings(InfoBarManagerSettings settings) {
+        this.settings = settings;
+        this.table.initSettings(settings);
     }
 }

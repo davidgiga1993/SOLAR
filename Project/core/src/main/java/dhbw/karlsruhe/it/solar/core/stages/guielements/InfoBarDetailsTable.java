@@ -12,11 +12,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
  */
 public class InfoBarDetailsTable extends Table {
     
-    private final InfoBarManagerSettings settings;
-    
-    public InfoBarDetailsTable(InfoBarManagerSettings settings) {
-        this.settings = settings;
-    }
+    private InfoBarManagerSettings settings;
 
     public InfoBarDetailsTable displayAstroBodyInformation(AstronomicalBody selectedBody) {
         if(settings.showExtraData()) {
@@ -43,5 +39,9 @@ public class InfoBarDetailsTable extends Table {
     public InfoBarDetailsTable empty() {
         add().expand().fill();
         return this;
+    }
+
+    public void initSettings(InfoBarManagerSettings settings) {
+        this.settings = settings;
     }
 }

@@ -3,7 +3,9 @@ package dhbw.karlsruhe.it.solar.core.stages;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 
 public abstract class BaseStage extends Stage  {
     protected final SolarEngine se;

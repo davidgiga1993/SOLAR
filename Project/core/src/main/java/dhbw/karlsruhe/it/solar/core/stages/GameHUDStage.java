@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InformationBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.TimeTable;
@@ -76,6 +77,14 @@ super(solarEngine, "GameHUD");
         super.resize(width, height);
         guiTable.getCell(navigationBar).maxHeight(calculateNavbarMaxHeight());
         guiTable.getCell(bottomBar.update()).maxWidth(calculateInfoBarMaxWidth());
+    }
+
+    public InfoBarManagerSettings getSettings() {
+        return bottomBar.getSettings();
+    }
+
+    public void initSettings(InfoBarManagerSettings settings) {
+        bottomBar.initSettings(settings);
     }
 }
 

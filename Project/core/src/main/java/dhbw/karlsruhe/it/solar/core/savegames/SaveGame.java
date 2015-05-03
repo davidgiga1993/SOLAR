@@ -14,6 +14,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 /**
@@ -29,6 +30,8 @@ public class SaveGame {
     private List<SpaceUnit> spaceUnits;
     private List<AstronomicalBody> spaceObjects;
     private List<Player> ingamePlayers;
+    @XmlElement(name ="Settings")
+    private InfoBarManagerSettings settings;   
     @XmlElement(name ="Player")
     private List<PlayerInfo> players;
     @XmlElement(name ="SpaceUnit")
@@ -48,6 +51,7 @@ public class SaveGame {
         units = createSpaceUnitInfo();
         ingamePlayers = stage.getPlayers();
         players = createPlayerInfo();
+        settings = stage.getSettings();
     }
     
     private List<PlayerInfo> createPlayerInfo() {
@@ -121,5 +125,9 @@ public class SaveGame {
             }
         }
         return missionList;
+    }
+
+    public InfoBarManagerSettings getSettings() {
+        return settings;
     }
 }

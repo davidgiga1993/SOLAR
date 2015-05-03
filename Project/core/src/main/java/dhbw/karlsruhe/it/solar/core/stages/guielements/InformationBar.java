@@ -77,7 +77,15 @@ public class InformationBar extends Window implements Telegraph {
     }
 
     public InformationBar update() {
-        manager.update();
+        manager.reload();
         return this;
+    }
+
+    public InfoBarManagerSettings getSettings() {
+        return manager.getSettings();
+    }
+
+    public void initSettings(InfoBarManagerSettings settings) {
+        manager.initSettings(settings);
     }    
 }

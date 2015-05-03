@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.utils.Array;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
@@ -35,6 +34,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnitManager;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
 import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.core.usercontrols.*;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
@@ -423,6 +423,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
      */
     private void initExampleSystem() {
         playerManager.initializePlayers();
+        initSettings(new InfoBarManagerSettings());
+        
         systemCreation();
         placeNewShip("Event Horizon", new Vector2(1200, 500), playerManager.getPlayerNumber(0));
         placeNewShip("Nostromo", new Vector2(1500, 1000), playerManager.getPlayerNumber(0));
@@ -490,5 +492,13 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public static void inputListenerMoveCamera(SolarActor target) {
         inputListener.moveCamera(target);
+    }
+
+    public InfoBarManagerSettings getSettings() {
+        return se.getSettings();
+    }
+
+    public void initSettings(InfoBarManagerSettings settings) {
+        se.initSettings(settings);
     }
 }
