@@ -274,6 +274,6 @@ public class OrbitalProperties {
     }
 
     public boolean primaryIsClaimable() {
-        return !orbitPrimary.isColonized();
+        return orbitPrimary.isClaimable();
     }
 }

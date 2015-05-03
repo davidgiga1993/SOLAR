@@ -28,15 +28,13 @@ public class InfoBarActionTable extends Table {
     private SolarActor selectedActor; 
     
     public InfoBarActionTable(SolarActor selectedActor) {
-        addButtonListeners(); 
-        add(orbitalInsertion).width(InformationBar.BUTTON_WIDTH).height(InformationBar.BUTTON_HEIGHT).pad(InformationBar.BUTTON_PADDING);
-        row();
-        add(colonize).width(InformationBar.BUTTON_WIDTH).height(InformationBar.BUTTON_HEIGHT).pad(InformationBar.BUTTON_PADDING);
-        row();
-        add(selfDestruct).width(InformationBar.BUTTON_WIDTH).height(InformationBar.BUTTON_HEIGHT).pad(InformationBar.BUTTON_PADDING);
-        hideAllButtons();
         this.selectedActor = selectedActor;
-        hideAllButtons();
+        addButtonListeners(); 
+        addButtons();
+        determineVisibilityOfButtons();
+    }
+
+    private void determineVisibilityOfButtons() {
         if(selectedActor instanceof SpaceUnit) {
             orbitalInsertion.setVisible(true);
             selfDestruct.setText("Self Destruct");
@@ -49,6 +47,15 @@ public class InfoBarActionTable extends Table {
             selfDestruct.setText("Abandon Colony");
             selfDestruct.setVisible(true);
         }
+    }
+
+    private void addButtons() {
+        add(orbitalInsertion).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
+        row();
+        add(colonize).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
+        row();
+        add(selfDestruct).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
+        hideAllButtons();
     }
     
     private void addButtonListeners() {

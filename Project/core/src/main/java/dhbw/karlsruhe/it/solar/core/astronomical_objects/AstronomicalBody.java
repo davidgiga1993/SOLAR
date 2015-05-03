@@ -372,4 +372,8 @@ public abstract class AstronomicalBody extends Orbiter  {
     public boolean isColonizable() {
         return physicalProperties.isColonizable();
     }
+
+    public boolean isClaimable() {
+        return !isColonized();
+    }
 }

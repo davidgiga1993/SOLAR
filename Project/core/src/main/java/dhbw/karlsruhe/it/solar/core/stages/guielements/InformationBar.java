@@ -20,15 +20,20 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class InformationBar extends Window implements Telegraph {
    
-    private final static float IMAGE_SIZE = 130;
-    public final static float CELL_SIZE = 215;
+    public final static float IMAGE_WIDTH = 130;
+    public final static float CELL_WIDTH = 215;
+    public final static float MENUE_CELL_WIDTH = 60;
     public final static float PADDING = 20;
-    public final static float BUTTON_WIDTH = 130;
-    public final static float BUTTON_HEIGHT = 30;
-    public final static float BUTTON_PADDING = 5;
+    public final static float MENUE_BUTTON_WIDTH = 58;
+    public final static float MENUE_BUTTON_HEIGHT = 25;
+    public final static float MENUE_BUTTON_PADDING = 1;
+    public final static float ACTION_BUTTON_WIDTH = 130;
+    public final static float ACTION_BUTTON_HEIGHT = 30;
+    public final static float ACTION_BUTTON_PADDING = 5;
     public final static String TAB = "            ";
      
-    private Table contentTable = new Table();
+    private final Table contentTable = new Table();
+    private final InfoBarManager manager = new InfoBarManager();
     
     private SolarActor selectedActor; 
     Image selectedImage = new Image();
@@ -57,16 +62,16 @@ public class InformationBar extends Window implements Telegraph {
         }
     }
 
-    private void loadContent() {
+    public void loadContent() {
         contentTable.clear();
-        contentTable.add(loadImage()).width(IMAGE_SIZE).height(IMAGE_SIZE).left();
-        contentTable.add(new InfoBarDetailsTable(selectedActor)).padLeft(PADDING).expandX().fillX();
+        contentTable.add(loadImage()).width(IMAGE_WIDTH).height(IMAGE_WIDTH).left();
+        contentTable.add(new InfoBarOverviewTable(selectedActor)).width(InformationBar.CELL_WIDTH).padLeft(InformationBar.PADDING);
+        contentTable.add(manager.displayContent(selectedActor)).expandX().fillX().padLeft(InformationBar.PADDING);
         contentTable.add(new InfoBarActionTable(selectedActor)).padLeft(PADDING).right();
     }
 
     private Image loadImage() {
         selectedImage.setDrawable(new TextureRegionDrawable(selectedActor.getSolarActorTexture()));
         return selectedImage;  
-    }
-    
+    }    
 }

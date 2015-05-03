@@ -35,7 +35,7 @@ public class InfoBarOverviewTable extends Table {
         row();
         generateMissionInfo();
         row();
-        add(showOnMap).align(Align.center).colspan(2).width(InformationBar.BUTTON_WIDTH).height(InformationBar.BUTTON_HEIGHT).pad(InformationBar.BUTTON_PADDING);
+        add(showOnMap).align(Align.center).colspan(2).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
         showOnMap.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {

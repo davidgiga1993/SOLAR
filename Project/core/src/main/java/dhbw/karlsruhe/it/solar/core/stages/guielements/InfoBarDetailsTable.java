@@ -3,9 +3,7 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 /**
  * 
@@ -14,19 +12,36 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
  */
 public class InfoBarDetailsTable extends Table {
     
-    public InfoBarDetailsTable(SolarActor selectedActor) {
-        clear();
-        add(new InfoBarOverviewTable(selectedActor)).width(InformationBar.CELL_SIZE);
-        
-        if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
-            add(new InfoBarPhysicalCharacteristics((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE).top();
-            add(new InfoBarLifeRatingDetails((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE).top();
-            add(new InfoBarColonyDetails(((AstronomicalBody)selectedActor).getColony())).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE).top();
-            add().padLeft(InformationBar.PADDING).expand().fill();
+    private final InfoBarManagerSettings settings;
+    
+    public InfoBarDetailsTable(InfoBarManagerSettings settings) {
+        this.settings = settings;
+    }
+
+    public InfoBarDetailsTable displayAstroBodyInformation(AstronomicalBody selectedBody) {
+        if(settings.showExtraData()) {
+            add(new InfoBarPhysicalCharacteristics(selectedBody)).width(InformationBar.CELL_WIDTH).top();            
         }
-        if(selectedActor instanceof SpaceUnit) {
-            add(new InfoBarShipDetails((SpaceUnit)selectedActor)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_SIZE);
-            add().padLeft(InformationBar.PADDING).expand().fill();
-        }     
+        if(settings.showLifeRating()) {
+            add(new InfoBarLifeRatingDetails(selectedBody)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_WIDTH).top();            
+        }
+        if(settings.showColonyDetails()) {
+            add(new InfoBarColonyDetails((selectedBody).getColony())).padLeft(InformationBar.PADDING).width(InformationBar.CELL_WIDTH).top();           
+        }
+        add().padLeft(InformationBar.PADDING).expand().fill();
+        return this;
+    }
+
+    public InfoBarDetailsTable displaySpaceUnitInformation(SpaceUnit selectedUnit) {
+        if(settings.showExtraData()) {
+            add(new InfoBarShipDetails(selectedUnit)).padLeft(InformationBar.PADDING).width(InformationBar.CELL_WIDTH);            
+        }
+        add().padLeft(InformationBar.PADDING).expand().fill();
+        return this;
+    }
+
+    public InfoBarDetailsTable empty() {
+        add().expand().fill();
+        return this;
     }
 }
