@@ -63,6 +63,7 @@ public class SaveGameManager {
     
     private void handOverToGameStartStage(SaveGame save) {
         stage.initSettings(save.getSettings());
+        stage.initGameTime(save.getGameTimeElapsed());
         stage.initPlayers(save.getPlayers());
         stage.initAstroBodies(save.getAstroBodies());
         stage.initUnits(save.getSpaceUnits());

@@ -99,4 +99,16 @@ public class Time {
         return this;
     }
 
+    public void add(Time timeToAdd) {
+        switch (unit) {
+            case HOURS:
+                value += timeToAdd.inHours();
+            case DAYS:
+                value += timeToAdd.inDays();
+            case YEARS:
+                value += timeToAdd.inYears();
+            default:
+                return;
+        }
+    }
 }

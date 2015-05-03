@@ -12,6 +12,8 @@ import com.badlogic.gdx.utils.Array;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.physics.CalendarTime;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
@@ -31,7 +33,9 @@ public class SaveGame {
     private List<AstronomicalBody> spaceObjects;
     private List<Player> ingamePlayers;
     @XmlElement(name ="Settings")
-    private InfoBarManagerSettings settings;   
+    private InfoBarManagerSettings settings;
+    @XmlElement(name ="Game_Time_Elapsed")
+    private Time gameTime;    
     @XmlElement(name ="Player")
     private List<PlayerInfo> players;
     @XmlElement(name ="SpaceUnit")
@@ -52,6 +56,7 @@ public class SaveGame {
         ingamePlayers = stage.getPlayers();
         players = createPlayerInfo();
         settings = stage.getSettings();
+        gameTime = GameStartStage.GAMETIME.getGameTimeElapsed();
     }
     
     private List<PlayerInfo> createPlayerInfo() {
@@ -129,5 +134,9 @@ public class SaveGame {
 
     public InfoBarManagerSettings getSettings() {
         return settings;
+    }
+
+    public Time getGameTimeElapsed() {
+        return gameTime;
     }
 }

@@ -19,6 +19,8 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.CalendarTime;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
@@ -71,6 +73,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Initialize a new game creating a new system.
      */
     public static void startNewGame() {
+        GAMETIME.reset();
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
         GameStartStage gameStage = initGameStartStage(engine);
@@ -85,6 +88,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Initialize a game using the previously saved game state.
      */
     public static void startCurrentGame() {
+        GAMETIME.reset();
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
         GameStartStage gameStage = initGameStartStage(engine);
@@ -187,7 +191,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void act(float delta) {
         inputListener.handleContinuousInput(delta);
         float newDelta = delta * GameStartStage.gameSpeed;
-        GAMETIME.addDays(newDelta);
+        GAMETIME.addDays(new Time(newDelta,TimeUnit.DAYS));
         super.act(newDelta);
     }
 
@@ -408,6 +412,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Old method / Scenario : Creates the solar system with code lines, doesn't use savegame mechanic.
      */
     public static void startSolarScenario() {
+        GAMETIME.reset();
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
         GameStartStage gameStage = initGameStartStage(engine);
@@ -500,5 +505,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public void initSettings(InfoBarManagerSettings settings) {
         se.initSettings(settings);
+    }
+
+    public void initGameTime(Time gameTimeElapsed) {
+        GAMETIME.initGameTime(gameTimeElapsed);
     }
 }
