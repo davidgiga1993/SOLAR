@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.stages;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
@@ -17,6 +16,7 @@ import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialo
 public class GameHUDStage extends BaseGUIStage{
 
     private static final int INFOBAR_HEIGHT = 160;
+    private static final int RESSOURCEBAR_HEIGHT = 50;
     private NavigationBar navigationBar;
     private Table resourceBar;
     private InformationBar bottomBar;
@@ -44,13 +44,12 @@ super(solarEngine, "GameHUD");
         resourceBar = new TimeTable();
         bottomBar = new InformationBar();
 
-        guiTable.add(resourceBar).align(Align.right).colspan(2).height(50).expandX();
+        guiTable.add(resourceBar).align(Align.right).colspan(2).height(RESSOURCEBAR_HEIGHT).expandX();
         guiTable.row();
-        int maxHeight = Gdx.graphics.getHeight() - (50+150);
-        guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(maxHeight).top().fill();
+        guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(calculateNavbarMaxHeight()).top().fill().left();
         guiTable.add(new Actor()).expandX();
         guiTable.row().maxHeight(INFOBAR_HEIGHT);
-        guiTable.add(bottomBar).height(INFOBAR_HEIGHT).colspan(2).expandX().fill();
+        guiTable.add(bottomBar).height(INFOBAR_HEIGHT).maxWidth(calculateMaxWidth()).colspan(2).expandX().fill().left();
 
 
         addActor(guiTable);
@@ -60,11 +59,23 @@ super(solarEngine, "GameHUD");
         }
     }
 
+    private int calculateNavbarMaxHeight() {
+        return Gdx.graphics.getHeight() - (RESSOURCEBAR_HEIGHT+INFOBAR_HEIGHT);
+    }
+    
+    private int calculateMaxWidth() {
+        int currentWidth = Gdx.graphics.getWidth();
+        if(currentWidth > InformationBar.MINIMUM_WIDTH) {
+            return currentWidth;
+        }
+        return InformationBar.MINIMUM_WIDTH;
+    }
+
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
-        int maxHeight = Gdx.graphics.getHeight() - (50+75);
-        guiTable.getCell(navigationBar).maxHeight(maxHeight);
+        guiTable.getCell(navigationBar).maxHeight(calculateNavbarMaxHeight());
+        guiTable.getCell(bottomBar).maxWidth(calculateMaxWidth());
     }
 }
 

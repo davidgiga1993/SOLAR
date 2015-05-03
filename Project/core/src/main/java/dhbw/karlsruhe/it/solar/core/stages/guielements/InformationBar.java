@@ -20,16 +20,17 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class InformationBar extends Window implements Telegraph {
    
-    public final static float IMAGE_WIDTH = 130;
-    public final static float CELL_WIDTH = 215;
-    public final static float MENUE_CELL_WIDTH = 60;
-    public final static float PADDING = 20;
-    public final static float MENUE_BUTTON_WIDTH = 58;
-    public final static float MENUE_BUTTON_HEIGHT = 25;
-    public final static float MENUE_BUTTON_PADDING = 1;
-    public final static float ACTION_BUTTON_WIDTH = 130;
-    public final static float ACTION_BUTTON_HEIGHT = 30;
-    public final static float ACTION_BUTTON_PADDING = 5;
+    public final static int IMAGE_WIDTH = 130;
+    public final static int CELL_WIDTH = 215;
+    public final static int MENUE_CELL_WIDTH = 60;
+    public final static int PADDING = 20;
+    public final static int MENUE_BUTTON_WIDTH = 58;
+    public final static int MENUE_BUTTON_HEIGHT = 25;
+    public final static int MENUE_BUTTON_PADDING = 1;
+    public final static int ACTION_BUTTON_WIDTH = 130;
+    public final static int ACTION_BUTTON_HEIGHT = 30;
+    public final static int ACTION_BUTTON_PADDING = 5;
+    public static final int MINIMUM_WIDTH = IMAGE_WIDTH + 4*PADDING + 2*CELL_WIDTH + MENUE_CELL_WIDTH + ACTION_BUTTON_WIDTH + 2*ACTION_BUTTON_PADDING;
     public final static String TAB = "            ";
      
     private final Table contentTable = new Table();
@@ -42,7 +43,7 @@ public class InformationBar extends Window implements Telegraph {
         super("Information", Styles.TOOLTIPSKIN);
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
         
-        add(contentTable).expandX().fillX();
+        add(contentTable).expandX().fillX().left();
     }
 
     @Override
