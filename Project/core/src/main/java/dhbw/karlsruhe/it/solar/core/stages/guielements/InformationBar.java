@@ -74,5 +74,10 @@ public class InformationBar extends Window implements Telegraph {
     private Image loadImage() {
         selectedImage.setDrawable(new TextureRegionDrawable(selectedActor.getSolarActorTexture()));
         return selectedImage;  
+    }
+
+    public InformationBar update() {
+        manager.update();
+        return this;
     }    
 }

@@ -49,7 +49,7 @@ super(solarEngine, "GameHUD");
         guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(calculateNavbarMaxHeight()).top().fill().left();
         guiTable.add(new Actor()).expandX();
         guiTable.row().maxHeight(INFOBAR_HEIGHT);
-        guiTable.add(bottomBar).height(INFOBAR_HEIGHT).maxWidth(calculateMaxWidth()).colspan(2).expandX().fill().left();
+        guiTable.add(bottomBar).height(INFOBAR_HEIGHT).maxWidth(calculateInfoBarMaxWidth()).colspan(2).expandX().fill().left();
 
 
         addActor(guiTable);
@@ -63,7 +63,7 @@ super(solarEngine, "GameHUD");
         return Gdx.graphics.getHeight() - (RESSOURCEBAR_HEIGHT+INFOBAR_HEIGHT);
     }
     
-    private int calculateMaxWidth() {
+    public static int calculateInfoBarMaxWidth() {
         int currentWidth = Gdx.graphics.getWidth();
         if(currentWidth > InformationBar.MINIMUM_WIDTH) {
             return currentWidth;
@@ -75,7 +75,7 @@ super(solarEngine, "GameHUD");
     public void resize(int width, int height) {
         super.resize(width, height);
         guiTable.getCell(navigationBar).maxHeight(calculateNavbarMaxHeight());
-        guiTable.getCell(bottomBar).maxWidth(calculateMaxWidth());
+        guiTable.getCell(bottomBar.update()).maxWidth(calculateInfoBarMaxWidth());
     }
 }
 

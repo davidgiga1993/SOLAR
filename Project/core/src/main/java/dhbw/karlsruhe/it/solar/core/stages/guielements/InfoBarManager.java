@@ -31,6 +31,7 @@ public class InfoBarManager extends Table {
 
     public void createInfoBarDetailsTable() {
         table.clear();
+        settings.adjustMaximumNumberOfColumns();
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
             displayAstroBodyInformation();
             return;
@@ -64,7 +65,7 @@ public class InfoBarManager extends Table {
     }
     
     public void onDisplayExtraDataClick() {
-        settings.toggleDisplayPhysicalData();
+        settings.toggleDisplayExtraData();
         reload();
     }
 
@@ -82,5 +83,9 @@ public class InfoBarManager extends Table {
         clear();
         createInfoBarMenueButtons();
         createInfoBarDetailsTable();
+    }
+
+    public void update() {
+        reload();
     }
 }
