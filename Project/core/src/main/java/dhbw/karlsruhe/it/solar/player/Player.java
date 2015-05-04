@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.player;
 
+import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
-import dhbw.karlsruhe.it.solar.player.resources.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
  */
 public class Player {
 
-    protected List<Resource> resources;
+    protected List<ResourceInterface> resources;
     private final int id;
     private final Color playerColor;
     private final String name;
@@ -23,7 +23,7 @@ public class Player {
         this.id = id;
         this.name = name;
         this.playerColor = color;
-        resources = new ArrayList<Resource>();
+        resources = new ArrayList<ResourceInterface>();
     }
 
     @Override

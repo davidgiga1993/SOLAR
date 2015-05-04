@@ -17,6 +17,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
@@ -178,7 +179,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      }
      
      public void establishColony() {
-          orbitalProperties.getPrimary().establishColony("Testkolonie", owner, new Population(10f,Population.Unit.THOUSAND));
+          orbitalProperties.getPrimary().establishColony("Testkolonie", owner, new Population(10 * BaseResource.THOUSAND));
      }
     
      /**

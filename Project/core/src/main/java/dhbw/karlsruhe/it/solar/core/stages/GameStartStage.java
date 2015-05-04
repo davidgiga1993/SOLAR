@@ -21,8 +21,8 @@ import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.CalendarTime;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
+import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.Population.Unit;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.ColonyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.MissionInfoExtended;
@@ -443,9 +443,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
             babylon.enterOrbit(primary);        
         }
         //place some example colonies
-        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7.125f, Unit.BILLION));
-        placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(31.415f, Unit.MILLION));
-        placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(1.1235f, Unit.THOUSAND));
+        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7125 * BaseResource.MILLION));
+        placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(3141 * BaseResource.THOUSAND));
+        placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(11235));
     }
     
     /**

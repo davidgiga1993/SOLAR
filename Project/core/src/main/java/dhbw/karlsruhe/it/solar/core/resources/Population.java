@@ -1,6 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
-import javax.xml.bind.annotation.XmlElement;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 
 /**
@@ -8,82 +10,29 @@ import javax.xml.bind.annotation.XmlElement;
  * @author Andi
  * Th, 19. March 2015
  */
-public class Population {
-    @XmlElement
-    private float value;
-    @XmlElement(name="pop_unit")
-    private Unit unit;
+public class Population extends BaseResource implements ResourceInterface {
 
-    public enum Unit {
-        THOUSAND,
-        MILLION,
-        BILLION
-    }
-    
-    public Population() {
-        
-    }
-
-    public Population(float numberOfColonists, Unit populationUnit) {
+    public Population(long numberOfColonists) {
         value = numberOfColonists;
-        unit = populationUnit;
-    }
-
-    private String formatValue() {
-        return String.format("%.02f", value);
-    }
-
-    public float inThousands() {
-        switch(unit) {
-        case THOUSAND:
-            return value;
-        case MILLION:
-            return value * 1000;
-        case BILLION:
-            return value * 1000 * 1000;
-        default:
-            return 0;
-        }
-    }
-
-    public float inMillions() {
-        switch(unit) {
-        case THOUSAND:
-            return value / 1000;
-        case MILLION:
-            return value;
-        case BILLION:
-            return value * 1000;
-        default:
-            return 0;
-        }
-    }
-
-    public float inBillions() {
-        switch(unit) {
-        case THOUSAND:
-            return value / (1000 * 1000);
-        case MILLION:
-            return value / 1000;
-        case BILLION:
-            return value;
-        default:
-            return 0;
-        }
     }
 
     @Override
-    public String toString() {
-        switch(unit) {
-        case THOUSAND:
-            return formatValue() + " thousand";
-        case MILLION:
-            return formatValue() + " million";
-        case BILLION:
-            return formatValue() + " billion";
-        default:
-            return "apparently zombified";
-        }
+    public long getValue() {
+        return value;
     }
 
+    @Override
+    public long getMaximum() {
+        return THOUSAND * TRILLION;
+    }
+
+    @Override
+    public TextureRegion getIcon() {
+        return TextureCacher.GAMEATLAS.findRegion("resource_placeholder");
+    }
+
+    @Override
+    protected String getUnitName() {
+        return "People";
+    }
 }

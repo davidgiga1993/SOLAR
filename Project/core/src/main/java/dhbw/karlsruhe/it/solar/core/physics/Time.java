@@ -4,10 +4,12 @@ import javax.xml.bind.annotation.XmlElement;
 
 public class Time {
     
-    private static final float HOURS_PER_DAY = 24f;
+    private static final int SECONDS_PER_MINUTE = 60;
+    private static final int MINUTES_PER_HOUR = 60;
+    private static final int HOURS_PER_DAY = 24;
     private static final float DAYS_PER_YEAR = 365.25f;
-    private static final float ONE_THOUSAND = 1000f;
-    private static final float ONE_MILLION = 1000000f;
+    private static final int ONE_THOUSAND = 1000;
+    private static final int ONE_MILLION = ONE_THOUSAND*ONE_THOUSAND;
     
     @XmlElement(name = "Time_Value")
     private float value;
@@ -22,9 +24,47 @@ public class Time {
     public Time() {
 
     }
+    
+    public float inSeconds() {
+        switch (unit) {
+            case SECONDS:
+                return value;
+            case MINUTES:
+                return value * SECONDS_PER_MINUTE;
+            case HOURS:
+                return value * SECONDS_PER_MINUTE * MINUTES_PER_HOUR;
+            case DAYS:
+                return value * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY;
+            case YEARS:
+                return value * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_YEAR;
+            default:
+                return Float.NaN;
+        }
+    }
+    
+    public float inMinutes() {
+        switch (unit) {
+            case SECONDS:
+                return value / SECONDS_PER_MINUTE;
+            case MINUTES:
+                return value;
+            case HOURS:
+                return value * MINUTES_PER_HOUR;
+            case DAYS:
+                return value * MINUTES_PER_HOUR * HOURS_PER_DAY;
+            case YEARS:
+                return value * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_YEAR;
+            default:
+                return Float.NaN;
+        }
+    }
 
     public float inHours() {
         switch (unit) {
+            case SECONDS:
+                return value / SECONDS_PER_MINUTE / MINUTES_PER_HOUR;
+            case MINUTES:
+                return value / MINUTES_PER_HOUR;
             case HOURS:
                 return value;
             case DAYS:
@@ -38,12 +78,16 @@ public class Time {
     
     public float inDays() {
         switch (unit) {
-            case HOURS:
-                return value / HOURS_PER_DAY;
-            case DAYS:
-                return value;
-            case YEARS:
-                return value * DAYS_PER_YEAR;
+        case SECONDS:
+            return value / SECONDS_PER_MINUTE / MINUTES_PER_HOUR / HOURS_PER_DAY;
+        case MINUTES:
+            return value / MINUTES_PER_HOUR / HOURS_PER_DAY;
+        case HOURS:
+            return value / HOURS_PER_DAY;
+        case DAYS:
+            return value;
+        case YEARS:
+            return value * DAYS_PER_YEAR;
             default:
                 return Float.NaN;
         }
@@ -51,12 +95,16 @@ public class Time {
     
     public float inYears() {
         switch (unit) {
-            case HOURS:
-                return value / ( DAYS_PER_YEAR * HOURS_PER_DAY );
-            case DAYS:
-                return value / DAYS_PER_YEAR;
-            case YEARS:
-                return value;
+        case SECONDS:
+            return value / DAYS_PER_YEAR / HOURS_PER_DAY / SECONDS_PER_MINUTE / MINUTES_PER_HOUR;
+        case MINUTES:
+            return value / DAYS_PER_YEAR / HOURS_PER_DAY / MINUTES_PER_HOUR;
+        case HOURS:
+            return value / DAYS_PER_YEAR / HOURS_PER_DAY;
+        case DAYS:
+            return value / DAYS_PER_YEAR;
+        case YEARS:
+            return value;
             default:
                 return Float.NaN;
         }
@@ -78,8 +126,14 @@ public class Time {
         }
         if( this.inHours() > HOURS_PER_DAY + 1 ) {
             return formatValue(this.inDays()) + " Days";
-        }      
-        return formatValue(this.inHours()) + " Hours";
+        }   
+        if( this.inMinutes() > MINUTES_PER_HOUR ) {
+            return formatValue(this.inHours()) + " Hours";
+        }  
+        if( this.inSeconds() > SECONDS_PER_MINUTE ) {
+            return formatValue(this.inMinutes()) + " Minutes";
+        }  
+        return formatValue(this.inSeconds()) + " Seconds";
     }
     
     private String formatValue(float value) {
@@ -87,6 +141,8 @@ public class Time {
     }
     
     public enum TimeUnit {
+        SECONDS,
+        MINUTES,
         HOURS,
         DAYS,
         YEARS

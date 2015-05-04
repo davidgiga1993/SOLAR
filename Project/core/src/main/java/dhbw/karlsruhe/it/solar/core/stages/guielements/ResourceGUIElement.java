@@ -4,20 +4,20 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 
+import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
-import dhbw.karlsruhe.it.solar.player.resources.Resource;
 
 /**
  * Created by Arga on 29.11.2014.
  */
 public class ResourceGUIElement extends HorizontalGroup implements GUIActor {
 
-    protected Resource resource;
+    protected ResourceInterface resource;
 
     protected GUILabel label;
     protected GUIImage sprite;
 
-    public ResourceGUIElement(Resource resource, Stage stage) {
+    public ResourceGUIElement(ResourceInterface resource, Stage stage) {
         super();
         this.resource = resource;
 
