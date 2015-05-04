@@ -392,8 +392,7 @@
             <ColonyName>Earth</ColonyName>
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
-                <value>7.125</value>
-                <pop_unit>BILLION</pop_unit>
+                <Value>7125000000</Value>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -433,8 +432,7 @@
             <ColonyName>Tranquility Base</ColonyName>
             <ColonyOwner>Player Two(AI)</ColonyOwner>
             <Population>
-                <value>31.415</value>
-                <pop_unit>MILLION</pop_unit>
+                <Value>3141000</Value>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -508,8 +506,7 @@
             <ColonyName>Utopia Planitia</ColonyName>
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
-                <value>1.1235</value>
-                <pop_unit>THOUSAND</pop_unit>
+                <Value>11235</Value>
             </Population>
         </PlayerColony>
     </AstronomicalBody>

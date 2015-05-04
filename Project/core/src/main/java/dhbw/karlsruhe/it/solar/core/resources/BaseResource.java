@@ -2,6 +2,11 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import javax.xml.bind.annotation.XmlElement;
 
+/**
+ * 
+ * @author Andi
+ * created 2015-05-04
+ */
 public abstract class BaseResource implements ResourceInterface {
     
     public final static long THOUSAND = 1000;
@@ -9,27 +14,14 @@ public abstract class BaseResource implements ResourceInterface {
     public final static long BILLION = THOUSAND * MILLION;
     public final static long TRILLION = THOUSAND * BILLION;
     
-    @XmlElement(name = "Population_Numbers")
+    @XmlElement(name = "Value")
     protected long value;
-    
-    protected String formatValue(float number) {
-        return String.format("%.02f", number);
-    }
-    
-    public float inThousands() {
-        return (float)value / (float)THOUSAND;
-    }
 
-    public float inMillions() {
-        return (float)value / (float)MILLION;
-    }
-
-    public float inBillions() {
-        return (float)value / (float)BILLION;
-    }
+    protected abstract String getUnitName();
     
-    public float inTrillions() {
-        return (float)value / (float)TRILLION;
+    @Override
+    public long getValue() {
+        return value;
     }
 
     @Override
@@ -49,6 +41,23 @@ public abstract class BaseResource implements ResourceInterface {
         return formatValue(value) + " " + getUnitName();      
     }
     
-    protected abstract String getUnitName();
-
+    private String formatValue(float number) {
+        return String.format("%.02f", number);
+    }
+    
+    private float inThousands() {
+        return (float)value / (float)THOUSAND;
+    }
+    
+    private float inMillions() {
+        return (float)value / (float)MILLION;
+    }
+    
+    private float inBillions() {
+        return (float)value / (float)BILLION;
+    }
+    
+    private float inTrillions() {
+        return (float)value / (float)TRILLION;
+    }
 }

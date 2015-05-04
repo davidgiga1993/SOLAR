@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 
 /**
+ * Establishes communication between resources and other game logic.
  * Created by Arga on 29.11.2014.
  */
 public interface ResourceInterface {
@@ -24,5 +25,11 @@ public interface ResourceInterface {
      * Returns the Texture's icon as a TextureRegion
      * @return
      */
-    TextureRegion getIcon();
+    public TextureRegion getIcon();
+    
+    /**
+     * Returns a string describing the current amount of that resource.
+     * @return
+     */
+    public String toString();
 }

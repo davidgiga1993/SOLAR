@@ -10,15 +10,10 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  * @author Andi
  * Th, 19. March 2015
  */
-public class Population extends BaseResource implements ResourceInterface {
+public class Population extends BaseResource {
 
     public Population(long numberOfColonists) {
         value = numberOfColonists;
-    }
-
-    @Override
-    public long getValue() {
-        return value;
     }
 
     @Override
