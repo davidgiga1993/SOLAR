@@ -1,6 +1,10 @@
 package dhbw.karlsruhe.it.solar.player;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.util.ArrayList;
@@ -14,16 +18,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
  */
 public class Player {
 
-    protected List<ResourceInterface> resources;
     private final int id;
-    private final Color playerColor;
     private final String name;
+    private final Color playerColor;
+    private final List<ResourceInterface> resources = new ArrayList<ResourceInterface>();
+    private final List<Colony> colonies = new ArrayList<Colony>();
+    private final List<SpaceUnit> units = new ArrayList<SpaceUnit>();
 
     Player(int id, String name, Color color) {
         this.id = id;
         this.name = name;
         this.playerColor = color;
-        resources = new ArrayList<ResourceInterface>();
     }
 
     @Override
@@ -61,5 +66,48 @@ public class Player {
             return Styles.MENUELABEL_GREEN;
         }
         return Styles.MENUELABEL_STYLE;
+    }
+    
+    /**
+     * Ownership of a colony is assigned to the player.
+     * @return 
+     */
+    public Colony establishColony(String colonyName, AstronomicalBody colonySite, Player player, Population colonists) {
+        Colony newColony = new Colony(colonyName, colonySite, player, colonists);
+        colonies.add(newColony);
+        return newColony;
+    }
+
+    public List<Colony> getColonies() {
+        return colonies;
+    }
+
+    public AstronomicalBody getCapitalWorld() {
+        return largestColony();
+    }
+
+    private AstronomicalBody largestColony() {
+        if( hasNoColonies()) {
+            return null;
+        }
+        Colony largestColony = colonies.get(0);
+        for(Colony colony : colonies) {
+            if(colony.getPopulation().getNumber() > largestColony.getPopulation().getNumber()) {
+                largestColony = colony;
+            }
+        }
+        return largestColony.getColonySite();
+    }
+
+    private boolean hasNoColonies() {
+        return 0 == colonies.size();
+    }
+
+    public List<SpaceUnit> getUnits() {
+        return units;
+    }
+
+    public void assignNewUnit(SpaceUnit newUnit) {
+        units.add(newUnit);
     }
 }

@@ -20,7 +20,7 @@ public abstract class BaseResource implements ResourceInterface {
     protected abstract String getUnitName();
     
     @Override
-    public long getValue() {
+    public long getNumber() {
         return value;
     }
 

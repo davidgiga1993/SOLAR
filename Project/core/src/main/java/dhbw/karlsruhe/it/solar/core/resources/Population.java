@@ -11,6 +11,10 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  * Th, 19. March 2015
  */
 public class Population extends BaseResource {
+    
+    public Population() {
+        
+    }
 
     public Population(long numberOfColonists) {
         value = numberOfColonists;

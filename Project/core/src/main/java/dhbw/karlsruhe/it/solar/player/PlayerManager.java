@@ -30,8 +30,8 @@ public class PlayerManager {
     // TODO: old method, remove
     public void initializePlayers() {
         createPlayer("Player One", Color.GREEN);
-        createPlayer("Player Two(AI)", Color.RED);
-        createPlayer("Player Three(AI)", Color.YELLOW);
+        createPlayer("Player Two (AI)", Color.RED);
+        createPlayer("Player Three (AI)", Color.YELLOW);
         playerOnThisPlatform = playersInGame.get(0);
     }
 

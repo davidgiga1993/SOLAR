@@ -28,9 +28,10 @@ public class Spaceship extends SpaceUnit  {
         newShip.setPosition(startlocation.x, startlocation.y);
         newShip.setKinematicPosition(startlocation);
         newShip.setDestination(startlocation);
+        owner.assignNewUnit(newShip);
         return newShip;
     }
-    
+
     @Override
     public String getTypeName() {
         return "Space Ship";

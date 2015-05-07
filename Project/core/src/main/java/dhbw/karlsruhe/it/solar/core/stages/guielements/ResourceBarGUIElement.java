@@ -28,7 +28,7 @@ public class ResourceBarGUIElement {
             int n = 0;
 
             @Override
-            public long getValue() {
+            public long getNumber() {
                 n++;
                 return n/10;
             }

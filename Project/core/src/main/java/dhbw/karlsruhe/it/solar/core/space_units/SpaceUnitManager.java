@@ -9,7 +9,6 @@ import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.savegames.MissionInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.OrbitalPropertyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;

@@ -13,7 +13,7 @@ public interface ResourceInterface {
      * Returns the current discrete amount of the resource.
      * @return
      */
-    public long getValue();
+    public long getNumber();
     
     /**
      * Gives the maximum allowed value that can be entered.

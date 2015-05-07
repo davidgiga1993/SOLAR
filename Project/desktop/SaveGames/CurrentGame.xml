@@ -19,7 +19,7 @@
         </PlayerColor>
     </Player>
     <Player>
-        <PlayerName>Player Two(AI)</PlayerName>
+        <PlayerName>Player Two (AI)</PlayerName>
         <PlayerColor>
             <r>1.0</r>
             <g>0.0</g>
@@ -28,7 +28,7 @@
         </PlayerColor>
     </Player>
     <Player>
-        <PlayerName>Player Three(AI)</PlayerName>
+        <PlayerName>Player Three (AI)</PlayerName>
         <PlayerColor>
             <r>1.0</r>
             <g>1.0</g>
@@ -69,7 +69,7 @@
     <SpaceUnit>
         <UnitName>Destiny</UnitName>
         <ShipType>Ship</ShipType>
-        <UnitOwner>Player Two(AI)</UnitOwner>
+        <UnitOwner>Player Two (AI)</UnitOwner>
         <AbsolutePosition>
             <x>1549.505</x>
             <y>1049.505</y>
@@ -99,7 +99,7 @@
     <SpaceUnit>
         <UnitName>Babylon 5</UnitName>
         <ShipType>Station</ShipType>
-        <UnitOwner>Player Two(AI)</UnitOwner>
+        <UnitOwner>Player Two (AI)</UnitOwner>
         <OrbitalProperties>
             <Primary>Earth</Primary>
             <OrbitalRadius>
@@ -430,7 +430,7 @@
         </OrbitalProperties>
         <PlayerColony>
             <ColonyName>Tranquility Base</ColonyName>
-            <ColonyOwner>Player Two(AI)</ColonyOwner>
+            <ColonyOwner>Player Two (AI)</ColonyOwner>
             <Population>
                 <Value>3141000</Value>
             </Population>

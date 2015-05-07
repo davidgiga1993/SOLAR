@@ -28,6 +28,7 @@ public class Spacestation extends SpaceUnit  {
         newStation.setPosition(startlocation.x, startlocation.y);
         newStation.setKinematicPosition(startlocation);
         newStation.setDestination(startlocation);
+        owner.assignNewUnit(newStation);
         return newStation;
     }
 

@@ -52,4 +52,8 @@ public class Colony implements Ownable {
     public Population getPopulation() {
         return population;
     }
+
+    public AstronomicalBody getColonySite() {
+        return primary;
+    }
 }

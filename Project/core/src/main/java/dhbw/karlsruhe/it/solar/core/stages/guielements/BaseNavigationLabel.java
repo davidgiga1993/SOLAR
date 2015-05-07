@@ -23,12 +23,14 @@ public class BaseNavigationLabel extends Label {
     protected SolarActor actor;
     protected CharSequence name;
     protected String tab;
+    private BaseNavigationTable container;
 
-    public BaseNavigationLabel(CharSequence text, String tab, SolarActor actor) {
+    public BaseNavigationLabel(CharSequence text, String tab, SolarActor actor, BaseNavigationTable container) {
         super(tab + text, Styles.MENUELABEL_STYLE);
         this.actor = actor;
         this.tab = tab;
         this.name = text;
+        this.container = container;
         addListener(new NavigationLabelListener());
     }
     
@@ -74,7 +76,7 @@ public class BaseNavigationLabel extends Label {
         } else {
             setText(tab + "+ " + name);
         }
-
+        container.buildTable();
     }
 
     public void setChildrenVisibility(boolean newVisibiilty) {

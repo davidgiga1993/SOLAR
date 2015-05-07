@@ -10,35 +10,43 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
+import dhbw.karlsruhe.it.solar.player.Player;
 
 public class ColonyNavigationTable extends BaseNavigationTable {
-
-    private List<AstronomicalBody> allColonies = new ArrayList<AstronomicalBody>();
 
     public ColonyNavigationTable() {
         super();
     }
 
+    /**
+     * Constructs a hierarchy of players and the colonies they own.
+     */
     public void buildColonyList() {
-        GameStartStage gameStartStage = (GameStartStage) SolarEngine.get().getStage("GameStartStage");
-        for (Actor actor : gameStartStage.getActors()) {
-            if (actor instanceof AstronomicalBody && ((AstronomicalBody) actor).isColonized()) {
-                addColonyToTable(actor);
-            }
+        allLabels.clear();
+        for (Player player : ((GameStartStage)SolarEngine.get().getStage("GameStartStage")).getPlayers()) {
+            BaseNavigationLabel playerLabel = createPlayerLabel(player, this);
+            allLabels.add(playerLabel);  
+            playerLabel.setChildren(createPlayerColonyLabels(player));         
         }
         buildTable();
     }
 
-    private void addColonyToTable(Actor actor) {
-        if(!allColonies.contains(actor))    {
-            allColonies.add((AstronomicalBody) actor);
-            allLabels.add(new BaseNavigationLabel(((AstronomicalBody)actor).getColonyName(), "", (SolarActor) actor));    
+    private List<BaseNavigationLabel> createPlayerColonyLabels(Player player) {
+        List<BaseNavigationLabel> playerColonies = new ArrayList<BaseNavigationLabel>();
+        for(Colony colony : player.getColonies()) {
+            playerColonies.add(produceColonyLabel(colony));
         }
+        return playerColonies;
+    }
+
+    private BaseNavigationLabel produceColonyLabel(Colony colony) {
+        BaseNavigationLabel label = new BaseNavigationLabel(colony.getName(), TAB, colony.getColonySite(), this);
+        allLabels.add(label);
+        return label;     
     }
     
     private void removeSingleColony(Actor actor) {
-        allColonies.remove(actor);
         allLabels.remove(getLabelOfColony(((AstronomicalBody)actor).getColonyName()));
     }
 

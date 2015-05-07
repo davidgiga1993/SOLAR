@@ -40,7 +40,7 @@ public class BodyNavigationTable extends BaseNavigationTable {
         List<BaseNavigationLabel> result = new ArrayList<BaseNavigationLabel>();
         String tab = "";
         for (int i = 0; i < depth; i++) {
-            tab += "    ";
+            tab += TAB;
         }
 
         for (AstronomicalBody child : group) {
@@ -48,7 +48,7 @@ public class BodyNavigationTable extends BaseNavigationTable {
                 continue;
             }
             // Process current level
-            BodyNavigationLabel label = new BodyNavigationLabel(child.getName(), tab, child, this);
+            BaseNavigationLabel label = new BaseNavigationLabel(child.getName(), tab, child, this);
             allLabels.add(label);
 
             // Proceed with next level

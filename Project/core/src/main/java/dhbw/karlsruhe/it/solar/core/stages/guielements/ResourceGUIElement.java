@@ -42,6 +42,6 @@ public class ResourceGUIElement extends HorizontalGroup implements GUIActor {
     }
 
     protected CharSequence buildLabelString() {
-        return resource.getValue() + " / " + resource.getMaximum();
+        return resource.getNumber() + " / " + resource.getMaximum();
     }
 }

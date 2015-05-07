@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
+import dhbw.karlsruhe.it.solar.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.List;
  * Created by Arga on 22.02.2015.
  */
 public abstract class BaseNavigationTable extends Table implements Telegraph {
+    
+    protected static final String TAB = "    ";
+    
     List<BaseNavigationLabel> allLabels = new ArrayList<BaseNavigationLabel>();
 
     public BaseNavigationTable() {
@@ -46,5 +50,10 @@ public abstract class BaseNavigationTable extends Table implements Telegraph {
             }
         }
         return null;
+    }
+    
+
+    protected BaseNavigationLabel createPlayerLabel(Player player, BaseNavigationTable container) {
+        return new BaseNavigationLabel(player.getName(), "", player.getCapitalWorld(), container);
     }
 }
