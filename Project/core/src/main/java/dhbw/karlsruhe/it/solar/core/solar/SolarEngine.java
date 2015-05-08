@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
 import dhbw.karlsruhe.it.solar.core.stages.BaseStage;
 import dhbw.karlsruhe.it.solar.core.stages.GameHUDStage;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.StageManager;
 import dhbw.karlsruhe.it.solar.core.stages.StartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
@@ -291,6 +292,18 @@ public class SolarEngine extends Game implements InputProcessor {
 
     public void initSettings(InfoBarManagerSettings settings) {
         ((GameHUDStage)getStage("GameHUD")).initSettings(settings);
+    }
+
+    public GameStartStage getGameStage() {
+        return (GameStartStage)getStage("GameStartStage");
+    }
+
+    public void updateResourceBar() {
+        getGameHUDStage().update();
+    }
+
+    private GameHUDStage getGameHUDStage() {
+        return (GameHUDStage)getStage("GameHUD");
     }
    
 }

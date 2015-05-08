@@ -11,7 +11,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InformationBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBar;
-import dhbw.karlsruhe.it.solar.core.stages.guielements.TimeTable;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialog;
 
 public class GameHUDStage extends BaseGUIStage{
@@ -19,7 +19,7 @@ public class GameHUDStage extends BaseGUIStage{
     private static final int INFOBAR_HEIGHT = 160;
     private static final int RESSOURCEBAR_HEIGHT = 50;
     private NavigationBar navigationBar;
-    private Table resourceBar;
+    private ResourceBar resourceBar;
     private InformationBar bottomBar;
 
     private Table guiTable;
@@ -42,10 +42,10 @@ super(solarEngine, "GameHUD");
         }
 
         navigationBar = new NavigationBar();
-        resourceBar = new TimeTable();
+        resourceBar = new ResourceBar(se.getGameStage());
         bottomBar = new InformationBar();
 
-        guiTable.add(resourceBar).align(Align.right).colspan(2).height(RESSOURCEBAR_HEIGHT).expandX();
+        guiTable.add(resourceBar).align(Align.right).colspan(2).height(RESSOURCEBAR_HEIGHT).expandX().fillX();
         guiTable.row();
         guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(calculateNavbarMaxHeight()).top().fill().left();
         guiTable.add(new Actor()).expandX();
@@ -85,6 +85,10 @@ super(solarEngine, "GameHUD");
 
     public void initSettings(InfoBarManagerSettings settings) {
         bottomBar.initSettings(settings);
+    }
+
+    public void update() {
+        resourceBar.update();
     }
 }
 

@@ -110,4 +110,20 @@ public class Player {
     public void assignNewUnit(SpaceUnit newUnit) {
         units.add(newUnit);
     }
+
+    public Population getTotalPopulation() {
+        Population totalPopulation = new Population(0);
+        for(Colony colony : colonies) {
+            totalPopulation.addColonists(colony.getPopulation());
+        }
+        return totalPopulation;
+    }
+
+    public void abandonColony(Colony colony) {
+        colonies.remove(colony);
+    }
+
+    public void removeShip(SpaceUnit spaceUnit) {
+        units.remove(spaceUnit);
+    }
 }

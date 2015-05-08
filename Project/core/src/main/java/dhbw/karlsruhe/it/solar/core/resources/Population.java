@@ -34,4 +34,8 @@ public class Population extends BaseResource {
     protected String getUnitName() {
         return "People";
     }
+
+    public void addColonists(Population population) {
+        this.value += population.getNumber();
+    }
 }

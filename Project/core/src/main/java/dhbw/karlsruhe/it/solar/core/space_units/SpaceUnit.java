@@ -339,6 +339,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
 
     public void removeShip() {
         ((GameStartStage)getStage()).removeShip(this);
+        owner.removeShip(this);
     }
 
     public Player getOwner() {

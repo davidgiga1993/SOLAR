@@ -46,7 +46,8 @@ public class Colony implements Ownable {
     }
 
     public void abandonColony() {
-        primary.abandonColony();  
+        primary.abandonColony();
+        owner.abandonColony(this);
     }
 
     public Population getPopulation() {
