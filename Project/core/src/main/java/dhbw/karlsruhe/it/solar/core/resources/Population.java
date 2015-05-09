@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 
 
 /**
@@ -13,7 +14,7 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  */
 public class Population extends BaseResource {
     
-    private final static float BASE_POPULATION_GROWTH_RATE = 0.02f;
+    private ResourceDepot livingSpace;
     
     public Population() {
         
@@ -42,8 +43,8 @@ public class Population extends BaseResource {
     protected void updateProductionStatistic() {
         if(isANewDay()) {
             updateValuesOfLastMonthList();
+            changeLastMonth = populationGrowthFormula();
         }
-        changeLastMonth = populationGrowthFormula();
     }
     
     @Override
@@ -58,16 +59,9 @@ public class Population extends BaseResource {
     }
 
     private float growthRateFormula(Time deltaT) {
-        if(needsAreMet()) {
-            return deltaT.inYears() * BASE_POPULATION_GROWTH_RATE;
-        }
-        return 0;
+        return deltaT.inYears() * new PopulationNeeds(livingSpace).calculateGrowthRate();
     }
-
-    private boolean needsAreMet() {
-        return true;
-    }
-
+    
     private float populationGrowthFormula() {
         return (float)((double)((value - valuesOfLastMonth.get(0))) / (double)((valuesOfLastMonth.get(0) * ((double)valuesOfLastMonth.size()) / ((double)Time.DAYS_PER_YEAR))));
     }
@@ -84,5 +78,9 @@ public class Population extends BaseResource {
      */
     public void empty() {
         value = 0;
+    }
+
+    public void changeLivingSpace(Colony colony) {
+        livingSpace = colony;
     }
 }
