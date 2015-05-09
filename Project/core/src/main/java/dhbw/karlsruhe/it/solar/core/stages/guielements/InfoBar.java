@@ -34,6 +34,7 @@ public class InfoBar extends Window implements Telegraph {
     public final static String TAB = "            ";
      
     private final Table contentTable = new Table();
+    private final InfoBarOverviewTable overview = new InfoBarOverviewTable();
     private final InfoBarManager manager = new InfoBarManager();
     
     private SolarActor selectedActor; 
@@ -66,7 +67,7 @@ public class InfoBar extends Window implements Telegraph {
     public void loadContent() {
         contentTable.clear();
         contentTable.add(loadImage()).width(IMAGE_WIDTH).height(IMAGE_WIDTH).left();
-        contentTable.add(new InfoBarOverviewTable(selectedActor)).width(InfoBar.CELL_WIDTH).padLeft(InfoBar.PADDING);
+        contentTable.add(overview.displayOverview(selectedActor)).width(InfoBar.CELL_WIDTH).padLeft(InfoBar.PADDING);
         contentTable.add(manager.displayContent(selectedActor)).expandX().fillX().padLeft(InfoBar.PADDING);
         contentTable.add(new InfoBarActionTable(selectedActor)).padLeft(PADDING).right();
     }
@@ -77,7 +78,10 @@ public class InfoBar extends Window implements Telegraph {
     }
 
     public InfoBar update() {
-        manager.reload();
+        if(null!=selectedActor) {
+            overview.reload();
+            manager.reload();            
+        }
         return this;
     }
 

@@ -25,25 +25,6 @@ public class InfoBarOverviewTable extends Table {
     private LabelStyle style = Styles.MENUELABEL_STYLE;
     private final TextButton showOnMap = new TextButton("Show On Map", Styles.TOOLTIPSKIN);
     
-    public InfoBarOverviewTable(SolarActor selectedActor) {
-        this.selectedActor = selectedActor; 
-        clear();
-        add(new NavBarBaseLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
-        row();
-        add(new Label("Type: ",style)).left();
-        add(new Label(selectedActor.getTypeName(),style)).right();
-        row();
-        generateMissionInfo();
-        row();
-        add(showOnMap).align(Align.center).colspan(2).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
-        showOnMap.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                 onShowOnMapClick();
-            }
-         });
-    }
-    
     private void generateMissionInfo() {
         if(((Orbiter)selectedActor).isInOrbit()) {
             add(new Label("In Orbit of: ",style)).left();
@@ -77,5 +58,29 @@ public class InfoBarOverviewTable extends Table {
 
     private void onShowOnMapClick() {
         GameStartStage.inputListenerMoveCamera(selectedActor);            
+    }
+
+    public InfoBarOverviewTable displayOverview(SolarActor selectedActor) {
+        this.selectedActor = selectedActor; 
+        reload();
+        return this;
+    }
+
+    public void reload() {
+        clear();
+        add(new NavBarBaseLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
+        row();
+        add(new Label("Type: ",style)).left();
+        add(new Label(selectedActor.getTypeName(),style)).right();
+        row();
+        generateMissionInfo();
+        row();
+        add(showOnMap).align(Align.center).colspan(2).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
+        showOnMap.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                 onShowOnMapClick();
+            }
+         });
     }
 }
