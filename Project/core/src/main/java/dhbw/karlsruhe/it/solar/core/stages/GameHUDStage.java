@@ -89,6 +89,7 @@ super(solarEngine, "GameHUD");
 
     public void update() {
         resourceBar.update();
+        bottomBar.update();
     }
 }
 
