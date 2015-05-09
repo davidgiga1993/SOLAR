@@ -23,8 +23,9 @@ public abstract class BaseResource implements ResourceInterface {
     
     @XmlElement(name = "Value")
     protected long value;
-    @XmlElement(name = "Value_this_Year")
+    @XmlElement(name = "Values_Of_Last_Month")
     protected List<Long> valuesOfLastMonth = new ArrayList<Long>();
+    @XmlElement(name = "Time_Of_Last_Resource_Update")
     protected Time oldGameTime;
     protected float changeLastMonth;
     

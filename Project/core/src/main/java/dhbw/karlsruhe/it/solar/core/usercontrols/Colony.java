@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
@@ -20,7 +21,7 @@ public class Colony implements Ownable, ResourceDepot {
     private String name;
     private Player owner;
     private AstronomicalBody primary;
-    private final List<ResourceInterface> resources = new ArrayList<ResourceInterface>();
+    private final List<BaseResource> resources = new ArrayList<BaseResource>();
     
     public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
@@ -36,6 +37,10 @@ public class Colony implements Ownable, ResourceDepot {
     @Override
     public boolean isOwnedBy(Player player) {
         return owner.equals(player);
+    }
+    
+    public List<BaseResource> getResources() {
+        return resources;
     }
     
     public Player getOwner() {

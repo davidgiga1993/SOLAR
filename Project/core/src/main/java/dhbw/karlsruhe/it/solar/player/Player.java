@@ -1,9 +1,9 @@
 package dhbw.karlsruhe.it.solar.player;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
-import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -22,7 +22,7 @@ public class Player implements ResourceDepot {
     private final int id;
     private final String name;
     private final Color playerColor;
-    private final List<ResourceInterface> resources = new ArrayList<ResourceInterface>();
+    private final List<BaseResource> resources = new ArrayList<BaseResource>();
     private final List<Colony> colonies = new ArrayList<Colony>();
     private final List<SpaceUnit> units = new ArrayList<SpaceUnit>();
 
@@ -139,5 +139,17 @@ public class Player implements ResourceDepot {
             ((Population)resources.get(POPULATION_RESOURCE_ID)).addToValue(colony.getPopulation());
         }
         resources.get(POPULATION_RESOURCE_ID).updateResource();
+    }
+
+    @Override
+    public List<BaseResource> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<BaseResource> resources) {
+        this.resources.clear();
+        for(BaseResource resource : resources) {
+            this.resources.add(resource);
+        }
     }
 }

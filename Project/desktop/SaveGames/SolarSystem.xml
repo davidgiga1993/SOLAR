@@ -17,24 +17,38 @@
             <b>0.0</b>
             <a>1.0</a>
         </PlayerColor>
+        <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="population">
+            <Value>7125011235</Value>
+            <Values_Of_Last_Month>7125011235</Values_Of_Last_Month>
+            <Time_Of_Last_Resource_Update>
+                <Time_Value>0.0</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Time_Of_Last_Resource_Update>
+        </Player_Resources>
     </Player>
     <Player>
-        <PlayerName>Player Two(AI)</PlayerName>
+        <PlayerName>Player Two (AI)</PlayerName>
         <PlayerColor>
             <r>1.0</r>
             <g>0.0</g>
             <b>0.0</b>
             <a>1.0</a>
         </PlayerColor>
+        <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="population">
+            <Value>0</Value>
+        </Player_Resources>
     </Player>
     <Player>
-        <PlayerName>Player Three(AI)</PlayerName>
+        <PlayerName>Player Three (AI)</PlayerName>
         <PlayerColor>
             <r>1.0</r>
             <g>1.0</g>
             <b>0.0</b>
             <a>1.0</a>
         </PlayerColor>
+        <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="population">
+            <Value>0</Value>
+        </Player_Resources>
     </Player>
     <SpaceUnit>
         <UnitName>Event Horizon</UnitName>
@@ -69,7 +83,7 @@
     <SpaceUnit>
         <UnitName>Destiny</UnitName>
         <ShipType>Ship</ShipType>
-        <UnitOwner>Player Two(AI)</UnitOwner>
+        <UnitOwner>Player Two (AI)</UnitOwner>
         <AbsolutePosition>
             <x>1549.505</x>
             <y>1049.505</y>
@@ -99,7 +113,7 @@
     <SpaceUnit>
         <UnitName>Babylon 5</UnitName>
         <ShipType>Station</ShipType>
-        <UnitOwner>Player Two(AI)</UnitOwner>
+        <UnitOwner>Player Two (AI)</UnitOwner>
         <OrbitalProperties>
             <Primary>Earth</Primary>
             <OrbitalRadius>
@@ -393,6 +407,11 @@
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
                 <Value>7125000000</Value>
+                <Values_Of_Last_Month>7125000000</Values_Of_Last_Month>
+                <Time_Of_Last_Resource_Update>
+                    <Time_Value>0.0</Time_Value>
+                    <Time_Unit>DAYS</Time_Unit>
+                </Time_Of_Last_Resource_Update>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -430,9 +449,14 @@
         </OrbitalProperties>
         <PlayerColony>
             <ColonyName>Tranquility Base</ColonyName>
-            <ColonyOwner>Player Two(AI)</ColonyOwner>
+            <ColonyOwner>Player Two (AI)</ColonyOwner>
             <Population>
                 <Value>3141000</Value>
+                <Values_Of_Last_Month>3141000</Values_Of_Last_Month>
+                <Time_Of_Last_Resource_Update>
+                    <Time_Value>0.0</Time_Value>
+                    <Time_Unit>DAYS</Time_Unit>
+                </Time_Of_Last_Resource_Update>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -507,6 +531,11 @@
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
                 <Value>11235</Value>
+                <Values_Of_Last_Month>11235</Values_Of_Last_Month>
+                <Time_Of_Last_Resource_Update>
+                    <Time_Value>0.0</Time_Value>
+                    <Time_Unit>DAYS</Time_Unit>
+                </Time_Of_Last_Resource_Update>
             </Population>
         </PlayerColony>
     </AstronomicalBody>

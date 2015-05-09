@@ -52,7 +52,8 @@ public class PlayerManager {
     }
 
     public void createNewPlayer(PlayerInfo player) {
-        createPlayer(player.getPlayerName(), player.getPlayerColor());  
+        Player newPlayer = createPlayer(player.getPlayerName(), player.getPlayerColor());
+        newPlayer.setResources(player.getResources());
     }
     
     public void initPlayerOnThisPlatform(int number) {
