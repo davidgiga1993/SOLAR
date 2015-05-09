@@ -192,7 +192,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         inputListener.handleContinuousInput(delta);
         float newDelta = delta * GameStartStage.gameSpeed;
         GAMETIME.addDays(new Time(newDelta,TimeUnit.DAYS));
-        se.updateResourceBar();
+        se.updateResources();
         super.act(newDelta);
     }
 
@@ -511,5 +511,11 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     public void initGameTime(Time gameTimeElapsed) {
         GAMETIME.initGameTime(gameTimeElapsed);
+    }
+
+    public void updateProduction() {
+        for(Player player : getPlayers()) {
+            player.updateProduction();
+        }
     }
 }

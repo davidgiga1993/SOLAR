@@ -7,7 +7,7 @@ public class Time {
     private static final int SECONDS_PER_MINUTE = 60;
     private static final int MINUTES_PER_HOUR = 60;
     private static final int HOURS_PER_DAY = 24;
-    private static final float DAYS_PER_YEAR = 365.25f;
+    public static final float DAYS_PER_YEAR = 365.25f;
     private static final int ONE_THOUSAND = 1000;
     private static final int ONE_MILLION = ONE_THOUSAND*ONE_THOUSAND;
     

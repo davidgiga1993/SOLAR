@@ -41,6 +41,12 @@ public class ResourceBarGUIElement {
             public TextureRegion getIcon() {
                 return TextureCacher.GAMEATLAS.findRegion("resource_placeholder");
             }
+
+            @Override
+            public void updateResource() {
+                // TODO Auto-generated method stub
+                
+            }
         };
         resourceBar.add(new ResourceGUIElement(re, stage));
     }

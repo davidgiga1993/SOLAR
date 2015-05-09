@@ -298,12 +298,12 @@ public class SolarEngine extends Game implements InputProcessor {
         return (GameStartStage)getStage("GameStartStage");
     }
 
-    public void updateResourceBar() {
+    public void updateResources() {
         getGameHUDStage().update();
+        getGameStage().updateProduction();
     }
 
     private GameHUDStage getGameHUDStage() {
         return (GameHUDStage)getStage("GameHUD");
     }
-   
 }

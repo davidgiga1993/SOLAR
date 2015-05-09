@@ -16,10 +16,10 @@ public abstract class BaseResource implements ResourceInterface {
     
     @XmlElement(name = "Value")
     protected long value;
-
+    protected float changeLastMonth;
+    
     protected abstract String getUnitName();
     
-    @Override
     public long getNumber() {
         return value;
     }
@@ -27,20 +27,31 @@ public abstract class BaseResource implements ResourceInterface {
     @Override
     public String toString() {
         if(inTrillions() > 0.1f) {
-            return formatValue(inTrillions()) + " Trillion " + getUnitName();
+            return constructResourceStatement("Trillion", inTrillions());
         }
         if(inBillions() > 0.1f) {
-            return formatValue(inBillions()) + " Billion " + getUnitName();
+            return constructResourceStatement("Billion", inBillions());
         }
         if(inMillions() > 0.1f) {
-            return formatValue(inMillions()) + " Million " + getUnitName();
+            return constructResourceStatement("Million", inMillions());
         }
         if(inThousands() > 0.1f) {
-            return formatValue(inThousands()) + " k " + getUnitName();
+            return constructResourceStatement("k", inThousands());
         }
-        return formatValue(value) + " " + getUnitName();      
+        return constructResourceStatement("", value);   
+    }
+
+    private String constructResourceStatement(String unit, float value) {
+        return formatValue(value) + " " + unit + " " + getUnitName() + " ( " + changeLastMonth() + " %)";
     }
     
+    private String changeLastMonth() {
+        if(changeLastMonth >= 0) {
+            return "+" + formatValue(changeLastMonth * 100);            
+        }
+        return formatValue(changeLastMonth * 100);  
+    }
+
     private String formatValue(float number) {
         return String.format("%.02f", number);
     }
@@ -60,4 +71,10 @@ public abstract class BaseResource implements ResourceInterface {
     private float inTrillions() {
         return (float)value / (float)TRILLION;
     }
+    
+    public void updateResource() {
+        updateProductionStatistic();
+    }
+    
+    protected abstract void updateProductionStatistic();
 }

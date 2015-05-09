@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.player;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
@@ -16,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 /**
  * Created by Arga on 29.11.2014.
  */
-public class Player {
+public class Player implements ResourceDepot {
 
     private final int id;
     private final String name;
@@ -29,6 +30,7 @@ public class Player {
         this.id = id;
         this.name = name;
         this.playerColor = color;
+        this.resources.add(POPULATION_RESOURCE_ID, new Population(0));
     }
 
     @Override
@@ -111,19 +113,31 @@ public class Player {
         units.add(newUnit);
     }
 
-    public Population getTotalPopulation() {
-        Population totalPopulation = new Population(0);
-        for(Colony colony : colonies) {
-            totalPopulation.addColonists(colony.getPopulation());
-        }
-        return totalPopulation;
-    }
-
     public void abandonColony(Colony colony) {
         colonies.remove(colony);
     }
 
     public void removeShip(SpaceUnit spaceUnit) {
         units.remove(spaceUnit);
+    }
+
+    public void updateProduction() {
+        for(Colony colony : colonies) {
+            colony.updateProduction();
+        }
+    }
+
+    @Override
+    public Population getPopulation() {
+        updateTotalPopulation();
+        return (Population)resources.get(POPULATION_RESOURCE_ID);
+    }
+
+    private void updateTotalPopulation() {
+        ((Population)resources.get(POPULATION_RESOURCE_ID)).empty();
+        for(Colony colony : colonies) {
+            ((Population)resources.get(POPULATION_RESOURCE_ID)).addColonists(colony.getPopulation());
+        }
+        resources.get(POPULATION_RESOURCE_ID).updateResource();
     }
 }

@@ -1,7 +1,12 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
+import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -10,22 +15,22 @@ import dhbw.karlsruhe.it.solar.player.Player;
  * @author Andi
  * Th, 19. March, 2015
  */
-public class Colony implements Ownable {
+public class Colony implements Ownable, ResourceDepot {
     
     private String name;
     private Player owner;
     private AstronomicalBody primary;
-    private Population population;
+    private final List<ResourceInterface> resources = new ArrayList<ResourceInterface>();
     
     public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
         owner = colonyFounder;
-        population = colonists;
+        resources.add(POPULATION_RESOURCE_ID, colonists);
         primary = colonyPlace;
     }
     
     public String getPopulationNumbers() {
-        return population.toString();
+        return getPopulation().toString();
     }
 
     @Override
@@ -51,10 +56,16 @@ public class Colony implements Ownable {
     }
 
     public Population getPopulation() {
-        return population;
+        return (Population)resources.get(POPULATION_RESOURCE_ID);
     }
 
     public AstronomicalBody getColonySite() {
         return primary;
+    }
+
+    public void updateProduction() {
+        for (ResourceInterface resource : resources ) {
+            resource.updateResource();
+        }
     }
 }

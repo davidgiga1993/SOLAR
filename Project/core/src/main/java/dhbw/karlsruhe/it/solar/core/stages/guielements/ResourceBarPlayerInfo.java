@@ -31,7 +31,7 @@ public class ResourceBarPlayerInfo extends Table {
             add(new Label(playerOnThisPlatform.getName(), playerOnThisPlatform.getColorStyle())).expand().right(); 
             row(); 
             add(new Label("Total Population: ", style)).left();
-            add(new Label(playerOnThisPlatform.getTotalPopulation().toString(), style)).expand().right(); 
+            add(new Label(playerOnThisPlatform.getPopulation().toString(), style)).expand().right(); 
         }
     }
 }

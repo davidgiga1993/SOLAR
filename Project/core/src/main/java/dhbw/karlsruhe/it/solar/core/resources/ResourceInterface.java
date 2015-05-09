@@ -32,4 +32,9 @@ public interface ResourceInterface {
      * @return
      */
     public String toString();
+
+    /**
+     * Resource value is updated based on the passage of time since the last update.
+     */
+    public void updateResource();
 }
