@@ -14,6 +14,9 @@ public class PopulationNeeds {
      * @return
      */
     public float calculateGrowthRate() {
-        return BASE_POPULATION_GROWTH_RATE;
+        if(livingSpace.isPermanentHabitat()) {
+            return BASE_POPULATION_GROWTH_RATE;            
+        }
+        return 0;
     }
 }

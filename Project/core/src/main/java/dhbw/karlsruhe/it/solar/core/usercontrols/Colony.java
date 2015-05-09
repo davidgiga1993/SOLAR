@@ -28,6 +28,7 @@ public class Colony implements Ownable, ResourceDepot {
         name = colonyName;
         owner = colonyFounder;
         resources.add(POPULATION_RESOURCE_ID, colonists);
+        setAsLivingSpace();
         primary = colonyPlace;
     }
     
@@ -39,7 +40,16 @@ public class Colony implements Ownable, ResourceDepot {
     public boolean isOwnedBy(Player player) {
         return owner.equals(player);
     }
-    
+
+    @Override
+    public boolean isPermanentHabitat() {
+        return true;
+    }
+
+    @Override
+    public void setAsLivingSpace() {
+        getPopulation().setAsLivingSpace(this);
+    }    
     public List<BaseResource> getResources() {
         return resources;
     }

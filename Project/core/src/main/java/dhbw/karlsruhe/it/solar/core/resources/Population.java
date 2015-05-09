@@ -83,4 +83,8 @@ public class Population extends BaseResource {
     public void changeLivingSpace(Colony colony) {
         livingSpace = colony;
     }
+
+    public void setAsLivingSpace(ResourceDepot depot) {
+        livingSpace = depot;
+    }
 }

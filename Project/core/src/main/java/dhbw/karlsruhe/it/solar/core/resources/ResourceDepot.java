@@ -22,4 +22,15 @@ public interface ResourceDepot {
      * @return
      */
     public Population getPopulation();
+
+    /**
+     * Indicates whether the depot has a permanent living space designed as the residence of its inhabitants or whether it is a temporary accommodation such as passenger ship cabins.
+     * @return
+     */
+    public boolean isPermanentHabitat();
+    
+    /**
+     * Sets this resource depot as the current living space of a population.
+     */
+    public void setAsLivingSpace();
 }

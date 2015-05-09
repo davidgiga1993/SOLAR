@@ -33,6 +33,7 @@ public class Player implements ResourceDepot {
         this.name = name;
         this.playerColor = color;
         this.resources.add(POPULATION_RESOURCE_ID, new Population(0));
+        setAsLivingSpace();
     }
 
     @Override
@@ -47,7 +48,11 @@ public class Player implements ResourceDepot {
     public int hashCode() {
         return id;
     }
-    
+
+    @Override
+    public boolean isPermanentHabitat() {
+        return false;
+    } 
     public Color getPlayerColor() {
         return playerColor;
     }
@@ -153,5 +158,10 @@ public class Player implements ResourceDepot {
         for(BaseResource resource : resources) {
             this.resources.add(resource);
         }
+    }
+
+    @Override
+    public void setAsLivingSpace() {
+        ((Population)resources.get(POPULATION_RESOURCE_ID)).setAsLivingSpace(this);
     }
 }
