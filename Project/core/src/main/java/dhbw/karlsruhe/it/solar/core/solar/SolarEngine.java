@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.stages.BackgroundStage;
 import dhbw.karlsruhe.it.solar.core.stages.BaseStage;
 import dhbw.karlsruhe.it.solar.core.stages.GameHUDStage;
@@ -298,9 +299,9 @@ public class SolarEngine extends Game implements InputProcessor {
         return (GameStartStage)getStage("GameStartStage");
     }
 
-    public void updateResources() {
+    public void update(Time deltaT) {
         getGameHUDStage().update();
-        getGameStage().updateProduction();
+        getGameStage().updateProduction(deltaT);
     }
 
     private GameHUDStage getGameHUDStage() {

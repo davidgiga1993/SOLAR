@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
@@ -68,9 +69,9 @@ public class Colony implements Ownable, ResourceDepot {
         return primary;
     }
 
-    public void updateProduction() {
+    public void updateProduction(Time deltaT) {
         for (ResourceInterface resource : resources ) {
-            resource.updateResource();
+            resource.updateResource(deltaT);
         }
     }
 }

@@ -23,6 +23,8 @@ public abstract class BaseResource implements ResourceInterface {
     
     @XmlElement(name = "Value")
     protected long value;
+    @XmlElement(name = "Remaining_Fraction_Of_Value_Currently_Produced")
+    protected float valueRemainingFraction;
     @XmlElement(name = "Values_Of_Last_Month")
     protected List<Long> valuesOfLastMonth = new ArrayList<Long>();
     @XmlElement(name = "Time_Of_Last_Resource_Update")
@@ -33,12 +35,15 @@ public abstract class BaseResource implements ResourceInterface {
     
     protected abstract void updateProductionStatistic();
     
+    protected abstract void updateProduction(Time deltaT);
+    
     public long getNumber() {
         return value;
     }
     
-    public void updateResource() {
+    public void updateResource(Time deltaT) {
         updateProductionStatistic();
+        updateProduction(deltaT);
     }
     
     public void addToValue(BaseResource resource) {

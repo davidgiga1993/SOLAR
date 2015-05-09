@@ -16,7 +16,7 @@ public class CalendarTime {
         cal.setLenient(true);
     }
 
-    public void addDays(Time daysToAdd) {
+    public void addTime(Time daysToAdd) {
         int temp = (int) (currentDay.inDays() + daysToAdd.inDays()) - (int) currentDay.inDays();
         cal.add(GregorianCalendar.DATE, temp);
         currentDay.add(daysToAdd);

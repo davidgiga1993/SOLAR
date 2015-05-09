@@ -2,6 +2,8 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import dhbw.karlsruhe.it.solar.core.physics.Time;
+
 
 /**
  * Establishes communication between resources and other game logic.
@@ -36,7 +38,7 @@ public interface ResourceInterface {
     /**
      * Resource value is updated based on the passage of time since the last update.
      */
-    public void updateResource();
+    public void updateResource(Time deltaT);
     
     /**
      * A specific amount is added to the resource value

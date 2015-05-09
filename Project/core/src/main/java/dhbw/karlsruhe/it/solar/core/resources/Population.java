@@ -13,6 +13,8 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  */
 public class Population extends BaseResource {
     
+    private final static float BASE_POPULATION_GROWTH_RATE = 0.02f;
+    
     public Population() {
         
     }
@@ -21,23 +23,49 @@ public class Population extends BaseResource {
         value = numberOfColonists;
     }
 
+    @Override
     public long getMaximum() {
         return THOUSAND * TRILLION;
     }
 
+    @Override
     public TextureRegion getIcon() {
         return TextureCacher.GAMEATLAS.findRegion("resource_placeholder");
     }
 
+    @Override
     protected String getUnitName() {
         return "";
     }
-    
+ 
+    @Override
     protected void updateProductionStatistic() {
         if(isANewDay()) {
             updateValuesOfLastMonthList();
         }
         changeLastMonth = populationGrowthFormula();
+    }
+    
+    @Override
+    protected void updateProduction(Time deltaT) {
+        valueRemainingFraction += (float)value * growthRateFormula(deltaT);
+        addWholeFractionsToValue();
+    }
+
+    private void addWholeFractionsToValue() {
+        value += (long)valueRemainingFraction;
+        valueRemainingFraction -= (long)valueRemainingFraction; 
+    }
+
+    private float growthRateFormula(Time deltaT) {
+        if(needsAreMet()) {
+            return deltaT.inYears() * BASE_POPULATION_GROWTH_RATE;
+        }
+        return 0;
+    }
+
+    private boolean needsAreMet() {
+        return true;
     }
 
     private float populationGrowthFormula() {
