@@ -1,16 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 
 
 /**
@@ -19,10 +12,6 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
  * Th, 19. March 2015
  */
 public class Population extends BaseResource {
-    
-    @XmlElement(name = "Value_this_Year")
-    private List<Long> valuesOfLastMonth = new ArrayList<Long>();
-    private Time oldGameTime;
     
     public Population() {
         
@@ -43,28 +32,12 @@ public class Population extends BaseResource {
     protected String getUnitName() {
         return "";
     }
-
-    /**
-     * Adds an additional population of colonists to the existing population.
-     * @param population
-     */
-    public void addColonists(Population population) {
-        this.value += population.getNumber();
-    }
     
     protected void updateProductionStatistic() {
         if(isANewDay()) {
             updateValuesOfLastMonthList();
         }
         changeLastMonth = populationGrowthFormula();
-    }
-
-    private boolean isANewDay() {        
-        if( oldGameTime == null || (int)GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int)oldGameTime.inDays()) {
-            oldGameTime = new Time(GameStartStage.GAMETIME.getGameTimeElapsed().inDays(),TimeUnit.DAYS);
-            return true;
-        }
-        return false;
     }
 
     private float populationGrowthFormula() {

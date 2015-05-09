@@ -18,7 +18,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  * @author Andi
  * Substantially revised by Andi on: 2015-04-19
  */
-public class InformationBar extends Window implements Telegraph {
+public class InfoBar extends Window implements Telegraph {
    
     public final static int IMAGE_WIDTH = 130;
     public final static int CELL_WIDTH = 215;
@@ -39,7 +39,7 @@ public class InformationBar extends Window implements Telegraph {
     private SolarActor selectedActor; 
     Image selectedImage = new Image();
 
-    public InformationBar() {
+    public InfoBar() {
         super("Information", Styles.TOOLTIPSKIN);
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
         
@@ -66,8 +66,8 @@ public class InformationBar extends Window implements Telegraph {
     public void loadContent() {
         contentTable.clear();
         contentTable.add(loadImage()).width(IMAGE_WIDTH).height(IMAGE_WIDTH).left();
-        contentTable.add(new InfoBarOverviewTable(selectedActor)).width(InformationBar.CELL_WIDTH).padLeft(InformationBar.PADDING);
-        contentTable.add(manager.displayContent(selectedActor)).expandX().fillX().padLeft(InformationBar.PADDING);
+        contentTable.add(new InfoBarOverviewTable(selectedActor)).width(InfoBar.CELL_WIDTH).padLeft(InfoBar.PADDING);
+        contentTable.add(manager.displayContent(selectedActor)).expandX().fillX().padLeft(InfoBar.PADDING);
         contentTable.add(new InfoBarActionTable(selectedActor)).padLeft(PADDING).right();
     }
 
@@ -76,7 +76,7 @@ public class InformationBar extends Window implements Telegraph {
         return selectedImage;  
     }
 
-    public InformationBar update() {
+    public InfoBar update() {
         manager.reload();
         return this;
     }

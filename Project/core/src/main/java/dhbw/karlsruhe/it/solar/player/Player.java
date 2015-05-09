@@ -136,7 +136,7 @@ public class Player implements ResourceDepot {
     private void updateTotalPopulation() {
         ((Population)resources.get(POPULATION_RESOURCE_ID)).empty();
         for(Colony colony : colonies) {
-            ((Population)resources.get(POPULATION_RESOURCE_ID)).addColonists(colony.getPopulation());
+            ((Population)resources.get(POPULATION_RESOURCE_ID)).addToValue(colony.getPopulation());
         }
         resources.get(POPULATION_RESOURCE_ID).updateResource();
     }

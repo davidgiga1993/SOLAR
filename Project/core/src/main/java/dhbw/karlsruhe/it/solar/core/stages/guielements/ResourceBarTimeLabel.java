@@ -9,9 +9,9 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 /**
  * Created by Arga on 04.03.2015.
  */
-public class TimeLabel extends Label {
+public class ResourceBarTimeLabel extends Label {
 
-    public TimeLabel() {
+    public ResourceBarTimeLabel() {
         super("", Styles.DEFAULTLABEL_STYLE);
         setAlignment(Align.right);
     }

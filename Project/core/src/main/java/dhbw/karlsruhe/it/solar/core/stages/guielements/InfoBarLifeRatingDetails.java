@@ -48,24 +48,24 @@ public class InfoBarLifeRatingDetails extends Table {
         add(new Label(rating.getFuzzyInfo(),rating.getStyle())).right(); 
         row();
         add(new Label("Gravity: ", style)).left();
-        add(new Label(gravity.getPhyicalValue(), style)).padLeft(InformationBar.PADDING);
-        add(new Label(gravity.getFuzzyInfo(), gravity.getStyle())).padLeft(InformationBar.PADDING).right();
+        add(new Label(gravity.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
+        add(new Label(gravity.getFuzzyInfo(), gravity.getStyle())).padLeft(InfoBar.PADDING).right();
         row();
         add(new Label("Temperature: ", style)).left();
-        add(new Label(temperatures.getPhyicalValue(), style)).padLeft(InformationBar.PADDING);
-        add(new Label(temperatures.getFuzzyInfo(), temperatures.getStyle())).padLeft(InformationBar.PADDING).right();
+        add(new Label(temperatures.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
+        add(new Label(temperatures.getFuzzyInfo(), temperatures.getStyle())).padLeft(InfoBar.PADDING).right();
         row();
         add(new Label("Atmosphere: ", style)).left();
-        add(new Label(atmosphere.getPhyicalValue(), style)).padLeft(InformationBar.PADDING);
-        add(new Label(atmosphere.getFuzzyInfo(), atmosphere.getStyle())).padLeft(InformationBar.PADDING).right();
+        add(new Label(atmosphere.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
+        add(new Label(atmosphere.getFuzzyInfo(), atmosphere.getStyle())).padLeft(InfoBar.PADDING).right();
         row();
         add(new Label("Hydrosphere: ", style)).left();
-        add(new Label(hydrosphere.getPhyicalValue(), style)).padLeft(InformationBar.PADDING);
-        add(new Label(hydrosphere.getFuzzyInfo(), hydrosphere.getStyle())).padLeft(InformationBar.PADDING).right();
+        add(new Label(hydrosphere.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
+        add(new Label(hydrosphere.getFuzzyInfo(), hydrosphere.getStyle())).padLeft(InfoBar.PADDING).right();
         row();
         add(new Label("Biosphere: ", style)).left();
-        add(new Label(biosphere.getPhyicalValue(), style)).padLeft(InformationBar.PADDING);
-        add(new Label(biosphere.getFuzzyInfo(), biosphere.getStyle())).padLeft(InformationBar.PADDING).right();
+        add(new Label(biosphere.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
+        add(new Label(biosphere.getFuzzyInfo(), biosphere.getStyle())).padLeft(InfoBar.PADDING).right();
     }
 
 }

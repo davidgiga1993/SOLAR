@@ -96,11 +96,11 @@ public class InfoBarManagerSettings {
     }
 
     private int calculateNumberOfInfoColumnsWhichCanBeDisplayed() {      
-        return calculateCurrentFreeWidth() / (InformationBar.CELL_WIDTH + InformationBar.PADDING);
+        return calculateCurrentFreeWidth() / (InfoBar.CELL_WIDTH + InfoBar.PADDING);
     }
 
     private int calculateCurrentFreeWidth() {
-        return GameHUDStage.calculateInfoBarMaxWidth() - InformationBar.MINIMUM_WIDTH + InformationBar.CELL_WIDTH + InformationBar.PADDING;
+        return GameHUDStage.calculateInfoBarMaxWidth() - InfoBar.MINIMUM_WIDTH + InfoBar.CELL_WIDTH + InfoBar.PADDING;
     }
     
     public enum LastInfoBarButtonToggled {

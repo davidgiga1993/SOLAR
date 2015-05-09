@@ -40,25 +40,25 @@ public class InfoBarManager extends Table {
             displaySpaceUnitInformation();
             return;
         }
-        add(table.empty()).padLeft(InformationBar.PADDING).expandX().fillX();
+        add(table.empty()).padLeft(InfoBar.PADDING).expandX().fillX();
     }
 
     private void displaySpaceUnitInformation() {
-        add(table.displaySpaceUnitInformation((SpaceUnit)selectedActor)).padLeft(InformationBar.PADDING).expandX().fillX();
+        add(table.displaySpaceUnitInformation((SpaceUnit)selectedActor)).padLeft(InfoBar.PADDING).expandX().fillX();
     }
 
     private void displayAstroBodyInformation() {
-        add(table.displayAstroBodyInformation((AstronomicalBody)selectedActor)).padLeft(InformationBar.PADDING).expandX().fillX();
+        add(table.displayAstroBodyInformation((AstronomicalBody)selectedActor)).padLeft(InfoBar.PADDING).expandX().fillX();
     }
 
     public void createInfoBarMenueButtons() {
         buttons.clear();
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
-            add(buttons.displayAstroBodyButtons()).width(InformationBar.MENUE_CELL_WIDTH).left();
+            add(buttons.displayAstroBodyButtons()).width(InfoBar.MENUE_CELL_WIDTH).left();
             return;
         }
         if(selectedActor instanceof SpaceUnit) {
-            add(buttons.displaySpaceUnitButtons()).width(InformationBar.MENUE_CELL_WIDTH).left();
+            add(buttons.displaySpaceUnitButtons()).width(InfoBar.MENUE_CELL_WIDTH).left();
             return;
         }
         add(buttons.empty()).left();

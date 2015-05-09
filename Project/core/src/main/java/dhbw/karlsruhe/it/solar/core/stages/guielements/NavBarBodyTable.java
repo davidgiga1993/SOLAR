@@ -15,9 +15,9 @@ import java.util.List;
 /**
  * Created by Arga on 22.02.2015.
  */
-public class BodyNavigationTable extends BaseNavigationTable {
+public class NavBarBodyTable extends NavBarBaseTable {
 
-    public BodyNavigationTable() {
+    public NavBarBodyTable() {
         super();
     }
 
@@ -36,8 +36,8 @@ public class BodyNavigationTable extends BaseNavigationTable {
         invalidate();
     }
 
-    protected List<BaseNavigationLabel> buildHierarchy(List<AstronomicalBody> group, int depth) {
-        List<BaseNavigationLabel> result = new ArrayList<BaseNavigationLabel>();
+    protected List<NavBarBaseLabel> buildHierarchy(List<AstronomicalBody> group, int depth) {
+        List<NavBarBaseLabel> result = new ArrayList<NavBarBaseLabel>();
         String tab = "";
         for (int i = 0; i < depth; i++) {
             tab += TAB;
@@ -48,11 +48,11 @@ public class BodyNavigationTable extends BaseNavigationTable {
                 continue;
             }
             // Process current level
-            BaseNavigationLabel label = new BaseNavigationLabel(child.getName(), tab, child, this);
+            NavBarBaseLabel label = new NavBarBaseLabel(child.getName(), tab, child, this);
             allLabels.add(label);
 
             // Proceed with next level
-            List<BaseNavigationLabel> children = buildHierarchy(child.getSatellites(), depth+1);
+            List<NavBarBaseLabel> children = buildHierarchy(child.getSatellites(), depth+1);
             label.setChildren(children);
 
             if(depth > 0) {

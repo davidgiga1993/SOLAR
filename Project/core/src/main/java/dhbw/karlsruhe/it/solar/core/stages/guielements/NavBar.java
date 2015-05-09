@@ -9,7 +9,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 /**
  * Created by Arga on 22.02.2015.
  */
-public class NavigationBar extends Window {
+public class NavBar extends Window {
 
     protected Table layoutTable;
 
@@ -18,12 +18,12 @@ public class NavigationBar extends Window {
     private final ScrollPane bodyPane;
     private final ScrollPane colonyPane;
 
-    private final BodyNavigationTable bodyTable;
-    private final ShipNavigationTable shipTable;
-    private final ColonyNavigationTable colonyTable;
+    private final NavBarBodyTable bodyTable;
+    private final NavBarShipTable shipTable;
+    private final NavBarColonyTable colonyTable;
 
 
-    public NavigationBar() {
+    public NavBar() {
         super("Navigation", Styles.TOOLTIPSKIN);
         setMovable(false);
 
@@ -53,9 +53,9 @@ public class NavigationBar extends Window {
         });
 
         // To be replaced with actual NavigationTables
-        bodyTable = new BodyNavigationTable();
-        shipTable = new ShipNavigationTable();
-        colonyTable = new ColonyNavigationTable();
+        bodyTable = new NavBarBodyTable();
+        shipTable = new NavBarShipTable();
+        colonyTable = new NavBarColonyTable();
 
         bodyPane = new ScrollPane(bodyTable);
         shipPane = new ScrollPane(shipTable);

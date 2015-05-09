@@ -16,16 +16,16 @@ import java.util.List;
 /**
  * Created by Arga on 22.02.2015.
  */
-public class BaseNavigationLabel extends Label {
-    protected List<BaseNavigationLabel> children = new ArrayList<BaseNavigationLabel>();
+public class NavBarBaseLabel extends Label {
+    protected List<NavBarBaseLabel> children = new ArrayList<NavBarBaseLabel>();
     protected boolean childrenVisible = true;
-    protected BaseNavigationLabel parent;
+    protected NavBarBaseLabel parent;
     protected SolarActor actor;
     protected CharSequence name;
     protected String tab;
-    private BaseNavigationTable container;
+    private NavBarBaseTable container;
 
-    public BaseNavigationLabel(CharSequence text, String tab, SolarActor actor, BaseNavigationTable container) {
+    public NavBarBaseLabel(CharSequence text, String tab, SolarActor actor, NavBarBaseTable container) {
         super(tab + text, Styles.MENUELABEL_STYLE);
         this.actor = actor;
         this.tab = tab;
@@ -34,7 +34,7 @@ public class BaseNavigationLabel extends Label {
         addListener(new NavigationLabelListener());
     }
     
-    public BaseNavigationLabel(CharSequence text, SolarActor actor, LabelStyle style) {
+    public NavBarBaseLabel(CharSequence text, SolarActor actor, LabelStyle style) {
         super(text, style);
         this.actor = actor;
         this.tab = "";
@@ -42,9 +42,9 @@ public class BaseNavigationLabel extends Label {
         addListener(new NavigationLabelListener());
     }
 
-    public void setChildren(List<BaseNavigationLabel> children) {
+    public void setChildren(List<NavBarBaseLabel> children) {
         this.children = children;
-        for (BaseNavigationLabel child : children) {
+        for (NavBarBaseLabel child : children) {
             child.parent = this;
         }
         if (!children.isEmpty()) {
@@ -80,7 +80,7 @@ public class BaseNavigationLabel extends Label {
     }
 
     public void setChildrenVisibility(boolean newVisibiilty) {
-        for (BaseNavigationLabel child : children) {
+        for (NavBarBaseLabel child : children) {
             child.setVisible(newVisibiilty);
         }
     }

@@ -19,7 +19,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 /**
  * Created by argannor on 05.03.15.
  */
-public class TimeTable extends Table implements Telegraph {
+public class ResourceBarTimeTable extends Table implements Telegraph {
 
     TextButton fasterButton = new TextButton(">>", Styles.TOOLTIPSKIN);
     TextButton slowerButton = new TextButton("<<", Styles.TOOLTIPSKIN);
@@ -29,9 +29,9 @@ public class TimeTable extends Table implements Telegraph {
 
     Label speedLabel = new Label(String.valueOf(GameStartStage.getGameSpeed()), Styles.DEFAULTLABEL_STYLE);
     Label dateLabel = new Label("Date: ", Styles.DEFAULTLABEL_STYLE);
-    TimeLabel timeLabel = new TimeLabel();
+    ResourceBarTimeLabel timeLabel = new ResourceBarTimeLabel();
 
-    public TimeTable() {
+    public ResourceBarTimeTable() {
         super();
 
         align(Align.top);

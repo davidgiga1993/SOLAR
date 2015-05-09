@@ -28,14 +28,14 @@ public class InfoBarOverviewTable extends Table {
     public InfoBarOverviewTable(SolarActor selectedActor) {
         this.selectedActor = selectedActor; 
         clear();
-        add(new BaseNavigationLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
+        add(new NavBarBaseLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
         row();
         add(new Label("Type: ",style)).left();
         add(new Label(selectedActor.getTypeName(),style)).right();
         row();
         generateMissionInfo();
         row();
-        add(showOnMap).align(Align.center).colspan(2).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
+        add(showOnMap).align(Align.center).colspan(2).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
         showOnMap.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -71,7 +71,7 @@ public class InfoBarOverviewTable extends Table {
             row();
             return;
         }
-        add(new BaseNavigationLabel(((Orbiter)selectedActor).getNameOfPrimary(),((Orbiter)selectedActor).getPrimary(), style)).right().expand();
+        add(new NavBarBaseLabel(((Orbiter)selectedActor).getNameOfPrimary(),((Orbiter)selectedActor).getPrimary(), style)).right().expand();
         row();
     }
 

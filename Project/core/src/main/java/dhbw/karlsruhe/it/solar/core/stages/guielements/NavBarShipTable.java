@@ -14,9 +14,9 @@ import dhbw.karlsruhe.it.solar.player.Player;
 /**
  * Created by Arga on 22.02.2015.
  */
-public class ShipNavigationTable extends BaseNavigationTable {
+public class NavBarShipTable extends NavBarBaseTable {
 
-    public ShipNavigationTable() {
+    public NavBarShipTable() {
         super();
     }
 
@@ -26,23 +26,23 @@ public class ShipNavigationTable extends BaseNavigationTable {
     public void buildShipList() {
         allLabels.clear();
         for (Player player : ((GameStartStage)SolarEngine.get().getStage("GameStartStage")).getPlayers()) {
-            BaseNavigationLabel playerLabel = createPlayerLabel(player, this);
+            NavBarBaseLabel playerLabel = createPlayerLabel(player, this);
             allLabels.add(playerLabel);  
             playerLabel.setChildren(createPlayerUnitLabels(player));
         }
         buildTable();
     }
 
-    private List<BaseNavigationLabel> createPlayerUnitLabels(Player player) {
-        List<BaseNavigationLabel> playerUnits = new ArrayList<BaseNavigationLabel>();
+    private List<NavBarBaseLabel> createPlayerUnitLabels(Player player) {
+        List<NavBarBaseLabel> playerUnits = new ArrayList<NavBarBaseLabel>();
         for(SpaceUnit unit : player.getUnits()) {
             playerUnits.add(produceUnitLabel(unit));
         }
         return playerUnits;
     }
 
-    private BaseNavigationLabel produceUnitLabel(SpaceUnit unit) {
-        BaseNavigationLabel label = new BaseNavigationLabel(unit.getName(), TAB, unit, this);
+    private NavBarBaseLabel produceUnitLabel(SpaceUnit unit) {
+        NavBarBaseLabel label = new NavBarBaseLabel(unit.getName(), TAB, unit, this);
         allLabels.add(label);
         return label;    
     }

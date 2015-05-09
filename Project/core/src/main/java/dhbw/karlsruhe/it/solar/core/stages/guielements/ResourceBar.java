@@ -12,11 +12,11 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 public class ResourceBar extends Table {
     
     private ResourceBarPlayerInfo playerInfo;
-    private TimeTable timeTable;
+    private ResourceBarTimeTable timeTable;
     
     public ResourceBar(GameStartStage stage) {
         playerInfo = new ResourceBarPlayerInfo(stage);
-        timeTable = new TimeTable();
+        timeTable = new ResourceBarTimeTable();
         add(playerInfo).left();
         add().expandX().fillX();
         add(timeTable).right();

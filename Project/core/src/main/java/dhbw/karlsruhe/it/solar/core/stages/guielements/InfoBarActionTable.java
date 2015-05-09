@@ -50,11 +50,11 @@ public class InfoBarActionTable extends Table {
     }
 
     private void addButtons() {
-        add(orbitalInsertion).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
+        add(orbitalInsertion).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
         row();
-        add(colonize).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
+        add(colonize).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
         row();
-        add(selfDestruct).width(InformationBar.ACTION_BUTTON_WIDTH).height(InformationBar.ACTION_BUTTON_HEIGHT).pad(InformationBar.ACTION_BUTTON_PADDING);
+        add(selfDestruct).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
         hideAllButtons();
     }
     

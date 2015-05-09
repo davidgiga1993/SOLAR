@@ -37,4 +37,9 @@ public interface ResourceInterface {
      * Resource value is updated based on the passage of time since the last update.
      */
     public void updateResource();
+    
+    /**
+     * A specific amount is added to the resource value
+     */
+    public void addToValue(BaseResource resource);
 }

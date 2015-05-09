@@ -31,7 +31,7 @@ public class InfoBarMenueButtons extends Table {
     }
 
     public InfoBarMenueButtons displaySpaceUnitButtons() {
-        add(displayExtraData).width(InformationBar.MENUE_BUTTON_WIDTH).height(InformationBar.MENUE_BUTTON_HEIGHT).pad(InformationBar.MENUE_BUTTON_PADDING);
+        add(displayExtraData).width(InfoBar.MENUE_BUTTON_WIDTH).height(InfoBar.MENUE_BUTTON_HEIGHT).pad(InfoBar.MENUE_BUTTON_PADDING);
         row();
         return this;
     }
@@ -42,11 +42,11 @@ public class InfoBarMenueButtons extends Table {
     }
 
     private void addAstroButtons() {
-        add(displayExtraData).width(InformationBar.MENUE_BUTTON_WIDTH).height(InformationBar.MENUE_BUTTON_HEIGHT).pad(InformationBar.MENUE_BUTTON_PADDING);
+        add(displayExtraData).width(InfoBar.MENUE_BUTTON_WIDTH).height(InfoBar.MENUE_BUTTON_HEIGHT).pad(InfoBar.MENUE_BUTTON_PADDING);
         row();
-        add(displayLifeRating).width(InformationBar.MENUE_BUTTON_WIDTH).height(InformationBar.MENUE_BUTTON_HEIGHT).pad(InformationBar.MENUE_BUTTON_PADDING);
+        add(displayLifeRating).width(InfoBar.MENUE_BUTTON_WIDTH).height(InfoBar.MENUE_BUTTON_HEIGHT).pad(InfoBar.MENUE_BUTTON_PADDING);
         row();   
-        add(displayColonyDetails).width(InformationBar.MENUE_BUTTON_WIDTH).height(InformationBar.MENUE_BUTTON_HEIGHT).pad(InformationBar.MENUE_BUTTON_PADDING);
+        add(displayColonyDetails).width(InfoBar.MENUE_BUTTON_WIDTH).height(InfoBar.MENUE_BUTTON_HEIGHT).pad(InfoBar.MENUE_BUTTON_PADDING);
         row();   
     }
 

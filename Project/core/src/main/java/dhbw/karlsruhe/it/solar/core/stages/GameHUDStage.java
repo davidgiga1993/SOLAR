@@ -9,8 +9,8 @@ import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
-import dhbw.karlsruhe.it.solar.core.stages.guielements.InformationBar;
-import dhbw.karlsruhe.it.solar.core.stages.guielements.NavigationBar;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBar;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.NavBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialog;
 
@@ -18,9 +18,9 @@ public class GameHUDStage extends BaseGUIStage{
 
     private static final int INFOBAR_HEIGHT = 160;
     private static final int RESSOURCEBAR_HEIGHT = 50;
-    private NavigationBar navigationBar;
+    private NavBar navigationBar;
     private ResourceBar resourceBar;
-    private InformationBar bottomBar;
+    private InfoBar bottomBar;
 
     private Table guiTable;
 
@@ -41,9 +41,9 @@ super(solarEngine, "GameHUD");
             guiTable.debug();
         }
 
-        navigationBar = new NavigationBar();
+        navigationBar = new NavBar();
         resourceBar = new ResourceBar(se.getGameStage());
-        bottomBar = new InformationBar();
+        bottomBar = new InfoBar();
 
         guiTable.add(resourceBar).align(Align.right).colspan(2).height(RESSOURCEBAR_HEIGHT).expandX().fillX();
         guiTable.row();
@@ -66,10 +66,10 @@ super(solarEngine, "GameHUD");
     
     public static int calculateInfoBarMaxWidth() {
         int currentWidth = Gdx.graphics.getWidth();
-        if(currentWidth > InformationBar.MINIMUM_WIDTH) {
+        if(currentWidth > InfoBar.MINIMUM_WIDTH) {
             return currentWidth;
         }
-        return InformationBar.MINIMUM_WIDTH;
+        return InfoBar.MINIMUM_WIDTH;
     }
 
     @Override

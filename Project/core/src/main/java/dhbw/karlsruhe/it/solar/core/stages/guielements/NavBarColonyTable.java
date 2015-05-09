@@ -13,9 +13,9 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 import dhbw.karlsruhe.it.solar.player.Player;
 
-public class ColonyNavigationTable extends BaseNavigationTable {
+public class NavBarColonyTable extends NavBarBaseTable {
 
-    public ColonyNavigationTable() {
+    public NavBarColonyTable() {
         super();
     }
 
@@ -25,23 +25,23 @@ public class ColonyNavigationTable extends BaseNavigationTable {
     public void buildColonyList() {
         allLabels.clear();
         for (Player player : ((GameStartStage)SolarEngine.get().getStage("GameStartStage")).getPlayers()) {
-            BaseNavigationLabel playerLabel = createPlayerLabel(player, this);
+            NavBarBaseLabel playerLabel = createPlayerLabel(player, this);
             allLabels.add(playerLabel);  
             playerLabel.setChildren(createPlayerColonyLabels(player));         
         }
         buildTable();
     }
 
-    private List<BaseNavigationLabel> createPlayerColonyLabels(Player player) {
-        List<BaseNavigationLabel> playerColonies = new ArrayList<BaseNavigationLabel>();
+    private List<NavBarBaseLabel> createPlayerColonyLabels(Player player) {
+        List<NavBarBaseLabel> playerColonies = new ArrayList<NavBarBaseLabel>();
         for(Colony colony : player.getColonies()) {
             playerColonies.add(produceColonyLabel(colony));
         }
         return playerColonies;
     }
 
-    private BaseNavigationLabel produceColonyLabel(Colony colony) {
-        BaseNavigationLabel label = new BaseNavigationLabel(colony.getName(), TAB, colony.getColonySite(), this);
+    private NavBarBaseLabel produceColonyLabel(Colony colony) {
+        NavBarBaseLabel label = new NavBarBaseLabel(colony.getName(), TAB, colony.getColonySite(), this);
         allLabels.add(label);
         return label;     
     }
@@ -50,8 +50,8 @@ public class ColonyNavigationTable extends BaseNavigationTable {
         allLabels.remove(getLabelOfColony(((AstronomicalBody)actor).getColonyName()));
     }
 
-    private BaseNavigationLabel getLabelOfColony(String colonyName) {
-        for (BaseNavigationLabel colonyLabel : allLabels) {
+    private NavBarBaseLabel getLabelOfColony(String colonyName) {
+        for (NavBarBaseLabel colonyLabel : allLabels) {
             if(colonyLabel.name.equals(colonyName)) {
                 return colonyLabel;
             }

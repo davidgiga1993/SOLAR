@@ -1,6 +1,13 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlElement;
+
+import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 
 /**
  * 
@@ -16,12 +23,25 @@ public abstract class BaseResource implements ResourceInterface {
     
     @XmlElement(name = "Value")
     protected long value;
+    @XmlElement(name = "Value_this_Year")
+    protected List<Long> valuesOfLastMonth = new ArrayList<Long>();
+    protected Time oldGameTime;
     protected float changeLastMonth;
     
     protected abstract String getUnitName();
     
+    protected abstract void updateProductionStatistic();
+    
     public long getNumber() {
         return value;
+    }
+    
+    public void updateResource() {
+        updateProductionStatistic();
+    }
+    
+    public void addToValue(BaseResource resource) {
+        value += resource.getNumber();
     }
 
     @Override
@@ -39,6 +59,14 @@ public abstract class BaseResource implements ResourceInterface {
             return constructResourceStatement("k", inThousands());
         }
         return constructResourceStatement("", value);   
+    }
+    
+    protected boolean isANewDay() {        
+        if( oldGameTime == null || (int)GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int)oldGameTime.inDays()) {
+            oldGameTime = new Time(GameStartStage.GAMETIME.getGameTimeElapsed().inDays(),TimeUnit.DAYS);
+            return true;
+        }
+        return false;
     }
 
     private String constructResourceStatement(String unit, float value) {
@@ -71,10 +99,4 @@ public abstract class BaseResource implements ResourceInterface {
     private float inTrillions() {
         return (float)value / (float)TRILLION;
     }
-    
-    public void updateResource() {
-        updateProductionStatistic();
-    }
-    
-    protected abstract void updateProductionStatistic();
 }

@@ -15,13 +15,13 @@ import java.util.List;
 /**
  * Created by Arga on 22.02.2015.
  */
-public abstract class BaseNavigationTable extends Table implements Telegraph {
+public abstract class NavBarBaseTable extends Table implements Telegraph {
     
     protected static final String TAB = "    ";
     
-    List<BaseNavigationLabel> allLabels = new ArrayList<BaseNavigationLabel>();
+    List<NavBarBaseLabel> allLabels = new ArrayList<NavBarBaseLabel>();
 
-    public BaseNavigationTable() {
+    public NavBarBaseTable() {
         super();
         top();
         left();
@@ -33,7 +33,7 @@ public abstract class BaseNavigationTable extends Table implements Telegraph {
 
     public void buildTable() {
         this.clearChildren();
-        for (BaseNavigationLabel label : allLabels) {
+        for (NavBarBaseLabel label : allLabels) {
             if (label.isVisible()) {
                 this.add(label).row();
             }
@@ -43,8 +43,8 @@ public abstract class BaseNavigationTable extends Table implements Telegraph {
 
     public abstract boolean handleMessage(Telegram telegram);
     
-    protected BaseNavigationLabel getLabelOfActor(Actor actor) {
-        for (BaseNavigationLabel unitLabel : allLabels) {
+    protected NavBarBaseLabel getLabelOfActor(Actor actor) {
+        for (NavBarBaseLabel unitLabel : allLabels) {
             if(unitLabel.isOfActor(actor)) {
                 return unitLabel;
             }
@@ -53,7 +53,7 @@ public abstract class BaseNavigationTable extends Table implements Telegraph {
     }
     
 
-    protected BaseNavigationLabel createPlayerLabel(Player player, BaseNavigationTable container) {
-        return new BaseNavigationLabel(player.getName(), "", player.getCapitalWorld(), container);
+    protected NavBarBaseLabel createPlayerLabel(Player player, NavBarBaseTable container) {
+        return new NavBarBaseLabel(player.getName(), "", player.getCapitalWorld(), container);
     }
 }
