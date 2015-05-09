@@ -12,11 +12,11 @@ public class Albedo {
     }
     
     public Albedo(float value) {
-        if(0 < value && value < 1) {
+        if(0 <= value && value <= 1) {
             this.value = value;
             return;
         }
-        this.value = 0;
+        throw new IllegalArgumentException("Bond Albedo value can only lie between 0 and 1");
     }
 
     public float getAlbedoValue() {
@@ -25,11 +25,11 @@ public class Albedo {
     
     @Override
     public String toString() {
-        return formatValue(value) + " Bond";
+        return formatValue(value*100) + " % Reflection";
     }
    
     private String formatValue(float value) {
-        return String.format("%.02f", value);
+        return String.format("%.01f", value);
     }
 
 }

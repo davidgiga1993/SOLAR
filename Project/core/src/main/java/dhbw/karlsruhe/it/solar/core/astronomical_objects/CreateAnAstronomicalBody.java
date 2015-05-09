@@ -65,7 +65,7 @@ public final class CreateAnAstronomicalBody {
      * @return
      */
     public CreatableProperties whichIsStationaryAt(AstronomicalBody system) {
-        this.orbitalProperties = new OrbitalProperties(system, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle(0));
+        this.orbitalProperties = new OrbitalProperties(system, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle());
         return new CreatableProperties();
     }
     

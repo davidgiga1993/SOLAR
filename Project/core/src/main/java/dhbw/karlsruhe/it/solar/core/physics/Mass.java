@@ -24,12 +24,16 @@ public class Mass {
     }
 
     public Mass(float value, MassUnit unit) {
-        setValue(value, unit);
+       setValue(value, unit);
     }
 
     public void setValue(float value, MassUnit unit) {
-        this.value = value;
-        this.unit = unit;
+        if(0<=value) {
+            this.value = value;
+            this.unit = unit;
+            return;
+        }
+        throw new IllegalArgumentException("Length must be positive value or zero!");
     }
 
     /**

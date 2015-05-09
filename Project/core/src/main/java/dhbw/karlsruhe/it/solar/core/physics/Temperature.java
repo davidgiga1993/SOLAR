@@ -16,8 +16,12 @@ public class Temperature {
     }
    
     public Temperature(float value, TempUnit unit) {
-        this.value = value;
-        this.unit = unit;
+        if( 0 <= value ) {
+            this.value = value;
+            this.unit = unit;
+            return;
+        }
+        throw new IllegalArgumentException("Temperature must be positive value or zero!");
     }
    
     public float inKelvin() {

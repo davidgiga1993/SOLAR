@@ -12,8 +12,12 @@ public class SurfaceGravity {
     }
     
     public SurfaceGravity(float value, GravUnit unit) {
-        this.value = value;
-        this.unit = unit;
+        if( 0 <= value ) {
+            this.value = value;
+            this.unit = unit;
+            return;
+        }
+        throw new IllegalArgumentException("Gravity must be positive value or zero!");
     }
 
     private void calculateSurfaceGravity(Mass mass, Length radius) {

@@ -28,18 +28,20 @@ public class Length {
     protected DistanceUnit unit = DistanceUnit.ASTRONOMICAL_UNITS;
     
     public Length()    {
-        this.value = 0;
-        this.unit = DistanceUnit.KILOMETERS;
+        this( 0, DistanceUnit.KILOMETERS);
     }
 
     public Length(float value, DistanceUnit unit) {
-        this.value = value;
-        this.unit = unit;
+        set(value, unit);
     }
 
     public void set(float value, DistanceUnit unit) {
-        this.value = value;
-        this.unit = unit;
+        if(0<=value) {
+            this.value = value;
+            this.unit = unit;
+            return;
+        }
+        throw new IllegalArgumentException("Length must be positive value or zero!");
     }
 
     public float asKilometers() {

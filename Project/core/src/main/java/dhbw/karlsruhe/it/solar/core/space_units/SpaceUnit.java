@@ -238,7 +238,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
       */
      private Length getPhysicalLength(AstronomicalBody orbitPrimary,
                Vector2 distance) {
-          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary).getOrbitalSpaceUnitScaleFactor().getOrbitScale(), DistanceUnit.KILOMETERS);
+          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()).getOrbitalSpaceUnitScaleFactor().getOrbitScale(), DistanceUnit.KILOMETERS);
      }
 
      /**

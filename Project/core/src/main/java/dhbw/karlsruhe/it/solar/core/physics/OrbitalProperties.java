@@ -22,16 +22,6 @@ public class OrbitalProperties {
     private boolean retrograde;
     private Coorbital coorbital;
     
-    public OrbitalProperties(AstronomicalBody orbitPrimary)    {
-        this.orbitPrimary = orbitPrimary;
-        this.orbitalRadius = new Length();
-        this.orbitalAngle = new Angle();
-        this.retrograde = false;
-        this.coorbital = null;
-        this.orbitalPeriod = new Time(0f,TimeUnit.HOURS);
-        this.periodicConstant = new Angle(Float.NaN);
-    }
-    
     public OrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle angle)    {
         this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = orbitalRadius;

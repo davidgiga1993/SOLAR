@@ -13,6 +13,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.StarType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 
@@ -45,10 +46,10 @@ public class AstronomicalObjectsJUnit
     public void runSetUp() {
         GameStartStage.startNewGame();
     	solarSystem = new SolarSystem("Testsystem");
-    	star =  CreateAnAstronomicalBody.named("Testsonne").whichHasTheFollowingOrbitalProperties(solarSystem, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle(0)).andHasTheFollowingBodyProperties(new Length(1392684f/2, Length.DistanceUnit.KILOMETERS), new Mass(1, Mass.MassUnit.SOLAR_MASS), new Albedo(0.3f)).buildAs(new StarType(StarType.MorganKeenanSpectralType.G, StarType.SpectralTypeSubdivision.TWO, StarType.LuminosityClass.MAIN_SEQUENCE_STAR), solarSystem);
-    	planet = CreateAnAstronomicalBody.named("Testplanet").whichHasTheFollowingOrbitalProperties(star, new Length(1.5f, Length.DistanceUnit.ASTRONOMICAL_UNITS), new Angle(23)).andHasTheFollowingBodyProperties(new Length(10000.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.5f, Mass.MassUnit.EARTH_MASS), new Albedo(0.3f)).buildAs(new PlanetType(PlanetType.TypeOfPlanet.TERRESTRIAL, PlanetType.TextureTypeOfPlanet.TERRAN), solarSystem);
-    	CreateAnAstronomicalBody.named("Testmond").whichHasTheFollowingOrbitalProperties(planet, new Length(200000, Length.DistanceUnit.KILOMETERS), new Angle(-50)).andHasTheFollowingBodyProperties(new Length(4879.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.1f, Mass.MassUnit.EARTH_MASS), new Albedo(0.3f)).buildAs(new MoonType(MoonType.TypeOfMoon.TERRESTRIAL_MOON, MoonType.TextureTypeOfMoon.LUNAR), solarSystem);
-    	CreateAnAstronomicalBody.named("Testasteroid").whichHasTheFollowingOrbitalProperties(star, new Length(900, Length.DistanceUnit.KILOMETERS), new Angle(42)).andHasTheFollowingBodyProperties(new Length(1500.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(20000, Mass.MassUnit.KILOGRAM), new Albedo(0.3f)).buildAs(new AsteroidType(AsteroidType.TypeOfAsteroid.DTYPE, AsteroidType.TextureTypeOfAsteroid.PHOEBE_DEFAULT_IMAGE), solarSystem);
+    	star =  CreateAnAstronomicalBody.named("Testsonne").whichHasTheFollowingOrbitalProperties(solarSystem, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()).andHasTheFollowingBodyProperties(new Length(1392684f/2, Length.DistanceUnit.KILOMETERS), new Mass(1, Mass.MassUnit.SOLAR_MASS), new Albedo(0.3f)).buildAs(new StarType(StarType.MorganKeenanSpectralType.G, StarType.SpectralTypeSubdivision.TWO, StarType.LuminosityClass.MAIN_SEQUENCE_STAR), solarSystem);
+    	planet = CreateAnAstronomicalBody.named("Testplanet").whichHasTheFollowingOrbitalProperties(star, new Length(1.5f, Length.DistanceUnit.ASTRONOMICAL_UNITS), new Angle(23, AngularUnit.DEGREE)).andHasTheFollowingBodyProperties(new Length(10000.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.5f, Mass.MassUnit.EARTH_MASS), new Albedo(0.3f)).buildAs(new PlanetType(PlanetType.TypeOfPlanet.TERRESTRIAL, PlanetType.TextureTypeOfPlanet.TERRAN), solarSystem);
+    	CreateAnAstronomicalBody.named("Testmond").whichHasTheFollowingOrbitalProperties(planet, new Length(200000, Length.DistanceUnit.KILOMETERS), new Angle(-50, AngularUnit.DEGREE)).andHasTheFollowingBodyProperties(new Length(4879.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.1f, Mass.MassUnit.EARTH_MASS), new Albedo(0.3f)).buildAs(new MoonType(MoonType.TypeOfMoon.TERRESTRIAL_MOON, MoonType.TextureTypeOfMoon.LUNAR), solarSystem);
+    	CreateAnAstronomicalBody.named("Testasteroid").whichHasTheFollowingOrbitalProperties(star, new Length(900, Length.DistanceUnit.KILOMETERS), new Angle(742, AngularUnit.DEGREE)).andHasTheFollowingBodyProperties(new Length(1500.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(20000, Mass.MassUnit.KILOGRAM), new Albedo(0.3f)).buildAs(new AsteroidType(AsteroidType.TypeOfAsteroid.DTYPE, AsteroidType.TextureTypeOfAsteroid.PHOEBE_DEFAULT_IMAGE), solarSystem);
     	}
 
     @After

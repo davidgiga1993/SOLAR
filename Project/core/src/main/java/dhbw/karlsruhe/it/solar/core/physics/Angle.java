@@ -18,18 +18,13 @@ public class Angle {
     private AngularUnit angularUnit;
     
     public Angle()    {
-        this.angularUnit = AngularUnit.DEGREE;
-        this.value = 0f;
-    }
-    
-    public Angle(float value)    {
-        this.angularUnit = AngularUnit.DEGREE;
-        this.value = value;
+        this(0, AngularUnit.DEGREE);
     }
     
     public Angle (float value, AngularUnit unit)    {
         this.angularUnit = unit;
         this.value = value;
+        preventOverflow();
     }
     
     public enum AngularUnit {

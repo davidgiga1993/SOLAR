@@ -17,7 +17,11 @@ public class AtmosphericComposition {
     }
     
     public AtmosphericComposition(List<AtmosphericGas> gases) {
-        this.gases = gases;        
+        if(gases.size()>0) {
+            this.gases = gases;    
+            return;
+        }
+        throw new IllegalArgumentException("There must be at least one gas in this atmospheric composition");
     }
     
     public List<AtmosphericGas> getListOfAtmosphericGases() {

@@ -25,8 +25,12 @@ public class Pressure {
     }
     
     public Pressure(float value, PressureUnit unit) {
-        this.value = value;
-        this.unit = unit;
+        if( 0<= value ) {        
+            this.value = value;
+            this.unit = unit;
+            return;
+        }
+        throw new IllegalArgumentException("Pressure must be positive value or zero!");
     }
     
     public float asPascal() {

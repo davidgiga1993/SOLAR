@@ -18,10 +18,14 @@ public class Hydrosphere {
     }
     
     public Hydrosphere(float waterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
-        this.waterCover = waterCover;
-        this.iceCover = iceCover;
-        this.liquidWater = liquidWater;
-        this.subsurfaceOcean = subsurfaceOcean;
+        if(0 <= waterCover + iceCover && waterCover + iceCover <= 1) {
+            this.waterCover = waterCover;
+            this.iceCover = iceCover;
+            this.liquidWater = liquidWater;
+            this.subsurfaceOcean = subsurfaceOcean;
+            return;
+        }
+        throw new IllegalArgumentException("Bond Albedo value can only lie between 0 and 1");
     }
 
     public float getWaterCover() {

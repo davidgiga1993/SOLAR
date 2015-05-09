@@ -15,8 +15,12 @@ public class Biosphere {
     }   
     
     public Biosphere(BiosphereType bioType, float biosphereCoverage) {
-        this.bioCover = biosphereCoverage;
-        this.type = bioType;
+        if(0 <= biosphereCoverage && 1 >= biosphereCoverage) {
+            this.bioCover = biosphereCoverage;
+            this.type = bioType;
+            return;
+        }
+        throw new IllegalArgumentException("Biosphere Coverage must lie between 0 and 1!");
     }
     
     public BiosphereType getBioType() {
