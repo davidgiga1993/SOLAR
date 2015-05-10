@@ -65,7 +65,6 @@ public class InfoBar extends Window implements Telegraph {
 
     public void loadContent() {
         contentTable.clear();
-        contentTable.setDebug(true);
         contentTable.add(loadImage()).width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).left();
         contentTable.add(overview.displayOverview(selectedActor)).width(ConfigurationConstants.CELL_WIDTH).padLeft(ConfigurationConstants.PADDING);
         contentTable.add(manager.displayContent(selectedActor)).expand().fill().padLeft(ConfigurationConstants.PADDING);

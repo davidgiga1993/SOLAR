@@ -382,6 +382,9 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     }
 
     public String getNameOfDestination() {
+        if(null==destination) {
+            return "";
+        }
         return destination.getName();
     }
 
