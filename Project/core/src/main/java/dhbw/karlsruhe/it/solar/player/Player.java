@@ -4,6 +4,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
+import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
@@ -33,7 +34,7 @@ public class Player implements ResourceDepot {
         this.name = name;
         this.playerColor = color;
         this.resources.add(POPULATION_RESOURCE_ID, new Population(0));
-        setAsLivingSpace();
+        this.resources.add(TREASURY_RESOURCE_ID, new Credits());
     }
 
     @Override
@@ -136,11 +137,10 @@ public class Player implements ResourceDepot {
 
     @Override
     public Population getPopulation() {
-        updateTotalPopulation();
         return (Population)resources.get(POPULATION_RESOURCE_ID);
     }
 
-    private void updateTotalPopulation() {
+    public void updateTotalPopulation() {
         ((Population)resources.get(POPULATION_RESOURCE_ID)).empty();
         for(Colony colony : colonies) {
             ((Population)resources.get(POPULATION_RESOURCE_ID)).addToValue(colony.getPopulation());
@@ -160,8 +160,14 @@ public class Player implements ResourceDepot {
         }
     }
 
-    @Override
-    public void setAsLivingSpace() {
-        ((Population)resources.get(POPULATION_RESOURCE_ID)).setAsLivingSpace(this);
+    public Credits getTreasury() {
+        return (Credits)resources.get(TREASURY_RESOURCE_ID);
+    }
+
+    public void raiseTaxes(Time deltaT) {
+        for(Colony colony : colonies) {
+            getTreasury().addToValue(colony.raiseTaxes(deltaT));
+        }
+        getTreasury().updateStatistics();
     }
 }

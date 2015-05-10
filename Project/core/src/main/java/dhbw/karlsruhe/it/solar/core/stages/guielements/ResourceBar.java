@@ -17,8 +17,7 @@ public class ResourceBar extends Table {
     public ResourceBar(GameStartStage stage) {
         playerInfo = new ResourceBarPlayerInfo(stage);
         timeTable = new ResourceBarTimeTable();
-        add(playerInfo).left();
-        add().expandX().fillX();
+        add(playerInfo).left().expandX().fillX();
         add(timeTable).right();
     }
     

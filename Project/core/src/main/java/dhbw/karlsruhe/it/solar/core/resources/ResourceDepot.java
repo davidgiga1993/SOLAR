@@ -10,6 +10,7 @@ import java.util.List;
 public interface ResourceDepot {
     
     public final static int POPULATION_RESOURCE_ID = 0;
+    public final static int TREASURY_RESOURCE_ID = 1;
     
     /**
      * Returns the total list of resources stored in this resource depot.
@@ -28,9 +29,4 @@ public interface ResourceDepot {
      * @return
      */
     public boolean isPermanentHabitat();
-    
-    /**
-     * Sets this resource depot as the current living space of a population.
-     */
-    public void setAsLivingSpace();
 }

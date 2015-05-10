@@ -353,7 +353,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private void initColonies(AstroBodyInfo body) {
         if(body.isColonized()) {
             ColonyInfo colony = body.getColonyInfo();
-            placeNewColony(body.getName(), colony.getColonyName(), playerManager.getPlayerFromName(colony.getNameOfOwner()), colony.getPopulation());;
+            placeNewColony(body.getName(), colony.getColonyName(), playerManager.getPlayerFromName(colony.getNameOfOwner()), colony.getPopulation());
            }
     }
 
@@ -516,6 +516,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void updateProduction(Time deltaT) {
         for(Player player : getPlayers()) {
             player.updateProduction(deltaT);
+            player.updateTotalPopulation();
+            player.raiseTaxes(deltaT);
         }
     }
 }

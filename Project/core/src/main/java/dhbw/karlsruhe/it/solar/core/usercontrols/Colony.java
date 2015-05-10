@@ -6,6 +6,7 @@ import java.util.List;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
+import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
@@ -27,9 +28,8 @@ public class Colony implements Ownable, ResourceDepot {
     public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
         owner = colonyFounder;
-        resources.add(POPULATION_RESOURCE_ID, colonists);
-        setAsLivingSpace();
         primary = colonyPlace;
+        resources.add(POPULATION_RESOURCE_ID, colonists);
     }
     
     public String getPopulationNumbers() {
@@ -45,11 +45,7 @@ public class Colony implements Ownable, ResourceDepot {
     public boolean isPermanentHabitat() {
         return true;
     }
-
-    @Override
-    public void setAsLivingSpace() {
-        getPopulation().setAsLivingSpace(this);
-    }    
+   
     public List<BaseResource> getResources() {
         return resources;
     }
@@ -83,5 +79,13 @@ public class Colony implements Ownable, ResourceDepot {
         for (ResourceInterface resource : resources ) {
             resource.updateResource(deltaT);
         }
+    }
+
+    public Credits raiseTaxes(Time deltaT) {
+        return getPopulation().payTaxes(deltaT);
+    }
+
+    public void transferPassengers(Population population) {
+        getPopulation().addToValue(population);
     }
 }

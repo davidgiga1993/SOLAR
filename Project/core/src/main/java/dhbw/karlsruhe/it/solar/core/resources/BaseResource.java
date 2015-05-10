@@ -3,7 +3,10 @@ package dhbw.karlsruhe.it.solar.core.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
@@ -14,6 +17,8 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
  * @author Andi
  * created 2015-05-04
  */
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlSeeAlso({Population.class, Credits.class})
 public abstract class BaseResource implements ResourceInterface {
     
     public final static long THOUSAND = 1000;
@@ -36,6 +41,8 @@ public abstract class BaseResource implements ResourceInterface {
     protected abstract void updateProductionStatistic();
     
     protected abstract void updateProduction(Time deltaT);
+    
+    protected abstract String constructResourceStatement(String unit, float value);
     
     public long getNumber() {
         return value;
@@ -75,18 +82,14 @@ public abstract class BaseResource implements ResourceInterface {
         return false;
     }
 
-    private String constructResourceStatement(String unit, float value) {
-        return formatValue(value) + " " + unit + " " + getUnitName() + " ( " + changeLastMonth() + " %)";
-    }
-    
-    private String changeLastMonth() {
-        if(changeLastMonth >= 0) {
-            return "+" + formatValue(changeLastMonth * 100);            
+    protected void updateValuesOfLastMonthList() {
+        valuesOfLastMonth.add(value);
+        if(valuesOfLastMonth.size()>31) {
+            valuesOfLastMonth.remove(0);
         }
-        return formatValue(changeLastMonth * 100);  
     }
 
-    private String formatValue(float number) {
+    protected String formatValue(float number) {
         return String.format("%.02f", number);
     }
     

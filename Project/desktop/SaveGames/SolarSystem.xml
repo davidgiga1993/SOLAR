@@ -19,7 +19,17 @@
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="population">
             <Value>7125011235</Value>
+            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             <Values_Of_Last_Month>7125011235</Values_Of_Last_Month>
+            <Time_Of_Last_Resource_Update>
+                <Time_Value>0.0</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Time_Of_Last_Resource_Update>
+        </Player_Resources>
+        <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
+            <Value>0</Value>
+            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
                 <Time_Value>0.0</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
@@ -35,7 +45,22 @@
             <a>1.0</a>
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="population">
+            <Value>3141000</Value>
+            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Values_Of_Last_Month>3141000</Values_Of_Last_Month>
+            <Time_Of_Last_Resource_Update>
+                <Time_Value>0.0</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Time_Of_Last_Resource_Update>
+        </Player_Resources>
+        <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
             <Value>0</Value>
+            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Time_Of_Last_Resource_Update>
+                <Time_Value>0.0</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Time_Of_Last_Resource_Update>
         </Player_Resources>
     </Player>
     <Player>
@@ -48,6 +73,21 @@
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="population">
             <Value>0</Value>
+            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Time_Of_Last_Resource_Update>
+                <Time_Value>0.0</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Time_Of_Last_Resource_Update>
+        </Player_Resources>
+        <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
+            <Value>0</Value>
+            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Time_Of_Last_Resource_Update>
+                <Time_Value>0.0</Time_Value>
+                <Time_Unit>DAYS</Time_Unit>
+            </Time_Of_Last_Resource_Update>
         </Player_Resources>
     </Player>
     <SpaceUnit>
@@ -189,7 +229,7 @@
                 </Atmospheric_Composition>
             </Atmosphere>
             <Albedo>
-                <Albedo>0.0</Albedo>
+                <Albedo>1.0</Albedo>
             </Albedo>
             <Tidally_Locked>false</Tidally_Locked>
             <Sidereal_Rotation_Period>
@@ -407,6 +447,7 @@
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
                 <Value>7125000000</Value>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
                 <Values_Of_Last_Month>7125000000</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
                     <Time_Value>0.0</Time_Value>
@@ -452,6 +493,7 @@
             <ColonyOwner>Player Two (AI)</ColonyOwner>
             <Population>
                 <Value>3141000</Value>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
                 <Values_Of_Last_Month>3141000</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
                     <Time_Value>0.0</Time_Value>
@@ -531,6 +573,7 @@
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
                 <Value>11235</Value>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
                 <Values_Of_Last_Month>11235</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
                     <Time_Value>0.0</Time_Value>
