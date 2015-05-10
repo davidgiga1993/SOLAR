@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.FuzzyInformation;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -48,24 +49,24 @@ public class InfoBarLifeRatingDetails extends Table {
         add(new Label(rating.getFuzzyInfo(),rating.getStyle())).right(); 
         row();
         add(new Label("Gravity: ", style)).left();
-        add(new Label(gravity.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
-        add(new Label(gravity.getFuzzyInfo(), gravity.getStyle())).padLeft(InfoBar.PADDING).right();
+        add(new Label(gravity.getPhyicalValue(), style)).padLeft(ConfigurationConstants.PADDING);
+        add(new Label(gravity.getFuzzyInfo(), gravity.getStyle())).padLeft(ConfigurationConstants.PADDING).right();
         row();
         add(new Label("Temperature: ", style)).left();
-        add(new Label(temperatures.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
-        add(new Label(temperatures.getFuzzyInfo(), temperatures.getStyle())).padLeft(InfoBar.PADDING).right();
+        add(new Label(temperatures.getPhyicalValue(), style)).padLeft(ConfigurationConstants.PADDING);
+        add(new Label(temperatures.getFuzzyInfo(), temperatures.getStyle())).padLeft(ConfigurationConstants.PADDING).right();
         row();
         add(new Label("Atmosphere: ", style)).left();
-        add(new Label(atmosphere.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
-        add(new Label(atmosphere.getFuzzyInfo(), atmosphere.getStyle())).padLeft(InfoBar.PADDING).right();
+        add(new Label(atmosphere.getPhyicalValue(), style)).padLeft(ConfigurationConstants.PADDING);
+        add(new Label(atmosphere.getFuzzyInfo(), atmosphere.getStyle())).padLeft(ConfigurationConstants.PADDING).right();
         row();
         add(new Label("Hydrosphere: ", style)).left();
-        add(new Label(hydrosphere.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
-        add(new Label(hydrosphere.getFuzzyInfo(), hydrosphere.getStyle())).padLeft(InfoBar.PADDING).right();
+        add(new Label(hydrosphere.getPhyicalValue(), style)).padLeft(ConfigurationConstants.PADDING);
+        add(new Label(hydrosphere.getFuzzyInfo(), hydrosphere.getStyle())).padLeft(ConfigurationConstants.PADDING).right();
         row();
         add(new Label("Biosphere: ", style)).left();
-        add(new Label(biosphere.getPhyicalValue(), style)).padLeft(InfoBar.PADDING);
-        add(new Label(biosphere.getFuzzyInfo(), biosphere.getStyle())).padLeft(InfoBar.PADDING).right();
+        add(new Label(biosphere.getPhyicalValue(), style)).padLeft(ConfigurationConstants.PADDING);
+        add(new Label(biosphere.getFuzzyInfo(), biosphere.getStyle())).padLeft(ConfigurationConstants.PADDING).right();
     }
 
 }

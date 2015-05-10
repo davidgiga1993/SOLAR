@@ -517,7 +517,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         for(Player player : getPlayers()) {
             player.updateProduction(deltaT);
             player.updateTotalPopulation();
-            player.raiseTaxes(deltaT);
+            player.updateTreasury(deltaT);
         }
     }
 }

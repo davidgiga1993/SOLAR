@@ -31,11 +31,6 @@ public class Credits extends BaseResource {
     }
 
     @Override
-    protected String getUnitName() {
-        return "Credits";
-    }
-
-    @Override
     protected void updateProductionStatistic() {
         if(isANewDay()) {
             updateValuesOfLastMonthList();
@@ -44,13 +39,30 @@ public class Credits extends BaseResource {
     }
 
     @Override
-    protected void updateProduction(Time deltaT) {
+    protected void updateProduction(Time deltaT, ResourceDepot productionPlace) {
 
     }
 
     @Override
     protected String constructResourceStatement(String unit, float value) {
-        return formatValue(value) + " " + unit + " " + getUnitName() + " ( " + changeLastMonth() + " " + getUnitName() + "/month )";
+        return formatValue(value) + " " + unit + " ( " + changeLastMonth() + " / month )";
+    }
+    
+    @Override
+    public String toString() {
+        if(inTrillions(value) > 0.1f || -inTrillions(value) > 0.1f) {
+            return constructResourceStatement("tr", inTrillions(value));
+        }
+        if(inBillions(value) > 0.1f || -inBillions(value) > 0.1f) {
+            return constructResourceStatement("bi", inBillions(value));
+        }
+        if(inMillions(value) > 0.1f || -inMillions(value) > 0.1f) {
+            return constructResourceStatement("mi", inMillions(value));
+        }
+        if(inThousands(value) > 0.1f || -inThousands(value) > 0.1f) {
+            return constructResourceStatement("k", inThousands(value));
+        }
+        return constructResourceStatement("", value);   
     }
 
     private float treasuryGrowthFormula() {
@@ -58,27 +70,26 @@ public class Credits extends BaseResource {
     }
     
     private String changeLastMonth() {
-        String sign = "+ ";
-        if(changeLastMonth < 0) {
-            sign = "";
-            changeLastMonth *= -1;
+        if(inTrillions(changeLastMonth) > 0.1f || -inTrillions(changeLastMonth) > 0.1f) {
+            return formatValue(changeLastMonth / TRILLION) + " tr";
         }
-        if(changeLastMonth > 0.1f * TRILLION) {
-            return sign + formatValue(changeLastMonth / TRILLION) + " Trillion";
+        if(inBillions(changeLastMonth) > 0.1f || -inBillions(changeLastMonth) > 0.1f) {
+            return formatValue(changeLastMonth / BILLION) + " bi";
         }
-        if(changeLastMonth > 0.1f * BILLION) {
-            return sign + formatValue(changeLastMonth / BILLION) + " Billion";
+        if(inMillions(changeLastMonth) > 0.1f || -inMillions(changeLastMonth) > 0.1f) {
+            return formatValue(changeLastMonth / MILLION) + " mi";
         }
-        if(changeLastMonth > 0.1f * MILLION) {
-            return sign + formatValue(changeLastMonth / MILLION) + " Million";
+        if(inThousands(changeLastMonth) > 0.1f || -inThousands(changeLastMonth) > 0.1f) {
+            return formatValue(changeLastMonth / THOUSAND) + " k";
         }
-        if(changeLastMonth > 0.1f * THOUSAND) {
-            return sign + formatValue(changeLastMonth / THOUSAND) + " k";
-        }
-        return sign + formatValue(changeLastMonth); 
+        return formatValue(changeLastMonth); 
     }
 
     public void updateStatistics() {
         updateProductionStatistic();
+    }
+
+    public void subtractFromValue(Credits upKeep) {
+        value -= upKeep.getNumber();
     }
 }

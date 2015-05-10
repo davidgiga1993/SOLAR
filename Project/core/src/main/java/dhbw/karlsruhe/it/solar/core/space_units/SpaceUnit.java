@@ -17,7 +17,9 @@ import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
+import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
+import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
@@ -54,6 +56,13 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         preview.setColor(selectionColor);
           orbitColor = SPACEUNIT_ORBIT_COLOR;
      }
+
+     /**
+      * Expenses of running this space unit over a given amount of time.
+      * @param deltaT
+      * @return
+      */
+     public abstract Credits payUpKeep(Time deltaT);
 
      /**
       * Shared constructor tasks for space units which have to come after their texture is added.

@@ -16,6 +16,8 @@ public final class ConfigurationConstants {
     public static final boolean SCALE_DIALOG_ENABLED = true;
     // GUI Settings
     public static final int GUI_NAVIGATION_WIDTH = 175;
+    public final static int CELL_WIDTH = 215;
+    public final static int PADDING = 20;
     public static final String HOMEWORLD = "Earth";
 
     private ConfigurationConstants() {

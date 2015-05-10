@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
@@ -40,15 +41,15 @@ public class InfoBarManager extends Table {
             displaySpaceUnitInformation();
             return;
         }
-        add(table.empty()).padLeft(InfoBar.PADDING).expandX().fillX();
+        add(table.empty()).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
     }
 
     private void displaySpaceUnitInformation() {
-        add(table.displaySpaceUnitInformation((SpaceUnit)selectedActor)).padLeft(InfoBar.PADDING).expandX().fillX();
+        add(table.displaySpaceUnitInformation((SpaceUnit)selectedActor)).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
     }
 
     private void displayAstroBodyInformation() {
-        add(table.displayAstroBodyInformation((AstronomicalBody)selectedActor)).padLeft(InfoBar.PADDING).expandX().fillX();
+        add(table.displayAstroBodyInformation((AstronomicalBody)selectedActor)).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
     }
 
     public void createInfoBarMenueButtons() {

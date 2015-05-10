@@ -38,7 +38,7 @@ public interface ResourceInterface {
     /**
      * Resource value is updated based on the passage of time since the last update.
      */
-    public void updateResource(Time deltaT);
+    public void updateResource(Time deltaT, ResourceDepot productionPlace);
     
     /**
      * A specific amount is added to the resource value

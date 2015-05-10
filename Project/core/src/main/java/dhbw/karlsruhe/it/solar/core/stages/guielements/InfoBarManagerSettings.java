@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import javax.xml.bind.annotation.XmlElement;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.stages.GameHUDStage;
 
 /**
@@ -96,11 +97,11 @@ public class InfoBarManagerSettings {
     }
 
     private int calculateNumberOfInfoColumnsWhichCanBeDisplayed() {      
-        return calculateCurrentFreeWidth() / (InfoBar.CELL_WIDTH + InfoBar.PADDING);
+        return calculateCurrentFreeWidth() / (ConfigurationConstants.CELL_WIDTH + ConfigurationConstants.PADDING);
     }
 
     private int calculateCurrentFreeWidth() {
-        return GameHUDStage.calculateInfoBarMaxWidth() - InfoBar.MINIMUM_WIDTH + InfoBar.CELL_WIDTH + InfoBar.PADDING;
+        return GameHUDStage.calculateInfoBarMaxWidth() - InfoBar.MINIMUM_WIDTH + ConfigurationConstants.CELL_WIDTH + ConfigurationConstants.PADDING;
     }
     
     public enum LastInfoBarButtonToggled {

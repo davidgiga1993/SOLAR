@@ -140,7 +140,7 @@ public class Length {
             return formatValue(this.asAstronomicalUnit()) + " AU";
         }    
         if(this.asKilometers() > MILLION) {
-            return formatValue(this.asKilometers()/MILLION) + " M km";            
+            return formatValue(this.asKilometers()/MILLION) + " mi km";            
         }
         if(this.asKilometers() > 10*THOUSAND) {
             return formatValue(this.asKilometers()/THOUSAND) + " k km";            

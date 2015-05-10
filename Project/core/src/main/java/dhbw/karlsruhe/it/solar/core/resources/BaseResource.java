@@ -34,13 +34,12 @@ public abstract class BaseResource implements ResourceInterface {
     protected List<Long> valuesOfLastMonth = new ArrayList<Long>();
     @XmlElement(name = "Time_Of_Last_Resource_Update")
     protected Time oldGameTime;
+    @XmlElement(name = "Change_Last_Month")
     protected float changeLastMonth;
-    
-    protected abstract String getUnitName();
     
     protected abstract void updateProductionStatistic();
     
-    protected abstract void updateProduction(Time deltaT);
+    protected abstract void updateProduction(Time deltaT, ResourceDepot productionPlace);
     
     protected abstract String constructResourceStatement(String unit, float value);
     
@@ -48,9 +47,9 @@ public abstract class BaseResource implements ResourceInterface {
         return value;
     }
     
-    public void updateResource(Time deltaT) {
+    public void updateResource(Time deltaT, ResourceDepot productionPlace) {
         updateProductionStatistic();
-        updateProduction(deltaT);
+        updateProduction(deltaT, productionPlace);
     }
     
     public void addToValue(BaseResource resource) {
@@ -59,17 +58,17 @@ public abstract class BaseResource implements ResourceInterface {
 
     @Override
     public String toString() {
-        if(inTrillions() > 0.1f) {
-            return constructResourceStatement("Trillion", inTrillions());
+        if(inTrillions(value) > 0.1f) {
+            return constructResourceStatement("tr", inTrillions(value));
         }
-        if(inBillions() > 0.1f) {
-            return constructResourceStatement("Billion", inBillions());
+        if(inBillions(value) > 0.1f) {
+            return constructResourceStatement("bi", inBillions(value));
         }
-        if(inMillions() > 0.1f) {
-            return constructResourceStatement("Million", inMillions());
+        if(inMillions(value) > 0.1f) {
+            return constructResourceStatement("mi", inMillions(value));
         }
-        if(inThousands() > 0.1f) {
-            return constructResourceStatement("k", inThousands());
+        if(inThousands(value) > 0.1f) {
+            return constructResourceStatement("k", inThousands(value));
         }
         return constructResourceStatement("", value);   
     }
@@ -93,19 +92,19 @@ public abstract class BaseResource implements ResourceInterface {
         return String.format("%.02f", number);
     }
     
-    private float inThousands() {
-        return (float)value / (float)THOUSAND;
+    protected float inThousands(float value) {
+        return value / (float)THOUSAND;
     }
     
-    private float inMillions() {
-        return (float)value / (float)MILLION;
+    protected float inMillions(float value) {
+        return value / (float)MILLION;
     }
     
-    private float inBillions() {
-        return (float)value / (float)BILLION;
+    protected float inBillions(float value) {
+        return value / (float)BILLION;
     }
     
-    private float inTrillions() {
-        return (float)value / (float)TRILLION;
+    protected float inTrillions(float value) {
+        return value / (float)TRILLION;
     }
 }

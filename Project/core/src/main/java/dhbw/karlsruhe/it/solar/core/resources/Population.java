@@ -31,11 +31,6 @@ public class Population extends BaseResource {
     public TextureRegion getIcon() {
         return TextureCacher.GAMEATLAS.findRegion("resource_placeholder");
     }
-
-    @Override
-    protected String getUnitName() {
-        return "";
-    }
  
     @Override
     protected void updateProductionStatistic() {
@@ -46,8 +41,8 @@ public class Population extends BaseResource {
     }
     
     @Override
-    protected void updateProduction(Time deltaT) {
-        valueRemainingFraction += (float)value * growthRateFormula(deltaT);
+    protected void updateProduction(Time deltaT, ResourceDepot livingSpace) {
+        valueRemainingFraction += (float)value * growthRateFormula(deltaT, livingSpace);
         addWholeFractionsToValue();
     }
 
@@ -56,8 +51,8 @@ public class Population extends BaseResource {
         valueRemainingFraction -= (long)valueRemainingFraction; 
     }
 
-    private float growthRateFormula(Time deltaT) {
-        return deltaT.inYears() * needs.calculateGrowthRate();
+    private float growthRateFormula(Time deltaT, ResourceDepot livingSpace) {
+        return deltaT.inYears() * needs.calculateGrowthRate(livingSpace);
     }
     
     private float populationGrowthFormula() {
@@ -73,7 +68,7 @@ public class Population extends BaseResource {
 
     @Override
     protected String constructResourceStatement(String unit, float value) {
-            return formatValue(value) + " " + unit + " " + getUnitName() + " ( " + changeLastMonth() + " %/year)";
+            return formatValue(value) + " " + unit + " ( " + changeLastMonth() + " % / year )";
     }
     
     private String changeLastMonth() {
@@ -83,11 +78,15 @@ public class Population extends BaseResource {
         return formatValue(changeLastMonth * 100);  
     }
 
-    public Credits payTaxes(Time deltaT) {
-        return new Credits(((long)(value * taxRateFormula(deltaT))));
+    public Credits payTaxes(Time deltaT, ResourceDepot livingSpace) {
+        return new Credits(((long)(value * taxRateFormula(deltaT, livingSpace))));
     }
 
-    private float taxRateFormula(Time deltaT) {
-        return deltaT.inYears() * needs.calculateTaxRate();
+    private float taxRateFormula(Time deltaT, ResourceDepot livingSpace) {
+        return deltaT.inYears() * needs.calculateTaxRate(livingSpace);
+    }
+
+    public void updateStatistics() {
+        updateProductionStatistic();
     }
 }

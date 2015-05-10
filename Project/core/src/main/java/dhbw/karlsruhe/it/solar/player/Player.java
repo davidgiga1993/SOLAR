@@ -2,7 +2,6 @@ package dhbw.karlsruhe.it.solar.player;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
@@ -145,7 +144,7 @@ public class Player implements ResourceDepot {
         for(Colony colony : colonies) {
             ((Population)resources.get(POPULATION_RESOURCE_ID)).addToValue(colony.getPopulation());
         }
-        resources.get(POPULATION_RESOURCE_ID).updateResource(new Time(0,TimeUnit.SECONDS));
+        getPopulation().updateStatistics();
     }
 
     @Override
@@ -164,9 +163,13 @@ public class Player implements ResourceDepot {
         return (Credits)resources.get(TREASURY_RESOURCE_ID);
     }
 
-    public void raiseTaxes(Time deltaT) {
+    public void updateTreasury(Time deltaT) {
         for(Colony colony : colonies) {
             getTreasury().addToValue(colony.raiseTaxes(deltaT));
+            getTreasury().subtractFromValue(colony.payUpKeep(deltaT));
+        }
+        for(SpaceUnit unit : units) {
+            getTreasury().subtractFromValue(unit.payUpKeep(deltaT));            
         }
         getTreasury().updateStatistics();
     }

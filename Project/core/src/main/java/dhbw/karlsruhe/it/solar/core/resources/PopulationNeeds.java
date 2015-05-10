@@ -9,12 +9,11 @@ public class PopulationNeeds {
      * Calculates the growth rate of a population based on the degree to which its needs are met.
      * @return
      */
-    public float calculateGrowthRate() {
-//        if(livingSpace.isPermanentHabitat()) {
-//            return BASE_POPULATION_GROWTH_RATE;            
-//        }
-//        return 0;
-        return BASE_POPULATION_GROWTH_RATE;
+    public float calculateGrowthRate(ResourceDepot livingSpace) {
+        if(livingSpace.isPermanentHabitat()) {
+            return BASE_POPULATION_GROWTH_RATE;            
+        }
+        return 0;
     }
 
     /**
@@ -22,11 +21,10 @@ public class PopulationNeeds {
      * (primitive implementation)
      * @return
      */
-    public float calculateTaxRate() {
-//        if(livingSpace.isPermanentHabitat()) {
-//            return BASE_TAX_RATE;            
-//        }
-//        return 0;
-        return BASE_TAX_RATE;
+    public float calculateTaxRate(ResourceDepot livingSpace) {
+        if(livingSpace.isPermanentHabitat()) {
+            return BASE_TAX_RATE;            
+        }
+        return 0;
     }
 }

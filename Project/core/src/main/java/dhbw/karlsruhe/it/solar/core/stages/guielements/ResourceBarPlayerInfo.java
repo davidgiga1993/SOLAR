@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -26,10 +27,11 @@ public class ResourceBarPlayerInfo extends Table {
     public void update() {
         determinePlayerOnThisPlatform();
         clear();
+        setDebug(true);
         if(playerOnThisPlatform!=null) {
-            add(playerOverview()).left();
-            add(playerDetails()).padLeft(InfoBar.PADDING);
-            add().padLeft(InfoBar.PADDING).expandX().fillX();
+            add(playerOverview()).left().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH);
+            add(playerDetails()).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH);
+            add().padLeft(ConfigurationConstants.PADDING).expandX().fillX();
         }
     }
     
