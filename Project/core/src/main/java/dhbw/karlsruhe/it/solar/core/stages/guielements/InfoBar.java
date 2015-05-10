@@ -65,9 +65,10 @@ public class InfoBar extends Window implements Telegraph {
 
     public void loadContent() {
         contentTable.clear();
+        contentTable.setDebug(true);
         contentTable.add(loadImage()).width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).left();
         contentTable.add(overview.displayOverview(selectedActor)).width(ConfigurationConstants.CELL_WIDTH).padLeft(ConfigurationConstants.PADDING);
-        contentTable.add(manager.displayContent(selectedActor)).expandX().fillX().padLeft(ConfigurationConstants.PADDING);
+        contentTable.add(manager.displayContent(selectedActor)).expand().fill().padLeft(ConfigurationConstants.PADDING);
         contentTable.add(new InfoBarActionTable(selectedActor)).padLeft(ConfigurationConstants.PADDING).right();
     }
 
@@ -81,7 +82,7 @@ public class InfoBar extends Window implements Telegraph {
     public InfoBar update() {
         if(null!=selectedActor) {
             overview.reload();
-            manager.reload();            
+            manager.reload();
         }
         return this;
     }

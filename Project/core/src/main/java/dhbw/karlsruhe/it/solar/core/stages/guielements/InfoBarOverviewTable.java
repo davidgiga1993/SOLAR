@@ -24,63 +24,93 @@ public class InfoBarOverviewTable extends Table {
     private SolarActor selectedActor;
     private LabelStyle style = Styles.MENUELABEL_STYLE;
     private final TextButton showOnMap = new TextButton("Show On Map", Styles.TOOLTIPSKIN);
+    private final Label missionTypeLabel = new Label("", style);
+    private final NavBarBaseLabel missionTypeTargetLabel = new NavBarBaseLabel("", null, style);
+    private final Label missionTimeLabel = new Label("", style);
+    private final Label missionTimeValueLabel = new Label("", style);
+    private final Label missionDistanceLabel = new Label("", style);
+    private final Label missionDistanceValueLabel = new Label("", style);
     
-    private void generateMissionInfo() {
-        if(((Orbiter)selectedActor).isInOrbit()) {
-            add(new Label("In Orbit of: ",style)).left();
-            addNavigationLabelForPrimary();
-            add(new Label("Orbital Period: ",style)).left();
-            add(new Label(((Orbiter)selectedActor).getOrbitalPeriod().toString(),style)).right();
-            row();
-            add(new Label("Semi-major Axis: ",style)).left();
-            add(new Label(((Orbiter)selectedActor).getOrbitalRadius().toString(),style)).right();
-            return;
-        }
-        if(selectedActor instanceof SpaceUnit) {
-            add(new Label("En route to: ",style)).left();
-            add(new Label(((SpaceUnit)selectedActor).getMission(),style)).right();
-            row();
-            add(new Label("ETA: ",style)).left();
-            //TODO: Implementiere ETA-Funktionalität aus der AI-Berechnung raus (Schätzung okay)
-            add(new Label("Unknown",style)).right();            
-        }
+    public InfoBarOverviewTable() {
+        showOnMap.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                 onShowOnMapClick();
+            }
+         });        
+    }
+    
+    public InfoBarOverviewTable displayOverview(SolarActor selectedActor) {
+        this.selectedActor = selectedActor; 
+        clear();
+        addNameAndTypeLabels();
+        addMissionInfoLabels();
+        addShowOnMapButton();
+        return this;
     }
 
-    private void addNavigationLabelForPrimary() {
-        if(((Orbiter)selectedActor).getPrimary() instanceof SystemRoot) {
-            add(new Label(((Orbiter)selectedActor).getNameOfPrimary(), style)).right().expand();
-            row();
-            return;
-        }
-        add(new NavBarBaseLabel(((Orbiter)selectedActor).getNameOfPrimary(),((Orbiter)selectedActor).getPrimary(), style)).right().expand();
+    private void addShowOnMapButton() {
+        add(showOnMap).align(Align.center).colspan(2).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
+    }
+
+    private void addNameAndTypeLabels() {
+        add(new NavBarBaseLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
         row();
+        add(new Label("Type: ",style)).left();
+        add(new Label(selectedActor.getTypeName(),style)).right();
+        row();
+    }
+    
+    private void addMissionInfoLabels() {
+        add(missionTypeLabel).left();
+        add(missionTypeTargetLabel).right().expand();
+        row();
+        add(missionTimeLabel).left();
+        add(missionTimeValueLabel).right();
+        row();
+        add(missionDistanceLabel).left();
+        add(missionDistanceValueLabel).right();
+        row();
+        return;
     }
 
     private void onShowOnMapClick() {
         GameStartStage.inputListenerMoveCamera(selectedActor);            
     }
 
-    public InfoBarOverviewTable displayOverview(SolarActor selectedActor) {
-        this.selectedActor = selectedActor; 
-        reload();
-        return this;
+    public void reload() {
+        reloadMissionInfo();
     }
 
-    public void reload() {
-        clear();
-        add(new NavBarBaseLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
-        row();
-        add(new Label("Type: ",style)).left();
-        add(new Label(selectedActor.getTypeName(),style)).right();
-        row();
-        generateMissionInfo();
-        row();
-        add(showOnMap).align(Align.center).colspan(2).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
-        showOnMap.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                 onShowOnMapClick();
-            }
-         });
+    private void reloadMissionInfo() {
+        if(((Orbiter)selectedActor).isInOrbit()) {
+            missionTypeLabel.setText("In Orbit of: ");
+            missionTypeTargetLabel.setText(((Orbiter)selectedActor).getNameOfPrimary());
+            setNavBarBaseLabelActor();
+            missionTimeLabel.setText("Orbital Period: ");
+            missionTimeValueLabel.setText(((Orbiter)selectedActor).getOrbitalPeriod().toString());
+            missionDistanceLabel.setText("Semi-major Axis: ");
+            missionDistanceValueLabel.setText(((Orbiter)selectedActor).getOrbitalRadius().toString());
+            return;
+        }
+        if(selectedActor instanceof SpaceUnit) {
+            missionTypeLabel.setText("En route to: ");
+            missionTypeTargetLabel.setText(((SpaceUnit)selectedActor).getMissionDescription());
+            missionTypeTargetLabel.setActor(((SpaceUnit)selectedActor).getMissionTargetActor());
+            missionTimeLabel.setText("ETA: ");
+            //TODO: Implementiere ETA-Funktionalität aus der AI-Berechnung raus (Schätzung okay)          
+            missionTimeValueLabel.setText("Unknown");
+            missionDistanceLabel.setText("Distance: ");
+            missionDistanceValueLabel.setText(((SpaceUnit)selectedActor).getMissionDistanceValue());
+            return;
+        }
+    }
+
+    private void setNavBarBaseLabelActor() {
+        if(((Orbiter)selectedActor).getPrimary() instanceof SystemRoot) {
+            missionTypeTargetLabel.setActor((Orbiter)selectedActor);            
+            return;
+        }
+        missionTypeTargetLabel.setActor(((Orbiter)selectedActor).getPrimary());
     }
 }

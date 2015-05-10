@@ -139,4 +139,8 @@ public class NavBarBaseLabel extends Label {
         }
         return false;
     }
+
+    public void setActor(SolarActor actor) {
+        this.actor = actor;
+    }
 }

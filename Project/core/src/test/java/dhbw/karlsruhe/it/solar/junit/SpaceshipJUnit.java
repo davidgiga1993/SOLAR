@@ -87,7 +87,7 @@ public class SpaceshipJUnit
     {
     	testShip.setDestination(new Vector2(12345, 67890));
 
-        assertEquals(12345, testShip.getDestination().x, 1);
-        assertEquals(67890, testShip.getDestination().y, 1);
+        assertEquals(12345, testShip.getDestinationVector().x, 1);
+        assertEquals(67890, testShip.getDestinationVector().y, 1);
     }
 }

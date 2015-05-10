@@ -14,6 +14,9 @@ public class ResourceBarPlayerInfo extends Table {
     private LabelStyle style = Styles.MENUELABEL_STYLE;
     private GameStartStage stage;
     private Player playerOnThisPlatform;
+    private final Label playerNameLabel = new Label("", style);
+    private final Label treasuryValueLabel = new Label("", style);
+    private final Label populationValueLabel = new Label("", style);
     
     public ResourceBarPlayerInfo(GameStartStage stage) {
         this.stage = stage;
@@ -21,34 +24,38 @@ public class ResourceBarPlayerInfo extends Table {
     }
 
     private void determinePlayerOnThisPlatform() {
-        playerOnThisPlatform = stage.getPlayerOnThisPlatform();
+        if(playerOnThisPlatform == null) {
+            playerOnThisPlatform = stage.getPlayerOnThisPlatform();
+            if(playerOnThisPlatform != null) {
+                add(playerOverview()).left().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH);
+                add(playerDetails()).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH);
+                add().padLeft(ConfigurationConstants.PADDING).expandX().fillX();                            
+            }
+        }
     }
 
     public void update() {
         determinePlayerOnThisPlatform();
-        clear();
-        setDebug(true);
-        if(playerOnThisPlatform!=null) {
-            add(playerOverview()).left().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH);
-            add(playerDetails()).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH);
-            add().padLeft(ConfigurationConstants.PADDING).expandX().fillX();
-        }
+        playerNameLabel.setText(playerOnThisPlatform.getName());
+        playerNameLabel.setStyle(playerOnThisPlatform.getColorStyle());
+        treasuryValueLabel.setText(playerOnThisPlatform.getTreasury().toString());
+        populationValueLabel.setText(playerOnThisPlatform.getPopulation().toString());
     }
     
     private Table playerOverview() {
         Table overview = new Table();
         overview.add(new Label("Playing as: ", style)).left();
-        overview.add(new Label(playerOnThisPlatform.getName(), playerOnThisPlatform.getColorStyle())).expand().right();
+        overview.add(playerNameLabel).expand().right();
         return overview;
     }
     
     private Table playerDetails() {
         Table details = new Table();
         details.add(new Label("Treasury: ", style)).left();
-        details.add(new Label(playerOnThisPlatform.getTreasury().toString(), style)).expand().right(); 
+        details.add(treasuryValueLabel).expand().right(); 
         details.row();
         details.add(new Label("Population: ", style)).left();
-        details.add(new Label(playerOnThisPlatform.getPopulation().toString(), style)).expand().right(); 
+        details.add(populationValueLabel).expand().right(); 
         return details;
     }
 }

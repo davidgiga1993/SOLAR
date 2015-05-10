@@ -67,23 +67,27 @@ public class InfoBarManager extends Table {
     
     public void onDisplayExtraDataClick() {
         settings.toggleDisplayExtraData();
-        reload();
+        displayContent(selectedActor);
     }
 
     public void onDisplayLifeRatingClick() {
         settings.toggleDisplayLifeRating();
-        reload();
+        displayContent(selectedActor);
     }
 
     public void onDisplayColonyDetailsClick() {
         settings.toggleDisplayColonyDetails();
-        reload(); 
+        displayContent(selectedActor);
     }
     
     public void reload() {
-        clear();
-        createInfoBarMenueButtons();
-        createInfoBarDetailsTable();
+        if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
+            table.reloadAstroBodyInformation();
+            return;
+        }
+        if(selectedActor instanceof SpaceUnit) {
+            return;
+        }
     }
 
     public InfoBarManagerSettings getSettings() {

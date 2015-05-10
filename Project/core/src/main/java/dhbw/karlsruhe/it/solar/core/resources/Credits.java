@@ -70,19 +70,23 @@ public class Credits extends BaseResource {
     }
     
     private String changeLastMonth() {
+        String sign = "";
+        if(changeLastMonth > 0) {
+            sign = "+";
+        }
         if(inTrillions(changeLastMonth) > 0.1f || -inTrillions(changeLastMonth) > 0.1f) {
-            return formatValue(changeLastMonth / TRILLION) + " tr";
+            return sign + formatValue(changeLastMonth / TRILLION) + " tr";
         }
         if(inBillions(changeLastMonth) > 0.1f || -inBillions(changeLastMonth) > 0.1f) {
-            return formatValue(changeLastMonth / BILLION) + " bi";
+            return sign + formatValue(changeLastMonth / BILLION) + " bi";
         }
         if(inMillions(changeLastMonth) > 0.1f || -inMillions(changeLastMonth) > 0.1f) {
-            return formatValue(changeLastMonth / MILLION) + " mi";
+            return sign + formatValue(changeLastMonth / MILLION) + " mi";
         }
         if(inThousands(changeLastMonth) > 0.1f || -inThousands(changeLastMonth) > 0.1f) {
-            return formatValue(changeLastMonth / THOUSAND) + " k";
+            return sign + formatValue(changeLastMonth / THOUSAND) + " k";
         }
-        return formatValue(changeLastMonth); 
+        return sign + formatValue(changeLastMonth); 
     }
 
     public void updateStatistics() {

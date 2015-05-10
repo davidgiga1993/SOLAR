@@ -164,22 +164,6 @@ public class OrbitalProperties {
     public Vector2 getCenterOfOrbit() {
         return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
     }
-    
-    public SolarActorScale getOrbitalSpaceUnitScaleFactor() {
-        if (orbitPrimary instanceof Star) {
-            return ConfigurationConstants.SCALE_FACTOR_PLANET;            
-        }
-        if (orbitPrimary instanceof Planet) {
-            return ConfigurationConstants.SCALE_FACTOR_MOON;            
-        }
-        if (orbitPrimary instanceof Moon) {
-            return ConfigurationConstants.SCALE_FACTOR_MOON;            
-        }
-        if (orbitPrimary instanceof Asteroid) {
-            return ConfigurationConstants.SCALE_FACTOR_ASTEROID;            
-        }
-        return ConfigurationConstants.SCALE_FACTOR_PLANET;
-    }
         
     public AstronomicalBody getPrimary() {
         return orbitPrimary;
@@ -265,5 +249,21 @@ public class OrbitalProperties {
 
     public boolean primaryIsClaimable() {
         return orbitPrimary.isClaimable();
+    }
+
+    public static SolarActorScale getOrbitalSpaceUnitScaleFactor(Orbiter orbitPrimary) {
+        if (orbitPrimary instanceof Star) {
+            return ConfigurationConstants.SCALE_FACTOR_PLANET;            
+        }
+        if (orbitPrimary instanceof Planet) {
+            return ConfigurationConstants.SCALE_FACTOR_MOON;            
+        }
+        if (orbitPrimary instanceof Moon) {
+            return ConfigurationConstants.SCALE_FACTOR_MOON;            
+        }
+        if (orbitPrimary instanceof Asteroid) {
+            return ConfigurationConstants.SCALE_FACTOR_ASTEROID;            
+        }
+        return ConfigurationConstants.SCALE_FACTOR_PLANET;
     }
 }

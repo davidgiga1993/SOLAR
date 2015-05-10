@@ -25,6 +25,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.ShapeRenderable;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -36,11 +37,14 @@ import dhbw.karlsruhe.it.solar.player.Player;
  * derived from SolarActor from which the individual unit subclasses can inherit.
  */
 public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
-     public static final Color SPACEUNIT_ORBIT_COLOR = new Color(0, 0.5f, 0, 1);
+    
+    public static final Color SPACEUNIT_ORBIT_COLOR = new Color(0, 0.5f, 0, 1);
+    public static final Credits SPACESHIP_YEARLY_RUNNING_COST = new Credits(10000000);
+    public static final Credits SPACESTATION_YEARLY_RUNNING_COST = new Credits(50000000);
 
     protected Player owner;
-    protected Vector2 destination;
-    protected String nameOfDestination;
+    protected Vector2 destinationVector;
+    protected Orbiter destination;
     protected float speed;
     AIModule aiModule;
     AIOutput aiOutput;
@@ -62,7 +66,11 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
       * @param deltaT
       * @return
       */
-     public abstract Credits payUpKeep(Time deltaT);
+     public Credits payUpKeep(Time deltaT) {
+         return new Credits((long)(getRunningCosts().getNumber() * deltaT.inYears()));
+     }
+     
+     protected abstract Credits getRunningCosts();
 
      /**
       * Shared constructor tasks for space units which have to come after their texture is added.
@@ -72,7 +80,6 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      protected void initSpaceUnit(Length width, Length length) {
           this.setSize(width, length);
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
-        this.destination = new Vector2(getX(), getY());
         kinematic.setMaxSpeed(speed);
         kinematic.setRotation(getRotation());        
         initializeAIModule();
@@ -80,7 +87,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
 
      private void initializeAIModule() {
         this.aiModule = new AISpaceshipModule(this);
-        aiModule.setTarget(destination);
+        aiModule.setTarget(destinationVector);
         aiModule.addEventListener(new TargetReachedListener() {
             @Override
             public void handle(TargetReachedEvent event) {
@@ -143,7 +150,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
       * @param scale Scale value is derived from the configuration constants of the appropriate satellite to the orbital Primary body.
       */
      private void setOrbitScale() {
-         currentOrbitScale = orbitalProperties.getOrbitalSpaceUnitScaleFactor().getOrbitScale();
+         currentOrbitScale = OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitalProperties.getPrimary()).getOrbitScale();
          actorScale = new SolarActorScale(currentShapeScale, currentOrbitScale);
     }
      
@@ -156,7 +163,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
               leaveOrbit();
          }
         this.aiModule.setTarget(destination);
-        this.destination = destination;
+        this.destinationVector = destination;
+        this.destination = null;
     }
     
     public void setDestination(KinematicObject destination)    {
@@ -164,8 +172,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
               leaveOrbit();     
          }
         this.aiModule.setTarget(destination.getKinematic());
-        this.destination = destination.getKinematic().getPosition();
-        this.nameOfDestination = destination.getName();
+        this.destinationVector = destination.getKinematic().getPosition();
+        this.destination = (Orbiter) destination;
     }
     
     public void setDestination(AstronomicalBody destination) {
@@ -179,8 +187,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
              return;
           }
         this.aiModule.setTarget(destination);
-        this.destination = destination.getKinematic().getPosition();
-        this.nameOfDestination = destination.getName();
+        this.destinationVector = destination.getKinematic().getPosition();
+        this.destination = destination;
      }
 
      public void establishColony(AstronomicalBody destination, Population colonists) {
@@ -215,8 +223,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      */
      private void stopMovement() {
           //TODO: Tell the AIModule to fuck off or something like that.
+         destinationVector = null;
          destination = null;
-         nameOfDestination = null;
          this.aiModule.setTarget(this);
      }
      
@@ -230,13 +238,17 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      }
      
      /**
-      * Determines the vector between the space unit and an astronomical body. Actor coordinates reference their lower left corner, therefore the vector calculation first determines the center of the actors.
-      * @param orbitPrimary Astronomical Body to which the space unit calculates its distance vector.
+      * Determines the vector between the space unit and another solar actor. Actor coordinates reference their lower left corner, therefore the vector calculation first determines the center of the actors.
+      * @param target Target solar actor to which the space unit calculates its distance vector.
       * @return Distance vector stating the in-game distance between the space unit and the parameter astronomical body.
       */
-     private Vector2 getDistanceVector(AstronomicalBody orbitPrimary) {
-          return new Vector2( orbitPrimary.getX() + orbitPrimary.getWidth()/2, orbitPrimary.getY() + orbitPrimary.getHeight()/2 ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
+     private Vector2 getDistanceVector(SolarActor target) {
+          return new Vector2( target.getX() + target.getWidth()/2, target.getY() + target.getHeight()/2 ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
      }
+     
+     private Vector2 getDistanceVector(Vector2 target) {
+         return new Vector2( target.x, target.y ).sub( getX() + getWidth()/2, getY() + getHeight()/2 );
+    }
      
      /**
       * Determines the actual physical length implied by an in-game vector. Takes the in-game scaling factors for the reference object into account.
@@ -245,9 +257,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
       * @param distance Distance vector stating the in-game distance between the two objects.
       * @return Physical length of the distance.
       */
-     private Length getPhysicalLength(AstronomicalBody orbitPrimary,
-               Vector2 distance) {
-          return new Length (inverseStagescaling(distance.len()) / new OrbitalProperties(orbitPrimary, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()).getOrbitalSpaceUnitScaleFactor().getOrbitScale(), DistanceUnit.KILOMETERS);
+     private Length getPhysicalLength(Orbiter orbitPrimary, Vector2 distance) {
+          return new Length (inverseStagescaling(distance.len()) / OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitPrimary).getOrbitScale(), DistanceUnit.KILOMETERS);
      }
 
      /**
@@ -259,9 +270,13 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
           return new Angle(distance.angle() + 180, Angle.AngularUnit.DEGREE);
      }
 
-     private Length physicalDistanceTo(AstronomicalBody destination) {
+     public Length physicalDistanceTo(Orbiter destination) {
           return getPhysicalLength(destination, getDistanceVector(destination));
      }
+     
+     public Length physicalDistanceTo(Vector2 destination) {
+         return getPhysicalLength(((GameStartStage)getStage()).getSolarSystem(), getDistanceVector(destination));
+    }
 
      private Length maxOrbitalRadiusFor(AstronomicalBody destination) {
           return destination.calculateMaxOrbitalRadius();
@@ -286,10 +301,10 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      * @param shapeRenderer
      */
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer)    {
-        if (destination != null && this.aiModule.isMoving())        {
+        if (destinationVector != null && this.aiModule.isMoving())        {
             shapeRenderer.setColor(Color.GREEN);
-            shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destination.x, destination.y);
-            shapeRenderer.circle(destination.x, destination.y, 10);
+            shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destinationVector.x, destinationVector.y);
+            shapeRenderer.circle(destinationVector.x, destinationVector.y, 10);
 
             displaySelectedDestination(shapeRenderer);
         }
@@ -302,14 +317,21 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     private void displaySelectedDestination(ShapeRenderer shapeRenderer)    {
         if (selected)        {
             shapeRenderer.setColor(Color.YELLOW);
-            shapeRenderer.rect(destination.x - 13, destination.y - 13, 26, 26);
+            shapeRenderer.rect(destinationVector.x - 13, destinationVector.y - 13, 26, 26);
         }
     }
 
     /**
      * @return Destination coordinates the spaceship object is heading to
      */
-    public Vector2 getDestination()    {
+    public Vector2 getDestinationVector()    {
+        return destinationVector;
+    }
+    
+    /**
+     * @return Destination object the spaceship object is heading to
+     */
+    public Orbiter getDestination()    {
         return destination;
     }
     
@@ -356,19 +378,19 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     }
 
     public boolean isOnMission() {
-        return null != destination;
+        return null != destinationVector;
     }
 
     public String getNameOfDestination() {
-        return nameOfDestination;
+        return destination.getName();
     }
 
-    public String getMission() {
-        if(null!=nameOfDestination) {
-            return nameOfDestination;
-        }
+    public String getMissionDescription() {
         if(null!=destination) {
-            return destination.x + "/" + destination.y;
+            return destination.getName();
+        }
+        if(null!=destinationVector) {
+            return destinationVector.x + "/" + destinationVector.y;
         }
         return "Idle";
     }
@@ -379,5 +401,22 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
 
     public boolean isInOrbitAroundClaimableWorld() {
         return orbitalProperties.primaryIsClaimable();
+    }
+
+    public SolarActor getMissionTargetActor() {
+        if(null!=destination) {
+            return destination;
+        }
+        return null;
+    }
+
+    public String getMissionDistanceValue() {
+        if(null != destination) {
+            return physicalDistanceTo(getDestination()).toString();            
+        }
+        if(null != destinationVector) {
+            return physicalDistanceTo(destinationVector).toString();
+        }
+        return new Length(0, DistanceUnit.KILOMETERS).toString();
     }
 }

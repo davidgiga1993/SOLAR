@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.space_units;
 import com.badlogic.gdx.math.Vector2;
 
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -40,8 +39,7 @@ public class Spaceship extends SpaceUnit  {
     }
 
     @Override
-    public Credits payUpKeep(Time deltaT) {
-        return new Credits((long)(1000000 * deltaT.inDays()));
+    public Credits getRunningCosts() {
+        return SPACESHIP_YEARLY_RUNNING_COST;
     }
-
 }

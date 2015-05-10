@@ -82,7 +82,7 @@ public class SpaceUnitManager {
     private void extractOrbitalLocation() {
         primary = solarSystem.findAstronomicalBodyByName(orbitInfo.getPrimary());
         OrbitalProperties prop = new OrbitalProperties(primary,orbitInfo.getOrbitalRadius(),orbitInfo.getPolarAngle());
-        float orbitalRadiusInPixels = SolarActor.scaleDistanceToStage(prop.getOrbitalRadius().asKilometers()) * prop.getOrbitalSpaceUnitScaleFactor().getOrbitScale();
+        float orbitalRadiusInPixels = SolarActor.scaleDistanceToStage(prop.getOrbitalRadius().asKilometers()) * OrbitalProperties.getOrbitalSpaceUnitScaleFactor(prop.getPrimary()).getOrbitScale();
         startlocation = prop.getOrbitalPositionTotal(orbitalRadiusInPixels, new Angle());
     }
 

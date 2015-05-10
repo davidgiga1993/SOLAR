@@ -16,8 +16,6 @@ import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialo
 
 public class GameHUDStage extends BaseGUIStage{
 
-    private static final int INFOBAR_HEIGHT = 160;
-    private static final int RESSOURCEBAR_HEIGHT = 50;
     private NavBar navigationBar;
     private ResourceBar resourceBar;
     private InfoBar bottomBar;
@@ -45,12 +43,12 @@ super(solarEngine, "GameHUD");
         resourceBar = new ResourceBar(se.getGameStage());
         bottomBar = new InfoBar();
 
-        guiTable.add(resourceBar).align(Align.right).colspan(2).height(RESSOURCEBAR_HEIGHT).expandX().fillX();
+        guiTable.add(resourceBar).align(Align.right).colspan(2).height(ConfigurationConstants.RESSOURCEBAR_HEIGHT).expandX().fillX();
         guiTable.row();
         guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(calculateNavbarMaxHeight()).top().fill().left();
         guiTable.add(new Actor()).expandX();
-        guiTable.row().maxHeight(INFOBAR_HEIGHT);
-        guiTable.add(bottomBar).height(INFOBAR_HEIGHT).maxWidth(calculateInfoBarMaxWidth()).colspan(2).expandX().fill().left();
+        guiTable.row().maxHeight(ConfigurationConstants.INFOBAR_HEIGHT);
+        guiTable.add(bottomBar).height(ConfigurationConstants.INFOBAR_HEIGHT).maxWidth(calculateInfoBarMaxWidth()).colspan(2).expandX().fill().left();
 
 
         addActor(guiTable);
@@ -61,7 +59,7 @@ super(solarEngine, "GameHUD");
     }
 
     private int calculateNavbarMaxHeight() {
-        return Gdx.graphics.getHeight() - (RESSOURCEBAR_HEIGHT+INFOBAR_HEIGHT);
+        return Gdx.graphics.getHeight() - (ConfigurationConstants.RESSOURCEBAR_HEIGHT+ConfigurationConstants.INFOBAR_HEIGHT);
     }
     
     public static int calculateInfoBarMaxWidth() {

@@ -14,6 +14,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 public class InfoBarDetailsTable extends Table {
     
     private InfoBarManagerSettings settings;
+    private final InfoBarColonyDetails colony = new InfoBarColonyDetails();
 
     public InfoBarDetailsTable displayAstroBodyInformation(AstronomicalBody selectedBody) {
         if(settings.showExtraData()) {
@@ -23,7 +24,7 @@ public class InfoBarDetailsTable extends Table {
             add(new InfoBarLifeRatingDetails(selectedBody)).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH).top();            
         }
         if(settings.showColonyDetails()) {
-            add(new InfoBarColonyDetails((selectedBody).getColony())).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH).top();           
+            add(colony.show(selectedBody)).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH).top();           
         }
         add().padLeft(ConfigurationConstants.PADDING).expand().fill();
         return this;
@@ -44,5 +45,9 @@ public class InfoBarDetailsTable extends Table {
 
     public void initSettings(InfoBarManagerSettings settings) {
         this.settings = settings;
+    }
+
+    public void reloadAstroBodyInformation() {
+        colony.reload();
     }
 }

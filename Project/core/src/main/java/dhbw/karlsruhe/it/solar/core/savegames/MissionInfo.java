@@ -20,7 +20,7 @@ public class MissionInfo {
     public void fillMissionInfo(SpaceUnit unit) {
         targetName = unit.getNameOfDestination();
         if(null == targetName) {
-            location = unit.getDestination();            
+            location = unit.getDestinationVector();            
         }
     }
 

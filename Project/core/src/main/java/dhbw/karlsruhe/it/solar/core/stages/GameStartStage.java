@@ -520,4 +520,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
             player.updateTreasury(deltaT);
         }
     }
+    
+    public SolarSystem getSolarSystem() {
+        return solarSystem;
+    }
 }
