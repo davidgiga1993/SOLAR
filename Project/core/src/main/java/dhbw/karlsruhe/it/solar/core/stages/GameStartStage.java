@@ -524,4 +524,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public SolarSystem getSolarSystem() {
         return solarSystem;
     }
+
+    public static void stopTime() {
+        setTimeSpeed(0);
+    }
 }

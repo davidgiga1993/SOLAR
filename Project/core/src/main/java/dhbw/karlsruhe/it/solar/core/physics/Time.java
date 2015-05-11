@@ -116,7 +116,7 @@ public class Time {
             return "-" + new Time(-value, unit).toString();
         }
         if( this.inYears() > ONE_MILLION) {
-            return formatValue(this.inYears()/ONE_MILLION) + " M Years";
+            return formatValue(this.inYears()/ONE_MILLION) + " mi Years";
         }
         if( this.inYears() > ONE_THOUSAND ) {
             return formatValue(this.inYears()/ONE_THOUSAND) + " k Years";
