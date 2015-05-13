@@ -27,7 +27,7 @@ public class Credits extends BaseResource {
 
     @Override
     public TextureRegion getIcon() {
-        return TextureCacher.GAMEATLAS.findRegion("resource_placeholder");
+        return TextureCacher.GAMEATLAS.findRegion("credits");
     }
 
     @Override

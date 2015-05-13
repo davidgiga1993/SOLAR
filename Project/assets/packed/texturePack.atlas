@@ -5,252 +5,343 @@ filter: Nearest,Nearest
 repeat: none
 Rings_Jupiter
   rotate: false
-  xy: 1, 1293
+  xy: 1, 2932
   size: 17, 1020
   orig: 17, 1020
   offset: 0, 0
   index: -1
 Rings_Uranus
   rotate: false
-  xy: 1, 271
+  xy: 1, 1910
   size: 9, 1020
   orig: 9, 1020
   offset: 0, 0
   index: -1
 Arielian
   rotate: false
-  xy: 20, 1801
+  xy: 20, 3440
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Callistoan
   rotate: false
-  xy: 534, 1801
+  xy: 534, 3440
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Dionean
   rotate: false
-  xy: 1048, 1801
+  xy: 1048, 3440
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 DwarfPlanet
   rotate: false
-  xy: 1562, 1801
+  xy: 1562, 3440
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Enceladean
   rotate: false
-  xy: 2076, 1801
+  xy: 2076, 3440
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Europan
   rotate: false
-  xy: 2590, 1801
+  xy: 2590, 3440
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Ganymedian
   rotate: false
-  xy: 3104, 1801
+  xy: 3104, 3440
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 GTypeMainSequence
   rotate: false
-  xy: 20, 1287
+  xy: 20, 2926
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Iapetian
   rotate: false
-  xy: 534, 1287
+  xy: 534, 2926
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Ionian
   rotate: false
-  xy: 1048, 1287
+  xy: 1048, 2926
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Jovian
   rotate: false
-  xy: 1562, 1287
+  xy: 1562, 2926
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Lunar
   rotate: false
-  xy: 2076, 1287
+  xy: 2076, 2926
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Martian
   rotate: false
-  xy: 2590, 1287
+  xy: 2590, 2926
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Mercurian
   rotate: false
-  xy: 3104, 1287
+  xy: 3104, 2926
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Mimantean
   rotate: false
-  xy: 12, 773
+  xy: 12, 2412
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Mirandan
   rotate: false
-  xy: 526, 773
+  xy: 526, 2412
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Neptunian
   rotate: false
-  xy: 1040, 773
+  xy: 1040, 2412
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Oberonian
   rotate: false
-  xy: 1554, 773
+  xy: 1554, 2412
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Rhean
   rotate: false
-  xy: 2068, 773
+  xy: 2068, 2412
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Saturn
   rotate: false
-  xy: 2582, 773
+  xy: 2582, 2412
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Terran
   rotate: false
-  xy: 3096, 773
+  xy: 3096, 2412
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Tethyan
   rotate: false
-  xy: 12, 259
+  xy: 12, 1898
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Titanean
   rotate: false
-  xy: 526, 259
+  xy: 526, 1898
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Titanian
   rotate: false
-  xy: 1040, 259
+  xy: 1040, 1898
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Tritonian
   rotate: false
-  xy: 1554, 259
+  xy: 1554, 1898
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Umbrelian
   rotate: false
-  xy: 2068, 259
+  xy: 2068, 1898
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Uranian
   rotate: false
-  xy: 2582, 259
+  xy: 2582, 1898
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Venusian
   rotate: false
-  xy: 3096, 259
+  xy: 3096, 1898
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Rings_Neptune
   rotate: false
-  xy: 3618, 1734
+  xy: 3618, 3373
   size: 8, 579
   orig: 8, 579
   offset: 0, 0
   index: -1
 Cruiser
   rotate: false
-  xy: 3628, 2057
+  xy: 3628, 3696
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 IrregularSatellite
   rotate: false
-  xy: 3628, 1799
+  xy: 3628, 3438
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 space_station
   rotate: false
-  xy: 1, 1
+  xy: 1, 1640
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
+habitats
+  rotate: false
+  xy: 1, 1388
+  size: 250, 250
+  orig: 250, 250
+  offset: 0, 0
+  index: -1
+infrastructure
+  rotate: false
+  xy: 259, 1646
+  size: 250, 250
+  orig: 250, 250
+  offset: 0, 0
+  index: -1
+reactor_fission
+  rotate: false
+  xy: 1, 1136
+  size: 250, 250
+  orig: 250, 250
+  offset: 0, 0
+  index: -1
+alert_population
+  rotate: false
+  xy: 511, 1671
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+credits
+  rotate: false
+  xy: 1, 909
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+electricity
+  rotate: false
+  xy: 738, 1671
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+habitat_space
+  rotate: false
+  xy: 1, 682
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+lack_of_credits
+  rotate: false
+  xy: 965, 1671
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+lack_of_electricity
+  rotate: false
+  xy: 1, 455
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+lack_of_habitat_space
+  rotate: false
+  xy: 1192, 1671
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+lack_of_life_support
+  rotate: false
+  xy: 1, 228
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+life_support
+  rotate: false
+  xy: 1419, 1671
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
+population
+  rotate: false
+  xy: 1, 1
+  size: 225, 225
+  orig: 225, 225
+  offset: 0, 0
+  index: -1
 Rings_Saturn
   rotate: false
-  xy: 3610, 1009
+  xy: 3610, 2648
   size: 4, 276
   orig: 4, 276
   offset: 0, 0
   index: -1
 resource_placeholder
   rotate: false
-  xy: 3886, 2249
+  xy: 3886, 3888
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

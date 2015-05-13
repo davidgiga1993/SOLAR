@@ -1,6 +1,5 @@
 package dhbw.karlsruhe.it.solar.config;
 
-
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 
 public final class ConfigurationConstants {
@@ -20,6 +19,7 @@ public final class ConfigurationConstants {
     public static final int GUI_NAVIGATION_WIDTH = 175;
     public final static int CELL_WIDTH = 215;
     public final static int PADDING = 14;
+    public static final int ICON_SIZE = 16;
     public static final String HOMEWORLD = "Earth";
 
     private ConfigurationConstants() {

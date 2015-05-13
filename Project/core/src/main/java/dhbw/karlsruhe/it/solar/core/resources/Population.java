@@ -29,7 +29,7 @@ public class Population extends BaseResource {
 
     @Override
     public TextureRegion getIcon() {
-        return TextureCacher.GAMEATLAS.findRegion("resource_placeholder");
+        return TextureCacher.GAMEATLAS.findRegion("population");
     }
  
     @Override
