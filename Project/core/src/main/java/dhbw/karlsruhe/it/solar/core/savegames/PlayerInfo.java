@@ -1,5 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,12 +10,12 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import com.badlogic.gdx.graphics.Color;
 
-import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
+import dhbw.karlsruhe.it.solar.core.resources.GlobalResource;
 import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({BaseResource.class})
+@XmlSeeAlso({GlobalResource.class})
 public class PlayerInfo {
     
     @XmlElement(name = "PlayerName")
@@ -22,7 +23,7 @@ public class PlayerInfo {
     @XmlElement(name = "PlayerColor")
     private Color color;
     @XmlElement(name = "Player_Resources")
-    private List<GlobalResourceInterface> resources;
+    private List<GlobalResource> resources;
     
     public PlayerInfo() {
         
@@ -43,7 +44,11 @@ public class PlayerInfo {
     }
 
     public List<GlobalResourceInterface> getResources() {
-        return resources;
+        List<GlobalResourceInterface> newList = new ArrayList<GlobalResourceInterface>();
+        for(GlobalResource resource : resources) {
+            newList.add((GlobalResourceInterface)resource);
+        }
+        return newList;
     }
 
 }

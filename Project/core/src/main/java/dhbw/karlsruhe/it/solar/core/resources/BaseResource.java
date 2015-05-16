@@ -3,10 +3,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
@@ -17,8 +14,6 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
  * @author Andi
  * created 2015-05-04
  */
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Population.class, Credits.class})
 public abstract class BaseResource implements BaseResourceInterface {
     
     public final static long THOUSAND = 1000;

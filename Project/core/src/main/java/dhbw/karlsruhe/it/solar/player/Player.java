@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.player;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
+import dhbw.karlsruhe.it.solar.core.resources.GlobalResource;
 import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.TotalPopulation;
@@ -167,7 +168,11 @@ public class Player {
         getTreasury().updateStatistic();
     }
 
-    public List<GlobalResourceInterface> getResources() {
-        return resources;
+    public List<GlobalResource> getResources() {
+        List<GlobalResource> newList = new ArrayList<GlobalResource>();
+        for(GlobalResourceInterface resource : resources) {
+            newList.add((GlobalResource)resource);
+        }
+        return newList;
     }
 }
