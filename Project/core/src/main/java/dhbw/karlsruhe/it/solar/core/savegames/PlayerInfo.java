@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import com.badlogic.gdx.graphics.Color;
 
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
+import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 @XmlAccessorType(XmlAccessType.NONE)
@@ -21,7 +22,7 @@ public class PlayerInfo {
     @XmlElement(name = "PlayerColor")
     private Color color;
     @XmlElement(name = "Player_Resources")
-    private List<BaseResource> resources;
+    private List<GlobalResourceInterface> resources;
     
     public PlayerInfo() {
         
@@ -41,7 +42,7 @@ public class PlayerInfo {
         return color;
     }
 
-    public List<BaseResource> getResources() {
+    public List<GlobalResourceInterface> getResources() {
         return resources;
     }
 

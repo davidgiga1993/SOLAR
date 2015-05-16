@@ -2,10 +2,10 @@ package dhbw.karlsruhe.it.solar.player;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
+import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
+import dhbw.karlsruhe.it.solar.core.resources.TotalPopulation;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -19,12 +19,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 /**
  * Created by Arga on 29.11.2014.
  */
-public class Player implements ResourceDepot {
-
+public class Player {
+    
+    public final static int POPULATION_RESOURCE_ID = 0;
+    public final static int TREASURY_RESOURCE_ID = 1;
+    
     private final int id;
     private final String name;
     private final Color playerColor;
-    private final List<BaseResource> resources = new ArrayList<BaseResource>();
+    private final List<GlobalResourceInterface> resources = new ArrayList<GlobalResourceInterface>();
     private final List<Colony> colonies = new ArrayList<Colony>();
     private final List<SpaceUnit> units = new ArrayList<SpaceUnit>();
 
@@ -32,7 +35,7 @@ public class Player implements ResourceDepot {
         this.id = id;
         this.name = name;
         this.playerColor = color;
-        this.resources.add(POPULATION_RESOURCE_ID, new Population(0));
+        this.resources.add(POPULATION_RESOURCE_ID, new TotalPopulation());
         this.resources.add(TREASURY_RESOURCE_ID, new Credits());
     }
 
@@ -49,10 +52,6 @@ public class Player implements ResourceDepot {
         return id;
     }
 
-    @Override
-    public boolean isPermanentHabitat() {
-        return false;
-    } 
     public Color getPlayerColor() {
         return playerColor;
     }
@@ -134,27 +133,21 @@ public class Player implements ResourceDepot {
         }
     }
 
-    @Override
-    public Population getPopulation() {
-        return (Population)resources.get(POPULATION_RESOURCE_ID);
+    public TotalPopulation getTotalPopulation() {
+        return (TotalPopulation)resources.get(POPULATION_RESOURCE_ID);
     }
 
     public void updateTotalPopulation() {
-        ((Population)resources.get(POPULATION_RESOURCE_ID)).empty();
+        ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).empty();
         for(Colony colony : colonies) {
-            ((Population)resources.get(POPULATION_RESOURCE_ID)).addToValue(colony.getPopulation());
+            ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).addToValue(colony.getPopulation());
         }
-        getPopulation().updateStatistics();
+        getTotalPopulation().updateStatistic();
     }
 
-    @Override
-    public List<BaseResource> getResources() {
-        return resources;
-    }
-
-    public void setResources(List<BaseResource> resources) {
+    public void setResources(List<GlobalResourceInterface> resources) {
         this.resources.clear();
-        for(BaseResource resource : resources) {
+        for(GlobalResourceInterface resource : resources) {
             this.resources.add(resource);
         }
     }
@@ -171,6 +164,10 @@ public class Player implements ResourceDepot {
         for(SpaceUnit unit : units) {
             getTreasury().subtractFromValue(unit.payUpKeep(deltaT));            
         }
-        getTreasury().updateStatistics();
+        getTreasury().updateStatistic();
+    }
+
+    public List<GlobalResourceInterface> getResources() {
+        return resources;
     }
 }

@@ -1,7 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 
 
@@ -9,7 +7,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Time;
  * Establishes communication between resources and other game logic.
  * Created by Arga on 29.11.2014.
  */
-public interface ResourceInterface {
+public interface StandardResourceInterface {
     
     /**
      * Returns the current discrete amount of the resource.
@@ -22,12 +20,6 @@ public interface ResourceInterface {
      * @return
      */
     public long getMaximum();
-
-    /**
-     * Returns the Texture's icon as a TextureRegion
-     * @return
-     */
-    public TextureRegion getIcon();
     
     /**
      * Returns a string describing the current amount of that resource.

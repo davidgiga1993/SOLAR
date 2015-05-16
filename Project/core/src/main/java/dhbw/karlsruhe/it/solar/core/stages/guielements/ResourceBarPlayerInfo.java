@@ -1,6 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -8,9 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.resources.BaseResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.ResourceInterface;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -45,7 +44,7 @@ public class ResourceBarPlayerInfo extends Table {
         playerNameLabel.setText(playerOnThisPlatform.getName());
         playerNameLabel.setStyle(playerOnThisPlatform.getColorStyle());
         treasuryValueLabel.setText(playerOnThisPlatform.getTreasury().toString());
-        populationValueLabel.setText(playerOnThisPlatform.getPopulation().toString());
+        populationValueLabel.setText(playerOnThisPlatform.getTotalPopulation().toString());
     }
     
     private Table playerOverview() {
@@ -66,8 +65,8 @@ public class ResourceBarPlayerInfo extends Table {
         details.add(loadIcon(new Population()));
         return details;
     }
-    
-    private Table loadIcon(ResourceInterface resource) {
+
+    private Table loadIcon(BaseResourceInterface resource) {
         Table imageTable = new Table();
         Image selectedImage = new Image();
         selectedImage.setDrawable(new TextureRegionDrawable(resource.getIcon()));

@@ -10,7 +10,7 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  * @author Andi
  *
  */
-public class Credits extends BaseResource {
+public class Credits extends GlobalResource {
     
     public Credits() {
         
@@ -18,11 +18,6 @@ public class Credits extends BaseResource {
 
     public Credits(long value) {
         this.value = value;
-    }
-
-    @Override
-    public long getMaximum() {
-        return TRILLION * TRILLION;
     }
 
     @Override
@@ -89,11 +84,12 @@ public class Credits extends BaseResource {
         return sign + formatValue(changeLastMonth); 
     }
 
-    public void updateStatistics() {
-        updateProductionStatistic();
-    }
-
     public void subtractFromValue(Credits upKeep) {
         value -= upKeep.getNumber();
+    }
+
+    @Override
+    public void updateStatistic() {
+        updateProductionStatistic();
     }
 }

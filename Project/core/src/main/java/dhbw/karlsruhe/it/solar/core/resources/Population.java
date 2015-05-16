@@ -10,7 +10,7 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  * @author Andi
  * Th, 19. March 2015
  */
-public class Population extends BaseResource {
+public class Population extends StandardResource {
 
     private PopulationNeeds needs = new PopulationNeeds();
     
@@ -57,13 +57,6 @@ public class Population extends BaseResource {
     
     private float populationGrowthFormula() {
         return (float)((double)((value - valuesOfLastMonth.get(0))) / (double)((valuesOfLastMonth.get(0) * ((double)valuesOfLastMonth.size()) / ((double)Time.DAYS_PER_YEAR))));
-    }
-
-    /**
-     * Sets population number to zero. Only to be used for total population calculation of player!
-     */
-    public void empty() {
-        value = 0;
     }
 
     @Override

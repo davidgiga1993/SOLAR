@@ -3,7 +3,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 import java.util.List;
 
 /**
- * Interface for in-game objects containing game resources of any kind.
+ * Interface for in-game objects containing local resources of any kind.
  * @author Andi
  * created 2015-05-09
  */
@@ -16,7 +16,7 @@ public interface ResourceDepot {
      * Returns the total list of resources stored in this resource depot.
      * @return
      */
-    public List<BaseResource> getResources();
+    public List<StandardResourceInterface> getResources();
     
     /**
      * Returns the number of people living on this ResourceDepot, if any.

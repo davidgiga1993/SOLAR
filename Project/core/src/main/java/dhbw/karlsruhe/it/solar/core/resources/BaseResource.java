@@ -19,7 +19,7 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
  */
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Population.class, Credits.class})
-public abstract class BaseResource implements ResourceInterface {
+public abstract class BaseResource implements BaseResourceInterface {
     
     public final static long THOUSAND = 1000;
     public final static long MILLION = THOUSAND * THOUSAND;
