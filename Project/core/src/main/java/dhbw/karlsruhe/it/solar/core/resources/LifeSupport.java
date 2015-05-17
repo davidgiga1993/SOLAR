@@ -2,15 +2,17 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 public class LifeSupport extends CapacitiveResource {
     
-    private static final long SUPPORTED_POPULATION_PER_INFRASTRUCTURE = 10 * THOUSAND;
+    private Colony colonySite;
+    private static final float SUPPORTED_POPULATION_PER_INFRASTRUCTURE = 10 * THOUSAND;
     
-    public LifeSupport() {
-        
+    public LifeSupport(Colony colonySite) {
+        this.colonySite = colonySite;
     }
 
     @Override
@@ -25,7 +27,7 @@ public class LifeSupport extends CapacitiveResource {
 
     @Override
     protected long capacityPerUnit() {
-        return SUPPORTED_POPULATION_PER_INFRASTRUCTURE;
+        return (long)(SUPPORTED_POPULATION_PER_INFRASTRUCTURE * efficiencyOfLifeSupport());
     }
 
     @Override
@@ -36,5 +38,9 @@ public class LifeSupport extends CapacitiveResource {
     @Override
     protected String noCapacityMessage() {
         return "Life Support off-line!";
+    }
+    
+    private float efficiencyOfLifeSupport() {
+        return colonySite.getLiferatingOfColony().getNumber();
     }
 }

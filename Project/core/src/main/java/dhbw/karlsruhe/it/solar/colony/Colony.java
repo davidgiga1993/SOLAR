@@ -5,6 +5,7 @@ import java.util.List;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.physics.LifeRating;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
@@ -30,7 +31,7 @@ public class Colony implements Ownable, ResourceDepot {
         name = colonyName;
         owner = colonyFounder;
         primary = colonyPlace;
-        resources.init(colonists);
+        resources.init(this, colonists);
     }
     
     public String getPopulationInformation() {
@@ -117,5 +118,17 @@ public class Colony implements Ownable, ResourceDepot {
 
     public LabelStyle getLifeSupportDisplayStyle() {
         return getLifeSupport().getDisplayStyle();
+    }
+
+    public ColonyBuildings getColonyBuildings() {
+        return buildings;
+    }
+
+    public void updateCapacities() {
+        resources.updateCapacities(this);
+    }
+
+    public LifeRating getLiferatingOfColony() {
+        return primary.getLifeRating();
     }
 }

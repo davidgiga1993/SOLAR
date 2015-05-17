@@ -7,8 +7,12 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 public class Infrastructure extends BaseBuilding {
 
+    public Infrastructure(int initialInfrastructure) {
+        this.buildingsBuilt = initialInfrastructure;
+    }
+
     @Override
-    public Credits payUpKeep() {
+    protected Credits getYearlyUpKeep() {
         return YEARLY_UPKEEP_INFRASTRUCTURE;
     }
 

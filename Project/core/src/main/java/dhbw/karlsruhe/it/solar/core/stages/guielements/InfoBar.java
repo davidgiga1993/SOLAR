@@ -26,6 +26,10 @@ public class InfoBar extends Window implements Telegraph {
     public final static int MENUE_BUTTON_WIDTH = 58;
     public final static int MENUE_BUTTON_HEIGHT = 25;
     public final static int MENUE_BUTTON_PADDING = 1;
+    public final static int BUILD_BUTTON_WIDTH = 17;
+    public final static int BUILD_BUTTON_HEIGHT = 17;
+    public final static int BUILD_BUTTON_PADDING = 1;
+    public final static int INNER_CELL_PADDING = 10;
     public final static int ACTION_BUTTON_WIDTH = 130;
     public final static int ACTION_BUTTON_HEIGHT = 30;
     public final static int ACTION_BUTTON_PADDING = 5;

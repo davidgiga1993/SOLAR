@@ -15,6 +15,7 @@ public class InfoBarDetailsTable extends Table {
     
     private InfoBarManagerSettings settings;
     private final InfoBarColonyDetails colony = new InfoBarColonyDetails();
+    private final InfoBarColonyBuildings buildings = new InfoBarColonyBuildings();
 
     public InfoBarDetailsTable displayAstroBodyInformation(AstronomicalBody selectedBody) {
         if(settings.showExtraData()) {
@@ -25,6 +26,9 @@ public class InfoBarDetailsTable extends Table {
         }
         if(settings.showColonyDetails()) {
             add(colony.show(selectedBody)).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH).top();           
+        }
+        if(settings.showBuildingDetails()) {
+            add(buildings.show(selectedBody)).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH).top();           
         }
         add().padLeft(ConfigurationConstants.PADDING).expand().fill();
         return this;
@@ -49,5 +53,6 @@ public class InfoBarDetailsTable extends Table {
 
     public void reloadAstroBodyInformation() {
         colony.reload();
+        buildings.reload();
     }
 }

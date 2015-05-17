@@ -18,6 +18,8 @@ public class InfoBarManagerSettings {
     private boolean displayLifeRating = true;
     @XmlElement(name ="Display_Colonydetails_Setting")
     private boolean displayColonyDetails = true;
+    @XmlElement(name ="Display_Colony_Buildings_Setting")
+    private boolean displayColonyBuildings = true;
     private int maximumNumberOfColumns;
     private LastInfoBarButtonToggled lastButton;
     
@@ -39,6 +41,11 @@ public class InfoBarManagerSettings {
         displayColonyDetails = !displayColonyDetails;
         lastButton = LastInfoBarButtonToggled.COLONY_DATA;
     }
+    
+    public void toggleDisplayColonyBuildings() {
+        displayColonyBuildings = !displayColonyBuildings;
+        lastButton = LastInfoBarButtonToggled.COLONY_BUILDINGS;
+    }
 
     public boolean showExtraData() {
         return displayExtraData;
@@ -52,6 +59,10 @@ public class InfoBarManagerSettings {
         return displayColonyDetails;
     }
 
+    public boolean showBuildingDetails() {
+        return displayColonyBuildings;
+    }
+
     public void adjustMaximumNumberOfColumns() {
         maximumNumberOfColumns = calculateNumberOfInfoColumnsWhichCanBeDisplayed();
         
@@ -62,15 +73,19 @@ public class InfoBarManagerSettings {
     
     private void deactivateColumnWithLeastPriority() {
         if(displayExtraData && LastInfoBarButtonToggled.EXTRA_DATA != lastButton) {
-            displayExtraData = !displayExtraData;
+            displayExtraData = false;
             return;
         }
         if(displayLifeRating && LastInfoBarButtonToggled.LIFERATING != lastButton) {
-            displayLifeRating = !displayLifeRating;
+            displayLifeRating = false;
+            return;
+        }
+        if(displayColonyBuildings && LastInfoBarButtonToggled.COLONY_BUILDINGS != lastButton) {
+            displayColonyBuildings = false;
             return;
         }
         if(displayColonyDetails && LastInfoBarButtonToggled.COLONY_DATA != lastButton) {
-            displayColonyDetails = !displayColonyDetails;
+            displayColonyDetails = false;
             return;
         }
     }
@@ -90,6 +105,9 @@ public class InfoBarManagerSettings {
         if(displayLifeRating) {
             numberOfActiveColumns++;
         }
+        if(displayColonyBuildings) {
+            numberOfActiveColumns++;
+        }
         if(displayColonyDetails) {
             numberOfActiveColumns++;
         }
@@ -107,6 +125,7 @@ public class InfoBarManagerSettings {
     public enum LastInfoBarButtonToggled {
         EXTRA_DATA,
         LIFERATING,
-        COLONY_DATA
+        COLONY_DATA,
+        COLONY_BUILDINGS
     }
 }

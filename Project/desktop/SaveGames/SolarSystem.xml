@@ -4,6 +4,7 @@
         <Display_Extra_Setting>true</Display_Extra_Setting>
         <Display_Liferating_Setting>true</Display_Liferating_Setting>
         <Display_Colonydetails_Setting>true</Display_Colonydetails_Setting>
+        <Display_Colony_Buildings_Setting>true</Display_Colony_Buildings_Setting>
     </Settings>
     <Game_Time_Elapsed>
         <Time_Value>0.0</Time_Value>

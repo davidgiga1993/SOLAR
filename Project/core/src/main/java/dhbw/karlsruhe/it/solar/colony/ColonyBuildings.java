@@ -17,7 +17,7 @@ public class ColonyBuildings {
     public Credits payUpKeep(Time deltaT) {
         Credits totalUpKeep = new Credits();
         for(Building building : buildings) {
-            totalUpKeep.addRevenueToTreasury(building.payUpKeep());
+            totalUpKeep.addRevenueToTreasury(building.payUpKeep(deltaT));
         }
         return totalUpKeep;
     }
@@ -29,6 +29,25 @@ public class ColonyBuildings {
             }
         }
         return 0;
+    }
+
+    public String getNumberOfBuiltLifeSupportUnits() {
+        for(Building building : buildings) {
+            if(building instanceof Infrastructure) {
+                return building.getNumberOfBuildingsBuilt();
+            }
+        }
+        return "0";
+    }
+
+    public void buildInfrastructure() {
+        for(Building building : buildings) {
+            if(building instanceof Infrastructure) {
+                building.build();
+                return;
+            }
+        }
+        buildings.add(new Infrastructure(1));
     }
 
 }

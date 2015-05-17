@@ -79,6 +79,11 @@ public class InfoBarManager extends Table {
         settings.toggleDisplayColonyDetails();
         displayContent(selectedActor);
     }
+
+    public void onDisplayColonyBuildingsClick() {
+        settings.toggleDisplayColonyBuildings();
+        displayContent(selectedActor);  
+    }
     
     public void reload() {
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {

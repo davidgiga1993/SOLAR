@@ -17,6 +17,7 @@ public class InfoBarMenueButtons extends Table {
     private final TextButton displayExtraData = new TextButton("Data", Styles.TOOLTIPSKIN);
     private final TextButton displayLifeRating = new TextButton("LR", Styles.TOOLTIPSKIN);
     private final TextButton displayColonyDetails = new TextButton("Colony", Styles.TOOLTIPSKIN);
+    private final TextButton displayColonyBuildings = new TextButton("Build", Styles.TOOLTIPSKIN);
     
     private final InfoBarManager infoBarManager;
 
@@ -48,6 +49,7 @@ public class InfoBarMenueButtons extends Table {
         row();   
         add(displayColonyDetails).width(InfoBar.MENUE_BUTTON_WIDTH).height(InfoBar.MENUE_BUTTON_HEIGHT).pad(InfoBar.MENUE_BUTTON_PADDING);
         row();   
+        add(displayColonyBuildings).width(InfoBar.MENUE_BUTTON_WIDTH).height(InfoBar.MENUE_BUTTON_HEIGHT).pad(InfoBar.MENUE_BUTTON_PADDING);
     }
 
     private void addAstroButtonListeners() {
@@ -56,19 +58,25 @@ public class InfoBarMenueButtons extends Table {
             public void changed(ChangeEvent event, Actor actor) {
                  onDisplayExtraDataClick();
             }
-         });  
+         });
         displayLifeRating.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                  onDisplayLifeRatingClick();
             }
-         });   
+         });
         displayColonyDetails.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                  onDisplayColonyDetailsClick();
             }
-         });   
+         });
+        displayColonyBuildings.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                 onDisplayColonyBuildingsClick();
+            }
+         });
     }
  
     private void onDisplayExtraDataClick() {
@@ -81,5 +89,9 @@ public class InfoBarMenueButtons extends Table {
     
     private void onDisplayColonyDetailsClick() {
         infoBarManager.onDisplayColonyDetailsClick();
+    }
+    
+    private void onDisplayColonyBuildingsClick() {
+        infoBarManager.onDisplayColonyBuildingsClick();
     }
 }

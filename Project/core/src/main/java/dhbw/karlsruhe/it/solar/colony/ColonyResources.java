@@ -15,12 +15,12 @@ public class ColonyResources {
     private final List<StandardResourceInterface> standardResources = new ArrayList<StandardResourceInterface>();
     
     public ColonyResources() {
-        
+
     }
 
-    public void init(Population colonists) {
+    public void init(Colony colony, Population colonists) {
         standardResources.add(ResourceDepot.POPULATION_RESOURCE_ID, colonists);
-        capacitiveResources.add(ResourceDepot.LIFE_SUPPORT_ID, new LifeSupport());
+        capacitiveResources.add(ResourceDepot.LIFE_SUPPORT_ID, new LifeSupport(colony));
     }
 
     public List<StandardResourceInterface> getResources() {
@@ -42,5 +42,11 @@ public class ColonyResources {
 
     public LifeSupport getLifeSupport() {
         return (LifeSupport)capacitiveResources.get(ResourceDepot.LIFE_SUPPORT_ID);
+    }
+
+    public void updateCapacities(ResourceDepot productionSite) {
+        for(CapacitiveResourceInterface resource : capacitiveResources) {
+            resource.updateCapacity(productionSite);
+        }
     }
 }

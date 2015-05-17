@@ -70,4 +70,8 @@ public class LifeRating {
         }
         return Styles.MENUELABEL_RED;
     }
+    
+    public float getNumber() {
+        return rating;
+    }
 }

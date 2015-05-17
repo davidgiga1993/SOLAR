@@ -1,6 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -45,7 +44,7 @@ public class InfoBarColonyDetails extends Table {
         lifeSupportValueLabel.setStyle(colony.getLifeSupportDisplayStyle());
     }
 
-    public Actor show(AstronomicalBody selectedBody) {
+    public InfoBarColonyDetails show(AstronomicalBody selectedBody) {
         this.colony = selectedBody.getColony();
         init();
         return this;
