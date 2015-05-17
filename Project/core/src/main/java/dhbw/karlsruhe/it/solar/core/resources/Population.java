@@ -16,7 +16,6 @@ public class Population extends StandardResource {
     private PopulationNeeds needs = new PopulationNeeds();
     
     public Population() {
-        
     }
 
     public Population(long numberOfColonists) {

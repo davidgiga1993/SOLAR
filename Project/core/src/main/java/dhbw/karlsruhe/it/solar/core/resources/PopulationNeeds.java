@@ -13,9 +13,29 @@ public class PopulationNeeds {
      */
     public float calculateGrowthRate(ResourceDepot livingSpace) {
         if(livingSpace.isPermanentHabitat()) {
-            return BASE_POPULATION_GROWTH_RATE;            
+            return BASE_POPULATION_GROWTH_RATE * lifeSupportImpact(livingSpace);            
         }
         return 0;
+    }
+
+    private float lifeSupportImpact(ResourceDepot livingSpace) {
+        long population = livingSpace.getPopulation().getNumber();
+        long capacity = livingSpace.getLifeSupport().value;
+        
+        if(0 == capacity) {
+            return 0;
+        }
+        if(population > 0.95 * capacity) {
+            return 10 - 10 * capacityRatio(livingSpace);
+        }
+        if(population > 0.8 * capacity) {
+            return 11/3 - 10/3 * capacityRatio(livingSpace);
+        }
+        return 1;
+    }
+    
+    private float capacityRatio(ResourceDepot livingSpace) {
+        return ((float)(livingSpace.getPopulation().getNumber()))/((float)livingSpace.getLifeSupport().value);
     }
 
     /**
