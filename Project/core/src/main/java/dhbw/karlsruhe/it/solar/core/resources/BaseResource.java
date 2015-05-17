@@ -30,25 +30,6 @@ public abstract class BaseResource implements BaseResourceInterface {
     @XmlElement(name = "Change_Last_Month")
     protected float changeLastMonth;
     
-    protected abstract String constructResourceStatement(String unit, float value);
-
-    @Override
-    public String toString() {
-        if(inTrillions(value) > 0.1f) {
-            return constructResourceStatement("tr", inTrillions(value));
-        }
-        if(inBillions(value) > 0.1f) {
-            return constructResourceStatement("bi", inBillions(value));
-        }
-        if(inMillions(value) > 0.1f) {
-            return constructResourceStatement("mi", inMillions(value));
-        }
-        if(inThousands(value) > 0.1f) {
-            return constructResourceStatement("k", inThousands(value));
-        }
-        return constructResourceStatement("", value);   
-    }
-    
     protected boolean isANewDay() {        
         if( oldGameTime == null || (int)GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int)oldGameTime.inDays()) {
             oldGameTime = new Time(GameStartStage.GAMETIME.getGameTimeElapsed().inDays(),TimeUnit.DAYS);

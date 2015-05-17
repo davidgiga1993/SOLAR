@@ -162,7 +162,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
     
     public String getPopulationNumbers() {
-        return colony.getPopulationNumbers();
+        return colony.getPopulationInformation();
     }
 
     public String getColonyName() {

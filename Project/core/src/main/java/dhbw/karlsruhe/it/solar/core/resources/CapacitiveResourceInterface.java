@@ -12,19 +12,32 @@ public interface CapacitiveResourceInterface {
      * Contrast with the actually consumed value of that resource needed by a colony.
      * @return
      */
-    public long getMaximumNumber();
+    public long getCapacity();
     
     /**
      * Gives the amount of the resource which is currently being consumed at this resource depot.
-     * Contrast with the maximum resource value limit.
-     * @param consumptionPlace
+     * Contrast with the capacity limit of the maximum amount of the resource which can be provided.
+     * @param consumptionSite
      * @return
      */
-    public long getCurrentConsumption(ResourceDepot consumptionPlace);
+    public long getCurrentConsumption(ResourceDepot consumptionSite);
     
     /**
-     * Determines whether the resource consumption at the resource depot has reached maximum production.
+     * Determines whether the resource consumption at the resource depot has reached capacity (maximum production).
+     * @param depot
      * @return
      */
-    public boolean demandExceedsSupply();
+    public boolean demandExceedsSupply(ResourceDepot depot);
+    
+    /**
+     * Recalculates the maximim production capacity for this resource at the resource depot.
+     * @param productionSite
+     */
+    public void updateCapacity(ResourceDepot productionSite);  
+    
+    /**
+     * Recalculates the current resource consumption at the resource depot.
+     * @param productionSite
+     */
+    public void updateConsumption(ResourceDepot productionSite);
 }

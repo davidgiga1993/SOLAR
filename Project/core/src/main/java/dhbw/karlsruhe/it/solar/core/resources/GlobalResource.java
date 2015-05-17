@@ -22,4 +22,23 @@ public abstract class GlobalResource extends BaseResource implements GlobalResou
     public long getNumber() {
         return value;
     }
+    
+    @Override
+    public String toString() {
+        if(inTrillions(value) > 0.1f) {
+            return constructResourceStatement("tr", inTrillions(value));
+        }
+        if(inBillions(value) > 0.1f) {
+            return constructResourceStatement("bi", inBillions(value));
+        }
+        if(inMillions(value) > 0.1f) {
+            return constructResourceStatement("mi", inMillions(value));
+        }
+        if(inThousands(value) > 0.1f) {
+            return constructResourceStatement("k", inThousands(value));
+        }
+        return constructResourceStatement("", value);   
+    }
+    
+    protected abstract String constructResourceStatement(String unit, float value);
 }
