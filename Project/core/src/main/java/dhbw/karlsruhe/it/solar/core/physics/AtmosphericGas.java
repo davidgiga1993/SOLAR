@@ -1,9 +1,7 @@
-package dhbw.karlsruhe.it.solar.core.resources;
+package dhbw.karlsruhe.it.solar.core.physics;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
-import dhbw.karlsruhe.it.solar.core.physics.Pressure;
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 
 public class AtmosphericGas {

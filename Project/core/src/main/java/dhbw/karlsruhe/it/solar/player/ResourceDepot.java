@@ -1,8 +1,11 @@
-package dhbw.karlsruhe.it.solar.core.resources;
+package dhbw.karlsruhe.it.solar.player;
 
 import java.util.List;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
+import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
 
 /**
  * Interface for in-game objects containing local resources of any kind.

@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
-import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Temperature.class})

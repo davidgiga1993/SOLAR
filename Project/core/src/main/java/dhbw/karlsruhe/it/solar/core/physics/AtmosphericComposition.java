@@ -5,7 +5,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
-import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 public class AtmosphericComposition {
     

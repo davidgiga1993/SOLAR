@@ -10,7 +10,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
+import dhbw.karlsruhe.it.solar.player.Colony;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 public class NavBarColonyTable extends NavBarBaseTable {

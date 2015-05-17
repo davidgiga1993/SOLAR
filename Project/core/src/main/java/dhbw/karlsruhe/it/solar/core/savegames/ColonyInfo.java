@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
+import dhbw.karlsruhe.it.solar.player.Colony;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Population.class})

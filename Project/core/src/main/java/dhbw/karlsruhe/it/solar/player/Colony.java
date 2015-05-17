@@ -1,20 +1,15 @@
-package dhbw.karlsruhe.it.solar.core.usercontrols;
+package dhbw.karlsruhe.it.solar.player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
-import dhbw.karlsruhe.it.solar.player.Ownable;
-import dhbw.karlsruhe.it.solar.player.Player;
 
 /**
  * Object governing the working of a player colony on an astronomical body.
@@ -26,15 +21,13 @@ public class Colony implements Ownable, ResourceDepot {
     private String name;
     private Player owner;
     private AstronomicalBody primary;
-    private final List<CapacitiveResourceInterface> capacitiveResources = new ArrayList<CapacitiveResourceInterface>();
-    private final List<StandardResourceInterface> resources = new ArrayList<StandardResourceInterface>();
+    private final ColonyResources resources = new ColonyResources();
     
     public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
         owner = colonyFounder;
         primary = colonyPlace;
-        resources.add(POPULATION_RESOURCE_ID, colonists);
-        capacitiveResources.add(LIFE_SUPPORT_ID, new LifeSupport());
+        resources.init(colonists);
     }
     
     public String getPopulationInformation() {
@@ -53,7 +46,7 @@ public class Colony implements Ownable, ResourceDepot {
 
     @Override
     public List<StandardResourceInterface> getResources() {
-        return resources;
+        return resources.getResources();
     }
     
     @Override
@@ -63,7 +56,7 @@ public class Colony implements Ownable, ResourceDepot {
     
     @Override
     public Population getPopulation() {
-        return (Population)resources.get(POPULATION_RESOURCE_ID);
+        return resources.getPopulation();
     }
     
     @Override
@@ -73,12 +66,7 @@ public class Colony implements Ownable, ResourceDepot {
     
     @Override
     public void updateProduction(Time deltaT) {
-        for (StandardResourceInterface resource : resources ) {
-            resource.updateResource(deltaT, this);
-        }
-        for (CapacitiveResourceInterface resource : capacitiveResources ) {
-            resource.updateConsumption(this);
-        }
+        resources.updateProduction(deltaT, this);
     }
     
     @Override
@@ -123,7 +111,7 @@ public class Colony implements Ownable, ResourceDepot {
     }
 
     private LifeSupport getLifeSupport() {
-        return (LifeSupport)capacitiveResources.get(LIFE_SUPPORT_ID);
+        return resources.getLifeSupport();
     }
 
     public LabelStyle getLifeSupportDisplayStyle() {

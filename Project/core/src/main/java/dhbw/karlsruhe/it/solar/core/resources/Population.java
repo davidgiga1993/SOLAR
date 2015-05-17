@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.player.ResourceDepot;
 
 /**
  * Population Resource: Each colony has a certain number of inhabitants. Behavior of population is governed by this class.

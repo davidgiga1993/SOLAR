@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SaveGame>
     <Settings>
-        <Display_Extra_Setting>true</Display_Extra_Setting>
-        <Display_Liferating_Setting>true</Display_Liferating_Setting>
+        <Display_Extra_Setting>false</Display_Extra_Setting>
+        <Display_Liferating_Setting>false</Display_Liferating_Setting>
         <Display_Colonydetails_Setting>true</Display_Colonydetails_Setting>
     </Settings>
     <Game_Time_Elapsed>
-        <Time_Value>0.0</Time_Value>
+        <Time_Value>9.79657</Time_Value>
         <Time_Unit>DAYS</Time_Unit>
     </Game_Time_Elapsed>
     <Player>
@@ -18,22 +18,40 @@
             <a>1.0</a>
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="totalPopulation">
-            <Value>7125011235</Value>
+            <Value>7128823891</Value>
             <Values_Of_Last_Month>7125011235</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7125401706</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7125792969</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7126182528</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7126570541</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7126957736</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7127352082</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7127740100</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7128130622</Values_Of_Last_Month>
+            <Values_Of_Last_Month>7128519532</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>0.0</Time_Value>
+                <Time_Value>9.014718</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>0.0</Change_Last_Month>
+            <Change_Last_Month>0.01798461</Change_Last_Month>
         </Player_Resources>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
-            <Value>0</Value>
+            <Value>188760889</Value>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>19331850</Values_Of_Last_Month>
+            <Values_Of_Last_Month>38702824</Values_Of_Last_Month>
+            <Values_Of_Last_Month>57989514</Values_Of_Last_Month>
+            <Values_Of_Last_Month>77199650</Values_Of_Last_Month>
+            <Values_Of_Last_Month>96369262</Values_Of_Last_Month>
+            <Values_Of_Last_Month>115893005</Values_Of_Last_Month>
+            <Values_Of_Last_Month>135103360</Values_Of_Last_Month>
+            <Values_Of_Last_Month>154437782</Values_Of_Last_Month>
+            <Values_Of_Last_Month>173692391</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>0.0</Time_Value>
+                <Time_Value>9.014718</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>0.0</Change_Last_Month>
+            <Change_Last_Month>1.73692384E8</Change_Last_Month>
         </Player_Resources>
     </Player>
     <Player>
@@ -45,22 +63,40 @@
             <a>1.0</a>
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="totalPopulation">
-            <Value>3141000</Value>
+            <Value>3142680</Value>
             <Values_Of_Last_Month>3141000</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3141172</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3141344</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3141516</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3141687</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3141858</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3142031</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3142202</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3142375</Values_Of_Last_Month>
+            <Values_Of_Last_Month>3142546</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>0.0</Time_Value>
+                <Time_Value>9.014718</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>0.0</Change_Last_Month>
+            <Change_Last_Month>0.017977603</Change_Last_Month>
         </Player_Resources>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
-            <Value>0</Value>
+            <Value>-1520608</Value>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-155777</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-311862</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-467253</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-622009</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-776434</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-933708</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-1088444</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-1244178</Values_Of_Last_Month>
+            <Values_Of_Last_Month>-1399250</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>0.0</Time_Value>
+                <Time_Value>9.014718</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>0.0</Change_Last_Month>
+            <Change_Last_Month>-1399250.0</Change_Last_Month>
         </Player_Resources>
     </Player>
     <Player>
@@ -74,8 +110,17 @@
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="totalPopulation">
             <Value>0</Value>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>0.0</Time_Value>
+                <Time_Value>9.014718</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
             <Change_Last_Month>NaN</Change_Last_Month>
@@ -83,8 +128,17 @@
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
             <Value>0</Value>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
+            <Values_Of_Last_Month>0</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>0.0</Time_Value>
+                <Time_Value>9.014718</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
             <Change_Last_Month>0.0</Change_Last_Month>
@@ -149,7 +203,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>177.79248046875</value>
+                <value>6.05946946144104</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -293,7 +347,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>170.0</value>
+                <value>209.9788751117885</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -350,7 +404,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-45.0</value>
+                <value>-29.348464561626315</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -425,7 +479,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-120.0</value>
+                <value>-110.37139219604433</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -434,14 +488,23 @@
             <ColonyName>Earth</ColonyName>
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
-                <Value>7125000000</Value>
+                <Value>7128812650</Value>
                 <Values_Of_Last_Month>7125000000</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7125377228</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7125775025</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7126164171</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7126551811</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7126940795</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7127331717</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7127723316</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7128112858</Values_Of_Last_Month>
+                <Values_Of_Last_Month>7128499955</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
-                    <Time_Value>0.0</Time_Value>
+                    <Time_Value>9.014718</Time_Value>
                     <Time_Unit>DAYS</Time_Unit>
                 </Time_Of_Last_Resource_Update>
-                <Change_Last_Month>0.0</Change_Last_Month>
-                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+                <Change_Last_Month>0.017941875</Change_Last_Month>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.17480469</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -472,7 +535,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-30.0</value>
+                <value>98.10815097391605</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -481,14 +544,23 @@
             <ColonyName>Tranquility Base</ColonyName>
             <ColonyOwner>Player Two (AI)</ColonyOwner>
             <Population>
-                <Value>3141000</Value>
+                <Value>3142680</Value>
                 <Values_Of_Last_Month>3141000</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3141166</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3141341</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3141513</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3141684</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3141855</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3142027</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3142200</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3142372</Values_Of_Last_Month>
+                <Values_Of_Last_Month>3142542</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
-                    <Time_Value>0.0</Time_Value>
+                    <Time_Value>9.014718</Time_Value>
                     <Time_Unit>DAYS</Time_Unit>
                 </Time_Of_Last_Resource_Update>
-                <Change_Last_Month>0.0</Change_Last_Month>
-                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+                <Change_Last_Month>0.017931089</Change_Last_Month>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.77647686</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -553,7 +625,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-140.0</value>
+                <value>-134.88046620646492</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -562,14 +634,23 @@
             <ColonyName>Utopia Planitia</ColonyName>
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
-                <Value>11235</Value>
+                <Value>11241</Value>
                 <Values_Of_Last_Month>11235</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11235</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11236</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11236</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11237</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11238</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11238</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11239</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11239</Values_Of_Last_Month>
+                <Values_Of_Last_Month>11240</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
-                    <Time_Value>0.0</Time_Value>
+                    <Time_Value>9.014718</Time_Value>
                     <Time_Unit>DAYS</Time_Unit>
                 </Time_Of_Last_Resource_Update>
-                <Change_Last_Month>0.0</Change_Last_Month>
-                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+                <Change_Last_Month>0.016255006</Change_Last_Month>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.0116791725</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -606,7 +687,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>0.0</value>
+                <value>299.3058624267578</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -645,7 +726,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-123.0</value>
+                <value>135.8606400489807</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -688,7 +769,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-170.0</value>
+                <value>-167.9070319342427</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -756,7 +837,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>120.0</value>
+                <value>120.81121746369172</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -795,7 +876,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>192.0</value>
+                <value>284.5404357910156</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -834,7 +915,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>23.0</value>
+                <value>336.02000999450684</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -873,7 +954,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-34.0</value>
+                <value>255.74620246887207</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -912,7 +993,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>45.0</value>
+                <value>294.9092630147934</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -957,7 +1038,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>100.0</value>
+                <value>288.2737169265747</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1008,7 +1089,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>115.0</value>
+                <value>25.467960238456726</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1059,7 +1140,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>230.0</value>
+                <value>1.4823442101478577</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1114,7 +1195,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>5.0</value>
+                <value>215.69555708765984</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1153,7 +1234,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>56.0</value>
+                <value>41.410547560080886</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1192,7 +1273,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>67.0</value>
+                <value>81.02975868340582</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1231,7 +1312,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>78.0</value>
+                <value>91.5707061290741</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1270,7 +1351,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>89.0</value>
+                <value>102.52911752089858</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1309,7 +1390,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>84.4538433784619</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1348,7 +1429,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-70.0</value>
+                <value>-74.80719777103513</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1387,7 +1468,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-90.0</value>
+                <value>-94.74020315846428</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1426,7 +1507,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-115.0</value>
+                <value>-119.6469505741261</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1494,7 +1575,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-130.0</value>
+                <value>-129.6730803459941</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1533,7 +1614,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>0.0</value>
+                <value>62.83252835273743</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1572,7 +1653,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>30.0</value>
+                <value>183.29079723358154</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1611,7 +1692,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-30.0</value>
+                <value>15.091752529144287</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1650,7 +1731,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>60.0</value>
+                <value>326.3381791114807</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1689,7 +1770,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>105.0</value>
+                <value>202.9374589920044</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1765,7 +1846,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-76.0</value>
+                <value>133.98336617648602</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1828,7 +1909,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>100.0</value>
+                <value>145.87816667556763</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1867,7 +1948,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>152.37865829467773</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1980,7 +2061,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-13.0</value>
+                <value>191.58592295646667</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2071,7 +2152,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>170.0</value>
+                <value>228.23310256004333</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2130,7 +2211,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-130.0</value>
+                <value>90.5066290795803</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2169,7 +2250,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>40.0</value>
+                <value>205.24280880391598</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2208,7 +2289,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-160.0</value>
+                <value>-115.67649468407035</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2247,7 +2328,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>20.0</value>
+                <value>28.042444406077266</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2286,7 +2367,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>98.02618351206183</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2325,7 +2406,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-100.0</value>
+                <value>-106.38652875786647</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -2364,7 +2445,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>10.0</value>
+                <value>15.026659725699574</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2403,7 +2484,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>150.0</value>
+                <value>154.57520795287564</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2442,7 +2523,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>170.0</value>
+                <value>174.12392128352076</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2481,7 +2562,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-25.0</value>
+                <value>-21.094270318280905</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2520,7 +2601,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>60.0</value>
+                <value>63.84209713945165</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2559,7 +2640,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>87.32270827377215</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -2627,7 +2708,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>20.0</value>
+                <value>20.114527056124643</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2666,7 +2747,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>222.73162317276</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2705,7 +2786,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-145.0</value>
+                <value>275.7257442474365</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2744,7 +2825,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-30.0</value>
+                <value>221.50234031677246</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2783,7 +2864,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>170.0</value>
+                <value>275.99365854263306</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2822,7 +2903,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>10.0</value>
+                <value>314.642023563385</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2861,7 +2942,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-25.0</value>
+                <value>347.52547669410706</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2900,7 +2981,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>130.0</value>
+                <value>223.01476502418518</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2939,7 +3020,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-150.0</value>
+                <value>108.13881158828735</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2978,7 +3059,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>45.0</value>
+                <value>104.84486746788025</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3017,7 +3098,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>110.0</value>
+                <value>71.44366192817688</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3056,7 +3137,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-60.0</value>
+                <value>133.3233518600464</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3095,7 +3176,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-120.0</value>
+                <value>258.1099852323532</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3134,7 +3215,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>0.0</value>
+                <value>292.5661607980728</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3173,7 +3254,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>110.0</value>
+                <value>91.04520511627197</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3212,7 +3293,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-175.0</value>
+                <value>140.60875380039215</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3251,7 +3332,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-30.0</value>
+                <value>98.49658930301666</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3290,7 +3371,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-80.0</value>
+                <value>323.919458091259</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3329,7 +3410,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>95.0</value>
+                <value>356.15005069971085</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3368,7 +3449,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>15.0</value>
+                <value>1.8347293371334672</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3407,7 +3488,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-70.0</value>
+                <value>-76.06956266053021</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3446,7 +3527,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>160.0</value>
+                <value>154.80922962306067</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3485,7 +3566,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>140.0</value>
+                <value>135.30378840724006</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3524,7 +3605,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>0.0</value>
+                <value>-2.7387673484627157</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3563,7 +3644,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-90.0</value>
+                <value>-87.87426384235732</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3602,7 +3683,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-110.0</value>
+                <value>-111.7915141308913</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3641,7 +3722,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>120.0</value>
+                <value>118.39886613714043</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3680,7 +3761,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>88.7465233062394</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3748,7 +3829,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-30.0</value>
+                <value>-29.941603633276827</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3787,7 +3868,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>230.24102783203125</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3826,7 +3907,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-20.0</value>
+                <value>185.5595827102661</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3865,7 +3946,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>25.0</value>
+                <value>170.12516689300537</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3904,7 +3985,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>60.0</value>
+                <value>61.67395877838135</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3943,7 +4024,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-150.0</value>
+                <value>151.38682889938354</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3982,7 +4063,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>40.0</value>
+                <value>223.7615718394518</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4021,7 +4102,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>130.0</value>
+                <value>23.090409517288208</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4076,7 +4157,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-130.0</value>
+                <value>-8.334527552127838</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4115,7 +4196,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>70.0</value>
+                <value>79.76493218168616</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4154,7 +4235,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>99.0</value>
+                <value>97.12894066004083</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4193,7 +4274,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-45.0</value>
+                <value>-43.78983994864393</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4232,7 +4313,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-90.0</value>
+                <value>-88.88766008836683</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4271,7 +4352,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>145.0</value>
+                <value>144.60377793366206</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4310,7 +4391,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>0.0</value>
+                <value>-0.3654029505851213</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4373,7 +4454,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-80.0</value>
+                <value>-79.96118810783446</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4412,7 +4493,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>30.0</value>
+                <value>286.68826419115067</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4451,7 +4532,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>120.0</value>
+                <value>286.3748141527176</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4490,7 +4571,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-90.0</value>
+                <value>43.2174269258976</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4529,7 +4610,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-150.0</value>
+                <value>-50.0728607699275</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4568,7 +4649,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>20.0</value>
+                <value>106.85604471713305</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4611,7 +4692,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-115.0</value>
+                <value>-114.96624755083394</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4650,7 +4731,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>90.0</value>
+                <value>286.5578452050686</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4689,7 +4770,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-20.0</value>
+                <value>52.51193355023861</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4732,7 +4813,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-125.0</value>
+                <value>-124.96892729423053</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4775,7 +4856,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>80.0</value>
+                <value>80.01729770608108</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4814,7 +4895,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>0.0</value>
+                <value>223.81709446012974</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>

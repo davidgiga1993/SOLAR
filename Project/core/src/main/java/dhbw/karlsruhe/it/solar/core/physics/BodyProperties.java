@@ -8,7 +8,6 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.StarType;
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
-import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 
 /**
  * Created by Arga on 25.11.2014.

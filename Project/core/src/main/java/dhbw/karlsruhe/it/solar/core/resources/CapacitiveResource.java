@@ -1,10 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
-import javax.jws.soap.SOAPBinding.Style;
-
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
+import dhbw.karlsruhe.it.solar.player.ResourceDepot;
 
 /**
  * Superclass for resources with capacitive logic which behave differently from normally depleting resources.

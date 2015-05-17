@@ -11,11 +11,10 @@ import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
+import dhbw.karlsruhe.it.solar.core.physics.AtmosphericGas.GasType;
 import dhbw.karlsruhe.it.solar.core.physics.Biosphere.BiosphereType;
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
-import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
-import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas.GasType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
 /**

@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.player.ResourceDepot;
 
 
 /**

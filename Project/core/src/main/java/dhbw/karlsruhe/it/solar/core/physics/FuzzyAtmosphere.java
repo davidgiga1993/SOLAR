@@ -1,6 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import dhbw.karlsruhe.it.solar.core.resources.AtmosphericGas;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class FuzzyAtmosphere extends FuzzyValue {

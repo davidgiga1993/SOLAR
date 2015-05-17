@@ -8,7 +8,6 @@ import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.TotalPopulation;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.Colony;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.util.ArrayList;

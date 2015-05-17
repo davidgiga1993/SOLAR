@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
+import dhbw.karlsruhe.it.solar.player.ResourceDepot;
+
 public class PopulationNeeds {
  
     private final static float BASE_POPULATION_GROWTH_RATE = 0.02f;

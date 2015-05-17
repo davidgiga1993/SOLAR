@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.player.ResourceDepot;
 
 public class LifeSupport extends CapacitiveResource {
     
