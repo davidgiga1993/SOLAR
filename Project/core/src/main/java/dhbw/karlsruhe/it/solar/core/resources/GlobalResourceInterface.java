@@ -11,5 +11,15 @@ public interface GlobalResourceInterface {
      * Updates the statistics of the resource if enough time has passed.
      */
     public void updateStatistic();
-
+    
+    /**
+     * Sets resource value to zero for recalculation.
+     */
+    public void empty();
+    
+    /**
+     * Returns the current discrete exact value of the resource at this resource depot.
+     * @return
+     */
+    public long getNumber();
 }

@@ -19,16 +19,6 @@ public class TotalPopulation extends GlobalResource {
 
     @Override
     public void updateStatistic() {
-        updateProductionStatistic();
-    }
-
-    @Override
-    public TextureRegion getIcon() {
-        return TextureCacher.GAMEATLAS.findRegion("population");
-    }
-
-    @Override
-    protected void updateProductionStatistic() {
         if(isANewDay()) {
             updateValuesOfLastMonthList();
             changeLastMonth = populationGrowthFormula();
@@ -36,8 +26,8 @@ public class TotalPopulation extends GlobalResource {
     }
 
     @Override
-    protected void updateProduction(Time deltaT, ResourceDepot productionPlace) {
-
+    public TextureRegion getIcon() {
+        return TextureCacher.GAMEATLAS.findRegion("population");
     }
 
     @Override
@@ -57,9 +47,10 @@ public class TotalPopulation extends GlobalResource {
     }
 
     /**
-     * Sets population number to zero. Only to be used for total population calculation of player!
+     * Add additional populations of colonists to be counted among the total population.
+     * @param population Colonists to be added to the sum.
      */
-    public void empty() {
-        value = 0;
+    public void addToTotalPopulation(Population population) {
+        this.value += population.value;
     }
 }

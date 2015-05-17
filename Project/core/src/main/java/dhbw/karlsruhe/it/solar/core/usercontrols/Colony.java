@@ -87,7 +87,7 @@ public class Colony implements Ownable, ResourceDepot {
     }
 
     public void transferPassengers(Population population) {
-        getPopulation().addToValue(population);
+        getPopulation().addColonistsToPopulation(population);
     }
 
     /**

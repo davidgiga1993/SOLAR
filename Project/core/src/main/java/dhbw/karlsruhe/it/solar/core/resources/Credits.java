@@ -2,7 +2,6 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 /**
@@ -26,16 +25,11 @@ public class Credits extends GlobalResource {
     }
 
     @Override
-    protected void updateProductionStatistic() {
+    public void updateStatistic() {
         if(isANewDay()) {
             updateValuesOfLastMonthList();
             changeLastMonth = treasuryGrowthFormula();
         }
-    }
-
-    @Override
-    protected void updateProduction(Time deltaT, ResourceDepot productionPlace) {
-
     }
 
     @Override
@@ -84,12 +78,19 @@ public class Credits extends GlobalResource {
         return sign + formatValue(changeLastMonth); 
     }
 
-    public void subtractFromValue(Credits upKeep) {
-        value -= upKeep.getNumber();
+    /**
+     * Treasury is reduced by the budgeted expenses such as unit upkeep, etc.
+     * @param expenses Costs to be covered by the treasury.
+     */
+    public void subtractExpensesFromTreasury(Credits expenses) {
+        value -= expenses.getNumber();
     }
 
-    @Override
-    public void updateStatistic() {
-        updateProductionStatistic();
+    /**
+     * Treasury is increased by revenue from taxes, etc.
+     * @param revenue Income to be added to the treasury
+     */
+    public void addRevenueToTreasury(Credits revenue) {
+        this.value += revenue.value;
     }
 }

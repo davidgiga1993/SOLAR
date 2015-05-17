@@ -23,8 +23,6 @@ public abstract class BaseResource implements BaseResourceInterface {
     
     @XmlElement(name = "Value")
     protected long value;
-    @XmlElement(name = "Remaining_Fraction_Of_Value_Currently_Produced")
-    protected float valueRemainingFraction;
     @XmlElement(name = "Values_Of_Last_Month")
     protected List<Long> valuesOfLastMonth = new ArrayList<Long>();
     @XmlElement(name = "Time_Of_Last_Resource_Update")
@@ -32,24 +30,7 @@ public abstract class BaseResource implements BaseResourceInterface {
     @XmlElement(name = "Change_Last_Month")
     protected float changeLastMonth;
     
-    protected abstract void updateProductionStatistic();
-    
-    protected abstract void updateProduction(Time deltaT, ResourceDepot productionPlace);
-    
     protected abstract String constructResourceStatement(String unit, float value);
-    
-    public long getNumber() {
-        return value;
-    }
-    
-    public void updateResource(Time deltaT, ResourceDepot productionPlace) {
-        updateProductionStatistic();
-        updateProduction(deltaT, productionPlace);
-    }
-    
-    public void addToValue(BaseResource resource) {
-        value += resource.getNumber();
-    }
 
     @Override
     public String toString() {

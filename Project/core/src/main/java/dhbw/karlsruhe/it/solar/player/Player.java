@@ -141,7 +141,7 @@ public class Player {
     public void updateTotalPopulation() {
         ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).empty();
         for(Colony colony : colonies) {
-            ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).addToValue(colony.getPopulation());
+            ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).addToTotalPopulation(colony.getPopulation());
         }
         getTotalPopulation().updateStatistic();
     }
@@ -159,11 +159,11 @@ public class Player {
 
     public void updateTreasury(Time deltaT) {
         for(Colony colony : colonies) {
-            getTreasury().addToValue(colony.raiseTaxes(deltaT));
-            getTreasury().subtractFromValue(colony.payUpKeep(deltaT));
+            getTreasury().addRevenueToTreasury(colony.raiseTaxes(deltaT));
+            getTreasury().subtractExpensesFromTreasury(colony.payUpKeep(deltaT));
         }
         for(SpaceUnit unit : units) {
-            getTreasury().subtractFromValue(unit.payUpKeep(deltaT));            
+            getTreasury().subtractExpensesFromTreasury(unit.payUpKeep(deltaT));            
         }
         getTreasury().updateStatistic();
     }

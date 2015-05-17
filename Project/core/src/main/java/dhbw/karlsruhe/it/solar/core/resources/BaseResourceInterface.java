@@ -14,5 +14,10 @@ public interface BaseResourceInterface {
      * @return
      */
     public TextureRegion getIcon();
-
+    
+    /**
+     * Returns a string for the GUI describing the current amount of that resource.
+     * @return
+     */
+    public String toString();
 }

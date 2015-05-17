@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SaveGame>
     <Settings>
-        <Display_Extra_Setting>false</Display_Extra_Setting>
-        <Display_Liferating_Setting>false</Display_Liferating_Setting>
+        <Display_Extra_Setting>true</Display_Extra_Setting>
+        <Display_Liferating_Setting>true</Display_Liferating_Setting>
         <Display_Colonydetails_Setting>true</Display_Colonydetails_Setting>
     </Settings>
     <Game_Time_Elapsed>
-        <Time_Value>10.846049</Time_Value>
+        <Time_Value>0.0</Time_Value>
         <Time_Unit>DAYS</Time_Unit>
     </Game_Time_Elapsed>
     <Player>
@@ -18,44 +18,22 @@
             <a>1.0</a>
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="totalPopulation">
-            <Value>7129232453</Value>
-            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Value>7125011235</Value>
             <Values_Of_Last_Month>7125011235</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7125406487</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7125790234</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7126181478</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7126569323</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7126958337</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7127352289</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7127739624</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7128125914</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7128516822</Values_Of_Last_Month>
-            <Values_Of_Last_Month>7128905697</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>10.006706</Time_Value>
+                <Time_Value>0.0</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>0.018149283</Change_Last_Month>
+            <Change_Last_Month>0.0</Change_Last_Month>
         </Player_Resources>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
-            <Value>208988480</Value>
-            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Value>0</Value>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>19568530</Values_Of_Last_Month>
-            <Values_Of_Last_Month>38567443</Values_Of_Last_Month>
-            <Values_Of_Last_Month>57937573</Values_Of_Last_Month>
-            <Values_Of_Last_Month>77139336</Values_Of_Last_Month>
-            <Values_Of_Last_Month>96399046</Values_Of_Last_Month>
-            <Values_Of_Last_Month>115903237</Values_Of_Last_Month>
-            <Values_Of_Last_Month>135079825</Values_Of_Last_Month>
-            <Values_Of_Last_Month>154204722</Values_Of_Last_Month>
-            <Values_Of_Last_Month>173558178</Values_Of_Last_Month>
-            <Values_Of_Last_Month>192811035</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>10.006706</Time_Value>
+                <Time_Value>0.0</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>1.9281104E8</Change_Last_Month>
+            <Change_Last_Month>0.0</Change_Last_Month>
         </Player_Resources>
     </Player>
     <Player>
@@ -67,44 +45,22 @@
             <a>1.0</a>
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="totalPopulation">
-            <Value>3142860</Value>
-            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Value>3141000</Value>
             <Values_Of_Last_Month>3141000</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3141174</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3141343</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3141515</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3141686</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3141858</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3142032</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3142202</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3142373</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3142545</Values_Of_Last_Month>
-            <Values_Of_Last_Month>3142716</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>10.006706</Time_Value>
+                <Time_Value>0.0</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>0.018140402</Change_Last_Month>
+            <Change_Last_Month>0.0</Change_Last_Month>
         </Player_Resources>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
-            <Value>-1683512</Value>
-            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
+            <Value>0</Value>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-157683</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-310760</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-466819</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-621512</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-776667</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-933789</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-1088256</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-1242297</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-1398177</Values_Of_Last_Month>
-            <Values_Of_Last_Month>-1553229</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>10.006706</Time_Value>
+                <Time_Value>0.0</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
-            <Change_Last_Month>-1553229.0</Change_Last_Month>
+            <Change_Last_Month>0.0</Change_Last_Month>
         </Player_Resources>
     </Player>
     <Player>
@@ -117,40 +73,18 @@
         </PlayerColor>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="totalPopulation">
             <Value>0</Value>
-            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>10.006706</Time_Value>
+                <Time_Value>0.0</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
             <Change_Last_Month>NaN</Change_Last_Month>
         </Player_Resources>
         <Player_Resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="credits">
             <Value>0</Value>
-            <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
-            <Values_Of_Last_Month>0</Values_Of_Last_Month>
             <Values_Of_Last_Month>0</Values_Of_Last_Month>
             <Time_Of_Last_Resource_Update>
-                <Time_Value>10.006706</Time_Value>
+                <Time_Value>0.0</Time_Value>
                 <Time_Unit>DAYS</Time_Unit>
             </Time_Of_Last_Resource_Update>
             <Change_Last_Month>0.0</Change_Last_Month>
@@ -161,8 +95,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1198.515</x>
-            <y>498.515</y>
+            <x>1199.505</x>
+            <y>499.505</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -173,8 +107,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1498.515</x>
-            <y>998.515</y>
+            <x>1499.505</x>
+            <y>999.505</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -185,8 +119,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player Two (AI)</UnitOwner>
         <AbsolutePosition>
-            <x>1548.515</x>
-            <y>1048.515</y>
+            <x>1549.505</x>
+            <y>1049.505</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -197,8 +131,8 @@
         <ShipType>Station</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1498.515</x>
-            <y>-1.4849999</y>
+            <x>1499.505</x>
+            <y>-0.49499997</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -211,11 +145,11 @@
         <OrbitalProperties>
             <Primary>Earth</Primary>
             <OrbitalRadius>
-                <value>274818.3</value>
+                <value>297383.8</value>
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>46.34489059448242</value>
+                <value>177.79248046875</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -359,7 +293,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>214.26173128560185</value>
+                <value>170.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -416,7 +350,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-27.67174716666341</value>
+                <value>-45.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -491,7 +425,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-109.33989888057113</value>
+                <value>-120.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -500,24 +434,14 @@
             <ColonyName>Earth</ColonyName>
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
-                <Value>7129221212</Value>
-                <Remaining_Fraction_Of_Value_Currently_Produced>0.24023438</Remaining_Fraction_Of_Value_Currently_Produced>
+                <Value>7125000000</Value>
                 <Values_Of_Last_Month>7125000000</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7125386476</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7125771474</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7126162569</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7126550672</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7126940419</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7127333629</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7127721435</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7128107583</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7128496750</Values_Of_Last_Month>
-                <Values_Of_Last_Month>7128887236</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
-                    <Time_Value>10.006706</Time_Value>
+                    <Time_Value>0.0</Time_Value>
                     <Time_Unit>DAYS</Time_Unit>
                 </Time_Of_Last_Resource_Update>
-                <Change_Last_Month>0.018115636</Change_Last_Month>
+                <Change_Last_Month>0.0</Change_Last_Month>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -548,7 +472,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>111.83211852610111</value>
+                <value>-30.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -557,24 +481,14 @@
             <ColonyName>Tranquility Base</ColonyName>
             <ColonyOwner>Player Two (AI)</ColonyOwner>
             <Population>
-                <Value>3142860</Value>
-                <Remaining_Fraction_Of_Value_Currently_Produced>0.88780975</Remaining_Fraction_Of_Value_Currently_Produced>
+                <Value>3141000</Value>
                 <Values_Of_Last_Month>3141000</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3141170</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3141340</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3141512</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3141683</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3141855</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3142028</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3142199</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3142369</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3142541</Values_Of_Last_Month>
-                <Values_Of_Last_Month>3142713</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
-                    <Time_Value>10.006706</Time_Value>
+                    <Time_Value>0.0</Time_Value>
                     <Time_Unit>DAYS</Time_Unit>
                 </Time_Of_Last_Resource_Update>
-                <Change_Last_Month>0.018108686</Change_Last_Month>
+                <Change_Last_Month>0.0</Change_Last_Month>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -639,7 +553,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-134.3320208848454</value>
+                <value>-140.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -648,24 +562,14 @@
             <ColonyName>Utopia Planitia</ColonyName>
             <ColonyOwner>Player One</ColonyOwner>
             <Population>
-                <Value>11241</Value>
-                <Remaining_Fraction_Of_Value_Currently_Produced>0.6558998</Remaining_Fraction_Of_Value_Currently_Produced>
+                <Value>11235</Value>
                 <Values_Of_Last_Month>11235</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11235</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11236</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11236</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11237</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11238</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11238</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11239</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11239</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11240</Values_Of_Last_Month>
-                <Values_Of_Last_Month>11241</Values_Of_Last_Month>
                 <Time_Of_Last_Resource_Update>
-                    <Time_Value>10.006706</Time_Value>
+                    <Time_Value>0.0</Time_Value>
                     <Time_Unit>DAYS</Time_Unit>
                 </Time_Of_Last_Resource_Update>
-                <Change_Last_Month>0.017732734</Change_Last_Month>
+                <Change_Last_Month>0.0</Change_Last_Month>
+                <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
         </PlayerColony>
     </AstronomicalBody>
@@ -691,7 +595,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -702,7 +606,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>22.691356658935547</value>
+                <value>0.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -730,7 +634,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -741,7 +645,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>73.55436563491821</value>
+                <value>-123.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -769,7 +673,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -784,7 +688,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-167.68281648936681</value>
+                <value>-170.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -852,7 +756,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>120.89812155254185</value>
+                <value>120.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -880,7 +784,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -891,7 +795,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>101.47377872467041</value>
+                <value>192.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -919,7 +823,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -930,7 +834,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>138.00683689117432</value>
+                <value>23.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -958,7 +862,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -969,7 +873,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>273.8807873725891</value>
+                <value>-34.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -997,7 +901,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1008,7 +912,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>115.94582438468933</value>
+                <value>45.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1053,7 +957,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>141.2734603881836</value>
+                <value>100.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1093,7 +997,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1104,7 +1008,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>131.57479298114777</value>
+                <value>115.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1144,7 +1048,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1155,7 +1059,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>54.133855283260345</value>
+                <value>230.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1199,7 +1103,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1210,7 +1114,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>238.26694613695145</value>
+                <value>5.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1238,7 +1142,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1249,7 +1153,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>39.847609059885144</value>
+                <value>56.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1277,7 +1181,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1288,7 +1192,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>82.53273840807378</value>
+                <value>67.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1316,7 +1220,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1327,7 +1231,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>93.02450845576823</value>
+                <value>78.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1355,7 +1259,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1366,7 +1270,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>103.97846453823149</value>
+                <value>89.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1394,7 +1298,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1405,7 +1309,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>83.85969483992085</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1433,7 +1337,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1444,7 +1348,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-75.32218315638602</value>
+                <value>-70.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1472,7 +1376,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1483,7 +1387,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-95.2480115541257</value>
+                <value>-90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1511,7 +1415,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1522,7 +1426,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-120.14476900408044</value>
+                <value>-115.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -1590,7 +1494,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-129.63805810330086</value>
+                <value>-130.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1618,7 +1522,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1629,7 +1533,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>339.5261700153351</value>
+                <value>0.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1657,7 +1561,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1668,7 +1572,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>71.10896873474121</value>
+                <value>30.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1696,7 +1600,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1707,7 +1611,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>251.3187735080719</value>
+                <value>-30.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1735,7 +1639,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1746,7 +1650,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>187.7008180618286</value>
+                <value>60.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1774,7 +1678,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1785,7 +1689,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>7.693593502044678</value>
+                <value>105.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1813,7 +1717,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1850,7 +1754,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1861,7 +1765,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>156.47846096754074</value>
+                <value>-76.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1913,7 +1817,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1924,7 +1828,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>60.755516052246094</value>
+                <value>100.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1952,7 +1856,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1963,7 +1867,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>351.89151978492737</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -1991,7 +1895,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2028,7 +1932,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2065,7 +1969,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2076,7 +1980,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>329.2010176181793</value>
+                <value>-13.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2104,7 +2008,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2156,7 +2060,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2167,7 +2071,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>311.6036454439163</value>
+                <value>170.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2215,7 +2119,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2226,7 +2130,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>114.12905979156494</value>
+                <value>-130.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2254,7 +2158,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2265,7 +2169,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>222.94493694603443</value>
+                <value>40.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2293,7 +2197,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2304,7 +2208,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-110.92820713669062</value>
+                <value>-160.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2332,7 +2236,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2343,7 +2247,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>28.904015220701694</value>
+                <value>20.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2371,7 +2275,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2382,7 +2286,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>98.8860123315826</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2410,7 +2314,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2421,7 +2325,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-107.07070468738675</value>
+                <value>-100.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -2449,7 +2353,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2460,7 +2364,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>15.565155633259565</value>
+                <value>10.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2488,7 +2392,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2499,7 +2403,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>155.0653407415375</value>
+                <value>150.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2527,7 +2431,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2538,7 +2442,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>174.5657086498104</value>
+                <value>170.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2566,7 +2470,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2577,7 +2481,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-20.675857379566878</value>
+                <value>-25.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2605,7 +2509,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2616,7 +2520,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>64.25369324767962</value>
+                <value>60.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2644,7 +2548,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2655,7 +2559,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>87.03589541697875</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -2723,7 +2627,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>20.12679610851046</value>
+                <value>20.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2751,7 +2655,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2762,7 +2666,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>249.70628356933594</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2790,7 +2694,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2801,7 +2705,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>179.28835678100586</value>
+                <value>-145.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2829,7 +2733,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2840,7 +2744,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>351.23815870285034</value>
+                <value>-30.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2868,7 +2772,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2879,7 +2783,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>351.57534980773926</value>
+                <value>170.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2907,7 +2811,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2918,7 +2822,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>12.93845272064209</value>
+                <value>10.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2946,7 +2850,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2957,7 +2861,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>14.528042316436768</value>
+                <value>-25.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -2985,7 +2889,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2996,7 +2900,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>220.0738968849182</value>
+                <value>130.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3024,7 +2928,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3035,7 +2939,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>45.755213499069214</value>
+                <value>-150.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3063,7 +2967,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3074,7 +2978,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>342.6523628234863</value>
+                <value>45.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3102,7 +3006,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3113,7 +3017,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>298.7096393108368</value>
+                <value>110.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3141,7 +3045,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3152,7 +3056,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>346.8640625476837</value>
+                <value>-60.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3180,7 +3084,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3191,7 +3095,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>15.74828839302063</value>
+                <value>-120.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3219,7 +3123,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3230,7 +3134,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>323.90818294882774</value>
+                <value>0.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3258,7 +3162,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3269,7 +3173,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>358.97713112831116</value>
+                <value>110.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3297,7 +3201,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3308,7 +3212,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>290.11750519275665</value>
+                <value>-175.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3336,7 +3240,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3347,7 +3251,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>189.3943166732788</value>
+                <value>-30.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3375,7 +3279,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3386,7 +3290,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>7.190532982349396</value>
+                <value>-80.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3414,7 +3318,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3425,7 +3329,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>24.12652826309204</value>
+                <value>95.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3453,7 +3357,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3464,7 +3368,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>0.4243605025112629</value>
+                <value>15.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3492,7 +3396,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3503,7 +3407,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-76.7197826532647</value>
+                <value>-70.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3531,7 +3435,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3542,7 +3446,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>154.25315288687125</value>
+                <value>160.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3570,7 +3474,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3581,7 +3485,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>134.80069272965193</value>
+                <value>140.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3609,7 +3513,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3620,7 +3524,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-3.0321659576147795</value>
+                <value>0.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3648,7 +3552,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3659,7 +3563,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-87.64653802081011</value>
+                <value>-90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3687,7 +3591,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3698,7 +3602,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-111.98343542800285</value>
+                <value>-110.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3726,7 +3630,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3737,7 +3641,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>118.22733990033157</value>
+                <value>120.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3765,7 +3669,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3776,7 +3680,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>88.6122408817755</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -3844,7 +3748,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-29.935347748229105</value>
+                <value>-30.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3872,7 +3776,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3883,7 +3787,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>52.28445339202881</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3911,7 +3815,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3922,7 +3826,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>297.468318939209</value>
+                <value>-20.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3950,7 +3854,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3961,7 +3865,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>198.42752075195312</value>
+                <value>25.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -3989,7 +3893,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4000,7 +3904,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>203.21221780776978</value>
+                <value>60.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4028,7 +3932,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4039,7 +3943,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>93.63630628585815</value>
+                <value>-150.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4067,7 +3971,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4078,7 +3982,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>243.44757744669914</value>
+                <value>40.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4106,7 +4010,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4117,7 +4021,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>358.73206543922424</value>
+                <value>130.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4161,7 +4065,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4172,7 +4076,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-72.43289804458618</value>
+                <value>-130.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4200,7 +4104,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4211,7 +4115,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>80.8110296241939</value>
+                <value>70.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4239,7 +4143,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4250,7 +4154,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>96.92849785042927</value>
+                <value>99.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4278,7 +4182,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4289,7 +4193,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-43.66019794868771</value>
+                <value>-45.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4317,7 +4221,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4328,7 +4232,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-88.76849736226723</value>
+                <value>-90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4356,7 +4260,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4367,7 +4271,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>144.5613314640359</value>
+                <value>145.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4395,7 +4299,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4406,7 +4310,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-0.4045478306070436</value>
+                <value>0.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>true</Retrograde>
@@ -4454,7 +4358,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4469,7 +4373,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-79.95703026818956</value>
+                <value>-80.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4497,7 +4401,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4508,7 +4412,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>352.7528322339058</value>
+                <value>30.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4536,7 +4440,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4547,7 +4451,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>304.1982120722532</value>
+                <value>120.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4575,7 +4479,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4586,7 +4490,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>57.488740622997284</value>
+                <value>-90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4614,7 +4518,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4625,7 +4529,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-39.367868065834045</value>
+                <value>-150.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4653,7 +4557,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4664,7 +4568,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>116.16075768321753</value>
+                <value>20.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4692,7 +4596,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4707,7 +4611,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-114.96263171915052</value>
+                <value>-115.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4735,7 +4639,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4746,7 +4650,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>307.614690348506</value>
+                <value>90.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4774,7 +4678,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4785,7 +4689,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>60.27999049425125</value>
+                <value>-20.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4813,7 +4717,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4828,7 +4732,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>-124.96559853799772</value>
+                <value>-125.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4856,7 +4760,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4871,7 +4775,7 @@
                 <distance_unit>ASTRONOMICAL_UNITS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>80.01915077437843</value>
+                <value>80.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -4899,7 +4803,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>true</Liquid_Water>
+                <Liquid_Water>false</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4910,7 +4814,7 @@
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>247.79416811466217</value>
+                <value>0.0</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>

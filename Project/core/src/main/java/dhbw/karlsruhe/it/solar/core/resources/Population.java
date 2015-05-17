@@ -23,11 +23,6 @@ public class Population extends StandardResource {
     }
 
     @Override
-    public long getMaximum() {
-        return THOUSAND * TRILLION;
-    }
-
-    @Override
     public TextureRegion getIcon() {
         return TextureCacher.GAMEATLAS.findRegion("population");
     }
@@ -71,6 +66,12 @@ public class Population extends StandardResource {
         return formatValue(changeLastMonth * 100);  
     }
 
+    /**
+     * Populations generate taxes for the player.
+     * @param deltaT Time interval over which potential taxes have accumulated
+     * @param livingSpace Place from which taxes are being raised
+     * @return
+     */
     public Credits payTaxes(Time deltaT, ResourceDepot livingSpace) {
         return new Credits(((long)(value * taxRateFormula(deltaT, livingSpace))));
     }
@@ -79,7 +80,7 @@ public class Population extends StandardResource {
         return deltaT.inYears() * needs.calculateTaxRate(livingSpace);
     }
 
-    public void updateStatistics() {
-        updateProductionStatistic();
+    public void addColonistsToPopulation(Population population) {
+        this.value += population.value;
     }
 }

@@ -12,5 +12,14 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({TotalPopulation.class, Credits.class})
 public abstract class GlobalResource extends BaseResource implements GlobalResourceInterface {
-
+    
+    @Override
+    public void empty() {
+        value = 0;
+    }
+    
+    @Override
+    public long getNumber() {
+        return value;
+    }
 }

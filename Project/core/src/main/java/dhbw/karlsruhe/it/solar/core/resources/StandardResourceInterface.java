@@ -8,32 +8,15 @@ import dhbw.karlsruhe.it.solar.core.physics.Time;
  * Created by Arga on 29.11.2014.
  */
 public interface StandardResourceInterface {
-    
-    /**
-     * Returns the current discrete amount of the resource.
-     * @return
-     */
-    public long getNumber();
-    
-    /**
-     * Gives the maximum allowed value that can be entered.
-     * @return
-     */
-    public long getMaximum();
-    
-    /**
-     * Returns a string describing the current amount of that resource.
-     * @return
-     */
-    public String toString();
 
     /**
-     * Resource value is updated based on the passage of time since the last update.
+     * Resource value is updated based on the passage of time since the last update based on the production at the resource depot.
      */
     public void updateResource(Time deltaT, ResourceDepot productionPlace);
     
     /**
-     * A specific amount is added to the resource value
+     * Returns the current discrete exact value of the resource at this resource depot.
+     * @return
      */
-    public void addToValue(BaseResource resource);
+    public long getNumber();
 }
