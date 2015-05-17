@@ -5,8 +5,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.player.ResourceDepot;
 
 /**
  * Superclass for the standard resources of the game which are local and not capacitive (deplete normally).

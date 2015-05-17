@@ -1,5 +1,6 @@
 package dhbw.karlsruhe.it.solar.player;
 
+import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;

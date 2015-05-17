@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
+import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -13,7 +14,6 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
-import dhbw.karlsruhe.it.solar.player.Colony;
 import dhbw.karlsruhe.it.solar.player.Player;
 
 import java.util.ArrayList;

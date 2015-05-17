@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.commands;
 
+import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.player.Colony;
 
 public class AbandonColonyCommand implements Command {
 

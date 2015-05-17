@@ -1,6 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
-import dhbw.karlsruhe.it.solar.player.ResourceDepot;
+import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 
 public class PopulationNeeds {
  

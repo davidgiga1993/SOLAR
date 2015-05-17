@@ -1,9 +1,8 @@
-package dhbw.karlsruhe.it.solar.player;
+package dhbw.karlsruhe.it.solar.colony;
 
 import java.util.List;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
 

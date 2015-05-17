@@ -5,9 +5,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
+import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
-import dhbw.karlsruhe.it.solar.player.Colony;
 
 public class InfoBarColonyDetails extends Table {
     

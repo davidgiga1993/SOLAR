@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.player;
+package dhbw.karlsruhe.it.solar.colony;
 
 import java.util.ArrayList;
 import java.util.List;

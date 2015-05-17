@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
-import dhbw.karlsruhe.it.solar.player.ResourceDepot;
+import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 
 /**
  * Handles the outward behavior for resources with capacitive logic which behave differently from normally depleting resources.

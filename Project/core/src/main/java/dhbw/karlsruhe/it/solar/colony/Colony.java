@@ -1,4 +1,4 @@
-package dhbw.karlsruhe.it.solar.player;
+package dhbw.karlsruhe.it.solar.colony;
 
 import java.util.List;
 
@@ -10,6 +10,8 @@ import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
+import dhbw.karlsruhe.it.solar.player.Ownable;
+import dhbw.karlsruhe.it.solar.player.Player;
 
 /**
  * Object governing the working of a player colony on an astronomical body.
@@ -22,6 +24,7 @@ public class Colony implements Ownable, ResourceDepot {
     private Player owner;
     private AstronomicalBody primary;
     private final ColonyResources resources = new ColonyResources();
+    private final ColonyBuildings buildings = new ColonyBuildings();
     
     public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
@@ -71,8 +74,7 @@ public class Colony implements Ownable, ResourceDepot {
     
     @Override
     public long getNumberOfWorkingLifeSupportUnits() {
-        // TODO Auto-generated method stub
-        return 0;
+        return buildings.getNumberOfWorkingLifeSupportUnits();
     }
     
     /**
@@ -81,8 +83,7 @@ public class Colony implements Ownable, ResourceDepot {
      * @return
      */
     public Credits payUpKeep(Time deltaT) {
-     // TODO Auto-generated method stub
-        return new Credits(0);
+         return buildings.payUpKeep(deltaT);
     }
 
     public String getName() {
