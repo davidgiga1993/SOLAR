@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+
 /**
  * Handles the outward behavior for resources with capacitive logic which behave differently from normally depleting resources.
  * @author Andi
@@ -27,7 +29,7 @@ public interface CapacitiveResourceInterface {
      * @param depot
      * @return
      */
-    public boolean demandExceedsSupply(ResourceDepot depot);
+    public boolean demandExceedsSupply();
     
     /**
      * Recalculates the maximim production capacity for this resource at the resource depot.
@@ -40,4 +42,10 @@ public interface CapacitiveResourceInterface {
      * @param productionSite
      */
     public void updateConsumption(ResourceDepot productionSite);
+    
+    /**
+     * Determines which style should be used to display the resource based on the consumption to max capacity ratio.
+     * @return
+     */
+    public LabelStyle getDisplayStyle();
 }

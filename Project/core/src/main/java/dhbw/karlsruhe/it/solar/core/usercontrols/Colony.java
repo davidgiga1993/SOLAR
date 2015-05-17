@@ -3,6 +3,8 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
@@ -122,5 +124,9 @@ public class Colony implements Ownable, ResourceDepot {
 
     private LifeSupport getLifeSupport() {
         return (LifeSupport)capacitiveResources.get(LIFE_SUPPORT_ID);
+    }
+
+    public LabelStyle getLifeSupportDisplayStyle() {
+        return getLifeSupport().getDisplayStyle();
     }
 }

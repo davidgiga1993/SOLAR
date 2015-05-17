@@ -42,6 +42,7 @@ public class InfoBarColonyDetails extends Table {
         }
         populationValueLabel.setText(colony.getPopulationInformation());
         lifeSupportValueLabel.setText(colony.getLifeSupportInformation());
+        lifeSupportValueLabel.setStyle(colony.getLifeSupportDisplayStyle());
     }
 
     public Actor show(AstronomicalBody selectedBody) {
@@ -69,6 +70,7 @@ public class InfoBarColonyDetails extends Table {
         populationValueLabel.setVisible(true);
         lifeSupportLabel.setVisible(true);
         lifeSupportValueLabel.setText(colony.getLifeSupportInformation());
+        lifeSupportValueLabel.setStyle(colony.getLifeSupportDisplayStyle());
         lifeSupportValueLabel.setVisible(true);
     }
 }
