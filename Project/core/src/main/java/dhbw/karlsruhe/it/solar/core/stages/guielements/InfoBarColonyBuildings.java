@@ -71,7 +71,11 @@ public class InfoBarColonyBuildings extends Table {
         infraLabel.setVisible(true);
         infraValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltInfrastructure()));
         infraValueLabel.setVisible(true);
-        buildInfra.setVisible(true);
+        if(colony.isPlayerAlsoColonyOwner()) {
+            buildInfra.setVisible(true);            
+            return;
+        }
+        buildInfra.setVisible(false);
     }
     
     private void addBuildButtonListeners() {
