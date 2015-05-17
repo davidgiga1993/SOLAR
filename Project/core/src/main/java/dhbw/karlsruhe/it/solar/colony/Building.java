@@ -19,14 +19,14 @@ public interface Building {
      * Buildings can be off-line for various reasons, for example due to lack of electricity.
      * @return
      */
-    public String getNumberOfBuildingsBuilt();
+    public int getNumberOfBuildingsBuilt();
     
     /**
      * States how many instances of that building type are currently in operation in the colony.
      * Buildings can be off-line for various reasons, for example due to lack of electricity.
      * @return
      */
-    public long getNumberOfBuildingsOnline();
+    public int getNumberOfBuildingsOnline();
     
     /**
      * Returns the Texture's icon as a TextureRegion

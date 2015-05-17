@@ -71,6 +71,7 @@ public class Colony implements Ownable, ResourceDepot {
     @Override
     public void updateProduction(Time deltaT) {
         resources.updateProduction(deltaT, this);
+        updateCapacities();
     }
     
     @Override
@@ -120,8 +121,8 @@ public class Colony implements Ownable, ResourceDepot {
         return getLifeSupport().getDisplayStyle();
     }
 
-    public ColonyBuildings getColonyBuildings() {
-        return buildings;
+    public List<BaseBuilding> getListOfColonyBuildings() {
+        return buildings.getListOfColonyBuildings();
     }
 
     public void updateCapacities() {
@@ -130,5 +131,13 @@ public class Colony implements Ownable, ResourceDepot {
 
     public LifeRating getLiferatingOfColony() {
         return primary.getLifeRating();
+    }
+
+    public void initBuildings(ColonyBuildings buildings) {
+        this.buildings.initBuildings(buildings.getListOfBuildings());
+    }
+
+    public ColonyBuildings getColonyBuildings() {
+        return buildings;
     }
 }

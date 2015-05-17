@@ -8,10 +8,10 @@ import dhbw.karlsruhe.it.solar.core.resources.Credits;
 
 public class ColonyBuildings {
     
-    private List<Building> buildings;
+    private final List<Building> buildings = new ArrayList<Building>();
     
     public ColonyBuildings() {
-        this.buildings = new ArrayList<Building>();  
+        
     }
 
     public Credits payUpKeep(Time deltaT) {
@@ -22,7 +22,7 @@ public class ColonyBuildings {
         return totalUpKeep;
     }
 
-    public long getNumberOfWorkingLifeSupportUnits() {
+    public int getNumberOfWorkingLifeSupportUnits() {
         for(Building building : buildings) {
             if(building instanceof Infrastructure) {
                 return building.getNumberOfBuildingsOnline();
@@ -31,13 +31,13 @@ public class ColonyBuildings {
         return 0;
     }
 
-    public String getNumberOfBuiltLifeSupportUnits() {
+    public int getNumberOfBuiltInfrastructure() {
         for(Building building : buildings) {
             if(building instanceof Infrastructure) {
                 return building.getNumberOfBuildingsBuilt();
             }
         }
-        return "0";
+        return 0;
     }
 
     public void buildInfrastructure() {
@@ -50,4 +50,26 @@ public class ColonyBuildings {
         buildings.add(new Infrastructure(1));
     }
 
+    public void initBuildings(List<Building> newBuildings) {
+        buildings.clear();
+        for(Building building : newBuildings) {
+            buildings.add(building);
+        }
+    }
+
+    public List<Building> getListOfBuildings() {
+        return buildings;
+    }
+
+    public void initInfrastructure(int initialInfrastructure) {
+        buildings.add(new Infrastructure(initialInfrastructure));
+    }
+
+    public List<BaseBuilding> getListOfColonyBuildings() {
+        List<BaseBuilding> list = new ArrayList<BaseBuilding>();
+        for(Building building : buildings) {
+            list.add((BaseBuilding)building);
+        }
+        return list;
+    }
 }

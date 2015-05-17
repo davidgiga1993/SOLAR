@@ -10,6 +10,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
+import dhbw.karlsruhe.it.solar.colony.BuildingManager;
+import dhbw.karlsruhe.it.solar.colony.Colony;
+import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstroBodyManager;
@@ -151,9 +154,10 @@ public class GameStartStage extends BaseStage implements Telegraph {
         loadedGame.loadNewGame();        
     }
 
-    private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists) {
+    private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists, ColonyBuildings buildings) {
         AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(nameOfAstronomicalBody);
-        primary.establishColony(colonyName, foundingPlayer, colonists);
+        Colony newColony = primary.establishColony(colonyName, foundingPlayer, colonists);
+        newColony.initBuildings(buildings);
     }
 
     @Override
@@ -353,7 +357,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private void initColonies(AstroBodyInfo body) {
         if(body.isColonized()) {
             ColonyInfo colony = body.getColonyInfo();
-            placeNewColony(body.getName(), colony.getColonyName(), playerManager.getPlayerFromName(colony.getNameOfOwner()), colony.getPopulation());
+            placeNewColony(body.getName(), colony.getColonyName(), playerManager.getPlayerFromName(colony.getNameOfOwner()), colony.getPopulation(), colony.getBuildings());
            }
     }
 
@@ -445,9 +449,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
             babylon.enterOrbit(primary);        
         }
         //place some example colonies
-        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7125 * BaseResource.MILLION));
-        placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(3141 * BaseResource.THOUSAND));
-        placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(11235));
+        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7125 * BaseResource.MILLION), new BuildingManager().createInfrastructure(400000).generateColonyBuildings());
+        placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(3141 * BaseResource.THOUSAND), new BuildingManager().createInfrastructure(1200).generateColonyBuildings());
+        placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(11235), new BuildingManager().createInfrastructure(4).generateColonyBuildings());
     }
     
     /**

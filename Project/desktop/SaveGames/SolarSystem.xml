@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SaveGame>
     <Settings>
-        <Display_Extra_Setting>true</Display_Extra_Setting>
-        <Display_Liferating_Setting>true</Display_Liferating_Setting>
+        <Display_Extra_Setting>false</Display_Extra_Setting>
+        <Display_Liferating_Setting>false</Display_Liferating_Setting>
         <Display_Colonydetails_Setting>true</Display_Colonydetails_Setting>
-        <Display_Colony_Buildings_Setting>true</Display_Colony_Buildings_Setting>
+        <Display_Colony_Buildings_Setting>false</Display_Colony_Buildings_Setting>
     </Settings>
     <Game_Time_Elapsed>
         <Time_Value>0.0</Time_Value>
@@ -96,8 +96,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1199.505</x>
-            <y>499.505</y>
+            <x>1199.01</x>
+            <y>499.01</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -108,8 +108,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1499.505</x>
-            <y>999.505</y>
+            <x>1499.01</x>
+            <y>999.01</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -120,8 +120,8 @@
         <ShipType>Ship</ShipType>
         <UnitOwner>Player Two (AI)</UnitOwner>
         <AbsolutePosition>
-            <x>1549.505</x>
-            <y>1049.505</y>
+            <x>1549.01</x>
+            <y>1049.01</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -132,8 +132,8 @@
         <ShipType>Station</ShipType>
         <UnitOwner>Player One</UnitOwner>
         <AbsolutePosition>
-            <x>1499.505</x>
-            <y>-0.49499997</y>
+            <x>1499.01</x>
+            <y>-0.98999995</y>
         </AbsolutePosition>
         <Destination>
             <TargetActor></TargetActor>
@@ -146,11 +146,11 @@
         <OrbitalProperties>
             <Primary>Earth</Primary>
             <OrbitalRadius>
-                <value>297383.8</value>
+                <value>288053.6</value>
                 <distance_unit>KILOMETERS</distance_unit>
             </OrbitalRadius>
             <PolarAngle>
-                <value>177.79248046875</value>
+                <value>175.7479248046875</value>
                 <angular_unit>DEGREE</angular_unit>
             </PolarAngle>
             <Retrograde>false</Retrograde>
@@ -444,6 +444,9 @@
                 <Change_Last_Month>0.0</Change_Last_Month>
                 <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
+            <Colony_Buildings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="infrastructure">
+                <Number_Built>400000</Number_Built>
+            </Colony_Buildings>
         </PlayerColony>
     </AstronomicalBody>
     <AstronomicalBody>
@@ -491,6 +494,9 @@
                 <Change_Last_Month>0.0</Change_Last_Month>
                 <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
+            <Colony_Buildings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="infrastructure">
+                <Number_Built>1200</Number_Built>
+            </Colony_Buildings>
         </PlayerColony>
     </AstronomicalBody>
     <AstronomicalBody>
@@ -572,6 +578,9 @@
                 <Change_Last_Month>0.0</Change_Last_Month>
                 <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
+            <Colony_Buildings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="infrastructure">
+                <Number_Built>4</Number_Built>
+            </Colony_Buildings>
         </PlayerColony>
     </AstronomicalBody>
     <AstronomicalBody>
@@ -596,7 +605,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -635,7 +644,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -674,7 +683,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -785,7 +794,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -824,7 +833,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -863,7 +872,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -902,7 +911,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -998,7 +1007,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1049,7 +1058,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1104,7 +1113,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1143,7 +1152,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1182,7 +1191,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1221,7 +1230,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1260,7 +1269,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1299,7 +1308,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1338,7 +1347,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1377,7 +1386,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1416,7 +1425,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1523,7 +1532,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1562,7 +1571,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1601,7 +1610,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1640,7 +1649,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1679,7 +1688,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1718,7 +1727,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1755,7 +1764,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1818,7 +1827,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1857,7 +1866,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1896,7 +1905,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1933,7 +1942,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -1970,7 +1979,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2009,7 +2018,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2061,7 +2070,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2120,7 +2129,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2159,7 +2168,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2198,7 +2207,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2237,7 +2246,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2276,7 +2285,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2315,7 +2324,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2354,7 +2363,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2393,7 +2402,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2432,7 +2441,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2471,7 +2480,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2510,7 +2519,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2549,7 +2558,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2656,7 +2665,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2695,7 +2704,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2734,7 +2743,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2773,7 +2782,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2812,7 +2821,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2851,7 +2860,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2890,7 +2899,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2929,7 +2938,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -2968,7 +2977,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3007,7 +3016,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3046,7 +3055,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3085,7 +3094,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3124,7 +3133,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3163,7 +3172,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3202,7 +3211,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3241,7 +3250,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3280,7 +3289,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3319,7 +3328,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3358,7 +3367,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3397,7 +3406,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3436,7 +3445,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3475,7 +3484,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3514,7 +3523,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3553,7 +3562,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3592,7 +3601,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3631,7 +3640,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3670,7 +3679,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3777,7 +3786,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3816,7 +3825,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3855,7 +3864,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3894,7 +3903,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3933,7 +3942,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -3972,7 +3981,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4011,7 +4020,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4066,7 +4075,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4105,7 +4114,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4144,7 +4153,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4183,7 +4192,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4222,7 +4231,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4261,7 +4270,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4300,7 +4309,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4359,7 +4368,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>true</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4402,7 +4411,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4441,7 +4450,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4480,7 +4489,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4519,7 +4528,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4558,7 +4567,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4597,7 +4606,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4640,7 +4649,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4679,7 +4688,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>
@@ -4718,7 +4727,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4761,7 +4770,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
             <Sidereal_Rotation_Period>
@@ -4804,7 +4813,7 @@
             <Hydrosphere>
                 <Water_Cover>0.0</Water_Cover>
                 <Ice_Cover>1.0</Ice_Cover>
-                <Liquid_Water>false</Liquid_Water>
+                <Liquid_Water>true</Liquid_Water>
                 <Subsurface_Ocean>false</Subsurface_Ocean>
             </Hydrosphere>
         </BodyProperties>

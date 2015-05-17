@@ -43,7 +43,7 @@ public class InfoBarColonyBuildings extends Table {
         if(null==buildings) {
             return;
         }
-        infraValueLabel.setText(buildings.getNumberOfBuiltLifeSupportUnits());
+        infraValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltInfrastructure()));
     }
 
     public InfoBarColonyBuildings show(AstronomicalBody selectedBody) {
@@ -69,7 +69,7 @@ public class InfoBarColonyBuildings extends Table {
         colonyLabel.setStyle(colony.getOwner().getColorStyle());
         colonyLabel.setVisible(true);
         infraLabel.setVisible(true);
-        infraValueLabel.setText(buildings.getNumberOfBuiltLifeSupportUnits());
+        infraValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltInfrastructure()));
         infraValueLabel.setVisible(true);
         buildInfra.setVisible(true);
     }
@@ -85,6 +85,5 @@ public class InfoBarColonyBuildings extends Table {
 
     private void onBuildInfraClick() {
         buildings.buildInfrastructure();
-        colony.updateCapacities();
     }
 }

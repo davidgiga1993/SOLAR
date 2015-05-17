@@ -6,6 +6,10 @@ import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 public class Infrastructure extends BaseBuilding {
+    
+    public Infrastructure() {
+        
+    }
 
     public Infrastructure(int initialInfrastructure) {
         this.buildingsBuilt = initialInfrastructure;
