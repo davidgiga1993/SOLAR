@@ -1,15 +1,12 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.resources.BaseResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
-import dhbw.karlsruhe.it.solar.core.resources.Population;
+import dhbw.karlsruhe.it.solar.core.resources.TotalPopulation;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -21,7 +18,9 @@ public class ResourceBarPlayerInfo extends Table {
     private Player playerOnThisPlatform;
     private final Label playerNameLabel = new Label("", style);
     private final Label treasuryValueLabel = new Label("", style);
+    private final Table treasuryAlertIcons = new Table();
     private final Label populationValueLabel = new Label("", style);
+    private final Table populationAlertIcons = new Table();
     
     public ResourceBarPlayerInfo(GameStartStage stage) {
         this.stage = stage;
@@ -33,7 +32,8 @@ public class ResourceBarPlayerInfo extends Table {
             playerOnThisPlatform = stage.getPlayerOnThisPlatform();
             if(playerOnThisPlatform != null) {
                 add(playerOverview()).left().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH);
-                add(playerDetails()).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH);
+                add(playerTreasury()).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH);
+                add(playerPopulation()).padLeft(ConfigurationConstants.PADDING).width(ConfigurationConstants.CELL_WIDTH);
                 add().padLeft(ConfigurationConstants.PADDING).expandX().fillX();                            
             }
         }
@@ -45,6 +45,8 @@ public class ResourceBarPlayerInfo extends Table {
         playerNameLabel.setStyle(playerOnThisPlatform.getColorStyle());
         treasuryValueLabel.setText(playerOnThisPlatform.getTreasury().toString());
         populationValueLabel.setText(playerOnThisPlatform.getTotalPopulation().toString());
+        populationAlertIcons.clear();
+        populationAlertIcons.add(playerOnThisPlatform.getPopulationAlerts());
     }
     
     private Table playerOverview() {
@@ -54,23 +56,25 @@ public class ResourceBarPlayerInfo extends Table {
         return overview;
     }
     
-    private Table playerDetails() {
-        Table details = new Table();
-        details.add(new Label("Treasury: ", style)).left();
-        details.add(treasuryValueLabel).expand().right();
-        details.add(loadIcon(new Credits()));
-        details.row();
-        details.add(new Label("Population: ", style)).left();
-        details.add(populationValueLabel).expand().right(); 
-        details.add(loadIcon(new Population()));
-        return details;
+    private Table playerTreasury() {
+        Credits treasury = playerOnThisPlatform.getTreasury();
+        Table treasuryTable = new Table();
+        treasuryTable.add(treasury.getResourceBarTitle()).expandX().left();
+        treasuryTable.row();
+        treasuryTable.add(treasuryValueLabel).left();
+        treasuryTable.row();
+        treasuryTable.add(treasuryAlertIcons).left();
+        return treasuryTable;
     }
-
-    private Table loadIcon(BaseResourceInterface resource) {
-        Table imageTable = new Table();
-        Image selectedImage = new Image();
-        selectedImage.setDrawable(new TextureRegionDrawable(resource.getIcon()));
-        imageTable.add(selectedImage).width(ConfigurationConstants.ICON_SIZE).height(ConfigurationConstants.ICON_SIZE);
-        return imageTable;  
+    
+    private Table playerPopulation() {
+        TotalPopulation population = playerOnThisPlatform.getTotalPopulation();
+        Table pop = new Table();
+        pop.add(population.getResourceBarTitle()).expandX().left();
+        pop.row();
+        pop.add(populationValueLabel).left(); 
+        pop.row();
+        pop.add(populationAlertIcons).left();
+        return pop;
     }
 }

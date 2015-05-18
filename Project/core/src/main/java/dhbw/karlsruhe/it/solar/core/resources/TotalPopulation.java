@@ -34,6 +34,11 @@ public class TotalPopulation extends GlobalResource {
     protected String constructResourceStatement(String unit, float value) {
         return formatValue(value) + " " + unit + " ( " + changeLastMonth() + " % / year )";
     }
+
+    @Override
+    protected String getNameOfResourceBarTitle() {
+        return "Population";
+    }
     
     private String changeLastMonth() {
         if(changeLastMonth >= 0) {

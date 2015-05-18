@@ -24,6 +24,11 @@ public class LifeSupport extends CapacitiveResource {
     public TextureRegion getIcon() {
         return TextureCacher.GAMEATLAS.findRegion("life_support");
     }
+    
+    @Override
+    public TextureRegion getAlertIcon() {
+        return TextureCacher.GAMEATLAS.findRegion("lack_of_life_support");
+    }
 
     @Override
     protected long capacityPerUnit() {

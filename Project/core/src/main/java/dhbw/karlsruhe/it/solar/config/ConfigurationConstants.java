@@ -19,6 +19,7 @@ public final class ConfigurationConstants {
     public static final int GUI_NAVIGATION_WIDTH = 175;
     public final static int CELL_WIDTH = 215;
     public final static int PADDING = 14;
+    public final static int INNER_CELL_PADDING = 6;
     public static final int ICON_SIZE = 16;
     public static final String HOMEWORLD = "Earth";
 

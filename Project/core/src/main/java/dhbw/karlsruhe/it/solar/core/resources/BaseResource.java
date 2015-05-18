@@ -5,6 +5,11 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
@@ -28,7 +33,16 @@ public abstract class BaseResource implements BaseResourceInterface {
     @XmlElement(name = "Time_Of_Last_Resource_Update")
     protected Time oldGameTime;
     @XmlElement(name = "Change_Last_Month")
-    protected float changeLastMonth;
+    protected float changeLastMonth;    
+    
+    @Override
+    public Table loadIcon() {
+        Table imageTable = new Table();
+        Image selectedImage = new Image();
+        selectedImage.setDrawable(new TextureRegionDrawable(getIcon()));
+        imageTable.add(selectedImage).width(ConfigurationConstants.ICON_SIZE).height(ConfigurationConstants.ICON_SIZE);
+        return imageTable;  
+    }
     
     protected boolean isANewDay() {        
         if( oldGameTime == null || (int)GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int)oldGameTime.inDays()) {

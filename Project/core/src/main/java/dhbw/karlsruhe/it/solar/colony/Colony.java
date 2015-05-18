@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.LifeRating;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
@@ -26,6 +27,7 @@ public class Colony implements Ownable, ResourceDepot {
     private AstronomicalBody primary;
     private final ColonyResources resources = new ColonyResources();
     private final ColonyBuildings buildings = new ColonyBuildings();
+    private final ColonyAlerts alerts = new ColonyAlerts();
     
     public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
@@ -82,6 +84,16 @@ public class Colony implements Ownable, ResourceDepot {
     @Override
     public LifeSupport getLifeSupport() {
         return resources.getLifeSupport();
+    }
+
+    @Override
+    public void alertCapacityExceeded(CapacitiveResourceInterface resource) {
+        alerts.capacityExceeded(resource);
+    }
+
+    @Override
+    public void capacitySufficient(CapacitiveResourceInterface resource) {
+        alerts.capacitySufficient(resource);
     }
     
     /**
@@ -140,5 +152,9 @@ public class Colony implements Ownable, ResourceDepot {
 
     public ColonyBuildings getColonyBuildings() {
         return buildings;
+    }
+
+    public ColonyAlerts getAlerts() {
+        return alerts;
     }
 }

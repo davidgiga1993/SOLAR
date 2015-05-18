@@ -4,6 +4,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
+
 /**
  * Superclass for globally stored resources which are not bound to a specific place but to a player.
  * @author Andi
@@ -21,6 +27,14 @@ public abstract class GlobalResource extends BaseResource implements GlobalResou
     @Override
     public long getNumber() {
         return value;
+    }
+
+    @Override
+    public Table getResourceBarTitle() {
+        Table title = new Table();
+        title.add(loadIcon()).left();
+        title.add(new Label(getNameOfResourceBarTitle(), Styles.MENUELABEL_STYLE)).expandX().fillX().padLeft(ConfigurationConstants.INNER_CELL_PADDING);
+        return title;
     }
     
     @Override
@@ -41,4 +55,6 @@ public abstract class GlobalResource extends BaseResource implements GlobalResou
     }
     
     protected abstract String constructResourceStatement(String unit, float value);
+    
+    protected abstract String getNameOfResourceBarTitle();
 }

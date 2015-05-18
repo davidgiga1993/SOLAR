@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 
@@ -50,4 +51,10 @@ public interface CapacitiveResourceInterface {
      * @return
      */
     public LabelStyle getDisplayStyle();
+    
+    /**
+     * Returns a table cell containing the resource alert icon.
+     * @return
+     */
+    public Table loadAlertIcon();
 }

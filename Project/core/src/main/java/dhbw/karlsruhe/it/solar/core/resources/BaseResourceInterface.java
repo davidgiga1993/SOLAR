@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 /**
  * Describes the public behavior which all resources have to follow.
@@ -14,6 +15,12 @@ public interface BaseResourceInterface {
      * @return
      */
     public TextureRegion getIcon();
+    
+    /**
+     * Returns a table cell containing the resource icon.
+     * @return
+     */
+    public Table loadIcon();
     
     /**
      * Returns a string for the GUI describing the current amount of that resource.

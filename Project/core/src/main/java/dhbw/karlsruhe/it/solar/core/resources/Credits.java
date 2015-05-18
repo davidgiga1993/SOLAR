@@ -54,8 +54,17 @@ public class Credits extends GlobalResource {
         return constructResourceStatement("", value);   
     }
 
+    @Override
+    protected String getNameOfResourceBarTitle() {
+        return "Treasury";
+    }
+
     private float treasuryGrowthFormula() {
         return (float)(value - valuesOfLastMonth.get(0));
+    }
+    
+    protected String constructChangeStatement() {
+        return changeLastMonth() + " / month )";
     }
     
     private String changeLastMonth() {

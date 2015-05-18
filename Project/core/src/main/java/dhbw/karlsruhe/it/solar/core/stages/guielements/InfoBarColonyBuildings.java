@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
@@ -35,7 +36,7 @@ public class InfoBarColonyBuildings extends Table {
         add(colonyLabel).right(); 
         row();
         add(infraLabel).left();
-        add(infraValueLabel).right().padRight(InfoBar.INNER_CELL_PADDING);
+        add(infraValueLabel).right().padRight(ConfigurationConstants.INNER_CELL_PADDING);
         add(buildInfra).width(InfoBar.BUILD_BUTTON_WIDTH).height(InfoBar.BUILD_BUTTON_HEIGHT).pad(InfoBar.BUILD_BUTTON_PADDING).right();
     }
     

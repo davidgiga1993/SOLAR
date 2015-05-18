@@ -4,7 +4,7 @@
         <Display_Extra_Setting>false</Display_Extra_Setting>
         <Display_Liferating_Setting>false</Display_Liferating_Setting>
         <Display_Colonydetails_Setting>true</Display_Colonydetails_Setting>
-        <Display_Colony_Buildings_Setting>true</Display_Colony_Buildings_Setting>
+        <Display_Colony_Buildings_Setting>false</Display_Colony_Buildings_Setting>
     </Settings>
     <Game_Time_Elapsed>
         <Time_Value>0.0</Time_Value>
@@ -445,7 +445,7 @@
                 <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
             <Colony_Buildings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="infrastructure">
-                <Number_Built>400133</Number_Built>
+                <Number_Built>1000000</Number_Built>
             </Colony_Buildings>
         </PlayerColony>
     </AstronomicalBody>
@@ -495,7 +495,7 @@
                 <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
             <Colony_Buildings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="infrastructure">
-                <Number_Built>1200</Number_Built>
+                <Number_Built>2500</Number_Built>
             </Colony_Buildings>
         </PlayerColony>
     </AstronomicalBody>
@@ -579,7 +579,7 @@
                 <Remaining_Fraction_Of_Value_Currently_Produced>0.0</Remaining_Fraction_Of_Value_Currently_Produced>
             </Population>
             <Colony_Buildings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="infrastructure">
-                <Number_Built>4</Number_Built>
+                <Number_Built>2</Number_Built>
             </Colony_Buildings>
         </PlayerColony>
     </AstronomicalBody>

@@ -1,5 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
 /**
  * Handles the outward behavior of globally stored resources which are not bound to a specific place but to a player.
  * @author Andi
@@ -22,4 +24,10 @@ public interface GlobalResourceInterface {
      * @return
      */
     public long getNumber();
+    
+    /**
+     * Returns the table to be inserted as the title of the this global resource's part of the top Resource Bar
+     * @return
+     */
+    public Table getResourceBarTitle();
 }

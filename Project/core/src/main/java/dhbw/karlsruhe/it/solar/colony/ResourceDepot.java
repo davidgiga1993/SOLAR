@@ -3,6 +3,7 @@ package dhbw.karlsruhe.it.solar.colony;
 import java.util.List;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
@@ -60,4 +61,14 @@ public interface ResourceDepot {
      * @return
      */
     public LifeSupport getLifeSupport();
+
+    /**
+     * Notifies the game that demand at this resource depot exceeds supply for one of the capacitive resources.
+     */
+    public void alertCapacityExceeded(CapacitiveResourceInterface resource);
+
+    /**
+     * Notifies the game that demand at this resource depot is met by the supply of the capacitive resource.
+     */
+    public void capacitySufficient(CapacitiveResourceInterface capacitiveResource);
 }

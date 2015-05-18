@@ -16,6 +16,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 /**
  * Created by Arga on 29.11.2014.
@@ -31,6 +32,7 @@ public class Player {
     private final List<GlobalResourceInterface> resources = new ArrayList<GlobalResourceInterface>();
     private final List<Colony> colonies = new ArrayList<Colony>();
     private final List<SpaceUnit> units = new ArrayList<SpaceUnit>();
+    private final PlayerAlerts alerts = new PlayerAlerts();
 
     Player(int id, String name, Color color) {
         this.id = id;
@@ -131,6 +133,7 @@ public class Player {
     public void updateProduction(Time deltaT) {
         for(Colony colony : colonies) {
             colony.updateProduction(deltaT);
+            alerts.checkForColonyAlerts(colony);
         }
     }
 
@@ -174,5 +177,9 @@ public class Player {
             newList.add((GlobalResource)resource);
         }
         return newList;
+    }
+
+    public Table getPopulationAlerts() {
+        return alerts.getPopulationAlertTable();
     }
 }
