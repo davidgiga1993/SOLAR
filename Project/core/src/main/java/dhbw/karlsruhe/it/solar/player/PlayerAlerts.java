@@ -21,7 +21,7 @@ public class PlayerAlerts {
     public Table getPopulationAlertTable() {
         Table alerts = new Table();
         if(coloniesWithLackOfLifeSupport.size() > 0) {
-            alerts.add(new LifeSupport(null).loadAlertIcon());            
+            alerts.add(new LifeSupport().loadAlertIcon());            
         }
         return alerts;
     }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.LifeRating;
+import dhbw.karlsruhe.it.solar.core.physics.Power;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
@@ -77,10 +78,10 @@ public class Colony implements Ownable, ResourceDepot {
     }
     
     @Override
-    public long getNumberOfWorkingLifeSupportUnits() {
-        return buildings.getNumberOfWorkingLifeSupportUnits();
+    public long getCurrentLifeSupportCapacity() {
+        return (long)(buildings.getCurrentLifeSupportCapacityWithoutLifeRating() * efficiencyOfLifeSupport());
     }
-    
+
     @Override
     public LifeSupport getLifeSupport() {
         return resources.getLifeSupport();
@@ -94,6 +95,11 @@ public class Colony implements Ownable, ResourceDepot {
     @Override
     public void capacitySufficient(CapacitiveResourceInterface resource) {
         alerts.capacitySufficient(resource);
+    }
+
+    @Override
+    public Power getElectricPowerConsumption() {
+        return buildings.getElectricPowerConsumption();
     }
     
     /**
@@ -156,5 +162,9 @@ public class Colony implements Ownable, ResourceDepot {
 
     public ColonyAlerts getAlerts() {
         return alerts;
+    }
+       
+    private float efficiencyOfLifeSupport() {
+        return getLiferatingOfColony().getNumber();
     }
 }

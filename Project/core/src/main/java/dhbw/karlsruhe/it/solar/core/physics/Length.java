@@ -35,7 +35,7 @@ public class Length {
         set(value, unit);
     }
 
-    public void set(float value, DistanceUnit unit) {
+    private void set(float value, DistanceUnit unit) {
         if(0<=value) {
             this.value = value;
             this.unit = unit;

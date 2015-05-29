@@ -2,6 +2,7 @@ package dhbw.karlsruhe.it.solar.colony;
 
 import java.util.List;
 
+import dhbw.karlsruhe.it.solar.core.physics.Power;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
@@ -43,11 +44,11 @@ public interface ResourceDepot {
     public boolean isPermanentHabitat();
 
     /**
-     * Determines how many life support infrastructure units are present and in working condition at this resource depot.
+     * Determines the life support capacity produced by the units in working condition at this depot.
      * To be in working condition, the units need to be supplied with electricity and their running costs have to covered by the treasury.
      * @return
      */
-    public long getNumberOfWorkingLifeSupportUnits();
+    public long getCurrentLifeSupportCapacity();
     
     /**
      * Resource production at this site is updated depending on the time interval since the last update.
@@ -71,4 +72,10 @@ public interface ResourceDepot {
      * Notifies the game that demand at this resource depot is met by the supply of the capacitive resource.
      */
     public void capacitySufficient(CapacitiveResourceInterface capacitiveResource);
+
+    /**
+     * Calculates the total electric power consumptions of all buildings/machinery of this resource depot.
+     * @return
+     */
+    public Power getElectricPowerConsumption();
 }

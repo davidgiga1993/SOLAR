@@ -3,6 +3,8 @@ package dhbw.karlsruhe.it.solar.colony;
 import java.util.ArrayList;
 import java.util.List;
 
+import dhbw.karlsruhe.it.solar.core.physics.Power;
+import dhbw.karlsruhe.it.solar.core.physics.Power.PowerUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 
@@ -22,10 +24,10 @@ public class ColonyBuildings {
         return totalUpKeep;
     }
 
-    public int getNumberOfWorkingLifeSupportUnits() {
+    public long getCurrentLifeSupportCapacityWithoutLifeRating() {
         for(Building building : buildings) {
             if(building instanceof Infrastructure) {
-                return building.getNumberOfBuildingsOnline();
+                return building.getNumberOfBuildingsOnline() * building.getCapacityPerBuilding();
             }
         }
         return 0;
@@ -71,5 +73,17 @@ public class ColonyBuildings {
             list.add((BaseBuilding)building);
         }
         return list;
+    }
+
+    /**
+     * Calculates the total electric power consumptions of all buildings of this colony.
+     * @return
+     */
+    public Power getElectricPowerConsumption() {
+        Power totalPowerConsumption = new Power(0, PowerUnit.MEGAWATT);
+        for (Building building : buildings) {
+            totalPowerConsumption.addPower(building.getElectricPowerConsumption());
+        }
+        return totalPowerConsumption;
     }
 }

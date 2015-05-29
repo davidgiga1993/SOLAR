@@ -70,7 +70,7 @@ public interface CapacitiveResourceInterface {
      * Recalculates the current resource consumption at the resource depot.
      * @param productionSite
      */
-    public void updateConsumption(ResourceDepot productionSite);
+    public void updateConsumption(ResourceDepot consumptionPlace);
     
     /**
      * Determines which style should be used to display the resource based on the consumption to max capacity ratio.

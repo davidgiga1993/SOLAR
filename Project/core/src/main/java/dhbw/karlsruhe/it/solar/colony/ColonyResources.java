@@ -20,7 +20,7 @@ public class ColonyResources {
 
     public void init(Colony colony, Population colonists) {
         standardResources.add(ResourceDepot.POPULATION_RESOURCE_ID, colonists);
-        capacitiveResources.add(ResourceDepot.LIFE_SUPPORT_ID, new LifeSupport(colony));
+        capacitiveResources.add(ResourceDepot.LIFE_SUPPORT_ID, new LifeSupport());
     }
 
     public List<StandardResourceInterface> getResources() {
