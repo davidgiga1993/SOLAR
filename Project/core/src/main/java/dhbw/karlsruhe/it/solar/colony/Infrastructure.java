@@ -33,7 +33,7 @@ public class Infrastructure extends BaseBuilding {
 
     @Override
     public Power getElectricPowerConsumption() {
-        return INFRASTRUCTURE_POWER_CONSUMPTION;
+        return new Power(INFRASTRUCTURE_POWER_CONSUMPTION.inMegawatt() * buildingsBuilt, PowerUnit.MEGAWATT);
     }
 
     @Override

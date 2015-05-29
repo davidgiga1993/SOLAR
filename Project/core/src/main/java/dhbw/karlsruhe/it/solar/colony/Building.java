@@ -41,7 +41,7 @@ public interface Building {
     public void build();
 
     /**
-     * Returns the electric power consumptions of this building.
+     * Returns the electric power consumption of all buildings of this type in this colony.
      * @return
      */
     public Power getElectricPowerConsumption();

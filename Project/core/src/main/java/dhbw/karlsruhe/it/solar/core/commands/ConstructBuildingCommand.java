@@ -18,6 +18,10 @@ public class ConstructBuildingCommand implements Command {
         // TODO Auto-generated method stub
         
     }
+    
+    private boolean buildConditionsAreMet() {
+        return colony.isPlayerAlsoColonyOwner();
+    }
 
     public void infrastructure() {
         if(buildConditionsAreMet()) {
@@ -25,8 +29,10 @@ public class ConstructBuildingCommand implements Command {
         }
     }
 
-    private boolean buildConditionsAreMet() {
-        return colony.isPlayerAlsoColonyOwner();
+    public void fissionReactor() {
+        if(buildConditionsAreMet()) {
+            buildings.buildFissionReactor();
+        }
     }
 
 }

@@ -41,6 +41,15 @@ public class ColonyBuildings {
         }
         return 0;
     }
+    
+    public int getNumberOfBuiltFissionReactors() {
+        for(Building building : buildings) {
+            if(building instanceof FissionReactor) {
+                return building.getNumberOfBuildingsBuilt();
+            }
+        }
+        return 0;
+    }
 
     public void buildInfrastructure() {
         for(Building building : buildings) {
@@ -50,6 +59,16 @@ public class ColonyBuildings {
             }
         }
         buildings.add(new Infrastructure(1));
+    }
+
+    public void buildFissionReactor() {
+        for(Building building : buildings) {
+            if(building instanceof FissionReactor) {
+                building.build();
+                return;
+            }
+        }
+        buildings.add(new FissionReactor(1));
     }
 
     public void initBuildings(List<Building> newBuildings) {

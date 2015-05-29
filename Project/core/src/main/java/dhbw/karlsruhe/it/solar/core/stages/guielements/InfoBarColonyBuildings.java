@@ -25,6 +25,9 @@ public class InfoBarColonyBuildings extends Table {
     private final Label infraLabel = new Label("Infrastructure: ", style);
     private final Label infraValueLabel = new Label("", style);
     private final TextButton buildInfra = new TextButton("+", Styles.TOOLTIPSKIN);
+    private final Label reactorLabel = new Label("Fission Reactors: ", style);
+    private final Label reactorValueLabel = new Label("", style);
+    private final TextButton buildReactor = new TextButton("+", Styles.TOOLTIPSKIN);
     
     public InfoBarColonyBuildings() {
         generateBuildingDetails();
@@ -39,6 +42,10 @@ public class InfoBarColonyBuildings extends Table {
         add(infraLabel).left();
         add(infraValueLabel).right().padRight(ConfigurationConstants.INNER_CELL_PADDING);
         add(buildInfra).width(InfoBar.BUILD_BUTTON_WIDTH).height(InfoBar.BUILD_BUTTON_HEIGHT).pad(InfoBar.BUILD_BUTTON_PADDING).right();
+        row();
+        add(reactorLabel).left();
+        add(reactorValueLabel).right().padRight(ConfigurationConstants.INNER_CELL_PADDING);
+        add(buildReactor).width(InfoBar.BUILD_BUTTON_WIDTH).height(InfoBar.BUILD_BUTTON_HEIGHT).pad(InfoBar.BUILD_BUTTON_PADDING).right();
     }
     
     public void reload() {
@@ -46,6 +53,7 @@ public class InfoBarColonyBuildings extends Table {
             return;
         }
         infraValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltInfrastructure()));
+        reactorValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltFissionReactors()));
     }
 
     public InfoBarColonyBuildings show(AstronomicalBody selectedBody) {
@@ -64,6 +72,9 @@ public class InfoBarColonyBuildings extends Table {
             infraLabel.setVisible(false);
             infraValueLabel.setVisible(false);
             buildInfra.setVisible(false);
+            reactorLabel.setVisible(false);
+            reactorValueLabel.setVisible(false);
+            buildReactor.setVisible(false);
             return;
         }
         title.setText("Buildings");
@@ -71,9 +82,12 @@ public class InfoBarColonyBuildings extends Table {
         colonyLabel.setStyle(colony.getOwner().getColorStyle());
         colonyLabel.setVisible(true);
         infraLabel.setVisible(true);
-        infraValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltInfrastructure()));
+        reload();
         infraValueLabel.setVisible(true);
-        buildInfra.setVisible(true);            
+        buildInfra.setVisible(true);    
+        reactorLabel.setVisible(true);
+        reactorValueLabel.setVisible(true);
+        buildReactor.setVisible(true);
     }
     
     private void addBuildButtonListeners() {
@@ -83,10 +97,21 @@ public class InfoBarColonyBuildings extends Table {
                  onBuildInfraClick();
             }
          });
+        buildReactor.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                 onBuildReactorClick();
+            }
+         });
     }
 
     private void onBuildInfraClick() {
         ConstructBuildingCommand build = new ConstructBuildingCommand(colony);
         build.infrastructure();
+    }
+    
+    private void onBuildReactorClick() {
+        ConstructBuildingCommand build = new ConstructBuildingCommand(colony);
+        build.fissionReactor();
     }
 }

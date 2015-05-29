@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.colony;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import dhbw.karlsruhe.it.solar.core.physics.Power;
-import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Power.PowerUnit;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
@@ -18,6 +17,14 @@ public class FissionReactor extends PowerPlant {
     private static final Power FISSION_REACTOR_POWER_OUTPUT = new Power(10f, PowerUnit.MEGAWATT);
     private final static Credits YEARLY_UPKEEP_FISSION_REACTOR =  new Credits(30000000);
     
+    public FissionReactor() {
+        
+    }
+    
+    public FissionReactor(int initialReactors) {
+        this.buildingsBuilt = initialReactors;
+    }
+
     @Override
     public TextureRegion getIcon() {
         return TextureCacher.GAMEATLAS.findRegion("reactor_fission");
