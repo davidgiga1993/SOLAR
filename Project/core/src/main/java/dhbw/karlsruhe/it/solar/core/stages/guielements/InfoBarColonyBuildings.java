@@ -11,6 +11,7 @@ import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.commands.ConstructBuildingCommand;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class InfoBarColonyBuildings extends Table {
@@ -72,11 +73,7 @@ public class InfoBarColonyBuildings extends Table {
         infraLabel.setVisible(true);
         infraValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltInfrastructure()));
         infraValueLabel.setVisible(true);
-        if(colony.isPlayerAlsoColonyOwner()) {
-            buildInfra.setVisible(true);            
-            return;
-        }
-        buildInfra.setVisible(false);
+        buildInfra.setVisible(true);            
     }
     
     private void addBuildButtonListeners() {
@@ -89,6 +86,7 @@ public class InfoBarColonyBuildings extends Table {
     }
 
     private void onBuildInfraClick() {
-        buildings.buildInfrastructure();
+        ConstructBuildingCommand build = new ConstructBuildingCommand(colony);
+        build.infrastructure();
     }
 }
