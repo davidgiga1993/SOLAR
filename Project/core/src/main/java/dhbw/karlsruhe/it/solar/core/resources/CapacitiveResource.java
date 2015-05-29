@@ -65,7 +65,7 @@ public abstract class CapacitiveResource extends BaseResource implements Capacit
     
     @Override
     public void updateCapacity(ResourceDepot productionSite) {
-        value = productionSite.getCurrentLifeSupportCapacity();
+        value = getCurrentCapacity(productionSite);
         if(consumptionOverCapacity()) {
             productionSite.alertCapacityExceeded(this);
             return;
@@ -113,6 +113,7 @@ public abstract class CapacitiveResource extends BaseResource implements Capacit
     }
     
     protected abstract TextureRegion getAlertIcon();
+    protected abstract long getCurrentCapacity(ResourceDepot productionSite);
     
     private String consumptionRatio() {
         return String.format("%.00f", capacityRatio() * 100);

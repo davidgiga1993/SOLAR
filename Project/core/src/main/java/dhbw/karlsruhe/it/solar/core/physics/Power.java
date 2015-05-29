@@ -112,14 +112,19 @@ public class Power {
         switch(unit) {
             case WATT:
                 value += additionalPower.inWatt();
+                return;
             case KILOWATT:
                 value += additionalPower.inKilowatt();
+                return;
             case MEGAWATT:
                 value += additionalPower.inMegawatt();
+                return;
             case GIGAWATT:
                 value += additionalPower.inGigawatt();
+                return;
             case TERAWATT:
                 value += additionalPower.inTerawatt();
+                return;
             default:
                 value = Float.NaN;
         }       

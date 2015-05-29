@@ -31,4 +31,9 @@ public class LifeSupport extends CapacitiveResource {
     protected String noCapacityMessage() {
         return "Life Support off-line!";
     }
+
+    @Override
+    protected long getCurrentCapacity(ResourceDepot productionSite) {
+        return productionSite.getCurrentLifeSupportCapacity();
+    }
 }

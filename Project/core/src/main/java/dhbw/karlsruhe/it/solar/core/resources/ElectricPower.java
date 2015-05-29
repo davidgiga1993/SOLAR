@@ -11,6 +11,10 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  * created 2015-05-29
  */
 public class ElectricPower extends CapacitiveResource {
+    
+    public ElectricPower() {
+        
+    }
 
     @Override
     public void updateConsumption(ResourceDepot consumptionPlace) {
@@ -24,11 +28,16 @@ public class ElectricPower extends CapacitiveResource {
 
     @Override
     protected String noCapacityMessage() {
-        return "Power plants off-line!";
+        return "Power-plants off-line!";
     }
 
     @Override
     protected TextureRegion getAlertIcon() {
         return TextureCacher.GAMEATLAS.findRegion("lack_of_electricity");
+    }
+
+    @Override
+    protected long getCurrentCapacity(ResourceDepot productionSite) {
+        return productionSite.getCurrentPowerCapacity();
     }
 }

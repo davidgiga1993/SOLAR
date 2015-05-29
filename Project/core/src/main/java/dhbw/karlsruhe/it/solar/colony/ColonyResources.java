@@ -5,6 +5,7 @@ import java.util.List;
 
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
+import dhbw.karlsruhe.it.solar.core.resources.ElectricPower;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
@@ -21,6 +22,7 @@ public class ColonyResources {
     public void init(Colony colony, Population colonists) {
         standardResources.add(ResourceDepot.POPULATION_RESOURCE_ID, colonists);
         capacitiveResources.add(ResourceDepot.LIFE_SUPPORT_ID, new LifeSupport());
+        capacitiveResources.add(ResourceDepot.ELECTRIC_POWER_ID, new ElectricPower());
     }
 
     public List<StandardResourceInterface> getResources() {
@@ -48,5 +50,9 @@ public class ColonyResources {
         for(CapacitiveResourceInterface resource : capacitiveResources) {
             resource.updateCapacity(productionSite);
         }
+    }
+
+    public ElectricPower getPower() {
+        return (ElectricPower)capacitiveResources.get(ResourceDepot.ELECTRIC_POWER_ID);
     }
 }

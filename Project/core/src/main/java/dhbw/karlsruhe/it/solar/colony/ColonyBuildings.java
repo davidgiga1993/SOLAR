@@ -86,4 +86,13 @@ public class ColonyBuildings {
         }
         return totalPowerConsumption;
     }
+
+    public long getCurrentPowerCapacity() {
+        for(Building building : buildings) {
+            if(building instanceof PowerPlant) {
+                return building.getNumberOfBuildingsOnline() * building.getCapacityPerBuilding();
+            }
+        }
+        return 0;
+    }
 }

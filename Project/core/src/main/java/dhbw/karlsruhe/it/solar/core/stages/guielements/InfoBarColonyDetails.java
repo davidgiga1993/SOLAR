@@ -19,6 +19,8 @@ public class InfoBarColonyDetails extends Table {
     private final Label populationValueLabel = new Label("", style);
     private final Label lifeSupportLabel = new Label("Life Support: ", style);
     private final Label lifeSupportValueLabel = new Label("", style);
+    private final Label electricPowerLabel = new Label("Electric Power: ", style);
+    private final Label electricPowerValueLabel = new Label("", style);
 
     public InfoBarColonyDetails() {
         generateColonyDetails();
@@ -33,6 +35,9 @@ public class InfoBarColonyDetails extends Table {
         row();
         add(lifeSupportLabel).left();
         add(lifeSupportValueLabel).right(); 
+        row();
+        add(electricPowerLabel).left();
+        add(electricPowerValueLabel).right(); 
     }
 
     public void reload() {
@@ -42,6 +47,8 @@ public class InfoBarColonyDetails extends Table {
         populationValueLabel.setText(colony.getPopulationInformation());
         lifeSupportValueLabel.setText(colony.getLifeSupportInformation());
         lifeSupportValueLabel.setStyle(colony.getLifeSupportDisplayStyle());
+        electricPowerValueLabel.setText(colony.getPowerInformation());
+        electricPowerValueLabel.setStyle(colony.getPowerDisplayStyle());
     }
 
     public InfoBarColonyDetails show(AstronomicalBody selectedBody) {
@@ -58,18 +65,20 @@ public class InfoBarColonyDetails extends Table {
             populationValueLabel.setVisible(false);
             lifeSupportLabel.setVisible(false);
             lifeSupportValueLabel.setVisible(false);
+            electricPowerLabel.setVisible(false);
+            electricPowerValueLabel.setVisible(false);
             return;
         }
         colonyName.setText(colony.getName());
         colonyOwner.setText(colony.getOwner().getName());
         colonyOwner.setStyle(colony.getOwner().getColorStyle());
         colonyOwner.setVisible(true);
+        reload();
         populationLabel.setVisible(true);
-        populationValueLabel.setText(colony.getPopulationInformation());
         populationValueLabel.setVisible(true);
         lifeSupportLabel.setVisible(true);
-        lifeSupportValueLabel.setText(colony.getLifeSupportInformation());
-        lifeSupportValueLabel.setStyle(colony.getLifeSupportDisplayStyle());
         lifeSupportValueLabel.setVisible(true);
+        electricPowerLabel.setVisible(true);
+        electricPowerValueLabel.setVisible(true);
     }
 }

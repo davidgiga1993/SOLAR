@@ -5,6 +5,7 @@ import java.util.List;
 import dhbw.karlsruhe.it.solar.core.physics.Power;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
+import dhbw.karlsruhe.it.solar.core.resources.ElectricPower;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
@@ -18,6 +19,7 @@ public interface ResourceDepot {
     
     public final static int POPULATION_RESOURCE_ID = 0;
     public final static int LIFE_SUPPORT_ID = 0;
+    public final static int ELECTRIC_POWER_ID = 1;
     
     /**
      * Returns the total list of resources stored in this resource depot.
@@ -62,6 +64,12 @@ public interface ResourceDepot {
      * @return
      */
     public LifeSupport getLifeSupport();
+    
+    /**
+     * Returns the electric power capacity which can be produced by this resource depot.
+     * @return
+     */
+    public ElectricPower getPower();
 
     /**
      * Notifies the game that demand at this resource depot exceeds supply for one of the capacitive resources.
@@ -78,4 +86,11 @@ public interface ResourceDepot {
      * @return
      */
     public Power getElectricPowerConsumption();
+
+    /**
+     * Determines the electric power production capacity of the reactors working condition at this depot.
+     * To be in working condition, the units need to be supplied with electricity and their running costs have to covered by the treasury.
+     * @return
+     */
+    public long getCurrentPowerCapacity();
 }

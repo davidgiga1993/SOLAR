@@ -10,6 +10,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Power;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
+import dhbw.karlsruhe.it.solar.core.resources.ElectricPower;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
@@ -83,8 +84,18 @@ public class Colony implements Ownable, ResourceDepot {
     }
 
     @Override
+    public long getCurrentPowerCapacity() {
+        return buildings.getCurrentPowerCapacity();
+    }
+
+    @Override
     public LifeSupport getLifeSupport() {
         return resources.getLifeSupport();
+    }
+    
+    @Override
+    public ElectricPower getPower() {
+        return resources.getPower();
     }
 
     @Override
@@ -138,6 +149,14 @@ public class Colony implements Ownable, ResourceDepot {
 
     public LabelStyle getLifeSupportDisplayStyle() {
         return getLifeSupport().getDisplayStyle();
+    }
+
+    public String getPowerInformation() {
+        return getPower().toString();
+    }
+
+    public LabelStyle getPowerDisplayStyle() {
+        return getPower().getDisplayStyle();
     }
 
     public List<BaseBuilding> getListOfColonyBuildings() {
