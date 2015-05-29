@@ -18,6 +18,10 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 public abstract class CapacitiveResource extends BaseResource implements CapacitiveResourceInterface {
     
     protected long currentConsumption;
+    protected static final float CONSUMPTION_APPROACHES_CAPACITY_RATIO = 0.80f;
+    protected static final float CONSUMPTION_CLOSE_TO_CAPACITY_RATIO = 0.95f;
+    protected static final float NO_IMPACT_THRESHOLD = 1f;
+    protected static final float STRONG_IMPACT_THRESHOLD = 0.5f;
     
     @Override
     public String toString() {
@@ -40,14 +44,29 @@ public abstract class CapacitiveResource extends BaseResource implements Capacit
     }
     
     @Override
-    public boolean demandExceedsSupply() {
-        return currentConsumption >= value;
+    public boolean consumptionOverCapacity() {
+        return currentConsumption > value;
+    }
+    
+    @Override
+    public boolean consumptionCloseToCapacity() {
+        return currentConsumption > CONSUMPTION_CLOSE_TO_CAPACITY_RATIO * value;
+    }
+    
+    @Override
+    public boolean consumptionApproachesCapacity() {
+        return currentConsumption > CONSUMPTION_APPROACHES_CAPACITY_RATIO * value;       
+    }
+  
+    @Override
+    public float capacityRatio() {
+        return ((float)currentConsumption)/((float)value);
     }
     
     @Override
     public void updateCapacity(ResourceDepot productionSite) {
         value = capacityPerUnit() * numberOfUnits(productionSite);
-        if(demandExceedsSupply()) {
+        if(consumptionOverCapacity()) {
             productionSite.alertCapacityExceeded(this);
             return;
         }
@@ -56,16 +75,16 @@ public abstract class CapacitiveResource extends BaseResource implements Capacit
     
     @Override
     public LabelStyle getDisplayStyle() {
-        if(currentConsumption < 0.80 * value) {
-            return Styles.MENUELABEL_GREEN;
+        if(consumptionOverCapacity()) {
+            return Styles.MENUELABEL_RED;
         }
-        if(currentConsumption < 0.95 * value) {
-            return Styles.MENUELABEL_YELLOW;
-        }
-        if(currentConsumption <= value) {
+        if(consumptionCloseToCapacity()) {
             return Styles.MENUELABEL_ORANGE;
         }
-        return Styles.MENUELABEL_RED;
+        if(consumptionApproachesCapacity()) {
+            return Styles.MENUELABEL_YELLOW;
+        }
+        return Styles.MENUELABEL_GREEN;
     }
     
     @Override
@@ -77,12 +96,28 @@ public abstract class CapacitiveResource extends BaseResource implements Capacit
         return imageTable;  
     }
     
+    @Override    
+    public float populationGrowthImpactOfResource() {       
+            if(consumptionCloseToCapacity()) {
+                return STRONG_IMPACT_THRESHOLD * ( 1 - capacityRatio()) / ( 1 - CONSUMPTION_CLOSE_TO_CAPACITY_RATIO);            
+            }
+            if(consumptionApproachesCapacity()) {
+                return 1 + gradientFormula() * (CONSUMPTION_APPROACHES_CAPACITY_RATIO - capacityRatio());
+                        
+            }
+            return 1;
+    }
+
+    private float gradientFormula() {
+        return (STRONG_IMPACT_THRESHOLD - NO_IMPACT_THRESHOLD) / (CONSUMPTION_APPROACHES_CAPACITY_RATIO - CONSUMPTION_CLOSE_TO_CAPACITY_RATIO );
+    }
+    
     protected abstract TextureRegion getAlertIcon();
     
     protected abstract long capacityPerUnit();
     protected abstract long numberOfUnits(ResourceDepot productionSite);
     
     private String consumptionRatio() {
-        return String.format("%.00f", (float)currentConsumption / (float)value * 100);
+        return String.format("%.00f", capacityRatio() * 100);
     }  
 }

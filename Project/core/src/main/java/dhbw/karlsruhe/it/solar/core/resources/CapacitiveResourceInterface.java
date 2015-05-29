@@ -28,11 +28,37 @@ public interface CapacitiveResourceInterface {
     public long getCurrentConsumption(ResourceDepot consumptionSite);
     
     /**
-     * Determines whether the resource consumption at the resource depot has reached capacity (maximum production).
-     * @param depot
+     * Determines whether the resource consumption at the resource depot has reached or overtaken capacity (maximum production).
      * @return
      */
-    public boolean demandExceedsSupply();
+    public boolean consumptionOverCapacity();
+    
+    /**
+     * Determines whether the resource consumption at the resource depot is close to its capacity (maximum production),
+     * with little or no free capacity remaining for further growth in consumption of this resource.
+     * @return
+     */
+    public boolean consumptionCloseToCapacity();
+    
+    /**
+     * Determines whether the resource consumption at the resource depot is approaching its capacity (maximum production),
+     * with limited free capacity remaining for further growth in consumption of this resource.
+     * @return
+     */
+    public boolean consumptionApproachesCapacity();
+    
+    /**
+     * Calculates which impact on population growth, if any, is caused by this resource.
+     * Returns a factor which will be multiplied with the base population growth rate to arrive at the expected yearly population growth.
+     * @return
+     */
+    public float populationGrowthImpactOfResource();
+    
+    /**
+     * Gives the ratio to which the maximum possible production for this resource is consumed by the resource depot.
+     * @return
+     */
+    public float capacityRatio();
     
     /**
      * Recalculates the maximim production capacity for this resource at the resource depot.
