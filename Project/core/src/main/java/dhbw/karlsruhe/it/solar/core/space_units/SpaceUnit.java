@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.space_units;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
@@ -176,46 +175,31 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         this.destination = (Orbiter) destination;
     }
     
-    public void setDestination(AstronomicalBody destination) {
-          if( isAlreadyInOrbitOfBodyOtherThan(destination) )          {
-               leaveOrbit();
-          }
-          if( isAbleToEnterOrbitAround(destination) )          {
-               //TODO: Very rough implementation. More elegant solution: Approach AI?
-              OrbitalInsertionCommand orbitalInsertion = new OrbitalInsertionCommand(this);
-              orbitalInsertion.execute();
-             return;
-          }
-        this.aiModule.setTarget(destination);
-        this.destinationVector = destination.getKinematic().getPosition();
-        this.destination = destination;
-     }
-
      public void establishColony(AstronomicalBody destination, Population colonists) {
           destination.establishColony("Testkolonie", owner, colonists);
      }
-     
+
      public void establishColony() {
           orbitalProperties.getPrimary().establishColony("Testkolonie", owner, new Population(10 * BaseResource.THOUSAND));
      }
-    
-     /**
-     * Actor stops other movement actions and, starting from its current position, assumes a circular orbit around the parameter AstronomicalBody. 
+
+    /**
+     * Actor stops other movement actions and, starting from its current position, assumes a circular orbit around the parameter AstronomicalBody.
      * @param orbitPrimary Object around which the actor will enter orbit.
      */
-     public void enterOrbit(AstronomicalBody orbitPrimary)    {       
+    public void enterOrbit(AstronomicalBody orbitPrimary) {
          stopMovement();
          setNewOrbitalProperties(orbitPrimary);
          setKinematicValues();
-         changeOrbitScaleSpaceUnit();        
+        changeOrbitScaleSpaceUnit();
     }
     
     public void enterOrbit() {
-         AstronomicalBody orbitPrimary = calculateDominantGravitationSource();         
+        AstronomicalBody orbitPrimary = calculateDominantGravitationSource();
          stopMovement();
          setNewOrbitalProperties(orbitPrimary);
          setKinematicValues();
-         changeOrbitScaleSpaceUnit();             
+        changeOrbitScaleSpaceUnit();
     }
     
     /**
@@ -227,13 +211,14 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
          destination = null;
          this.aiModule.setTarget(this);
      }
-     
-        /**
+
+    /**
      * Sets the Orbital Properties of an orbit circling around the parameter AstronomicalBody, starting from the current position of the actor.
+     *
      * @param orbitPrimary Object around which the actor will enter orbit.
      */
-     private void setNewOrbitalProperties(AstronomicalBody orbitPrimary)     {
-          Vector2 distance = getDistanceVector(orbitPrimary);         
+     private void setNewOrbitalProperties(AstronomicalBody orbitPrimary) {
+         Vector2 distance = getDistanceVector(orbitPrimary);
          orbitalProperties = new OrbitalProperties(orbitPrimary, getPhysicalLength(orbitPrimary, distance), getAngleToXAxis(distance));
      }
      
@@ -258,10 +243,10 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
       * @return Physical length of the distance.
       */
      private Length getPhysicalLength(Orbiter orbitPrimary, Vector2 distance) {
-          return new Length (inverseStagescaling(distance.len()) / OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitPrimary).getOrbitScale(), DistanceUnit.KILOMETERS);
+         return new Length(scaleDistanceToPhysical(distance.len()) / OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitPrimary).getOrbitScale(), DistanceUnit.KILOMETERS);
      }
 
-     /**
+    /**
       * Determines the angle between two positions relative to the x-axis. Used for the orbitalAngle between Astronomical Bodies.
       * @param distance Vector containing the position
       * @return Angle which has been calculated.
@@ -273,15 +258,15 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      public Length physicalDistanceTo(Orbiter destination) {
           return getPhysicalLength(destination, getDistanceVector(destination));
      }
-     
+
      public Length physicalDistanceTo(Vector2 destination) {
          return getPhysicalLength(((GameStartStage)getStage()).getSolarSystem(), getDistanceVector(destination));
-    }
+     }
 
-     private Length maxOrbitalRadiusFor(AstronomicalBody destination) {
+    private Length maxOrbitalRadiusFor(AstronomicalBody destination) {
           return destination.calculateMaxOrbitalRadius();
      }
-     
+
     /**
      * Resizes the Space Unit
      * @param width
@@ -292,11 +277,11 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         float pWidth = scaleDistanceToStage(width.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
         float pHeight = scaleDistanceToStage(height.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
         // call super
-        super.setSize(pWidth , pHeight);
+        super.setSize(pWidth, pHeight);
     }
 
-     /**
-     * Methods regulates how the course of the unit is displayed 
+    /**
+     * Methods regulates how the course of the unit is displayed
      * and also how the destination of the movement order is to be marked.
      * @param shapeRenderer
      */
@@ -327,12 +312,27 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     public Vector2 getDestinationVector()    {
         return destinationVector;
     }
-    
+
     /**
      * @return Destination object the spaceship object is heading to
      */
     public Orbiter getDestination()    {
         return destination;
+    }
+
+    public void setDestination(AstronomicalBody destination) {
+        if (isAlreadyInOrbitOfBodyOtherThan(destination)) {
+            leaveOrbit();
+        }
+        if (isAbleToEnterOrbitAround(destination)) {
+            //TODO: Very rough implementation. More elegant solution: Approach AI?
+            OrbitalInsertionCommand orbitalInsertion = new OrbitalInsertionCommand(this);
+            orbitalInsertion.execute();
+            return;
+        }
+        this.aiModule.setTarget(destination);
+        this.destinationVector = destination.getKinematic().getPosition();
+        this.destination = destination;
     }
     
     public void leaveOrbit() {

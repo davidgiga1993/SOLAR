@@ -9,9 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-
+import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.utils.LengthConverter;
 
 public class SelectionRectangle extends Actor implements ShapeRenderable  {
 
@@ -78,20 +80,20 @@ public class SelectionRectangle extends Actor implements ShapeRenderable  {
           visible = true;
           setWidth(0);
           setHeight(0);
-          System.out.println(x +"\t|\t"+ y);
+         System.out.println(x + "\t|\t" + y);
      }
 
      public void hide()     {
           visible = false;
           hideLabels();
      }
+
+    public Vector2 getStartPosition() {
+        return startPosition;
+    }
      
      public void setStartPosition(Vector2 position)     {
           startPosition = position;
-     }
-     
-     public Vector2 getStartPosition()     {
-          return startPosition;
      }
      
      public Vector2 getEndPosition()     {
@@ -113,13 +115,18 @@ public class SelectionRectangle extends Actor implements ShapeRenderable  {
      }
      
      private void updateLabels() {
-          widthLabel.setText(Integer.toString((int) getWidth()));
-          heightLabel.setText(Integer.toString((int) getHeight()));
+         widthLabel.setText(calculateDistance(getWidth()));
+         heightLabel.setText(calculateDistance(getHeight()));
           
           updateLabelPosition(getX(), getY()); 
           
           showLabels();
      }
+
+    private String calculateDistance(float length) {
+        Length physicalLength = LengthConverter.toPhysical(length, ConfigurationConstants.SCALE_FACTOR_PLANET);
+        return physicalLength.toString();
+    }
      
      private void updateLabelPosition(float x, float y) {
           Vector3 newPosition = new Vector3(x, y, 0);

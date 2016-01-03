@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
@@ -18,23 +17,36 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
  */
 public abstract class SolarActor extends Actor implements Telegraph {
 
+    public static final double STAGESCALINGFACTOR = 2 * Math.pow(10, 4);
     protected boolean selected;
     protected TextureRegion solarActorTexture;
     protected Sprite solarActorSprite;
     protected Color selectionColor;
-
     protected SolarActorScale actorScale;
     protected float currentShapeScale;
     protected float currentOrbitScale;
-    
-    public static final double STAGESCALINGFACTOR = 2 * Math.pow(10, 4);
 
     public SolarActor(String name) {
         this.setName(name);
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.GAME_SCALE_CHANGED);
         selectionColor = Color.GREEN;
     }
-    
+
+    /**
+     * Calculates distances with a scaling factor intended to govern the distances in the solar system. Only a placeholder method right now.
+     *
+     * @param distance original distance
+     * @return scaled down distance
+     */
+    public static float scaleDistanceToStage(double distance) {
+        //TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
+        return (float) (distance / STAGESCALINGFACTOR);
+    }
+
+    public static float scaleDistanceToPhysical(float stageDistance) {
+        return stageDistance * (float) STAGESCALINGFACTOR;
+    }
+
     public abstract String getTypeName();
 
     @Override
@@ -52,21 +64,6 @@ public abstract class SolarActor extends Actor implements Telegraph {
 
     public boolean isSelected() {
         return selected;
-    }
-
-    /**
-     * Calculates distances with a scaling factor intended to govern the distances in the solar system. Only a placeholder method right now.
-     *
-     * @param distance original distance
-     * @return scaled down distance
-     */
-    public static float scaleDistanceToStage(double distance) {
-        //TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
-        return (float) (distance / STAGESCALINGFACTOR);
-    }
-    
-    protected static float inverseStagescaling(float stageDistance) {
-    return stageDistance * (float)STAGESCALINGFACTOR;
     }
 
     public boolean insideRectangle(Rectangle rect) {
