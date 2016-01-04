@@ -1,13 +1,14 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import java.io.File;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import java.io.File;
 
 /**
  * Handles the saving and loading process of the game which creates XML save files out of the game state and back.
@@ -15,9 +16,9 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
  * created 2015-04-06
  */
 public class SaveGameManager {
-    
-    private static final String NEWGAME = "SaveGames\\SolarSystem.xml";
-    private static final String PATH = "SaveGames\\CurrentGame.xml";
+
+    private static final String NEWGAME = "SaveGames/SolarSystem.xml";
+    private static final String PATH = "SaveGames/CurrentGame.xml";
     private GameStartStage stage;
     
     public SaveGameManager(GameStartStage stage) {
@@ -25,11 +26,26 @@ public class SaveGameManager {
     }
     
     public void loadCurrentGame() {
-        loadGameFromXML(new File(PATH));
+        loadFile(PATH);
     }
     
     public void loadNewGame() {
-        loadGameFromXML(new File(NEWGAME));
+        loadFile(NEWGAME);
+    }
+
+    private void loadFile(String saveGame) {
+        File file = openFile(saveGame);
+        loadGameFromXML(file);
+    }
+
+    private void saveFile(String saveGame) {
+        File file = openFile(saveGame);
+        saveToXML(file);
+    }
+
+    private File openFile(String saveGame) {
+        FileHandle classpath = Gdx.files.local(saveGame);
+        return classpath.file();
     }
 
     private void loadGameFromXML(File file) {
@@ -44,7 +60,7 @@ public class SaveGameManager {
     }
     
     public void saveCurrentGame() {
-        saveToXML(new File(PATH));
+        saveFile(PATH);
     }
 
     private void saveToXML(File file) {
@@ -71,7 +87,7 @@ public class SaveGameManager {
     }
 
     public boolean isThereACurrentSaveGame() {
-        File path = new File(PATH);
+        File path = openFile(PATH);
         return (path.exists() && !path.isDirectory());
     }
 }
