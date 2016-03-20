@@ -1,17 +1,13 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Asteroid;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.*;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
-import dhbw.karlsruhe.it.solar.core.usercontrols.*;
+import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
 
 public class OrbitalProperties {   
     private AstronomicalBody orbitPrimary;
@@ -49,6 +45,22 @@ public class OrbitalProperties {
         this.periodicConstant = new Angle();
     }
 
+    public static SolarActorScale getOrbitalSpaceUnitScaleFactor(Orbiter orbitPrimary) {
+        if (orbitPrimary instanceof Star) {
+            return ConfigurationConstants.SCALE_FACTOR_PLANET;
+        }
+        if (orbitPrimary instanceof Planet) {
+            return ConfigurationConstants.SCALE_FACTOR_MOON;
+        }
+        if (orbitPrimary instanceof Moon) {
+            return ConfigurationConstants.SCALE_FACTOR_MOON;
+        }
+        if (orbitPrimary instanceof Asteroid) {
+            return ConfigurationConstants.SCALE_FACTOR_ASTEROID;
+        }
+        return ConfigurationConstants.SCALE_FACTOR_PLANET;
+    }
+    
     /**
      * Variant for small bodies with insignificant mass - used as approximation for all units.
      * Calculates and sets the orbital period based on Kepler's Third Law of Planetary Motion.
@@ -85,9 +97,8 @@ public class OrbitalProperties {
     /**
      * Increases the angleInDegree value of the Orbital Properties by the amount given in the parameter.
      * Checks for the overflow condition (resets at 360 degrees).
-     * @param degreeOfAngleIncrease Degrees to be added to the orbital angle of the object.
      */
-    public void updateOrbitalAngle(Angle change)    {
+    private void updateOrbitalAngle(Angle change) {
         orbitalAngle.changeBy(change);
     }
     
@@ -98,17 +109,17 @@ public class OrbitalProperties {
         }
         updateOrbitalAngle( new Angle( periodicConstant.inDegrees()*change, AngularUnit.DEGREE));
     }
-    
-    public float getPrimaryX()    {
+
+    private float getPrimaryX() {
         return orbitPrimary.getX()  + orbitPrimary.getWidth() / 2;
-    }  
-    
-    public float getPrimaryY()    {
-        return orbitPrimary.getY()  + orbitPrimary.getHeight() / 2;
     }
 
+    private float getPrimaryY() {
+        return orbitPrimary.getY() + orbitPrimary.getHeight() / 2;
+    }
+    
     public void setNewOrbitPrimary(AstronomicalBody body) {
-        orbitPrimary = body;        
+        orbitPrimary = body;
     }
     
     /**
@@ -128,23 +139,22 @@ public class OrbitalProperties {
     public Angle getPeriodicConstant() {
         return periodicConstant;
     }
-    
+
     /**
      * Part of the calculateOrbitalPositionTotal method, calculates the X-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
      * @param orbitalRadiusInPixels In-Game radius of the body caused by scaling.
      * @param deltaAlpha Additional change in orbital angle which will be taken into account during the calculation.
      * @return X-axis position of the body.
      */
-    public float calculateOrbitalPositionX(float orbitalRadiusInPixels, Angle deltaAlpha) {
+    private float calculateOrbitalPositionX(float orbitalRadiusInPixels, Angle deltaAlpha) {
         return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels);
     }
 
     /**
      * Part of the calculateOrbitalPositionTotal method, calculates the Y-axis position of the astronomical body on the system map based on its Orbital Radius and Angle attributes.
-     * @param orbitalAngle current angle
      * @return current Y-axis position of the body
      */
-    public float calculateOrbitalPositionY(float orbitalRadiusInPixels, Angle deltaAlpha) {
+    private float calculateOrbitalPositionY(float orbitalRadiusInPixels, Angle deltaAlpha) {
         return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees()))  * orbitalRadiusInPixels);
     }
     
@@ -156,7 +166,7 @@ public class OrbitalProperties {
     private Angle predictedChangeInOrbitalAngle(float delta) {
         return new Angle( periodicConstant.inDegrees() * delta, AngularUnit.DEGREE );
     }
-    
+
     /**
      * Returns a Vector2 containing the position of this objects center of orbit.
      * @return Vector2
@@ -164,14 +174,14 @@ public class OrbitalProperties {
     public Vector2 getCenterOfOrbit() {
         return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
     }
-        
+
     public AstronomicalBody getPrimary() {
         return orbitPrimary;
     }
     
     /**
      * Calculates the maximum possible orbital radius for a valid orbit around the target astronomical body.
-     * This max radius is derived from the Hill sphere formula. An astronomical body's Hill sphere is the region in which it dominates the attraction of satellites. 
+     * This max radius is derived from the Hill sphere formula. An astronomical body's Hill sphere is the region in which it dominates the attraction of satellites.
      * This Hill sphere radius is approximately: r = R * CubicRoot( m / 3M ) with R-distance between two objects, m - smaller Mass, M - heavier Mass
      * @param massOfSatellite Mass of the body for which the hill radius is supposed to be calculated.
      * @return Distance value of the maximum orbital radius in physical units.
@@ -189,8 +199,7 @@ public class OrbitalProperties {
         }
         return new Length(orbitalRadius.asKilometers() * (float)(Math.cbrt( massOfSatellite.asEarthMass() / ( 3 * orbitPrimary.getMass().asEarthMass()))), Length.DistanceUnit.KILOMETERS);
     }
-    
-    
+
     /**
      * Calculates the gravitational potential of the parameter astronomical body at the location of the space unit.
      * Gravitational Potential in the circular gravitational field of a point mass is: g(r) = - G * M / r² with G - Gravitational Constant, M - Mass of the point mass, r - radius to point mass
@@ -199,12 +208,12 @@ public class OrbitalProperties {
      * @return Value of the gravitational potential.
      */
     public float gravitationalPotential(Mass mass, Length radius) {
-        return (float) (mass.asKilogram() / Math.pow(radius.asKilometers(), 2)); 
+        return (float) (mass.asKilogram() / Math.pow(radius.asKilometers(), 2));
     }
 
     public void addAsSatellite(AstronomicalBody newSatellite) {
         orbitPrimary.addSatellite(newSatellite);
-        
+
     }
     
     public boolean isRetrograde() {
@@ -216,17 +225,14 @@ public class OrbitalProperties {
     }
     
     public boolean isCoorbital() {
-        if(null != coorbital) {
-            return true;
-        }
-        return false;
+        return null != coorbital;
     }
     
     public void setCoorbital(Orbiter dominantBody, Angle angularDeviation) {
-        coorbital = new Coorbital(dominantBody, angularDeviation);    
+        coorbital = new Coorbital(dominantBody, angularDeviation);
         orbitalAngle.changeBy(angularDeviation);
     }
-    
+
     public Vector2 getOrbitalPositionTotal(float orbitalRadiusInPixels, Angle deltaAlpha) {
         return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
@@ -249,21 +255,5 @@ public class OrbitalProperties {
 
     public boolean primaryIsClaimable() {
         return orbitPrimary.isClaimable();
-    }
-
-    public static SolarActorScale getOrbitalSpaceUnitScaleFactor(Orbiter orbitPrimary) {
-        if (orbitPrimary instanceof Star) {
-            return ConfigurationConstants.SCALE_FACTOR_PLANET;            
-        }
-        if (orbitPrimary instanceof Planet) {
-            return ConfigurationConstants.SCALE_FACTOR_MOON;            
-        }
-        if (orbitPrimary instanceof Moon) {
-            return ConfigurationConstants.SCALE_FACTOR_MOON;            
-        }
-        if (orbitPrimary instanceof Asteroid) {
-            return ConfigurationConstants.SCALE_FACTOR_ASTEROID;            
-        }
-        return ConfigurationConstants.SCALE_FACTOR_PLANET;
     }
 }

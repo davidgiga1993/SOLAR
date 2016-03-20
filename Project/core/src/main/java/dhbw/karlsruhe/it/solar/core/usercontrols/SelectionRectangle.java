@@ -91,8 +91,8 @@ public class SelectionRectangle extends Actor implements ShapeRenderable  {
     public Vector2 getStartPosition() {
         return startPosition;
     }
-     
-     public void setStartPosition(Vector2 position)     {
+
+    private void setStartPosition(Vector2 position) {
           startPosition = position;
      }
      

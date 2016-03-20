@@ -55,8 +55,8 @@ public class SaveGameManager {
             SaveGame save = (SaveGame) jaxbUnmarshaller.unmarshal(file);
             handOverToGameStartStage(save);
         } catch (JAXBException e) {
-            System.out.println(e);
-        }       
+            Gdx.app.error("Loading", "Loading game from XML failed", e);
+        }
     }
     
     public void saveCurrentGame() {
@@ -73,7 +73,7 @@ public class SaveGameManager {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal( save, file );
         } catch (JAXBException e) {
-            System.out.println(e);
+            Gdx.app.error("Saving", "Saving game to XML failed", e);
         }
     }
     

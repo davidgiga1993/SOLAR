@@ -14,17 +14,17 @@ import java.util.List;
  */
 public class AISpaceshipModule implements AIModule {
 
-    final Kinematic kinematic;
-    AIOutput output;
-    SteeringProvider currentSteeringProvider;
+    private final Kinematic kinematic;
+    private AIOutput output;
+    private SteeringProvider currentSteeringProvider;
 
-    SteeringProvider pursueSteeringProvider;
-    SteeringProvider arriveSteeringProvider;
-    OrbitalArriveSteeringProvider orbitalArriveSteeringProvider;
+    private SteeringProvider pursueSteeringProvider;
+    private SteeringProvider arriveSteeringProvider;
+    private OrbitalArriveSteeringProvider orbitalArriveSteeringProvider;
 
-    List<TargetReachedListener> targetReachedListeners = new ArrayList<TargetReachedListener>();
+    private List<TargetReachedListener> targetReachedListeners = new ArrayList<>();
 
-    boolean targetReached = true;
+    private boolean targetReached = true;
 
     public AISpaceshipModule(KinematicObject object) {
         kinematic = object.getKinematic();
@@ -77,7 +77,7 @@ public class AISpaceshipModule implements AIModule {
         targetReached = false;
     }
 
-    protected void setTarget(Kinematic target, SteeringProvider provider) {
+    private void setTarget(Kinematic target, SteeringProvider provider) {
         currentSteeringProvider = provider;
         provider.setTarget(target);
         targetReached = false;

@@ -63,17 +63,11 @@ public class FuzzyAtmosphere extends FuzzyValue {
         if( null == gas.getDangerousThreshold()) {
             return true;
         }
-        if(gas.partialPressure(atmosphere.getPressure()).asBar() < gas.getDangerousThreshold().asBar()) {
-            return true;
-        }
-        return false;
+        return gas.partialPressure(atmosphere.getPressure()).asBar() < gas.getDangerousThreshold().asBar();
     }
     
     private boolean belowLethalThresholdOf(AtmosphericGas gas) {
-        if(gas.partialPressure(atmosphere.getPressure()).asBar() < gas.getLethalThreshold().asBar()) {
-            return true;
-        }
-        return false;
+        return gas.partialPressure(atmosphere.getPressure()).asBar() < gas.getLethalThreshold().asBar();
     }
 
     private String getLethalGas() {

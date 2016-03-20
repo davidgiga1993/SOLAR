@@ -1,9 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.TotalPopulation;
@@ -11,16 +10,16 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 import dhbw.karlsruhe.it.solar.player.Player;
 
-public class ResourceBarPlayerInfo extends Table {
-    
+class ResourceBarPlayerInfo extends Table {
+
+    private final Table treasuryAlertIcons = new Table();
+    private final Table populationAlertIcons = new Table();
     private LabelStyle style = Styles.MENUELABEL_STYLE;
-    private GameStartStage stage;
-    private Player playerOnThisPlatform;
     private final Label playerNameLabel = new Label("", style);
     private final Label treasuryValueLabel = new Label("", style);
-    private final Table treasuryAlertIcons = new Table();
     private final Label populationValueLabel = new Label("", style);
-    private final Table populationAlertIcons = new Table();
+    private GameStartStage stage;
+    private Player playerOnThisPlatform;
     
     public ResourceBarPlayerInfo(GameStartStage stage) {
         this.stage = stage;

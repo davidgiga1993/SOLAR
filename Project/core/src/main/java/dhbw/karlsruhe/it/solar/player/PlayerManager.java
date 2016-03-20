@@ -1,11 +1,10 @@
 package dhbw.karlsruhe.it.solar.player;
 
+import com.badlogic.gdx.graphics.Color;
+import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.badlogic.gdx.graphics.Color;
-
-import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
 
 /**
  * Created by Arga on 29.11.2014.
@@ -13,11 +12,11 @@ import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
 public class PlayerManager {
     // making this static will ensure the id's are unique.
     private static int count = 0;
-    protected List<Player> playersInGame;
+    private List<Player> playersInGame;
     private Player playerOnThisPlatform;
 
     public PlayerManager() {
-        playersInGame = new ArrayList<Player>();
+        playersInGame = new ArrayList<>();
     }
 
     public Player createPlayer(String name, Color color) {

@@ -54,8 +54,8 @@ public class SurfaceGravity {
             return Float.NaN;
         }
     }
-    
-    public float inMS2() {
+
+    private float inMS2() {
         switch(unit) {
         case G:
             return value * PhysicalConstants.EARTH_SURFACE_GRAVITY.value;

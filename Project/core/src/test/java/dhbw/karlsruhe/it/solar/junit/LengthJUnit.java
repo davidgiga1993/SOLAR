@@ -10,11 +10,11 @@ import static org.junit.Assert.assertEquals;
 
 public class LengthJUnit {
 
-    Length km = new Length(1, Length.DistanceUnit.KILOMETERS);
-    Length ld = new Length(1, Length.DistanceUnit.LUNAR_DISTANCE);
-    Length au = new Length(1, Length.DistanceUnit.ASTRONOMICAL_UNITS);
-    Length ly = new Length(1, Length.DistanceUnit.LIGHTYEAR);
-    Length pc = new Length(1, Length.DistanceUnit.PARSEC);
+    private Length km = new Length(1, Length.DistanceUnit.KILOMETERS);
+    private Length ld = new Length(1, Length.DistanceUnit.LUNAR_DISTANCE);
+    private Length au = new Length(1, Length.DistanceUnit.ASTRONOMICAL_UNITS);
+    private Length ly = new Length(1, Length.DistanceUnit.LIGHTYEAR);
+    private Length pc = new Length(1, Length.DistanceUnit.PARSEC);
 
     @Before
     public void setUp() {

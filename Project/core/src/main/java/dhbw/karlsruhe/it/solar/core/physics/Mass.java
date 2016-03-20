@@ -7,17 +7,17 @@ import javax.xml.bind.annotation.XmlElement;
  */
 public class Mass {
 
-    public static final float LUNAR_MASS_IN_KILOGRAM = 7.3477f * (float)Math.pow(10,22);
-    public static final float SOLAR_MASS_IN_KILOGRAM = 1.98855e30f;
-    public static final float EARTH_MASS_IN_KILOGRAM = 5.97219e24f;
-    public static final float SOLAR_MASS_IN_EARTH_MASS = 333000;
-    public static final float QUADRILLION = (float)Math.pow(10,15);
-    public static final float QUINTILLION = (float)Math.pow(10,18);
+    private static final float LUNAR_MASS_IN_KILOGRAM = 7.3477f * (float) Math.pow(10, 22);
+    private static final float SOLAR_MASS_IN_KILOGRAM = 1.98855e30f;
+    private static final float EARTH_MASS_IN_KILOGRAM = 5.97219e24f;
+    private static final float SOLAR_MASS_IN_EARTH_MASS = 333000;
+    private static final float QUADRILLION = (float) Math.pow(10, 15);
+    private static final float QUINTILLION = (float) Math.pow(10, 18);
     
     @XmlElement(name = "Mass_Value")
-    protected float value;
+    private float value;
     @XmlElement(name = "Mass_Unit")
-    protected MassUnit unit;
+    private MassUnit unit;
     
     public Mass() {
         
@@ -27,7 +27,7 @@ public class Mass {
        setValue(value, unit);
     }
 
-    public void setValue(float value, MassUnit unit) {
+    private void setValue(float value, MassUnit unit) {
         if(0<=value) {
             this.value = value;
             this.unit = unit;
@@ -58,8 +58,8 @@ public class Mass {
                 return Float.NaN;
         }
     }
-    
-    public float asLunarMass() {
+
+    private float asLunarMass() {
         switch(unit) {
             case SOLAR_MASS:
                 return value * SOLAR_MASS_IN_KILOGRAM / LUNAR_MASS_IN_KILOGRAM;
@@ -104,14 +104,6 @@ public class Mass {
         }
     }
 
-    public enum MassUnit {
-        KILOGRAM,
-        SOLAR_MASS,
-        EARTH_MASS,
-        LUNAR_MASS
-    }
-
-
     public void addMass(Mass massToBeAddedToTheBody) {
         switch(unit) {
             case KILOGRAM:
@@ -129,9 +121,9 @@ public class Mass {
             default:
                 value = Float.NaN;
                 break;
-        }        
+        }
     }
-    
+
     @Override
     public String toString() {
         if(this.asSolarMass() > 0.01) {
@@ -163,5 +155,12 @@ public class Mass {
     
     private String formatValue(float value) {
         return String.format("%.02f", value);
+    }
+
+    public enum MassUnit {
+        KILOGRAM,
+        SOLAR_MASS,
+        EARTH_MASS,
+        LUNAR_MASS
     }
 }

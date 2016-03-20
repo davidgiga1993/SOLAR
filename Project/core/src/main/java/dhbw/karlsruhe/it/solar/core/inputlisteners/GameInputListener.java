@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
@@ -23,9 +22,9 @@ import dhbw.karlsruhe.it.solar.player.Ownable;
 
 public class GameInputListener extends InputListener {
 
-    public static final int CAMERA_TRANSLATION_FACTOR = 5 * 60; // 60fps
-    protected GameStartStage stage;
-    protected SolarEngine se = SolarEngine.get();
+    private static final int CAMERA_TRANSLATION_FACTOR = 5 * 60; // 60fps
+    private GameStartStage stage;
+    private SolarEngine se = SolarEngine.get();
     
     public GameInputListener(GameStartStage gameStage) {
         stage = gameStage;
@@ -55,14 +54,11 @@ public class GameInputListener extends InputListener {
     public boolean keyUp(InputEvent event, int keycode) {
         // TODO Auto-generated method stub
         if (keycode == Keys.ESCAPE) {
-            Gdx.app.postRunnable(new Runnable() {
-                @Override
-                public void run() {
-                    GameStartStage.stopTime();
-                    SaveGameManager save = new SaveGameManager(stage);
-                    save.saveCurrentGame();
-                    GameStartStage.endGame();
-                }
+            Gdx.app.postRunnable(() -> {
+                GameStartStage.stopTime();
+                SaveGameManager save = new SaveGameManager(stage);
+                save.saveCurrentGame();
+                GameStartStage.endGame();
             });
             return true;
         }
@@ -187,32 +183,27 @@ public class GameInputListener extends InputListener {
         //Actor will only be added to selection if owned by the player
         if (sa instanceof Ownable && ((Ownable) sa).isOwnedBy(stage.getPlayerOnThisPlatform())) {
             // proceed according to state
-            switch(state) {
-                case ADD:
-                    stage.addToSelectedActors(sa);
-                    break;
-                case REMOVE:
-                    stage.removeFromSelectedActors(sa);
-                    break;
-                default:
-                    break;
-            }
+            updateSelection(state, sa);
         }
     }
 
     private void updateSelectionReactangleForColonies(SelectionState state, SolarActor sa) {
         if (sa instanceof AstronomicalBody && ((AstronomicalBody)sa).isColonized() && ((AstronomicalBody)sa).isColonyOwnedBy(stage.getPlayerOnThisPlatform())) {
             // proceed according to state
-            switch(state) {
-                case ADD:
-                    stage.addToSelectedActors(sa);
-                    break;
-                case REMOVE:
-                    stage.removeFromSelectedActors(sa);
-                    break;        
-                default:
-                    break;
+            updateSelection(state, sa);
         }
+    }
+
+    private void updateSelection(SelectionState state, SolarActor sa) {
+        switch (state) {
+            case ADD:
+                stage.addToSelectedActors(sa);
+                break;
+            case REMOVE:
+                stage.removeFromSelectedActors(sa);
+                break;
+            default:
+                break;
         }
     }
 
@@ -299,13 +290,13 @@ public class GameInputListener extends InputListener {
         se.setZoomSolarCameraTo(se.getSolarCameraZoom() * cameraModifier);
     }
 
+    public void moveCamera(SolarActor target) {
+        moveCamera(target, 0, 0, true);
+    }
+
     private enum SelectionState {
         ADD,
         REMOVE
-    }
-
-    public void moveCamera(SolarActor target) {
-        moveCamera(target, 0, 0, true);
     }
 
 }

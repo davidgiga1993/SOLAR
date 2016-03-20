@@ -1,24 +1,18 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
+import dhbw.karlsruhe.it.solar.core.physics.*;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
-import dhbw.karlsruhe.it.solar.core.physics.Albedo;
-import dhbw.karlsruhe.it.solar.core.physics.Atmosphere;
-import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
-import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.Time;
-
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, Albedo.class, Hydrosphere.class, Biosphere.class, Time.class})
-public class BodyPropertyInfo {
+class BodyPropertyInfo {
     
     @XmlElement(name = "Type")
     private BodyType type;

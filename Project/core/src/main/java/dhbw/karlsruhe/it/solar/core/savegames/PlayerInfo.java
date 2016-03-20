@@ -44,7 +44,7 @@ public class PlayerInfo {
     }
 
     public List<GlobalResourceInterface> getResources() {
-        List<GlobalResourceInterface> newList = new ArrayList<GlobalResourceInterface>();
+        List<GlobalResourceInterface> newList = new ArrayList<>();
         for(GlobalResource resource : resources) {
             newList.add(resource);
         }

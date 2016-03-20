@@ -21,18 +21,11 @@ public class OverlayJUnit
 	 */
     
     @Test
-    public void testCreateOverlay()
-    {
-    	final TestResult result = new TestResult();
-    	TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runCreateOverlay();
-			}
-		});
-    	
-    	assertTrue(result.boolResult);
+    public void testCreateOverlay() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runCreateOverlay());
+
+        assertTrue(result.boolResult);
     }
 
 	private boolean runCreateOverlay() {
@@ -47,17 +40,10 @@ public class OverlayJUnit
 	 */
     
     @Test
-    public void testAddNextOverlay()
-    {
-    	final TestResult result = new TestResult();
-        TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runAddNextOverlay();
-			}
-		});
-    	assertTrue(result.boolResult);
+    public void testAddNextOverlay() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runAddNextOverlay());
+        assertTrue(result.boolResult);
     }
 
 	private boolean runAddNextOverlay() {
@@ -82,17 +68,10 @@ public class OverlayJUnit
 	 */
     
     @Test
-    public void testRemoveOverlay()
-    {
-    	final TestResult result = new TestResult();
-        TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runRemoveOverlay();
-			}
-		});
-    	assertTrue(result.boolResult);
+    public void testRemoveOverlay() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runRemoveOverlay());
+        assertTrue(result.boolResult);
     }
 
 	private boolean runRemoveOverlay() {
@@ -102,27 +81,24 @@ public class OverlayJUnit
         Manager.addStage(new TestStage(TestSuite.getEngine(), "Overlay 3"));
         
         Manager.removeStage("Overlay 1");
-        
-        if (Manager.getStage("Overlay 1") != null) return false;
+
+        if (Manager.getStage("Overlay 1") != null) {
+            return false;
+        }
         
         Manager.removeStages();
-        
-        if (Manager.getStage("Overlay 2") != null) return false;
+
+        if (Manager.getStage("Overlay 2") != null) {
+            return false;
+        }
         return Manager.getStage("Overlay 3") == null;
     }
 
     @Test
-    public void testChangingCurrentStage()
-    {
-    	final TestResult result = new TestResult();
-        TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runChangingCurrentStage();
-			}
-		});
-    	assertTrue(result.boolResult);
+    public void testChangingCurrentStage() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runChangingCurrentStage());
+        assertTrue(result.boolResult);
     }
 
 	private boolean runChangingCurrentStage() {
@@ -130,21 +106,14 @@ public class OverlayJUnit
         Manager.addStage(new TestStage(TestSuite.getEngine(), "Overlay 1"));
         Manager.addStage(new TestStage(TestSuite.getEngine(), "Overlay 2"));
         Manager.swapCurrentStage(new TestStage(TestSuite.getEngine(), "Overlay 2"));
-        return Manager.getStage(1).getTag().equals("Overlay 2") != false;
+        return Manager.getStage(1).getTag().equals("Overlay 2");
     }
     
     @Test
-    public void testAddGroup()
-    {
-    	final TestResult result = new TestResult();
-        TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runAddGroup();
-			}
-		});
-    	assertTrue(result.boolResult);
+    public void testAddGroup() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runAddGroup());
+        assertTrue(result.boolResult);
     }
 
 	private boolean runAddGroup() {
@@ -154,7 +123,7 @@ public class OverlayJUnit
         Group TestGroup = new Group();
         Manager.addActor(TestGroup);
 
-        return TestGroup.hasParent() != false;
+        return TestGroup.hasParent();
     }
 
 }

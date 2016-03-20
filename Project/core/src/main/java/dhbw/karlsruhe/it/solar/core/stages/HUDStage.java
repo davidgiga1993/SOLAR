@@ -6,12 +6,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
-
 import dhbw.karlsruhe.it.solar.core.solar.FontCacher;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
-public class HUDStage extends BaseGUIStage {
+class HUDStage extends BaseGUIStage {
     
     private Label fpsLabel;
     private Label zoomLabel;
@@ -34,16 +33,16 @@ public class HUDStage extends BaseGUIStage {
         }
     }
 
-    public void stop()   {
+    private void stop() {
         logData = false;
     }
 
-    public void start()    {
+    private void start() {
         logData = true;
         buildTimer();
     }
 
-    public void buildTimer()    {
+    private void buildTimer() {
         timer.scheduleTask(new Timer.Task()       {
             public void run()            {
                 fpsLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond());

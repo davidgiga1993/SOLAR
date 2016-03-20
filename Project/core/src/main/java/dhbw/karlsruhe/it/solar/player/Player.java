@@ -1,37 +1,32 @@
 package dhbw.karlsruhe.it.solar.player;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.resources.Credits;
-import dhbw.karlsruhe.it.solar.core.resources.GlobalResource;
-import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
-import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.TotalPopulation;
+import dhbw.karlsruhe.it.solar.core.resources.*;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 /**
  * Created by Arga on 29.11.2014.
  */
 public class Player {
-    
-    public final static int POPULATION_RESOURCE_ID = 0;
-    public final static int TREASURY_RESOURCE_ID = 1;
+
+    private final static int POPULATION_RESOURCE_ID = 0;
+    private final static int TREASURY_RESOURCE_ID = 1;
     
     private final int id;
     private final String name;
     private final Color playerColor;
-    private final List<GlobalResourceInterface> resources = new ArrayList<GlobalResourceInterface>();
-    private final List<Colony> colonies = new ArrayList<Colony>();
-    private final List<SpaceUnit> units = new ArrayList<SpaceUnit>();
+    private final List<GlobalResourceInterface> resources = new ArrayList<>();
+    private final List<Colony> colonies = new ArrayList<>();
+    private final List<SpaceUnit> units = new ArrayList<>();
     private final PlayerAlerts alerts = new PlayerAlerts();
 
     Player(int id, String name, Color color) {
@@ -142,18 +137,11 @@ public class Player {
     }
 
     public void updateTotalPopulation() {
-        ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).empty();
+        resources.get(POPULATION_RESOURCE_ID).empty();
         for(Colony colony : colonies) {
             ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).addToTotalPopulation(colony.getPopulation());
         }
         getTotalPopulation().updateStatistic();
-    }
-
-    public void setResources(List<GlobalResourceInterface> resources) {
-        this.resources.clear();
-        for(GlobalResourceInterface resource : resources) {
-            this.resources.add(resource);
-        }
     }
 
     public Credits getTreasury() {
@@ -166,17 +154,24 @@ public class Player {
             getTreasury().subtractExpensesFromTreasury(colony.payUpKeep(deltaT));
         }
         for(SpaceUnit unit : units) {
-            getTreasury().subtractExpensesFromTreasury(unit.payUpKeep(deltaT));            
+            getTreasury().subtractExpensesFromTreasury(unit.payUpKeep(deltaT));
         }
         getTreasury().updateStatistic();
     }
 
     public List<GlobalResource> getResources() {
-        List<GlobalResource> newList = new ArrayList<GlobalResource>();
+        List<GlobalResource> newList = new ArrayList<>();
         for(GlobalResourceInterface resource : resources) {
             newList.add((GlobalResource)resource);
         }
         return newList;
+    }
+
+    public void setResources(List<GlobalResourceInterface> resources) {
+        this.resources.clear();
+        for (GlobalResourceInterface resource : resources) {
+            this.resources.add(resource);
+        }
     }
 
     public Table getPopulationAlerts() {

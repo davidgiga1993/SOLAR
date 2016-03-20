@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
@@ -11,16 +10,14 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class NavBar extends Window {
 
-    protected Table layoutTable;
-
     private final Cell<ScrollPane> contentCell;
     private final ScrollPane shipPane;
     private final ScrollPane bodyPane;
     private final ScrollPane colonyPane;
-
     private final NavBarBodyTable bodyTable;
     private final NavBarShipTable shipTable;
     private final NavBarColonyTable colonyTable;
+    private Table layoutTable;
 
 
     public NavBar() {

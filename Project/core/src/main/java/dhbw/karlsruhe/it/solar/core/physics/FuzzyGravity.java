@@ -21,8 +21,8 @@ public class FuzzyGravity extends FuzzyValue {
     private float gravityOptimal() {
         return calculateFuzzyValue(gravity.inG(), FuzzyLogic.OPTIMAL_GRAVITY.inG(), 0, 3*FuzzyLogic.OPTIMAL_GRAVITY.inG());
     }
-          
-    public float gravityTooHigh() {
+
+    private float gravityTooHigh() {
         return calculateHighFuzzyValue(gravity.inG(), 3*FuzzyLogic.OPTIMAL_GRAVITY.inG(), FuzzyLogic.OPTIMAL_GRAVITY.inG());
     }
 

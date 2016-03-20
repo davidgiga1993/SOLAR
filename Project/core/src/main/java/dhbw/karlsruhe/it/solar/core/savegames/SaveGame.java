@@ -1,15 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
-
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
@@ -18,6 +10,12 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.player.Player;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Contains the necessary information for converting a game state from the stage into a XML save file and back.
  * @author Andi
@@ -25,7 +23,7 @@ import dhbw.karlsruhe.it.solar.player.Player;
  */
 @XmlRootElement( name = "SaveGame")
 @XmlSeeAlso({ AstroBodyInfo.class, SpaceUnitInfo.class, PlayerInfo.class})
-public class SaveGame {
+class SaveGame {
    
     private Array<Actor> saveGameActors;
     private List<SpaceUnit> spaceUnits;
@@ -59,7 +57,7 @@ public class SaveGame {
     }
     
     private List<PlayerInfo> createPlayerInfo() {
-        List<PlayerInfo> newList = new ArrayList<PlayerInfo>();
+        List<PlayerInfo> newList = new ArrayList<>();
         for(Player player : ingamePlayers) {
             PlayerInfo pi = new PlayerInfo();
             pi.fillInInfos(player);
@@ -69,7 +67,7 @@ public class SaveGame {
     }
 
     private List<AstronomicalBody> filterOutAstroBodies() {
-        List<AstronomicalBody> newList = new ArrayList<AstronomicalBody>();
+        List<AstronomicalBody> newList = new ArrayList<>();
         for (Actor actor : saveGameActors) {
             if(actor instanceof AstronomicalBody && !(actor instanceof PlanetaryRing)) {
                 newList.add((AstronomicalBody)actor);
@@ -79,7 +77,7 @@ public class SaveGame {
     }
     
     private List<AstroBodyInfo> createAstroBodyInfo() {
-        List<AstroBodyInfo> newList = new ArrayList<AstroBodyInfo>();
+        List<AstroBodyInfo> newList = new ArrayList<>();
         for (AstronomicalBody body : spaceObjects) {
             AstroBodyInfo ai = new AstroBodyInfo();
             ai.fillAstroBodyInfo(body);
@@ -89,7 +87,7 @@ public class SaveGame {
     }
     
     private List<SpaceUnit> filterOutUnits() {
-        List<SpaceUnit> newList = new ArrayList<SpaceUnit>();
+        List<SpaceUnit> newList = new ArrayList<>();
         for (Actor actor : saveGameActors) {
             if(actor instanceof SpaceUnit) {
                 newList.add((SpaceUnit)actor);
@@ -99,7 +97,7 @@ public class SaveGame {
     }
     
     private List<SpaceUnitInfo> createSpaceUnitInfo() {
-        List<SpaceUnitInfo> newList = new ArrayList<SpaceUnitInfo>();
+        List<SpaceUnitInfo> newList = new ArrayList<>();
         for (SpaceUnit unit : spaceUnits) {
             SpaceUnitInfo si = new SpaceUnitInfo();
             si.fillSpaceUnitInfo(unit);
@@ -121,7 +119,7 @@ public class SaveGame {
     }
 
     public List<MissionInfoExtended> getMissions() {
-        List<MissionInfoExtended> missionList = new ArrayList<MissionInfoExtended>();
+        List<MissionInfoExtended> missionList = new ArrayList<>();
         for (SpaceUnitInfo unit : units) {
             MissionInfo mission = unit.getMissionInfo();
             if(null!=mission) {

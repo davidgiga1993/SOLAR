@@ -7,8 +7,8 @@ import com.badlogic.gdx.math.Vector2;
  * Created by argannor on 25.03.15.
  */
 public class DoubleVector2 {
-    public double x;
-    public double y;
+    private double x;
+    private double y;
 
     public DoubleVector2() {
         x = 0;
@@ -34,7 +34,7 @@ public class DoubleVector2 {
         return new Vector2((float) x, (float) y);
     }
 
-    public void set(double x, double y) {
+    private void set(double x, double y) {
         this.x = x;
         this.y = y;
     }

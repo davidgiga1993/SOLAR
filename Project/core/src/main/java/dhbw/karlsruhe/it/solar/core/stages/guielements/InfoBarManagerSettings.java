@@ -1,9 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.stages.GameHUDStage;
+
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Contains the display settings for the InfoBar as governed by the InfoBarManager.
@@ -91,10 +91,7 @@ public class InfoBarManagerSettings {
     }
 
     private boolean tooManyColumnsActive() {
-        if(numberOfActiveColumns() > maximumNumberOfColumns) {
-            return true;
-        }
-        return false;
+        return numberOfActiveColumns() > maximumNumberOfColumns;
     }
 
     private int numberOfActiveColumns() {

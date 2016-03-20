@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUILabel;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -16,11 +15,11 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 /**
  * Created by Arga on 11.02.2015.
  */
-public abstract class ScaleSlider extends WidgetGroup {
+abstract class ScaleSlider extends WidgetGroup {
 
-    protected GUILabel curValue;
-    protected final Slider scaleSlider;
-    protected SolarActorScale scale;
+    final Slider scaleSlider;
+    GUILabel curValue;
+    SolarActorScale scale;
     private Class solarActorType;
 
     /**
@@ -31,7 +30,7 @@ public abstract class ScaleSlider extends WidgetGroup {
      * @param maxValue of the slider
      * @param solarActorType corresponding class of the scale
      */
-    public ScaleSlider(final Stage stage, final SolarActorScale scale, float minValue, float maxValue ,final Class solarActorType) {
+    ScaleSlider(final Stage stage, final SolarActorScale scale, float minValue, float maxValue, final Class solarActorType) {
         super();
         this.scale = scale;
         this.solarActorType = solarActorType;
@@ -66,7 +65,7 @@ public abstract class ScaleSlider extends WidgetGroup {
         initialize();
     }
 
-    public void onChange() {
+    private void onChange() {
         float newValue = scaleSlider.getValue();
         updateScale(newValue);
         setValueLabelText(newValue);

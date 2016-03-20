@@ -2,10 +2,9 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-
 import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -16,12 +15,12 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  * created 2015-05-16
  */
 public abstract class CapacitiveResource extends BaseResource implements CapacitiveResourceInterface {
-    
-    protected long currentConsumption;
-    protected static final float CONSUMPTION_APPROACHES_CAPACITY_RATIO = 0.80f;
-    protected static final float CONSUMPTION_CLOSE_TO_CAPACITY_RATIO = 0.95f;
-    protected static final float NO_IMPACT_THRESHOLD = 1f;
-    protected static final float STRONG_IMPACT_THRESHOLD = 0.5f;
+
+    private static final float CONSUMPTION_APPROACHES_CAPACITY_RATIO = 0.80f;
+    private static final float CONSUMPTION_CLOSE_TO_CAPACITY_RATIO = 0.95f;
+    private static final float NO_IMPACT_THRESHOLD = 1f;
+    private static final float STRONG_IMPACT_THRESHOLD = 0.5f;
+    long currentConsumption;
     
     @Override
     public String toString() {

@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -17,12 +16,12 @@ import java.util.List;
  * Created by Arga on 22.02.2015.
  */
 public class NavBarBaseLabel extends Label {
-    protected List<NavBarBaseLabel> children = new ArrayList<NavBarBaseLabel>();
-    protected boolean childrenVisible = true;
-    protected NavBarBaseLabel parent;
-    protected SolarActor actor;
-    protected CharSequence name;
-    protected String tab;
+    CharSequence name;
+    private List<NavBarBaseLabel> children = new ArrayList<>();
+    private boolean childrenVisible = true;
+    private NavBarBaseLabel parent;
+    private SolarActor actor;
+    private String tab;
     private NavBarBaseTable container;
 
     public NavBarBaseLabel(CharSequence text, String tab, SolarActor actor, NavBarBaseTable container) {
@@ -52,7 +51,7 @@ public class NavBarBaseLabel extends Label {
         }
     }
 
-    protected void onLeftClick(InputEvent event) {
+    private void onLeftClick(InputEvent event) {
         // replace the actor with the actor represented by this NavigationLabel
         event.setTarget(actor);
         // and let the GameInputListener do his job
@@ -64,7 +63,7 @@ public class NavBarBaseLabel extends Label {
         GameStartStage.inputListenerNavigate(event);
     }
 
-    protected void toggleChildren() {
+    void toggleChildren() {
         if (children == null || children.isEmpty()) {
             return;
         }
@@ -79,7 +78,7 @@ public class NavBarBaseLabel extends Label {
         container.buildTable();
     }
 
-    public void setChildrenVisibility(boolean newVisibiilty) {
+    private void setChildrenVisibility(boolean newVisibiilty) {
         for (NavBarBaseLabel child : children) {
             child.setVisible(newVisibiilty);
         }
@@ -97,7 +96,15 @@ public class NavBarBaseLabel extends Label {
         return super.isVisible() && parent.isVisible();
     }
 
-    protected class NavigationLabelListener extends ClickListener {
+    public boolean isOfActor(Actor actor) {
+        return name.equals(actor.getName());
+    }
+
+    public void setActor(SolarActor actor) {
+        this.actor = actor;
+    }
+
+    class NavigationLabelListener extends ClickListener {
         public NavigationLabelListener() {
             super();
             // listen to any button
@@ -106,7 +113,7 @@ public class NavBarBaseLabel extends Label {
 
         @Override
         public void clicked(InputEvent event, float x, float y) {
-            switch(event.getButton()) {
+            switch (event.getButton()) {
                 case Input.Buttons.LEFT:
                     handleLeftClickButton(event, x);
                     break;
@@ -121,26 +128,16 @@ public class NavBarBaseLabel extends Label {
 
         /**
          * Decides whether it was a click on the label or the expand indicator
+         *
          * @param event
          * @param x
          */
         private void handleLeftClickButton(InputEvent event, float x) {
-            if(!children.isEmpty() && x < getX() + 6 + tab.length() * 4) {
+            if (!children.isEmpty() && x < getX() + 6 + tab.length() * 4) {
                 toggleChildren();
             } else {
                 onLeftClick(event);
             }
         }
-    }
-
-    public boolean isOfActor(Actor actor) {
-        if(name.equals(actor.getName())) {
-            return true;
-        }
-        return false;
-    }
-
-    public void setActor(SolarActor actor) {
-        this.actor = actor;
     }
 }

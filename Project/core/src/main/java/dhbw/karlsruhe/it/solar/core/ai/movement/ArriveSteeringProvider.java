@@ -7,13 +7,12 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class ArriveSteeringProvider implements SteeringProvider {
 
-    Steering output = new Steering(0,0,0);
     Kinematic target;
+    private Steering output = new Steering(0, 0, 0);
+    private float radius;
+    private float slowRadius;
 
-    float radius;
-    float slowRadius;
-
-    float timeToTarget = 0.25f;
+    private float timeToTarget = 0.25f;
 
     public ArriveSteeringProvider(float radius, float slowRadius) {
         this.radius = radius;

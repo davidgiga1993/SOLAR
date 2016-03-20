@@ -13,11 +13,11 @@ public interface StandardResourceInterface {
     /**
      * Resource value is updated based on the passage of time since the last update based on the production at the resource depot.
      */
-    public void updateResource(Time deltaT, ResourceDepot productionPlace);
+    void updateResource(Time deltaT, ResourceDepot productionPlace);
     
     /**
      * Returns the current discrete exact value of the resource at this resource depot.
      * @return
      */
-    public long getNumber();
+    long getNumber();
 }

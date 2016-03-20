@@ -1,17 +1,16 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.player.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NavBarColonyTable extends NavBarBaseTable {
 
@@ -33,7 +32,7 @@ public class NavBarColonyTable extends NavBarBaseTable {
     }
 
     private List<NavBarBaseLabel> createPlayerColonyLabels(Player player) {
-        List<NavBarBaseLabel> playerColonies = new ArrayList<NavBarBaseLabel>();
+        List<NavBarBaseLabel> playerColonies = new ArrayList<>();
         for(Colony colony : player.getColonies()) {
             playerColonies.add(produceColonyLabel(colony));
         }

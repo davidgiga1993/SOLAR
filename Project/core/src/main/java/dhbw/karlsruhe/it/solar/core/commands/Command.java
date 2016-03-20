@@ -1,5 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.commands;
 
-public interface Command {
+interface Command {
     void execute();
 }

@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
@@ -21,7 +20,6 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class InfoBar extends Window implements Telegraph {
    
-    public final static int IMAGE_WIDTH = 135;
     public final static int MENUE_CELL_WIDTH = 60;
     public final static int MENUE_BUTTON_WIDTH = 58;
     public final static int MENUE_BUTTON_HEIGHT = 25;
@@ -34,13 +32,14 @@ public class InfoBar extends Window implements Telegraph {
     public final static int ACTION_BUTTON_PADDING = 5;
     public static final int MINIMUM_WIDTH = ConfigurationConstants.GUI_NAVIGATION_WIDTH + 4*ConfigurationConstants.PADDING + 2*ConfigurationConstants.CELL_WIDTH + MENUE_CELL_WIDTH + ACTION_BUTTON_WIDTH + 2*ACTION_BUTTON_PADDING;
     public final static String TAB = "            ";
-     
+    private final static int IMAGE_WIDTH = 135;
+    private final static int IMAGE_HEIGHT = 135;
     private final Table contentTable = new Table();
     private final InfoBarOverviewTable overview = new InfoBarOverviewTable();
     private final InfoBarManager manager = new InfoBarManager();
-    
-    private SolarActor selectedActor; 
-    Image selectedImage = new Image();
+
+    private SolarActor selectedActor;
+    private Image selectedImage = new Image();
 
     public InfoBar() {
         super("Information", Styles.TOOLTIPSKIN);
@@ -57,8 +56,8 @@ public class InfoBar extends Window implements Telegraph {
         }
         return false;
     }
-    
-    public void onSelectionChange(Selection newSelection) {
+
+    private void onSelectionChange(Selection newSelection) {
         selectedActor = newSelection.getRepresentative();
         contentTable.clear();
         if(null!=selectedActor) {
@@ -66,7 +65,7 @@ public class InfoBar extends Window implements Telegraph {
         }
     }
 
-    public void loadContent() {
+    private void loadContent() {
         contentTable.clear();
         contentTable.add(loadImage()).width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).left();
         contentTable.add(overview.displayOverview(selectedActor)).width(ConfigurationConstants.CELL_WIDTH).padLeft(ConfigurationConstants.PADDING);
@@ -77,7 +76,7 @@ public class InfoBar extends Window implements Telegraph {
     private Table loadImage() {
         Table imageTable = new Table();
         selectedImage.setDrawable(new TextureRegionDrawable(selectedActor.getSolarActorTexture()));
-        imageTable.add(selectedImage).width(IMAGE_WIDTH).height(IMAGE_WIDTH);
+        imageTable.add(selectedImage).width(IMAGE_WIDTH).height(IMAGE_HEIGHT);
         return imageTable;  
     }
 

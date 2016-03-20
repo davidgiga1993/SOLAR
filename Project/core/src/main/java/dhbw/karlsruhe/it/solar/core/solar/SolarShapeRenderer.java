@@ -13,9 +13,9 @@ import com.badlogic.gdx.math.Matrix4;
 public class SolarShapeRenderer extends ShapeRenderer {
 
 // TODO: introduce a second shapeRenderer only for orbits. or render every orbit with this one, as it is faster anyways...
-    protected final ImmediateModeRenderer renderer = getRenderer();
-    protected final Matrix4 combinedMatrix = new Matrix4();
-    protected Color color = getColor();
+private final ImmediateModeRenderer renderer = getRenderer();
+    private final Matrix4 combinedMatrix = new Matrix4();
+    private Color color = getColor();
 
     /**
      * Some orbits are to big, so that the precision of circle(..) is not sufficient. This method provides a higher accuracy.
@@ -66,7 +66,7 @@ public class SolarShapeRenderer extends ShapeRenderer {
     /** Starts a new batch of shapes. Shapes drawn within the batch will attempt to use the type specified. The call to this method
      * must be paired with a call to {@link #end()}.
      * @see #setAutoShapeType(boolean) */
-    public void beginOrbit () {
+    private void beginOrbit() {
         combinedMatrix.set(getProjectionMatrix());
         Matrix4.mul(combinedMatrix.val, getTransformMatrix().val);
         renderer.begin(combinedMatrix, GL20.GL_LINE_LOOP);

@@ -1,22 +1,21 @@
 package dhbw.karlsruhe.it.solar.player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ColonyAlerts;
 import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains information for the player about problems in his colonies which will also be displayed in the top resource bar.
  * @author Andi
  * created 2015-05-18
  */
-public class PlayerAlerts {
-    
-    private final List<Colony> coloniesWithLackOfLifeSupport = new ArrayList<Colony>();
+class PlayerAlerts {
+
+    private final List<Colony> coloniesWithLackOfLifeSupport = new ArrayList<>();
 
     public Table getPopulationAlertTable() {
         Table alerts = new Table();

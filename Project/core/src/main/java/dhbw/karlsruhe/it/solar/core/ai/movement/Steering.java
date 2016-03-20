@@ -10,7 +10,7 @@ public class Steering {
     private float angular;
     private boolean reached = false;
 
-    public Steering(Vector2 linear, float angular) {
+    private Steering(Vector2 linear, float angular) {
         this.linear = linear;
         this.angular = angular;
     }

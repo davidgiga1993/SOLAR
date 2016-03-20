@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.usercontrols;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit;
@@ -21,7 +20,7 @@ public class SystemRoot extends AstronomicalBody {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        return;
+        // This should not be drawn.
     }
 
     @Override
@@ -36,17 +35,17 @@ public class SystemRoot extends AstronomicalBody {
     
     @Override
     protected void setupSolarActorSprite(String textureName) {
-        return;
+        // since it should not be drawn, there's no need to have sprite.
     }
     
     @Override
     public void setActorScale(SolarActorScale scale) {
-        return;
+        // since it should not be drawn, there's no need to set the scale
     }
     
     @Override
     protected void changeBodyScale() {
-        return;
+        // since it should not be drawn, there's no need to change the scale
     }
     
     @Override

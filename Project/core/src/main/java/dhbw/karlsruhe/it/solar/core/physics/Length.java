@@ -1,31 +1,31 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Created by Arga on 21.11.2014.
  */
 public class Length {
 
-    public static final int LUNAR_DISTANCE_IN_KILOMETRES = 384400;
-    public static final float ASTRONOMICAL_UNIT_IN_KILOMETRES = 149597870.7f;
-    public static final float LIGHT_YEAR_IN_KILOMETERS = (float) (9.4605284*Math.pow(10,12));
-    public static final float ASTRONOMICAL_UNIT_IN_LUNAR_DISTANCES = 389.17240036f;
-    public static final float LIGHT_YEAR_IN_LUNAR_DISTANCES = 24611681.77050156f;
-    public static final float PARSEC_IN_LUNAR_DISTANCES = 80272569.66167685f;
-    public static final float LIGHT_YEARS_IN_ASTRONOMICAL_UNITS = 63241.0770842f;
-    public static final float PARSEC_IN_ASTRONOMICAL_UNITS = 206264.80599999f;
-    public static final float PARSEC_IN_LIGHT_YEARS = 3.2615637732f;
-    public static final float KILOMETER_IN_METERS = 1000;
-    public static final float MILLION = 1000000;
-    public static final float THOUSAND = 1000;
+    private static final int LUNAR_DISTANCE_IN_KILOMETRES = 384400;
+    private static final float ASTRONOMICAL_UNIT_IN_KILOMETRES = 149597870.7f;
+    private static final float LIGHT_YEAR_IN_KILOMETERS = (float) (9.4605284 * Math.pow(10, 12));
+    private static final float ASTRONOMICAL_UNIT_IN_LUNAR_DISTANCES = 389.17240036f;
+    private static final float LIGHT_YEAR_IN_LUNAR_DISTANCES = 24611681.77050156f;
+    private static final float PARSEC_IN_LUNAR_DISTANCES = 80272569.66167685f;
+    private static final float LIGHT_YEARS_IN_ASTRONOMICAL_UNITS = 63241.0770842f;
+    private static final float PARSEC_IN_ASTRONOMICAL_UNITS = 206264.80599999f;
+    private static final float PARSEC_IN_LIGHT_YEARS = 3.2615637732f;
+    private static final float KILOMETER_IN_METERS = 1000;
+    private static final float MILLION = 1000000;
+    private static final float THOUSAND = 1000;
 
     @XmlElement
-    protected float value = 0f;
+    private float value = 0f;
     @XmlElement(name="distance_unit")
-    protected DistanceUnit unit = DistanceUnit.ASTRONOMICAL_UNITS;
+    private DistanceUnit unit = DistanceUnit.ASTRONOMICAL_UNITS;
     
     public Length()    {
         this( 0, DistanceUnit.KILOMETERS);
@@ -33,6 +33,12 @@ public class Length {
 
     public Length(float value, DistanceUnit unit) {
         set(value, unit);
+    }
+
+    public static Length calculateDistance(SolarActor actorOne, SolarActor actorTwo) {
+        double directDistance = Math.sqrt(Math.pow(actorTwo.getX() - actorOne.getX(), 2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
+
+        return new Length((float) directDistance, DistanceUnit.KILOMETERS);
     }
 
     private void set(float value, DistanceUnit unit) {
@@ -93,7 +99,7 @@ public class Length {
         }
     }
 
-    public float asLightYear() {
+    private float asLightYear() {
         switch (unit) {
             case KILOMETERS:
                 return value / LIGHT_YEAR_IN_KILOMETERS;
@@ -109,25 +115,11 @@ public class Length {
                 return Float.NaN;
         }
     }
-    
+
     public float asMeters() {
         return this.asKilometers()*KILOMETER_IN_METERS;
     }
 
-    public enum DistanceUnit {
-        KILOMETERS,
-        LUNAR_DISTANCE,
-        ASTRONOMICAL_UNITS,
-        LIGHTYEAR,
-        PARSEC
-    }
-
-    public static Length calculateDistance(SolarActor actorOne, SolarActor actorTwo)    {
-        double directDistance = Math.sqrt( Math.pow(actorTwo.getX() - actorOne.getX(),2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
-        
-        return new Length( (float)directDistance, DistanceUnit.KILOMETERS);
-    }
-    
     @Override
     public String toString() {
         if( this.asLightYear() > THOUSAND ) {
@@ -138,12 +130,12 @@ public class Length {
         }
         if( this.asAstronomicalUnit() > 0.1f ) {
             return formatValue(this.asAstronomicalUnit()) + " AU";
-        }    
+        }
         if(this.asKilometers() > MILLION) {
-            return formatValue(this.asKilometers()/MILLION) + " mi km";            
+            return formatValue(this.asKilometers() / MILLION) + " mi km";
         }
         if(this.asKilometers() > 10*THOUSAND) {
-            return formatValue(this.asKilometers()/THOUSAND) + " k km";            
+            return formatValue(this.asKilometers() / THOUSAND) + " k km";
         }
         return formatValueNoDecimal(this.asKilometers()) + " km";
     }
@@ -154,5 +146,13 @@ public class Length {
 
     private String formatValue(float value) {
         return String.format("%.01f", value);
+    }
+
+    public enum DistanceUnit {
+        KILOMETERS,
+        LUNAR_DISTANCE,
+        ASTRONOMICAL_UNITS,
+        LIGHTYEAR,
+        PARSEC
     }
 }

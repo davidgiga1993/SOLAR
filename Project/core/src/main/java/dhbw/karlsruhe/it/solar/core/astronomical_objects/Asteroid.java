@@ -8,9 +8,9 @@ import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
  * @author Andi
  *
  */
-public class Asteroid extends AstronomicalBody  { 
-    
-    AsteroidType type;
+public class Asteroid extends AstronomicalBody {
+
+    private AsteroidType type;
     
     public Asteroid(String name, OrbitalProperties orbit, BodyProperties body) {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_ASTEROID, body.getTexture());

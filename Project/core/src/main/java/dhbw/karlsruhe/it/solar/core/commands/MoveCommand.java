@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.commands;
 
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.player.Player;
 
@@ -28,7 +27,7 @@ public class MoveCommand implements Command {
         }
     }
 
-    public void action(SpaceUnit unit) {
+    void action(SpaceUnit unit) {
         unit.setDestination(destination);
     }
 }

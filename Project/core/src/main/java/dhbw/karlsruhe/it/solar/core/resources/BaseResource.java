@@ -1,18 +1,16 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+
+import javax.xml.bind.annotation.XmlElement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -23,17 +21,17 @@ public abstract class BaseResource implements BaseResourceInterface {
     
     public final static long THOUSAND = 1000;
     public final static long MILLION = THOUSAND * THOUSAND;
-    public final static long BILLION = THOUSAND * MILLION;
-    public final static long TRILLION = THOUSAND * BILLION;
+    final static long BILLION = THOUSAND * MILLION;
+    final static long TRILLION = THOUSAND * BILLION;
     
     @XmlElement(name = "Value")
-    protected long value;
+    long value;
     @XmlElement(name = "Values_Of_Last_Month")
-    protected List<Long> valuesOfLastMonth = new ArrayList<Long>();
-    @XmlElement(name = "Time_Of_Last_Resource_Update")
-    protected Time oldGameTime;
+    List<Long> valuesOfLastMonth = new ArrayList<>();
     @XmlElement(name = "Change_Last_Month")
-    protected float changeLastMonth;    
+    float changeLastMonth;
+    @XmlElement(name = "Time_Of_Last_Resource_Update")
+    private Time oldGameTime;
     
     @Override
     public Table loadIcon() {
@@ -43,8 +41,8 @@ public abstract class BaseResource implements BaseResourceInterface {
         imageTable.add(selectedImage).width(ConfigurationConstants.ICON_SIZE).height(ConfigurationConstants.ICON_SIZE);
         return imageTable;  
     }
-    
-    protected boolean isANewDay() {        
+
+    boolean isANewDay() {
         if( oldGameTime == null || (int)GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int)oldGameTime.inDays()) {
             oldGameTime = new Time(GameStartStage.GAMETIME.getGameTimeElapsed().inDays(),TimeUnit.DAYS);
             return true;
@@ -52,30 +50,30 @@ public abstract class BaseResource implements BaseResourceInterface {
         return false;
     }
 
-    protected void updateValuesOfLastMonthList() {
+    void updateValuesOfLastMonthList() {
         valuesOfLastMonth.add(value);
         if(valuesOfLastMonth.size()>31) {
             valuesOfLastMonth.remove(0);
         }
     }
 
-    protected String formatValue(float number) {
+    String formatValue(float number) {
         return String.format("%.02f", number);
     }
-    
-    protected float inThousands(float value) {
+
+    float inThousands(float value) {
         return value / (float)THOUSAND;
     }
-    
-    protected float inMillions(float value) {
+
+    float inMillions(float value) {
         return value / (float)MILLION;
     }
-    
-    protected float inBillions(float value) {
+
+    float inBillions(float value) {
         return value / (float)BILLION;
     }
-    
-    protected float inTrillions(float value) {
+
+    float inTrillions(float value) {
         return value / (float)TRILLION;
     }
 }

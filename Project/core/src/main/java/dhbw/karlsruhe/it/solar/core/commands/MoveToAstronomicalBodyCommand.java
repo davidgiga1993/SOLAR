@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Arga on 13.02.2015.
  */
 public class MoveToAstronomicalBodyCommand extends MoveCommand {
-    protected AstronomicalBody destination;
+    private AstronomicalBody destination;
 
     public MoveToAstronomicalBodyCommand(List<SpaceUnit> units, AstronomicalBody target, Player commander) {
         super(units, 0, 0, commander);

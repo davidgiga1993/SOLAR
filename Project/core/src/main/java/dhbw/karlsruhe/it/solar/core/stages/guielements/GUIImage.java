@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 /**
  * Created by Arga on 29.11.2014.
  */
-public class GUIImage extends Image implements GUIActor{
+class GUIImage extends Image implements GUIActor {
     public GUIImage(TextureRegion texture) {
         super(texture);
     }

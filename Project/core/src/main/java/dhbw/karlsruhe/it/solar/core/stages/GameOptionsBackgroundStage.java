@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
-public class GameOptionsBackgroundStage extends HUDStage {
+class GameOptionsBackgroundStage extends HUDStage {
 
     private Label background1;
     private Label background2;
@@ -51,12 +51,13 @@ public class GameOptionsBackgroundStage extends HUDStage {
         addActor(menuTable);
     }
 
-    public void changeBackground(String name) {
+    private void changeBackground(String name) {
         BackgroundStage backgroundStage = (BackgroundStage) SolarEngine.get().getStage("Background");
         if(backgroundStage == null) {
             System.out.println(this.getClass().getCanonicalName() + "change Background failed; backgroundStage not found");
+        } else {
+            backgroundStage.changeBackground(name);
         }
-        backgroundStage.changeBackground(name);
     }
 }
 

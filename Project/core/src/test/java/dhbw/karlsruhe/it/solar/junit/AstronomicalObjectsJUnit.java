@@ -1,23 +1,12 @@
 package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Asteroid;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.AsteroidType;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.MoonType;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetType;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.StarType;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.*;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,39 +21,25 @@ public class AstronomicalObjectsJUnit
 	private Planet planet;
 	
     @Before
-    public void setUp() throws Exception
-    {
-       TestHelper.sendRunnableToOpenGL(new Runnable() {
-		
-			@Override
-			public void run() {
-				runSetUp();
-				
-			}
-       });        
+    public void setUp() throws InterruptedException {
+        TestHelper.sendRunnableToOpenGL(() -> runSetUp());
     }
-    
-    public void runSetUp() {
+
+    private void runSetUp() {
         GameStartStage.startNewGame();
     	solarSystem = new SolarSystem("Testsystem");
     	star =  CreateAnAstronomicalBody.named("Testsonne").whichHasTheFollowingOrbitalProperties(solarSystem, new Length(0, Length.DistanceUnit.KILOMETERS), new Angle()).andHasTheFollowingBodyProperties(new Length(1392684f/2, Length.DistanceUnit.KILOMETERS), new Mass(1, Mass.MassUnit.SOLAR_MASS), new Albedo(0.3f)).buildAs(new StarType(StarType.MorganKeenanSpectralType.G, StarType.SpectralTypeSubdivision.TWO, StarType.LuminosityClass.MAIN_SEQUENCE_STAR), solarSystem);
     	planet = CreateAnAstronomicalBody.named("Testplanet").whichHasTheFollowingOrbitalProperties(star, new Length(1.5f, Length.DistanceUnit.ASTRONOMICAL_UNITS), new Angle(23, AngularUnit.DEGREE)).andHasTheFollowingBodyProperties(new Length(10000.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.5f, Mass.MassUnit.EARTH_MASS), new Albedo(0.3f)).whichRotatesEvery(new Time(0.99726968f,TimeUnit.DAYS)).buildAs(new PlanetType(PlanetType.TypeOfPlanet.TERRESTRIAL, PlanetType.TextureTypeOfPlanet.TERRAN), solarSystem);
     	CreateAnAstronomicalBody.named("Testmond").whichHasTheFollowingOrbitalProperties(planet, new Length(200000, Length.DistanceUnit.KILOMETERS), new Angle(-50, AngularUnit.DEGREE)).andHasTheFollowingBodyProperties(new Length(4879.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(0.1f, Mass.MassUnit.EARTH_MASS), new Albedo(0.3f)).whichIsTidallyLockedToItsPrimary().buildAs(new MoonType(MoonType.TypeOfMoon.TERRESTRIAL_MOON, MoonType.TextureTypeOfMoon.LUNAR), solarSystem);
     	CreateAnAstronomicalBody.named("Testasteroid").whichHasTheFollowingOrbitalProperties(star, new Length(900, Length.DistanceUnit.KILOMETERS), new Angle(742, AngularUnit.DEGREE)).andHasTheFollowingBodyProperties(new Length(1500.4f/2, Length.DistanceUnit.KILOMETERS), new Mass(20000, Mass.MassUnit.KILOGRAM), new Albedo(0.3f)).whichIsTidallyLockedToItsPrimary().buildAs(new AsteroidType(AsteroidType.TypeOfAsteroid.DTYPE, AsteroidType.TextureTypeOfAsteroid.PHOEBE_DEFAULT_IMAGE), solarSystem);
-    	}
-
-    @After
-    public void tearDown() throws Exception
-    {
-        TestHelper.sendRunnableToOpenGL(new Runnable() {
-            @Override
-            public void run() {
-                runTearDown();
-            }
-        });
     }
 
-    public void runTearDown() {
+    @After
+    public void tearDown() throws InterruptedException {
+        TestHelper.sendRunnableToOpenGL(() -> runTearDown());
+    }
+
+    private void runTearDown() {
         GameStartStage.endGame();
     }
     

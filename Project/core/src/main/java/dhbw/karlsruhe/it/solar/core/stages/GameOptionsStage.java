@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
-public class GameOptionsStage extends HUDStage {
+class GameOptionsStage extends HUDStage {
 
     private Label labelOption1;
     private Label labelBackground;

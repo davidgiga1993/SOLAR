@@ -9,8 +9,8 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 public class OrbitalArriveSteeringProvider extends ArriveSteeringProvider {
 
 
-    protected Orbiter target;
-    protected float reachedRadius = 75f;
+    private Orbiter target;
+    private float reachedRadius = 75f;
 
     public OrbitalArriveSteeringProvider(float radius, float slowRadius) {
         super(radius, slowRadius);

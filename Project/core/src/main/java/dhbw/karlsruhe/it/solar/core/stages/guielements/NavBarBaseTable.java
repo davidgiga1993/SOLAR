@@ -4,7 +4,6 @@ import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -15,13 +14,13 @@ import java.util.List;
 /**
  * Created by Arga on 22.02.2015.
  */
-public abstract class NavBarBaseTable extends Table implements Telegraph {
-    
-    protected static final String TAB = "    ";
-    
-    List<NavBarBaseLabel> allLabels = new ArrayList<NavBarBaseLabel>();
+abstract class NavBarBaseTable extends Table implements Telegraph {
 
-    public NavBarBaseTable() {
+    static final String TAB = "    ";
+
+    List<NavBarBaseLabel> allLabels = new ArrayList<>();
+
+    NavBarBaseTable() {
         super();
         top();
         left();
@@ -42,8 +41,8 @@ public abstract class NavBarBaseTable extends Table implements Telegraph {
 
 
     public abstract boolean handleMessage(Telegram telegram);
-    
-    protected NavBarBaseLabel getLabelOfActor(Actor actor) {
+
+    NavBarBaseLabel getLabelOfActor(Actor actor) {
         for (NavBarBaseLabel unitLabel : allLabels) {
             if(unitLabel.isOfActor(actor)) {
                 return unitLabel;
@@ -51,9 +50,9 @@ public abstract class NavBarBaseTable extends Table implements Telegraph {
         }
         return null;
     }
-    
 
-    protected NavBarBaseLabel createPlayerLabel(Player player, NavBarBaseTable container) {
+
+    NavBarBaseLabel createPlayerLabel(Player player, NavBarBaseTable container) {
         return new NavBarBaseLabel(player.getName(), "", player.getCapitalWorld(), container);
     }
 }

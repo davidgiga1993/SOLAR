@@ -3,11 +3,11 @@ package dhbw.karlsruhe.it.solar.core.physics;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Time {
-    
+
+    public static final float DAYS_PER_YEAR = 365.25f;
     private static final int SECONDS_PER_MINUTE = 60;
     private static final int MINUTES_PER_HOUR = 60;
     private static final int HOURS_PER_DAY = 24;
-    public static final float DAYS_PER_YEAR = 365.25f;
     private static final int ONE_THOUSAND = 1000;
     private static final int ONE_MILLION = ONE_THOUSAND*ONE_THOUSAND;
     
@@ -24,8 +24,8 @@ public class Time {
     public Time() {
 
     }
-    
-    public float inSeconds() {
+
+    private float inSeconds() {
         switch (unit) {
             case SECONDS:
                 return value;
@@ -41,8 +41,8 @@ public class Time {
                 return Float.NaN;
         }
     }
-    
-    public float inMinutes() {
+
+    private float inMinutes() {
         switch (unit) {
             case SECONDS:
                 return value / SECONDS_PER_MINUTE;
@@ -59,7 +59,7 @@ public class Time {
         }
     }
 
-    public float inHours() {
+    private float inHours() {
         switch (unit) {
             case SECONDS:
                 return value / SECONDS_PER_MINUTE / MINUTES_PER_HOUR;
@@ -139,17 +139,9 @@ public class Time {
     private String formatValue(float value) {
         return String.format("%.01f", value);
     }
-    
-    public enum TimeUnit {
-        SECONDS,
-        MINUTES,
-        HOURS,
-        DAYS,
-        YEARS
-    }
 
     public Time absolute() {
-        if(value < 0 ) {
+        if (value < 0) {
             return new Time(-value, unit);
         }
         return this;
@@ -157,14 +149,31 @@ public class Time {
 
     public void add(Time timeToAdd) {
         switch (unit) {
+            case SECONDS:
+                value += timeToAdd.inSeconds();
+                break;
+            case MINUTES:
+                value += timeToAdd.inMinutes();
+                break;
             case HOURS:
                 value += timeToAdd.inHours();
+                break;
             case DAYS:
                 value += timeToAdd.inDays();
+                break;
             case YEARS:
                 value += timeToAdd.inYears();
+                break;
             default:
-                return;
+                throw new IllegalStateException("Enum got changed, switch did not.");
         }
+    }
+
+    public enum TimeUnit {
+        SECONDS,
+        MINUTES,
+        HOURS,
+        DAYS,
+        YEARS
     }
 }

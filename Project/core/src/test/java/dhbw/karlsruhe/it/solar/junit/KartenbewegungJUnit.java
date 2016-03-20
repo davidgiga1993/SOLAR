@@ -15,63 +15,47 @@ import static org.junit.Assert.fail;
 public class KartenbewegungJUnit
 {
 
-	protected SolarEngine engine;
-	
+    private SolarEngine engine;
+
     public KartenbewegungJUnit()
     {
     }
 
     @Before
-    public void setUp() throws Exception
-    {
-    	engine = TestSuite.getEngine();
+    public void setUp() {
+        engine = TestSuite.getEngine();
     }
 
     @After
-    public void tearDown() throws Exception
-    {
+    public void tearDown() {
     }
 
     @Test
-    public void testZoom()
-    {
-    	Runnable startGame = new Runnable() {
-			
-			@Override
-			public void run() {
-				engine.removeStage("StartStage");
-				GameStartStage.startNewGame();
-			}
-		};
-		TestHelper.sendRunnableToOpenGL(startGame);
-		
-        float startZoom = engine.getSolarCameraZoom();
-        Robot robot;
-        try
-        {
-            robot = new Robot();
-            robot.keyPress(KeyEvent.VK_E);
-            Thread.sleep(700);
-            robot.keyRelease(KeyEvent.VK_E);
-            if(startZoom <= engine.getSolarCameraZoom())
-                fail("Zoom not working");
+    public void testZoom() throws AWTException, InterruptedException {
+        Runnable startGame = () -> {
+            engine.removeStage("StartStage");
+            GameStartStage.startNewGame();
+        };
+        TestHelper.sendRunnableToOpenGL(startGame);
 
-            startZoom = engine.getSolarCameraZoom();
-            robot.keyPress(KeyEvent.VK_Q);
-            Thread.sleep(700);
-            robot.keyRelease(KeyEvent.VK_Q);
-            if(startZoom >= engine.getSolarCameraZoom())
-                fail("Zoom not working");
-            
-        }
-        catch(InterruptedException ex)
-        {
-            
-        }
-        catch (AWTException e)
-        {
-        }
-        
+        float startZoom = engine.getSolarCameraZoom();
+
+        Robot robot = new Robot();
+
+        robot.keyPress(KeyEvent.VK_E);
+        Thread.sleep(700);
+        robot.keyRelease(KeyEvent.VK_E);
+        if (startZoom <= engine.getSolarCameraZoom())
+            fail("Zoom not working");
+
+        startZoom = engine.getSolarCameraZoom();
+        robot.keyPress(KeyEvent.VK_Q);
+        Thread.sleep(700);
+        robot.keyRelease(KeyEvent.VK_Q);
+        if (startZoom >= engine.getSolarCameraZoom())
+            fail("Zoom not working");
+
+
     }
     
     @Test

@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
@@ -16,11 +15,10 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
  */
 public class InfoBarManager extends Table {
     
-    private SolarActor selectedActor;
-    private InfoBarManagerSettings settings;
     private final InfoBarDetailsTable table = new InfoBarDetailsTable();
     private final InfoBarMenueButtons buttons = new InfoBarMenueButtons(this);
-    
+    private SolarActor selectedActor;
+    private InfoBarManagerSettings settings;
     
     public InfoBarManager displayContent(SolarActor selectedActor) {
         this.selectedActor = selectedActor;
@@ -30,7 +28,7 @@ public class InfoBarManager extends Table {
         return this;
     }
 
-    public void createInfoBarDetailsTable() {
+    private void createInfoBarDetailsTable() {
         table.clear();
         settings.adjustMaximumNumberOfColumns();
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
@@ -52,7 +50,7 @@ public class InfoBarManager extends Table {
         add(table.displayAstroBodyInformation((AstronomicalBody)selectedActor)).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
     }
 
-    public void createInfoBarMenueButtons() {
+    private void createInfoBarMenueButtons() {
         buttons.clear();
         if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
             add(buttons.displayAstroBodyButtons()).width(InfoBar.MENUE_CELL_WIDTH).left();
@@ -91,7 +89,6 @@ public class InfoBarManager extends Table {
             return;
         }
         if(selectedActor instanceof SpaceUnit) {
-            return;
         }
     }
 

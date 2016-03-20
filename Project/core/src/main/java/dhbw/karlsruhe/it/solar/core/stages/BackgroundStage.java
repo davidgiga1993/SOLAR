@@ -11,9 +11,9 @@ import java.util.Map;
 
 
 public class BackgroundStage extends BaseBackgroundStage {
+    private static final String DEFAULT_BACKGROUND = "Hintergrund01.png";
     private Image backgroundImage;
     private Map<String, Texture> backgroundTextures;
-    private static final String DEFAULT_BACKGROUND = "Hintergrund01.png";
 
     public BackgroundStage(SolarEngine se)    {
         super(se, "Background");
@@ -25,7 +25,7 @@ public class BackgroundStage extends BaseBackgroundStage {
         backgroundImage.setScaling(Scaling.fill);
     }
 
-    protected void changeBackground(String name) {
+    void changeBackground(String name) {
         clear();
         backgroundImage = new Image(backgroundTextures.get(name));
         backgroundImage.setScaling(Scaling.fill);
@@ -34,8 +34,8 @@ public class BackgroundStage extends BaseBackgroundStage {
         addActor(backgroundImage);
     }
 
-    protected void loadTextures() {
-        backgroundTextures = new HashMap<String, Texture>(2);
+    private void loadTextures() {
+        backgroundTextures = new HashMap<>(2);
 
         Texture hintergrund1 = new Texture(Gdx.files.internal("data/Hintergrund01.png"));
         hintergrund1.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);

@@ -1,13 +1,12 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
-public class InfoBarShipDetails extends Table {
+class InfoBarShipDetails extends Table {
     
     private SpaceUnit unit;
     private LabelStyle style = Styles.MENUELABEL_STYLE;

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageManager extends BaseStage {
-    private List<BaseStage> stages = new ArrayList<BaseStage>();
+    private List<BaseStage> stages = new ArrayList<>();
 
     public StageManager(SolarEngine se)   {
         super(se, "StageManager");
@@ -97,7 +97,7 @@ public class StageManager extends BaseStage {
     public boolean keyDown(int keycode)    {
         for (int x = 0; x < stages.size(); x++)       {
             if (stages.get(x).keyDown(keycode)) {
-                break;                
+                break;
             }
         }
         return false;
@@ -107,7 +107,7 @@ public class StageManager extends BaseStage {
     public boolean keyUp(int keycode)    {
         for (int x = 0; x < stages.size(); x++)        {
             if (stages.get(x).keyUp(keycode)) {
-                break;                
+                break;
             }
         }
         return false;

@@ -1,14 +1,14 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Length.class, Angle.class, Coorbital.class})
@@ -42,10 +42,7 @@ public class OrbitalPropertyInfo {
     }
 
     public boolean isStationary() {
-        if (orbitalRadius.asKilometers() == 0) {
-            return true;
-        }
-        return false;
+        return orbitalRadius.asKilometers() == 0;
     }
 
     public String getPrimary() {

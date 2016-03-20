@@ -1,13 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import java.util.List;
-
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.StarType;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.*;
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
+
+import java.util.List;
 
 /**
  * Created by Arga on 25.11.2014.
@@ -67,10 +63,7 @@ public class BodyProperties {
     }
 
     public boolean hasRings() {
-        if(null!= ring) {
-            return true;
-        }
-        return false;
+        return null != ring;
     }
 
     public void setUpAtmosphere(Atmosphere atmosphere) {
@@ -121,10 +114,7 @@ public class BodyProperties {
     }
 
     public boolean hasAtmosphere() {
-        if(null != atmosphere) {
-            return true;
-        }
-        return false;
+        return null != atmosphere;
     }
 
     public List<AtmosphericGas> getListOfAtmosphericGases() {
@@ -149,7 +139,7 @@ public class BodyProperties {
 
     /**
      * Calculates the surface temperature of a planetary body.
-     * @param starsInSystem
+     * @param body
      */
     public void calculateSurfaceTemperature(AstronomicalBody body) {
         temperature = new SurfaceTemperature();

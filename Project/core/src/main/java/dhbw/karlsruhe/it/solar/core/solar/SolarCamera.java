@@ -8,15 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  * Created by Arga on 03.03.2015.
  */
 public class SolarCamera extends OrthographicCamera {
-    protected boolean isLocked = false;
-    protected Actor lockTarget;
-
-    protected Vector2 translationTarget = new Vector2(0,0);
-    protected Vector2 movementTarget = null;
-    protected float zoomTarget;
-    protected boolean zoomTargetActive = false;
-    protected static final float TIME_TO_TRANSLATE = 0.1f;
-    protected static final float TIME_TO_ZOOM = 0.25f;
+    private static final float TIME_TO_TRANSLATE = 0.1f;
+    private static final float TIME_TO_ZOOM = 0.25f;
+    private boolean isLocked = false;
+    private Actor lockTarget;
+    private Vector2 translationTarget = new Vector2(0, 0);
+    private Vector2 movementTarget = null;
+    private float zoomTarget;
+    private boolean zoomTargetActive = false;
 
     public SolarCamera(float viewportWidth, float viewportHeight) {
         super(viewportWidth, viewportHeight);

@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.inputlisteners;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
@@ -18,13 +17,13 @@ import java.util.*;
  */
 public class Selection implements Telegraph {
 
-    protected Set<SolarActor> selectedActors;
-    protected List<SpaceUnit> cachedSpaceUnits;
-    protected boolean spaceUnitDirtyFlag = true;
+    private Set<SolarActor> selectedActors;
+    private List<SpaceUnit> cachedSpaceUnits;
+    private boolean spaceUnitDirtyFlag = true;
     
     public Selection() {
-        selectedActors = new HashSet<SolarActor>();
-        cachedSpaceUnits = new ArrayList<SpaceUnit>();
+        selectedActors = new HashSet<>();
+        cachedSpaceUnits = new ArrayList<>();
     }
 
     /**

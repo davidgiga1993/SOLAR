@@ -8,8 +8,6 @@ import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
 import dhbw.karlsruhe.it.solar.core.ai.AISpaceshipModule;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
-import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
-import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.commands.OrbitalInsertionCommand;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
@@ -38,15 +36,15 @@ import dhbw.karlsruhe.it.solar.player.Player;
 public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable  {
     
     public static final Color SPACEUNIT_ORBIT_COLOR = new Color(0, 0.5f, 0, 1);
-    public static final Credits SPACESHIP_YEARLY_RUNNING_COST = new Credits(10000000);
-    public static final Credits SPACESTATION_YEARLY_RUNNING_COST = new Credits(50000000);
+    static final Credits SPACESHIP_YEARLY_RUNNING_COST = new Credits(10000000);
+    static final Credits SPACESTATION_YEARLY_RUNNING_COST = new Credits(50000000);
 
-    protected Player owner;
-    protected Vector2 destinationVector;
-    protected Orbiter destination;
-    protected float speed;
-    AIModule aiModule;
-    AIOutput aiOutput;
+    private Player owner;
+    private Vector2 destinationVector;
+    private Orbiter destination;
+    private float speed;
+    private AIModule aiModule;
+    private AIOutput aiOutput;
     
     
      public SpaceUnit(String name, Player owner, float speed)       {
@@ -76,7 +74,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
       * @param width
       * @param length
       */
-     protected void initSpaceUnit(Length width, Length length) {
+     void initSpaceUnit(Length width, Length length) {
           this.setSize(width, length);
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
         kinematic.setMaxSpeed(speed);
@@ -87,12 +85,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      private void initializeAIModule() {
         this.aiModule = new AISpaceshipModule(this);
         aiModule.setTarget(destinationVector);
-        aiModule.addEventListener(new TargetReachedListener() {
-            @Override
-            public void handle(TargetReachedEvent event) {
-                System.out.println("Target reached");
-            }
-        });
+         aiModule.addEventListener(event -> System.out.println("Target reached"));
      }
      
     @Override
@@ -146,7 +139,6 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      
      /**
       * Adjusts only the Orbital Scale, not the Shapescale of the object. Allows Space Units to adjust the scale of their orbits individually.
-      * @param scale Scale value is derived from the configuration constants of the appropriate satellite to the orbital Primary body.
       */
      private void setOrbitScale() {
          currentOrbitScale = OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitalProperties.getPrimary()).getOrbitScale();
@@ -255,11 +247,11 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
           return new Angle(distance.angle() + 180, Angle.AngularUnit.DEGREE);
      }
 
-     public Length physicalDistanceTo(Orbiter destination) {
+    private Length physicalDistanceTo(Orbiter destination) {
           return getPhysicalLength(destination, getDistanceVector(destination));
      }
 
-     public Length physicalDistanceTo(Vector2 destination) {
+    private Length physicalDistanceTo(Vector2 destination) {
          return getPhysicalLength(((GameStartStage)getStage()).getSolarSystem(), getDistanceVector(destination));
      }
 
@@ -272,7 +264,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      * @param width
      * @param height
      */
-    public void setSize(Length width, Length height) {
+    private void setSize(Length width, Length height) {
         // convert to pixels and scale with scale setting
         float pWidth = scaleDistanceToStage(width.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
         float pHeight = scaleDistanceToStage(height.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
@@ -316,7 +308,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     /**
      * @return Destination object the spaceship object is heading to
      */
-    public Orbiter getDestination()    {
+    private Orbiter getDestination() {
         return destination;
     }
 
@@ -334,8 +326,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         this.destinationVector = destination.getKinematic().getPosition();
         this.destination = destination;
     }
-    
-    public void leaveOrbit() {
+
+    private void leaveOrbit() {
         orbitalProperties = null;
         System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
         kinematic.setMaxSpeed(speed);
@@ -360,7 +352,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         return maxOrbitalRadiusFor(destination).asAstronomicalUnit() > physicalDistanceTo(destination).asAstronomicalUnit();
     }
 
-     public AstronomicalBody calculateDominantGravitationSource() {
+    private AstronomicalBody calculateDominantGravitationSource() {
           return ((GameStartStage)getStage()).calculateDominantGravitationSourceAt(this);
      }
 

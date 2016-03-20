@@ -4,12 +4,11 @@ package dhbw.karlsruhe.it.solar.core.stages;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
-public class ExitStage extends HUDStage  {
+class ExitStage extends HUDStage {
 
     private Label labelAreYouSure;
     private Label labelYes;

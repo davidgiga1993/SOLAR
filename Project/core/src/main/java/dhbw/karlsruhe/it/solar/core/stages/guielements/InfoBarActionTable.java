@@ -4,7 +4,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.commands.AbandonColonyCommand;
 import dhbw.karlsruhe.it.solar.core.commands.ColonizeCommand;
@@ -19,7 +18,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  * Created by Arga on 24.02.2015.
  * Substantially revised by Andi on: 2015-04-19
  */
-public class InfoBarActionTable extends Table {
+class InfoBarActionTable extends Table {
     
     private final TextButton orbitalInsertion = new TextButton("Enter Orbit", Styles.TOOLTIPSKIN);
     private final TextButton colonize = new TextButton("Establish Colony", Styles.TOOLTIPSKIN);
@@ -78,8 +77,8 @@ public class InfoBarActionTable extends Table {
             }
          });
     }
-    
-    public void hideAllButtons() {
+
+    private void hideAllButtons() {
         orbitalInsertion.setVisible(false);
         colonize.setVisible(false);
         selfDestruct.setVisible(false);

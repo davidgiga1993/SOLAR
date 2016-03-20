@@ -1,19 +1,15 @@
 package dhbw.karlsruhe.it.solar.colony;
 
+import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.resources.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
-import dhbw.karlsruhe.it.solar.core.resources.ElectricPower;
-import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
-import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
+class ColonyResources {
 
-public class ColonyResources {
-    
-    private final List<CapacitiveResourceInterface> capacitiveResources = new ArrayList<CapacitiveResourceInterface>();
-    private final List<StandardResourceInterface> standardResources = new ArrayList<StandardResourceInterface>();
+    private final List<CapacitiveResourceInterface> capacitiveResources = new ArrayList<>();
+    private final List<StandardResourceInterface> standardResources = new ArrayList<>();
     
     public ColonyResources() {
 

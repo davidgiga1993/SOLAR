@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-
 import dhbw.karlsruhe.it.solar.colony.BuildingManager;
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
@@ -26,12 +25,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
-import dhbw.karlsruhe.it.solar.core.savegames.ColonyInfo;
-import dhbw.karlsruhe.it.solar.core.savegames.MissionInfoExtended;
-import dhbw.karlsruhe.it.solar.core.savegames.PlayerInfo;
-import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
-import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
+import dhbw.karlsruhe.it.solar.core.savegames.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -40,7 +34,9 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnitManager;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
 import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
-import dhbw.karlsruhe.it.solar.core.usercontrols.*;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SelectionRectangle;
+import dhbw.karlsruhe.it.solar.core.usercontrols.ShapeRenderable;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
 
@@ -48,23 +44,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameStartStage extends BaseStage implements Telegraph {
+    public static final CalendarTime GAMETIME = new CalendarTime();
+    private static GameInputListener inputListener;
+    private static float gameSpeed = 0f;
+    private static float oldGameSpeed = 1f;
     private Selection selectedActors = new Selection();
     private SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
-    private static GameInputListener inputListener;
     private PlayerManager playerManager = new PlayerManager();
-
     private SolarShapeRenderer solarShapeRenderer = new SolarShapeRenderer();
     private ShapeRenderer libGDXShapeRenderer = new ShapeRenderer();
+    private List<PlanetaryRing> ringList = new ArrayList<>();
 
-    private static float gameSpeed = 0f;
-    private static float oldGameSpeed = 1f;
-
-    public static final CalendarTime GAMETIME = new CalendarTime();
-
-    private List<PlanetaryRing> ringList = new ArrayList<PlanetaryRing>();
-
-    public GameStartStage(SolarEngine se)   {
+    private GameStartStage(SolarEngine se) {
         super(se, "GameStartStage");
         se.setZoomSolarCameraTo(25);
 
@@ -144,14 +136,74 @@ public class GameStartStage extends BaseStage implements Telegraph {
         engine.startGame();
     }
 
-    public void initCurrentGame() {
+    public static void changeTimeSpeed(float increase) {
+        float newSpeed = GameStartStage.gameSpeed + increase;
+        if (newSpeed < 0) {
+            newSpeed = 0;
+        }
+        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10) / 10;
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, GameStartStage.gameSpeed);
+    }
+
+    public static void setTimeSpeed(float newSpeed) {
+        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10) / 10;
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, GameStartStage.gameSpeed);
+    }
+
+    public static void togglePause() {
+        if (GameStartStage.gameSpeed == 0) {
+            GameStartStage.gameSpeed = GameStartStage.oldGameSpeed;
+        } else {
+            GameStartStage.oldGameSpeed = GameStartStage.gameSpeed;
+            GameStartStage.gameSpeed = 0;
+        }
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, GameStartStage.gameSpeed);
+    }
+
+    public static void inputListenerInteract(InputEvent event) {
+        inputListener.interact(event, 0, 0);
+    }
+
+    public static void inputListenerNavigate(InputEvent event) {
+        inputListener.navigate(event, 0, 0);
+    }
+
+    public static float getGameSpeed() {
+        return gameSpeed;
+    }
+
+    /**
+     * Old method / Scenario : Creates the solar system with code lines, doesn't use savegame mechanic.
+     */
+    public static void startSolarScenario() {
+        GAMETIME.reset();
+        SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
+
+        GameStartStage gameStage = initGameStartStage(engine);
+        GameHUDStage gameHUDStage = initGameHUDStage(engine);
+
+        gameStage.initExampleSystem();
+        gameHUDStage.update();
+
+        initMultiplexer(gameStage, gameHUDStage);
+    }
+
+    public static void inputListenerMoveCamera(SolarActor target) {
+        inputListener.moveCamera(target);
+    }
+
+    public static void stopTime() {
+        setTimeSpeed(0);
+    }
+
+    private void initCurrentGame() {
         SaveGameManager loadedGame = new SaveGameManager(this);
         loadedGame.loadCurrentGame();
     }
-    
-    public void initNewGame() {
+
+    private void initNewGame() {
         SaveGameManager loadedGame = new SaveGameManager(this);
-        loadedGame.loadNewGame();        
+        loadedGame.loadNewGame();
     }
 
     private void placeNewColony(String nameOfAstronomicalBody, String colonyName, Player foundingPlayer, Population colonists, ColonyBuildings buildings) {
@@ -203,8 +255,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private void addSelectionRectangle()    {
         selectionRectangle = new SelectionRectangle();
         addActor(selectionRectangle);
-    }    
-
+    }
+    
     /**
      * Waits for mouse input in the game and interprets it accordingly.
      * Handles selection and deselection of objects.
@@ -219,7 +271,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
         return playerManager.getPlayerOnThisPlatform();
     }
 
-
     @Override
     public void addActor(Actor actor) {
         super.addActor(actor);
@@ -229,30 +280,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
     @Override
     public boolean handleMessage(Telegram telegram) {
         return false;
-    }
-
-    public static void changeTimeSpeed(float increase) {
-        float newSpeed = GameStartStage.gameSpeed + increase;
-        if (newSpeed < 0) {
-            newSpeed = 0;
-        }
-        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10)/10;
-        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
-    }
-
-    public static void setTimeSpeed(float newSpeed) {
-        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10)/10;
-        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED,new Float(GameStartStage.gameSpeed));
-    }
-
-    public static void togglePause() {
-        if(GameStartStage.gameSpeed == 0) {
-            GameStartStage.gameSpeed = GameStartStage.oldGameSpeed;
-        } else {
-            GameStartStage.oldGameSpeed = GameStartStage.gameSpeed;
-            GameStartStage.gameSpeed = 0;
-        }
-        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, new Float(GameStartStage.gameSpeed));
     }
 
     public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
@@ -282,29 +309,17 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void startOfSelectionRectangle(float x, float y) {
         selectionRectangle.setStart(x,y);
     }
-    
+
     public void updateEndOfSelectionRectangle(float x, float y) {
         selectionRectangle.updateEnd(x, y);
     }
-    
+
     public void hideSelectionRectangle() {
         selectionRectangle.hide();
     }
-    
+
     public Rectangle getSelectionRectangle() {
         return selectionRectangle.getRectangle();
-    }
-    
-    public static void inputListenerInteract(InputEvent event) {
-        inputListener.interact(event, 0, 0);
-    }
-    
-    public static void inputListenerNavigate(InputEvent event) {
-        inputListener.navigate(event, 0, 0);
-    }
-    
-    public static float getGameSpeed() {
-        return gameSpeed;
     }
 
     public boolean isThisPlayerOnThisPlatform(Player player) {
@@ -314,7 +329,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void removeShip(SpaceUnit spaceUnit) {
         spaceUnit.remove();
         selectedActors.remove(spaceUnit);
-        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, spaceUnit);        
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, spaceUnit);
     }
 
     public void refreshSelection(SolarActor actor) {
@@ -351,7 +366,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
                addActor(manager.createNewBody(body));
                initColonies(body);
         }
-        
+
     }
 
     private void initColonies(AstroBodyInfo body) {
@@ -369,26 +384,27 @@ public class GameStartStage extends BaseStage implements Telegraph {
         SpaceUnitManager manager = new SpaceUnitManager(playerManager,solarSystem);
         for (SpaceUnitInfo unit : spaceUnits) {
            addActor(manager.createNewUnit(unit));
-        }        
-    } 
+        }
+    }
 
     /**
      * Converts mission information in the form of MissionInfoExtended into orders to space units. Part of the loading process.
      * @param listOfMissions
      */
-    public void assignMission(List<MissionInfoExtended> listOfMissions) {     
+    public void assignMission(List<MissionInfoExtended> listOfMissions) {
         for (MissionInfoExtended mission : listOfMissions) {
-            assignDestination(mission);         
-        }   
+            assignDestination(mission);
+        }
     }
 
     private void assignDestination(MissionInfoExtended mission) {
         SpaceUnit unit = (SpaceUnit)findActorByName(mission.getUnitName());
-        
+
         if(mission.isMissionTargetAnObject()) {
             assignObjectTarget(mission, unit);
             return;
         }
+        assert unit != null;
         unit.setDestination(mission.getDestinationCoordinates());
     }
 
@@ -400,7 +416,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
         }
         if(target instanceof KinematicObject) {
             unit.setDestination((KinematicObject)target);
-            return;
         }
     }
 
@@ -414,39 +429,23 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
     
     /**
-     * Old method / Scenario : Creates the solar system with code lines, doesn't use savegame mechanic.
-     */
-    public static void startSolarScenario() {
-        GAMETIME.reset();
-        SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
-
-        GameStartStage gameStage = initGameStartStage(engine);
-        GameHUDStage gameHUDStage = initGameHUDStage(engine);
-        
-        gameStage.initExampleSystem();
-        gameHUDStage.update();
-        
-        initMultiplexer(gameStage, gameHUDStage);       
-    }
-    
-    /**
      * Old method retained for code maintenance purposes. Manually initializes an example system without the use of a save file.
      */
     private void initExampleSystem() {
         playerManager.initializePlayers();
         initSettings(new InfoBarManagerSettings());
-        
+
         systemCreation();
         placeNewShip("Event Horizon", new Vector2(1200, 500), playerManager.getPlayerNumber(0));
         placeNewShip("Nostromo", new Vector2(1500, 1000), playerManager.getPlayerNumber(0));
         placeNewShip("Destiny", new Vector2(1550, 1050), playerManager.getPlayerNumber(1));
         placeNewStation("Deep Space Nine", new Vector2(1500, 0), playerManager.getPlayerNumber(0));
-        
+
         // Create an example space station orbiting Earth
         Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), playerManager.getPlayerNumber(1));
         AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(ConfigurationConstants.HOMEWORLD);
         if (null != primary) {
-            babylon.enterOrbit(primary);        
+            babylon.enterOrbit(primary);
         }
         //place some example colonies
         placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7125 * BaseResource.MILLION), new BuildingManager().createInfrastructure(1000000).generateColonyBuildings());
@@ -479,7 +478,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
             }
         }
     }
-    
+
     /**
      * Adds a new spaceship object to the game.
      * @param name Desired name of the spaceship.
@@ -489,7 +488,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         Spaceship newShip = Spaceship.placeNewShip(name, startlocation, owner);
         addActor(newShip);
     }
-    
+
     /**
      * Adds a new space station object to the game.
      * @param name Desired name of the station.
@@ -499,10 +498,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
         Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
         addActor(newStation);
         return newStation;
-    }
-
-    public static void inputListenerMoveCamera(SolarActor target) {
-        inputListener.moveCamera(target);
     }
 
     public InfoBarManagerSettings getSettings() {
@@ -524,12 +519,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
             player.updateTreasury(deltaT);
         }
     }
-    
+
     public SolarSystem getSolarSystem() {
         return solarSystem;
-    }
-
-    public static void stopTime() {
-        setTimeSpeed(0);
     }
 }

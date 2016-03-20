@@ -5,13 +5,13 @@ package dhbw.karlsruhe.it.solar.core.physics;
  * @author Andi
  * 2015-05-01
  */
-public abstract class FuzzyValue {
-    
-    protected float fuzzyValueTooLow;
-    protected float fuzzyValueOptimal;
-    protected float fuzzyValueTooHigh;
-    
-    protected float calculateFuzzyValue(float value, float optimalValue, float minimumThreshold, float maximumThreshold) {
+abstract class FuzzyValue {
+
+    float fuzzyValueTooLow;
+    float fuzzyValueOptimal;
+    float fuzzyValueTooHigh;
+
+    float calculateFuzzyValue(float value, float optimalValue, float minimumThreshold, float maximumThreshold) {
         if(value < minimumThreshold) {
             return 0;
         }
@@ -23,8 +23,8 @@ public abstract class FuzzyValue {
         }
         return 0;
     }
-    
-    protected float calculateHighFuzzyValue(float value, float optimalValue, float minimumThreshold) {
+
+    float calculateHighFuzzyValue(float value, float optimalValue, float minimumThreshold) {
         if(value < minimumThreshold) {
             return 0;
         }
@@ -33,8 +33,8 @@ public abstract class FuzzyValue {
         }
         return 1;
     }
-    
-    protected float calculateLowFuzzyValue(float value, float optimalValue, float maximumThreshold) {
+
+    float calculateLowFuzzyValue(float value, float optimalValue, float maximumThreshold) {
         if(value < optimalValue) {
             return 1;
         }
@@ -57,8 +57,8 @@ public abstract class FuzzyValue {
     public float optimal() {
         return fuzzyValueOptimal;
     }
-    
-    protected String formatValue(float value) {
+
+    String formatValue(float value) {
         return String.format("%.02f", value);
     }   
 }

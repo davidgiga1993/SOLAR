@@ -12,62 +12,41 @@ import static org.junit.Assert.assertTrue;
 public class StageManagerJUnit
 {
     @Test
-    public void testGetStage()
-    {
-       	final TestResult result = new TestResult();
-    	TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runGetStage();
-			}
-		});
-    	
-    	assertTrue(result.boolResult);
+    public void testGetStage() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runGetStage());
+
+        assertTrue(result.boolResult);
     }
-    
-    public boolean runGetStage() {
-    	StageManager Manager = new StageManager(TestSuite.getEngine());
+
+    private boolean runGetStage() {
+        StageManager Manager = new StageManager(TestSuite.getEngine());
         BaseStage TestStage = new TestStage("Test");
         Manager.addStage(TestStage);
         return Manager.getStage("Test") != null;
     }
 
     @Test
-    public void testInsertStageToBack()
-    {
-    	final TestResult result = new TestResult();
-    	TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runInsertStageToBack();
-			}
-		});
-    	
-    	assertTrue(result.boolResult);
+    public void testInsertStageToBack() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runInsertStageToBack());
+
+        assertTrue(result.boolResult);
     }
 
 	private boolean runInsertStageToBack() {
 		StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.insertStageToBack(new TestStage("TestBack"));
-        return Manager.getStage(0).getTag().equals("TestBack") != false;
+        return Manager.getStage(0).getTag().equals("TestBack");
     }
 
     @Test
-    public void testSwapCurrentStage()
-    {
-    	final TestResult result = new TestResult();
-    	TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runSwapCurrentStage();
-			}
-		});
-    	
-    	assertTrue(result.boolResult);
+    public void testSwapCurrentStage() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runSwapCurrentStage());
+
+        assertTrue(result.boolResult);
     }
 
 	private boolean runSwapCurrentStage() {
@@ -75,22 +54,15 @@ public class StageManagerJUnit
         Manager.addStage(new TestStage("Test0"));
         Manager.addStage(new TestStage("Test1"));
         Manager.swapCurrentStage(new TestStage("TestBack"));
-        return Manager.getStage(1).getTag().equals("TestBack") != false;
+        return Manager.getStage(1).getTag().equals("TestBack");
     }
 
     @Test
-    public void testAddStage()
-    {
-    	final TestResult result = new TestResult();
-    	TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runAddStage();
-			}
-		});
-    	
-    	assertTrue(result.boolResult);
+    public void testAddStage() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runAddStage());
+
+        assertTrue(result.boolResult);
     }
 
 	private boolean runAddStage() {
@@ -110,18 +82,11 @@ public class StageManagerJUnit
     }
 
     @Test
-    public void testRemoveStage()
-    {
-    	final TestResult result = new TestResult();
-    	TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runRemoveStage();
-			}
-		});
-    	
-    	assertTrue(result.boolResult);
+    public void testRemoveStage() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runRemoveStage());
+
+        assertTrue(result.boolResult);
     }
 
 	private boolean runRemoveStage() {
@@ -143,18 +108,11 @@ public class StageManagerJUnit
     }
 
     @Test
-    public void testRemoveStages()
-    {
-    	final TestResult result = new TestResult();
-    	TestHelper.sendRunnableToOpenGL(new Runnable() {
-			
-			@Override
-			public void run() {
-				result.boolResult = runRemoveStages();
-			}
-		});
-    	
-    	assertTrue(result.boolResult);
+    public void testRemoveStages() throws InterruptedException {
+        final TestResult result = new TestResult();
+        TestHelper.sendRunnableToOpenGL(() -> result.boolResult = runRemoveStages());
+
+        assertTrue(result.boolResult);
     }
 
 	private boolean runRemoveStages() {

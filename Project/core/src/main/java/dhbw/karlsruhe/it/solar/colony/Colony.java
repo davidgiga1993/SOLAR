@@ -1,21 +1,15 @@
 package dhbw.karlsruhe.it.solar.colony;
 
-import java.util.List;
-
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.LifeRating;
 import dhbw.karlsruhe.it.solar.core.physics.Power;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.resources.CapacitiveResourceInterface;
-import dhbw.karlsruhe.it.solar.core.resources.Credits;
-import dhbw.karlsruhe.it.solar.core.resources.ElectricPower;
-import dhbw.karlsruhe.it.solar.core.resources.LifeSupport;
-import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.resources.StandardResourceInterface;
+import dhbw.karlsruhe.it.solar.core.resources.*;
 import dhbw.karlsruhe.it.solar.player.Ownable;
 import dhbw.karlsruhe.it.solar.player.Player;
+
+import java.util.List;
 
 /**
  * Object governing the working of a player colony on an astronomical body.
@@ -24,12 +18,12 @@ import dhbw.karlsruhe.it.solar.player.Player;
  */
 public class Colony implements Ownable, ResourceDepot {
     
-    private String name;
-    private Player owner;
-    private AstronomicalBody primary;
     private final ColonyResources resources = new ColonyResources();
     private final ColonyBuildings buildings = new ColonyBuildings();
     private final ColonyAlerts alerts = new ColonyAlerts();
+    private String name;
+    private Player owner;
+    private AstronomicalBody primary;
     
     public Colony(String colonyName, AstronomicalBody colonyPlace, Player colonyFounder, Population colonists)    {
         name = colonyName;
@@ -163,11 +157,11 @@ public class Colony implements Ownable, ResourceDepot {
         return buildings.getListOfColonyBuildings();
     }
 
-    public void updateCapacities() {
+    private void updateCapacities() {
         resources.updateCapacities(this);
     }
 
-    public LifeRating getLiferatingOfColony() {
+    private LifeRating getLiferatingOfColony() {
         return primary.getLifeRating();
     }
 

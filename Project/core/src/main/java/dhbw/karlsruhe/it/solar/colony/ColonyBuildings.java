@@ -1,16 +1,16 @@
 package dhbw.karlsruhe.it.solar.colony;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import dhbw.karlsruhe.it.solar.core.physics.Power;
 import dhbw.karlsruhe.it.solar.core.physics.Power.PowerUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ColonyBuildings {
-    
-    private final List<Building> buildings = new ArrayList<Building>();
+
+    private final List<Building> buildings = new ArrayList<>();
     
     public ColonyBuildings() {
         
@@ -87,7 +87,7 @@ public class ColonyBuildings {
     }
 
     public List<BaseBuilding> getListOfColonyBuildings() {
-        List<BaseBuilding> list = new ArrayList<BaseBuilding>();
+        List<BaseBuilding> list = new ArrayList<>();
         for(Building building : buildings) {
             list.add((BaseBuilding)building);
         }

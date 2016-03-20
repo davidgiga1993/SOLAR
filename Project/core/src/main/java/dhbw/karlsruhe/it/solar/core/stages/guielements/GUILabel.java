@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
@@ -13,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class GUILabel extends Label implements GUIActor {
 
-    final Tooltip tooltip = new Tooltip("Test", Styles.TOOLTIPSKIN);
+    private final Tooltip tooltip = new Tooltip("Test", Styles.TOOLTIPSKIN);
     private InputListener tooltipInputListener;
     private boolean tooltipIsEnabled = false;
 
@@ -27,13 +26,11 @@ public class GUILabel extends Label implements GUIActor {
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                 tooltip.updatePosition();
                 tooltip.setVisible(true);
-                return;
             }
 
             @Override
             public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                 tooltip.setVisible(false);
-                return;
             }
 
         };
@@ -49,7 +46,7 @@ public class GUILabel extends Label implements GUIActor {
         tooltipIsEnabled = false;
     }
 
-    public void enableTooltips() {
+    private void enableTooltips() {
         if(tooltipIsEnabled){
             return;
         }

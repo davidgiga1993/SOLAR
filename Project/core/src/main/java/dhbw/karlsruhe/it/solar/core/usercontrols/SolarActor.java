@@ -20,13 +20,13 @@ public abstract class SolarActor extends Actor implements Telegraph {
     public static final double STAGESCALINGFACTOR = 2 * Math.pow(10, 4);
     protected boolean selected;
     protected TextureRegion solarActorTexture;
-    protected Sprite solarActorSprite;
     protected Color selectionColor;
     protected SolarActorScale actorScale;
     protected float currentShapeScale;
     protected float currentOrbitScale;
+    private Sprite solarActorSprite;
 
-    public SolarActor(String name) {
+    SolarActor(String name) {
         this.setName(name);
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.GAME_SCALE_CHANGED);
         selectionColor = Color.GREEN;
@@ -104,7 +104,7 @@ public abstract class SolarActor extends Actor implements Telegraph {
         }
     }
 
-    public void setActorScale(SolarActorScale scale) {
+    protected void setActorScale(SolarActorScale scale) {
         actorScale = scale;
         currentOrbitScale = scale.getOrbitScale();
         currentShapeScale = scale.getShapeScale();

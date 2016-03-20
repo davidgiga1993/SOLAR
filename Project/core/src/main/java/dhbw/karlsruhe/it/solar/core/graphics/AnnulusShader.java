@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
  * Created by Arga on 08.03.2015.
  */
 public class AnnulusShader extends ShaderProgram{
-    public static final String VERTEX_SHADER = "attribute vec2 a_position;    \n" +
+    private static final String VERTEX_SHADER = "attribute vec2 a_position;    \n" +
             "attribute vec2 a_texCoord; \n" +
 
             "uniform mat4 u_projTrans; \n" +
@@ -22,7 +22,7 @@ public class AnnulusShader extends ShaderProgram{
             "       v_texCoords = a_texCoord; \n" +
             "       gl_Position = u_projTrans * vec4(v_position.xy, 0.0, 1.0); \n" +
             "} \n";
-    public static final String FRAGMENT_SHADER = "#ifdef GL_ES \n" +
+    private static final String FRAGMENT_SHADER = "#ifdef GL_ES \n" +
             "    #define LOWP lowp \n" +
             "    precision mediump float; \n" +
             "#else \n" +

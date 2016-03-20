@@ -12,22 +12,22 @@ public interface GlobalResourceInterface {
     /**
      * Updates the statistics of the resource if enough time has passed.
      */
-    public void updateStatistic();
+    void updateStatistic();
     
     /**
      * Sets resource value to zero for recalculation.
      */
-    public void empty();
+    void empty();
     
     /**
      * Returns the current discrete exact value of the resource at this resource depot.
      * @return
      */
-    public long getNumber();
+    long getNumber();
     
     /**
      * Returns the table to be inserted as the title of the this global resource's part of the top Resource Bar
      * @return
      */
-    public Table getResourceBarTitle();
+    Table getResourceBarTitle();
 }

@@ -2,7 +2,6 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
@@ -24,10 +23,10 @@ import java.util.List;
  *
  */
 public abstract class AstronomicalBody extends Orbiter  {
-    protected BodyProperties physicalProperties;
-    protected List<AstronomicalBody> satellites = new ArrayList<AstronomicalBody>();
     protected BodyGameLabel label;
-    protected Colony colony;
+    BodyProperties physicalProperties;
+    private List<AstronomicalBody> satellites = new ArrayList<AstronomicalBody>();
+    private Colony colony;
 
     public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)    {
         super(name, orbit, scaleFactor);
@@ -98,13 +97,13 @@ public abstract class AstronomicalBody extends Orbiter  {
         }
         super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
     }
-    
-    protected void setUpRings(PlanetaryRing ring)    {
+
+    void setUpRings(PlanetaryRing ring) {
         physicalProperties.setUpRings(ring);
         satellites.add(physicalProperties.getRings());
     }
-    
-    public void setRingPrimary(AstronomicalBody body)    {
+
+    void setRingPrimary(AstronomicalBody body) {
         physicalProperties.setRingPrimary(body);
     }
     
@@ -124,7 +123,7 @@ public abstract class AstronomicalBody extends Orbiter  {
         return colony;
     }
 
-    protected void addAsSatellite() {
+    private void addAsSatellite() {
         orbitalProperties.addAsSatellite(this);        
     }
 
@@ -147,8 +146,8 @@ public abstract class AstronomicalBody extends Orbiter  {
     public Length calculateMaxOrbitalRadius() {
             return orbitalProperties.calculateMaxOrbitalRadius(physicalProperties.getMass());
     }
-    
-    protected void addMass(Mass massToBeAddedToTheBody) {
+
+    void addMass(Mass massToBeAddedToTheBody) {
         physicalProperties.addMass(massToBeAddedToTheBody);
     }
 
@@ -206,15 +205,15 @@ public abstract class AstronomicalBody extends Orbiter  {
         return physicalProperties.getAtmosphere();
     }
 
-    public SurfaceTemperature getTemperatures() {
+    SurfaceTemperature getTemperatures() {
         return physicalProperties.getTemperatures();
     }
 
     public Hydrosphere getHydrosphere() {
         return physicalProperties.getHydrosphere();
     }
-    
-    public void setUpHydrosphere(float liquidWaterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
+
+    private void setUpHydrosphere(float liquidWaterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
         physicalProperties.setUpHydrosphere(liquidWaterCover, iceCover, liquidWater, subsurfaceOcean);
     }
 
@@ -296,7 +295,7 @@ public abstract class AstronomicalBody extends Orbiter  {
         physicalProperties.calculateSurfaceTemperature(this);
     }
 
-    public Star getStar() {
+    private Star getStar() {
         if(this instanceof SolarSystem) {
             return null;
         }

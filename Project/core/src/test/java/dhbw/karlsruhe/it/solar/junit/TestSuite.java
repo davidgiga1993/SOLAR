@@ -32,7 +32,7 @@ public class TestSuite {
 	private static LwjglApplication app; // only for convenience, keep if you want to
 
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() {
 		app = new LwjglApplication(new SolarEngine(), TestHelper.createTestConfig());
 		TestHelper.wait(1200);
 		
@@ -40,7 +40,7 @@ public class TestSuite {
 	}
 
 	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() {
 		app.exit();
 	}
 	

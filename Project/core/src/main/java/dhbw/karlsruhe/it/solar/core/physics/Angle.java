@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
  *
  */
 public class Angle {
-    
-    public static final float DEGREE_IN_RADIANS = (float)( 180f / Math.PI);
-    public static final float RADIANS_CIRCLE = (float) (2 * Math.PI);
+
+    private static final float DEGREE_IN_RADIANS = (float) (180f / Math.PI);
+    private static final float RADIANS_CIRCLE = (float) (2 * Math.PI);
     
     @XmlElement
     private double value;
@@ -27,11 +27,6 @@ public class Angle {
         preventOverflow();
     }
     
-    public enum AngularUnit {
-        DEGREE,
-        RADIANS
-    }
-    
     public float inDegrees() {
         switch(angularUnit) {
             case DEGREE:
@@ -42,8 +37,8 @@ public class Angle {
                 return Float.NaN;
         }
     }
-    
-    public float inRadians() {
+
+    private float inRadians() {
         switch(angularUnit) {
             case DEGREE:
                 return (float) value / DEGREE_IN_RADIANS;
@@ -84,5 +79,10 @@ public class Angle {
         default:
                 value = Float.NaN;
         }
+    }
+
+    public enum AngularUnit {
+        DEGREE,
+        RADIANS
     }
 }

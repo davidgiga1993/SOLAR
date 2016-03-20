@@ -3,12 +3,9 @@ package dhbw.karlsruhe.it.solar.junit;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
-import dhbw.karlsruhe.it.solar.player.Player;
 import dhbw.karlsruhe.it.solar.player.PlayerManager;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,20 +19,15 @@ public class SpaceshipJUnit
     private Spaceship testShip;
 
     @Before
-    public void setUp() throws Exception
-    { 
-    	final CountDownLatch latch = new CountDownLatch(1);
-    	Runnable runner = new Runnable() {
-
-    	@Override
-    	public void run() {
-    		try {
-				testShip = placeTestShip();
+    public void setUp() {
+        final CountDownLatch latch = new CountDownLatch(1);
+        Runnable runner = () -> {
+            try {
+                testShip = placeTestShip();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
     		latch.countDown();
-    	}
     	};
     	Gdx.app.postRunnable(runner);
     	try {
@@ -45,16 +37,14 @@ public class SpaceshipJUnit
     		e.printStackTrace();
     	}
     }
-    
-    private Spaceship placeTestShip() throws Exception
-    {
-    	final PlayerManager playerManager = new PlayerManager();
-    	return new Spaceship("Testschiff", new Length(1, Length.DistanceUnit.KILOMETERS), new Length(2, Length.DistanceUnit.KILOMETERS), playerManager.createPlayer("human", Color.BLUE));
+
+    private Spaceship placeTestShip() {
+        final PlayerManager playerManager = new PlayerManager();
+        return new Spaceship("Testschiff", new Length(1, Length.DistanceUnit.KILOMETERS), new Length(2, Length.DistanceUnit.KILOMETERS), playerManager.createPlayer("human", Color.BLUE));
     }
 
     @After
-    public void tearDown() throws Exception
-    {
+    public void tearDown() {
     }
 
     /**

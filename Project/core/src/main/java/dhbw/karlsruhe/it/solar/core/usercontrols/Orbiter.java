@@ -5,16 +5,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
-import dhbw.karlsruhe.it.solar.core.physics.Time;
+import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
@@ -27,23 +22,21 @@ import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
  * Therefore it handles all methods and information relating to the game's orbital mechanics.
  */
 public abstract class Orbiter extends SolarActor implements ShapeRenderable, KinematicObject  {
-     protected static final float PREVIEW_PIXEL_WIDTH = 5.5f;
-
+    private static final float PREVIEW_PIXEL_WIDTH = 5.5f;
+    protected final Kinematic kinematic;
      protected OrbitalProperties orbitalProperties;
      protected PreviewActor preview;
      protected float orbitalRadiusInPixels;
-     protected final Kinematic kinematic;
-
      protected int segments = 250;
      protected Color orbitColor = Color.TEAL;
 
-    protected Matrix4 orbitTransform = new Matrix4();
+    private Matrix4 orbitTransform = new Matrix4();
 
-    public Orbiter(String name)     {
+    protected Orbiter(String name) {
           this(name, null, ConfigurationConstants.SCALE_FACTOR_STAR);
      }
-     
-     public Orbiter(String name, OrbitalProperties orbit, SolarActorScale scaleFactor)     {
+
+    protected Orbiter(String name, OrbitalProperties orbit, SolarActorScale scaleFactor) {
           super(name);
           setActorScale(scaleFactor);
           this.kinematic = new Kinematic(new Vector2(getX(), getY()), 0, 0);
@@ -67,7 +60,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
       * Calculates the center of an object texture based on its x/y position coordinates which correspond to the lower left corner of the texture.
       * @return Position coordinates of the center of the object's texture.
       */
-     protected Vector2 getAdjustedPosition() {
+     private Vector2 getAdjustedPosition() {
          return new Vector2(getX() + getWidth()/2, getY() + getHeight()/2);
      }
      
@@ -91,7 +84,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
      /**
       * Sets the orbital radius in pixels value relative to the scaling setting for the stage. 
       */
-     protected void changeOrbitScale() {
+     private void changeOrbitScale() {
           if(orbitalProperties == null) {
                return;
           }
@@ -137,7 +130,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
       * Method implements change of position of labels for actors using the Orbiter superclass.
       */
      protected void adjustLabelPosition() {
-          return;
+         // TODO: should this be empty? If so then document why.
      }
      
     /**
@@ -213,8 +206,8 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
      public AstronomicalBody getPrimary() {
           return orbitalProperties.getPrimary();
      }
-     
-     public void setKinematicPosition(Vector2 position) {
+
+    protected void setKinematicPosition(Vector2 position) {
          kinematic.setPosition(position);
      }
      
@@ -227,17 +220,11 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
      }
 
     public boolean isInRetrogradeOrbit() {
-        if(isInOrbit() && orbitalProperties.isRetrograde()) {
-            return true;
-        }
-        return false;
+        return isInOrbit() && orbitalProperties.isRetrograde();
     }
 
     public boolean isInCoorbitalOrbit() {
-        if(isInOrbit() && orbitalProperties.isCoorbital()) {
-            return true;
-        }
-        return false;
+        return isInOrbit() && orbitalProperties.isCoorbital();
     }
 
     public Coorbital getCoorbitalInformation() {

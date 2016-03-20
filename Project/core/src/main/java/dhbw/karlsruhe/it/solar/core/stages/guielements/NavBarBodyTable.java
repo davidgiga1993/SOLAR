@@ -2,7 +2,6 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
@@ -21,9 +20,9 @@ public class NavBarBodyTable extends NavBarBaseTable {
         super();
     }
 
-    protected void init() {
+    private void init() {
         // Find all stars
-        List<AstronomicalBody> stars = new ArrayList<AstronomicalBody>();
+        List<AstronomicalBody> stars = new ArrayList<>();
         GameStartStage gameStage = (GameStartStage) SolarEngine.get().getStage("GameStartStage");
         for (Actor actor : gameStage.getActors()) {
             if (actor instanceof Star) {
@@ -36,8 +35,8 @@ public class NavBarBodyTable extends NavBarBaseTable {
         invalidate();
     }
 
-    protected List<NavBarBaseLabel> buildHierarchy(List<AstronomicalBody> group, int depth) {
-        List<NavBarBaseLabel> result = new ArrayList<NavBarBaseLabel>();
+    private List<NavBarBaseLabel> buildHierarchy(List<AstronomicalBody> group, int depth) {
+        List<NavBarBaseLabel> result = new ArrayList<>();
         String tab = "";
         for (int i = 0; i < depth; i++) {
             tab += TAB;

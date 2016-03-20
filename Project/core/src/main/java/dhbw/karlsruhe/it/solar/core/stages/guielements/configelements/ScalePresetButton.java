@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
@@ -25,17 +24,6 @@ public abstract class ScalePresetButton extends TextButton {
                 applyPreset();
             }
         });
-    }
-
-    public abstract void onClick();
-
-    public void applyPreset() {
-        Array<Actor> actors = SolarEngine.get().getStage("GameStartStage").getActors();
-        for (Actor a : actors) {
-            if (a instanceof SolarActor) {
-                ((SolarActor) a).updateScale();
-            }
-        }
     }
 
     public static void loadPreset1() {
@@ -60,5 +48,16 @@ public abstract class ScalePresetButton extends TextButton {
         ConfigurationConstants.SCALE_FACTOR_PLANET.set(40,0.5f);
         ConfigurationConstants.SCALE_FACTOR_STAR.set(48,1);
         ConfigurationConstants.SCALE_FACTOR_UNITS.set(3500000,3);
+    }
+
+    public abstract void onClick();
+
+    private void applyPreset() {
+        Array<Actor> actors = SolarEngine.get().getStage("GameStartStage").getActors();
+        for (Actor a : actors) {
+            if (a instanceof SolarActor) {
+                ((SolarActor) a).updateScale();
+            }
+        }
     }
 }

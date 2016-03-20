@@ -8,23 +8,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
  * @author Andi
  * created 2015-05-16
  */
-public interface BaseResourceInterface {
+interface BaseResourceInterface {
 
     /**
      * Returns the Texture's icon as a TextureRegion
      * @return
      */
-    public TextureRegion getIcon();
+    TextureRegion getIcon();
     
     /**
      * Returns a table cell containing the resource icon.
      * @return
      */
-    public Table loadIcon();
+    Table loadIcon();
     
     /**
      * Returns a string for the GUI describing the current amount of that resource.
      * @return
      */
-    public String toString();
+    String toString();
 }

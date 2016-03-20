@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.graphics.AnnulusShader;
 import dhbw.karlsruhe.it.solar.core.physics.*;
@@ -29,13 +28,13 @@ public class PlanetaryRing extends AstronomicalBody {
 
     private static final AnnulusShader RING_SHADER = new AnnulusShader();
 
-    protected Length innerRadius;
+    private Length innerRadius;
     private RingType type;
 
-    protected float innerRadiusPixels;
-    protected float outerRadiusPixels;
+    private float innerRadiusPixels;
+    private float outerRadiusPixels;
 
-    protected Mesh ringMesh;
+    private Mesh ringMesh;
     private float[] vertices;
     private short[] indices;
 
@@ -54,15 +53,46 @@ public class PlanetaryRing extends AstronomicalBody {
         ringMesh.setIndices(indices);
     }
 
+    private static SolarActorScale scaleOfRings() {
+        return ConfigurationConstants.SCALE_FACTOR_PLANET;
+    }
+
+    private static OrbitalProperties orbitOfRings(AstronomicalBody orbitPrimary, Length radius) {
+        return new OrbitalProperties(orbitPrimary, radius, new Angle());
+    }
+
+    private static BodyProperties bodyOfRings(Mass mass, Length radius) {
+        return new BodyProperties(mass, radius, null);
+    }
+
+    private static String nameOfRings(AstronomicalBody orbitPrimary) {
+        if (null == orbitPrimary) {
+            return "Ring system";
+        }
+        return "Rings of " + orbitPrimary.getName();
+    }
+
+    private static String textureOfRings(RingType type) {
+        switch (type) {
+            case JOVIAN:
+                return "Rings_Jupiter";
+            case SATURNIAN:
+                return "Rings_Saturn";
+            case URANIAN:
+                return "Rings_Uranus";
+            case NEPTUNIAN:
+                return "Rings_Neptune";
+            default:
+                return "Rings_Jupiter";
+        }
+    }
+
     private Mesh createPolygonRegion(float innerRadius, float outerRadius) {
         return new Mesh(true, segments*2, segments*2+2, new VertexAttribute(VertexAttributes.Usage.Position, 2, "a_position"), new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, "a_texCoord"));
     }
 
     private void calculateVertices(float innerRadius, float outerRadius) {
         double phi = (2*Math.PI)/segments;
-
-        float rIn = innerRadius;
-        float rOut = outerRadius;
 
         vertices = new float[segments*8];
         indices = new short[segments*2+2];
@@ -76,15 +106,15 @@ public class PlanetaryRing extends AstronomicalBody {
             float sin = (float) Math.sin(phi*n);
             float cos = (float) Math.cos(phi*n);
 
-            vertices[i++] = cos * rOut;
-            vertices[i++] = sin * rOut;
+            vertices[i++] = cos * outerRadius;
+            vertices[i++] = sin * outerRadius;
 
             vertices[i++] = u;
             vertices[i++] = v;
 
             // position
-            vertices[i++] = cos * rIn;
-            vertices[i++] = sin * rIn;
+            vertices[i++] = cos * innerRadius;
+            vertices[i++] = sin * innerRadius;
             // texture
             vertices[i++] = u;
             vertices[i++] = v2;
@@ -125,7 +155,7 @@ public class PlanetaryRing extends AstronomicalBody {
 
         RING_SHADER.end();
     }
-
+    
     @Override
     public void draw(Batch batch, float parentAlpha) {
     }
@@ -133,7 +163,7 @@ public class PlanetaryRing extends AstronomicalBody {
     @Override
     protected void actOrbitalMovement(float delta) {
         orbitalProperties.updateOrbitalAngle(delta);
-        
+
         kinematic.setPosition(getCenterOfOrbit());
         this.setPosition(getReAdjustedPosition().x, getReAdjustedPosition().y);
 
@@ -142,7 +172,7 @@ public class PlanetaryRing extends AstronomicalBody {
         kinematic.setRotation(orbitalProperties.getOrbitalAngle().inDegrees() + 90f);
         kinematic.setVelocityAngle(kinematic.getRotation());
     }
-    
+
     @Override
     public void updateScale() {
         // planetary rings must be shifted by an offset when the primary is scaled
@@ -158,51 +188,10 @@ public class PlanetaryRing extends AstronomicalBody {
 
         calculateVertices(innerRadiusPixels, outerRadiusPixels);
     }
-    
+
     @Override
-    public void setRingPrimary(AstronomicalBody body)    {
+    public void setRingPrimary(AstronomicalBody body) {
         orbitalProperties.setNewOrbitPrimary(body);
-    }
-
-    private static SolarActorScale scaleOfRings() {
-        return ConfigurationConstants.SCALE_FACTOR_PLANET;
-    }
-    
-    private static OrbitalProperties orbitOfRings(AstronomicalBody orbitPrimary, Length radius) {
-        return new OrbitalProperties(orbitPrimary, radius, new Angle());
-    }
-
-    private static BodyProperties bodyOfRings(Mass mass, Length radius) {
-        return new BodyProperties(mass, radius, null);
-    }
-
-    private static String nameOfRings(AstronomicalBody orbitPrimary) {
-        if ( null == orbitPrimary)        {
-            return "Ring system";
-        }
-        return "Rings of " + orbitPrimary.getName();
-    }
-    
-    public enum RingType {
-        JOVIAN,
-        SATURNIAN,
-        URANIAN,
-        NEPTUNIAN
-    }
-    
-    private static String textureOfRings(RingType type)    {
-        switch(type)        {
-            case JOVIAN:
-                return "Rings_Jupiter";
-            case SATURNIAN:
-                return "Rings_Saturn";
-            case URANIAN:
-                return "Rings_Uranus";
-            case NEPTUNIAN:
-                return "Rings_Neptune";
-            default:
-                return "Rings_Jupiter";
-        }
     }
 
     @Override
@@ -229,5 +218,12 @@ public class PlanetaryRing extends AstronomicalBody {
     @Override
     public String getTypeName() {
         return "Planetary Ring System";
+    }
+
+    public enum RingType {
+        JOVIAN,
+        SATURNIAN,
+        URANIAN,
+        NEPTUNIAN
     }
 }

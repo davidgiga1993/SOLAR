@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.space_units;
 
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.player.Player;
@@ -12,8 +11,8 @@ import dhbw.karlsruhe.it.solar.player.Player;
  */
 public class Spacestation extends SpaceUnit  {
     private static float stationSpeed = 500f;
-    
-    public Spacestation(String name, Length width, Length length, Player owner)    {
+
+    private Spacestation(String name, Length width, Length length, Player owner) {
         super(name, owner,stationSpeed);
         setupSolarActorSprite("space_station");  
         initSpaceUnit(width, length);

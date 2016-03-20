@@ -2,12 +2,11 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
@@ -20,10 +19,10 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
  * Substantially revised by Andi on: 2015-04-19
  */
 public class InfoBarOverviewTable extends Table {
-    
+
+    private final TextButton showOnMap = new TextButton("Show On Map", Styles.TOOLTIPSKIN);
     private SolarActor selectedActor;
     private LabelStyle style = Styles.MENUELABEL_STYLE;
-    private final TextButton showOnMap = new TextButton("Show On Map", Styles.TOOLTIPSKIN);
     private final Label missionTypeLabel = new Label("", style);
     private final NavBarBaseLabel missionTypeTargetLabel = new NavBarBaseLabel("", null, style);
     private final Label missionTimeLabel = new Label("", style);
@@ -71,7 +70,6 @@ public class InfoBarOverviewTable extends Table {
         add(missionDistanceLabel).left();
         add(missionDistanceValueLabel).right();
         row();
-        return;
     }
 
     private void onShowOnMapClick() {
@@ -108,7 +106,7 @@ public class InfoBarOverviewTable extends Table {
 
     private void setNavBarBaseLabelActor() {
         if(((Orbiter)selectedActor).getPrimary() instanceof SystemRoot) {
-            missionTypeTargetLabel.setActor((Orbiter)selectedActor);            
+            missionTypeTargetLabel.setActor(selectedActor);
             return;
         }
         missionTypeTargetLabel.setActor(((Orbiter)selectedActor).getPrimary());

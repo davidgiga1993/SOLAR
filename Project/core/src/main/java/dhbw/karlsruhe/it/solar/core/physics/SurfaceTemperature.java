@@ -1,12 +1,12 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Temperature.class})
@@ -92,7 +92,6 @@ public class SurfaceTemperature {
      * This assumes that the body's only source of incoming energy is its star and that it has reached an equilibrium, radiating away exactly as much energy via black body radiation as it receives.
      * Calculation therefore neglects other possible energy sources such as greenhouse gases, geothermal activtiy, or tidal forces.
      * @param body
-     * @param albedo
      * @return
      */
     private float calculateThermalEquilibrium(AstronomicalBody body) {

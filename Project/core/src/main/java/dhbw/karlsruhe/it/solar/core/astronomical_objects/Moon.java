@@ -1,9 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.Color;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
-import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
+import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.PreviewActor;
 
@@ -12,8 +12,8 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.PreviewActor;
  *
  */
 public class Moon extends AstronomicalBody {
-    
-    MoonType type;
+
+    private MoonType type;
     
     public Moon(String name, OrbitalProperties orbit, BodyProperties body) {
         super(name, orbit, body, ConfigurationConstants.SCALE_FACTOR_MOON, body.getTexture());

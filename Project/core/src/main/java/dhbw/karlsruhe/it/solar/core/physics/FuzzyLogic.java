@@ -4,7 +4,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 import dhbw.karlsruhe.it.solar.core.physics.SurfaceGravity.GravUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 
-public class FuzzyLogic {
+class FuzzyLogic {
        
     public static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(0.91f,GravUnit.G);
     public static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.68f, 0.1f, true, false);

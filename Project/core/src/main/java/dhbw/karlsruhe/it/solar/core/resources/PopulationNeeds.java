@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 
-public class PopulationNeeds {
+class PopulationNeeds {
  
     private final static float BASE_POPULATION_GROWTH_RATE = 0.02f;
     private final static float BASE_YEARLY_TAX_CREDITS_PER_CITIZEN = 1f;

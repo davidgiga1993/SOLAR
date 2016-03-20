@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
@@ -51,7 +50,7 @@ public class Population extends StandardResource {
     }
     
     private float populationGrowthFormula() {
-        return (float)((double)((value - valuesOfLastMonth.get(0))) / (double)((valuesOfLastMonth.get(0) * ((double)valuesOfLastMonth.size()) / ((double)Time.DAYS_PER_YEAR))));
+        return (float) ((double) ((value - valuesOfLastMonth.get(0))) / (valuesOfLastMonth.get(0) * ((double) valuesOfLastMonth.size()) / ((double) Time.DAYS_PER_YEAR)));
     }
 
     @Override

@@ -8,5 +8,5 @@ import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 public interface KinematicObject {
     Kinematic getKinematic();
 
-    public String getName();
+    String getName();
 }

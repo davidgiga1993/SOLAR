@@ -1,11 +1,11 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 public class Power {
- 
-    public static final float WATT_PER_KILOWATT = 1000;
-    public static final float KILOWATT_PER_MEGAWATT = 1000;
-    public static final float MEGAWATT_PER_GIGAWATT = 1000;
-    public static final float GIGAWATT_PER_TERAWATT = 1000;
+
+    private static final float WATT_PER_KILOWATT = 1000;
+    private static final float KILOWATT_PER_MEGAWATT = 1000;
+    private static final float MEGAWATT_PER_GIGAWATT = 1000;
+    private static final float GIGAWATT_PER_TERAWATT = 1000;
     
     private float value;
     private PowerUnit unit;
@@ -39,8 +39,8 @@ public class Power {
                 return Float.NaN;
         }
     }
-    
-    public float inKilowatt() {
+
+    private float inKilowatt() {
         switch(unit) {
             case WATT:
                 return value / WATT_PER_KILOWATT;
@@ -73,8 +73,8 @@ public class Power {
                 return Float.NaN;
         }
     }
-    
-    public float inGigawatt() {
+
+    private float inGigawatt() {
         switch(unit) {
             case WATT:
                 return value / WATT_PER_KILOWATT / KILOWATT_PER_MEGAWATT / MEGAWATT_PER_GIGAWATT;
@@ -89,9 +89,9 @@ public class Power {
             default:
                 return Float.NaN;
         }
-    }   
-    
-    public float inTerawatt() {
+    }
+
+    private float inTerawatt() {
         switch(unit) {
             case WATT:
                 return value / WATT_PER_KILOWATT / KILOWATT_PER_MEGAWATT / MEGAWATT_PER_GIGAWATT / GIGAWATT_PER_TERAWATT;

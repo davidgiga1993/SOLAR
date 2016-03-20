@@ -8,7 +8,7 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
  */
 public class BaseGUIStage extends BaseStage {
 
-    public BaseGUIStage(SolarEngine solarEngine, String tag) {
+    BaseGUIStage(SolarEngine solarEngine, String tag) {
         super(solarEngine, tag, solarEngine.getGUICamera());
    //     super(solarEngine, tag, new StretchViewport(Gdx.graphics.getHeight(), Gdx.graphics.getWidth(), solarEngine.guiCamera))
     }

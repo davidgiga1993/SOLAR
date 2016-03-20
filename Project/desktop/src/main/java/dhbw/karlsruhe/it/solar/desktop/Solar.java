@@ -5,7 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScalePresetButton;
 
-public class Solar {
+class Solar {
     private static SolarEngine engine;
     
     private Solar() {

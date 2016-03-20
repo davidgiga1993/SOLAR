@@ -1,8 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
+
+import javax.xml.bind.annotation.XmlElement;
 
 public class AtmosphericGas {
     
@@ -47,22 +47,6 @@ public class AtmosphericGas {
         this.percentage = 0;
     }
     
-    public enum GasType {
-        ARGON,
-        CARBON_DIOXIDE,
-        CARBON_MONOXIDE,
-        HELIUM,
-        HYDROGEN,
-        METHANE,
-        NITROGEN,
-        NITROUS_OXIDE,
-        OXYGEN,
-        POTASSIUM,
-        SODIUM,
-        SULFUR_DIOXIDE,
-        WATER_VAPOR
-    }
-    
     public static float getOxygenToxicPartialPressure() {
         return OXYGEN_TOXICITY.asBar();
     }
@@ -77,7 +61,7 @@ public class AtmosphericGas {
         case CARBON_DIOXIDE:
             return CARBON_DIOXIDE_POISONING_SYMPTOMS;
         case CARBON_MONOXIDE:
-            return CARBON_MONOXIDE_POISONING_SYMPTOMS;    
+            return CARBON_MONOXIDE_POISONING_SYMPTOMS;
         case METHANE:
             return METHANE_FLAMMABLE;
         case OXYGEN:
@@ -90,19 +74,19 @@ public class AtmosphericGas {
             return SULFUR_DIOXIDE_TOXICITY;
         default:
             return ASPHYXIATION_ONLY;
-        }       
+        }
     }
 
     /**
      * The lethal threshold is the partial pressure at which breathing that gas becomes fatal within minutes.
      * @return The lethal partial pressure of that gas in bar.
-     */   
+     */
     public Pressure getLethalThreshold() {
         switch(type) {
         case CARBON_DIOXIDE:
             return CARBON_DIOXIDE_POISONING_FATAL;
         case CARBON_MONOXIDE:
-            return CARBON_MONOXIDE_POISONING_FATAL;  
+            return CARBON_MONOXIDE_POISONING_FATAL;
         case METHANE:
             return METHANE_EXPLOSIVE;
         case OXYGEN:
@@ -115,20 +99,20 @@ public class AtmosphericGas {
             return ACUTE_SULFUR_DIOXIDE_TOXICITY;
         default:
             return ASPHYXIATION_ONLY;
-        }       
+        }
     }
 
     public Pressure partialPressure(Pressure pressure) {
         if(null==pressure) {
-            return gasGiantPartialPressureAtOneBarDepthLevel(pressure);            
+            return gasGiantPartialPressureAtOneBarDepthLevel();
         }
         return new Pressure(percentage*pressure.asBar(), PressureUnit.BAR);
     }
 
-    private Pressure gasGiantPartialPressureAtOneBarDepthLevel(Pressure pressure) {
+    private Pressure gasGiantPartialPressureAtOneBarDepthLevel() {
         return new Pressure(percentage, PressureUnit.BAR);
     }
-    
+
     public boolean isOxygen() {
         return type.equals(GasType.OXYGEN);
     }
@@ -142,7 +126,7 @@ public class AtmosphericGas {
             case ARGON:
                 return "Argon";
             case CARBON_MONOXIDE:
-                return "Carbon Monoxide";  
+                return "Carbon Monoxide";
             case CARBON_DIOXIDE:
                 return "Carbon Dioxide";
             case HELIUM:
@@ -166,7 +150,7 @@ public class AtmosphericGas {
             case WATER_VAPOR:
                 return "Water Vapor";
             default:
-                return "unknown";            
+                return "unknown";
         }
     }
 
@@ -211,7 +195,7 @@ public class AtmosphericGas {
             case WATER_VAPOR:
                 return "H2O";
             default:
-                return "unknown";            
+                return "unknown";
         }
     }
 
@@ -219,7 +203,7 @@ public class AtmosphericGas {
      * Calculates a fictional greenhouse effect value for that atmospheric gas.
      * Formula uses an unrealistic saturation principle with data points derived from the bodies of the solar system.
      * Not a scientifically correct calculation! Only a quick and dirty approximation.
-     * @param surfacePressure
+     * @param body
      * @return
      */
     public float greenhouseEffect(BodyProperties body) {
@@ -233,7 +217,7 @@ public class AtmosphericGas {
             case NITROUS_OXIDE:
                 return saturationN2O(partialPressure(body.getSurfacePressure()));
             default:
-                return 0;            
+                return 0;
         }
     }
 
@@ -252,8 +236,24 @@ public class AtmosphericGas {
     private float saturationCO2(BodyProperties body) {
         return saturationFormula(CO2_SATURATION_LEVEL, CO2_SCALAR + H2O_CO2_RELATION * body.getH2OPartialPressure().asBar(), partialPressure(body.getSurfacePressure()));
     }
-    
+
     private float saturationFormula(float saturationLevel, float scalar, Pressure partialPressure) {
         return saturationLevel - saturationLevel/(scalar * partialPressure.asBar() + 1);
+    }
+
+    public enum GasType {
+        ARGON,
+        CARBON_DIOXIDE,
+        CARBON_MONOXIDE,
+        HELIUM,
+        HYDROGEN,
+        METHANE,
+        NITROGEN,
+        NITROUS_OXIDE,
+        OXYGEN,
+        POTASSIUM,
+        SODIUM,
+        SULFUR_DIOXIDE,
+        WATER_VAPOR
     }
 }

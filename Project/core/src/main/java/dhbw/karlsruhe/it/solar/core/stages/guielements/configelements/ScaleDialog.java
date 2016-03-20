@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Moon;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Planet;
@@ -26,11 +25,18 @@ public class ScaleDialog {
     private Tooltip scaleDialog;
     private List<ScaleSlider> scaleSliders;
 
-    public ScaleDialog(Stage stage) {
+    private ScaleDialog(Stage stage) {
         this.stage = stage;
     }
 
-    public void initialize() {
+    public static void createScaleDialog(Stage stage) {
+        ScaleDialog scaleDialog = new ScaleDialog(stage);
+        scaleDialog.initialize();
+        stage.addActor(scaleDialog.scaleDialog);
+        scaleDialog.scaleDialog.setVisible(true);
+    }
+
+    private void initialize() {
         scaleDialog = new Tooltip("Scale Settings");
         scaleDialog.setWidth(340);
         scaleDialog.setHeight(330);
@@ -46,8 +52,8 @@ public class ScaleDialog {
         Label presetLabel = new Label("Load a Preset", Styles.DEFAULTLABEL_STYLE);
         presetLabel.setAlignment(Align.center);
 
-        scaleSliders = new ArrayList<ScaleSlider>();
-        
+        scaleSliders = new ArrayList<>();
+
         ScaleSlider starShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_STAR, 1, 50, Star.class);
         ScaleSlider planetShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 1, 100, Planet.class);
     //    ScaleSlider asteroidShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 1, 10000, Asteroid.class);
@@ -67,7 +73,7 @@ public class ScaleDialog {
         scaleSliders.add(planetOrbitSlider);
      //   scaleSliders.add(asteroidOrbitSlider);
         scaleSliders.add(moonOrbitSlider);
-        
+
         ScalePresetButton preset1Button = new ScalePresetButton("Preset 1") {
             @Override
             public void onClick() {
@@ -128,12 +134,5 @@ public class ScaleDialog {
         for (ScaleSlider scaleSlider : scaleSliders) {
             scaleSlider.refreshValues();
         }
-    }
-
-    public static void createScaleDialog(Stage stage) {
-        ScaleDialog scaleDialog = new ScaleDialog(stage);
-        scaleDialog.initialize();
-        stage.addActor(scaleDialog.scaleDialog);
-        scaleDialog.scaleDialog.setVisible(true);
     }
 }

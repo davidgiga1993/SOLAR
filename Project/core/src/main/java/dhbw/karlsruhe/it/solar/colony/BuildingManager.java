@@ -6,7 +6,7 @@ import java.util.List;
 public class BuildingManager {
     
     private ColonyBuildings newBuildings = new ColonyBuildings();
-    private List<Building> buildings = new ArrayList<Building>();
+    private List<Building> buildings = new ArrayList<>();
     private int infraNumber;
 
     public CreatableColony createInfrastructure(int numberOfBuildings) {
