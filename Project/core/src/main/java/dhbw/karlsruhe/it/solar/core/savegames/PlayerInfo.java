@@ -1,18 +1,16 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.badlogic.gdx.graphics.Color;
+import dhbw.karlsruhe.it.solar.core.resources.GlobalResource;
+import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
+import dhbw.karlsruhe.it.solar.player.Player;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-
-import com.badlogic.gdx.graphics.Color;
-
-import dhbw.karlsruhe.it.solar.core.resources.GlobalResource;
-import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
-import dhbw.karlsruhe.it.solar.player.Player;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({GlobalResource.class})
@@ -23,6 +21,8 @@ public class PlayerInfo {
     @XmlElement(name = "PlayerColor")
     private Color color;
     @XmlElement(name = "Player_Resources")
+    //FIXME: The savegames currently store all resources (incl. non global ones) in this list.
+    //This results in failing test cases and propably wrong loading / saving behaviour.
     private List<GlobalResource> resources;
     
     public PlayerInfo() {
@@ -46,7 +46,7 @@ public class PlayerInfo {
     public List<GlobalResourceInterface> getResources() {
         List<GlobalResourceInterface> newList = new ArrayList<GlobalResourceInterface>();
         for(GlobalResource resource : resources) {
-            newList.add((GlobalResourceInterface)resource);
+            newList.add(resource);
         }
         return newList;
     }
