@@ -58,6 +58,10 @@ public class NavBar extends Window {
         shipPane = new ScrollPane(shipTable);
         colonyPane = new ScrollPane(colonyTable);
 
+        bodyPane.setScrollingDisabled(true, false);
+        shipPane.setScrollingDisabled(true, false);
+        colonyPane.setScrollingDisabled(true, false);
+
         // layout
         layoutTable = new Table();
 
