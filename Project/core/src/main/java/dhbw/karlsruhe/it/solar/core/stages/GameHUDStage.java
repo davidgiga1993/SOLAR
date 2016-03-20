@@ -4,12 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBar;
+import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.NavBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialog;
@@ -22,9 +21,17 @@ public class GameHUDStage extends BaseGUIStage{
 
     private Table guiTable;
 
-public GameHUDStage(final SolarEngine solarEngine) {
+    public GameHUDStage(final SolarEngine solarEngine) {
 super(solarEngine, "GameHUD");
 }
+
+    public static int calculateInfoBarMaxWidth() {
+        int currentWidth = Gdx.graphics.getWidth();
+        if(currentWidth > InfoBar.MINIMUM_WIDTH) {
+            return currentWidth;
+        }
+        return InfoBar.MINIMUM_WIDTH;
+    }
 
     public void init() {
         addListener(new GUIInputListener());
@@ -57,17 +64,9 @@ super(solarEngine, "GameHUD");
             ScaleDialog.createScaleDialog(this);
         }
     }
-
+    
     private int calculateNavbarMaxHeight() {
         return Gdx.graphics.getHeight() - (ConfigurationConstants.RESSOURCEBAR_HEIGHT+ConfigurationConstants.INFOBAR_HEIGHT);
-    }
-    
-    public static int calculateInfoBarMaxWidth() {
-        int currentWidth = Gdx.graphics.getWidth();
-        if(currentWidth > InfoBar.MINIMUM_WIDTH) {
-            return currentWidth;
-        }
-        return InfoBar.MINIMUM_WIDTH;
     }
 
     @Override

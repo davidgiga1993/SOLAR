@@ -2,13 +2,14 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import dhbw.karlsruhe.it.solar.core.stages.listeners.ChangeLambdaListener;
+import dhbw.karlsruhe.it.solar.core.stages.listeners.ScrollFocusOnMouseOverListener;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * Created by Arga on 22.02.2015.
  */
-public class NavBar extends Window {
+public class NavBar extends Window implements ScrollFocusable {
 
     private final Cell<ScrollPane> contentCell;
     private final ScrollPane shipPane;
@@ -18,7 +19,6 @@ public class NavBar extends Window {
     private final NavBarShipTable shipTable;
     private final NavBarColonyTable colonyTable;
     private Table layoutTable;
-
 
     public NavBar() {
         super("Navigation", Styles.TOOLTIPSKIN);
@@ -30,24 +30,9 @@ public class NavBar extends Window {
         TextButton colonyButton = new TextButton("Colonies", Styles.TOOLTIPSKIN);
 
         // Button Listeners
-        bodyButton.addListener(new ChangeListener() {
-           @Override
-           public void changed(ChangeEvent event, Actor actor) {
-                onBodyClick();
-           }
-        });
-        shipButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                onShipClick();
-            }
-        });
-        colonyButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                onColonyClick();
-            }
-        });
+        bodyButton.addListener(new ChangeLambdaListener(this::onBodyClick));
+        shipButton.addListener(new ChangeLambdaListener(this::onShipClick));
+        colonyButton.addListener(new ChangeLambdaListener(this::onColonyClick));
 
         // To be replaced with actual NavigationTables
         bodyTable = new NavBarBodyTable();
@@ -77,6 +62,8 @@ public class NavBar extends Window {
         contentCell = layoutTable.getCell(bodyPane);
 
         this.add(layoutTable).expand().fill();
+
+        addListener(new ScrollFocusOnMouseOverListener());
     }
 
     /**
@@ -102,4 +89,9 @@ public class NavBar extends Window {
         contentCell.setActor(colonyPane).expand();
     }
 
+
+    @Override
+    public Actor getScrollTarget() {
+        return contentCell.getActor();
+    }
 }
