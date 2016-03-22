@@ -79,7 +79,7 @@ public class TestHelper {
 	public static void changeScreen(final Screen targetScreen) {
 		final CountDownLatch latch = new CountDownLatch(1);
 		Gdx.app.postRunnable(() -> {
-			Gdx.graphics.setDisplayMode(ConfigurationConstants.SCREENWIDTH, ConfigurationConstants.SCREENHEIGHT, false);
+			Gdx.graphics.setWindowedMode(ConfigurationConstants.SCREENWIDTH, ConfigurationConstants.SCREENHEIGHT);
 			// game.setScreen(targetScreen);
 			latch.countDown();
 		});

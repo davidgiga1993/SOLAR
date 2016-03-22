@@ -16,6 +16,8 @@
 		<gwt.maven.version>2.5.0</gwt.maven.version>
 		<sonar.language>java</sonar.language>
 		<sonar.host.url>http://sonar.h2260505.stratoserver.net:443/sonar</sonar.host.url>
+		<gdx.version>1.9.2</gdx.version>
+		<gdx.ai.version>1.8.0</gdx.ai.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -23,20 +25,25 @@
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.badlogicgames.gdx</groupId>
+				<artifactId>gdx-ai</artifactId>
+				<version>${gdx.ai.version}</version>
 			</dependency>
 
 			<!-- android-specific dependencies -->
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx-backend-android</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx-platform</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 				<classifier>natives-armeabi</classifier>
 				<scope>provided</scope>
 			</dependency>
@@ -46,20 +53,20 @@
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx-backend-lwjgl</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx-platform</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 				<classifier>natives-desktop</classifier>
 			</dependency>
 
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx-platform</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 				<classifier>natives-armeabi-v7a</classifier>
 				<scope>provided</scope>
 			</dependency>
@@ -68,7 +75,7 @@
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 				<classifier>sources</classifier>
 				<scope>provided</scope>
 			</dependency>
@@ -76,7 +83,7 @@
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx-backend-gwt</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 				<classifier>sources</classifier>
 				<scope>provided</scope>
 			</dependency>
@@ -84,7 +91,7 @@
 			<dependency>
 				<groupId>com.badlogicgames.gdx</groupId>
 				<artifactId>gdx-backend-gwt</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 			</dependency>
 
 			<!-- ios-specific dependencies -->
@@ -92,7 +99,7 @@
 			<dependency>
 				<groupId>com.badlogic.gdx</groupId>
 				<artifactId>gdx-backend-ios</artifactId>
-				<version>1.4.1</version>
+				<version>${gdx.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -125,19 +132,18 @@
 		<dependency>
 			<groupId>com.badlogicgames.gdx</groupId>
        	 	<artifactId>gdx-ai</artifactId>
-        	<version>1.5.0</version>
 		</dependency>
 	</dependencies>
 
 	<repositories>
-		<repository>
-			<id>gdx-nightlies</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</repository>
-		<repository>
-			<id>gdx-releases</id>
-			<url>https://oss.sonatype.org/content/repositories/releases/</url>
-		</repository>
+		<!--<repository>-->
+		<!--<id>gdx-nightlies</id>-->
+		<!--<url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+		<!--</repository>-->
+		<!--<repository>-->
+		<!--<id>gdx-releases</id>-->
+		<!--<url>https://oss.sonatype.org/content/repositories/releases/</url>-->
+		<!--</repository>-->
 	</repositories>
 
 	<build>
