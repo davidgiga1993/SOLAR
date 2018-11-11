@@ -13,22 +13,22 @@ public class Mass {
     private static final float SOLAR_MASS_IN_EARTH_MASS = 333000;
     private static final float QUADRILLION = (float) Math.pow(10, 15);
     private static final float QUINTILLION = (float) Math.pow(10, 18);
-    
+
     @XmlElement(name = "Mass_Value")
     private float value;
     @XmlElement(name = "Mass_Unit")
     private MassUnit unit;
-    
+
     public Mass() {
-        
+
     }
 
     public Mass(float value, MassUnit unit) {
-       setValue(value, unit);
+        setValue(value, unit);
     }
 
     private void setValue(float value, MassUnit unit) {
-        if(0<=value) {
+        if (0 <= value) {
             this.value = value;
             this.unit = unit;
             return;
@@ -38,6 +38,7 @@ public class Mass {
 
     /**
      * Returns only the value with no regard to the unit.
+     *
      * @return
      */
     public float getValue() {
@@ -60,7 +61,7 @@ public class Mass {
     }
 
     private float asLunarMass() {
-        switch(unit) {
+        switch (unit) {
             case SOLAR_MASS:
                 return value * SOLAR_MASS_IN_KILOGRAM / LUNAR_MASS_IN_KILOGRAM;
             case EARTH_MASS:
@@ -75,7 +76,7 @@ public class Mass {
     }
 
     public float asEarthMass() {
-        switch(unit) {
+        switch (unit) {
             case SOLAR_MASS:
                 return value * SOLAR_MASS_IN_EARTH_MASS;
             case EARTH_MASS:
@@ -90,7 +91,7 @@ public class Mass {
     }
 
     public float asSolarMass() {
-        switch(unit) {
+        switch (unit) {
             case SOLAR_MASS:
                 return value;
             case EARTH_MASS:
@@ -105,7 +106,7 @@ public class Mass {
     }
 
     public void addMass(Mass massToBeAddedToTheBody) {
-        switch(unit) {
+        switch (unit) {
             case KILOGRAM:
                 value += massToBeAddedToTheBody.asKilogram();
                 break;
@@ -126,33 +127,33 @@ public class Mass {
 
     @Override
     public String toString() {
-        if(this.asSolarMass() > 0.01) {
+        if (this.asSolarMass() > 0.01) {
             return formatValue(this.asSolarMass()) + " Solar Masses";
         }
-        if(this.asEarthMass() > 0.01) {
+        if (this.asEarthMass() > 0.01) {
             return formatValue(this.asEarthMass()) + " Earth Masses";
         }
-        if(this.asLunarMass() > 0.01) {
+        if (this.asLunarMass() > 0.01) {
             return formatValue(this.asLunarMass()) + " Lunar Masses";
         }
-        if(this.asKilogram() > 10*QUINTILLION) {
-            return formatValue(this.asKilogram()/(10*QUINTILLION)) + " x10^19 kg";
+        if (this.asKilogram() > 10 * QUINTILLION) {
+            return formatValue(this.asKilogram() / (10 * QUINTILLION)) + " x10^19 kg";
         }
-        if(this.asKilogram() > QUINTILLION) {
-            return formatValue(this.asKilogram()/QUINTILLION) + " x10^18 kg";
+        if (this.asKilogram() > QUINTILLION) {
+            return formatValue(this.asKilogram() / QUINTILLION) + " x10^18 kg";
         }
-        if(this.asKilogram() > 100*QUADRILLION) {
-            return formatValue(this.asKilogram()/(100*QUADRILLION)) + " x10^17 kg";
+        if (this.asKilogram() > 100 * QUADRILLION) {
+            return formatValue(this.asKilogram() / (100 * QUADRILLION)) + " x10^17 kg";
         }
-        if(this.asKilogram() > 10*QUADRILLION) {
-            return formatValue(this.asKilogram()/(10*QUADRILLION)) + " x10^16 kg";
+        if (this.asKilogram() > 10 * QUADRILLION) {
+            return formatValue(this.asKilogram() / (10 * QUADRILLION)) + " x10^16 kg";
         }
-        if(this.asKilogram() > 0.01*QUADRILLION) {
-            return formatValue(this.asKilogram()/QUADRILLION) + " x10^15 kg";
+        if (this.asKilogram() > 0.01 * QUADRILLION) {
+            return formatValue(this.asKilogram() / QUADRILLION) + " x10^15 kg";
         }
-        return formatValue(this.asKilogram()/(0.1f*QUADRILLION)) + " x10^14 kg";
+        return formatValue(this.asKilogram() / (0.1f * QUADRILLION)) + " x10^14 kg";
     }
-    
+
     private String formatValue(float value) {
         return String.format("%.02f", value);
     }

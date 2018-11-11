@@ -80,7 +80,7 @@ public class NavBar extends Window implements ScrollFocusable {
         shipTable.buildShipList();
         contentCell.setActor(shipPane).expand();
     }
-    
+
     /**
      * Sets the contentCell to show the Colonies
      */

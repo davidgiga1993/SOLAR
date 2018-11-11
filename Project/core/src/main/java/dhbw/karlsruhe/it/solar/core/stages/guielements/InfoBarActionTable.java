@@ -19,30 +19,30 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  * Substantially revised by Andi on: 2015-04-19
  */
 class InfoBarActionTable extends Table {
-    
+
     private final TextButton orbitalInsertion = new TextButton("Enter Orbit", Styles.TOOLTIPSKIN);
     private final TextButton colonize = new TextButton("Establish Colony", Styles.TOOLTIPSKIN);
     private final TextButton selfDestruct = new TextButton("Self Destruct", Styles.TOOLTIPSKIN);
-    
-    private SolarActor selectedActor; 
-    
+
+    private SolarActor selectedActor;
+
     public InfoBarActionTable(SolarActor selectedActor) {
         this.selectedActor = selectedActor;
-        addButtonListeners(); 
+        addButtonListeners();
         addButtons();
         determineVisibilityOfButtons();
     }
 
     private void determineVisibilityOfButtons() {
-        if(selectedActor instanceof SpaceUnit) {
+        if (selectedActor instanceof SpaceUnit) {
             orbitalInsertion.setVisible(true);
             selfDestruct.setText("Self Destruct");
             selfDestruct.setVisible(true);
         }
-        if(selectedActor instanceof Spaceship) {
+        if (selectedActor instanceof Spaceship) {
             colonize.setVisible(true);
         }
-        if(selectedActor instanceof AstronomicalBody && ((AstronomicalBody)selectedActor).isColonized()) {
+        if (selectedActor instanceof AstronomicalBody && ((AstronomicalBody) selectedActor).isColonized()) {
             selfDestruct.setText("Abandon Colony");
             selfDestruct.setVisible(true);
         }
@@ -56,26 +56,26 @@ class InfoBarActionTable extends Table {
         add(selfDestruct).width(InfoBar.ACTION_BUTTON_WIDTH).height(InfoBar.ACTION_BUTTON_HEIGHT).pad(InfoBar.ACTION_BUTTON_PADDING);
         hideAllButtons();
     }
-    
+
     private void addButtonListeners() {
         orbitalInsertion.addListener(new ChangeListener() {
-           @Override
-           public void changed(ChangeEvent event, Actor actor) {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
                 onOrbitalInsertionClick();
-           }
-        });        
+            }
+        });
         colonize.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                 onColonizeClick();
+                onColonizeClick();
             }
-         }); 
+        });
         selfDestruct.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                 onSelfDestructClick();
+                onSelfDestructClick();
             }
-         });
+        });
     }
 
     private void hideAllButtons() {
@@ -83,27 +83,27 @@ class InfoBarActionTable extends Table {
         colonize.setVisible(false);
         selfDestruct.setVisible(false);
     }
-    
+
     private void onOrbitalInsertionClick() {
         //TODO: Very rough implementation. More elegant solution: Approach AI?
-        OrbitalInsertionCommand orbitalCommand = new OrbitalInsertionCommand((SpaceUnit)selectedActor);
+        OrbitalInsertionCommand orbitalCommand = new OrbitalInsertionCommand((SpaceUnit) selectedActor);
         orbitalCommand.execute();
     }
-    
+
     private void onColonizeClick() {
-        ColonizeCommand colonizeCommand = new ColonizeCommand((SpaceUnit)selectedActor);
+        ColonizeCommand colonizeCommand = new ColonizeCommand((SpaceUnit) selectedActor);
         colonizeCommand.execute();
     }
-    
+
     private void onSelfDestructClick() {
         if (selectedActor instanceof SpaceUnit) {
-            SelfDestructCommand selfDestruct = new SelfDestructCommand((SpaceUnit)selectedActor);
-            selfDestruct.execute(); 
+            SelfDestructCommand selfDestruct = new SelfDestructCommand((SpaceUnit) selectedActor);
+            selfDestruct.execute();
         }
         if (selectedActor instanceof AstronomicalBody && ((AstronomicalBody) selectedActor).isColonized()) {
-            AbandonColonyCommand selfDestruct = new AbandonColonyCommand((AstronomicalBody)selectedActor);
+            AbandonColonyCommand selfDestruct = new AbandonColonyCommand((AstronomicalBody) selectedActor);
             selfDestruct.execute();
-        }       
+        }
     }
 
     public void update(SolarActor selectedActor) {

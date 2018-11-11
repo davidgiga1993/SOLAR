@@ -1,12 +1,11 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class LifeRating {
-    
+
     private float rating;
     private FuzzyGravity gravity;
     private FuzzyTemperature temperature;
@@ -23,7 +22,7 @@ public class LifeRating {
         this.temperature = fuzzyTemp;
         this.atmosphere = fuzzyAtmo;
         this.hydrosphere = fuzzyHydro;
-        this.biosphere = fuzzyBio;       
+        this.biosphere = fuzzyBio;
     }
 
     public FuzzyInformation gravityFuzzy() {
@@ -45,7 +44,7 @@ public class LifeRating {
     public FuzzyInformation biosphereFuzzy() {
         return biosphere.displayFuzzyState();
     }
-    
+
     public FuzzyInformation lifeRatingFuzzy(AstronomicalBody astronomicalBody) {
         return new FuzzyInformation("", inPercent(), determineStyle());
     }
@@ -53,24 +52,24 @@ public class LifeRating {
     private String inPercent() {
         return formatValue() + " %";
     }
-    
+
     private String formatValue() {
-        return String.format("%.00f", rating*100);
+        return String.format("%.00f", rating * 100);
     }
 
     private LabelStyle determineStyle() {
-        if(rating > 0.80) {
+        if (rating > 0.80) {
             return Styles.MENUELABEL_GREEN;
         }
-        if(rating > 0.3) {
+        if (rating > 0.3) {
             return Styles.MENUELABEL_YELLOW;
         }
-        if(rating > 0.1) {
+        if (rating > 0.1) {
             return Styles.MENUELABEL_ORANGE;
         }
         return Styles.MENUELABEL_RED;
     }
-    
+
     public float getNumber() {
         return rating;
     }

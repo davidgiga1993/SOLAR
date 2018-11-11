@@ -3,10 +3,10 @@ package dhbw.karlsruhe.it.solar.core.savegames;
 import com.badlogic.gdx.math.Vector2;
 
 public class MissionInfoExtended {
-    
+
     private MissionInfo mission;
     private String nameOfSpaceUnit;
-    
+
     public MissionInfoExtended(String name, MissionInfo mission) {
         this.mission = mission;
         this.nameOfSpaceUnit = name;
@@ -15,7 +15,7 @@ public class MissionInfoExtended {
     public String getUnitName() {
         return nameOfSpaceUnit;
     }
-    
+
     public boolean isMissionTargetAnObject() {
         return mission.isMissionTargetAnObject();
     }

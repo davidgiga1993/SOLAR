@@ -35,7 +35,7 @@ public class LengthJUnit {
         assertEquals(1, km.asKilometers(), 0.00001f);
         assertEquals(384400, ld.asKilometers(), 0.00001f);
         assertEquals(149597870.7f, au.asKilometers(), 0.00001f);
-        assertEquals((float)(9.4605284*Math.pow(10,12)), ly.asKilometers(), 0.00001);
+        assertEquals((float) (9.4605284 * Math.pow(10, 12)), ly.asKilometers(), 0.00001);
         assertEquals(Float.NaN, pc.asKilometers(), 0.00001);
 
         Length reallyBig = new Length(100000000000000000f, Length.DistanceUnit.ASTRONOMICAL_UNITS);
@@ -47,9 +47,9 @@ public class LengthJUnit {
     public void testAsLunarDistance() {
         assertEquals(2.6014568158168574401664932362123e-6, km.asLunarDistance(), 0.00001f);
         assertEquals(1, ld.asLunarDistance(), 0.00001f);
-      //  assertEquals(149597870.7f, au.asLunarDistance(), 0.00001f);
-      //  assertEquals(Float.NaN, ly.asLunarDistance(), 0.00001);
-      //  assertEquals(Float.NaN, pc.asLunarDistance(), 0.00001);
+        //  assertEquals(149597870.7f, au.asLunarDistance(), 0.00001f);
+        //  assertEquals(Float.NaN, ly.asLunarDistance(), 0.00001);
+        //  assertEquals(Float.NaN, pc.asLunarDistance(), 0.00001);
     }
 
 }

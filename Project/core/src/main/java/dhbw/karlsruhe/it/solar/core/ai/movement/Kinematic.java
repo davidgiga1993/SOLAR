@@ -20,14 +20,15 @@ public class Kinematic {
 
     /**
      * Creates a new Kinematic representation of the Game Object
+     *
      * @param position the object's current position
      * @param rotation the object's current rotation in radians
-     * @param speed the object's current speed
+     * @param speed    the object's current speed
      * @param maxSpeed the object's maximal speed
      */
     public Kinematic(Vector2 position, float rotation, float speed, float maxSpeed) {
         this.position = position;
-        this.velocity = new Vector2(1,0).setAngle(rotation).scl(speed);
+        this.velocity = new Vector2(1, 0).setAngle(rotation).scl(speed);
         this.rotation = rotation;
         this.maxSpeed = maxSpeed;
     }
@@ -35,6 +36,7 @@ public class Kinematic {
     /**
      * Creates a new Kinematic representation of the Game Object
      * Note: This constructor assumes the object's current speed to be 0.
+     *
      * @param position the object's current position
      * @param rotation the object's current rotation in radians
      * @param maxSpeed the object's maximal speed
@@ -62,65 +64,65 @@ public class Kinematic {
             velocity.nor().scl(maxSpeed);
         }
     }
-    
+
     public Vector2 getPosition() {
         return position;
     }
-    
+
     public void setPosition(Vector2 newValue) {
         position.x = newValue.x;
         position.y = newValue.y;
     }
-    
+
     public float getAngleOfPosition() {
         return position.angle();
     }
-    
+
     public float getXPosition() {
         return position.x;
     }
-    
+
     public float getYPosition() {
         return position.y;
     }
-    
+
     public float getRotation() {
         return rotation;
     }
-    
+
     public void setRotation(float value) {
         this.rotation = value;
     }
-    
+
     public Vector2 getVelocity() {
         return velocity;
     }
-    
+
     public float getSpeed() {
         return velocity.len();
     }
-    
+
     public void setVelocity(Vector2 newVelocity) {
         this.velocity.x = newVelocity.x;
-        this.velocity.y = newVelocity.y; 
+        this.velocity.y = newVelocity.y;
     }
-    
+
     public void setVelocityAngle(float degrees) {
         velocity.setAngle(degrees);
     }
-    
+
     public float getMaxSpeed() {
         return maxSpeed;
     }
-    
+
     public void setMaxSpeed(float newMaximum) {
         this.maxSpeed = newMaximum;
     }
-    
+
     public float getMaxAcceleration() {
         return maxAcceleration;
     }
-    
+
     public boolean isMoving() {
         return isMoving;
     }

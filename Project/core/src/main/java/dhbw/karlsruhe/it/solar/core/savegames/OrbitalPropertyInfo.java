@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Length.class, Angle.class, Coorbital.class})
 public class OrbitalPropertyInfo {
-    
+
     @XmlElement(name = "Primary")
     private String orbitPrimaryName;
     @XmlElement(name = "OrbitalRadius")
@@ -26,18 +26,18 @@ public class OrbitalPropertyInfo {
     private Coorbital coorbital;
 
     public OrbitalPropertyInfo() {
-        
+
     }
-    
+
     public void fillOrbitalPropertyInfo(Orbiter orbiter) {
-        if(orbiter.isInOrbit()) {
+        if (orbiter.isInOrbit()) {
             this.coorbital = orbiter.getCoorbitalInformation();
-            if(null==coorbital) {
+            if (null == coorbital) {
                 this.orbitPrimaryName = orbiter.getPrimary().getName();
                 this.orbitalRadius = orbiter.getOrbitalRadius();
                 this.polarAngle = orbiter.getOrbitalAngle();
             }
-            this.retrograde = orbiter.isInRetrogradeOrbit();               
+            this.retrograde = orbiter.isInRetrogradeOrbit();
         }
     }
 

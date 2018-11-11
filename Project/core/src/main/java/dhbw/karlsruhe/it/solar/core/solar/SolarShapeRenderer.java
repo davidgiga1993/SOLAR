@@ -12,13 +12,14 @@ import com.badlogic.gdx.math.Matrix4;
  */
 public class SolarShapeRenderer extends ShapeRenderer {
 
-// TODO: introduce a second shapeRenderer only for orbits. or render every orbit with this one, as it is faster anyways...
-private final ImmediateModeRenderer renderer = getRenderer();
+    // TODO: introduce a second shapeRenderer only for orbits. or render every orbit with this one, as it is faster anyways...
+    private final ImmediateModeRenderer renderer = getRenderer();
     private final Matrix4 combinedMatrix = new Matrix4();
     private Color color = getColor();
 
     /**
      * Some orbits are to big, so that the precision of circle(..) is not sufficient. This method provides a higher accuracy.
+     *
      * @param radius
      * @param segments
      */
@@ -36,7 +37,7 @@ private final ImmediateModeRenderer renderer = getRenderer();
         float vx, vy;
 
         beginOrbit();
-        for(int ii = 0; ++ii < segments;) {
+        for (int ii = 0; ++ii < segments; ) {
             //output vertex
             renderer.color(color);
             vx = (float) x;
@@ -51,7 +52,6 @@ private final ImmediateModeRenderer renderer = getRenderer();
     }
 
 
-
     public void orbit(float radius) {
         orbit(radius, (int) Math.sqrt(radius));
     }
@@ -63,9 +63,12 @@ private final ImmediateModeRenderer renderer = getRenderer();
         }
     }
 
-    /** Starts a new batch of shapes. Shapes drawn within the batch will attempt to use the type specified. The call to this method
+    /**
+     * Starts a new batch of shapes. Shapes drawn within the batch will attempt to use the type specified. The call to this method
      * must be paired with a call to {@link #end()}.
-     * @see #setAutoShapeType(boolean) */
+     *
+     * @see #setAutoShapeType(boolean)
+     */
     private void beginOrbit() {
         combinedMatrix.set(getProjectionMatrix());
         Matrix4.mul(combinedMatrix.val, getTransformMatrix().val);

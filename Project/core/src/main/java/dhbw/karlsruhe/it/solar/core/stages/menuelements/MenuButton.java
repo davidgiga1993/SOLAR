@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
 import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -13,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 /**
  * Created by argannor on 17.02.15.
  */
-public abstract class MenuButton extends Label{
+public abstract class MenuButton extends Label {
 
     public MenuButton(CharSequence text, final SolarEngine engine) {
         super(text, Styles.DEFAULTLABEL_STYLE);
@@ -37,15 +36,15 @@ public abstract class MenuButton extends Label{
 
     protected abstract void onClick();
 
-    private void animateLabelIn()    {
+    private void animateLabelIn() {
         animateLabel(1.2f);
     }
 
-    private void animateLabelOut()    {
+    private void animateLabelOut() {
         animateLabel(1);
     }
 
-    private void animateLabel(float scale)   {
+    private void animateLabel(float scale) {
         LabelFontScalerAction ac = new LabelFontScalerAction(scale, getFontScaleX());
         ac.setDuration(0.7f);
         ac.setInterpolation(Interpolation.exp10);

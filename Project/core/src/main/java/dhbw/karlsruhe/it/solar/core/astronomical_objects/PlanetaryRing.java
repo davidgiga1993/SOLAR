@@ -21,8 +21,8 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 
 /**
  * Defines the behavior of planetary ring systems for giant planets.
- * @author Andi
  *
+ * @author Andi
  */
 public class PlanetaryRing extends AstronomicalBody {
 
@@ -88,23 +88,23 @@ public class PlanetaryRing extends AstronomicalBody {
     }
 
     private Mesh createPolygonRegion(float innerRadius, float outerRadius) {
-        return new Mesh(true, segments*2, segments*2+2, new VertexAttribute(VertexAttributes.Usage.Position, 2, "a_position"), new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, "a_texCoord"));
+        return new Mesh(true, segments * 2, segments * 2 + 2, new VertexAttribute(VertexAttributes.Usage.Position, 2, "a_position"), new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, "a_texCoord"));
     }
 
     private void calculateVertices(float innerRadius, float outerRadius) {
-        double phi = (2*Math.PI)/segments;
+        double phi = (2 * Math.PI) / segments;
 
-        vertices = new float[segments*8];
-        indices = new short[segments*2+2];
+        vertices = new float[segments * 8];
+        indices = new short[segments * 2 + 2];
 
         float u = solarActorTexture.getU();
 //        float u2 = solarActorTexture.getU2();
         float v = solarActorTexture.getV();
         float v2 = solarActorTexture.getV2();
 
-        for(int i = 0, n = 0; i < vertices.length; n++) {
-            float sin = (float) Math.sin(phi*n);
-            float cos = (float) Math.cos(phi*n);
+        for (int i = 0, n = 0; i < vertices.length; n++) {
+            float sin = (float) Math.sin(phi * n);
+            float cos = (float) Math.cos(phi * n);
 
             vertices[i++] = cos * outerRadius;
             vertices[i++] = sin * outerRadius;
@@ -121,7 +121,7 @@ public class PlanetaryRing extends AstronomicalBody {
 
         }
 
-        for(short i = 0; i < indices.length - 2; i++) {
+        for (short i = 0; i < indices.length - 2; i++) {
             indices[i] = i;
         }
         // get back to the first 2 vertices
@@ -150,12 +150,12 @@ public class PlanetaryRing extends AstronomicalBody {
         RING_SHADER.begin();
 
         RING_SHADER.setUniformMatrix("u_projTrans", combined);
-        RING_SHADER.setUniformf("u_center", new Vector2(x,y));
+        RING_SHADER.setUniformf("u_center", new Vector2(x, y));
         ringMesh.render(RING_SHADER, GL20.GL_TRIANGLE_STRIP, 0, vertexCount);
 
         RING_SHADER.end();
     }
-    
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
     }

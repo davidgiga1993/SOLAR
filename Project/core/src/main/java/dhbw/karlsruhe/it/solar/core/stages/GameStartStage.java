@@ -106,7 +106,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     private static void initMultiplexer(GameStartStage gameStage,
-            GameHUDStage gameHUDStage) {
+                                        GameHUDStage gameHUDStage) {
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(gameHUDStage);
         multiplexer.addProcessor(gameStage);
@@ -126,7 +126,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         engine.disposeOfStage("GameHUD");
 
-        if(SolarEngine.DEBUG) {
+        if (SolarEngine.DEBUG) {
             engine.disposeOfStage("HUD");
         }
 
@@ -223,7 +223,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
             if (child instanceof ShapeRenderable) {
                 ((ShapeRenderable) child).drawLines(libGDXShapeRenderer, solarShapeRenderer);
             }
-            if(child instanceof  PlanetaryRing) {
+            if (child instanceof PlanetaryRing) {
                 ringList.add((PlanetaryRing) child);
             }
         }
@@ -252,7 +252,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         super.act(newDelta.inDays());
     }
 
-    private void addSelectionRectangle()    {
+    private void addSelectionRectangle() {
         selectionRectangle = new SelectionRectangle();
         addActor(selectionRectangle);
     }
@@ -262,7 +262,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Handles selection and deselection of objects.
      * Handles movement orders.
      */
-    private void gameStartStageListener()    {
+    private void gameStartStageListener() {
         inputListener = new GameInputListener(this);
         this.addListener(inputListener);
     }
@@ -307,7 +307,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     public void startOfSelectionRectangle(float x, float y) {
-        selectionRectangle.setStart(x,y);
+        selectionRectangle.setStart(x, y);
     }
 
     public void updateEndOfSelectionRectangle(float x, float y) {
@@ -343,6 +343,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     /**
      * Converts player information in the form of PlayerInfo into players on the game stage. Part of the loading process.
+     *
      * @param players
      */
     public void initPlayers(List<PlayerInfo> players) {
@@ -354,6 +355,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     /**
      * Converts astronomical body information in the form of AstroBodyInfo into celestial objects on the game stage. Part of the loading process.
+     *
      * @param astroBodies
      */
     public void initAstroBodies(List<AstroBodyInfo> astroBodies) {
@@ -363,32 +365,34 @@ public class GameStartStage extends BaseStage implements Telegraph {
         manager.initSolarSystem(solarSystem);
         addActor(solarSystem);
         for (AstroBodyInfo body : astroBodies) {
-               addActor(manager.createNewBody(body));
-               initColonies(body);
+            addActor(manager.createNewBody(body));
+            initColonies(body);
         }
 
     }
 
     private void initColonies(AstroBodyInfo body) {
-        if(body.isColonized()) {
+        if (body.isColonized()) {
             ColonyInfo colony = body.getColonyInfo();
             placeNewColony(body.getName(), colony.getColonyName(), playerManager.getPlayerFromName(colony.getNameOfOwner()), colony.getPopulation(), colony.getBuildings());
-           }
+        }
     }
 
     /**
      * Converts unit information in the form of SpaceUnitInfo into space unit objects on the game stage. Part of the loading process.
+     *
      * @param spaceUnits
      */
     public void initUnits(List<SpaceUnitInfo> spaceUnits) {
-        SpaceUnitManager manager = new SpaceUnitManager(playerManager,solarSystem);
+        SpaceUnitManager manager = new SpaceUnitManager(playerManager, solarSystem);
         for (SpaceUnitInfo unit : spaceUnits) {
-           addActor(manager.createNewUnit(unit));
+            addActor(manager.createNewUnit(unit));
         }
     }
 
     /**
      * Converts mission information in the form of MissionInfoExtended into orders to space units. Part of the loading process.
+     *
      * @param listOfMissions
      */
     public void assignMission(List<MissionInfoExtended> listOfMissions) {
@@ -398,9 +402,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     private void assignDestination(MissionInfoExtended mission) {
-        SpaceUnit unit = (SpaceUnit)findActorByName(mission.getUnitName());
+        SpaceUnit unit = (SpaceUnit) findActorByName(mission.getUnitName());
 
-        if(mission.isMissionTargetAnObject()) {
+        if (mission.isMissionTargetAnObject()) {
             assignObjectTarget(mission, unit);
             return;
         }
@@ -409,19 +413,19 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     private void assignObjectTarget(MissionInfoExtended mission, SpaceUnit unit) {
-        SolarActor target = (SolarActor)findActorByName(mission.getDestinationName());
-        if(target instanceof AstronomicalBody) {
-            unit.setDestination((AstronomicalBody)target);
+        SolarActor target = (SolarActor) findActorByName(mission.getDestinationName());
+        if (target instanceof AstronomicalBody) {
+            unit.setDestination((AstronomicalBody) target);
             return;
         }
-        if(target instanceof KinematicObject) {
-            unit.setDestination((KinematicObject)target);
+        if (target instanceof KinematicObject) {
+            unit.setDestination((KinematicObject) target);
         }
     }
 
     private Actor findActorByName(String unitName) {
         for (Actor gameActor : getActors()) {
-            if(unitName.equals(gameActor.getName())) {
+            if (unitName.equals(gameActor.getName())) {
                 return gameActor;
             }
         }
@@ -442,7 +446,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         placeNewStation("Deep Space Nine", new Vector2(1500, 0), playerManager.getPlayerNumber(0));
 
         // Create an example space station orbiting Earth
-        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f,-6477.7f), playerManager.getPlayerNumber(1));
+        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f, -6477.7f), playerManager.getPlayerNumber(1));
         AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(ConfigurationConstants.HOMEWORLD);
         if (null != primary) {
             babylon.enterOrbit(primary);
@@ -457,7 +461,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Creates the solar system for the game.
      * Method called during startup of a game for creation of a new system map with a range of astronomical objects.
      */
-    private void systemCreation()   {
+    private void systemCreation() {
         // TODO: Remove - Old method, Creates the Solar System for the game
         solarSystem = new SolarSystem("Solar System");
         solarSystem.createSolarSystem();
@@ -467,11 +471,12 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     /**
      * Adds an astronomomical object and its satellites as new actors to the game.
+     *
      * @param body Astronomical Object to be added to the game.
      */
-    private void addSolarSystemActors(AstronomicalBody body)    {
-     // TODO: Remove - Old method
-        if (body.getNumberOfSatellites() != 0)       {
+    private void addSolarSystemActors(AstronomicalBody body) {
+        // TODO: Remove - Old method
+        if (body.getNumberOfSatellites() != 0) {
             for (AstronomicalBody astronomicalBody : body.getSatellites()) {
                 addActor(astronomicalBody);
                 addSolarSystemActors(astronomicalBody);
@@ -481,20 +486,22 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     /**
      * Adds a new spaceship object to the game.
-     * @param name Desired name of the spaceship.
+     *
+     * @param name          Desired name of the spaceship.
      * @param startlocation Desired location at which the ship is to appear.
      */
-    private void placeNewShip(String name, Vector2 startlocation, Player owner)   {
+    private void placeNewShip(String name, Vector2 startlocation, Player owner) {
         Spaceship newShip = Spaceship.placeNewShip(name, startlocation, owner);
         addActor(newShip);
     }
 
     /**
      * Adds a new space station object to the game.
-     * @param name Desired name of the station.
+     *
+     * @param name          Desired name of the station.
      * @param startlocation Desired location at which the station is to appear.
      */
-    private Spacestation placeNewStation(String name, Vector2 startlocation, Player owner)    {
+    private Spacestation placeNewStation(String name, Vector2 startlocation, Player owner) {
         Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
         addActor(newStation);
         return newStation;
@@ -513,7 +520,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     public void updateProduction(Time deltaT) {
-        for(Player player : getPlayers()) {
+        for (Player player : getPlayers()) {
             player.updateProduction(deltaT);
             player.updateTotalPopulation();
             player.updateTreasury(deltaT);

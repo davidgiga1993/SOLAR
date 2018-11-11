@@ -38,9 +38,9 @@ public class PreviewActor implements ShapeRenderable {
         float absoluteWidth = absoluteRadius * 2;
 
         libGDXShapeRenderer.setColor(color);
-        libGDXShapeRenderer.rect(parent.getX()+parent.getOriginX() - absoluteRadius, parent.getY()+parent.getOriginY() - absoluteRadius, absoluteWidth, absoluteWidth);
+        libGDXShapeRenderer.rect(parent.getX() + parent.getOriginX() - absoluteRadius, parent.getY() + parent.getOriginY() - absoluteRadius, absoluteWidth, absoluteWidth);
     }
-    
+
     public void setColor(Color newColor) {
         this.color = newColor;
     }

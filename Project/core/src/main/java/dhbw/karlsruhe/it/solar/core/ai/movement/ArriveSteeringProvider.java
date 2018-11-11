@@ -36,13 +36,13 @@ public class ArriveSteeringProvider implements SteeringProvider {
         if (distance > slowRadius) {
             targetSpeed = character.getMaxSpeed();
         } else {
-           targetSpeed = character.getMaxSpeed() * distance / slowRadius;
+            targetSpeed = character.getMaxSpeed() * distance / slowRadius;
         }
 
         Vector2 targetVelocity = direction.nor().scl(targetSpeed);
 
-        output.setLinear( targetVelocity.sub(character.getVelocity()) );
-        output.scaleLinear(1/timeToTarget);
+        output.setLinear(targetVelocity.sub(character.getVelocity()));
+        output.scaleLinear(1 / timeToTarget);
 
         if (output.getLengthLinear() > character.getMaxAcceleration()) {
             output.normalizeLinear(character.getMaxAcceleration());

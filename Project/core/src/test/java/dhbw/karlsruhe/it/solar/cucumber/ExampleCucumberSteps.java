@@ -11,27 +11,27 @@ import static org.junit.Assert.assertTrue;
 
 public class ExampleCucumberSteps {
 
-	@Given("^this is your first cucumber test$")
-	public void mainMenuCompletelyLoaded() throws InterruptedException {
-		setUp();
-		System.out.println("Given");
-	}
-	
-	@When("^you see this$")
-	public void clickOnShowInstructions() {
-		System.out.println("When");
-	}
-	
-	@Then("^you'll understand the purpose of life$")
-	public void showInstructionsScreen() {
-		System.out.println("Then: profit");
-		assertTrue(true);
-	}
-	
-	private void setUp() throws InterruptedException {
-		// prepare Application
-		TestHelper.setToMainMenuScreen();
-		// get Application listener for manipulation
-		SolarEngine game = (SolarEngine) Gdx.app.getApplicationListener();
-	}
+    @Given("^this is your first cucumber test$")
+    public void mainMenuCompletelyLoaded() throws InterruptedException {
+        setUp();
+        System.out.println("Given");
+    }
+
+    @When("^you see this$")
+    public void clickOnShowInstructions() {
+        System.out.println("When");
+    }
+
+    @Then("^you'll understand the purpose of life$")
+    public void showInstructionsScreen() {
+        System.out.println("Then: profit");
+        assertTrue(true);
+    }
+
+    private void setUp() throws InterruptedException {
+        // prepare Application
+        TestHelper.setToMainMenuScreen();
+        // get Application listener for manipulation
+        SolarEngine game = (SolarEngine) Gdx.app.getApplicationListener();
+    }
 }

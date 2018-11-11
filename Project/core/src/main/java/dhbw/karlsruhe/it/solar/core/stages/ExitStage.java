@@ -14,7 +14,7 @@ class ExitStage extends HUDStage {
     private Label labelYes;
     private Label labelNo;
 
-    public ExitStage(final SolarEngine se)    {
+    public ExitStage(final SolarEngine se) {
         super(se, "Exit");
 
         Table menuTable = new Table();

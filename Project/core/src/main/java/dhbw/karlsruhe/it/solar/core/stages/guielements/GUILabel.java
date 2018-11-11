@@ -16,7 +16,7 @@ public class GUILabel extends Label implements GUIActor {
     private InputListener tooltipInputListener;
     private boolean tooltipIsEnabled = false;
 
-    public GUILabel (CharSequence text, LabelStyle style, Stage stage) {
+    public GUILabel(CharSequence text, LabelStyle style, Stage stage) {
         super(text, style);
         tooltip.setVisible(false);
         stage.addActor(tooltip);
@@ -39,7 +39,7 @@ public class GUILabel extends Label implements GUIActor {
     }
 
     public void disableTooltips() {
-        if(!tooltipIsEnabled) {
+        if (!tooltipIsEnabled) {
             return;
         }
         this.removeListener(tooltipInputListener);
@@ -47,7 +47,7 @@ public class GUILabel extends Label implements GUIActor {
     }
 
     private void enableTooltips() {
-        if(tooltipIsEnabled){
+        if (tooltipIsEnabled) {
             return;
         }
         this.addListener(tooltipInputListener);

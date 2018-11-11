@@ -24,10 +24,11 @@ abstract class ScaleSlider extends WidgetGroup {
 
     /**
      * Instantiates a new ScaleSlider
-     * @param stage that contains the ScaleSlider
-     * @param scale that should be modified
-     * @param minValue of the slider
-     * @param maxValue of the slider
+     *
+     * @param stage          that contains the ScaleSlider
+     * @param scale          that should be modified
+     * @param minValue       of the slider
+     * @param maxValue       of the slider
      * @param solarActorType corresponding class of the scale
      */
     ScaleSlider(final Stage stage, final SolarActorScale scale, float minValue, float maxValue, final Class solarActorType) {
@@ -35,12 +36,12 @@ abstract class ScaleSlider extends WidgetGroup {
         this.scale = scale;
         this.solarActorType = solarActorType;
         Label textLabel = new Label(solarActorType.getSimpleName() + ": ", Styles.DEFAULTLABEL_STYLE);
-        curValue =  new GUILabel("", Styles.DEFAULTLABEL_STYLE, stage);
+        curValue = new GUILabel("", Styles.DEFAULTLABEL_STYLE, stage);
         curValue.disableTooltips();
         curValue.setAlignment(Align.right);
         float step = (maxValue - minValue) / 100;
         step = Math.round(step);
-        if(step <= 0) {
+        if (step <= 0) {
             step = 0.1f;
         }
         scaleSlider = new Slider(minValue, maxValue, step, false, Styles.TOOLTIPSKIN);
@@ -76,6 +77,7 @@ abstract class ScaleSlider extends WidgetGroup {
     }
 
     protected abstract void initialize();
+
     protected abstract void updateScale(float value);
 
     public void refreshValues() {

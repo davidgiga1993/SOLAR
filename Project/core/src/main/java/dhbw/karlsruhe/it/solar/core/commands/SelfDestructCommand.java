@@ -5,14 +5,14 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 public class SelfDestructCommand implements Command {
 
     private SpaceUnit unit;
-    
+
     public SelfDestructCommand(SpaceUnit unit) {
         this.unit = unit;
     }
-    
+
     @Override
     public void execute() {
-        if(selfDestructConditionsAreMet()) {
+        if (selfDestructConditionsAreMet()) {
             unit.removeShip();
         }
     }
@@ -20,5 +20,5 @@ public class SelfDestructCommand implements Command {
     private boolean selfDestructConditionsAreMet() {
         return unit.isPlayerAlsoShipOwner();
     }
-    
+
 }

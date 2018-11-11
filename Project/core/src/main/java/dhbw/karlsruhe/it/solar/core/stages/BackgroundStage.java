@@ -15,7 +15,7 @@ public class BackgroundStage extends BaseBackgroundStage {
     private Image backgroundImage;
     private Map<String, Texture> backgroundTextures;
 
-    public BackgroundStage(SolarEngine se)    {
+    public BackgroundStage(SolarEngine se) {
         super(se, "Background");
 
         loadTextures();
@@ -29,8 +29,8 @@ public class BackgroundStage extends BaseBackgroundStage {
         clear();
         backgroundImage = new Image(backgroundTextures.get(name));
         backgroundImage.setScaling(Scaling.fill);
-        backgroundImage.setPosition(0,0);
-        backgroundImage.setColor(1,1,1,.6f);
+        backgroundImage.setPosition(0, 0);
+        backgroundImage.setColor(1, 1, 1, .6f);
         addActor(backgroundImage);
     }
 
@@ -49,7 +49,7 @@ public class BackgroundStage extends BaseBackgroundStage {
 
     @Override
     public void dispose() {
-        for(Texture t : backgroundTextures.values()) {
+        for (Texture t : backgroundTextures.values()) {
             t.dispose();
         }
         super.dispose();

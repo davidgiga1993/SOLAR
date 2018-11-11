@@ -1,31 +1,30 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import com.badlogic.gdx.math.Vector2;
-
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 
+import javax.xml.bind.annotation.XmlElement;
+
 public class MissionInfo {
-    
-    @XmlElement(name="TargetLocation")
+
+    @XmlElement(name = "TargetLocation")
     private Vector2 location;
-    @XmlElement(name="TargetActor")
+    @XmlElement(name = "TargetActor")
     private String targetName;
-    
+
     public MissionInfo() {
 
     }
 
     public void fillMissionInfo(SpaceUnit unit) {
         targetName = unit.getNameOfDestination();
-        if(null == targetName) {
-            location = unit.getDestinationVector();            
+        if (null == targetName) {
+            location = unit.getDestinationVector();
         }
     }
 
     public boolean isMissionTargetAnObject() {
-        return (null!=targetName);
+        return (null != targetName);
     }
 
     public Vector2 getDestinationCoordinates() {
@@ -33,7 +32,7 @@ public class MissionInfo {
     }
 
     public String getDestinationName() {
-           return targetName;
+        return targetName;
     }
 
 }

@@ -3,16 +3,16 @@ package dhbw.karlsruhe.it.solar.core.physics;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Albedo {
-    
+
     @XmlElement(name = "Albedo")
     private float value;
-    
+
     public Albedo() {
-        
+
     }
-    
+
     public Albedo(float value) {
-        if(0 <= value && value <= 1) {
+        if (0 <= value && value <= 1) {
             this.value = value;
             return;
         }
@@ -22,12 +22,12 @@ public class Albedo {
     public float getAlbedoValue() {
         return value;
     }
-    
+
     @Override
     public String toString() {
-        return formatValue(value*100) + " % Reflection";
+        return formatValue(value * 100) + " % Reflection";
     }
-   
+
     private String formatValue(float value) {
         return String.format("%.01f", value);
     }

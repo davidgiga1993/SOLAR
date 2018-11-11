@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**

@@ -12,13 +12,11 @@ import java.awt.event.KeyEvent;
 
 import static org.junit.Assert.fail;
 
-public class KartenbewegungJUnit
-{
+public class KartenbewegungJUnit {
 
     private SolarEngine engine;
 
-    public KartenbewegungJUnit()
-    {
+    public KartenbewegungJUnit() {
     }
 
     @Before
@@ -57,11 +55,10 @@ public class KartenbewegungJUnit
 
 
     }
-    
+
     @Test
-    public void testScroll()
-    {
-       // No test case -> camera can't be tested
+    public void testScroll() {
+        // No test case -> camera can't be tested
     }
 
 }

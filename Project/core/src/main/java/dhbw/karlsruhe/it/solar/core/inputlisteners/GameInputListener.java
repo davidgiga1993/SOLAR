@@ -25,7 +25,7 @@ public class GameInputListener extends InputListener {
     private static final int CAMERA_TRANSLATION_FACTOR = 5 * 60; // 60fps
     private GameStartStage stage;
     private SolarEngine se = SolarEngine.get();
-    
+
     public GameInputListener(GameStartStage gameStage) {
         stage = gameStage;
     }
@@ -33,7 +33,7 @@ public class GameInputListener extends InputListener {
     @Override
     public boolean keyTyped(InputEvent event, char character) {
         // TODO Auto-generated method stub
-        switch(character) {
+        switch (character) {
             case 'p':
                 GameStartStage.togglePause();
                 break;
@@ -74,19 +74,19 @@ public class GameInputListener extends InputListener {
 
     @Override
     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        if (event.getTarget() instanceof GUIActor){
+        if (event.getTarget() instanceof GUIActor) {
             return false;
         }
-        switch(button) {
-        case Input.Buttons.LEFT:
-            stage.startOfSelectionRectangle(x, y);
-            break;
-        case Input.Buttons.MIDDLE:
-            break;
-        case Input.Buttons.RIGHT:
-            break;
-        default:
-            return super.touchDown(event, x, y, pointer, button);
+        switch (button) {
+            case Input.Buttons.LEFT:
+                stage.startOfSelectionRectangle(x, y);
+                break;
+            case Input.Buttons.MIDDLE:
+                break;
+            case Input.Buttons.RIGHT:
+                break;
+            default:
+                return super.touchDown(event, x, y, pointer, button);
         }
         return true;
     }
@@ -101,28 +101,28 @@ public class GameInputListener extends InputListener {
 
     @Override
     public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-        switch(button) {
-        case Input.Buttons.LEFT:
-            stage.hideSelectionRectangle();
-            interact(event, x, y);
-            break;
-        case Input.Buttons.MIDDLE:
-            break;
-        case Input.Buttons.RIGHT:
-            navigate(event, x, y);
-            break;
-        default:
-            super.touchUp(event, x, y, pointer, button);
+        switch (button) {
+            case Input.Buttons.LEFT:
+                stage.hideSelectionRectangle();
+                interact(event, x, y);
+                break;
+            case Input.Buttons.MIDDLE:
+                break;
+            case Input.Buttons.RIGHT:
+                navigate(event, x, y);
+                break;
+            default:
+                super.touchUp(event, x, y, pointer, button);
         }
     }
 
     public void navigate(InputEvent event, float x, float y) {
         Actor target = event.getTarget();
-        if(target instanceof AstronomicalBody) {
+        if (target instanceof AstronomicalBody) {
             new MoveToAstronomicalBodyCommand(stage.getSelectedSpaceUnits(), (AstronomicalBody) target, stage.getPlayerOnThisPlatform()).execute();
             return;
         }
-        if(target instanceof KinematicObject) {
+        if (target instanceof KinematicObject) {
             new MoveToKineticObjectCommand(stage.getSelectedSpaceUnits(), (KinematicObject) target, stage.getPlayerOnThisPlatform()).execute();
             return;
         }
@@ -131,6 +131,7 @@ public class GameInputListener extends InputListener {
 
     /**
      * This method handles interact inputs. As of now it will Move the camera if ALT is pressed, or otherwise update the selection
+     *
      * @param event
      */
     public void interact(InputEvent event, float x, float y) {
@@ -179,7 +180,7 @@ public class GameInputListener extends InputListener {
     }
 
     private void updateSelectionRectangleForUnits(SelectionState state,
-            SolarActor sa) {
+                                                  SolarActor sa) {
         //Actor will only be added to selection if owned by the player
         if (sa instanceof Ownable && ((Ownable) sa).isOwnedBy(stage.getPlayerOnThisPlatform())) {
             // proceed according to state
@@ -188,7 +189,7 @@ public class GameInputListener extends InputListener {
     }
 
     private void updateSelectionReactangleForColonies(SelectionState state, SolarActor sa) {
-        if (sa instanceof AstronomicalBody && ((AstronomicalBody)sa).isColonized() && ((AstronomicalBody)sa).isColonyOwnedBy(stage.getPlayerOnThisPlatform())) {
+        if (sa instanceof AstronomicalBody && ((AstronomicalBody) sa).isColonized() && ((AstronomicalBody) sa).isColonyOwnedBy(stage.getPlayerOnThisPlatform())) {
             // proceed according to state
             updateSelection(state, sa);
         }
@@ -209,21 +210,23 @@ public class GameInputListener extends InputListener {
 
     /**
      * Moves the camera above the given target
+     *
      * @param target
      */
     private void moveCamera(Actor target, float x, float y, boolean shouldModifyZoom) {
-        if(target instanceof Group) {
+        if (target instanceof Group) {
             se.moveSolarCamera(x, y);
             return;
         }
         se.moveSolarCamera(target);
-        if(shouldModifyZoom) {
+        if (shouldModifyZoom) {
             se.zoomSolarCameraTo(target.getWidth() / 25);
         }
     }
 
     /**
      * Handle continuous input e.g. moving the camera
+     *
      * @param delta
      */
     public void handleContinuousInput(float delta) {
@@ -242,47 +245,47 @@ public class GameInputListener extends InputListener {
         se.translateSolarCamera(new Vector2(x * se.getSolarCameraZoom(), y * se.getSolarCameraZoom()));
     }
 
-	private float handleKeyRight(float x) {
-		if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))        {
+    private float handleKeyRight(float x) {
+        if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
             x += CAMERA_TRANSLATION_FACTOR;
         }
-		return x;
-	}
+        return x;
+    }
 
-	private float handleKeyLeft(float x) {
-		if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))        {
+    private float handleKeyLeft(float x) {
+        if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
             x -= CAMERA_TRANSLATION_FACTOR;
         }
-		return x;
-	}
+        return x;
+    }
 
-	private float handleKeyDown(float y) {
-		if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))       {
+    private float handleKeyDown(float y) {
+        if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S)) {
             y -= CAMERA_TRANSLATION_FACTOR;
         }
-		return y;
-	}
+        return y;
+    }
 
-	private float handleKeyUp(float y) {
-		if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))        {
+    private float handleKeyUp(float y) {
+        if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W)) {
             // same goes for camera translation, it has to be a function of the current zoom, since we don't want to wait for
             // hours to move the camera a few pixels while looking at the whole solar system
             y += CAMERA_TRANSLATION_FACTOR;
         }
-		return y;
-	}
+        return y;
+    }
 
-	private void handleZoomOut(float cameraModifier) {
-		if (Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(Keys.Q))        {
+    private void handleZoomOut(float cameraModifier) {
+        if (Gdx.input.isKeyPressed(Keys.MINUS) || Gdx.input.isKeyPressed(Keys.Q)) {
             modifyZoom(1 + cameraModifier);
         }
-	}
+    }
 
-	private void handleZoomIn(float cameraModifier) {
-		if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E))        {
+    private void handleZoomIn(float cameraModifier) {
+        if (Gdx.input.isKeyPressed(Keys.PLUS) || Gdx.input.isKeyPressed(Keys.EQUALS) || Gdx.input.isKeyPressed(Keys.E)) {
             modifyZoom(1 - cameraModifier);
         }
-	}
+    }
 
     private void modifyZoom(float cameraModifier) {
         // using a linear zoom is necessary because the perception of the world changes with it's zoom

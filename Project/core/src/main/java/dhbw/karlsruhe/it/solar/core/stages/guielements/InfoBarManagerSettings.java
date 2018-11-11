@@ -7,26 +7,27 @@ import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Contains the display settings for the InfoBar as governed by the InfoBarManager.
+ *
  * @author Andi
  * created 2015-05-03
  */
 public class InfoBarManagerSettings {
-    
-    @XmlElement(name ="Display_Extra_Setting")
+
+    @XmlElement(name = "Display_Extra_Setting")
     private boolean displayExtraData = true;
-    @XmlElement(name ="Display_Liferating_Setting")
+    @XmlElement(name = "Display_Liferating_Setting")
     private boolean displayLifeRating = true;
-    @XmlElement(name ="Display_Colonydetails_Setting")
+    @XmlElement(name = "Display_Colonydetails_Setting")
     private boolean displayColonyDetails = true;
-    @XmlElement(name ="Display_Colony_Buildings_Setting")
+    @XmlElement(name = "Display_Colony_Buildings_Setting")
     private boolean displayColonyBuildings = true;
     private int maximumNumberOfColumns;
     private LastInfoBarButtonToggled lastButton;
-    
+
     public InfoBarManagerSettings() {
 
     }
-    
+
     public void toggleDisplayExtraData() {
         displayExtraData = !displayExtraData;
         lastButton = LastInfoBarButtonToggled.EXTRA_DATA;
@@ -41,7 +42,7 @@ public class InfoBarManagerSettings {
         displayColonyDetails = !displayColonyDetails;
         lastButton = LastInfoBarButtonToggled.COLONY_DATA;
     }
-    
+
     public void toggleDisplayColonyBuildings() {
         displayColonyBuildings = !displayColonyBuildings;
         lastButton = LastInfoBarButtonToggled.COLONY_BUILDINGS;
@@ -65,26 +66,26 @@ public class InfoBarManagerSettings {
 
     public void adjustMaximumNumberOfColumns() {
         maximumNumberOfColumns = calculateNumberOfInfoColumnsWhichCanBeDisplayed();
-        
-        while(tooManyColumnsActive()) {
+
+        while (tooManyColumnsActive()) {
             deactivateColumnWithLeastPriority();
         }
     }
-    
+
     private void deactivateColumnWithLeastPriority() {
-        if(displayExtraData && LastInfoBarButtonToggled.EXTRA_DATA != lastButton) {
+        if (displayExtraData && LastInfoBarButtonToggled.EXTRA_DATA != lastButton) {
             displayExtraData = false;
             return;
         }
-        if(displayLifeRating && LastInfoBarButtonToggled.LIFERATING != lastButton) {
+        if (displayLifeRating && LastInfoBarButtonToggled.LIFERATING != lastButton) {
             displayLifeRating = false;
             return;
         }
-        if(displayColonyBuildings && LastInfoBarButtonToggled.COLONY_BUILDINGS != lastButton) {
+        if (displayColonyBuildings && LastInfoBarButtonToggled.COLONY_BUILDINGS != lastButton) {
             displayColonyBuildings = false;
             return;
         }
-        if(displayColonyDetails && LastInfoBarButtonToggled.COLONY_DATA != lastButton) {
+        if (displayColonyDetails && LastInfoBarButtonToggled.COLONY_DATA != lastButton) {
             displayColonyDetails = false;
             return;
         }
@@ -96,29 +97,29 @@ public class InfoBarManagerSettings {
 
     private int numberOfActiveColumns() {
         int numberOfActiveColumns = 0;
-        if(displayExtraData) {
+        if (displayExtraData) {
             numberOfActiveColumns++;
         }
-        if(displayLifeRating) {
+        if (displayLifeRating) {
             numberOfActiveColumns++;
         }
-        if(displayColonyBuildings) {
+        if (displayColonyBuildings) {
             numberOfActiveColumns++;
         }
-        if(displayColonyDetails) {
+        if (displayColonyDetails) {
             numberOfActiveColumns++;
         }
         return numberOfActiveColumns;
     }
 
-    private int calculateNumberOfInfoColumnsWhichCanBeDisplayed() {      
+    private int calculateNumberOfInfoColumnsWhichCanBeDisplayed() {
         return calculateCurrentFreeWidth() / (ConfigurationConstants.CELL_WIDTH + ConfigurationConstants.PADDING);
     }
 
     private int calculateCurrentFreeWidth() {
         return GameHUDStage.calculateInfoBarMaxWidth() - InfoBar.MINIMUM_WIDTH + ConfigurationConstants.CELL_WIDTH + ConfigurationConstants.PADDING;
     }
-    
+
     public enum LastInfoBarButtonToggled {
         EXTRA_DATA,
         LIFERATING,

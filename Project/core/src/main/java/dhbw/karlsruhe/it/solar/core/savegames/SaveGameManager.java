@@ -13,22 +13,23 @@ import java.io.File;
 
 /**
  * Handles the saving and loading process of the game which creates XML save files out of the game state and back.
+ *
  * @author Andi
  * created 2015-04-06
  */
 public class SaveGameManager {
 
     private GameStartStage stage;
-    
+
     public SaveGameManager(GameStartStage stage) {
         this.stage = stage;
     }
-    
+
     public void loadCurrentGame() {
         String path = DynamicOptions.getValue(DynamicOptions.SAVEGAME_FILE_CURRENT);
         loadFile(path);
     }
-    
+
     public void loadNewGame() {
         String path = DynamicOptions.getValue(DynamicOptions.SAVEGAME_FILE_NEWGAME);
         loadFile(path);
@@ -51,7 +52,7 @@ public class SaveGameManager {
 
     private void loadGameFromXML(File file) {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(SaveGame.class);           
+            JAXBContext jaxbContext = JAXBContext.newInstance(SaveGame.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             SaveGame save = (SaveGame) jaxbUnmarshaller.unmarshal(file);
             handOverToGameStartStage(save);
@@ -59,7 +60,7 @@ public class SaveGameManager {
             Gdx.app.error("Loading", "Loading game from XML failed", e);
         }
     }
-    
+
     public void saveCurrentGame() {
         String path = DynamicOptions.getValue(DynamicOptions.SAVEGAME_FILE_CURRENT);
         saveFile(path);
@@ -70,15 +71,15 @@ public class SaveGameManager {
         save.assignInformation(stage);
 
         try {
-            JAXBContext jc = JAXBContext.newInstance( SaveGame.class );
+            JAXBContext jc = JAXBContext.newInstance(SaveGame.class);
             Marshaller m = jc.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal( save, file );
+            m.marshal(save, file);
         } catch (JAXBException e) {
             Gdx.app.error("Saving", "Saving game to XML failed", e);
         }
     }
-    
+
     private void handOverToGameStartStage(SaveGame save) {
         stage.initSettings(save.getSettings());
         stage.initGameTime(save.getGameTimeElapsed());

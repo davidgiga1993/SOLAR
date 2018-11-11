@@ -9,24 +9,24 @@ public class Biosphere {
     private float bioCover;
     @XmlElement(name = "Type_of_Biosphere")
     private BiosphereType type;
-    
+
     public Biosphere() {
-        
-    }   
-    
+
+    }
+
     public Biosphere(BiosphereType bioType, float biosphereCoverage) {
-        if(0 <= biosphereCoverage && 1 >= biosphereCoverage) {
+        if (0 <= biosphereCoverage && 1 >= biosphereCoverage) {
             this.bioCover = biosphereCoverage;
             this.type = bioType;
             return;
         }
         throw new IllegalArgumentException("Biosphere Coverage must lie between 0 and 1!");
     }
-    
+
     public BiosphereType getBioType() {
         return type;
     }
-    
+
     public float getBioCover() {
         return bioCover;
     }
@@ -35,9 +35,9 @@ public class Biosphere {
         TERRAN,
         ALIEN
     }
-    
+
     private float compatibilityWithTerranBiomes() {
-        switch(type) {
+        switch (type) {
             case ALIEN:
                 return 0.5f;
             case TERRAN:
@@ -48,15 +48,15 @@ public class Biosphere {
     }
 
     public float getUseableBioCover() {
-        return bioCover*compatibilityWithTerranBiomes();
+        return bioCover * compatibilityWithTerranBiomes();
     }
-    
+
     @Override
     public String toString() {
         return "covers " + formatValue() + " %";
     }
 
     private String formatValue() {
-        return String.format("%.00f", bioCover*100);
+        return String.format("%.00f", bioCover * 100);
     }
 }

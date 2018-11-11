@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 /**
  * Created by Arga on 08.03.2015.
  */
-public class AnnulusShader extends ShaderProgram{
+public class AnnulusShader extends ShaderProgram {
     private static final String VERTEX_SHADER = "attribute vec2 a_position;    \n" +
             "attribute vec2 a_texCoord; \n" +
 

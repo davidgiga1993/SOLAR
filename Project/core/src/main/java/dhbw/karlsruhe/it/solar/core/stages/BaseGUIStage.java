@@ -10,7 +10,7 @@ public class BaseGUIStage extends BaseStage {
 
     BaseGUIStage(SolarEngine solarEngine, String tag) {
         super(solarEngine, tag, solarEngine.getGUICamera());
-   //     super(solarEngine, tag, new StretchViewport(Gdx.graphics.getHeight(), Gdx.graphics.getWidth(), solarEngine.guiCamera))
+        //     super(solarEngine, tag, new StretchViewport(Gdx.graphics.getHeight(), Gdx.graphics.getWidth(), solarEngine.guiCamera))
     }
 
     @Override

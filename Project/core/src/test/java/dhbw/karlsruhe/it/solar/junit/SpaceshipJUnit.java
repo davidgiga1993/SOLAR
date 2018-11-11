@@ -13,8 +13,8 @@ import org.junit.Test;
 import java.util.concurrent.CountDownLatch;
 
 import static org.junit.Assert.*;
-public class SpaceshipJUnit
-{
+
+public class SpaceshipJUnit {
 
     private Spaceship testShip;
 
@@ -24,18 +24,17 @@ public class SpaceshipJUnit
         Runnable runner = () -> {
             try {
                 testShip = placeTestShip();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    		latch.countDown();
-    	};
-    	Gdx.app.postRunnable(runner);
-    	try {
-    		latch.await();
-    	}
-    	catch (InterruptedException e) {
-    		e.printStackTrace();
-    	}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            latch.countDown();
+        };
+        Gdx.app.postRunnable(runner);
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private Spaceship placeTestShip() {
@@ -51,8 +50,7 @@ public class SpaceshipJUnit
      * Tests whether the ship has been created at all.
      */
     @Test
-    public void testShipCreation()
-    {
+    public void testShipCreation() {
         assertEquals("Testschiff", testShip.getName());
     }
 
@@ -61,8 +59,7 @@ public class SpaceshipJUnit
      * Beim wiederholten drücken auf das Raumschiff oder wenn nicht auf das Objekt gedrückt wird, wird das Raumschiff wieder abgewählt.
      */
     @Test
-    public void testSelectionFunctionality()
-    {
+    public void testSelectionFunctionality() {
         testShip.select();
         assertTrue(testShip.isSelected());
         testShip.deselect();
@@ -73,9 +70,8 @@ public class SpaceshipJUnit
      * Wenn das Raumschiff ausgewählt ist und die rechte Maustaste im GameScreen gedrückt wird, bewegt sich das Raumschiff an die Stelle, an die gedrückt worden ist.
      */
     @Test
-    public void testSpaceshipDestination()
-    {
-    	testShip.setDestination(new Vector2(12345, 67890));
+    public void testSpaceshipDestination() {
+        testShip.setDestination(new Vector2(12345, 67890));
 
         assertEquals(12345, testShip.getDestinationVector().x, 1);
         assertEquals(67890, testShip.getDestinationVector().y, 1);

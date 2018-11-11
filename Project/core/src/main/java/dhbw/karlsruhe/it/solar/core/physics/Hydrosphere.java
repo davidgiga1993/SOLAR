@@ -3,7 +3,7 @@ package dhbw.karlsruhe.it.solar.core.physics;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Hydrosphere {
-    
+
     @XmlElement(name = "Water_Cover")
     private float waterCover;
     @XmlElement(name = "Ice_Cover")
@@ -12,13 +12,13 @@ public class Hydrosphere {
     private boolean liquidWater;
     @XmlElement(name = "Subsurface_Ocean")
     private boolean subsurfaceOcean;
-    
+
     public Hydrosphere() {
-        
+
     }
-    
+
     public Hydrosphere(float waterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
-        if(0 <= waterCover + iceCover && waterCover + iceCover <= 1) {
+        if (0 <= waterCover + iceCover && waterCover + iceCover <= 1) {
             this.waterCover = waterCover;
             this.iceCover = iceCover;
             this.liquidWater = liquidWater;
@@ -31,13 +31,13 @@ public class Hydrosphere {
     public float getWaterCover() {
         return waterCover;
     }
-    
+
     @Override
     public String toString() {
-        if(waterCover > iceCover) {
-            return formatValue((waterCover+iceCover)*100) + " % Ocean";
+        if (waterCover > iceCover) {
+            return formatValue((waterCover + iceCover) * 100) + " % Ocean";
         }
-        return formatValue((iceCover+waterCover)*100) + " % Ice Cap";            
+        return formatValue((iceCover + waterCover) * 100) + " % Ice Cap";
     }
 
     private String formatValue(float value) {
@@ -53,7 +53,7 @@ public class Hydrosphere {
     }
 
     public boolean hasLiquidWater() {
-        if(subsurfaceOcean || liquidWater) {
+        if (subsurfaceOcean || liquidWater) {
             return true;
         }
         return false;

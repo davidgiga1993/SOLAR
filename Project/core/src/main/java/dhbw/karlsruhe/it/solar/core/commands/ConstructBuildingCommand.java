@@ -4,7 +4,7 @@ import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
 
 public class ConstructBuildingCommand implements Command {
-    
+
     private Colony colony;
     private ColonyBuildings buildings;
 
@@ -16,21 +16,21 @@ public class ConstructBuildingCommand implements Command {
     @Override
     public void execute() {
         // TODO Auto-generated method stub
-        
+
     }
-    
+
     private boolean buildConditionsAreMet() {
         return colony.isPlayerAlsoColonyOwner();
     }
 
     public void infrastructure() {
-        if(buildConditionsAreMet()) {
+        if (buildConditionsAreMet()) {
             buildings.buildInfrastructure();
         }
     }
 
     public void fissionReactor() {
-        if(buildConditionsAreMet()) {
+        if (buildConditionsAreMet()) {
             buildings.buildFissionReactor();
         }
     }

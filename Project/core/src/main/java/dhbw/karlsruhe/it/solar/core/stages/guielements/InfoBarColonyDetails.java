@@ -1,15 +1,14 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class InfoBarColonyDetails extends Table {
-    
+
     private Colony colony;
     private LabelStyle style = Styles.MENUELABEL_STYLE;
     private LabelStyle bold = Styles.BOLDLABEL_STYLE;
@@ -28,20 +27,20 @@ public class InfoBarColonyDetails extends Table {
 
     private void generateColonyDetails() {
         add(colonyName).left();
-        add(colonyOwner).expand().right(); 
+        add(colonyOwner).expand().right();
         row();
         add(populationLabel).left();
-        add(populationValueLabel).right(); 
+        add(populationValueLabel).right();
         row();
         add(lifeSupportLabel).left();
-        add(lifeSupportValueLabel).right(); 
+        add(lifeSupportValueLabel).right();
         row();
         add(electricPowerLabel).left();
-        add(electricPowerValueLabel).right(); 
+        add(electricPowerValueLabel).right();
     }
 
     public void reload() {
-        if(null==colony) {
+        if (null == colony) {
             return;
         }
         populationValueLabel.setText(colony.getPopulationInformation());
@@ -58,7 +57,7 @@ public class InfoBarColonyDetails extends Table {
     }
 
     private void init() {
-        if(null==colony) {
+        if (null == colony) {
             colonyName.setText("Unclaimed");
             colonyOwner.setVisible(false);
             populationLabel.setVisible(false);

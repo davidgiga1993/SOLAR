@@ -1,39 +1,31 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
+import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
+import dhbw.karlsruhe.it.solar.core.physics.*;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.BodyType;
-import dhbw.karlsruhe.it.solar.core.physics.Albedo;
-import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.Atmosphere;
-import dhbw.karlsruhe.it.solar.core.physics.Biosphere;
-import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
-import dhbw.karlsruhe.it.solar.core.physics.Hydrosphere;
-import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.Time;
-
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({OrbitalPropertyInfo.class, BodyPropertyInfo.class, ColonyInfo.class})
 public class AstroBodyInfo {
-    
+
     @XmlElement(name = "Name")
     private String name;
-    @XmlElement (name ="BodyProperties")
+    @XmlElement(name = "BodyProperties")
     private BodyPropertyInfo body;
-    @XmlElement (name ="OrbitalProperties")
+    @XmlElement(name = "OrbitalProperties")
     private OrbitalPropertyInfo orbit;
     @XmlElement(name = "PlayerColony")
     private ColonyInfo colony;
 
     public AstroBodyInfo() {
-        
+
     }
-    
+
     public void fillAstroBodyInfo(AstronomicalBody body) {
         this.name = body.getName();
         OrbitalPropertyInfo orbitalInfo = new OrbitalPropertyInfo();
@@ -42,10 +34,10 @@ public class AstroBodyInfo {
         BodyPropertyInfo bodyInfo = new BodyPropertyInfo();
         bodyInfo.fillBodyPropertyInfo(body);
         this.body = bodyInfo;
-        if(body.isColonized()) {
+        if (body.isColonized()) {
             ColonyInfo colonyInfo = new ColonyInfo();
             colonyInfo.fillColonyInfo(body.getColony());
-            this.colony = colonyInfo;            
+            this.colony = colonyInfo;
         }
     }
 
@@ -54,7 +46,7 @@ public class AstroBodyInfo {
     }
 
     public boolean isStationary() {
-       return orbit.isStationary();
+        return orbit.isStationary();
     }
 
     public String getPrimary() {
@@ -94,9 +86,9 @@ public class AstroBodyInfo {
     }
 
     public boolean isColonized() {
-        return (null!=colony);
+        return (null != colony);
     }
-    
+
     public ColonyInfo getColonyInfo() {
         return colony;
     }

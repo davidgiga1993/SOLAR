@@ -17,11 +17,11 @@ public class RingSystemInfo {
     private Length outerRadius;
     @XmlElement(name = "TypeOfRingSystem")
     private RingType type;
- 
+
     public RingSystemInfo() {
-        
+
     }
-    
+
     public void fillRingSystemInfo(PlanetaryRing rings) {
         this.mass = rings.getMass();
         this.innerRadius = rings.getInnerRadius();
@@ -36,11 +36,11 @@ public class RingSystemInfo {
     public Length getInnerRadius() {
         return innerRadius;
     }
-    
+
     public Length getOuterRadius() {
         return outerRadius;
     }
-    
+
     public RingType getType() {
         return type;
     }

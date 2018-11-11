@@ -3,7 +3,6 @@ package dhbw.karlsruhe.it.solar.core.stages;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
@@ -38,7 +37,7 @@ public class StartStage extends HUDStage {
                 GameStartStage.startCurrentGame();
             }
         };
-        
+
         labelNewGame = new MenuButton("Start New Game", se) {
             @Override
             protected void onClick() {
@@ -46,7 +45,7 @@ public class StartStage extends HUDStage {
                 GameStartStage.startNewGame();
             }
         };
-        
+
         labelScenario = new MenuButton("Scenario: Sol System", se) {
             @Override
             protected void onClick() {
@@ -71,9 +70,9 @@ public class StartStage extends HUDStage {
             }
         };
 
-        if(isThereACurrentSaveGame()) {
+        if (isThereACurrentSaveGame()) {
             menuTable.add(labelContinue).expandX().pad(10f).height(25);
-            menuTable.row();            
+            menuTable.row();
         }
         menuTable.add(labelNewGame).expandX().pad(10f).height(25);
         menuTable.row();

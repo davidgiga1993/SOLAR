@@ -13,7 +13,7 @@ import dhbw.karlsruhe.it.solar.core.stages.guielements.NavBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.ResourceBar;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScaleDialog;
 
-public class GameHUDStage extends BaseGUIStage{
+public class GameHUDStage extends BaseGUIStage {
 
     private NavBar navigationBar;
     private ResourceBar resourceBar;
@@ -22,12 +22,12 @@ public class GameHUDStage extends BaseGUIStage{
     private Table guiTable;
 
     public GameHUDStage(final SolarEngine solarEngine) {
-super(solarEngine, "GameHUD");
-}
+        super(solarEngine, "GameHUD");
+    }
 
     public static int calculateInfoBarMaxWidth() {
         int currentWidth = Gdx.graphics.getWidth();
-        if(currentWidth > InfoBar.MINIMUM_WIDTH) {
+        if (currentWidth > InfoBar.MINIMUM_WIDTH) {
             return currentWidth;
         }
         return InfoBar.MINIMUM_WIDTH;
@@ -37,12 +37,12 @@ super(solarEngine, "GameHUD");
         addListener(new GUIInputListener());
 
         guiTable = new Table();
-        guiTable.setPosition(0,0);
+        guiTable.setPosition(0, 0);
         guiTable.setFillParent(true);
         guiTable.setWidth(Gdx.graphics.getWidth());
         guiTable.setHeight(Gdx.graphics.getHeight());
         guiTable.top().left();
-        if(SolarEngine.DEBUG) {
+        if (SolarEngine.DEBUG) {
             guiTable.debug();
         }
 
@@ -60,13 +60,13 @@ super(solarEngine, "GameHUD");
 
         addActor(guiTable);
 
-        if(ConfigurationConstants.SCALE_DIALOG_ENABLED) {
+        if (ConfigurationConstants.SCALE_DIALOG_ENABLED) {
             ScaleDialog.createScaleDialog(this);
         }
     }
-    
+
     private int calculateNavbarMaxHeight() {
-        return Gdx.graphics.getHeight() - (ConfigurationConstants.RESSOURCEBAR_HEIGHT+ConfigurationConstants.INFOBAR_HEIGHT);
+        return Gdx.graphics.getHeight() - (ConfigurationConstants.RESSOURCEBAR_HEIGHT + ConfigurationConstants.INFOBAR_HEIGHT);
     }
 
     @Override

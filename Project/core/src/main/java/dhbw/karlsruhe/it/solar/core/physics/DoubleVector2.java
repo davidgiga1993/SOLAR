@@ -66,7 +66,7 @@ public class DoubleVector2 {
     }
 
     public float angle() {
-        float angle = (float)Math.atan2(y, x) * MathUtils.radiansToDegrees;
+        float angle = (float) Math.atan2(y, x) * MathUtils.radiansToDegrees;
         if (angle < 0) angle += 360;
         return angle;
     }

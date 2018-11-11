@@ -13,6 +13,6 @@ public class SolarMessageType {
 
 
     private SolarMessageType() {
-        
+
     }
 }

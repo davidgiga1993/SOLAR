@@ -20,23 +20,22 @@ import java.util.List;
 
 /**
  * @author Andi
- *
  */
-public abstract class AstronomicalBody extends Orbiter  {
+public abstract class AstronomicalBody extends Orbiter {
     protected BodyGameLabel label;
     BodyProperties physicalProperties;
     private List<AstronomicalBody> satellites = new ArrayList<AstronomicalBody>();
     private Colony colony;
 
-    public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName)    {
+    public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName) {
         super(name, orbit, scaleFactor);
         setupSolarActorSprite(textureName);
         this.physicalProperties = body;
         this.colony = null;
-        this.label = new BodyGameLabel(name);    
+        this.label = new BodyGameLabel(name);
         changeBodyScale();
     }
-    
+
     protected void changeBodyScale() {
         float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometers()) * actorScale.getShapeScale() * 2;
         this.setSize(tSize, tSize);
@@ -44,15 +43,16 @@ public abstract class AstronomicalBody extends Orbiter  {
 
     /**
      * Searches the satellites of a parent astronomical object for a satellite with a matching name.
+     *
      * @param name Searched for key word
      * @return Satellite object with matching name or null if no satellite was found
      */
-    public AstronomicalBody findAstronomicalBodyByName(String name)    {
-        
-        if(this.getName().equals(name)) {
+    public AstronomicalBody findAstronomicalBodyByName(String name) {
+
+        if (this.getName().equals(name)) {
             return this;
         }
-        
+
         AstronomicalBody searchedBody;
         for (AstronomicalBody satellite : satellites) {
             if (satellite.getName().equals(name)) {
@@ -65,34 +65,34 @@ public abstract class AstronomicalBody extends Orbiter  {
         }
         return null;
     }
-    
+
     public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
         AstronomicalBody dominantSource = null;
         for (AstronomicalBody satellite : satellites) {
-            if(unit.isAbleToEnterOrbitAround(satellite)) {
+            if (unit.isAbleToEnterOrbitAround(satellite)) {
                 dominantSource = satellite;
             }
             AstronomicalBody dominantSatellite = null;
             dominantSatellite = satellite.calculateDominantGravitationSourceAt(unit);
-            if(null != dominantSatellite) {
+            if (null != dominantSatellite) {
                 dominantSource = dominantSatellite;
             }
         }
         return dominantSource;
     }
-    
+
     @Override
     protected void adjustLabelPosition() {
-        if(label.isVisible()) {
-            Vector2 labelPos = new Vector2(getX()+getWidth(), getY() + getHeight());
+        if (label.isVisible()) {
+            Vector2 labelPos = new Vector2(getX() + getWidth(), getY() + getHeight());
             getStage().getViewport().project(labelPos);
             label.setPosition(labelPos.x, labelPos.y);
         }
     }
-    
+
     @Override
     public void drawLines(ShapeRenderer libGDXShapeRenderer, SolarShapeRenderer solarShapeRenderer) {
-        if(null != colony) {
+        if (null != colony) {
             displaySelectionBox(libGDXShapeRenderer);
         }
         super.drawLines(libGDXShapeRenderer, solarShapeRenderer);
@@ -106,16 +106,16 @@ public abstract class AstronomicalBody extends Orbiter  {
     void setRingPrimary(AstronomicalBody body) {
         physicalProperties.setRingPrimary(body);
     }
-    
+
     public void initializeAstronomicalBody(SolarSystem solarSystem) {
         setOrbitalPositionTotal();
         addAsSatellite();
         solarSystem.addMass(getMass());
-        if(null != physicalProperties.getRings())      {
+        if (null != physicalProperties.getRings()) {
             setRingPrimary(this);
         }
     }
-    
+
     public Colony establishColony(String colonyName, Player player, Population colonists) {
         colony = player.establishColony(colonyName, this, player, colonists);
         selectionColor = player.getPlayerColor();
@@ -124,17 +124,17 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     private void addAsSatellite() {
-        orbitalProperties.addAsSatellite(this);        
+        orbitalProperties.addAsSatellite(this);
     }
 
-    public List<AstronomicalBody> getSatellites()    {
+    public List<AstronomicalBody> getSatellites() {
         return satellites;
     }
 
-    public int getNumberOfSatellites()    {
+    public int getNumberOfSatellites() {
         return satellites.size();
     }
-    
+
     public Length getRadius() {
         return physicalProperties.getRadius();
     }
@@ -144,7 +144,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public Length calculateMaxOrbitalRadius() {
-            return orbitalProperties.calculateMaxOrbitalRadius(physicalProperties.getMass());
+        return orbitalProperties.calculateMaxOrbitalRadius(physicalProperties.getMass());
     }
 
     void addMass(Mass massToBeAddedToTheBody) {
@@ -152,22 +152,22 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public void addSatellite(AstronomicalBody newSatellite) {
-       satellites.add(newSatellite);
+        satellites.add(newSatellite);
     }
 
     public boolean isColonized() {
         return null != colony;
     }
-    
+
     public String getPopulationNumbers() {
         return colony.getPopulationInformation();
     }
 
     public String getColonyName() {
         return colony.getName();
-     }
+    }
 
-     public boolean isColonyOwnedBy(Player humanPlayer) {
+    public boolean isColonyOwnedBy(Player humanPlayer) {
         return colony.isOwnedBy(humanPlayer);
     }
 
@@ -176,15 +176,15 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public void abandonColony() {
-        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, this);  
+        SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.ACTOR_REMOVED, this);
         colony = null;
-        ((GameStartStage)getStage()).refreshSelection(this);
+        ((GameStartStage) getStage()).refreshSelection(this);
     }
 
     public boolean isPlayerAlsoColonyOwner() {
-        return ((GameStartStage)getStage()).isThisPlayerOnThisPlatform(colony.getOwner());
+        return ((GameStartStage) getStage()).isThisPlayerOnThisPlatform(colony.getOwner());
     }
-    
+
     public BodyType getBodyType() {
         return physicalProperties.getBodyType();
     }
@@ -192,13 +192,13 @@ public abstract class AstronomicalBody extends Orbiter  {
     public PlanetaryRing getRings() {
         return physicalProperties.getRings();
     }
-    
+
     public boolean hasRingSystem() {
         return physicalProperties.hasRings();
     }
-    
+
     public void setUpAtmosphere(Atmosphere atmosphere) {
-        physicalProperties.setUpAtmosphere(atmosphere);        
+        physicalProperties.setUpAtmosphere(atmosphere);
     }
 
     public Atmosphere getAtmosphere() {
@@ -226,7 +226,7 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public void calculateLifeRating() {
-        physicalProperties.calculateLifeRating();        
+        physicalProperties.calculateLifeRating();
     }
 
     public LifeRating getLifeRating() {
@@ -278,17 +278,17 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     public void determineHydrosphere(float liquidWaterCover, float iceCover, boolean liquidWater, boolean subsurfaceOcean) {
-        if(physicalProperties.consistsPartiallyOfWaterIce()) {
-                setUpHydrosphere(0, 1, liquidWater, subsurfaceOcean);
-                return;
-            }
-            if( 0 < liquidWaterCover || 0 < iceCover) {
-                setUpHydrosphere(liquidWaterCover, iceCover, liquidWater, subsurfaceOcean);   
-            }
+        if (physicalProperties.consistsPartiallyOfWaterIce()) {
+            setUpHydrosphere(0, 1, liquidWater, subsurfaceOcean);
+            return;
+        }
+        if (0 < liquidWaterCover || 0 < iceCover) {
+            setUpHydrosphere(liquidWaterCover, iceCover, liquidWater, subsurfaceOcean);
+        }
     }
 
     public void calculateSurfaceTemperature() {
-        if(this instanceof Star) {
+        if (this instanceof Star) {
             physicalProperties.setStellarSurfaceTemperature();
             return;
         }
@@ -296,20 +296,20 @@ public abstract class AstronomicalBody extends Orbiter  {
     }
 
     private Star getStar() {
-        if(this instanceof SolarSystem) {
+        if (this instanceof SolarSystem) {
             return null;
         }
-        if(getPrimary() instanceof Star) {
-            return (Star)getPrimary();
+        if (getPrimary() instanceof Star) {
+            return (Star) getPrimary();
         }
         return getPrimary().getStar();
     }
 
     public Length getMeanDistanceToStar() {
-        if(this instanceof SolarSystem) {
+        if (this instanceof SolarSystem) {
             return null;
         }
-        if(getPrimary() instanceof Star) {
+        if (getPrimary() instanceof Star) {
             return this.getOrbitalRadius();
         }
         return getPrimary().getMeanDistanceToStar();
@@ -354,14 +354,15 @@ public abstract class AstronomicalBody extends Orbiter  {
     /**
      * Gets the ratio between the body's orbital rotation around the sun and its rotation around its own axis.
      * Needed for example for the temperature distribution across the body.
+     *
      * @return 1 for synchronous rotation, ca. 0 for vastly quicker rotation.
      */
     public float solarRotationRatio() {
-        return physicalProperties.getRotationPeriodAbsolute().inDays() / getOrbitalPeriodAroundSun().inDays();            
+        return physicalProperties.getRotationPeriodAbsolute().inDays() / getOrbitalPeriodAroundSun().inDays();
     }
-    
+
     public Time getOrbitalPeriodAroundSun() {
-        if(orbitalProperties.orbitingStar()) {
+        if (orbitalProperties.orbitingStar()) {
             return orbitalProperties.getOrbitalPeriod();
         }
         return getPrimary().getOrbitalPeriodAroundSun();

@@ -1,24 +1,22 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
 
 /**
- * 
  * @author Andi
  * created 2015-05-29
  */
 public class ElectricPower extends CapacitiveResource {
-    
+
     public ElectricPower() {
-        
+
     }
 
     @Override
     public void updateConsumption(ResourceDepot consumptionPlace) {
-        currentConsumption = (long)consumptionPlace.getElectricPowerConsumption().inWatt();
+        currentConsumption = (long) consumptionPlace.getElectricPowerConsumption().inWatt();
     }
 
     @Override

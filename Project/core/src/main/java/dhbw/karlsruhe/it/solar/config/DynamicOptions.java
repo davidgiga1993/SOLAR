@@ -15,7 +15,8 @@ public final class DynamicOptions {
         DEFAULTS.put(SAVEGAME_FILE_CURRENT, "SaveGames/CurrentGame.xml");
     }
 
-    private DynamicOptions() {}
+    private DynamicOptions() {
+    }
 
     public static String getValue(String key) {
         return fromPropertyOrDefaults(key);

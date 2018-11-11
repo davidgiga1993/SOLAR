@@ -40,12 +40,12 @@ public class AISpaceshipModule implements AIModule {
         // update Kinematic
         Steering steering = currentSteeringProvider.getSteering(kinematic);
         kinematic.update(steering, time);
-        
+
         // output
         output.setPosition(kinematic.getPosition());
         output.setRotation(kinematic.getRotation());
 
-        if(steering.isReached() && !targetReached) {
+        if (steering.isReached() && !targetReached) {
             fireTargetReached();
             targetReached = true;
         }
@@ -62,7 +62,7 @@ public class AISpaceshipModule implements AIModule {
 
     @Override
     public void setTarget(Vector2 tarPosition) {
-        Kinematic newTarget = new Kinematic(tarPosition, 0,0,0);
+        Kinematic newTarget = new Kinematic(tarPosition, 0, 0, 0);
         setTarget(newTarget, arriveSteeringProvider);
     }
 

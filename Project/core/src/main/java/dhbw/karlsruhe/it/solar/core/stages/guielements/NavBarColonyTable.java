@@ -23,17 +23,17 @@ public class NavBarColonyTable extends NavBarBaseTable {
      */
     public void buildColonyList() {
         allLabels.clear();
-        for (Player player : ((GameStartStage)SolarEngine.get().getStage("GameStartStage")).getPlayers()) {
+        for (Player player : ((GameStartStage) SolarEngine.get().getStage("GameStartStage")).getPlayers()) {
             NavBarBaseLabel playerLabel = createPlayerLabel(player, this);
-            allLabels.add(playerLabel);  
-            playerLabel.setChildren(createPlayerColonyLabels(player));         
+            allLabels.add(playerLabel);
+            playerLabel.setChildren(createPlayerColonyLabels(player));
         }
         buildTable();
     }
 
     private List<NavBarBaseLabel> createPlayerColonyLabels(Player player) {
         List<NavBarBaseLabel> playerColonies = new ArrayList<>();
-        for(Colony colony : player.getColonies()) {
+        for (Colony colony : player.getColonies()) {
             playerColonies.add(produceColonyLabel(colony));
         }
         return playerColonies;
@@ -42,16 +42,16 @@ public class NavBarColonyTable extends NavBarBaseTable {
     private NavBarBaseLabel produceColonyLabel(Colony colony) {
         NavBarBaseLabel label = new NavBarBaseLabel(colony.getName(), TAB, colony.getColonySite(), this);
         allLabels.add(label);
-        return label;     
+        return label;
     }
-    
+
     private void removeSingleColony(Actor actor) {
-        allLabels.remove(getLabelOfColony(((AstronomicalBody)actor).getColonyName()));
+        allLabels.remove(getLabelOfColony(((AstronomicalBody) actor).getColonyName()));
     }
 
     private NavBarBaseLabel getLabelOfColony(String colonyName) {
         for (NavBarBaseLabel colonyLabel : allLabels) {
-            if(colonyLabel.name.equals(colonyName)) {
+            if (colonyLabel.name.equals(colonyName)) {
                 return colonyLabel;
             }
         }
@@ -60,8 +60,8 @@ public class NavBarColonyTable extends NavBarBaseTable {
 
     @Override
     public boolean handleMessage(Telegram telegram) {
-        if(telegram.extraInfo instanceof AstronomicalBody && SolarMessageType.ACTOR_REMOVED == telegram.message) {
-            removeSingleColony((AstronomicalBody)telegram.extraInfo);
+        if (telegram.extraInfo instanceof AstronomicalBody && SolarMessageType.ACTOR_REMOVED == telegram.message) {
+            removeSingleColony((AstronomicalBody) telegram.extraInfo);
             buildTable();
             return true;
         }

@@ -24,9 +24,9 @@ public class NavBarShipTable extends NavBarBaseTable {
      */
     public void buildShipList() {
         allLabels.clear();
-        for (Player player : ((GameStartStage)SolarEngine.get().getStage("GameStartStage")).getPlayers()) {
+        for (Player player : ((GameStartStage) SolarEngine.get().getStage("GameStartStage")).getPlayers()) {
             NavBarBaseLabel playerLabel = createPlayerLabel(player, this);
-            allLabels.add(playerLabel);  
+            allLabels.add(playerLabel);
             playerLabel.setChildren(createPlayerUnitLabels(player));
         }
         buildTable();
@@ -34,7 +34,7 @@ public class NavBarShipTable extends NavBarBaseTable {
 
     private List<NavBarBaseLabel> createPlayerUnitLabels(Player player) {
         List<NavBarBaseLabel> playerUnits = new ArrayList<>();
-        for(SpaceUnit unit : player.getUnits()) {
+        for (SpaceUnit unit : player.getUnits()) {
             playerUnits.add(produceUnitLabel(unit));
         }
         return playerUnits;
@@ -43,13 +43,13 @@ public class NavBarShipTable extends NavBarBaseTable {
     private NavBarBaseLabel produceUnitLabel(SpaceUnit unit) {
         NavBarBaseLabel label = new NavBarBaseLabel(unit.getName(), TAB, unit, this);
         allLabels.add(label);
-        return label;    
+        return label;
     }
 
     @Override
     public boolean handleMessage(Telegram telegram) {
-        if(telegram.extraInfo instanceof SpaceUnit && SolarMessageType.ACTOR_REMOVED == telegram.message) {
-            removeSingleShip((SpaceUnit)telegram.extraInfo);
+        if (telegram.extraInfo instanceof SpaceUnit && SolarMessageType.ACTOR_REMOVED == telegram.message) {
+            removeSingleShip((SpaceUnit) telegram.extraInfo);
             buildTable();
             return true;
         }

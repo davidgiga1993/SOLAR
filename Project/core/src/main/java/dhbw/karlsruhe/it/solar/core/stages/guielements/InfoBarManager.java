@@ -10,16 +10,17 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 /**
  * Determines which InfoBar tables are displayed to the player and which stay hidden.
  * Works in combination with the buttons of the InfoBarMenueButtons class.
+ *
  * @author Andi
  * created 2015-05-03
  */
 public class InfoBarManager extends Table {
-    
+
     private final InfoBarDetailsTable table = new InfoBarDetailsTable();
     private final InfoBarMenueButtons buttons = new InfoBarMenueButtons(this);
     private SolarActor selectedActor;
     private InfoBarManagerSettings settings;
-    
+
     public InfoBarManager displayContent(SolarActor selectedActor) {
         this.selectedActor = selectedActor;
         clear();
@@ -31,11 +32,11 @@ public class InfoBarManager extends Table {
     private void createInfoBarDetailsTable() {
         table.clear();
         settings.adjustMaximumNumberOfColumns();
-        if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
+        if (selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
             displayAstroBodyInformation();
             return;
         }
-        if(selectedActor instanceof SpaceUnit) {
+        if (selectedActor instanceof SpaceUnit) {
             displaySpaceUnitInformation();
             return;
         }
@@ -43,26 +44,26 @@ public class InfoBarManager extends Table {
     }
 
     private void displaySpaceUnitInformation() {
-        add(table.displaySpaceUnitInformation((SpaceUnit)selectedActor)).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
+        add(table.displaySpaceUnitInformation((SpaceUnit) selectedActor)).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
     }
 
     private void displayAstroBodyInformation() {
-        add(table.displayAstroBodyInformation((AstronomicalBody)selectedActor)).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
+        add(table.displayAstroBodyInformation((AstronomicalBody) selectedActor)).padLeft(ConfigurationConstants.PADDING).expandX().fillX();
     }
 
     private void createInfoBarMenueButtons() {
         buttons.clear();
-        if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
+        if (selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
             add(buttons.displayAstroBodyButtons()).width(InfoBar.MENUE_CELL_WIDTH).left();
             return;
         }
-        if(selectedActor instanceof SpaceUnit) {
+        if (selectedActor instanceof SpaceUnit) {
             add(buttons.displaySpaceUnitButtons()).width(InfoBar.MENUE_CELL_WIDTH).left();
             return;
         }
         add(buttons.empty()).left();
     }
-    
+
     public void onDisplayExtraDataClick() {
         settings.toggleDisplayExtraData();
         displayContent(selectedActor);
@@ -80,15 +81,15 @@ public class InfoBarManager extends Table {
 
     public void onDisplayColonyBuildingsClick() {
         settings.toggleDisplayColonyBuildings();
-        displayContent(selectedActor);  
+        displayContent(selectedActor);
     }
-    
+
     public void reload() {
-        if(selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
+        if (selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
             table.reloadAstroBodyInformation();
             return;
         }
-        if(selectedActor instanceof SpaceUnit) {
+        if (selectedActor instanceof SpaceUnit) {
         }
     }
 

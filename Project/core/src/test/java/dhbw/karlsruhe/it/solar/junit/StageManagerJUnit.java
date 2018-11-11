@@ -9,8 +9,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class StageManagerJUnit
-{
+public class StageManagerJUnit {
     @Test
     public void testGetStage() throws InterruptedException {
         final TestResult result = new TestResult();
@@ -34,8 +33,8 @@ public class StageManagerJUnit
         assertTrue(result.boolResult);
     }
 
-	private boolean runInsertStageToBack() {
-		StageManager Manager = new StageManager(TestSuite.getEngine());
+    private boolean runInsertStageToBack() {
+        StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.insertStageToBack(new TestStage("TestBack"));
         return Manager.getStage(0).getTag().equals("TestBack");
@@ -49,8 +48,8 @@ public class StageManagerJUnit
         assertTrue(result.boolResult);
     }
 
-	private boolean runSwapCurrentStage() {
-		StageManager Manager = new StageManager(TestSuite.getEngine());
+    private boolean runSwapCurrentStage() {
+        StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.addStage(new TestStage("Test1"));
         Manager.swapCurrentStage(new TestStage("TestBack"));
@@ -65,8 +64,8 @@ public class StageManagerJUnit
         assertTrue(result.boolResult);
     }
 
-	private boolean runAddStage() {
-		StageManager Manager = new StageManager(TestSuite.getEngine());
+    private boolean runAddStage() {
+        StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.addStage(new TestStage("Test1"));
         Manager.addStage(new TestStage("Test2"));
@@ -75,9 +74,9 @@ public class StageManagerJUnit
         if (Manager.getStage("Test0") == null)
             return false;
         if (Manager.getStage("Test1") == null)
-        	return false;
+            return false;
         if (Manager.getStage("Test2") == null)
-        	return false;
+            return false;
         return Manager.getStage("Test3") != null;
     }
 
@@ -89,21 +88,21 @@ public class StageManagerJUnit
         assertTrue(result.boolResult);
     }
 
-	private boolean runRemoveStage() {
-		StageManager Manager = new StageManager(TestSuite.getEngine());
+    private boolean runRemoveStage() {
+        StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.addStage(new TestStage("Test1"));
         Manager.addStage(new TestStage("Test2"));
         Manager.addStage(new TestStage("Test3"));
-        
+
         Manager.removeStage("Test1");
-        
+
         if (Manager.getStage("Test0") == null)
             return false;
         if (Manager.getStage("Test1") != null)
-        	return false;
+            return false;
         if (Manager.getStage("Test2") == null)
-        	return false;
+            return false;
         return Manager.getStage("Test3") != null;
     }
 
@@ -115,13 +114,13 @@ public class StageManagerJUnit
         assertTrue(result.boolResult);
     }
 
-	private boolean runRemoveStages() {
-		StageManager Manager = new StageManager(TestSuite.getEngine());
+    private boolean runRemoveStages() {
+        StageManager Manager = new StageManager(TestSuite.getEngine());
         Manager.addStage(new TestStage("Test0"));
         Manager.addStage(new TestStage("Test1"));
         Manager.addStage(new TestStage("Test2"));
         Manager.addStage(new TestStage("Test3"));
-        
+
         Manager.removeStages();
 
         return Manager.getStage(0) == null;

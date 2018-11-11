@@ -15,16 +15,16 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({GlobalResource.class})
 public class PlayerInfo {
-    
+
     @XmlElement(name = "PlayerName")
     private String name;
     @XmlElement(name = "PlayerColor")
     private Color color;
     @XmlElement(name = "Player_Resources")
     private List<GlobalResource> resources;
-    
+
     public PlayerInfo() {
-        
+
     }
 
     public void fillInInfos(Player player) {
@@ -43,7 +43,7 @@ public class PlayerInfo {
 
     public List<GlobalResourceInterface> getResources() {
         List<GlobalResourceInterface> newList = new ArrayList<>();
-        for(GlobalResource resource : resources) {
+        for (GlobalResource resource : resources) {
             newList.add(resource);
         }
         return newList;

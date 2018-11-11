@@ -11,7 +11,7 @@ class GameOptionsBackgroundStage extends HUDStage {
     private Label background2;
     private Label labelExit;
 
-    public GameOptionsBackgroundStage(final SolarEngine se)    {
+    public GameOptionsBackgroundStage(final SolarEngine se) {
         super(se, "GameOptionsBackgroundStage");
 
         final Table menuTable = new Table();
@@ -53,7 +53,7 @@ class GameOptionsBackgroundStage extends HUDStage {
 
     private void changeBackground(String name) {
         BackgroundStage backgroundStage = (BackgroundStage) SolarEngine.get().getStage("Background");
-        if(backgroundStage == null) {
+        if (backgroundStage == null) {
             System.out.println(this.getClass().getCanonicalName() + "change Background failed; backgroundStage not found");
         } else {
             backgroundStage.changeBackground(name);

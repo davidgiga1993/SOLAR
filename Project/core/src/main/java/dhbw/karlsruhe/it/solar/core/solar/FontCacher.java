@@ -13,7 +13,7 @@ public class FontCacher {
     private static final Map<String, BitmapFont> CACHE = new HashMap<>();
 
     private FontCacher() {
-        
+
     }
 
     /**
@@ -21,7 +21,7 @@ public class FontCacher {
      */
     public static void cleanUp() {
         Collection<BitmapFont> fonts = CACHE.values();
-        for(BitmapFont font : fonts) {
+        for (BitmapFont font : fonts) {
             font.dispose();
         }
         CACHE.clear();
@@ -29,8 +29,9 @@ public class FontCacher {
 
     /**
      * Add the font to the cache
+     *
      * @param font to be cached
-     * @param tag give it a name :)
+     * @param tag  give it a name :)
      */
     public static void addFont(BitmapFont font, String tag) {
         CACHE.put(tag, font);
@@ -38,6 +39,7 @@ public class FontCacher {
 
     /**
      * Returns the corresponding font. If none is found null gets returned.
+     *
      * @param tag to search for
      * @return BitmapFont or NULL
      */

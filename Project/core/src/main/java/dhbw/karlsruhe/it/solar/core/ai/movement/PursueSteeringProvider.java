@@ -13,7 +13,7 @@ public class PursueSteeringProvider extends ArriveSteeringProvider {
 
     public PursueSteeringProvider(float radius, float slowRadius) {
         super(radius, slowRadius);
-        target = new Kinematic(new Vector2(0,0),0,0);
+        target = new Kinematic(new Vector2(0, 0), 0, 0);
     }
 
     @Override

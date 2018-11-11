@@ -6,6 +6,7 @@ package dhbw.karlsruhe.it.solar.core.ai.movement;
 public interface SteeringProvider {
     /**
      * Berechnet den Kurs zum vorher gesetzten Ziel
+     *
      * @param position aktuelle Position des ansteuernden Objektes
      * @return berechneter Kurs
      */
@@ -13,6 +14,7 @@ public interface SteeringProvider {
 
     /**
      * Setzt das Ziel der Kursberechnung
+     *
      * @param newTarget
      */
     void setTarget(Kinematic newTarget);

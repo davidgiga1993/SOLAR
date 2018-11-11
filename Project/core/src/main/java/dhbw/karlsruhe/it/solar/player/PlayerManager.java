@@ -37,7 +37,7 @@ public class PlayerManager {
     public Player getPlayerOnThisPlatform() {
         return playerOnThisPlatform;
     }
-    
+
     public Player getPlayerNumber(int number) {
         return playersInGame.get(number);
     }
@@ -54,14 +54,14 @@ public class PlayerManager {
         Player newPlayer = createPlayer(player.getPlayerName(), player.getPlayerColor());
         newPlayer.setResources(player.getResources());
     }
-    
+
     public void initPlayerOnThisPlatform(int number) {
         playerOnThisPlatform = playersInGame.get(number);
     }
 
     public Player getPlayerFromName(String nameOfOwner) {
         for (Player player : playersInGame) {
-            if(player.getName().equals(nameOfOwner)) {
+            if (player.getName().equals(nameOfOwner)) {
                 return player;
             }
         }

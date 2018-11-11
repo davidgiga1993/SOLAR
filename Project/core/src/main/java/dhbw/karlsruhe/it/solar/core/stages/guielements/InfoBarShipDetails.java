@@ -7,7 +7,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 class InfoBarShipDetails extends Table {
-    
+
     private SpaceUnit unit;
     private LabelStyle style = Styles.MENUELABEL_STYLE;
 
@@ -18,7 +18,7 @@ class InfoBarShipDetails extends Table {
 
     private void generateUnitDetails() {
         add(new Label("Owner: ", style)).left();
-        add(new Label(unit.getOwner().getName(), unit.getOwner().getColorStyle())).expand().right(); 
+        add(new Label(unit.getOwner().getName(), unit.getOwner().getColorStyle())).expand().right();
         row();
     }
 }

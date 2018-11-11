@@ -6,25 +6,25 @@ public class Power {
     private static final float KILOWATT_PER_MEGAWATT = 1000;
     private static final float MEGAWATT_PER_GIGAWATT = 1000;
     private static final float GIGAWATT_PER_TERAWATT = 1000;
-    
+
     private float value;
     private PowerUnit unit;
-    
-    public Power (float value, PowerUnit unit)    {
+
+    public Power(float value, PowerUnit unit) {
         set(value, unit);
     }
-    
+
     private void set(float value, PowerUnit unit) {
-        if(0<=value) {
+        if (0 <= value) {
             this.value = value;
             this.unit = unit;
             return;
         }
         throw new IllegalArgumentException("Electric Power must be positive value or zero!");
     }
-    
+
     public float inWatt() {
-        switch(unit) {
+        switch (unit) {
             case WATT:
                 return value;
             case KILOWATT:
@@ -41,7 +41,7 @@ public class Power {
     }
 
     private float inKilowatt() {
-        switch(unit) {
+        switch (unit) {
             case WATT:
                 return value / WATT_PER_KILOWATT;
             case KILOWATT:
@@ -56,9 +56,9 @@ public class Power {
                 return Float.NaN;
         }
     }
-    
+
     public float inMegawatt() {
-        switch(unit) {
+        switch (unit) {
             case WATT:
                 return value / WATT_PER_KILOWATT / KILOWATT_PER_MEGAWATT;
             case KILOWATT:
@@ -75,7 +75,7 @@ public class Power {
     }
 
     private float inGigawatt() {
-        switch(unit) {
+        switch (unit) {
             case WATT:
                 return value / WATT_PER_KILOWATT / KILOWATT_PER_MEGAWATT / MEGAWATT_PER_GIGAWATT;
             case KILOWATT:
@@ -92,7 +92,7 @@ public class Power {
     }
 
     private float inTerawatt() {
-        switch(unit) {
+        switch (unit) {
             case WATT:
                 return value / WATT_PER_KILOWATT / KILOWATT_PER_MEGAWATT / MEGAWATT_PER_GIGAWATT / GIGAWATT_PER_TERAWATT;
             case KILOWATT:
@@ -106,10 +106,10 @@ public class Power {
             default:
                 return Float.NaN;
         }
-    }   
-    
+    }
+
     public void addPower(Power additionalPower) {
-        switch(unit) {
+        switch (unit) {
             case WATT:
                 value += additionalPower.inWatt();
                 return;
@@ -127,23 +127,23 @@ public class Power {
                 return;
             default:
                 value = Float.NaN;
-        }       
+        }
     }
-    
+
     @Override
     public String toString() {
-        if( this.inGigawatt() > 1f ) {
+        if (this.inGigawatt() > 1f) {
             return formatValue(this.inGigawatt()) + " GW";
         }
-        if( this.inMegawatt() > 1f ) {
+        if (this.inMegawatt() > 1f) {
             return formatValue(this.inMegawatt()) + " MW";
         }
-        if( this.inKilowatt() > 1f ) {
+        if (this.inKilowatt() > 1f) {
             return formatValue(this.inKilowatt()) + " kW";
         }
         return formatValueNoDecimal(this.inWatt()) + " W";
     }
-    
+
     private String formatValueNoDecimal(float value) {
         return String.format("%.00f", value);
     }
@@ -151,7 +151,7 @@ public class Power {
     private String formatValue(float value) {
         return String.format("%.01f", value);
     }
-    
+
     public enum PowerUnit {
         WATT,
         KILOWATT,

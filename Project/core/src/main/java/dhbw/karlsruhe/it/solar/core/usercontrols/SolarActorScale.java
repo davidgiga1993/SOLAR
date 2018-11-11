@@ -27,11 +27,11 @@ public class SolarActorScale implements Telegraph {
     public boolean handleMessage(Telegram telegram) {
         return true;
     }
-    
+
     public float getShapeScale() {
         return shapeScale;
     }
-    
+
     public float getOrbitScale() {
         return orbitScale;
     }

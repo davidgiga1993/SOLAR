@@ -13,7 +13,7 @@ class GameOptionsStage extends HUDStage {
     private Label labelBackground;
     private Label labelExit;
 
-    public GameOptionsStage(final SolarEngine se)    {
+    public GameOptionsStage(final SolarEngine se) {
         super(se, "GameOptions");
 
         Table menuTable = new Table();

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Length.class, Mass.class, BodyType.class, PlanetaryRing.class, Atmosphere.class, Albedo.class, Hydrosphere.class, Biosphere.class, Time.class})
 class BodyPropertyInfo {
-    
+
     @XmlElement(name = "Type")
     private BodyType type;
     @XmlElement(name = "Radius")
@@ -31,14 +31,14 @@ class BodyPropertyInfo {
     @XmlElement(name = "Hydrosphere")
     private Hydrosphere hydro;
     @XmlElement(name = "Biosphere")
-    private Biosphere bio;  
+    private Biosphere bio;
     @XmlElement(name = "Sidereal_Rotation_Period")
-    private Time rotation;   
-    
+    private Time rotation;
+
     public BodyPropertyInfo() {
-        
+
     }
-    
+
     public void fillBodyPropertyInfo(AstronomicalBody body) {
         this.radius = body.getRadius();
         this.mass = body.getMass();
@@ -48,13 +48,13 @@ class BodyPropertyInfo {
         this.hydro = body.getHydrosphere();
         this.bio = body.getBiosphere();
         this.tidallyLocked = body.isTidallyLocked();
-        if(body.getRotationPeriod() != body.getOrbitalPeriod()) {
-            this.rotation = body.getRotationPeriod();            
+        if (body.getRotationPeriod() != body.getOrbitalPeriod()) {
+            this.rotation = body.getRotationPeriod();
         }
-        if(body.hasRingSystem()) {
+        if (body.hasRingSystem()) {
             RingSystemInfo ringInfo = new RingSystemInfo();
             ringInfo.fillRingSystemInfo(body.getRings());
-            this.ring = ringInfo;            
+            this.ring = ringInfo;
         }
     }
 
@@ -65,7 +65,7 @@ class BodyPropertyInfo {
     public Mass getMass() {
         return mass;
     }
-    
+
     public BodyType getType() {
         return type;
     }

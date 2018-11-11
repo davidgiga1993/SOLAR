@@ -6,13 +6,15 @@ package dhbw.karlsruhe.it.solar.player;
 public interface Ownable {
     /**
      * This method checks if the Ownable is owned by the given player
+     *
      * @param player
      * @return
      */
     boolean isOwnedBy(Player player);
-    
+
     /**
      * Returns the owner of this object.
+     *
      * @return
      */
     Player getOwner();

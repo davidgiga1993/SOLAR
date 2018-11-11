@@ -8,14 +8,14 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
  */
 public class ShapeScaleSlider extends ScaleSlider {
 
-    public ShapeScaleSlider(final Stage stage, final SolarActorScale scale, float minValue, float maxValue ,final Class solarActorType) {
+    public ShapeScaleSlider(final Stage stage, final SolarActorScale scale, float minValue, float maxValue, final Class solarActorType) {
         super(stage, scale, minValue, maxValue, solarActorType);
     }
 
     @Override
     protected void initialize() {
         scaleSlider.setValue(scale.getShapeScale());
-        curValue.setText(""+scale.getShapeScale());
+        curValue.setText("" + scale.getShapeScale());
     }
 
     @Override

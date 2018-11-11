@@ -5,15 +5,15 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 public class ColonizeCommand implements Command {
 
     private SpaceUnit unit;
-    
+
     public ColonizeCommand(SpaceUnit unit) {
         this.unit = unit;
     }
-    
+
     @Override
     public void execute() {
-        if(colonizeConditionsAreMet()) {
-            unit.establishColony();            
+        if (colonizeConditionsAreMet()) {
+            unit.establishColony();
         }
     }
 

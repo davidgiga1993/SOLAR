@@ -8,7 +8,7 @@ import dhbw.karlsruhe.it.solar.core.stages.guielements.ScrollFocusable;
 
 /**
  * @author Arga
- *         created on 20.03.2016.
+ * created on 20.03.2016.
  */
 public class ScrollFocusOnMouseOverListener implements EventListener {
 

@@ -2,11 +2,10 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
 import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
@@ -15,11 +14,11 @@ import dhbw.karlsruhe.it.solar.core.commands.ConstructBuildingCommand;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class InfoBarColonyBuildings extends Table {
-    
+
     private Colony colony;
     private ColonyBuildings buildings;
     private LabelStyle style = Styles.MENUELABEL_STYLE;
-    
+
     private final Label title = new Label("", Styles.BOLDLABEL_STYLE);
     private final Label colonyLabel = new Label("", style);
     private final Label infraLabel = new Label("Infrastructure: ", style);
@@ -28,7 +27,7 @@ public class InfoBarColonyBuildings extends Table {
     private final Label reactorLabel = new Label("Fission Reactors: ", style);
     private final Label reactorValueLabel = new Label("", style);
     private final TextButton buildReactor = new TextButton("+", Styles.TOOLTIPSKIN);
-    
+
     public InfoBarColonyBuildings() {
         generateBuildingDetails();
         addBuildButtonListeners();
@@ -37,7 +36,7 @@ public class InfoBarColonyBuildings extends Table {
     private void generateBuildingDetails() {
         add(title).left();
         add().expandX();
-        add(colonyLabel).right(); 
+        add(colonyLabel).right();
         row();
         add(infraLabel).left();
         add(infraValueLabel).right().padRight(ConfigurationConstants.INNER_CELL_PADDING);
@@ -47,9 +46,9 @@ public class InfoBarColonyBuildings extends Table {
         add(reactorValueLabel).right().padRight(ConfigurationConstants.INNER_CELL_PADDING);
         add(buildReactor).width(InfoBar.BUILD_BUTTON_WIDTH).height(InfoBar.BUILD_BUTTON_HEIGHT).pad(InfoBar.BUILD_BUTTON_PADDING).right();
     }
-    
+
     public void reload() {
-        if(null==buildings) {
+        if (null == buildings) {
             return;
         }
         infraValueLabel.setText(String.valueOf(buildings.getNumberOfBuiltInfrastructure()));
@@ -58,15 +57,15 @@ public class InfoBarColonyBuildings extends Table {
 
     public InfoBarColonyBuildings show(AstronomicalBody selectedBody) {
         this.colony = selectedBody.getColony();
-        if(null!=colony) {
-            this.buildings = colony.getColonyBuildings();            
+        if (null != colony) {
+            this.buildings = colony.getColonyBuildings();
         }
         init();
         return this;
     }
-    
+
     private void init() {
-        if(null==colony) {
+        if (null == colony) {
             title.setText("Empty");
             colonyLabel.setVisible(false);
             infraLabel.setVisible(false);
@@ -84,32 +83,32 @@ public class InfoBarColonyBuildings extends Table {
         infraLabel.setVisible(true);
         reload();
         infraValueLabel.setVisible(true);
-        buildInfra.setVisible(true);    
+        buildInfra.setVisible(true);
         reactorLabel.setVisible(true);
         reactorValueLabel.setVisible(true);
         buildReactor.setVisible(true);
     }
-    
+
     private void addBuildButtonListeners() {
         buildInfra.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                 onBuildInfraClick();
+                onBuildInfraClick();
             }
-         });
+        });
         buildReactor.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                 onBuildReactorClick();
+                onBuildReactorClick();
             }
-         });
+        });
     }
 
     private void onBuildInfraClick() {
         ConstructBuildingCommand build = new ConstructBuildingCommand(colony);
         build.infrastructure();
     }
-    
+
     private void onBuildReactorClick() {
         ConstructBuildingCommand build = new ConstructBuildingCommand(colony);
         build.fissionReactor();

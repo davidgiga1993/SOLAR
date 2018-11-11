@@ -43,7 +43,7 @@ public class NavBarBodyTable extends NavBarBaseTable {
         }
 
         for (AstronomicalBody child : group) {
-            if(child instanceof PlanetaryRing) {
+            if (child instanceof PlanetaryRing) {
                 continue;
             }
             // Process current level
@@ -51,10 +51,10 @@ public class NavBarBodyTable extends NavBarBaseTable {
             allLabels.add(label);
 
             // Proceed with next level
-            List<NavBarBaseLabel> children = buildHierarchy(child.getSatellites(), depth+1);
+            List<NavBarBaseLabel> children = buildHierarchy(child.getSatellites(), depth + 1);
             label.setChildren(children);
 
-            if(depth > 0) {
+            if (depth > 0) {
                 label.toggleChildren();
             }
 
@@ -67,7 +67,7 @@ public class NavBarBodyTable extends NavBarBaseTable {
 
     @Override
     public boolean handleMessage(Telegram telegram) {
-        if(telegram.extraInfo instanceof AstronomicalBody) {
+        if (telegram.extraInfo instanceof AstronomicalBody) {
             allLabels.clear();
             clear();
             init();

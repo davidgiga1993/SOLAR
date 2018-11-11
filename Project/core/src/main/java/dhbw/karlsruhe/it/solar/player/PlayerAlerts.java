@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Contains information for the player about problems in his colonies which will also be displayed in the top resource bar.
+ *
  * @author Andi
  * created 2015-05-18
  */
@@ -19,8 +20,8 @@ class PlayerAlerts {
 
     public Table getPopulationAlertTable() {
         Table alerts = new Table();
-        if(coloniesWithLackOfLifeSupport.size() > 0) {
-            alerts.add(new LifeSupport().loadAlertIcon());            
+        if (coloniesWithLackOfLifeSupport.size() > 0) {
+            alerts.add(new LifeSupport().loadAlertIcon());
         }
         return alerts;
     }
@@ -31,17 +32,17 @@ class PlayerAlerts {
 
     private void checkForLackOfLifeSupportAlert(Colony colony) {
         ColonyAlerts alerts = colony.getAlerts();
-        if(coloniesWithLackOfLifeSupport.contains(colony)) {
-            if(!alerts.lackOfLifeSupport()) {
-                removeFromLifeSupportList(colony);                
+        if (coloniesWithLackOfLifeSupport.contains(colony)) {
+            if (!alerts.lackOfLifeSupport()) {
+                removeFromLifeSupportList(colony);
             }
             return;
         }
-        if(alerts.lackOfLifeSupport()) {
+        if (alerts.lackOfLifeSupport()) {
             addToLifeSupportList(colony);
         }
     }
-    
+
     private void removeFromLifeSupportList(Colony colony) {
         coloniesWithLackOfLifeSupport.remove(colony);
     }

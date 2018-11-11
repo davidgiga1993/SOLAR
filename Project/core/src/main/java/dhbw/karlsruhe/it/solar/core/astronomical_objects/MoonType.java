@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Handles the characteristics common to all moons. Governs the type of moon.
+ *
  * @author Andi
  * Created 2015-04-05
  */
@@ -13,24 +14,24 @@ public class MoonType extends BodyType {
     private TypeOfMoon typeOfMoon;
     @XmlElement(name = "Texture")
     private TextureTypeOfMoon textureOfMoon;
-    
+
     public MoonType() {
-        
+
     }
-    
+
     public MoonType(TypeOfMoon typeOfMoon, TextureTypeOfMoon textureOfMoon) {
         this.typeOfMoon = typeOfMoon;
         this.textureOfMoon = textureOfMoon;
-    } 
-    
+    }
+
     @Override
     public boolean hasSurface() {
         return true;
     }
-    
+
     @Override
     public boolean consistsPartiallyOfWaterIce() {
-        switch(typeOfMoon)        {
+        switch (typeOfMoon) {
             case TERRESTRIAL_MOON:
                 return false;
             case ICE_MOON:
@@ -39,13 +40,13 @@ public class MoonType extends BodyType {
                 return true;
         }
     }
-    
+
     public TypeOfMoon getTypeOfMoon() {
         return typeOfMoon;
     }
-    
+
     public String resolveTypeName() {
-        switch(typeOfMoon)        {
+        switch (typeOfMoon) {
             case TERRESTRIAL_MOON:
                 return "Terrestrial Moon";
             case ICE_MOON:
@@ -59,7 +60,7 @@ public class MoonType extends BodyType {
 
     @Override
     public boolean isRounded() {
-        switch(typeOfMoon)        {
+        switch (typeOfMoon) {
             case TERRESTRIAL_MOON:
             case ICE_MOON:
                 return true;
@@ -71,7 +72,7 @@ public class MoonType extends BodyType {
 
     @Override
     public String getTexture() {
-        switch(textureOfMoon)        {
+        switch (textureOfMoon) {
             case LUNAR:
                 return "Lunar";
             case IONIAN:
@@ -109,17 +110,17 @@ public class MoonType extends BodyType {
             case TRITONIAN:
                 return "Tritonian";
             case PHOEBE_DEFAULT_IRREGULAR:
-                return "IrregularSatellite";               
+                return "IrregularSatellite";
             default:
                 return "IrregularSatellite";
         }
     }
-    
+
     @Override
     public boolean isColonizable() {
         return true;
     }
-    
+
     public enum TextureTypeOfMoon {
         PHOEBE_DEFAULT_IRREGULAR,
         LUNAR,
@@ -141,7 +142,7 @@ public class MoonType extends BodyType {
         OBERONIAN,
         TRITONIAN
     }
-    
+
     public enum TypeOfMoon {
         TERRESTRIAL_MOON,
         ICE_MOON,

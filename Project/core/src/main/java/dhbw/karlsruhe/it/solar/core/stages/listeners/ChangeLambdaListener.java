@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 /**
  * @author Arga
- *         created on 20.03.2016.
+ * created on 20.03.2016.
  */
 public class ChangeLambdaListener extends ChangeListener {
 

@@ -18,34 +18,35 @@ import java.util.List;
 
 /**
  * Contains the necessary information for converting a game state from the stage into a XML save file and back.
+ *
  * @author Andi
  * created: 2015-04-05
  */
-@XmlRootElement( name = "SaveGame")
-@XmlSeeAlso({ AstroBodyInfo.class, SpaceUnitInfo.class, PlayerInfo.class})
+@XmlRootElement(name = "SaveGame")
+@XmlSeeAlso({AstroBodyInfo.class, SpaceUnitInfo.class, PlayerInfo.class})
 class SaveGame {
-   
+
     private Array<Actor> saveGameActors;
     private List<SpaceUnit> spaceUnits;
     private List<AstronomicalBody> spaceObjects;
     private List<Player> ingamePlayers;
-    @XmlElement(name ="Settings")
+    @XmlElement(name = "Settings")
     private InfoBarManagerSettings settings;
-    @XmlElement(name ="Game_Time_Elapsed")
-    private Time gameTime;    
-    @XmlElement(name ="Player")
+    @XmlElement(name = "Game_Time_Elapsed")
+    private Time gameTime;
+    @XmlElement(name = "Player")
     private List<PlayerInfo> players;
-    @XmlElement(name ="SpaceUnit")
+    @XmlElement(name = "SpaceUnit")
     private List<SpaceUnitInfo> units;
-    @XmlElement(name ="AstronomicalBody")
+    @XmlElement(name = "AstronomicalBody")
     private List<AstroBodyInfo> bodies;
-    
+
     public SaveGame() {
     }
-    
+
     public void assignInformation(GameStartStage stage) {
         this.saveGameActors = stage.getActors();
-        
+
         spaceObjects = filterOutAstroBodies();
         bodies = createAstroBodyInfo();
         spaceUnits = filterOutUnits();
@@ -55,10 +56,10 @@ class SaveGame {
         settings = stage.getSettings();
         gameTime = GameStartStage.GAMETIME.getGameTimeElapsed();
     }
-    
+
     private List<PlayerInfo> createPlayerInfo() {
         List<PlayerInfo> newList = new ArrayList<>();
-        for(Player player : ingamePlayers) {
+        for (Player player : ingamePlayers) {
             PlayerInfo pi = new PlayerInfo();
             pi.fillInInfos(player);
             newList.add(pi);
@@ -69,13 +70,13 @@ class SaveGame {
     private List<AstronomicalBody> filterOutAstroBodies() {
         List<AstronomicalBody> newList = new ArrayList<>();
         for (Actor actor : saveGameActors) {
-            if(actor instanceof AstronomicalBody && !(actor instanceof PlanetaryRing)) {
-                newList.add((AstronomicalBody)actor);
+            if (actor instanceof AstronomicalBody && !(actor instanceof PlanetaryRing)) {
+                newList.add((AstronomicalBody) actor);
             }
         }
         return newList;
     }
-    
+
     private List<AstroBodyInfo> createAstroBodyInfo() {
         List<AstroBodyInfo> newList = new ArrayList<>();
         for (AstronomicalBody body : spaceObjects) {
@@ -85,17 +86,17 @@ class SaveGame {
         }
         return newList;
     }
-    
+
     private List<SpaceUnit> filterOutUnits() {
         List<SpaceUnit> newList = new ArrayList<>();
         for (Actor actor : saveGameActors) {
-            if(actor instanceof SpaceUnit) {
-                newList.add((SpaceUnit)actor);
+            if (actor instanceof SpaceUnit) {
+                newList.add((SpaceUnit) actor);
             }
         }
         return newList;
     }
-    
+
     private List<SpaceUnitInfo> createSpaceUnitInfo() {
         List<SpaceUnitInfo> newList = new ArrayList<>();
         for (SpaceUnit unit : spaceUnits) {
@@ -122,7 +123,7 @@ class SaveGame {
         List<MissionInfoExtended> missionList = new ArrayList<>();
         for (SpaceUnitInfo unit : units) {
             MissionInfo mission = unit.getMissionInfo();
-            if(null!=mission) {
+            if (null != mission) {
                 missionList.add(new MissionInfoExtended(unit.getName(), mission));
             }
         }

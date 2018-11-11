@@ -14,7 +14,6 @@ import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 
-
 /**
  * Created by argannor on 05.03.15.
  */

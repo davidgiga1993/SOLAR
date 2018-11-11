@@ -9,10 +9,10 @@ import dhbw.karlsruhe.it.solar.core.physics.FuzzyInformation;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 class InfoBarLifeRatingDetails extends Table {
-    
+
     private AstronomicalBody selectedActor;
     private LabelStyle style = Styles.MENUELABEL_STYLE;
-    
+
     private FuzzyInformation rating;
     private FuzzyInformation gravity;
     private FuzzyInformation temperatures;
@@ -22,16 +22,16 @@ class InfoBarLifeRatingDetails extends Table {
 
     public InfoBarLifeRatingDetails(AstronomicalBody selectedActor) {
         this.selectedActor = selectedActor;
-        
-        if(selectedActor.isColonizable()) {
+
+        if (selectedActor.isColonizable()) {
             fetchFuzzyInformation();
-            generateBodyDetails();      
+            generateBodyDetails();
             return;
         }
-        
+
         add(new Label("No Surface", Styles.BOLDLABEL_STYLE));
     }
-    
+
     private void fetchFuzzyInformation() {
         this.rating = selectedActor.ratingFuzzy();
         this.gravity = selectedActor.gravityFuzzy();
@@ -39,13 +39,13 @@ class InfoBarLifeRatingDetails extends Table {
         this.atmosphere = selectedActor.atmosphereFuzzy();
         this.hydrosphere = selectedActor.hydrosphereFuzzy();
         this.biosphere = selectedActor.biosphereFuzzy();
-        
+
     }
 
     private void generateBodyDetails() {
         add(new Label("Life Rating: ", style)).left();
         add().expand();
-        add(new Label(rating.getFuzzyInfo(),rating.getStyle())).right(); 
+        add(new Label(rating.getFuzzyInfo(), rating.getStyle())).right();
         row();
         add(new Label("Gravity: ", style)).left();
         add(new Label(gravity.getPhyicalValue(), style)).padLeft(ConfigurationConstants.PADDING);

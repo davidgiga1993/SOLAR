@@ -25,10 +25,11 @@ public class SolarCamera extends OrthographicCamera {
     /**
      * This method is responsible to update the camera's position according to it's current targets.
      * Should be called once every frame.
+     *
      * @param delta time between this and last frame
      */
     public void update(float delta) {
-        if(isLocked) {
+        if (isLocked) {
             lockOnTarget();
         }
         smoothUpdate(delta);
@@ -43,13 +44,13 @@ public class SolarCamera extends OrthographicCamera {
 
     @Override
     public void translate(float x, float y) {
-        if(x == 0 && y == 0) {
+        if (x == 0 && y == 0) {
             return;
         }
         isLocked = false;
         movementTarget = null;
         zoomTargetActive = false;
-        super.translate(x,y);
+        super.translate(x, y);
     }
 
     @Override
@@ -58,10 +59,10 @@ public class SolarCamera extends OrthographicCamera {
     }
 
     private void smoothUpdate(float delta) {
-        if(movementTarget != null && !movementTarget.epsilonEquals(position.x, position.y, 0.001f)) {
+        if (movementTarget != null && !movementTarget.epsilonEquals(position.x, position.y, 0.001f)) {
             smoothTranslation(delta);
         }
-        if(zoomTargetActive) {
+        if (zoomTargetActive) {
             smoothZoom(delta);
         }
     }
@@ -80,6 +81,7 @@ public class SolarCamera extends OrthographicCamera {
 
     /**
      * Moves the camera smoothly to the target actor
+     *
      * @param actor to move to
      */
     public void moveTo(Actor actor) {
@@ -89,6 +91,7 @@ public class SolarCamera extends OrthographicCamera {
 
     /**
      * Moves the camera smoothly to the target location
+     *
      * @param x
      * @param y
      */
@@ -99,6 +102,7 @@ public class SolarCamera extends OrthographicCamera {
 
     /**
      * Zooms smoothly to the targeted zoom level
+     *
      * @param zoomTarget
      */
     public void zoomTo(float zoomTarget) {
@@ -108,6 +112,7 @@ public class SolarCamera extends OrthographicCamera {
 
     /**
      * Sets the zoom directly without any transition.
+     *
      * @param newZoom
      */
     public void setZoom(float newZoom) {

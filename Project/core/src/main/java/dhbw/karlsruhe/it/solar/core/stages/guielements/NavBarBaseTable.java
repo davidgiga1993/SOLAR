@@ -44,7 +44,7 @@ abstract class NavBarBaseTable extends Table implements Telegraph {
 
     NavBarBaseLabel getLabelOfActor(Actor actor) {
         for (NavBarBaseLabel unitLabel : allLabels) {
-            if(unitLabel.isOfActor(actor)) {
+            if (unitLabel.isOfActor(actor)) {
                 return unitLabel;
             }
         }

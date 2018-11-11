@@ -29,17 +29,17 @@ public class BodyProperties {
         this.gravity = new SurfaceGravity(mass, radius);
         this.albedo = albedo;
     }
-    
-    public Mass getMass()    {
+
+    public Mass getMass() {
         return mass;
     }
-    
-    public Length getRadius()    {
+
+    public Length getRadius() {
         return radius;
     }
 
     public void addMass(Mass massToBeAddedToTheBody) {
-        mass.addMass(massToBeAddedToTheBody);       
+        mass.addMass(massToBeAddedToTheBody);
     }
 
     public void setUpRings(PlanetaryRing newRing) {
@@ -57,7 +57,7 @@ public class BodyProperties {
     public BodyType getBodyType() {
         return type;
     }
-    
+
     public void setBodyType(BodyType type) {
         this.type = type;
     }
@@ -107,10 +107,10 @@ public class BodyProperties {
     }
 
     public Pressure getSurfacePressure() {
-        if(null!=atmosphere && null!=atmosphere.getPressure()) {
-            return atmosphere.getPressure();            
+        if (null != atmosphere && null != atmosphere.getPressure()) {
+            return atmosphere.getPressure();
         }
-        return new Pressure(0f,PressureUnit.BAR);
+        return new Pressure(0f, PressureUnit.BAR);
     }
 
     public boolean hasAtmosphere() {
@@ -134,11 +134,12 @@ public class BodyProperties {
      * The calculation requires this body to have a valid star type, consisting of spectral type classification, numeric digit subdivision and a roman numeral luminosity type qualifier.
      */
     public void setStellarSurfaceTemperature() {
-        temperature = new SurfaceTemperature(Star.getBlackBodyTemperature((StarType)type));     
+        temperature = new SurfaceTemperature(Star.getBlackBodyTemperature((StarType) type));
     }
 
     /**
      * Calculates the surface temperature of a planetary body.
+     *
      * @param body
      */
     public void calculateSurfaceTemperature(AstronomicalBody body) {

@@ -1,23 +1,22 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-
 import dhbw.karlsruhe.it.solar.colony.BaseBuilding;
 import dhbw.karlsruhe.it.solar.colony.BuildingManager;
 import dhbw.karlsruhe.it.solar.colony.Colony;
 import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Population.class, BaseBuilding.class})
 public class ColonyInfo {
-    
-    @XmlElement(name="ColonyName")
+
+    @XmlElement(name = "ColonyName")
     private String name;
     @XmlElement(name = "ColonyOwner")
     private String ownerName;
@@ -27,14 +26,14 @@ public class ColonyInfo {
     private List<BaseBuilding> buildings;
 
     public ColonyInfo() {
-        
+
     }
-    
+
     public void fillColonyInfo(Colony colony) {
         this.name = colony.getName();
         this.ownerName = colony.getOwner().getName();
         this.pop = colony.getPopulation();
-        this.buildings = colony.getListOfColonyBuildings();      
+        this.buildings = colony.getListOfColonyBuildings();
     }
 
     public String getColonyName() {

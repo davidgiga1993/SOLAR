@@ -9,18 +9,18 @@ public class Time {
     private static final int MINUTES_PER_HOUR = 60;
     private static final int HOURS_PER_DAY = 24;
     private static final int ONE_THOUSAND = 1000;
-    private static final int ONE_MILLION = ONE_THOUSAND*ONE_THOUSAND;
-    
+    private static final int ONE_MILLION = ONE_THOUSAND * ONE_THOUSAND;
+
     @XmlElement(name = "Time_Value")
     private float value;
     @XmlElement(name = "Time_Unit")
     private TimeUnit unit;
-    
+
     public Time(float value, TimeUnit unit) {
         this.value = value;
         this.unit = unit;
     }
-    
+
     public Time() {
 
     }
@@ -75,67 +75,67 @@ public class Time {
                 return Float.NaN;
         }
     }
-    
+
     public float inDays() {
         switch (unit) {
-        case SECONDS:
-            return value / SECONDS_PER_MINUTE / MINUTES_PER_HOUR / HOURS_PER_DAY;
-        case MINUTES:
-            return value / MINUTES_PER_HOUR / HOURS_PER_DAY;
-        case HOURS:
-            return value / HOURS_PER_DAY;
-        case DAYS:
-            return value;
-        case YEARS:
-            return value * DAYS_PER_YEAR;
+            case SECONDS:
+                return value / SECONDS_PER_MINUTE / MINUTES_PER_HOUR / HOURS_PER_DAY;
+            case MINUTES:
+                return value / MINUTES_PER_HOUR / HOURS_PER_DAY;
+            case HOURS:
+                return value / HOURS_PER_DAY;
+            case DAYS:
+                return value;
+            case YEARS:
+                return value * DAYS_PER_YEAR;
             default:
                 return Float.NaN;
         }
     }
-    
+
     public float inYears() {
         switch (unit) {
-        case SECONDS:
-            return value / DAYS_PER_YEAR / HOURS_PER_DAY / SECONDS_PER_MINUTE / MINUTES_PER_HOUR;
-        case MINUTES:
-            return value / DAYS_PER_YEAR / HOURS_PER_DAY / MINUTES_PER_HOUR;
-        case HOURS:
-            return value / DAYS_PER_YEAR / HOURS_PER_DAY;
-        case DAYS:
-            return value / DAYS_PER_YEAR;
-        case YEARS:
-            return value;
+            case SECONDS:
+                return value / DAYS_PER_YEAR / HOURS_PER_DAY / SECONDS_PER_MINUTE / MINUTES_PER_HOUR;
+            case MINUTES:
+                return value / DAYS_PER_YEAR / HOURS_PER_DAY / MINUTES_PER_HOUR;
+            case HOURS:
+                return value / DAYS_PER_YEAR / HOURS_PER_DAY;
+            case DAYS:
+                return value / DAYS_PER_YEAR;
+            case YEARS:
+                return value;
             default:
                 return Float.NaN;
         }
     }
-    
+
     @Override
     public String toString() {
-        if(this.value < 0) {
+        if (this.value < 0) {
             return "-" + new Time(-value, unit).toString();
         }
-        if( this.inYears() > ONE_MILLION) {
-            return formatValue(this.inYears()/ONE_MILLION) + " mi Years";
+        if (this.inYears() > ONE_MILLION) {
+            return formatValue(this.inYears() / ONE_MILLION) + " mi Years";
         }
-        if( this.inYears() > ONE_THOUSAND ) {
-            return formatValue(this.inYears()/ONE_THOUSAND) + " k Years";
+        if (this.inYears() > ONE_THOUSAND) {
+            return formatValue(this.inYears() / ONE_THOUSAND) + " k Years";
         }
-        if( this.inDays() > DAYS_PER_YEAR ) {
+        if (this.inDays() > DAYS_PER_YEAR) {
             return formatValue(this.inYears()) + " Years";
         }
-        if( this.inHours() > HOURS_PER_DAY + 1 ) {
+        if (this.inHours() > HOURS_PER_DAY + 1) {
             return formatValue(this.inDays()) + " Days";
-        }   
-        if( this.inMinutes() > MINUTES_PER_HOUR ) {
+        }
+        if (this.inMinutes() > MINUTES_PER_HOUR) {
             return formatValue(this.inHours()) + " Hours";
-        }  
-        if( this.inSeconds() > SECONDS_PER_MINUTE ) {
+        }
+        if (this.inSeconds() > SECONDS_PER_MINUTE) {
             return formatValue(this.inMinutes()) + " Minutes";
-        }  
+        }
         return formatValue(this.inSeconds()) + " Seconds";
     }
-    
+
     private String formatValue(float value) {
         return String.format("%.01f", value);
     }

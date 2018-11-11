@@ -13,29 +13,29 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public abstract class BaseBuilding implements Building {
 
     final static int THOUSAND = 1000;
-    
+
     @XmlElement(name = "Number_Built")
     int buildingsBuilt;
-    
+
     @Override
     public long getNumberOfBuildingsOnline() {
         return buildingsBuilt;
     }
-    
+
     @Override
     public int getNumberOfBuildingsBuilt() {
         return buildingsBuilt;
     }
-    
+
     @Override
     public void build() {
         buildingsBuilt++;
     }
-    
+
     @Override
     public Credits payUpKeep(Time deltaT) {
-        return new Credits((long)(deltaT.inYears() * getYearlyUpKeep().getNumber()));
+        return new Credits((long) (deltaT.inYears() * getYearlyUpKeep().getNumber()));
     }
-    
+
     protected abstract Credits getYearlyUpKeep();
 }

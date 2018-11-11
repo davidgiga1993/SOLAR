@@ -15,11 +15,12 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
  * Created by Arga on 24.02.2015.
+ *
  * @author Andi
  * Substantially revised by Andi on: 2015-04-19
  */
 public class InfoBar extends Window implements Telegraph {
-   
+
     public final static int MENUE_CELL_WIDTH = 60;
     public final static int MENUE_BUTTON_WIDTH = 58;
     public final static int MENUE_BUTTON_HEIGHT = 25;
@@ -30,7 +31,7 @@ public class InfoBar extends Window implements Telegraph {
     public final static int ACTION_BUTTON_WIDTH = 130;
     public final static int ACTION_BUTTON_HEIGHT = 30;
     public final static int ACTION_BUTTON_PADDING = 5;
-    public static final int MINIMUM_WIDTH = ConfigurationConstants.GUI_NAVIGATION_WIDTH + 4*ConfigurationConstants.PADDING + 2*ConfigurationConstants.CELL_WIDTH + MENUE_CELL_WIDTH + ACTION_BUTTON_WIDTH + 2*ACTION_BUTTON_PADDING;
+    public static final int MINIMUM_WIDTH = ConfigurationConstants.GUI_NAVIGATION_WIDTH + 4 * ConfigurationConstants.PADDING + 2 * ConfigurationConstants.CELL_WIDTH + MENUE_CELL_WIDTH + ACTION_BUTTON_WIDTH + 2 * ACTION_BUTTON_PADDING;
     public final static String TAB = "            ";
     private final static int IMAGE_WIDTH = 135;
     private final static int IMAGE_HEIGHT = 135;
@@ -44,13 +45,13 @@ public class InfoBar extends Window implements Telegraph {
     public InfoBar() {
         super("Information", Styles.TOOLTIPSKIN);
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
-        
+
         add(contentTable).expandX().fillX().left();
     }
 
     @Override
     public boolean handleMessage(Telegram telegram) {
-        if(telegram.message == SolarMessageType.PLAYER_SELECTION_CHANGED) {
+        if (telegram.message == SolarMessageType.PLAYER_SELECTION_CHANGED) {
             onSelectionChange((Selection) telegram.sender);
             return true;
         }
@@ -60,7 +61,7 @@ public class InfoBar extends Window implements Telegraph {
     private void onSelectionChange(Selection newSelection) {
         selectedActor = newSelection.getRepresentative();
         contentTable.clear();
-        if(null!=selectedActor) {
+        if (null != selectedActor) {
             loadContent();
         }
     }
@@ -77,11 +78,11 @@ public class InfoBar extends Window implements Telegraph {
         Table imageTable = new Table();
         selectedImage.setDrawable(new TextureRegionDrawable(selectedActor.getSolarActorTexture()));
         imageTable.add(selectedImage).width(IMAGE_WIDTH).height(IMAGE_HEIGHT);
-        return imageTable;  
+        return imageTable;
     }
 
     public InfoBar update() {
-        if(null!=selectedActor) {
+        if (null != selectedActor) {
             overview.reload();
             manager.reload();
         }
@@ -94,5 +95,5 @@ public class InfoBar extends Window implements Telegraph {
 
     public void initSettings(InfoBarManagerSettings settings) {
         manager.initSettings(settings);
-    }    
+    }
 }

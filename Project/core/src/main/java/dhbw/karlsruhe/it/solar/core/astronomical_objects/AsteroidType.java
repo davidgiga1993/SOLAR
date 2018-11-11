@@ -4,45 +4,46 @@ import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Handles the characteristics common to all asteroids. Governs the type of asteroid.
+ *
  * @author Andi
  * Created 2015-04-05
  */
 public class AsteroidType extends BodyType {
-    
+
     @XmlElement(name = "Type")
     private TypeOfAsteroid typeOfAsteroid;
     @XmlElement(name = "Texture")
     private TextureTypeOfAsteroid textureOfAsteroid;
-    
+
     public AsteroidType() {
-        
+
     }
-    
+
     public AsteroidType(TypeOfAsteroid typeOfAsteroid, TextureTypeOfAsteroid textureOfAsteroid) {
         this.typeOfAsteroid = typeOfAsteroid;
         this.textureOfAsteroid = textureOfAsteroid;
     }
-        
+
     @Override
     public boolean consistsPartiallyOfWaterIce() {
         return false;
     }
-    
+
     @Override
     public boolean hasSurface() {
         return true;
     }
-    
+
     public TypeOfAsteroid getSpectralType() {
         return typeOfAsteroid;
     }
-    
+
     public String resolveTypeName() {
-        switch(typeOfAsteroid)        {
-        case DTYPE:
-            return "D-Type Asteroid";
-        default:
-            return "Anomaly: Unknown Type of Asteroid";
+        switch (typeOfAsteroid) {
+            case DTYPE:
+                return "D-Type Asteroid";
+            default:
+                return "Anomaly: Unknown Type of Asteroid";
         }
     }
 
@@ -53,14 +54,14 @@ public class AsteroidType extends BodyType {
 
     @Override
     public String getTexture() {
-        switch(textureOfAsteroid)        {
+        switch (textureOfAsteroid) {
             case PHOEBE_DEFAULT_IMAGE:
                 return "IrregularSatellite";
             default:
                 return "IrregularSatellite";
-            }
-    }    
-    
+        }
+    }
+
     public enum TypeOfAsteroid {
         BTYPE,
         FTYPE,
@@ -76,7 +77,7 @@ public class AsteroidType extends BodyType {
         RTYPE,
         VTYPE
     }
-    
+
     public enum TextureTypeOfAsteroid {
         PHOEBE_DEFAULT_IMAGE
     }

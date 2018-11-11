@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Abstract superclass for handling the type of astronomical bodies.
+ *
  * @author Andi
  * Created 2015-04-05
  */

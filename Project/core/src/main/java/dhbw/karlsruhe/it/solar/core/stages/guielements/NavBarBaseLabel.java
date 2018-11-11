@@ -32,7 +32,7 @@ public class NavBarBaseLabel extends Label {
         this.container = container;
         addListener(new NavigationLabelListener());
     }
-    
+
     public NavBarBaseLabel(CharSequence text, SolarActor actor, LabelStyle style) {
         super(text, style);
         this.actor = actor;
@@ -70,7 +70,7 @@ public class NavBarBaseLabel extends Label {
 
         childrenVisible = !childrenVisible;
         setChildrenVisibility(childrenVisible);
-        if(childrenVisible) {
+        if (childrenVisible) {
             setText(tab + "-  " + name);
         } else {
             setText(tab + "+ " + name);
@@ -86,11 +86,12 @@ public class NavBarBaseLabel extends Label {
 
     /**
      * A NavigationLabel is only visible, if it's own visibility is set to true AND it's parent's visibility is true as well.
+     *
      * @return visibility
      */
     @Override
     public boolean isVisible() {
-        if(parent == null) {
+        if (parent == null) {
             return super.isVisible();
         }
         return super.isVisible() && parent.isVisible();

@@ -13,14 +13,13 @@ import java.util.*;
 /**
  * @author Soeren
  * This class represents the player's selection of SolarActors.
- * 
  */
 public class Selection implements Telegraph {
 
     private Set<SolarActor> selectedActors;
     private List<SpaceUnit> cachedSpaceUnits;
     private boolean spaceUnitDirtyFlag = true;
-    
+
     public Selection() {
         selectedActors = new HashSet<>();
         cachedSpaceUnits = new ArrayList<>();
@@ -35,9 +34,10 @@ public class Selection implements Telegraph {
         spaceUnitDirtyFlag = true;
         selectionChanged();
     }
-    
+
     /**
      * Clears the current selection and selects the given actors
+     *
      * @param actors
      * @see clear()
      */
@@ -46,9 +46,10 @@ public class Selection implements Telegraph {
         selectedActors.addAll(actors);
         setSelected(actors);
     }
-    
+
     /**
      * Adds the given actor to the selection and marks it as selected
+     *
      * @param actor
      */
     public void add(SolarActor actor) {
@@ -57,23 +58,24 @@ public class Selection implements Telegraph {
         spaceUnitDirtyFlag = true;
         selectionChanged();
     }
-    
+
     /**
      * Convenience method
+     *
      * @see dhbw.karlsruhe.it.solar.core.inputlisteners.Selection.add(dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor add)
      */
     public void add(Actor actor) {
         if (actor instanceof SolarActor) {
-            add((SolarActor) actor);            
+            add((SolarActor) actor);
         }
     }
-    
+
     /**
      * @see add(SolarActor)
      */
     public void add(Collection<SolarActor> actors) {
-        for(SolarActor actor : actors) {
-            if(!selectedActors.contains(actor)) {
+        for (SolarActor actor : actors) {
+            if (!selectedActors.contains(actor)) {
                 selectedActors.add(actor);
                 actor.select();
             }
@@ -84,6 +86,7 @@ public class Selection implements Telegraph {
 
     /**
      * Removes the given Object from the selection iff it is present.
+     *
      * @param actor
      */
     public void remove(SolarActor actor) {
@@ -101,35 +104,35 @@ public class Selection implements Telegraph {
     }
 
     private void setSelected(Collection<SolarActor> actors) {
-        for(SolarActor a : actors) {
+        for (SolarActor a : actors) {
             a.select();
         }
     }
-    
+
     private void setUnselected(Collection<SolarActor> actors) {
         for (SolarActor a : actors) {
             a.deselect();
         }
     }
-    
+
     public List<SpaceUnit> getSpaceUnits() {
         if (spaceUnitDirtyFlag) {
             cacheSpaceUnits();
         }
         return cachedSpaceUnits;
     }
-    
+
     public Collection<SolarActor> getActors() {
         return selectedActors;
     }
-    
+
     /**
      * Rebuilds the cachedSpaceships list by cleaning and adding all Spaceships contained in
      * selected Actors.
      */
     private void cacheSpaceUnits() {
         cachedSpaceUnits.clear();
-        for(Actor actor : selectedActors) {
+        for (Actor actor : selectedActors) {
             if (actor instanceof SpaceUnit) {
                 cachedSpaceUnits.add((SpaceUnit) actor);
             }
@@ -139,7 +142,7 @@ public class Selection implements Telegraph {
 
     public SolarActor getRepresentative() {
         Iterator<SolarActor> iterator = selectedActors.iterator();
-        if(iterator.hasNext()) {
+        if (iterator.hasNext()) {
             return iterator.next();
         }
         return null;

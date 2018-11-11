@@ -5,20 +5,20 @@ import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 import javax.xml.bind.annotation.XmlElement;
 
 public class AtmosphericGas {
-    
+
     private static final Pressure ASPHYXIATION_ONLY = null;
-    private static final Pressure CARBON_DIOXIDE_POISONING_SYMPTOMS = new Pressure( 0.01f, PressureUnit.BAR);
-    private static final Pressure CARBON_DIOXIDE_POISONING_FATAL = new Pressure( 0.1f, PressureUnit.BAR);
-    private static final Pressure CARBON_MONOXIDE_POISONING_SYMPTOMS = new Pressure( 35/1000000f, PressureUnit.BAR);
-    private static final Pressure CARBON_MONOXIDE_POISONING_FATAL = new Pressure( 667/1000000f, PressureUnit.BAR);
-    private static final Pressure METHANE_FLAMMABLE = new Pressure( 0.05f, PressureUnit.BAR);
-    private static final Pressure METHANE_EXPLOSIVE = new Pressure( 0.15f, PressureUnit.BAR);
-    private static final Pressure OXYGEN_TOXICITY = new Pressure( 0.5f, PressureUnit.BAR);
-    private static final Pressure ACUTE_OXYGEN_TOXICITY = new Pressure( 1.6f, PressureUnit.BAR);
-    private static final Pressure SULFUR_DIOXIDE_TOXICITY = new Pressure( 5f/1000000f, PressureUnit.BAR);
-    private static final Pressure ACUTE_SULFUR_DIOXIDE_TOXICITY = new Pressure( 500f/1000000f, PressureUnit.BAR);
-    private static final Pressure ALKALI_METAL_LOW = new Pressure( 0f, PressureUnit.BAR);
-    private static final Pressure ALKALI_METAL_HIGH = new Pressure( 5f/1000000f, PressureUnit.BAR);
+    private static final Pressure CARBON_DIOXIDE_POISONING_SYMPTOMS = new Pressure(0.01f, PressureUnit.BAR);
+    private static final Pressure CARBON_DIOXIDE_POISONING_FATAL = new Pressure(0.1f, PressureUnit.BAR);
+    private static final Pressure CARBON_MONOXIDE_POISONING_SYMPTOMS = new Pressure(35 / 1000000f, PressureUnit.BAR);
+    private static final Pressure CARBON_MONOXIDE_POISONING_FATAL = new Pressure(667 / 1000000f, PressureUnit.BAR);
+    private static final Pressure METHANE_FLAMMABLE = new Pressure(0.05f, PressureUnit.BAR);
+    private static final Pressure METHANE_EXPLOSIVE = new Pressure(0.15f, PressureUnit.BAR);
+    private static final Pressure OXYGEN_TOXICITY = new Pressure(0.5f, PressureUnit.BAR);
+    private static final Pressure ACUTE_OXYGEN_TOXICITY = new Pressure(1.6f, PressureUnit.BAR);
+    private static final Pressure SULFUR_DIOXIDE_TOXICITY = new Pressure(5f / 1000000f, PressureUnit.BAR);
+    private static final Pressure ACUTE_SULFUR_DIOXIDE_TOXICITY = new Pressure(500f / 1000000f, PressureUnit.BAR);
+    private static final Pressure ALKALI_METAL_LOW = new Pressure(0f, PressureUnit.BAR);
+    private static final Pressure ALKALI_METAL_HIGH = new Pressure(5f / 1000000f, PressureUnit.BAR);
     private static final float CO2_SATURATION_LEVEL = 557f;
     private static final float CO2_SCALAR = 1.2f;
     private static final float H2O_CO2_RELATION = 3700f;
@@ -33,80 +33,82 @@ public class AtmosphericGas {
     private GasType type;
     @XmlElement(name = "Volume_Percentage")
     private float percentage;
-    
+
     public AtmosphericGas() {
-        
+
     }
-    
+
     public AtmosphericGas(GasType type, float percentage) {
         this.type = type;
-        if(percentage < 1 && percentage > 0) {
+        if (percentage < 1 && percentage > 0) {
             this.percentage = percentage;
             return;
         }
         this.percentage = 0;
     }
-    
+
     public static float getOxygenToxicPartialPressure() {
         return OXYGEN_TOXICITY.asBar();
     }
-    
+
     /**
      * The danger threshold is the partial pressure at which that gas takes on dangerous qualities.
      * This can extend from toxicity to humans to explosion risk if exposed to oxidizers/halogen/etc...
+     *
      * @return The dangerous partial pressure of that gas in bar.
      */
     public Pressure getDangerousThreshold() {
-        switch(type) {
-        case CARBON_DIOXIDE:
-            return CARBON_DIOXIDE_POISONING_SYMPTOMS;
-        case CARBON_MONOXIDE:
-            return CARBON_MONOXIDE_POISONING_SYMPTOMS;
-        case METHANE:
-            return METHANE_FLAMMABLE;
-        case OXYGEN:
-            return OXYGEN_TOXICITY;
-        case POTASSIUM:
-            return ALKALI_METAL_LOW;
-        case SODIUM:
-            return ALKALI_METAL_LOW;
-        case SULFUR_DIOXIDE:
-            return SULFUR_DIOXIDE_TOXICITY;
-        default:
-            return ASPHYXIATION_ONLY;
+        switch (type) {
+            case CARBON_DIOXIDE:
+                return CARBON_DIOXIDE_POISONING_SYMPTOMS;
+            case CARBON_MONOXIDE:
+                return CARBON_MONOXIDE_POISONING_SYMPTOMS;
+            case METHANE:
+                return METHANE_FLAMMABLE;
+            case OXYGEN:
+                return OXYGEN_TOXICITY;
+            case POTASSIUM:
+                return ALKALI_METAL_LOW;
+            case SODIUM:
+                return ALKALI_METAL_LOW;
+            case SULFUR_DIOXIDE:
+                return SULFUR_DIOXIDE_TOXICITY;
+            default:
+                return ASPHYXIATION_ONLY;
         }
     }
 
     /**
      * The lethal threshold is the partial pressure at which breathing that gas becomes fatal within minutes.
+     *
      * @return The lethal partial pressure of that gas in bar.
      */
     public Pressure getLethalThreshold() {
-        switch(type) {
-        case CARBON_DIOXIDE:
-            return CARBON_DIOXIDE_POISONING_FATAL;
-        case CARBON_MONOXIDE:
-            return CARBON_MONOXIDE_POISONING_FATAL;
-        case METHANE:
-            return METHANE_EXPLOSIVE;
-        case OXYGEN:
-            return ACUTE_OXYGEN_TOXICITY;
-        case POTASSIUM:
-            return ALKALI_METAL_HIGH;
-        case SODIUM:
-            return ALKALI_METAL_HIGH;
-        case SULFUR_DIOXIDE:
-            return ACUTE_SULFUR_DIOXIDE_TOXICITY;
-        default:
-            return ASPHYXIATION_ONLY;
+        switch (type) {
+            case CARBON_DIOXIDE:
+                return CARBON_DIOXIDE_POISONING_FATAL;
+            case CARBON_MONOXIDE:
+                return CARBON_MONOXIDE_POISONING_FATAL;
+            case METHANE:
+                return METHANE_EXPLOSIVE;
+            case OXYGEN:
+                return ACUTE_OXYGEN_TOXICITY;
+            case POTASSIUM:
+                return ALKALI_METAL_HIGH;
+            case SODIUM:
+                return ALKALI_METAL_HIGH;
+            case SULFUR_DIOXIDE:
+                return ACUTE_SULFUR_DIOXIDE_TOXICITY;
+            default:
+                return ASPHYXIATION_ONLY;
         }
     }
 
     public Pressure partialPressure(Pressure pressure) {
-        if(null==pressure) {
+        if (null == pressure) {
             return gasGiantPartialPressureAtOneBarDepthLevel();
         }
-        return new Pressure(percentage*pressure.asBar(), PressureUnit.BAR);
+        return new Pressure(percentage * pressure.asBar(), PressureUnit.BAR);
     }
 
     private Pressure gasGiantPartialPressureAtOneBarDepthLevel() {
@@ -116,13 +118,13 @@ public class AtmosphericGas {
     public boolean isOxygen() {
         return type.equals(GasType.OXYGEN);
     }
-    
+
     public boolean isWaterVapor() {
         return type.equals(GasType.WATER_VAPOR);
     }
-    
+
     private String typeToString() {
-        switch(type) {
+        switch (type) {
             case ARGON:
                 return "Argon";
             case CARBON_MONOXIDE:
@@ -163,11 +165,11 @@ public class AtmosphericGas {
     }
 
     public String getCompositionPercentage() {
-        return formatValue(percentage*100) + " %";
+        return formatValue(percentage * 100) + " %";
     }
 
     public String getShortName() {
-        switch(type) {
+        switch (type) {
             case ARGON:
                 return "Ar";
             case CARBON_MONOXIDE:
@@ -203,11 +205,12 @@ public class AtmosphericGas {
      * Calculates a fictional greenhouse effect value for that atmospheric gas.
      * Formula uses an unrealistic saturation principle with data points derived from the bodies of the solar system.
      * Not a scientifically correct calculation! Only a quick and dirty approximation.
+     *
      * @param body
      * @return
      */
     public float greenhouseEffect(BodyProperties body) {
-        switch(type) {
+        switch (type) {
             case CARBON_DIOXIDE:
                 return saturationCO2(body);
             case METHANE:
@@ -238,7 +241,7 @@ public class AtmosphericGas {
     }
 
     private float saturationFormula(float saturationLevel, float scalar, Pressure partialPressure) {
-        return saturationLevel - saturationLevel/(scalar * partialPressure.asBar() + 1);
+        return saturationLevel - saturationLevel / (scalar * partialPressure.asBar() + 1);
     }
 
     public enum GasType {

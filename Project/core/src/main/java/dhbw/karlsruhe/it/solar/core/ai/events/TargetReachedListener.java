@@ -5,6 +5,6 @@ import java.util.EventListener;
 /**
  * Created by argannor on 20.02.15.
  */
-public interface TargetReachedListener extends EventListener{
+public interface TargetReachedListener extends EventListener {
     void handle(TargetReachedEvent event);
 }

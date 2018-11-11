@@ -13,17 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
  * @author Andi
  * created 2015-05-04
  */
 public abstract class BaseResource implements BaseResourceInterface {
-    
+
     public final static long THOUSAND = 1000;
     public final static long MILLION = THOUSAND * THOUSAND;
     final static long BILLION = THOUSAND * MILLION;
     final static long TRILLION = THOUSAND * BILLION;
-    
+
     @XmlElement(name = "Value")
     long value;
     @XmlElement(name = "Values_Of_Last_Month")
@@ -32,19 +31,19 @@ public abstract class BaseResource implements BaseResourceInterface {
     float changeLastMonth;
     @XmlElement(name = "Time_Of_Last_Resource_Update")
     private Time oldGameTime;
-    
+
     @Override
     public Table loadIcon() {
         Table imageTable = new Table();
         Image selectedImage = new Image();
         selectedImage.setDrawable(new TextureRegionDrawable(getIcon()));
         imageTable.add(selectedImage).width(ConfigurationConstants.ICON_SIZE).height(ConfigurationConstants.ICON_SIZE);
-        return imageTable;  
+        return imageTable;
     }
 
     boolean isANewDay() {
-        if( oldGameTime == null || (int)GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int)oldGameTime.inDays()) {
-            oldGameTime = new Time(GameStartStage.GAMETIME.getGameTimeElapsed().inDays(),TimeUnit.DAYS);
+        if (oldGameTime == null || (int) GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int) oldGameTime.inDays()) {
+            oldGameTime = new Time(GameStartStage.GAMETIME.getGameTimeElapsed().inDays(), TimeUnit.DAYS);
             return true;
         }
         return false;
@@ -52,7 +51,7 @@ public abstract class BaseResource implements BaseResourceInterface {
 
     void updateValuesOfLastMonthList() {
         valuesOfLastMonth.add(value);
-        if(valuesOfLastMonth.size()>31) {
+        if (valuesOfLastMonth.size() > 31) {
             valuesOfLastMonth.remove(0);
         }
     }
@@ -62,18 +61,18 @@ public abstract class BaseResource implements BaseResourceInterface {
     }
 
     float inThousands(float value) {
-        return value / (float)THOUSAND;
+        return value / (float) THOUSAND;
     }
 
     float inMillions(float value) {
-        return value / (float)MILLION;
+        return value / (float) MILLION;
     }
 
     float inBillions(float value) {
-        return value / (float)BILLION;
+        return value / (float) BILLION;
     }
 
     float inTrillions(float value) {
-        return value / (float)TRILLION;
+        return value / (float) TRILLION;
     }
 }

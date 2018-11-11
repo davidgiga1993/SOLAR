@@ -12,7 +12,7 @@ public class TextureCacher {
     public static final TextureAtlas GAMEATLAS = new TextureAtlas(Gdx.files.internal("packed/texturePack.atlas"));
 
     private TextureCacher() {
-        
+
     }
 
     public static void cleanUp() {

@@ -113,19 +113,20 @@ public abstract class SolarActor extends Actor implements Telegraph {
     public TextureRegion getSolarActorTexture() {
         return solarActorTexture;
     }
-    
+
     /**
      * Creates a graphics sprite for the actor object from the texture atlas region identified by the textureName.
      * Unless specifically overridden by the subclass, the draw method of the solar actor class will expect that a sprite has been set up.
+     *
      * @param textureName Identifier used by the texture atlas to locate the texture.
      */
     protected void setupSolarActorSprite(String textureName) {
         solarActorTexture = TextureCacher.GAMEATLAS.findRegion(textureName);
         solarActorSprite = new Sprite(solarActorTexture);
     }
-    
+
     @Override
-    public void draw(Batch batch, float parentAlpha)    {
+    public void draw(Batch batch, float parentAlpha) {
         solarActorSprite.setPosition(getX(), getY());
         solarActorSprite.draw(batch);
     }

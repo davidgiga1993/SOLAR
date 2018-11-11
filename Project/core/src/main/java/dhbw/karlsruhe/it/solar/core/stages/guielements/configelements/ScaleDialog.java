@@ -56,22 +56,22 @@ public class ScaleDialog {
 
         ScaleSlider starShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_STAR, 1, 50, Star.class);
         ScaleSlider planetShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 1, 100, Planet.class);
-    //    ScaleSlider asteroidShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 1, 10000, Asteroid.class);
+        //    ScaleSlider asteroidShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 1, 10000, Asteroid.class);
         ScaleSlider moonShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_MOON, 1, 100, Moon.class);
         ScaleSlider unitShapeSlider = new ShapeScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_UNITS, 10000, 1000000, SpaceUnit.class);
 
         ScaleSlider planetOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_PLANET, 0.1f, 1, Planet.class);
-     //   ScaleSlider asteroidOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 0.1f, 200, Asteroid.class);
+        //   ScaleSlider asteroidOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_ASTEROID, 0.1f, 200, Asteroid.class);
         ScaleSlider moonOrbitSlider = new OrbitScaleSlider(stage, ConfigurationConstants.SCALE_FACTOR_MOON, 0.1f, 10, Moon.class);
 
         scaleSliders.add(starShapeSlider);
         scaleSliders.add(planetShapeSlider);
-      //  scaleSliders.add(asteroidShapeSlider);
+        //  scaleSliders.add(asteroidShapeSlider);
         scaleSliders.add(moonShapeSlider);
         scaleSliders.add(unitShapeSlider);
 
         scaleSliders.add(planetOrbitSlider);
-     //   scaleSliders.add(asteroidOrbitSlider);
+        //   scaleSliders.add(asteroidOrbitSlider);
         scaleSliders.add(moonOrbitSlider);
 
         ScalePresetButton preset1Button = new ScalePresetButton("Preset 1") {
@@ -110,12 +110,12 @@ public class ScaleDialog {
         presetButtonTable.add(preset3Button);
 
         contentTable.add(shapeLabel).fillX().height(25).row();
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             contentTable.add(scaleSliders.get(i)).fillX().height(25).row();
         }
 
         contentTable.add(orbitLabel).fillX().height(25).row();
-        for(int i = 4; i < 6; i++) {
+        for (int i = 4; i < 6; i++) {
             contentTable.add(scaleSliders.get(i)).fillX().height(25).row();
         }
 

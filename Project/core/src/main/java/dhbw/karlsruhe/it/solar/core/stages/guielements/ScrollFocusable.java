@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
  * @author Arga
- *         created on 20.03.2016.
+ * created on 20.03.2016.
  */
 public interface ScrollFocusable {
 

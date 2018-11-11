@@ -13,9 +13,9 @@ import dhbw.karlsruhe.it.solar.core.physics.Mass.MassUnit;
 public class SystemRoot extends AstronomicalBody {
 
     public SystemRoot(float x, float y) {
-        super("Milky Way Galaxy", null, null,  null, null);
+        super("Milky Way Galaxy", null, null, null, null);
         label.hide();
-        this.setPosition(x,y);
+        this.setPosition(x, y);
     }
 
     @Override
@@ -32,29 +32,29 @@ public class SystemRoot extends AstronomicalBody {
     public String getTypeName() {
         return null;
     }
-    
+
     @Override
     protected void setupSolarActorSprite(String textureName) {
         // since it should not be drawn, there's no need to have sprite.
     }
-    
+
     @Override
     public void setActorScale(SolarActorScale scale) {
         // since it should not be drawn, there's no need to set the scale
     }
-    
+
     @Override
     protected void changeBodyScale() {
         // since it should not be drawn, there's no need to change the scale
     }
-    
+
     @Override
     public Mass getMass() {
-        return new Mass(0f,MassUnit.KILOGRAM);
+        return new Mass(0f, MassUnit.KILOGRAM);
     }
-    
+
     @Override
     public Length getRadius() {
-        return new Length(0f,DistanceUnit.KILOMETERS);
+        return new Length(0f, DistanceUnit.KILOMETERS);
     }
 }

@@ -20,7 +20,7 @@ public class Player {
 
     private final static int POPULATION_RESOURCE_ID = 0;
     private final static int TREASURY_RESOURCE_ID = 1;
-    
+
     private final int id;
     private final String name;
     private final Color playerColor;
@@ -53,30 +53,31 @@ public class Player {
     public Color getPlayerColor() {
         return playerColor;
     }
-    
+
     public String getName() {
         return name;
     }
 
     public LabelStyle getColorStyle() {
-        if(playerColor == Color.RED) {
+        if (playerColor == Color.RED) {
             return Styles.MENUELABEL_RED;
         }
-        if(playerColor == Color.YELLOW) {
+        if (playerColor == Color.YELLOW) {
             return Styles.MENUELABEL_YELLOW;
         }
-        if(playerColor == Color.ORANGE) {
+        if (playerColor == Color.ORANGE) {
             return Styles.MENUELABEL_ORANGE;
         }
-        if(playerColor == Color.GREEN) {
+        if (playerColor == Color.GREEN) {
             return Styles.MENUELABEL_GREEN;
         }
         return Styles.MENUELABEL_STYLE;
     }
-    
+
     /**
      * Ownership of a colony is assigned to the player.
-     * @return 
+     *
+     * @return
      */
     public Colony establishColony(String colonyName, AstronomicalBody colonySite, Player player, Population colonists) {
         Colony newColony = new Colony(colonyName, colonySite, player, colonists);
@@ -93,12 +94,12 @@ public class Player {
     }
 
     private AstronomicalBody largestColony() {
-        if( hasNoColonies()) {
+        if (hasNoColonies()) {
             return null;
         }
         Colony largestColony = colonies.get(0);
-        for(Colony colony : colonies) {
-            if(colony.getPopulation().getNumber() > largestColony.getPopulation().getNumber()) {
+        for (Colony colony : colonies) {
+            if (colony.getPopulation().getNumber() > largestColony.getPopulation().getNumber()) {
                 largestColony = colony;
             }
         }
@@ -126,34 +127,34 @@ public class Player {
     }
 
     public void updateProduction(Time deltaT) {
-        for(Colony colony : colonies) {
+        for (Colony colony : colonies) {
             colony.updateProduction(deltaT);
             alerts.checkForColonyAlerts(colony);
         }
     }
 
     public TotalPopulation getTotalPopulation() {
-        return (TotalPopulation)resources.get(POPULATION_RESOURCE_ID);
+        return (TotalPopulation) resources.get(POPULATION_RESOURCE_ID);
     }
 
     public void updateTotalPopulation() {
         resources.get(POPULATION_RESOURCE_ID).empty();
-        for(Colony colony : colonies) {
-            ((TotalPopulation)resources.get(POPULATION_RESOURCE_ID)).addToTotalPopulation(colony.getPopulation());
+        for (Colony colony : colonies) {
+            ((TotalPopulation) resources.get(POPULATION_RESOURCE_ID)).addToTotalPopulation(colony.getPopulation());
         }
         getTotalPopulation().updateStatistic();
     }
 
     public Credits getTreasury() {
-        return (Credits)resources.get(TREASURY_RESOURCE_ID);
+        return (Credits) resources.get(TREASURY_RESOURCE_ID);
     }
 
     public void updateTreasury(Time deltaT) {
-        for(Colony colony : colonies) {
+        for (Colony colony : colonies) {
             getTreasury().addRevenueToTreasury(colony.raiseTaxes(deltaT));
             getTreasury().subtractExpensesFromTreasury(colony.payUpKeep(deltaT));
         }
-        for(SpaceUnit unit : units) {
+        for (SpaceUnit unit : units) {
             getTreasury().subtractExpensesFromTreasury(unit.payUpKeep(deltaT));
         }
         getTreasury().updateStatistic();
@@ -161,8 +162,8 @@ public class Player {
 
     public List<GlobalResource> getResources() {
         List<GlobalResource> newList = new ArrayList<>();
-        for(GlobalResourceInterface resource : resources) {
-            newList.add((GlobalResource)resource);
+        for (GlobalResourceInterface resource : resources) {
+            newList.add((GlobalResource) resource);
         }
         return newList;
     }
