@@ -63,7 +63,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         gameStartStageListener();
         addSelectionRectangle();
     }
-    
+
     /**
      * Initialize a new game creating a new system.
      */
@@ -73,12 +73,12 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         GameStartStage gameStage = initGameStartStage(engine);
         GameHUDStage gameHUDStage = initGameHUDStage(engine);
-        
+
         gameStage.initNewGame();
-        
-        initMultiplexer(gameStage, gameHUDStage);       
+
+        initMultiplexer(gameStage, gameHUDStage);
     }
-    
+
     /**
      * Initialize a game using the previously saved game state.
      */
@@ -88,9 +88,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         GameStartStage gameStage = initGameStartStage(engine);
         GameHUDStage gameHUDStage = initGameHUDStage(engine);
-        
+
         gameStage.initCurrentGame();
-        
+
         initMultiplexer(gameStage, gameHUDStage);
     }
 
@@ -256,7 +256,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         selectionRectangle = new SelectionRectangle();
         addActor(selectionRectangle);
     }
-    
+
     /**
      * Waits for mouse input in the game and interprets it accordingly.
      * Handles selection and deselection of objects.
@@ -285,27 +285,27 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public AstronomicalBody calculateDominantGravitationSourceAt(SpaceUnit unit) {
         return solarSystem.calculateDominantGravitationSourceAt(unit);
     }
-    
+
     public List<SpaceUnit> getSelectedSpaceUnits() {
         return selectedActors.getSpaceUnits();
     }
-    
+
     public void addToSelectedActors(Actor newlySelected) {
         selectedActors.add(newlySelected);
     }
-    
+
     public void removeFromSelectedActors(Actor deselectedActor) {
         selectedActors.remove(deselectedActor);
     }
-    
+
     public void clearSelectedActors() {
         selectedActors.clear();
     }
-    
+
     public SolarActor getRepresentativeOfSelectedActors() {
         return selectedActors.getRepresentative();
     }
-    
+
     public void startOfSelectionRectangle(float x, float y) {
         selectionRectangle.setStart(x,y);
     }
@@ -427,7 +427,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         }
         return null;
     }
-    
+
     /**
      * Old method retained for code maintenance purposes. Manually initializes an example system without the use of a save file.
      */
@@ -452,7 +452,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(3141 * BaseResource.THOUSAND), new BuildingManager().createInfrastructure(2500).generateColonyBuildings());
         placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(11235), new BuildingManager().createInfrastructure(2).generateColonyBuildings());
     }
-    
+
     /**
      * Creates the solar system for the game.
      * Method called during startup of a game for creation of a new system map with a range of astronomical objects.
@@ -464,7 +464,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         addActor(solarSystem);
         addSolarSystemActors(solarSystem);
     }
-    
+
     /**
      * Adds an astronomomical object and its satellites as new actors to the game.
      * @param body Astronomical Object to be added to the game.

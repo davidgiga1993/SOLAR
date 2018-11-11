@@ -1,6 +1,7 @@
 package dhbw.karlsruhe.it.solar.junit;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import dhbw.karlsruhe.it.solar.config.DynamicOptions;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.testhelper.TestHelper;
 import org.junit.AfterClass;
@@ -33,6 +34,8 @@ public class TestSuite {
 
 	@BeforeClass
 	public static void setUpBeforeClass() {
+		System.setProperty(DynamicOptions.SAVEGAME_FILE_NEWGAME, "../non-packaged-resources/SaveGames/SolarSystem.xml");
+		System.setProperty(DynamicOptions.SAVEGAME_FILE_CURRENT, "../non-packaged-resources/SaveGames/CurrentGame.xml");
 		app = new LwjglApplication(new SolarEngine(), TestHelper.createTestConfig());
 		TestHelper.wait(1200);
 		

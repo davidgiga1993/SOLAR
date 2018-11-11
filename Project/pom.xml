@@ -16,8 +16,8 @@
 		<gwt.maven.version>2.5.0</gwt.maven.version>
 		<sonar.language>java</sonar.language>
 		<sonar.host.url>http://sonar.h2260505.stratoserver.net:443/sonar</sonar.host.url>
-		<gdx.version>1.9.2</gdx.version>
-		<gdx.ai.version>1.8.0</gdx.ai.version>
+		<gdx.version>1.9.8</gdx.version>
+		<gdx.ai.version>1.8.1</gdx.ai.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>

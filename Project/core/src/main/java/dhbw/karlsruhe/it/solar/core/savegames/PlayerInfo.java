@@ -21,8 +21,6 @@ public class PlayerInfo {
     @XmlElement(name = "PlayerColor")
     private Color color;
     @XmlElement(name = "Player_Resources")
-    //FIXME: The savegames currently store all resources (incl. non global ones) in this list.
-    //This results in failing test cases and propably wrong loading / saving behaviour.
     private List<GlobalResource> resources;
     
     public PlayerInfo() {
