@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.core.solar.TextureCache;
 
 /**
  * Special treatment of the population resource: Total population of all player colonies is counted.
@@ -26,7 +26,7 @@ public class TotalPopulation extends GlobalResource {
 
     @Override
     public TextureRegion getIcon() {
-        return TextureCacher.GAMEATLAS.findRegion("population");
+        return TextureCache.GAME_ATLAS.findRegion("population");
     }
 
     @Override

@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.core.solar.TextureCache;
 
 /**
  * Treasury resource: Credits created by taxing the population and spent on a civilization's budget such as unit upkeep, colony constructions and projects.
@@ -20,7 +20,7 @@ public class Credits extends GlobalResource {
 
     @Override
     public TextureRegion getIcon() {
-        return TextureCacher.GAMEATLAS.findRegion("credits");
+        return TextureCache.GAME_ATLAS.findRegion("credits");
     }
 
     @Override

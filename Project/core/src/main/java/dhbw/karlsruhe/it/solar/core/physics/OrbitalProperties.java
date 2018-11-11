@@ -1,8 +1,8 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import com.badlogic.gdx.math.Vector2;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.*;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
@@ -16,14 +16,14 @@ public class OrbitalProperties {
     private Time orbitalPeriod;
     private Angle periodicConstant;
     private boolean retrograde;
-    private Coorbital coorbital;
+    private CoOrbital coOrbital;
 
     public OrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle angle) {
         this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = orbitalRadius;
         this.orbitalAngle = angle;
         this.retrograde = false;
-        this.coorbital = null;
+        this.coOrbital = null;
         if (orbitPrimary != null) {
             calculateOrbitalPeriod();
             calculatePeriodicConstant();
@@ -41,7 +41,7 @@ public class OrbitalProperties {
         this.orbitalRadius = length;
         this.orbitalAngle = new Angle();
         this.retrograde = false;
-        this.coorbital = null;
+        this.coOrbital = null;
         this.orbitalPeriod = time;
         this.periodicConstant = new Angle();
     }
@@ -230,12 +230,12 @@ public class OrbitalProperties {
         retrograde = true;
     }
 
-    public boolean isCoorbital() {
-        return null != coorbital;
+    public boolean isCoOrbital() {
+        return null != coOrbital;
     }
 
-    public void setCoorbital(Orbiter dominantBody, Angle angularDeviation) {
-        coorbital = new Coorbital(dominantBody, angularDeviation);
+    public void setCoOrbital(Orbiter dominantBody, Angle angularDeviation) {
+        coOrbital = new CoOrbital(dominantBody, angularDeviation);
         orbitalAngle.changeBy(angularDeviation);
     }
 
@@ -243,8 +243,8 @@ public class OrbitalProperties {
         return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
 
-    public Coorbital getCoorbitalInformation() {
-        return coorbital;
+    public CoOrbital getCoOrbitalInformation() {
+        return coOrbital;
     }
 
     public String getNameOfPrimary() {

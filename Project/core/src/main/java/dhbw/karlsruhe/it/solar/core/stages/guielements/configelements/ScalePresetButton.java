@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -16,7 +16,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 public abstract class ScalePresetButton extends TextButton {
 
     public ScalePresetButton(String text) {
-        super(text, Styles.TOOLTIPSKIN);
+        super(text, Styles.TOOLTIP_SKIN);
         this.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {

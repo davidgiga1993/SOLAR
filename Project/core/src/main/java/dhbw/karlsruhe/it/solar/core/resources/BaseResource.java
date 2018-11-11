@@ -3,9 +3,8 @@ package dhbw.karlsruhe.it.solar.core.resources;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -42,8 +41,8 @@ public abstract class BaseResource implements BaseResourceInterface {
     }
 
     boolean isANewDay() {
-        if (oldGameTime == null || (int) GameStartStage.GAMETIME.getGameTimeElapsed().inDays() != (int) oldGameTime.inDays()) {
-            oldGameTime = new Time(GameStartStage.GAMETIME.getGameTimeElapsed().inDays(), TimeUnit.DAYS);
+        if (oldGameTime == null || (int) GameStartStage.GAME_TIME.getGameTimeElapsed().inDays() != (int) oldGameTime.inDays()) {
+            oldGameTime = new Time(GameStartStage.GAME_TIME.getGameTimeElapsed().inDays(), Time.TimeUnit.DAYS);
             return true;
         }
         return false;

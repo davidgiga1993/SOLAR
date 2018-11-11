@@ -12,7 +12,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class GUILabel extends Label implements GUIActor {
 
-    private final Tooltip tooltip = new Tooltip("Test", Styles.TOOLTIPSKIN);
+    private final Tooltip tooltip = new Tooltip("Test", Styles.TOOLTIP_SKIN);
     private InputListener tooltipInputListener;
     private boolean tooltipIsEnabled = false;
 

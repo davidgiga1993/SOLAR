@@ -10,7 +10,7 @@
 
 	<artifactId>solar-desktop</artifactId>
 	<packaging>jar</packaging>
-	<name>Solar desktop</name>
+	<name>dhbw.karlsruhe.it.solar.desktop</name>
 
 	<properties>
 		<mainClass>dhbw.karlsruhe.it.solar.desktop.Solar</mainClass>

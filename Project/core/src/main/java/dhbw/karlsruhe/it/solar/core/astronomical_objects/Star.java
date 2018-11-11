@@ -1,23 +1,22 @@
 package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.BodyProperties;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Temperature;
-import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 
 /**
  * @author Andi
  */
 public class Star extends AstronomicalBody {
 
-    private static final float O_TYPE_TEMPERATURE_RANGE = 67800 / 9;
-    private static final float B_TYPE_TEMPERATURE_RANGE = 19000 / 9;
-    private static final float A_TYPE_TEMPERATURE_RANGE = 2175 / 9;
-    private static final float F_TYPE_TEMPERATURE_RANGE = 987 / 9;
-    private static final float G_TYPE_TEMPERATURE_RANGE = 595 / 9;
-    private static final float K_TYPE_TEMPERATURE_RANGE = 1360 / 9;
-    private static final float M_TYPE_TEMPERATURE_RANGE = 1350 / 9;
+    private static final float O_TYPE_TEMPERATURE_RANGE = 67800f / 9;
+    private static final float B_TYPE_TEMPERATURE_RANGE = 19000f / 9;
+    private static final float A_TYPE_TEMPERATURE_RANGE = 2175f / 9;
+    private static final float F_TYPE_TEMPERATURE_RANGE = 987f / 9;
+    private static final float G_TYPE_TEMPERATURE_RANGE = 595f / 9;
+    private static final float K_TYPE_TEMPERATURE_RANGE = 1360f / 9;
+    private static final float M_TYPE_TEMPERATURE_RANGE = 1350f / 9;
 
     private StarType type;
 
@@ -39,21 +38,21 @@ public class Star extends AstronomicalBody {
     public static Temperature getBlackBodyTemperature(StarType star) {
         switch (star.getSpectralType()) {
             case O:
-                return new Temperature(33200f + getSubdivisionTemperatureDifference(star, O_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(33200f + getSubdivisionTemperatureDifference(star, O_TYPE_TEMPERATURE_RANGE), Temperature.TempUnit.KELVIN);
             case B:
-                return new Temperature(10700f + getSubdivisionTemperatureDifference(star, B_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(10700f + getSubdivisionTemperatureDifference(star, B_TYPE_TEMPERATURE_RANGE), Temperature.TempUnit.KELVIN);
             case A:
-                return new Temperature(7323f + getSubdivisionTemperatureDifference(star, A_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(7323f + getSubdivisionTemperatureDifference(star, A_TYPE_TEMPERATURE_RANGE), Temperature.TempUnit.KELVIN);
             case F:
-                return new Temperature(6033f + getSubdivisionTemperatureDifference(star, F_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(6033f + getSubdivisionTemperatureDifference(star, F_TYPE_TEMPERATURE_RANGE), Temperature.TempUnit.KELVIN);
             case G:
-                return new Temperature(5316f + getSubdivisionTemperatureDifference(star, G_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(5316f + getSubdivisionTemperatureDifference(star, G_TYPE_TEMPERATURE_RANGE), Temperature.TempUnit.KELVIN);
             case K:
-                return new Temperature(3880f + getSubdivisionTemperatureDifference(star, K_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(3880f + getSubdivisionTemperatureDifference(star, K_TYPE_TEMPERATURE_RANGE), Temperature.TempUnit.KELVIN);
             case M:
-                return new Temperature(2450f + getSubdivisionTemperatureDifference(star, M_TYPE_TEMPERATURE_RANGE), TempUnit.KELVIN);
+                return new Temperature(2450f + getSubdivisionTemperatureDifference(star, M_TYPE_TEMPERATURE_RANGE), Temperature.TempUnit.KELVIN);
             default:
-                return new Temperature(1f, TempUnit.KELVIN);
+                return new Temperature(1f, Temperature.TempUnit.KELVIN);
         }
     }
 

@@ -3,7 +3,7 @@ package dhbw.karlsruhe.it.solar.core.savegames;
 import com.badlogic.gdx.graphics.Color;
 import dhbw.karlsruhe.it.solar.core.resources.GlobalResource;
 import dhbw.karlsruhe.it.solar.core.resources.GlobalResourceInterface;
-import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.core.player.Player;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,7 +27,7 @@ public class PlayerInfo {
 
     }
 
-    public void fillInInfos(Player player) {
+    public void fillInInfo(Player player) {
         this.name = player.getName();
         this.color = player.getPlayerColor();
         this.resources = player.getResources();
@@ -42,11 +42,7 @@ public class PlayerInfo {
     }
 
     public List<GlobalResourceInterface> getResources() {
-        List<GlobalResourceInterface> newList = new ArrayList<>();
-        for (GlobalResource resource : resources) {
-            newList.add(resource);
-        }
-        return newList;
+        return new ArrayList<>(resources);
     }
 
 }

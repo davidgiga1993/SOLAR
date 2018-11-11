@@ -9,8 +9,8 @@ import dhbw.karlsruhe.it.solar.core.savegames.MissionInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.OrbitalPropertyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.player.Player;
-import dhbw.karlsruhe.it.solar.player.PlayerManager;
+import dhbw.karlsruhe.it.solar.core.player.Player;
+import dhbw.karlsruhe.it.solar.core.player.PlayerManager;
 
 /**
  * Handles the creation of space units for the game.
@@ -25,7 +25,7 @@ public class SpaceUnitManager {
     private String name;
     private Player owner;
     private OrbitalPropertyInfo orbitInfo;
-    private Vector2 startlocation;
+    private Vector2 startLocation;
     private AstronomicalBody primary;
     private MissionInfo mission;
 
@@ -46,7 +46,7 @@ public class SpaceUnitManager {
         this.name = unit.getName();
         this.owner = playerManager.getPlayerFromName(unit.getOwnerName());
         this.orbitInfo = unit.getOrbitInfo();
-        this.startlocation = unit.getLocation();
+        this.startLocation = unit.getLocation();
         this.mission = unit.getMissionInfo();
 
         return createUnitBasedOnType(unit, type);
@@ -62,17 +62,17 @@ public class SpaceUnitManager {
         return null;
     }
 
-    private Spacestation createStation(SpaceUnitInfo unit) {
-        Spacestation station;
+    private SpaceStation createStation(SpaceUnitInfo unit) {
+        SpaceStation station;
 
-        if (null != startlocation) {
-            station = Spacestation.placeNewStation(name, startlocation, owner);
+        if (null != startLocation) {
+            station = SpaceStation.placeNewStation(name, startLocation, owner);
             return station;
         }
 
         if (null != orbitInfo) {
             extractOrbitalLocation();
-            station = Spacestation.placeNewStation(name, startlocation, owner);
+            station = SpaceStation.placeNewStation(name, startLocation, owner);
             station.enterOrbit(primary);
             return station;
         }
@@ -84,20 +84,20 @@ public class SpaceUnitManager {
         primary = solarSystem.findAstronomicalBodyByName(orbitInfo.getPrimary());
         OrbitalProperties prop = new OrbitalProperties(primary, orbitInfo.getOrbitalRadius(), orbitInfo.getPolarAngle());
         float orbitalRadiusInPixels = SolarActor.scaleDistanceToStage(prop.getOrbitalRadius().asKilometers()) * OrbitalProperties.getOrbitalSpaceUnitScaleFactor(prop.getPrimary()).getOrbitScale();
-        startlocation = prop.getOrbitalPositionTotal(orbitalRadiusInPixels, new Angle());
+        startLocation = prop.getOrbitalPositionTotal(orbitalRadiusInPixels, new Angle());
     }
 
     private Spaceship createShip(SpaceUnitInfo unit) {
         Spaceship ship;
 
-        if (null != startlocation) {
-            ship = Spaceship.placeNewShip(name, startlocation, owner);
+        if (null != startLocation) {
+            ship = Spaceship.placeNewShip(name, startLocation, owner);
             return ship;
         }
 
         if (null != orbitInfo) {
             extractOrbitalLocation();
-            ship = Spaceship.placeNewShip(name, startlocation, owner);
+            ship = Spaceship.placeNewShip(name, startLocation, owner);
             ship.enterOrbit(primary);
             return ship;
         }

@@ -3,10 +3,10 @@ package dhbw.karlsruhe.it.solar.core.inputlisteners;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 
 import java.util.*;
 
@@ -39,7 +39,7 @@ public class Selection implements Telegraph {
      * Clears the current selection and selects the given actors
      *
      * @param actors
-     * @see clear()
+     * @see #clear()
      */
     public void create(List<SolarActor> actors) {
         clear();
@@ -62,7 +62,7 @@ public class Selection implements Telegraph {
     /**
      * Convenience method
      *
-     * @see dhbw.karlsruhe.it.solar.core.inputlisteners.Selection.add(dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor add)
+     * @see #add(SolarActor add)
      */
     public void add(Actor actor) {
         if (actor instanceof SolarActor) {
@@ -71,7 +71,7 @@ public class Selection implements Telegraph {
     }
 
     /**
-     * @see add(SolarActor)
+     * @see #add(SolarActor)
      */
     public void add(Collection<SolarActor> actors) {
         for (SolarActor actor : actors) {
@@ -86,8 +86,6 @@ public class Selection implements Telegraph {
 
     /**
      * Removes the given Object from the selection iff it is present.
-     *
-     * @param actor
      */
     public void remove(SolarActor actor) {
         if (selectedActors.remove(actor)) {

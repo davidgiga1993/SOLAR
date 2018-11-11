@@ -11,13 +11,13 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 class ResourceBarTimeLabel extends Label {
 
     public ResourceBarTimeLabel() {
-        super("", Styles.DEFAULTLABEL_STYLE);
+        super("", Styles.DEFAULT_LABEL_STYLE);
         setAlignment(Align.right);
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
-        setText(GameStartStage.GAMETIME.toString());
+        setText(GameStartStage.GAME_TIME.toString());
     }
 }

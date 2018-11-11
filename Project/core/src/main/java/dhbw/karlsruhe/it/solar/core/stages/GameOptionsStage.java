@@ -9,10 +9,6 @@ import dhbw.karlsruhe.it.solar.core.stages.menuelements.MenuButton;
 
 class GameOptionsStage extends HUDStage {
 
-    private Label labelOption1;
-    private Label labelBackground;
-    private Label labelExit;
-
     public GameOptionsStage(final SolarEngine se) {
         super(se, "GameOptions");
 
@@ -27,20 +23,20 @@ class GameOptionsStage extends HUDStage {
             menuTable.debug();
         }
 
-        labelOption1 = new MenuButton("Option 1", se) {
+        Label labelOption1 = new MenuButton("Option 1", se) {
             @Override
             protected void onClick() {
             }
         };
 
-        labelBackground = new MenuButton("Choose Background", se) {
+        Label labelBackground = new MenuButton("Choose Background", se) {
             @Override
             protected void onClick() {
                 se.swapCurrentStage(new GameOptionsBackgroundStage(se));
             }
         };
 
-        labelExit = new MenuButton("Return", se) {
+        Label labelExit = new MenuButton("Return", se) {
             @Override
             protected void onClick() {
                 se.swapCurrentStage(new StartStage(se));

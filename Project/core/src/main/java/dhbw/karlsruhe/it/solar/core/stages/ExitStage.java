@@ -10,10 +10,6 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 class ExitStage extends HUDStage {
 
-    private Label labelAreYouSure;
-    private Label labelYes;
-    private Label labelNo;
-
     public ExitStage(final SolarEngine se) {
         super(se, "Exit");
 
@@ -28,16 +24,16 @@ class ExitStage extends HUDStage {
             menuTable.debug();
         }
 
-        labelAreYouSure = new Label("Are you sure?", Styles.DEFAULTLABEL_STYLE);
+        Label labelAreYouSure = new Label("Are you sure?", Styles.DEFAULT_LABEL_STYLE);
 
-        labelYes = new MenuButton("Yes", se) {
+        Label labelYes = new MenuButton("Yes", se) {
             @Override
             protected void onClick() {
                 Gdx.app.exit();
             }
         };
 
-        labelNo = new MenuButton("No", se) {
+        Label labelNo = new MenuButton("No", se) {
             @Override
             protected void onClick() {
                 se.swapCurrentStage(new StartStage(se));

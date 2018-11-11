@@ -1,0 +1,1 @@
+package dhbw.karlsruhe.it.solar.core;

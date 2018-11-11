@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.commands;
 
-import dhbw.karlsruhe.it.solar.colony.Colony;
-import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
+import dhbw.karlsruhe.it.solar.core.colony.Colony;
+import dhbw.karlsruhe.it.solar.core.colony.ColonyBuildings;
 
 public class ConstructBuildingCommand implements Command {
 

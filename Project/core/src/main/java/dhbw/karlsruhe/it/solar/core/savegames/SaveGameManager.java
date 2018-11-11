@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.savegames;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import dhbw.karlsruhe.it.solar.config.DynamicOptions;
+import dhbw.karlsruhe.it.solar.core.config.DynamicOptions;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 
 import javax.xml.bind.JAXBContext;
@@ -26,12 +26,12 @@ public class SaveGameManager {
     }
 
     public void loadCurrentGame() {
-        String path = DynamicOptions.getValue(DynamicOptions.SAVEGAME_FILE_CURRENT);
+        String path = DynamicOptions.getValue(DynamicOptions.SAVE_GAME_FILE_CURRENT);
         loadFile(path);
     }
 
     public void loadNewGame() {
-        String path = DynamicOptions.getValue(DynamicOptions.SAVEGAME_FILE_NEWGAME);
+        String path = DynamicOptions.getValue(DynamicOptions.SAVE_GAME_FILE_NEWGAME);
         loadFile(path);
     }
 
@@ -62,7 +62,7 @@ public class SaveGameManager {
     }
 
     public void saveCurrentGame() {
-        String path = DynamicOptions.getValue(DynamicOptions.SAVEGAME_FILE_CURRENT);
+        String path = DynamicOptions.getValue(DynamicOptions.SAVE_GAME_FILE_CURRENT);
         saveFile(path);
     }
 
@@ -90,7 +90,7 @@ public class SaveGameManager {
     }
 
     public boolean isThereACurrentSaveGame() {
-        String path = DynamicOptions.getValue(DynamicOptions.SAVEGAME_FILE_CURRENT);
+        String path = DynamicOptions.getValue(DynamicOptions.SAVE_GAME_FILE_CURRENT);
         File file = openFile(path);
         return (file.exists() && !file.isDirectory());
     }

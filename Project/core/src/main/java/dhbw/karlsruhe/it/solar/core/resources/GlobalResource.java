@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -33,7 +33,7 @@ public abstract class GlobalResource extends BaseResource implements GlobalResou
     public Table getResourceBarTitle() {
         Table title = new Table();
         title.add(loadIcon()).left();
-        title.add(new Label(getNameOfResourceBarTitle(), Styles.MENUELABEL_STYLE)).expandX().fillX().padLeft(ConfigurationConstants.INNER_CELL_PADDING);
+        title.add(new Label(getNameOfResourceBarTitle(), Styles.MENU_LABEL_STYLE)).expandX().fillX().padLeft(ConfigurationConstants.INNER_CELL_PADDING);
         return title;
     }
 

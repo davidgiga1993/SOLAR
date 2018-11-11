@@ -17,7 +17,7 @@ public class Tooltip extends Window {
     }
 
     public Tooltip(String title) {
-        this(title, Styles.TOOLTIPSKIN);
+        this(title, Styles.TOOLTIP_SKIN);
     }
 
     public void updatePosition() {

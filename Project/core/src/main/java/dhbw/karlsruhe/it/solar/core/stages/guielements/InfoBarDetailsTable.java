@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 

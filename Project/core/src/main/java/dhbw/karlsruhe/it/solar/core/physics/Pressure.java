@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
  */
 public class Pressure {
 
-    private static final float STANDARDATMOSPHERE_IN_PASCAL = 101325f;
+    private static final float STANDARD_ATMOSPHERE_IN_PASCAL = 101325f;
     private static final float KILOPASCAL_IN_PASCAL = 1000f;
     private static final float BAR_IN_PASCAL = 100000f;
     private static final float THOUSAND = 1000f;
@@ -43,7 +43,7 @@ public class Pressure {
             case BAR:
                 return value * BAR_IN_PASCAL;
             case STANDARDATMOSPHERE:
-                return value * STANDARDATMOSPHERE_IN_PASCAL;
+                return value * STANDARD_ATMOSPHERE_IN_PASCAL;
             default:
                 return Float.NaN;
         }
@@ -58,7 +58,7 @@ public class Pressure {
             case BAR:
                 return value * KILOPASCAL_IN_PASCAL / BAR_IN_PASCAL;
             case STANDARDATMOSPHERE:
-                return value * STANDARDATMOSPHERE_IN_PASCAL / KILOPASCAL_IN_PASCAL;
+                return value * STANDARD_ATMOSPHERE_IN_PASCAL / KILOPASCAL_IN_PASCAL;
             default:
                 return Float.NaN;
         }
@@ -73,7 +73,7 @@ public class Pressure {
             case BAR:
                 return value;
             case STANDARDATMOSPHERE:
-                return value * STANDARDATMOSPHERE_IN_PASCAL / BAR_IN_PASCAL;
+                return value * STANDARD_ATMOSPHERE_IN_PASCAL / BAR_IN_PASCAL;
             default:
                 return Float.NaN;
         }
@@ -82,11 +82,11 @@ public class Pressure {
     public float asStandardatmospheres() {
         switch (unit) {
             case PASCAL:
-                return value / STANDARDATMOSPHERE_IN_PASCAL;
+                return value / STANDARD_ATMOSPHERE_IN_PASCAL;
             case KILOPASCAL:
-                return value / STANDARDATMOSPHERE_IN_PASCAL * KILOPASCAL_IN_PASCAL;
+                return value / STANDARD_ATMOSPHERE_IN_PASCAL * KILOPASCAL_IN_PASCAL;
             case BAR:
-                return value / STANDARDATMOSPHERE_IN_PASCAL * BAR_IN_PASCAL;
+                return value / STANDARD_ATMOSPHERE_IN_PASCAL * BAR_IN_PASCAL;
             case STANDARDATMOSPHERE:
                 return value;
             default:

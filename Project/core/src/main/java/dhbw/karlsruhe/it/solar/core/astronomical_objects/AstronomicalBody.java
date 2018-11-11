@@ -2,18 +2,18 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import dhbw.karlsruhe.it.solar.colony.Colony;
+import dhbw.karlsruhe.it.solar.core.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
-import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
-import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
-import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
+import dhbw.karlsruhe.it.solar.core.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
 public abstract class AstronomicalBody extends Orbiter {
     protected BodyGameLabel label;
     BodyProperties physicalProperties;
-    private List<AstronomicalBody> satellites = new ArrayList<AstronomicalBody>();
+    private List<AstronomicalBody> satellites = new ArrayList<>();
     private Colony colony;
 
     public AstronomicalBody(String name, OrbitalProperties orbit, BodyProperties body, SolarActorScale scaleFactor, String textureName) {
@@ -72,8 +72,7 @@ public abstract class AstronomicalBody extends Orbiter {
             if (unit.isAbleToEnterOrbitAround(satellite)) {
                 dominantSource = satellite;
             }
-            AstronomicalBody dominantSatellite = null;
-            dominantSatellite = satellite.calculateDominantGravitationSourceAt(unit);
+            AstronomicalBody dominantSatellite = satellite.calculateDominantGravitationSourceAt(unit);
             if (null != dominantSatellite) {
                 dominantSource = dominantSatellite;
             }

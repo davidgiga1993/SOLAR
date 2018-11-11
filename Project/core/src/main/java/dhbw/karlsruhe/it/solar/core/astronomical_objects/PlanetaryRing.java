@@ -10,14 +10,14 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.graphics.AnnulusShader;
 import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
+import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 
 /**
  * Defines the behavior of planetary ring systems for giant planets.

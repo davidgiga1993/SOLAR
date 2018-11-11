@@ -3,9 +3,7 @@ package dhbw.karlsruhe.it.solar.core.usercontrols;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Mass;
-import dhbw.karlsruhe.it.solar.core.physics.Mass.MassUnit;
 
 /**
  * Created by Arga on 23.11.2014.
@@ -50,11 +48,11 @@ public class SystemRoot extends AstronomicalBody {
 
     @Override
     public Mass getMass() {
-        return new Mass(0f, MassUnit.KILOGRAM);
+        return new Mass(0f, Mass.MassUnit.KILOGRAM);
     }
 
     @Override
     public Length getRadius() {
-        return new Length(0f, DistanceUnit.KILOMETERS);
+        return new Length(0f, Length.DistanceUnit.KILOMETERS);
     }
 }

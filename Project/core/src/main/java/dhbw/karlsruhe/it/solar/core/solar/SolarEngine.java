@@ -42,37 +42,37 @@ public class SolarEngine extends Game implements InputProcessor {
 
     @Override
     public void create() {
-        // Eingaben durch diese Klasse verarbeiten
+        // Inputs should be processed by this class
         Gdx.input.setInputProcessor(this);
 
-        // Kamera erstellen
+        // Create camera
         camera = new SolarCamera(Width, Height);
         guiCamera = new OrthographicCamera(Width, Height);
         backgroundCamera = new OrthographicCamera(Width, Height);
 
         mainBatch = new SpriteBatch();
 
-        // Einstiegspunkt ins Spiel
+        // Game's entry point
         stageManager = new StageManager(this);
         stageManager.addStage(new BackgroundStage(this));
         stageManager.startGame();
     }
 
-    // Anwendung wird beendet
+    // Exiting application
     @Override
     public void dispose() {
         mainBatch.dispose();
-        FontCacher.cleanUp();
-        TextureCacher.cleanUp();
+        FontCache.cleanUp();
+        TextureCache.cleanUp();
     }
 
     @Override
     public void render() {
-        // Reset farbe
+        // Reset color
         Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        // Projektionsmatrix auf Batch anwenden
+        // Apply projection matrix to batch
         mainBatch.setProjectionMatrix(camera.combined);
 
         handleInput();
@@ -118,8 +118,8 @@ public class SolarEngine extends Game implements InputProcessor {
     }
 
     @Override
-    public boolean keyDown(int keycode) {
-        switch (keycode) {
+    public boolean keyDown(int keyCode) {
+        switch (keyCode) {
             case Keys.NUM_8:
             case 152:
             case Keys.UP:
@@ -161,18 +161,18 @@ public class SolarEngine extends Game implements InputProcessor {
             default:
                 break;
         }
-        stageManager.keyDown(keycode);
+        stageManager.keyDown(keyCode);
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode) {
-        switch (keycode) {
+    public boolean keyUp(int keyCode) {
+        switch (keyCode) {
             default:
                 pressedKey = myKeys.NONE;
                 break;
         }
-        stageManager.keyUp(keycode);
+        stageManager.keyUp(keyCode);
         return false;
     }
 

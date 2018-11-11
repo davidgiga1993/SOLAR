@@ -53,8 +53,8 @@ public class AstroBodyInfo {
         return orbit.getPrimary();
     }
 
-    public Coorbital getCoorbital() {
-        return orbit.getCoorbital();
+    public CoOrbital getCoOrbital() {
+        return orbit.getCoOrbital();
     }
 
     public boolean isRetrograde() {

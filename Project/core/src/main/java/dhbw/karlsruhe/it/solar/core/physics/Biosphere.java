@@ -47,7 +47,7 @@ public class Biosphere {
         }
     }
 
-    public float getUseableBioCover() {
+    public float getUsableBioCover() {
         return bioCover * compatibilityWithTerranBiomes();
     }
 

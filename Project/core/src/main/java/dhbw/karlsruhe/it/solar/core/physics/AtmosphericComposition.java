@@ -1,7 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
-
 import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class AtmosphericComposition {
                 return gas.partialPressure(atmosphericPressure);
             }
         }
-        return new Pressure(0f, PressureUnit.PASCAL);
+        return new Pressure(0f, Pressure.PressureUnit.PASCAL);
     }
 
     public Pressure getH2OPartialPressure(Pressure atmosphericPressure) {
@@ -41,6 +39,6 @@ public class AtmosphericComposition {
                 return gas.partialPressure(atmosphericPressure);
             }
         }
-        return new Pressure(0f, PressureUnit.PASCAL);
+        return new Pressure(0f, Pressure.PressureUnit.PASCAL);
     }
 }

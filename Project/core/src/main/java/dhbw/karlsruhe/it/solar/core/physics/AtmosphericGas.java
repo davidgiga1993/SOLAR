@@ -1,24 +1,22 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
-import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
-
 import javax.xml.bind.annotation.XmlElement;
 
 public class AtmosphericGas {
 
     private static final Pressure ASPHYXIATION_ONLY = null;
-    private static final Pressure CARBON_DIOXIDE_POISONING_SYMPTOMS = new Pressure(0.01f, PressureUnit.BAR);
-    private static final Pressure CARBON_DIOXIDE_POISONING_FATAL = new Pressure(0.1f, PressureUnit.BAR);
-    private static final Pressure CARBON_MONOXIDE_POISONING_SYMPTOMS = new Pressure(35 / 1000000f, PressureUnit.BAR);
-    private static final Pressure CARBON_MONOXIDE_POISONING_FATAL = new Pressure(667 / 1000000f, PressureUnit.BAR);
-    private static final Pressure METHANE_FLAMMABLE = new Pressure(0.05f, PressureUnit.BAR);
-    private static final Pressure METHANE_EXPLOSIVE = new Pressure(0.15f, PressureUnit.BAR);
-    private static final Pressure OXYGEN_TOXICITY = new Pressure(0.5f, PressureUnit.BAR);
-    private static final Pressure ACUTE_OXYGEN_TOXICITY = new Pressure(1.6f, PressureUnit.BAR);
-    private static final Pressure SULFUR_DIOXIDE_TOXICITY = new Pressure(5f / 1000000f, PressureUnit.BAR);
-    private static final Pressure ACUTE_SULFUR_DIOXIDE_TOXICITY = new Pressure(500f / 1000000f, PressureUnit.BAR);
-    private static final Pressure ALKALI_METAL_LOW = new Pressure(0f, PressureUnit.BAR);
-    private static final Pressure ALKALI_METAL_HIGH = new Pressure(5f / 1000000f, PressureUnit.BAR);
+    private static final Pressure CARBON_DIOXIDE_POISONING_SYMPTOMS = new Pressure(0.01f, Pressure.PressureUnit.BAR);
+    private static final Pressure CARBON_DIOXIDE_POISONING_FATAL = new Pressure(0.1f, Pressure.PressureUnit.BAR);
+    private static final Pressure CARBON_MONOXIDE_POISONING_SYMPTOMS = new Pressure(35 / 1000000f, Pressure.PressureUnit.BAR);
+    private static final Pressure CARBON_MONOXIDE_POISONING_FATAL = new Pressure(667 / 1000000f, Pressure.PressureUnit.BAR);
+    private static final Pressure METHANE_FLAMMABLE = new Pressure(0.05f, Pressure.PressureUnit.BAR);
+    private static final Pressure METHANE_EXPLOSIVE = new Pressure(0.15f, Pressure.PressureUnit.BAR);
+    private static final Pressure OXYGEN_TOXICITY = new Pressure(0.5f, Pressure.PressureUnit.BAR);
+    private static final Pressure ACUTE_OXYGEN_TOXICITY = new Pressure(1.6f, Pressure.PressureUnit.BAR);
+    private static final Pressure SULFUR_DIOXIDE_TOXICITY = new Pressure(5f / 1000000f, Pressure.PressureUnit.BAR);
+    private static final Pressure ACUTE_SULFUR_DIOXIDE_TOXICITY = new Pressure(500f / 1000000f, Pressure.PressureUnit.BAR);
+    private static final Pressure ALKALI_METAL_LOW = new Pressure(0f, Pressure.PressureUnit.BAR);
+    private static final Pressure ALKALI_METAL_HIGH = new Pressure(5f / 1000000f, Pressure.PressureUnit.BAR);
     private static final float CO2_SATURATION_LEVEL = 557f;
     private static final float CO2_SCALAR = 1.2f;
     private static final float H2O_CO2_RELATION = 3700f;
@@ -108,11 +106,11 @@ public class AtmosphericGas {
         if (null == pressure) {
             return gasGiantPartialPressureAtOneBarDepthLevel();
         }
-        return new Pressure(percentage * pressure.asBar(), PressureUnit.BAR);
+        return new Pressure(percentage * pressure.asBar(), Pressure.PressureUnit.BAR);
     }
 
     private Pressure gasGiantPartialPressureAtOneBarDepthLevel() {
-        return new Pressure(percentage, PressureUnit.BAR);
+        return new Pressure(percentage, Pressure.PressureUnit.BAR);
     }
 
     public boolean isOxygen() {
@@ -148,7 +146,7 @@ public class AtmosphericGas {
             case SODIUM:
                 return "Sodium";
             case SULFUR_DIOXIDE:
-                return "Sulfur Dioxode";
+                return "Sulfur Dioxide";
             case WATER_VAPOR:
                 return "Water Vapor";
             default:

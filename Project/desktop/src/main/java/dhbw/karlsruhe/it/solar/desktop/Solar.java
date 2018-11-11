@@ -2,8 +2,8 @@ package dhbw.karlsruhe.it.solar.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.configelements.ScalePresetButton;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 class Solar {
     private static SolarEngine engine;

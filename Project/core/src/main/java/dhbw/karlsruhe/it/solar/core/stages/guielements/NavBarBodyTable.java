@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.Star;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +37,9 @@ public class NavBarBodyTable extends NavBarBaseTable {
 
     private List<NavBarBaseLabel> buildHierarchy(List<AstronomicalBody> group, int depth) {
         List<NavBarBaseLabel> result = new ArrayList<>();
-        String tab = "";
+        StringBuilder tab = new StringBuilder();
         for (int i = 0; i < depth; i++) {
-            tab += TAB;
+            tab.append(TAB);
         }
 
         for (AstronomicalBody child : group) {
@@ -47,7 +47,7 @@ public class NavBarBodyTable extends NavBarBaseTable {
                 continue;
             }
             // Process current level
-            NavBarBaseLabel label = new NavBarBaseLabel(child.getName(), tab, child, this);
+            NavBarBaseLabel label = new NavBarBaseLabel(child.getName(), tab.toString(), child, this);
             allLabels.add(label);
 
             // Proceed with next level

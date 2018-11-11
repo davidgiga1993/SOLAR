@@ -9,7 +9,7 @@
 
 	<artifactId>solar-core</artifactId>
 	<packaging>jar</packaging>
-	<name>Solar Core</name>
+	<name>dhbw.karlsruhe.it.solar.core</name>
 
 	<dependencies>
 		<dependency>

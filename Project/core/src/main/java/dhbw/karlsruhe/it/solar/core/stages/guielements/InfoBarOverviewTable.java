@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
-import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -20,9 +20,9 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
  */
 public class InfoBarOverviewTable extends Table {
 
-    private final TextButton showOnMap = new TextButton("Show On Map", Styles.TOOLTIPSKIN);
+    private final TextButton showOnMap = new TextButton("Show On Map", Styles.TOOLTIP_SKIN);
     private SolarActor selectedActor;
-    private LabelStyle style = Styles.MENUELABEL_STYLE;
+    private LabelStyle style = Styles.MENU_LABEL_STYLE;
     private final Label missionTypeLabel = new Label("", style);
     private final NavBarBaseLabel missionTypeTargetLabel = new NavBarBaseLabel("", null, style);
     private final Label missionTimeLabel = new Label("", style);
@@ -53,7 +53,7 @@ public class InfoBarOverviewTable extends Table {
     }
 
     private void addNameAndTypeLabels() {
-        add(new NavBarBaseLabel(selectedActor.getName(), selectedActor, Styles.BOLDLABEL_STYLE)).left();
+        add(new NavBarBaseLabel(selectedActor.getName(), selectedActor, Styles.BOLD_LABEL_STYLE)).left();
         row();
         add(new Label("Type: ", style)).left();
         add(new Label(selectedActor.getTypeName(), style)).right();
@@ -96,7 +96,7 @@ public class InfoBarOverviewTable extends Table {
             missionTypeTargetLabel.setText(((SpaceUnit) selectedActor).getMissionDescription());
             missionTypeTargetLabel.setActor(((SpaceUnit) selectedActor).getMissionTargetActor());
             missionTimeLabel.setText("ETA: ");
-            //TODO: Implementiere ETA-Funktionalität aus der AI-Berechnung raus (Schätzung okay)          
+            // TODO: Implement ETA using AI calculations (estimation should be fine)
             missionTimeValueLabel.setText("Unknown");
             missionDistanceLabel.setText("Distance: ");
             missionDistanceValueLabel.setText(((SpaceUnit) selectedActor).getMissionDistanceValue());

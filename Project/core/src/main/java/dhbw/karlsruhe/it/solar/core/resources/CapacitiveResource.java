@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.colony.ResourceDepot;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 /**
@@ -76,15 +76,15 @@ public abstract class CapacitiveResource extends BaseResource implements Capacit
     @Override
     public LabelStyle getDisplayStyle() {
         if (consumptionOverCapacity()) {
-            return Styles.MENUELABEL_RED;
+            return Styles.MENU_LABEL_RED;
         }
         if (consumptionCloseToCapacity()) {
-            return Styles.MENUELABEL_ORANGE;
+            return Styles.MENU_LABEL_ORANGE;
         }
         if (consumptionApproachesCapacity()) {
-            return Styles.MENUELABEL_YELLOW;
+            return Styles.MENU_LABEL_YELLOW;
         }
-        return Styles.MENUELABEL_GREEN;
+        return Styles.MENU_LABEL_GREEN;
     }
 
     @Override

@@ -8,9 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 
@@ -19,14 +19,14 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 class ResourceBarTimeTable extends Table implements Telegraph {
 
-    private TextButton fasterButton = new TextButton(">>", Styles.TOOLTIPSKIN);
-    private TextButton slowerButton = new TextButton("<<", Styles.TOOLTIPSKIN);
-    private TextButton speed1Button = new TextButton("1x", Styles.TOOLTIPSKIN);
-    private TextButton speed10Button = new TextButton("10x", Styles.TOOLTIPSKIN);
-    private TextButton speed50Button = new TextButton("50x", Styles.TOOLTIPSKIN);
+    private TextButton fasterButton = new TextButton(">>", Styles.TOOLTIP_SKIN);
+    private TextButton slowerButton = new TextButton("<<", Styles.TOOLTIP_SKIN);
+    private TextButton speed1Button = new TextButton("1x", Styles.TOOLTIP_SKIN);
+    private TextButton speed10Button = new TextButton("10x", Styles.TOOLTIP_SKIN);
+    private TextButton speed50Button = new TextButton("50x", Styles.TOOLTIP_SKIN);
 
-    private Label speedLabel = new Label(String.valueOf(GameStartStage.getGameSpeed()), Styles.DEFAULTLABEL_STYLE);
-    private Label dateLabel = new Label("Date: ", Styles.DEFAULTLABEL_STYLE);
+    private Label speedLabel = new Label(String.valueOf(GameStartStage.getGameSpeed()), Styles.DEFAULT_LABEL_STYLE);
+    private Label dateLabel = new Label("Date: ", Styles.DEFAULT_LABEL_STYLE);
     private ResourceBarTimeLabel timeLabel = new ResourceBarTimeLabel();
 
     public ResourceBarTimeTable() {

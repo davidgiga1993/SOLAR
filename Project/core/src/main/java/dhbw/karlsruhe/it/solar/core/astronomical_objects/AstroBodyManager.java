@@ -1,7 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody.CreatableProperties;
-import dhbw.karlsruhe.it.solar.core.astronomical_objects.CreateAnAstronomicalBody.CreatableProperties.CreatableType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
 import dhbw.karlsruhe.it.solar.core.savegames.AstroBodyInfo;
 import dhbw.karlsruhe.it.solar.core.savegames.RingSystemInfo;
@@ -58,7 +56,7 @@ public class AstroBodyManager {
         return null;
     }
 
-    private CreatableType extractRings() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractRings() {
         RingSystemInfo rings = body.getRingSystem();
         if (null != rings) {
             return extractAtmosphere().includingRings(rings.getMass(), rings.getInnerRadius(), rings.getOuterRadius(), rings.getType());
@@ -66,7 +64,7 @@ public class AstroBodyManager {
         return extractAtmosphere();
     }
 
-    private CreatableType extractAtmosphere() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractAtmosphere() {
         Atmosphere atmosphere = body.getAtmosphere();
         if (null != atmosphere && null != atmosphere.getPressure()) {
             return extractSubsurfaceOcean().withAnAtmosphereOf(atmosphere.getPressure(), atmosphere.getComposition());
@@ -77,7 +75,7 @@ public class AstroBodyManager {
         return extractSubsurfaceOcean();
     }
 
-    private CreatableType extractSubsurfaceOcean() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractSubsurfaceOcean() {
         Hydrosphere hydrosphere = body.getHydrosphere();
         if (null != hydrosphere && hydrosphere.getSubsurfaceOcean()) {
             return extractOceansAndIceCaps().whichHasASubsurfaceOcean();
@@ -85,7 +83,7 @@ public class AstroBodyManager {
         return extractOceansAndIceCaps();
     }
 
-    private CreatableType extractOceansAndIceCaps() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractOceansAndIceCaps() {
         Hydrosphere hydrosphere = body.getHydrosphere();
         if (null != hydrosphere && (hydrosphere.getWaterCover() > 0 || hydrosphere.getIceCover() > 0)) {
             return extractBiosphere().withOceanCoverAndIceCapOf(hydrosphere.getWaterCover(), hydrosphere.getIceCover());
@@ -93,7 +91,7 @@ public class AstroBodyManager {
         return extractBiosphere();
     }
 
-    private CreatableType extractBiosphere() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractBiosphere() {
         Biosphere biosphere = body.getBiosphere();
         if (null != biosphere) {
             return extractTidalLock().addBiosphere(biosphere.getBioType(), biosphere.getBioCover());
@@ -101,14 +99,14 @@ public class AstroBodyManager {
         return extractTidalLock();
     }
 
-    private CreatableType extractTidalLock() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractTidalLock() {
         if (body.isTidallyLocked()) {
             return extractSiderealRotationPeriod().whichIsTidallyLockedToItsPrimary();
         }
         return extractSiderealRotationPeriod();
     }
 
-    private CreatableType extractSiderealRotationPeriod() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractSiderealRotationPeriod() {
         Time rotationPeriod = body.getSiderealRotationPeriod();
         if (null != rotationPeriod) {
             return extractBodyProperties().whichRotatesEvery(rotationPeriod);
@@ -116,7 +114,7 @@ public class AstroBodyManager {
         return extractBodyProperties();
     }
 
-    private CreatableType extractBodyProperties() {
+    private CreateAnAstronomicalBody.CreatableProperties.CreatableType extractBodyProperties() {
         Length radius = body.getRadius();
         Mass mass = body.getMass();
         Albedo albedo = body.getAlbedo();
@@ -126,13 +124,13 @@ public class AstroBodyManager {
         return extractOrbitalProperties().andHasTheFollowingBodyProperties(radius, mass, albedo);
     }
 
-    private CreatableProperties extractOrbitalProperties() {
-        Coorbital coorbital = body.getCoorbital();
+    private CreateAnAstronomicalBody.CreatableProperties extractOrbitalProperties() {
+        CoOrbital coorbital = body.getCoOrbital();
         AstronomicalBody orbitPrimary = system.findAstronomicalBodyByName(body.getPrimary());
         Length orbitalRadius = body.getOrbitalRadius();
         Angle polarAngle = body.getPolarAngle();
         if (null != coorbital) {
-            return extractName().whichIsCoorbitalWith(system.findAstronomicalBodyByName(coorbital.getNameOfDominantBody()), coorbital.getAngularDeviation());
+            return extractName().whichIsCoOrbitalWith(system.findAstronomicalBodyByName(coorbital.getNameOfDominantBody()), coorbital.getAngularDeviation());
         }
         if (body.isStationary()) {
             return extractName().whichIsStationaryAt(orbitPrimary);

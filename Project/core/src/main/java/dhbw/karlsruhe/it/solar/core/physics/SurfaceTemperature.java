@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
-import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -44,7 +43,7 @@ public class SurfaceTemperature {
     }
 
     public void calculateSurfaceTemperature(AstronomicalBody body) {
-        meanTemperature = new Temperature(calculateThermalEquilibrium(body) + calculateAdditionalTemperatureInfluences(body), TempUnit.KELVIN);
+        meanTemperature = new Temperature(calculateThermalEquilibrium(body) + calculateAdditionalTemperatureInfluences(body), Temperature.TempUnit.KELVIN);
     }
 
     private float calculateAdditionalTemperatureInfluences(AstronomicalBody body) {
@@ -90,9 +89,9 @@ public class SurfaceTemperature {
     }
 
     /**
-     * Calculates the Temperature of a body according to the thermal equilibrium pricniple.
+     * Calculates the Temperature of a body according to the thermal equilibrium principle.
      * This assumes that the body's only source of incoming energy is its star and that it has reached an equilibrium, radiating away exactly as much energy via black body radiation as it receives.
-     * Calculation therefore neglects other possible energy sources such as greenhouse gases, geothermal activtiy, or tidal forces.
+     * Calculation therefore neglects other possible energy sources such as greenhouse gases, geothermal activity, or tidal forces.
      *
      * @param body
      * @return

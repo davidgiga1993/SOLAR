@@ -21,13 +21,13 @@ public class NavBar extends Window implements ScrollFocusable {
     private Table layoutTable;
 
     public NavBar() {
-        super("Navigation", Styles.TOOLTIPSKIN);
+        super("Navigation", Styles.TOOLTIP_SKIN);
         setMovable(false);
 
         // Tab Buttons
-        TextButton bodyButton = new TextButton("Bodies", Styles.TOOLTIPSKIN);
-        TextButton shipButton = new TextButton("Units", Styles.TOOLTIPSKIN);
-        TextButton colonyButton = new TextButton("Colonies", Styles.TOOLTIPSKIN);
+        TextButton bodyButton = new TextButton("Bodies", Styles.TOOLTIP_SKIN);
+        TextButton shipButton = new TextButton("Units", Styles.TOOLTIP_SKIN);
+        TextButton colonyButton = new TextButton("Colonies", Styles.TOOLTIP_SKIN);
 
         // Button Listeners
         bodyButton.addListener(new ChangeLambdaListener(this::onBodyClick));

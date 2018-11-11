@@ -9,10 +9,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import dhbw.karlsruhe.it.solar.colony.BuildingManager;
-import dhbw.karlsruhe.it.solar.colony.Colony;
-import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.colony.BuildingManager;
+import dhbw.karlsruhe.it.solar.core.colony.Colony;
+import dhbw.karlsruhe.it.solar.core.colony.ColonyBuildings;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstroBodyManager;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
@@ -32,19 +32,19 @@ import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnitManager;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
-import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceStation;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SelectionRectangle;
 import dhbw.karlsruhe.it.solar.core.usercontrols.ShapeRenderable;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.player.Player;
-import dhbw.karlsruhe.it.solar.player.PlayerManager;
+import dhbw.karlsruhe.it.solar.core.player.Player;
+import dhbw.karlsruhe.it.solar.core.player.PlayerManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameStartStage extends BaseStage implements Telegraph {
-    public static final CalendarTime GAMETIME = new CalendarTime();
+    public static final CalendarTime GAME_TIME = new CalendarTime();
     private static GameInputListener inputListener;
     private static float gameSpeed = 0f;
     private static float oldGameSpeed = 1f;
@@ -68,7 +68,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Initialize a new game creating a new system.
      */
     public static void startNewGame() {
-        GAMETIME.reset();
+        GAME_TIME.reset();
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
         GameStartStage gameStage = initGameStartStage(engine);
@@ -83,7 +83,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Initialize a game using the previously saved game state.
      */
     public static void startCurrentGame() {
-        GAMETIME.reset();
+        GAME_TIME.reset();
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
         GameStartStage gameStage = initGameStartStage(engine);
@@ -100,7 +100,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         if (SolarEngine.DEBUG) {
             HUDStage hudStage = new HUDStage(engine, "HUD");
-            engine.addStage(hudStage);
+            engine.addStage(new HUDStage(engine, "HUD"));
         }
         return gameStage;
     }
@@ -173,10 +173,10 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     /**
-     * Old method / Scenario : Creates the solar system with code lines, doesn't use savegame mechanic.
+     * Old method / Scenario : Creates the solar system with code lines, doesn't use save game mechanic.
      */
     public static void startSolarScenario() {
-        GAMETIME.reset();
+        GAME_TIME.reset();
         SolarEngine engine = (SolarEngine) Gdx.app.getApplicationListener();
 
         GameStartStage gameStage = initGameStartStage(engine);
@@ -247,7 +247,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void act(float delta) {
         inputListener.handleContinuousInput(delta);
         Time newDelta = new Time(delta * GameStartStage.gameSpeed, TimeUnit.DAYS);
-        GAMETIME.addTime(newDelta);
+        GAME_TIME.addTime(newDelta);
         se.update(newDelta);
         super.act(newDelta.inDays());
     }
@@ -446,13 +446,13 @@ public class GameStartStage extends BaseStage implements Telegraph {
         placeNewStation("Deep Space Nine", new Vector2(1500, 0), playerManager.getPlayerNumber(0));
 
         // Create an example space station orbiting Earth
-        Spacestation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f, -6477.7f), playerManager.getPlayerNumber(1));
-        AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(ConfigurationConstants.HOMEWORLD);
+        SpaceStation babylon = placeNewStation("Babylon 5", new Vector2(-3755.3f, -6477.7f), playerManager.getPlayerNumber(1));
+        AstronomicalBody primary = solarSystem.findAstronomicalBodyByName(ConfigurationConstants.HOME_WORLD);
         if (null != primary) {
             babylon.enterOrbit(primary);
         }
         //place some example colonies
-        placeNewColony(ConfigurationConstants.HOMEWORLD, ConfigurationConstants.HOMEWORLD, playerManager.getPlayerNumber(0), new Population(7125 * BaseResource.MILLION), new BuildingManager().createInfrastructure(1000000).generateColonyBuildings());
+        placeNewColony(ConfigurationConstants.HOME_WORLD, ConfigurationConstants.HOME_WORLD, playerManager.getPlayerNumber(0), new Population(7125 * BaseResource.MILLION), new BuildingManager().createInfrastructure(1000000).generateColonyBuildings());
         placeNewColony("Moon", "Tranquility Base", playerManager.getPlayerNumber(1), new Population(3141 * BaseResource.THOUSAND), new BuildingManager().createInfrastructure(2500).generateColonyBuildings());
         placeNewColony("Mars", "Utopia Planitia", playerManager.getPlayerNumber(0), new Population(11235), new BuildingManager().createInfrastructure(2).generateColonyBuildings());
     }
@@ -470,7 +470,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     /**
-     * Adds an astronomomical object and its satellites as new actors to the game.
+     * Adds an astronomical object and its satellites as new actors to the game.
      *
      * @param body Astronomical Object to be added to the game.
      */
@@ -488,10 +488,10 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Adds a new spaceship object to the game.
      *
      * @param name          Desired name of the spaceship.
-     * @param startlocation Desired location at which the ship is to appear.
+     * @param startLocation Desired location at which the ship is to appear.
      */
-    private void placeNewShip(String name, Vector2 startlocation, Player owner) {
-        Spaceship newShip = Spaceship.placeNewShip(name, startlocation, owner);
+    private void placeNewShip(String name, Vector2 startLocation, Player owner) {
+        Spaceship newShip = Spaceship.placeNewShip(name, startLocation, owner);
         addActor(newShip);
     }
 
@@ -499,10 +499,10 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Adds a new space station object to the game.
      *
      * @param name          Desired name of the station.
-     * @param startlocation Desired location at which the station is to appear.
+     * @param startLocation Desired location at which the station is to appear.
      */
-    private Spacestation placeNewStation(String name, Vector2 startlocation, Player owner) {
-        Spacestation newStation = Spacestation.placeNewStation(name, startlocation, owner);
+    private SpaceStation placeNewStation(String name, Vector2 startLocation, Player owner) {
+        SpaceStation newStation = SpaceStation.placeNewStation(name, startLocation, owner);
         addActor(newStation);
         return newStation;
     }
@@ -516,7 +516,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     public void initGameTime(Time gameTimeElapsed) {
-        GAMETIME.initGameTime(gameTimeElapsed);
+        GAME_TIME.initGameTime(gameTimeElapsed);
     }
 
     public void updateProduction(Time deltaT) {

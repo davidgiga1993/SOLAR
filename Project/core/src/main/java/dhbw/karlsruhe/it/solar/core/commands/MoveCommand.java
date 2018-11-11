@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.commands;
 
 import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
-import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.core.player.Player;
 
 import java.util.List;
 

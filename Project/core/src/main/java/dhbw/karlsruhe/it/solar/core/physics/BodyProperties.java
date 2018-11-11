@@ -1,7 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.*;
-import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
 
 import java.util.List;
 
@@ -110,7 +109,7 @@ public class BodyProperties {
         if (null != atmosphere && null != atmosphere.getPressure()) {
             return atmosphere.getPressure();
         }
-        return new Pressure(0f, PressureUnit.BAR);
+        return new Pressure(0f, Pressure.PressureUnit.BAR);
     }
 
     public boolean hasAtmosphere() {

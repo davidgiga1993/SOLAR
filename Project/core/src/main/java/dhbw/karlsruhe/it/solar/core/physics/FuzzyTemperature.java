@@ -42,27 +42,27 @@ public class FuzzyTemperature extends FuzzyValue {
     @Override
     public FuzzyInformation displayFuzzyState() {
         if (fuzzyValueExtremelyLow > 0.5) {
-            return new FuzzyInformation(tempValueDisplay(), "Extreme Cold", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(tempValueDisplay(), "Extreme Cold", Styles.MENU_LABEL_RED);
         }
         if (fuzzyValueExtremelyHigh > 0.5) {
-            return new FuzzyInformation(tempValueDisplay(), "Extreme Heat", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(tempValueDisplay(), "Extreme Heat", Styles.MENU_LABEL_RED);
         }
         if (fuzzyValueOptimal > 0.9) {
-            return new FuzzyInformation(tempValueDisplay(), "Optimal", Styles.MENUELABEL_GREEN);
+            return new FuzzyInformation(tempValueDisplay(), "Optimal", Styles.MENU_LABEL_GREEN);
         }
         if (fuzzyValueTooLow > 0.75) {
-            return new FuzzyInformation(tempValueDisplay(), "Too Cold", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(tempValueDisplay(), "Too Cold", Styles.MENU_LABEL_ORANGE);
         }
         if (fuzzyValueTooHigh > 0.75) {
-            return new FuzzyInformation(tempValueDisplay(), "Too Hot", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(tempValueDisplay(), "Too Hot", Styles.MENU_LABEL_ORANGE);
         }
         if (fuzzyValueTooHigh > 0.1) {
-            return new FuzzyInformation(tempValueDisplay(), "Hot", Styles.MENUELABEL_YELLOW);
+            return new FuzzyInformation(tempValueDisplay(), "Hot", Styles.MENU_LABEL_YELLOW);
         }
         if (fuzzyValueTooLow > 0.1) {
-            return new FuzzyInformation(tempValueDisplay(), "Cold", Styles.MENUELABEL_YELLOW);
+            return new FuzzyInformation(tempValueDisplay(), "Cold", Styles.MENU_LABEL_YELLOW);
         }
-        return new FuzzyInformation(tempValueDisplay(), "Unknown Anomaly", Styles.MENUELABEL_RED);
+        return new FuzzyInformation(tempValueDisplay(), "Unknown Anomaly", Styles.MENU_LABEL_RED);
     }
 
 

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GUIInputListener;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBar;
@@ -50,12 +50,12 @@ public class GameHUDStage extends BaseGUIStage {
         resourceBar = new ResourceBar(se.getGameStage());
         bottomBar = new InfoBar();
 
-        guiTable.add(resourceBar).align(Align.right).colspan(2).height(ConfigurationConstants.RESSOURCEBAR_HEIGHT).expandX().fillX();
+        guiTable.add(resourceBar).align(Align.right).colspan(2).height(ConfigurationConstants.RESOURCE_BAR_HEIGHT).expandX().fillX();
         guiTable.row();
         guiTable.add(navigationBar).expandY().width(ConfigurationConstants.GUI_NAVIGATION_WIDTH).maxHeight(calculateNavbarMaxHeight()).top().fill().left();
         guiTable.add(new Actor()).expandX();
-        guiTable.row().maxHeight(ConfigurationConstants.INFOBAR_HEIGHT);
-        guiTable.add(bottomBar).height(ConfigurationConstants.INFOBAR_HEIGHT).maxWidth(calculateInfoBarMaxWidth()).colspan(2).expandX().fill().left();
+        guiTable.row().maxHeight(ConfigurationConstants.INFO_BAR_HEIGHT);
+        guiTable.add(bottomBar).height(ConfigurationConstants.INFO_BAR_HEIGHT).maxWidth(calculateInfoBarMaxWidth()).colspan(2).expandX().fill().left();
 
 
         addActor(guiTable);
@@ -66,7 +66,7 @@ public class GameHUDStage extends BaseGUIStage {
     }
 
     private int calculateNavbarMaxHeight() {
-        return Gdx.graphics.getHeight() - (ConfigurationConstants.RESSOURCEBAR_HEIGHT + ConfigurationConstants.INFOBAR_HEIGHT);
+        return Gdx.graphics.getHeight() - (ConfigurationConstants.RESOURCE_BAR_HEIGHT + ConfigurationConstants.INFO_BAR_HEIGHT);
     }
 
     @Override

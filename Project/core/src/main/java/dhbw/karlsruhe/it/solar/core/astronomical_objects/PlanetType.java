@@ -26,10 +26,8 @@ public class PlanetType extends BodyType {
 
     @Override
     public boolean consistsPartiallyOfWaterIce() {
-        if (typeOfPlanet == TypeOfPlanet.DWARFPLANET) {
-            return true;
-        }
-        return false;
+        // TODO: Reason: is that true?
+        return typeOfPlanet == TypeOfPlanet.DWARFPLANET;
     }
 
     @Override

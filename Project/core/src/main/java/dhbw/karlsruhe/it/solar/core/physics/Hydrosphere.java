@@ -53,10 +53,7 @@ public class Hydrosphere {
     }
 
     public boolean hasLiquidWater() {
-        if (subsurfaceOcean || liquidWater) {
-            return true;
-        }
-        return false;
+        return subsurfaceOcean || liquidWater;
     }
 
 }

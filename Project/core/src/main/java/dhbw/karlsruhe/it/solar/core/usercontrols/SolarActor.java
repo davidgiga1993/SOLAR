@@ -10,14 +10,14 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
-import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.core.solar.TextureCache;
 
 /**
  * @author Andi
  */
 public abstract class SolarActor extends Actor implements Telegraph {
 
-    public static final double STAGESCALINGFACTOR = 2 * Math.pow(10, 4);
+    public static final double STAGE_SCALING_FACTOR = 2 * Math.pow(10, 4);
     protected boolean selected;
     protected TextureRegion solarActorTexture;
     protected Color selectionColor;
@@ -39,12 +39,12 @@ public abstract class SolarActor extends Actor implements Telegraph {
      * @return scaled down distance
      */
     public static float scaleDistanceToStage(double distance) {
-        //TODO: Scaling-Faktor (distance in km to pixel on screen) muss wahrscheinlich noch viel formaler irgendwo eingebunden werden. Die Implementierung hier ist noch nichtmal gegen zu große Eingaben geschützt
-        return (float) (distance / STAGESCALINGFACTOR);
+        // TODO: Should be refactored to something more formal, this implementation isn't protected against huge inputs. Represents distance in km to pixels on screen ratio.
+        return (float) (distance / STAGE_SCALING_FACTOR);
     }
 
     public static float scaleDistanceToPhysical(float stageDistance) {
-        return stageDistance * (float) STAGESCALINGFACTOR;
+        return stageDistance * (float) STAGE_SCALING_FACTOR;
     }
 
     public abstract String getTypeName();
@@ -121,7 +121,7 @@ public abstract class SolarActor extends Actor implements Telegraph {
      * @param textureName Identifier used by the texture atlas to locate the texture.
      */
     protected void setupSolarActorSprite(String textureName) {
-        solarActorTexture = TextureCacher.GAMEATLAS.findRegion(textureName);
+        solarActorTexture = TextureCache.GAME_ATLAS.findRegion(textureName);
         solarActorSprite = new Sprite(solarActorTexture);
     }
 

@@ -5,13 +5,13 @@ public class SurfaceGravity {
     private final static float MM_PER_M = 1000;
 
     private float value;
-    private GravUnit unit;
+    private GravitationalUnit unit;
 
     public SurfaceGravity(Mass mass, Length radius) {
         calculateSurfaceGravity(mass, radius);
     }
 
-    public SurfaceGravity(float value, GravUnit unit) {
+    public SurfaceGravity(float value, GravitationalUnit unit) {
         if (0 <= value) {
             this.value = value;
             this.unit = unit;
@@ -22,7 +22,7 @@ public class SurfaceGravity {
 
     private void calculateSurfaceGravity(Mass mass, Length radius) {
         this.value = ((PhysicalConstants.GRAVITATIONAL_CONSTANT * mass.asKilogram()) / ((float) Math.pow(radius.asMeters(), 2)));
-        this.unit = GravUnit.MS2;
+        this.unit = GravitationalUnit.MS2;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class SurfaceGravity {
         }
     }
 
-    public enum GravUnit {
+    public enum GravitationalUnit {
         G,
         MS2
     }

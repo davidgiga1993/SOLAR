@@ -3,15 +3,15 @@ package dhbw.karlsruhe.it.solar.core.stages.guielements;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import dhbw.karlsruhe.it.solar.colony.Colony;
+import dhbw.karlsruhe.it.solar.core.colony.Colony;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
 public class InfoBarColonyDetails extends Table {
 
     private Colony colony;
-    private LabelStyle style = Styles.MENUELABEL_STYLE;
-    private LabelStyle bold = Styles.BOLDLABEL_STYLE;
+    private LabelStyle style = Styles.MENU_LABEL_STYLE;
+    private LabelStyle bold = Styles.BOLD_LABEL_STYLE;
     private final Label colonyName = new Label("", bold);
     private final Label colonyOwner = new Label("", style);
     private final Label populationLabel = new Label("Population: ", style);

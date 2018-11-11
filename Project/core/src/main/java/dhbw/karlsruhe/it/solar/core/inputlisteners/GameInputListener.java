@@ -14,11 +14,11 @@ import dhbw.karlsruhe.it.solar.core.commands.MoveCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToAstronomicalBodyCommand;
 import dhbw.karlsruhe.it.solar.core.commands.MoveToKineticObjectCommand;
 import dhbw.karlsruhe.it.solar.core.savegames.SaveGameManager;
-import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.GUIActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
-import dhbw.karlsruhe.it.solar.player.Ownable;
+import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
+import dhbw.karlsruhe.it.solar.core.player.Ownable;
 
 public class GameInputListener extends InputListener {
 
@@ -51,9 +51,9 @@ public class GameInputListener extends InputListener {
     }
 
     @Override
-    public boolean keyUp(InputEvent event, int keycode) {
+    public boolean keyUp(InputEvent event, int keyCode) {
         // TODO Auto-generated method stub
-        if (keycode == Keys.ESCAPE) {
+        if (keyCode == Keys.ESCAPE) {
             Gdx.app.postRunnable(() -> {
                 GameStartStage.stopTime();
                 SaveGameManager save = new SaveGameManager(stage);
@@ -62,7 +62,7 @@ public class GameInputListener extends InputListener {
             });
             return true;
         }
-        return super.keyUp(event, keycode);
+        return super.keyUp(event, keyCode);
     }
 
     @Override
@@ -172,7 +172,7 @@ public class GameInputListener extends InputListener {
                 // insideRectangle to evaluate whether the actor is inside the selection.
                 if (sa.insideRectangle(stage.getSelectionRectangle())) {
                     updateSelectionRectangleForUnits(state, sa);
-                    updateSelectionReactangleForColonies(state, sa);
+                    updateSelectionRectangleForColonies(state, sa);
                 }
             }
         }
@@ -188,7 +188,7 @@ public class GameInputListener extends InputListener {
         }
     }
 
-    private void updateSelectionReactangleForColonies(SelectionState state, SolarActor sa) {
+    private void updateSelectionRectangleForColonies(SelectionState state, SolarActor sa) {
         if (sa instanceof AstronomicalBody && ((AstronomicalBody) sa).isColonized() && ((AstronomicalBody) sa).isColonyOwnedBy(stage.getPlayerOnThisPlatform())) {
             // proceed according to state
             updateSelection(state, sa);

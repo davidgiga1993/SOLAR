@@ -3,7 +3,7 @@ package dhbw.karlsruhe.it.solar.core.space_units;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
 import dhbw.karlsruhe.it.solar.core.ai.AISpaceshipModule;
@@ -12,20 +12,19 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.commands.OrbitalInsertionCommand;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
-import dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit;
 import dhbw.karlsruhe.it.solar.core.physics.OrbitalProperties;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
-import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
+import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.ShapeRenderable;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
-import dhbw.karlsruhe.it.solar.player.Ownable;
-import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.core.player.Ownable;
+import dhbw.karlsruhe.it.solar.core.player.Player;
 
 /**
  * @author Andi
@@ -34,9 +33,9 @@ import dhbw.karlsruhe.it.solar.player.Player;
  */
 public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Ownable {
 
-    public static final Color SPACEUNIT_ORBIT_COLOR = new Color(0, 0.5f, 0, 1);
+    public static final Color SPACE_UNIT_ORBIT_COLOR = new Color(0, 0.5f, 0, 1);
     static final Credits SPACESHIP_YEARLY_RUNNING_COST = new Credits(10000000);
-    static final Credits SPACESTATION_YEARLY_RUNNING_COST = new Credits(50000000);
+    static final Credits SPACE_STATION_YEARLY_RUNNING_COST = new Credits(50000000);
 
     private Player owner;
     private Vector2 destinationVector;
@@ -54,7 +53,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         this.speed = speed;
         selectionColor = owner.getPlayerColor();
         preview.setColor(selectionColor);
-        orbitColor = SPACEUNIT_ORBIT_COLOR;
+        orbitColor = SPACE_UNIT_ORBIT_COLOR;
     }
 
     /**
@@ -86,7 +85,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     private void initializeAIModule() {
         this.aiModule = new AISpaceshipModule(this);
         aiModule.setTarget(destinationVector);
-        aiModule.addEventListener(event -> System.out.println("Target reached"));
+        // aiModule.addEventListener(event -> System.out.println("Target reached"));
     }
 
     @Override
@@ -139,7 +138,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     }
 
     /**
-     * Adjusts only the Orbital Scale, not the Shapescale of the object. Allows Space Units to adjust the scale of their orbits individually.
+     * Adjusts only the Orbital Scale, not the ShapeScale of the object. Allows Space Units to adjust the scale of their orbits individually.
      */
     private void setOrbitScale() {
         currentOrbitScale = OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitalProperties.getPrimary()).getOrbitScale();
@@ -240,7 +239,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      * @return Physical length of the distance.
      */
     private Length getPhysicalLength(Orbiter orbitPrimary, Vector2 distance) {
-        return new Length(scaleDistanceToPhysical(distance.len()) / OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitPrimary).getOrbitScale(), DistanceUnit.KILOMETERS);
+        return new Length(scaleDistanceToPhysical(distance.len()) / OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitPrimary).getOrbitScale(), Length.DistanceUnit.KILOMETERS);
     }
 
     /**
@@ -338,7 +337,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
 
     private void leaveOrbit() {
         orbitalProperties = null;
-        System.out.println(this.getName() + " verlässt Orbit. Gegenwärtige Position ( " + getX() + " / " + getY() + " ).");
+        System.out.println(this.getName() + " leaves orbit. Current position ( " + getX() + " / " + getY() + " ).");
         kinematic.setMaxSpeed(speed);
         aiModule.setPosition(kinematic.getPosition());
     }
@@ -423,6 +422,6 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         if (null != destinationVector) {
             return physicalDistanceTo(destinationVector).toString();
         }
-        return new Length(0, DistanceUnit.KILOMETERS).toString();
+        return new Length(0, Length.DistanceUnit.KILOMETERS).toString();
     }
 }

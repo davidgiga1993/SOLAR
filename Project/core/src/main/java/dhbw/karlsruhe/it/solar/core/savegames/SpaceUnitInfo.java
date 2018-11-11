@@ -3,7 +3,7 @@ package dhbw.karlsruhe.it.solar.core.savegames;
 import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
-import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceStation;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,7 +37,7 @@ public class SpaceUnitInfo {
         if (unit instanceof Spaceship) {
             type = "Ship";
         }
-        if (unit instanceof Spacestation) {
+        if (unit instanceof SpaceStation) {
             type = "Station";
         }
         if (unit.isOnMission()) {

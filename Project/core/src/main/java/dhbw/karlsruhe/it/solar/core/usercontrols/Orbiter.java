@@ -5,14 +5,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.KinematicObject;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.physics.*;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceStation;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
-import dhbw.karlsruhe.it.solar.core.space_units.Spacestation;
 
 /**
  * @author Andi
@@ -44,7 +44,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
             setKinematicValues();
             changeOrbitScale();
         }
-        preview = new PreviewActor(this, getWidth(), PREVIEW_PIXEL_WIDTH, Spacestation.SPACEUNIT_ORBIT_COLOR);
+        preview = new PreviewActor(this, getWidth(), PREVIEW_PIXEL_WIDTH, SpaceStation.SPACE_UNIT_ORBIT_COLOR);
     }
 
     protected void setKinematicValues() {
@@ -106,7 +106,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
             return 0;
         }
         float radius = primary.getWidth() / 2;
-        float normRadius = (float) (primary.getRadius().asKilometers() / SolarActor.STAGESCALINGFACTOR);
+        float normRadius = (float) (primary.getRadius().asKilometers() / STAGE_SCALING_FACTOR);
         return radius - normRadius;
     }
 
@@ -187,7 +187,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
     }
 
     protected void displayOrbit(SolarShapeRenderer shapeRenderer) {
-        if (!orbitalProperties.isCoorbital()) {
+        if (!orbitalProperties.isCoOrbital()) {
             shapeRenderer.setTransformMatrix(orbitTransform.setToTranslation(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), 0));
             shapeRenderer.setColor(orbitColor);
             shapeRenderer.orbit(orbitalRadiusInPixels, segments);
@@ -227,12 +227,12 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
         return isInOrbit() && orbitalProperties.isRetrograde();
     }
 
-    public boolean isInCoorbitalOrbit() {
-        return isInOrbit() && orbitalProperties.isCoorbital();
+    public boolean isInCoOrbitalOrbit() {
+        return isInOrbit() && orbitalProperties.isCoOrbital();
     }
 
-    public Coorbital getCoorbitalInformation() {
-        return orbitalProperties.getCoorbitalInformation();
+    public CoOrbital getCoOrbitalInformation() {
+        return orbitalProperties.getCoOrbitalInformation();
     }
 
     public float getOrbitalRadiusInPixels() {

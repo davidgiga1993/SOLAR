@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
@@ -21,17 +21,17 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 public class InfoBar extends Window implements Telegraph {
 
-    public final static int MENUE_CELL_WIDTH = 60;
-    public final static int MENUE_BUTTON_WIDTH = 58;
-    public final static int MENUE_BUTTON_HEIGHT = 25;
-    public final static int MENUE_BUTTON_PADDING = 1;
+    public final static int MENU_CELL_WIDTH = 60;
+    public final static int MENU_BUTTON_WIDTH = 58;
+    public final static int MENU_BUTTON_HEIGHT = 25;
+    public final static int MENU_BUTTON_PADDING = 1;
     public final static int BUILD_BUTTON_WIDTH = 17;
     public final static int BUILD_BUTTON_HEIGHT = 17;
     public final static int BUILD_BUTTON_PADDING = 1;
     public final static int ACTION_BUTTON_WIDTH = 130;
     public final static int ACTION_BUTTON_HEIGHT = 30;
     public final static int ACTION_BUTTON_PADDING = 5;
-    public static final int MINIMUM_WIDTH = ConfigurationConstants.GUI_NAVIGATION_WIDTH + 4 * ConfigurationConstants.PADDING + 2 * ConfigurationConstants.CELL_WIDTH + MENUE_CELL_WIDTH + ACTION_BUTTON_WIDTH + 2 * ACTION_BUTTON_PADDING;
+    public static final int MINIMUM_WIDTH = ConfigurationConstants.GUI_NAVIGATION_WIDTH + 4 * ConfigurationConstants.PADDING + 2 * ConfigurationConstants.CELL_WIDTH + MENU_CELL_WIDTH + ACTION_BUTTON_WIDTH + 2 * ACTION_BUTTON_PADDING;
     public final static String TAB = "            ";
     private final static int IMAGE_WIDTH = 135;
     private final static int IMAGE_HEIGHT = 135;
@@ -43,7 +43,7 @@ public class InfoBar extends Window implements Telegraph {
     private Image selectedImage = new Image();
 
     public InfoBar() {
-        super("Information", Styles.TOOLTIPSKIN);
+        super("Information", Styles.TOOLTIP_SKIN);
         SolarEngine.MESSAGE_DISPATCHER.addListener(this, SolarMessageType.PLAYER_SELECTION_CHANGED);
 
         add(contentTable).expandX().fillX().left();

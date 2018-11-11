@@ -18,7 +18,7 @@ public class PreviewActor implements ShapeRenderable {
 
     private float absoluteRadius;
 
-    private float relativeRadius = (float) (384399 / SolarActor.STAGESCALINGFACTOR) * 2;
+    private float relativeRadius = (float) (384399 / SolarActor.STAGE_SCALING_FACTOR) * 2;
     private Color color;
 
     public PreviewActor(SolarActor parent, float relativeRadius, float zoomLevel, Color color) {

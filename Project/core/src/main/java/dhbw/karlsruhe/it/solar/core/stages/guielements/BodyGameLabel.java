@@ -15,7 +15,7 @@ public class BodyGameLabel extends Label {
     private OrthographicCamera gameCamera;
 
     public BodyGameLabel(CharSequence text) {
-        super(text, Styles.DEFAULTLABEL_STYLE);
+        super(text, Styles.DEFAULT_LABEL_STYLE);
         setAlignment(Align.center);
         SolarEngine.get().getStage("GameHUD").addActor(this);
         this.gameCamera = SolarEngine.get().getCamera();

@@ -1,9 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
+import dhbw.karlsruhe.it.solar.core.colony.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.solar.TextureCacher;
+import dhbw.karlsruhe.it.solar.core.solar.TextureCache;
 
 /**
  * Population Resource: Each colony has a certain number of inhabitants. Behavior of population is governed by this class.
@@ -24,7 +24,7 @@ public class Population extends StandardResource {
 
     @Override
     public TextureRegion getIcon() {
-        return TextureCacher.GAMEATLAS.findRegion("population");
+        return TextureCache.GAME_ATLAS.findRegion("population");
     }
 
     @Override

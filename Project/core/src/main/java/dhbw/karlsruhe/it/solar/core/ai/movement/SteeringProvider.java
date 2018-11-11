@@ -5,17 +5,17 @@ package dhbw.karlsruhe.it.solar.core.ai.movement;
  */
 public interface SteeringProvider {
     /**
-     * Berechnet den Kurs zum vorher gesetzten Ziel
+     * Calculates steering to previous set target
      *
-     * @param position aktuelle Position des ansteuernden Objektes
-     * @return berechneter Kurs
+     * @param position steering object's current position
+     * @return calculated steering
      */
     Steering getSteering(final Kinematic position);
 
     /**
-     * Setzt das Ziel der Kursberechnung
+     * Sets steering target
      *
-     * @param newTarget
+     * @param newTarget target to steer at
      */
     void setTarget(Kinematic newTarget);
 }

@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import dhbw.karlsruhe.it.solar.core.actions.LabelFontScalerAction;
+import dhbw.karlsruhe.it.solar.core.actions.LabelFontScaleAction;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 
@@ -15,7 +15,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 public abstract class MenuButton extends Label {
 
     public MenuButton(CharSequence text, final SolarEngine engine) {
-        super(text, Styles.DEFAULTLABEL_STYLE);
+        super(text, Styles.DEFAULT_LABEL_STYLE);
 
         addListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -45,7 +45,7 @@ public abstract class MenuButton extends Label {
     }
 
     private void animateLabel(float scale) {
-        LabelFontScalerAction ac = new LabelFontScalerAction(scale, getFontScaleX());
+        LabelFontScaleAction ac = new LabelFontScaleAction(scale, getFontScaleX());
         ac.setDuration(0.7f);
         ac.setInterpolation(Interpolation.exp10);
         addAction(ac);

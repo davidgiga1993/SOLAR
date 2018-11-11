@@ -5,10 +5,10 @@ import com.badlogic.gdx.utils.Array;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
-import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
-import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
+import dhbw.karlsruhe.it.solar.core.player.Player;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -54,14 +54,14 @@ class SaveGame {
         ingamePlayers = stage.getPlayers();
         players = createPlayerInfo();
         settings = stage.getSettings();
-        gameTime = GameStartStage.GAMETIME.getGameTimeElapsed();
+        gameTime = GameStartStage.GAME_TIME.getGameTimeElapsed();
     }
 
     private List<PlayerInfo> createPlayerInfo() {
         List<PlayerInfo> newList = new ArrayList<>();
         for (Player player : ingamePlayers) {
             PlayerInfo pi = new PlayerInfo();
-            pi.fillInInfos(player);
+            pi.fillInInfo(player);
             newList.add(pi);
         }
         return newList;

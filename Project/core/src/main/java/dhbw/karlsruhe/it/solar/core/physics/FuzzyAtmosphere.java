@@ -50,7 +50,7 @@ public class FuzzyAtmosphere extends FuzzyValue {
     }
 
     private float fuzzyToxicGasConcentration(AtmosphericGas gas) {
-        if (belowDangerousThesholdOf(gas)) {
+        if (belowDangerousThresholdOf(gas)) {
             return 0;
         }
         if (belowLethalThresholdOf(gas)) {
@@ -59,7 +59,7 @@ public class FuzzyAtmosphere extends FuzzyValue {
         return 1f;
     }
 
-    private boolean belowDangerousThesholdOf(AtmosphericGas gas) {
+    private boolean belowDangerousThresholdOf(AtmosphericGas gas) {
         if (null == gas.getDangerousThreshold()) {
             return true;
         }
@@ -87,33 +87,33 @@ public class FuzzyAtmosphere extends FuzzyValue {
     public FuzzyInformation displayFuzzyState() {
 
         if (null == atmosphere) {
-            return new FuzzyInformation(atmoValueDisplay(), "None", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(atmoValueDisplay(), "None", Styles.MENU_LABEL_RED);
         }
         if (null == atmosphere.getPressure()) {
-            return new FuzzyInformation(atmoValueDisplay(), "Gas Giant", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(atmoValueDisplay(), "Gas Giant", Styles.MENU_LABEL_RED);
         }
         if (atmosphere.getPressure().asPascal() < 1f) {
-            return new FuzzyInformation(atmoValueDisplay(), "Only Traces", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(atmoValueDisplay(), "Only Traces", Styles.MENU_LABEL_RED);
         }
         if (fuzzyValueTooHigh > 0.75) {
-            return new FuzzyInformation(atmoValueDisplay(), "Lethal", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(atmoValueDisplay(), "Lethal", Styles.MENU_LABEL_RED);
         }
         if (fuzzyValueTooHigh > 0.05) {
-            return new FuzzyInformation(atmoValueDisplay(), "Hazardous", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(atmoValueDisplay(), "Hazardous", Styles.MENU_LABEL_ORANGE);
         }
         if (fuzzyValueOptimal > 0.95) {
-            return new FuzzyInformation(atmoValueDisplay(), "Optimal", Styles.MENUELABEL_GREEN);
+            return new FuzzyInformation(atmoValueDisplay(), "Optimal", Styles.MENU_LABEL_GREEN);
         }
         if (fuzzyValueTooLow == 1f) {
-            return new FuzzyInformation(atmoValueDisplay(), "No O2", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(atmoValueDisplay(), "No O2", Styles.MENU_LABEL_ORANGE);
         }
         if (fuzzyValueTooLow > 0.75) {
-            return new FuzzyInformation(atmoValueDisplay(), "Trace O2", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(atmoValueDisplay(), "Trace O2", Styles.MENU_LABEL_ORANGE);
         }
         if (fuzzyValueTooLow > 0.05) {
-            return new FuzzyInformation(atmoValueDisplay(), "Low on O2", Styles.MENUELABEL_YELLOW);
+            return new FuzzyInformation(atmoValueDisplay(), "Low on O2", Styles.MENU_LABEL_YELLOW);
         }
-        return new FuzzyInformation(atmoValueDisplay(), "Unknown Anomaly", Styles.MENUELABEL_RED);
+        return new FuzzyInformation(atmoValueDisplay(), "Unknown Anomaly", Styles.MENU_LABEL_RED);
     }
 
     private String atmoValueDisplay() {

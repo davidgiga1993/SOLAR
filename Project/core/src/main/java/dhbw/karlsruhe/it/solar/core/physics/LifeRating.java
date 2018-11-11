@@ -59,15 +59,15 @@ public class LifeRating {
 
     private LabelStyle determineStyle() {
         if (rating > 0.80) {
-            return Styles.MENUELABEL_GREEN;
+            return Styles.MENU_LABEL_GREEN;
         }
         if (rating > 0.3) {
-            return Styles.MENUELABEL_YELLOW;
+            return Styles.MENU_LABEL_YELLOW;
         }
         if (rating > 0.1) {
-            return Styles.MENUELABEL_ORANGE;
+            return Styles.MENU_LABEL_ORANGE;
         }
-        return Styles.MENUELABEL_RED;
+        return Styles.MENU_LABEL_RED;
     }
 
     public float getNumber() {

@@ -1,11 +1,11 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.ai.msg.Telegram;
+import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
-import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
-import dhbw.karlsruhe.it.solar.player.Player;
+import dhbw.karlsruhe.it.solar.core.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;

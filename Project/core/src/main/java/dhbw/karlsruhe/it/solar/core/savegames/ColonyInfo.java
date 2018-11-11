@@ -1,9 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
-import dhbw.karlsruhe.it.solar.colony.BaseBuilding;
-import dhbw.karlsruhe.it.solar.colony.BuildingManager;
-import dhbw.karlsruhe.it.solar.colony.Colony;
-import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
+import dhbw.karlsruhe.it.solar.core.colony.BaseBuilding;
+import dhbw.karlsruhe.it.solar.core.colony.BuildingManager;
+import dhbw.karlsruhe.it.solar.core.colony.Colony;
+import dhbw.karlsruhe.it.solar.core.colony.ColonyBuildings;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 
 import javax.xml.bind.annotation.XmlAccessType;

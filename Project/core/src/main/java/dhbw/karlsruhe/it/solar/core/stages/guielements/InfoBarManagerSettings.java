@@ -1,6 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.stages.GameHUDStage;
 
 import javax.xml.bind.annotation.XmlElement;

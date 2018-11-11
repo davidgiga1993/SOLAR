@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.resources;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
+import dhbw.karlsruhe.it.solar.core.colony.ResourceDepot;
 
 /**
  * Handles the outward behavior for resources with capacitive logic which behave differently from normally depleting resources.
@@ -68,7 +68,7 @@ public interface CapacitiveResourceInterface {
     float capacityRatio();
 
     /**
-     * Recalculates the maximim production capacity for this resource at the resource depot.
+     * Recalculates the maximum production capacity for this resource at the resource depot.
      *
      * @param productionSite
      */

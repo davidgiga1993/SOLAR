@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class StarType extends BodyType {
 
     @XmlElement(name = "Morgan_Keenan_Spectral_Type")
-    private MorganKeenanSpectralType sprectralType;
+    private MorganKeenanSpectralType spectralType;
     @XmlElement(name = "Spectral_Type_Subdivision")
     private SpectralTypeSubdivision spectral_subdivision;
     @XmlElement(name = "Luminosity_Class")
@@ -21,8 +21,8 @@ public class StarType extends BodyType {
 
     }
 
-    public StarType(MorganKeenanSpectralType sprectralType, SpectralTypeSubdivision spectral_subdivision, LuminosityClass luminosityClass) {
-        this.sprectralType = sprectralType;
+    public StarType(MorganKeenanSpectralType spectralType, SpectralTypeSubdivision spectral_subdivision, LuminosityClass luminosityClass) {
+        this.spectralType = spectralType;
         this.spectral_subdivision = spectral_subdivision;
         this.luminosityClass = luminosityClass;
     }
@@ -38,7 +38,7 @@ public class StarType extends BodyType {
     }
 
     public MorganKeenanSpectralType getSpectralType() {
-        return sprectralType;
+        return spectralType;
     }
 
     public String resolveTypeName() {
@@ -46,7 +46,7 @@ public class StarType extends BodyType {
     }
 
     private String getSpectralTypeName() {
-        switch (sprectralType) {
+        switch (spectralType) {
             case O:
                 return "O";
             case B:
@@ -161,7 +161,7 @@ public class StarType extends BodyType {
 
     @Override
     public String getTexture() {
-        switch (sprectralType) {
+        switch (spectralType) {
             case G:
                 return "GTypeMainSequence";
             default:

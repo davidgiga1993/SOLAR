@@ -1,12 +1,12 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import dhbw.karlsruhe.it.solar.core.physics.Pressure.PressureUnit;
-import dhbw.karlsruhe.it.solar.core.physics.SurfaceGravity.GravUnit;
+import dhbw.karlsruhe.it.solar.core.physics.SurfaceGravity.GravitationalUnit;
 import dhbw.karlsruhe.it.solar.core.physics.Temperature.TempUnit;
 
 class FuzzyLogic {
 
-    public static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(0.91f, GravUnit.G);
+    public static final SurfaceGravity OPTIMAL_GRAVITY = new SurfaceGravity(0.91f, GravitationalUnit.G);
     public static final Hydrosphere OPTIMAL_HYDROSPHERE = new Hydrosphere(0.68f, 0.1f, true, false);
     public static final SurfaceTemperature MINIMUM_TEMPERATURE_THRESHOLD = new SurfaceTemperature(new Temperature(170f, TempUnit.KELVIN));
     public static final SurfaceTemperature MAXIMUM_TEMPERATURE_THRESHOLD = new SurfaceTemperature(new Temperature(318f, TempUnit.KELVIN));

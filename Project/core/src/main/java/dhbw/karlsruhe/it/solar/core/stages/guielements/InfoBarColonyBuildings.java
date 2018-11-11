@@ -6,9 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import dhbw.karlsruhe.it.solar.colony.Colony;
-import dhbw.karlsruhe.it.solar.colony.ColonyBuildings;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.colony.Colony;
+import dhbw.karlsruhe.it.solar.core.colony.ColonyBuildings;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.commands.ConstructBuildingCommand;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
@@ -17,16 +17,16 @@ public class InfoBarColonyBuildings extends Table {
 
     private Colony colony;
     private ColonyBuildings buildings;
-    private LabelStyle style = Styles.MENUELABEL_STYLE;
+    private LabelStyle style = Styles.MENU_LABEL_STYLE;
 
-    private final Label title = new Label("", Styles.BOLDLABEL_STYLE);
+    private final Label title = new Label("", Styles.BOLD_LABEL_STYLE);
     private final Label colonyLabel = new Label("", style);
     private final Label infraLabel = new Label("Infrastructure: ", style);
     private final Label infraValueLabel = new Label("", style);
-    private final TextButton buildInfra = new TextButton("+", Styles.TOOLTIPSKIN);
+    private final TextButton buildInfra = new TextButton("+", Styles.TOOLTIP_SKIN);
     private final Label reactorLabel = new Label("Fission Reactors: ", style);
     private final Label reactorValueLabel = new Label("", style);
-    private final TextButton buildReactor = new TextButton("+", Styles.TOOLTIPSKIN);
+    private final TextButton buildReactor = new TextButton("+", Styles.TOOLTIP_SKIN);
 
     public InfoBarColonyBuildings() {
         generateBuildingDetails();

@@ -25,7 +25,8 @@ public class SolarShapeRenderer extends ShapeRenderer {
      */
     public void orbit(float radius, int segments) {
         double theta = 2 * MathUtils.PI / (segments);
-        // precalculate the sine and cosine
+        // pre-calculate the sine and cosine
+        // TODO: revise precision (Pluto's a jerk)
         double c = Math.cos(theta);
         double s = Math.sin(theta);
         double t;

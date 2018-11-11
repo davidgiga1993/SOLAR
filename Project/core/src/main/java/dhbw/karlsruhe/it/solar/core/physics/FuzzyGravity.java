@@ -29,21 +29,21 @@ public class FuzzyGravity extends FuzzyValue {
     public FuzzyInformation displayFuzzyState() {
 
         if (fuzzyValueOptimal > 0.95) {
-            return new FuzzyInformation(gravityValueDisplay(), "Optimal", Styles.MENUELABEL_GREEN);
+            return new FuzzyInformation(gravityValueDisplay(), "Optimal", Styles.MENU_LABEL_GREEN);
         }
         if (fuzzyValueTooLow > 0.75) {
-            return new FuzzyInformation(gravityValueDisplay(), "Too Low", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(gravityValueDisplay(), "Too Low", Styles.MENU_LABEL_ORANGE);
         }
         if (fuzzyValueTooHigh > 0.75) {
-            return new FuzzyInformation(gravityValueDisplay(), "Too High", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(gravityValueDisplay(), "Too High", Styles.MENU_LABEL_RED);
         }
         if (fuzzyValueTooLow > 0.05) {
-            return new FuzzyInformation(gravityValueDisplay(), "Low", Styles.MENUELABEL_YELLOW);
+            return new FuzzyInformation(gravityValueDisplay(), "Low", Styles.MENU_LABEL_YELLOW);
         }
         if (fuzzyValueTooHigh > 0.05) {
-            return new FuzzyInformation(gravityValueDisplay(), "High", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(gravityValueDisplay(), "High", Styles.MENU_LABEL_ORANGE);
         }
-        return new FuzzyInformation(gravityValueDisplay(), "Unknown Anomaly", Styles.MENUELABEL_RED);
+        return new FuzzyInformation(gravityValueDisplay(), "Unknown Anomaly", Styles.MENU_LABEL_RED);
     }
 
     private String gravityValueDisplay() {

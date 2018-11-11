@@ -9,7 +9,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
 class InfoBarShipDetails extends Table {
 
     private SpaceUnit unit;
-    private LabelStyle style = Styles.MENUELABEL_STYLE;
+    private LabelStyle style = Styles.MENU_LABEL_STYLE;
 
     public InfoBarShipDetails(SpaceUnit unit) {
         this.unit = unit;

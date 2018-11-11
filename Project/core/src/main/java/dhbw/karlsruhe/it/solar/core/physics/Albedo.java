@@ -2,6 +2,10 @@ package dhbw.karlsruhe.it.solar.core.physics;
 
 import javax.xml.bind.annotation.XmlElement;
 
+/**
+ * "Albedo [...] (Latin: albedo, meaning "whiteness") is the measure of the diffuse reflection of solar radiation out of the total solar radiation received by an astronomical body (e.g. a planet like Earth)."
+ * - Wikipedia 11.11.2018
+ */
 public class Albedo {
 
     @XmlElement(name = "Albedo")

@@ -24,24 +24,24 @@ public class FuzzyBiosphere extends FuzzyValue {
         if (null == biosphere) {
             return 0;
         }
-        return biosphere.getUseableBioCover();
+        return biosphere.getUsableBioCover();
     }
 
     @Override
     public FuzzyInformation displayFuzzyState() {
         if (null == biosphere) {
-            return new FuzzyInformation(bioValueDisplay(), "None", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(bioValueDisplay(), "None", Styles.MENU_LABEL_RED);
         }
         if (fuzzyValueOptimal > 0.9) {
-            return new FuzzyInformation(bioValueDisplay(), "Optimal", Styles.MENUELABEL_GREEN);
+            return new FuzzyInformation(bioValueDisplay(), "Optimal", Styles.MENU_LABEL_GREEN);
         }
         if (fuzzyValueOptimal < 0) {
-            return new FuzzyInformation(bioValueDisplay(), "Too Dangerous", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(bioValueDisplay(), "Too Dangerous", Styles.MENU_LABEL_ORANGE);
         }
         if (fuzzyValueTooLow > 0.1) {
-            return new FuzzyInformation(bioValueDisplay(), "Sparse", Styles.MENUELABEL_YELLOW);
+            return new FuzzyInformation(bioValueDisplay(), "Sparse", Styles.MENU_LABEL_YELLOW);
         }
-        return new FuzzyInformation(bioValueDisplay(), "Unknown Anomaly", Styles.MENUELABEL_RED);
+        return new FuzzyInformation(bioValueDisplay(), "Unknown Anomaly", Styles.MENU_LABEL_RED);
     }
 
     private String bioValueDisplay() {

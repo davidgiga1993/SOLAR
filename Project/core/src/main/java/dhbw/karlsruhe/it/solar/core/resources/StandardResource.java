@@ -1,6 +1,6 @@
 package dhbw.karlsruhe.it.solar.core.resources;
 
-import dhbw.karlsruhe.it.solar.colony.ResourceDepot;
+import dhbw.karlsruhe.it.solar.core.colony.ResourceDepot;
 import dhbw.karlsruhe.it.solar.core.physics.Time;
 
 import javax.xml.bind.annotation.XmlAccessType;

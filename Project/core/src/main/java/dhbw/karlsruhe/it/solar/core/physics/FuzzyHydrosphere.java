@@ -33,21 +33,21 @@ public class FuzzyHydrosphere extends FuzzyValue {
     @Override
     public FuzzyInformation displayFuzzyState() {
         if (null == hydrosphere) {
-            return new FuzzyInformation(hydroValueDisplay(), "None", Styles.MENUELABEL_RED);
+            return new FuzzyInformation(hydroValueDisplay(), "None", Styles.MENU_LABEL_RED);
         }
         if (fuzzyValueOptimal > 0.9) {
-            return new FuzzyInformation(hydroValueDisplay(), "Optimal", Styles.MENUELABEL_GREEN);
+            return new FuzzyInformation(hydroValueDisplay(), "Optimal", Styles.MENU_LABEL_GREEN);
         }
         if (hydrosphere.getSubsurfaceOcean()) {
-            return new FuzzyInformation(hydroValueDisplay(), "SS Ocean", Styles.MENUELABEL_YELLOW);
+            return new FuzzyInformation(hydroValueDisplay(), "SS Ocean", Styles.MENU_LABEL_YELLOW);
         }
         if (hydrosphere.hasLiquidWater() && fuzzyValueOptimal < 0.9) {
-            return new FuzzyInformation(hydroValueDisplay(), "Too Arid", Styles.MENUELABEL_YELLOW);
+            return new FuzzyInformation(hydroValueDisplay(), "Too Arid", Styles.MENU_LABEL_YELLOW);
         }
         if (!hydrosphere.hasLiquidWater()) {
-            return new FuzzyInformation(hydroValueDisplay(), "Frozen", Styles.MENUELABEL_ORANGE);
+            return new FuzzyInformation(hydroValueDisplay(), "Frozen", Styles.MENU_LABEL_ORANGE);
         }
-        return new FuzzyInformation(hydroValueDisplay(), "Unknown Anomaly", Styles.MENUELABEL_RED);
+        return new FuzzyInformation(hydroValueDisplay(), "Unknown Anomaly", Styles.MENU_LABEL_RED);
     }
 
     private String hydroValueDisplay() {

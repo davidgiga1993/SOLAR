@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.stages.guielements;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
@@ -9,7 +9,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 
 /**
  * Determines which InfoBar tables are displayed to the player and which stay hidden.
- * Works in combination with the buttons of the InfoBarMenueButtons class.
+ * Works in combination with the buttons of the InfoBarMenuButtons class.
  *
  * @author Andi
  * created 2015-05-03
@@ -17,7 +17,7 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 public class InfoBarManager extends Table {
 
     private final InfoBarDetailsTable table = new InfoBarDetailsTable();
-    private final InfoBarMenueButtons buttons = new InfoBarMenueButtons(this);
+    private final InfoBarMenuButtons buttons = new InfoBarMenuButtons(this);
     private SolarActor selectedActor;
     private InfoBarManagerSettings settings;
 
@@ -54,11 +54,11 @@ public class InfoBarManager extends Table {
     private void createInfoBarMenueButtons() {
         buttons.clear();
         if (selectedActor instanceof AstronomicalBody && !(selectedActor instanceof SolarSystem)) {
-            add(buttons.displayAstroBodyButtons()).width(InfoBar.MENUE_CELL_WIDTH).left();
+            add(buttons.displayAstroBodyButtons()).width(InfoBar.MENU_CELL_WIDTH).left();
             return;
         }
         if (selectedActor instanceof SpaceUnit) {
-            add(buttons.displaySpaceUnitButtons()).width(InfoBar.MENUE_CELL_WIDTH).left();
+            add(buttons.displaySpaceUnitButtons()).width(InfoBar.MENU_CELL_WIDTH).left();
             return;
         }
         add(buttons.empty()).left();

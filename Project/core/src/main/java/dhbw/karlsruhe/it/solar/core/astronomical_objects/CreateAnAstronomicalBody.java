@@ -2,8 +2,6 @@ package dhbw.karlsruhe.it.solar.core.astronomical_objects;
 
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing.RingType;
 import dhbw.karlsruhe.it.solar.core.physics.*;
-import dhbw.karlsruhe.it.solar.core.physics.Angle.AngularUnit;
-import dhbw.karlsruhe.it.solar.core.physics.Biosphere.BiosphereType;
 
 /**
  * Builder pattern class designed to take over the creation of all actors of type astronomical body.
@@ -76,12 +74,12 @@ public final class CreateAnAstronomicalBody {
      * Indicates that this astronomical body shares its orbit with another, larger body, causing the two to gravitationally interact.
      * The orbit display of this body will be hidden.
      *
-     * @param largerBody Object with which this new astronomical body is sharing its orbital properties.
+     * @param dominantBody Object with which this new astronomical body is sharing its orbital properties.
      * @return
      */
-    public CreatableProperties whichIsCoorbitalWith(AstronomicalBody dominantBody, Angle angularDeviation) {
-        this.orbitalProperties = new OrbitalProperties(dominantBody.getPrimary(), new Length(dominantBody.getOrbitalRadius().asKilometers(), dhbw.karlsruhe.it.solar.core.physics.Length.DistanceUnit.KILOMETERS), new Angle(dominantBody.getOrbitalAngle().inDegrees(), AngularUnit.DEGREE));
-        this.orbitalProperties.setCoorbital(dominantBody, angularDeviation);
+    public CreatableProperties whichIsCoOrbitalWith(AstronomicalBody dominantBody, Angle angularDeviation) {
+        this.orbitalProperties = new OrbitalProperties(dominantBody.getPrimary(), new Length(dominantBody.getOrbitalRadius().asKilometers(), Length.DistanceUnit.KILOMETERS), new Angle(dominantBody.getOrbitalAngle().inDegrees(), Angle.AngularUnit.DEGREE));
+        this.orbitalProperties.setCoOrbital(dominantBody, angularDeviation);
         return new CreatableProperties();
     }
 
@@ -107,7 +105,7 @@ public final class CreateAnAstronomicalBody {
          *
          * @param bodyRadius          Size of the astronomical body.
          * @param bodyMass            Mass of the astronomical body.
-         * @param tidallyLockedToStar
+         * @param albedo
          * @return
          */
         public CreatableType andHasTheFollowingBodyProperties(Length bodyRadius, Mass bodyMass, Albedo albedo) {
@@ -124,9 +122,9 @@ public final class CreateAnAstronomicalBody {
              * Add a ring system to the astronomical object.
              *
              * @param massOfRings   Total mass of the ring system.
-             * @param radiusOfRings Radius of the ring system.
+             * @param innerRadiusOfRings Inner radius of the ring system.
+             * @param outerRadiusOfRings Outer radius of the ring system.
              * @param typeOfRings   Appearance of the ring system.
-             * @return
              */
             public CreatableType includingRings(Mass massOfRings, Length innerRadiusOfRings, Length outerRadiusOfRings, RingType typeOfRings) {
                 CreateAnAstronomicalBody.this.ringed = true;
@@ -169,9 +167,6 @@ public final class CreateAnAstronomicalBody {
 
             /**
              * Creates an atmosphere for gas giants without surface pressure.
-             *
-             * @param createAtmosphereOfNeptune
-             * @return
              */
             public CreatableType withAGasGiantAtmosphereOf(AtmosphericComposition atmosphericComposition) {
                 CreateAnAstronomicalBody.this.atmosphere = true;
@@ -187,7 +182,7 @@ public final class CreateAnAstronomicalBody {
              * @param biosphereCoverage
              * @return
              */
-            public CreatableType addBiosphere(BiosphereType bioType, float biosphereCoverage) {
+            public CreatableType addBiosphere(Biosphere.BiosphereType bioType, float biosphereCoverage) {
                 CreateAnAstronomicalBody.this.bio = new Biosphere(bioType, biosphereCoverage);
                 return this;
             }
@@ -208,10 +203,6 @@ public final class CreateAnAstronomicalBody {
 
             /**
              * Adds a subsurface ocean to an astronomical object.
-             *
-             * @param liquidWaterCover
-             * @param iceCover
-             * @return
              */
             public CreatableType whichHasASubsurfaceOcean() {
                 CreateAnAstronomicalBody.this.subsurfaceOcean = true;
@@ -221,36 +212,36 @@ public final class CreateAnAstronomicalBody {
             /**
              * Determines which type of object is to be created.
              *
-             * @param type        Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
+             * @param starType        Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
              * @param solarSystem The star system to which the new object will be added.
              * @return
              */
-            public Star buildAs(StarType star, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.type = star;
+            public Star buildAs(StarType starType, SolarSystem solarSystem) {
+                CreateAnAstronomicalBody.this.type = starType;
                 return CreateAnAstronomicalBody.this.buildStar(solarSystem);
             }
 
             /**
              * Determines which type of object is to be created.
              *
-             * @param type        Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
+             * @param planetType  Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
              * @param solarSystem The star system to which the new object will be added.
              * @return
              */
-            public Planet buildAs(PlanetType planet, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.type = planet;
+            public Planet buildAs(PlanetType planetType, SolarSystem solarSystem) {
+                CreateAnAstronomicalBody.this.type = planetType;
                 return CreateAnAstronomicalBody.this.buildPlanet(solarSystem);
             }
 
             /**
              * Determines which type of object is to be created.
              *
-             * @param type        Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
+             * @param moonType    Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
              * @param solarSystem The star system to which the new object will be added.
              * @return
              */
-            public Moon buildAs(MoonType moon, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.type = moon;
+            public Moon buildAs(MoonType moonType, SolarSystem solarSystem) {
+                CreateAnAstronomicalBody.this.type = moonType;
                 CreateAnAstronomicalBody.this.tidallyLocked = true;
                 return CreateAnAstronomicalBody.this.buildMoon(solarSystem);
             }
@@ -258,12 +249,12 @@ public final class CreateAnAstronomicalBody {
             /**
              * Determines which type of object is to be created.
              *
-             * @param type        Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
-             * @param solarSystem The star system to which the new object will be added.
+             * @param asteroidType Type can be used for any of the astronomical object classes such as StarType, PlanetType, MoonType, ...
+             * @param solarSystem  The star system to which the new object will be added.
              * @return
              */
-            public Asteroid buildAs(AsteroidType asteroid, SolarSystem solarSystem) {
-                CreateAnAstronomicalBody.this.type = asteroid;
+            public Asteroid buildAs(AsteroidType asteroidType, SolarSystem solarSystem) {
+                CreateAnAstronomicalBody.this.type = asteroidType;
                 return CreateAnAstronomicalBody.this.buildAsteroid(solarSystem);
             }
         }

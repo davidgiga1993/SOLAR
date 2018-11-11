@@ -25,7 +25,7 @@ public class NavBarBaseLabel extends Label {
     private NavBarBaseTable container;
 
     public NavBarBaseLabel(CharSequence text, String tab, SolarActor actor, NavBarBaseTable container) {
-        super(tab + text, Styles.MENUELABEL_STYLE);
+        super(tab + text, Styles.MENU_LABEL_STYLE);
         this.actor = actor;
         this.tab = tab;
         this.name = text;
@@ -78,9 +78,9 @@ public class NavBarBaseLabel extends Label {
         container.buildTable();
     }
 
-    private void setChildrenVisibility(boolean newVisibiilty) {
+    private void setChildrenVisibility(boolean newVisibility) {
         for (NavBarBaseLabel child : children) {
-            child.setVisible(newVisibiilty);
+            child.setVisible(newVisibility);
         }
     }
 

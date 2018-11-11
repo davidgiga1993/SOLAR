@@ -20,9 +20,9 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Styles;
  */
 class InfoBarActionTable extends Table {
 
-    private final TextButton orbitalInsertion = new TextButton("Enter Orbit", Styles.TOOLTIPSKIN);
-    private final TextButton colonize = new TextButton("Establish Colony", Styles.TOOLTIPSKIN);
-    private final TextButton selfDestruct = new TextButton("Self Destruct", Styles.TOOLTIPSKIN);
+    private final TextButton orbitalInsertion = new TextButton("Enter Orbit", Styles.TOOLTIP_SKIN);
+    private final TextButton colonize = new TextButton("Establish Colony", Styles.TOOLTIP_SKIN);
+    private final TextButton selfDestruct = new TextButton("Self Destruct", Styles.TOOLTIP_SKIN);
 
     private SolarActor selectedActor;
 

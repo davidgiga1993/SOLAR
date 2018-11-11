@@ -1,7 +1,7 @@
 package dhbw.karlsruhe.it.solar.core.savegames;
 
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
-import dhbw.karlsruhe.it.solar.core.physics.Coorbital;
+import dhbw.karlsruhe.it.solar.core.physics.CoOrbital;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 
@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Length.class, Angle.class, Coorbital.class})
+@XmlSeeAlso({Length.class, Angle.class, CoOrbital.class})
 public class OrbitalPropertyInfo {
 
     @XmlElement(name = "Primary")
@@ -23,7 +23,7 @@ public class OrbitalPropertyInfo {
     @XmlElement(name = "Retrograde")
     private boolean retrograde;
     @XmlElement(name = "CoorbitalInfo")
-    private Coorbital coorbital;
+    private CoOrbital coOrbital;
 
     public OrbitalPropertyInfo() {
 
@@ -31,8 +31,8 @@ public class OrbitalPropertyInfo {
 
     public void fillOrbitalPropertyInfo(Orbiter orbiter) {
         if (orbiter.isInOrbit()) {
-            this.coorbital = orbiter.getCoorbitalInformation();
-            if (null == coorbital) {
+            this.coOrbital = orbiter.getCoOrbitalInformation();
+            if (null == coOrbital) {
                 this.orbitPrimaryName = orbiter.getPrimary().getName();
                 this.orbitalRadius = orbiter.getOrbitalRadius();
                 this.polarAngle = orbiter.getOrbitalAngle();
@@ -49,8 +49,8 @@ public class OrbitalPropertyInfo {
         return orbitPrimaryName;
     }
 
-    public Coorbital getCoorbital() {
-        return coorbital;
+    public CoOrbital getCoOrbital() {
+        return coOrbital;
     }
 
     public boolean isRetrograde() {

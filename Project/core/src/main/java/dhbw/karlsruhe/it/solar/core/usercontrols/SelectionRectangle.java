@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
-import dhbw.karlsruhe.it.solar.config.ConfigurationConstants;
+import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -22,8 +22,8 @@ public class SelectionRectangle extends Actor implements ShapeRenderable {
     private Vector2 mousePosition;
     private boolean isInitialized = false;
 
-    private Label widthLabel = new Label("", Styles.DEFAULTLABEL_STYLE);
-    private Label heightLabel = new Label("", Styles.DEFAULTLABEL_STYLE);
+    private Label widthLabel = new Label("", Styles.DEFAULT_LABEL_STYLE);
+    private Label heightLabel = new Label("", Styles.DEFAULT_LABEL_STYLE);
 
     public SelectionRectangle() {
         this.visible = false;
@@ -46,7 +46,7 @@ public class SelectionRectangle extends Actor implements ShapeRenderable {
     }
 
     public void updateEnd(float mouseX, float mouseY) {
-        //Berechnet Position, Width und Height neu abhängig von ursprünglicher Startposition und derzeitiger Mausposition
+        // Recalculates position, width and height based on original starting position and current cursor position
         if (startPosition.x > mouseX) {
             setX(mouseX);
             setWidth(startPosition.x - mouseX);
