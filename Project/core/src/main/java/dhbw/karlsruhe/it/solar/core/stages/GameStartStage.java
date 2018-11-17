@@ -4,9 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import dhbw.karlsruhe.it.solar.core.colony.BuildingManager;
@@ -18,6 +22,7 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstroBodyManager;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
+import dhbw.karlsruhe.it.solar.core.graphics.OffsetShader;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.CalendarTime;
@@ -54,6 +59,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private PlayerManager playerManager = new PlayerManager();
     private SolarShapeRenderer solarShapeRenderer = new SolarShapeRenderer();
     private ShapeRenderer libGDXShapeRenderer = new ShapeRenderer();
+    private ShaderProgram shaderProgram = new OffsetShader();
     private List<PlanetaryRing> ringList = new ArrayList<>();
 
     private GameStartStage(SolarEngine se) {
@@ -62,6 +68,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         gameStartStageListener();
         addSelectionRectangle();
+        this.getBatch().setShader(shaderProgram);
     }
 
     /**
@@ -228,12 +235,38 @@ public class GameStartStage extends BaseStage implements Telegraph {
             }
         }
         libGDXShapeRenderer.end();
-        // draw sprite batch and polygon batch stuff
-        super.draw();
+
+        drawSprites();
 
         for (PlanetaryRing ring : ringList) {
             ring.draw();
         }
+    }
+
+    /**
+     * Will draw the sprites using set batch with the following steps to reduce floating point error:
+     * <ol>
+     *     <li>Set camera's position to zero</li>
+     *     <li>input the camera's actual position to the shader</li>
+     *     <li>draw everything</li>
+     *     <li>reset camera's position back to it's actual position</li>
+     * </ol>
+     */
+    private void drawSprites() {
+        Camera camera = getViewport().getCamera();
+        Vector3 oldPosition = new Vector3(camera.position);
+        camera.update();
+
+        if (!getRoot().isVisible()) return;
+
+        Batch batch = this.getBatch();
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        shaderProgram.setUniformf("u_cameraOffset", oldPosition.x, oldPosition.y, oldPosition.z, 0f);
+        getRoot().draw(batch, 1);
+        batch.end();
+
+        camera.position.set(oldPosition);
     }
 
     @Override

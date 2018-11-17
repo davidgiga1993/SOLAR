@@ -14,6 +14,8 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceStation;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
+import java.math.BigDecimal;
+
 /**
  * @author Andi
  * <p>
@@ -208,7 +210,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
     }
 
     public AstronomicalBody getPrimary() {
-        return orbitalProperties.getPrimary();
+        return orbitalProperties.getPrimary().asAstronomicalBody();
     }
 
     protected void setKinematicPosition(Vector2 position) {
@@ -240,6 +242,6 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
     }
 
     public String getNameOfPrimary() {
-        return orbitalProperties.getNameOfPrimary();
+        return orbitalProperties.getPrimary().asAstronomicalBody().getName();
     }
 }

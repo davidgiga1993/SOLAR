@@ -111,7 +111,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         }
         aiOutput = aiModule.act(delta);
         setPosition(aiOutput.getPosition().x - getOriginX(), aiOutput.getPosition().y - getOriginY());
-        // TODO: fix rotation offset of space unit... +90° necessary atm.
+        // TODO: fix rotation offset of space unit... +90Â° necessary atm.
         setRotation(aiOutput.getRotation() + 90);
         super.act(delta);
     }
@@ -141,7 +141,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      * Adjusts only the Orbital Scale, not the ShapeScale of the object. Allows Space Units to adjust the scale of their orbits individually.
      */
     private void setOrbitScale() {
-        currentOrbitScale = OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitalProperties.getPrimary()).getOrbitScale();
+        currentOrbitScale = OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitalProperties.getPrimary().asAstronomicalBody()).getOrbitScale();
         actorScale = new SolarActorScale(currentShapeScale, currentOrbitScale);
     }
 
@@ -173,7 +173,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     }
 
     public void establishColony() {
-        orbitalProperties.getPrimary().establishColony("Testkolonie", owner, new Population(10 * BaseResource.THOUSAND));
+        orbitalProperties.getPrimary().asAstronomicalBody().establishColony("Testkolonie", owner, new Population(10 * BaseResource.THOUSAND));
     }
 
     /**
@@ -401,11 +401,11 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     }
 
     public boolean isInOrbitAroundColonizableWorld() {
-        return orbitalProperties.primaryIsColonizable();
+        return orbitalProperties.getPrimary().asAstronomicalBody().isColonizable();
     }
 
     public boolean isInOrbitAroundClaimableWorld() {
-        return orbitalProperties.primaryIsClaimable();
+        return orbitalProperties.getPrimary().asAstronomicalBody().isClaimable();
     }
 
     public SolarActor getMissionTargetActor() {

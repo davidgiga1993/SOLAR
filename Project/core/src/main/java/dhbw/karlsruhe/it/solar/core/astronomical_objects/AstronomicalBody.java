@@ -9,6 +9,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
+import dhbw.karlsruhe.it.solar.core.usercontrols.ShapeRenderable;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
@@ -21,7 +22,7 @@ import java.util.List;
 /**
  * @author Andi
  */
-public abstract class AstronomicalBody extends Orbiter {
+public abstract class AstronomicalBody extends Orbiter implements CenterOfOrbit {
     protected BodyGameLabel label;
     BodyProperties physicalProperties;
     private List<AstronomicalBody> satellites = new ArrayList<>();
@@ -123,7 +124,7 @@ public abstract class AstronomicalBody extends Orbiter {
     }
 
     private void addAsSatellite() {
-        orbitalProperties.addAsSatellite(this);
+        orbitalProperties.getPrimary().asAstronomicalBody().addSatellite(this);
     }
 
     public List<AstronomicalBody> getSatellites() {

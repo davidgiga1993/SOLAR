@@ -9,8 +9,10 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SystemRoot;
 
+import java.math.BigDecimal;
+
 public class OrbitalProperties {
-    private AstronomicalBody orbitPrimary;
+    private CenterOfOrbit orbitPrimary;
     private Length orbitalRadius;
     private Angle orbitalAngle;
     private Time orbitalPeriod;
@@ -18,7 +20,9 @@ public class OrbitalProperties {
     private boolean retrograde;
     private CoOrbital coOrbital;
 
-    public OrbitalProperties(AstronomicalBody orbitPrimary, Length orbitalRadius, Angle angle) {
+    private static BigDecimal maxDelta = BigDecimal.ZERO;
+
+    public OrbitalProperties(CenterOfOrbit orbitPrimary, Length orbitalRadius, Angle angle) {
         this.orbitPrimary = orbitPrimary;
         this.orbitalRadius = orbitalRadius;
         this.orbitalAngle = angle;
@@ -119,7 +123,7 @@ public class OrbitalProperties {
         return orbitPrimary.getY() + orbitPrimary.getHeight() / 2;
     }
 
-    public void setNewOrbitPrimary(AstronomicalBody body) {
+    public void setNewOrbitPrimary(CenterOfOrbit body) {
         orbitPrimary = body;
     }
 
@@ -179,7 +183,7 @@ public class OrbitalProperties {
         return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
     }
 
-    public AstronomicalBody getPrimary() {
+    public CenterOfOrbit getPrimary() {
         return orbitPrimary;
     }
 
@@ -217,11 +221,6 @@ public class OrbitalProperties {
         return (float) (mass.asKilogram() / Math.pow(radius.asKilometers(), 2));
     }
 
-    public void addAsSatellite(AstronomicalBody newSatellite) {
-        orbitPrimary.addSatellite(newSatellite);
-
-    }
-
     public boolean isRetrograde() {
         return retrograde;
     }
@@ -247,19 +246,11 @@ public class OrbitalProperties {
         return coOrbital;
     }
 
-    public String getNameOfPrimary() {
-        return orbitPrimary.getName();
-    }
-
     public boolean orbitingStar() {
         return orbitPrimary instanceof Star;
     }
 
-    public boolean primaryIsColonizable() {
-        return orbitPrimary.isColonizable();
-    }
-
-    public boolean primaryIsClaimable() {
-        return orbitPrimary.isClaimable();
+    private CenterOfOrbit getOrbitPrimary() {
+        return orbitPrimary;
     }
 }
