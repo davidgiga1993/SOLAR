@@ -1,15 +1,13 @@
 package dhbw.karlsruhe.it.solar.core.physics;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.math.Vector2;
 
+import mikera.vectorz.Vector2;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class OrbitalPropertiesTest {
@@ -45,12 +43,22 @@ public class OrbitalPropertiesTest {
         }
 
         @Override
+        public double getXDouble() {
+            return 0;
+        }
+
+        @Override
         public float getWidth() {
             return 0;
         }
 
         @Override
         public float getY() {
+            return 0;
+        }
+
+        @Override
+        public double getYDouble() {
             return 0;
         }
 

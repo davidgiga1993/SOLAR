@@ -10,7 +10,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Mass;
  */
 public class SystemRoot extends AstronomicalBody {
 
-    public SystemRoot(float x, float y) {
+    public SystemRoot(double x, double y) {
         super("Milky Way Galaxy", null, null, null, null);
         label.hide();
         this.setPosition(x, y);

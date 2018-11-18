@@ -4,10 +4,12 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 
 public interface CenterOfOrbit {
     float getX();
+    double getXDouble();
 
     float getWidth();
 
     float getY();
+    double getYDouble();
 
     float getHeight();
 

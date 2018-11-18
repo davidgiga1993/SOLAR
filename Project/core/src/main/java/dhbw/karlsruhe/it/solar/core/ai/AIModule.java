@@ -1,9 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.ai;
 
-import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.Kinematic;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
+import mikera.vectorz.Vector2;
 
 /**
  * Created by Arga on 13.02.2015.

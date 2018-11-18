@@ -1,21 +1,22 @@
 package dhbw.karlsruhe.it.solar.core.ai.movement;
 
-import com.badlogic.gdx.math.Vector2;
+
+import mikera.vectorz.Vector2;
 
 /**
  * Created by Arga on 13.02.2015.
  */
 public class Steering {
     private Vector2 linear;
-    private float angular;
+    private double angular;
     private boolean reached = false;
 
-    private Steering(Vector2 linear, float angular) {
+    private Steering(Vector2 linear, double angular) {
         this.linear = linear;
         this.angular = angular;
     }
 
-    public Steering(float linearX, float linearY, float angular) {
+    public Steering(double linearX, double linearY, double angular) {
         this(new Vector2(linearX, linearY), angular);
     }
 
@@ -24,10 +25,10 @@ public class Steering {
     }
 
     public void setLinearZero() {
-        linear.setZero();
+        linear.setValues(0, 0);
     }
 
-    public void setAngular(float newAngle) {
+    public void setAngular(double newAngle) {
         angular = newAngle;
     }
 
@@ -43,16 +44,18 @@ public class Steering {
         linear = newVector;
     }
 
-    public float getLengthLinear() {
-        return linear.len();
+    public double getLengthLinear() {
+        return linear.magnitude();
     }
 
-    public void normalizeLinear(float maxAcceleration) {
-        linear.nor().scl(maxAcceleration);
+    public void normalizeLinear(double maxAcceleration) {
+        linear.normalise();
+        linear.scale(maxAcceleration);
     }
 
-    public Vector2 scaleLinear(float newScalar) {
-        return linear.scl(newScalar);
+    public Vector2 scaleLinear(double newScalar) {
+        linear.scale(newScalar);
+        return linear;
     }
 
 }

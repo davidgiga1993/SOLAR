@@ -2,10 +2,10 @@ package dhbw.karlsruhe.it.solar.core.junit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.player.PlayerManager;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
+import mikera.vectorz.Vector2;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

@@ -6,7 +6,6 @@ import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -22,7 +21,6 @@ import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstroBodyManager;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.PlanetaryRing;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
-import dhbw.karlsruhe.it.solar.core.graphics.OffsetShader;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.GameInputListener;
 import dhbw.karlsruhe.it.solar.core.inputlisteners.Selection;
 import dhbw.karlsruhe.it.solar.core.physics.CalendarTime;
@@ -39,6 +37,7 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnitManager;
 import dhbw.karlsruhe.it.solar.core.space_units.Spaceship;
 import dhbw.karlsruhe.it.solar.core.space_units.SpaceStation;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.InfoBarManagerSettings;
+import dhbw.karlsruhe.it.solar.core.usercontrols.DoubleActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SelectionRectangle;
 import dhbw.karlsruhe.it.solar.core.usercontrols.ShapeRenderable;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
@@ -59,8 +58,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private PlayerManager playerManager = new PlayerManager();
     private SolarShapeRenderer solarShapeRenderer = new SolarShapeRenderer();
     private ShapeRenderer libGDXShapeRenderer = new ShapeRenderer();
-    private ShaderProgram shaderProgram = new OffsetShader();
     private List<PlanetaryRing> ringList = new ArrayList<>();
+
+    private List<DoubleActor> doubleActors = new ArrayList<>(200);
 
     private GameStartStage(SolarEngine se) {
         super(se, "GameStartStage");
@@ -68,7 +68,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
         gameStartStageListener();
         addSelectionRectangle();
-        this.getBatch().setShader(shaderProgram);
     }
 
     /**
@@ -148,7 +147,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
         if (newSpeed < 0) {
             newSpeed = 0;
         }
-        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 10) / 10;
+        GameStartStage.gameSpeed = (float) Math.round(newSpeed * 100) / 100;
         SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(null, SolarMessageType.GAME_SPEED_CHANGED, GameStartStage.gameSpeed);
     }
 
@@ -247,14 +246,18 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * Will draw the sprites using set batch with the following steps to reduce floating point error:
      * <ol>
      *     <li>Set camera's position to zero</li>
-     *     <li>input the camera's actual position to the shader</li>
+     *     <li>subtract the camera's actual position from every DoubleActor</li>
      *     <li>draw everything</li>
+     *     <li>restore actors' actual positions</li>
      *     <li>reset camera's position back to it's actual position</li>
      * </ol>
      */
     private void drawSprites() {
         Camera camera = getViewport().getCamera();
         Vector3 oldPosition = new Vector3(camera.position);
+        camera.position.setZero();
+        doubleActors.forEach(item -> item.translateAndBackup(-oldPosition.x, -oldPosition.y));
+
         camera.update();
 
         if (!getRoot().isVisible()) return;
@@ -262,12 +265,17 @@ public class GameStartStage extends BaseStage implements Telegraph {
         Batch batch = this.getBatch();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        shaderProgram.setUniformf("u_cameraOffset", oldPosition.x, oldPosition.y, oldPosition.z, 0f);
+
+        // FIXME: Ich denke es ist sinnvoll hier in Java die Positionen alle um die Kameraposition zu reduzieren.
+        // Auﬂerdem muss die Kamera noch auf Double umgestellt werden \o/
         getRoot().draw(batch, 1);
         batch.end();
 
+        doubleActors.forEach(DoubleActor::restore);
         camera.position.set(oldPosition);
     }
+
+    boolean asdf = false;
 
     @Override
     public void dispose() {
@@ -308,6 +316,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
     public void addActor(Actor actor) {
         super.addActor(actor);
         SolarEngine.MESSAGE_DISPATCHER.dispatchMessage(this, SolarMessageType.NEW_ACTOR_ADDED, actor);
+        if(actor instanceof DoubleActor) {
+            doubleActors.add((DoubleActor) actor);
+        }
     }
 
     @Override
@@ -442,7 +453,8 @@ public class GameStartStage extends BaseStage implements Telegraph {
             return;
         }
         assert unit != null;
-        unit.setDestination(mission.getDestinationCoordinates());
+        Vector2 destination = mission.getDestinationCoordinates();
+        unit.setDestination(new mikera.vectorz.Vector2(destination.x, destination.y));
     }
 
     private void assignObjectTarget(MissionInfoExtended mission, SpaceUnit unit) {
@@ -524,7 +536,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * @param startLocation Desired location at which the ship is to appear.
      */
     private void placeNewShip(String name, Vector2 startLocation, Player owner) {
-        Spaceship newShip = Spaceship.placeNewShip(name, startLocation, owner);
+        Spaceship newShip = Spaceship.placeNewShip(name, new mikera.vectorz.Vector2(startLocation.x, startLocation.y), owner);
         addActor(newShip);
     }
 
@@ -535,7 +547,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * @param startLocation Desired location at which the station is to appear.
      */
     private SpaceStation placeNewStation(String name, Vector2 startLocation, Player owner) {
-        SpaceStation newStation = SpaceStation.placeNewStation(name, startLocation, owner);
+        SpaceStation newStation = SpaceStation.placeNewStation(name, new mikera.vectorz.Vector2(startLocation.x, startLocation.y), owner);
         addActor(newStation);
         return newStation;
     }

@@ -15,8 +15,11 @@ import dhbw.karlsruhe.it.solar.core.solar.TextureCache;
 /**
  * @author Andi
  */
-public abstract class SolarActor extends Actor implements Telegraph {
+public abstract class SolarActor extends DoubleActor implements Telegraph {
 
+    /**
+     * km / px
+     */
     public static final double STAGE_SCALING_FACTOR = 2 * Math.pow(10, 4);
     protected boolean selected;
     protected TextureRegion solarActorTexture;
@@ -43,8 +46,17 @@ public abstract class SolarActor extends Actor implements Telegraph {
         return (float) (distance / STAGE_SCALING_FACTOR);
     }
 
+    /**
+     * px * ( km / px ) = km
+     * @param stageDistance in pixels
+     * @return distance in kilometres
+     */
     public static float scaleDistanceToPhysical(float stageDistance) {
         return stageDistance * (float) STAGE_SCALING_FACTOR;
+    }
+
+    public static double scaleDistanceToPhysical(double stageDistance) {
+        return stageDistance * STAGE_SCALING_FACTOR;
     }
 
     public abstract String getTypeName();

@@ -2,7 +2,7 @@ package dhbw.karlsruhe.it.solar.core.space_units;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
+import mikera.vectorz.Vector2;
 import dhbw.karlsruhe.it.solar.core.config.ConfigurationConstants;
 import dhbw.karlsruhe.it.solar.core.ai.AIModule;
 import dhbw.karlsruhe.it.solar.core.ai.AIOutput;
@@ -25,6 +25,8 @@ import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.core.player.Ownable;
 import dhbw.karlsruhe.it.solar.core.player.Player;
+
+import static dhbw.karlsruhe.it.solar.core.utils.MathConstants.X_AXIS;
 
 /**
  * @author Andi
@@ -112,7 +114,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
         aiOutput = aiModule.act(delta);
         setPosition(aiOutput.getPosition().x - getOriginX(), aiOutput.getPosition().y - getOriginY());
         // TODO: fix rotation offset of space unit... +90Â° necessary atm.
-        setRotation(aiOutput.getRotation() + 90);
+        setRotation((float) aiOutput.getRotation() + 90);
         super.act(delta);
     }
 
@@ -223,11 +225,14 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      * @return Distance vector stating the in-game distance between the space unit and the parameter astronomical body.
      */
     private Vector2 getDistanceVector(SolarActor target) {
-        return new Vector2(target.getX() + target.getWidth() / 2, target.getY() + target.getHeight() / 2).sub(getX() + getWidth() / 2, getY() + getHeight() / 2);
+        return getDistanceVector(new Vector2(target.getXDouble(), target.getYDouble()));
     }
 
     private Vector2 getDistanceVector(Vector2 target) {
-        return new Vector2(target.x, target.y).sub(getX() + getWidth() / 2, getY() + getHeight() / 2);
+        Vector2 center = new Vector2(getXDouble() + getWidth() / 2, getYDouble() + getHeight() / 2);
+        Vector2 distance = target.clone();
+        distance.sub(center);
+        return distance;
     }
 
     /**
@@ -239,7 +244,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      * @return Physical length of the distance.
      */
     private Length getPhysicalLength(Orbiter orbitPrimary, Vector2 distance) {
-        return new Length(scaleDistanceToPhysical(distance.len()) / OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitPrimary).getOrbitScale(), Length.DistanceUnit.KILOMETERS);
+        return new Length(scaleDistanceToPhysical(distance.magnitude()) / OrbitalProperties.getOrbitalSpaceUnitScaleFactor(orbitPrimary).getOrbitScale(), Length.DistanceUnit.KILOMETERS);
     }
 
     /**
@@ -249,7 +254,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      * @return Angle which has been calculated.
      */
     private Angle getAngleToXAxis(Vector2 distance) {
-        return new Angle(distance.angle() + 180, Angle.AngularUnit.DEGREE);
+        return new Angle(distance.angle(X_AXIS) + 180, Angle.AngularUnit.DEGREE);
     }
 
     private Length physicalDistanceTo(Orbiter destination) {
@@ -287,8 +292,10 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     private void displayCourseAndDestination(ShapeRenderer shapeRenderer) {
         if (destinationVector != null && this.aiModule.isMoving()) {
             shapeRenderer.setColor(Color.GREEN);
-            shapeRenderer.line(getX() + getWidth() / 2, getY() + getHeight() / 2, destinationVector.x, destinationVector.y);
-            shapeRenderer.circle(destinationVector.x, destinationVector.y, 10);
+            double centerX = getXDouble() + getWidth() / 2;
+            double centerY = getYDouble() + getHeight() / 2;
+            shapeRenderer.line((float) centerX, (float) centerY, (float) destinationVector.x, (float) destinationVector.y);
+            shapeRenderer.circle((float) destinationVector.x, (float) destinationVector.y, 10);
 
             displaySelectedDestination(shapeRenderer);
         }
@@ -302,7 +309,7 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
     private void displaySelectedDestination(ShapeRenderer shapeRenderer) {
         if (selected) {
             shapeRenderer.setColor(Color.YELLOW);
-            shapeRenderer.rect(destinationVector.x - 13, destinationVector.y - 13, 26, 26);
+            shapeRenderer.rect((float) destinationVector.x - 13, (float) destinationVector.y - 13, 26, 26);
         }
     }
 

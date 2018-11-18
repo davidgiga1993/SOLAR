@@ -35,6 +35,10 @@ public class Length {
         set(value, unit);
     }
 
+    public Length(double value, DistanceUnit unit) {
+        set((float) value, unit);
+    }
+
     public static Length calculateDistance(SolarActor actorOne, SolarActor actorTwo) {
         double directDistance = Math.sqrt(Math.pow(actorTwo.getX() - actorOne.getX(), 2) + Math.pow(actorTwo.getY() - actorOne.getY(), 2));
 

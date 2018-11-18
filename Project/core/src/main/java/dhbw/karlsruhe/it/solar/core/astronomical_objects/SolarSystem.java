@@ -19,7 +19,7 @@ public class SolarSystem extends AstronomicalBody {
     public SolarSystem(String name) {
         super(name, generateSolarSystemOrbitalInformation(), generateSolarSystemBodyInformation(), ConfigurationConstants.SCALE_FACTOR_STAR, "GTypeMainSequence");
         label.hide();
-        setPosition(0, 0);
+        setPosition(0., 0.);
     }
 
     @Override

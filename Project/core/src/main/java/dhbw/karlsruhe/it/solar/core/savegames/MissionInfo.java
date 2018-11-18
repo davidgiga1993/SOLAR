@@ -19,7 +19,8 @@ public class MissionInfo {
     public void fillMissionInfo(SpaceUnit unit) {
         targetName = unit.getNameOfDestination();
         if (null == targetName) {
-            location = unit.getDestinationVector();
+            mikera.vectorz.Vector2 destination = unit.getDestinationVector();
+            location = new Vector2((float) destination.x, (float) destination.y);
         }
     }
 

@@ -1,6 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.ai.movement;
 
-import com.badlogic.gdx.math.Vector2;
+
+import mikera.vectorz.Vector2;
+
+import static dhbw.karlsruhe.it.solar.core.utils.MathConstants.X_AXIS;
 
 /**
  * Created by Arga on 13.02.2015.
@@ -11,10 +14,10 @@ public class Kinematic {
     /**
      * This float holds the orientation angle in radians
      */
-    private float rotation;
+    private double rotation;
     private Vector2 velocity;
-    private float maxSpeed;
-    private float maxAcceleration = 1000f;
+    private double maxSpeed;
+    private double maxAcceleration = 1000.;
     private boolean isMoving = false;
 
 
@@ -26,9 +29,23 @@ public class Kinematic {
      * @param speed    the object's current speed
      * @param maxSpeed the object's maximal speed
      */
-    public Kinematic(Vector2 position, float rotation, float speed, float maxSpeed) {
+    public Kinematic(com.badlogic.gdx.math.Vector2 position, double rotation, double speed, double maxSpeed) {
+        this(new Vector2(position.x, position.y), rotation, speed, maxSpeed);
+    }
+
+    /**
+     * Creates a new Kinematic representation of the Game Object
+     *
+     * @param position the object's current position
+     * @param rotation the object's current rotation in radians
+     * @param speed    the object's current speed
+     * @param maxSpeed the object's maximal speed
+     */
+    public Kinematic(Vector2 position, double rotation, double speed, double maxSpeed) {
         this.position = position;
-        this.velocity = new Vector2(1, 0).setAngle(rotation).scl(speed);
+        this.velocity = new Vector2(1, 0);
+        this.velocity.rotate2D(rotation);
+        this.velocity.scale(speed);
         this.rotation = rotation;
         this.maxSpeed = maxSpeed;
     }
@@ -41,32 +58,47 @@ public class Kinematic {
      * @param rotation the object's current rotation in radians
      * @param maxSpeed the object's maximal speed
      */
-    public Kinematic(Vector2 position, float rotation, float maxSpeed) {
+    public Kinematic(com.badlogic.gdx.math.Vector2 position, double rotation, double maxSpeed) {
+        this(position, rotation, 0, maxSpeed);
+    }
+
+    /**
+     * Creates a new Kinematic representation of the Game Object
+     * Note: This constructor assumes the object's current speed to be 0.
+     *
+     * @param position the object's current position
+     * @param rotation the object's current rotation in radians
+     * @param maxSpeed the object's maximal speed
+     */
+    public Kinematic(Vector2 position, double rotation, double maxSpeed) {
         this(position, rotation, 0, maxSpeed);
     }
 
     public void update(Steering steering, float time) {
-        float steeringLen = steering.getLengthLinear();
+        double steeringLen = steering.getLengthLinear();
         if (steeringLen == 0) {
-            velocity.setZero();
+            velocity.setValues(0, 0);
             isMoving = false;
             return;
         }
         isMoving = true;
-        rotation = velocity.angle();
+        rotation = position.angle(X_AXIS);
 
-        Vector2 distance = new Vector2(velocity).scl(time);
+        Vector2 distance = new Vector2(velocity.x, velocity.y);
+        distance.scale(time);
         position.add(distance);
 
-        velocity.add(steering.scaleLinear(time));
+        Vector2 scaledSteering = steering.scaleLinear(time);
+        velocity.add(scaledSteering);
 
-        if (velocity.len() > maxSpeed) {
-            velocity.nor().scl(maxSpeed);
+        if (velocity.magnitude() > maxSpeed) {
+            velocity.normalise();
+            velocity.scale(maxSpeed);
         }
     }
 
     public Vector2 getPosition() {
-        return position;
+        return new Vector2((float) position.x, (float) position.y);
     }
 
     public void setPosition(Vector2 newValue) {
@@ -74,19 +106,19 @@ public class Kinematic {
         position.y = newValue.y;
     }
 
-    public float getAngleOfPosition() {
-        return position.angle();
+    public double getAngleOfPosition() {
+        return position.angle(X_AXIS);
     }
 
-    public float getXPosition() {
+    public double getXPosition() {
         return position.x;
     }
 
-    public float getYPosition() {
+    public double getYPosition() {
         return position.y;
     }
 
-    public float getRotation() {
+    public double getRotation() {
         return rotation;
     }
 
@@ -98,8 +130,8 @@ public class Kinematic {
         return velocity;
     }
 
-    public float getSpeed() {
-        return velocity.len();
+    public double getSpeed() {
+        return velocity.magnitude();
     }
 
     public void setVelocity(Vector2 newVelocity) {
@@ -107,19 +139,21 @@ public class Kinematic {
         this.velocity.y = newVelocity.y;
     }
 
-    public void setVelocityAngle(float degrees) {
-        velocity.setAngle(degrees);
+    public void setVelocityAngle(double degrees) {
+        double currentAngle = velocity.angle(X_AXIS);
+        double delta = degrees - currentAngle;
+        velocity.rotate2D(delta);
     }
 
-    public float getMaxSpeed() {
+    public double getMaxSpeed() {
         return maxSpeed;
     }
 
-    public void setMaxSpeed(float newMaximum) {
+    public void setMaxSpeed(double newMaximum) {
         this.maxSpeed = newMaximum;
     }
 
-    public float getMaxAcceleration() {
+    public double getMaxAcceleration() {
         return maxAcceleration;
     }
 

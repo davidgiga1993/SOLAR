@@ -1,9 +1,9 @@
 package dhbw.karlsruhe.it.solar.core.space_units;
 
-import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.core.physics.Length;
 import dhbw.karlsruhe.it.solar.core.resources.Credits;
 import dhbw.karlsruhe.it.solar.core.player.Player;
+import mikera.vectorz.Vector2;
 
 /**
  * Code for the space station unit object

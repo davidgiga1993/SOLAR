@@ -80,11 +80,11 @@ class ResourceBarTimeTable extends Table implements Telegraph {
     }
 
     private void slowDown() {
-        GameStartStage.changeTimeSpeed(-0.1f);
+        GameStartStage.changeTimeSpeed(-0.01f);
     }
 
     private void speedUp() {
-        GameStartStage.changeTimeSpeed(0.1f);
+        GameStartStage.changeTimeSpeed(0.01f);
     }
 
     private void setSpeed(float speed) {

@@ -115,12 +115,12 @@ public class OrbitalProperties {
         updateOrbitalAngle(new Angle(periodicConstant.inDegrees() * change, AngularUnit.DEGREE));
     }
 
-    private float getPrimaryX() {
-        return orbitPrimary.getX() + orbitPrimary.getWidth() / 2;
+    private double getPrimaryX() {
+        return orbitPrimary.getXDouble() + orbitPrimary.getWidth() / 2;
     }
 
-    private float getPrimaryY() {
-        return orbitPrimary.getY() + orbitPrimary.getHeight() / 2;
+    private double getPrimaryY() {
+        return orbitPrimary.getYDouble() + orbitPrimary.getHeight() / 2;
     }
 
     public void setNewOrbitPrimary(CenterOfOrbit body) {
@@ -130,14 +130,14 @@ public class OrbitalProperties {
     /**
      * @return Calculates the X-axis point around which the astronomical body orbits based on its Origin attribute.
      */
-    public float calculateCenterOfOrbitX() {
+    public double calculateCenterOfOrbitX() {
         return getPrimaryX();
     }
 
     /**
      * @return Calculates the Y-axis point around which the astronomical body orbits based on its Origin attribute.
      */
-    public float calculateCenterOfOrbitY() {
+    public double calculateCenterOfOrbitY() {
         return getPrimaryY();
     }
 
@@ -152,8 +152,8 @@ public class OrbitalProperties {
      * @param deltaAlpha            Additional change in orbital angle which will be taken into account during the calculation.
      * @return X-axis position of the body.
      */
-    private float calculateOrbitalPositionX(float orbitalRadiusInPixels, Angle deltaAlpha) {
-        return (float) (calculateCenterOfOrbitX() + Math.cos(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels);
+    private double calculateOrbitalPositionX(float orbitalRadiusInPixels, Angle deltaAlpha) {
+        return calculateCenterOfOrbitX() + Math.cos(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels;
     }
 
     /**
@@ -161,17 +161,17 @@ public class OrbitalProperties {
      *
      * @return current Y-axis position of the body
      */
-    private float calculateOrbitalPositionY(float orbitalRadiusInPixels, Angle deltaAlpha) {
-        return (float) (calculateCenterOfOrbitY() + Math.sin(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels);
+    private double calculateOrbitalPositionY(float orbitalRadiusInPixels, Angle deltaAlpha) {
+        return calculateCenterOfOrbitY() + Math.sin(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels;
     }
 
-    public Vector2 calculateFuturePosition(float orbitalRadiusInPixels, float delta) {
+    public mikera.vectorz.Vector2 calculateFuturePosition(float orbitalRadiusInPixels, double delta) {
         Angle deltaAlpha = predictedChangeInOrbitalAngle(delta);
-        return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
+        return new mikera.vectorz.Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
 
-    private Angle predictedChangeInOrbitalAngle(float delta) {
-        return new Angle(periodicConstant.inDegrees() * delta, AngularUnit.DEGREE);
+    private Angle predictedChangeInOrbitalAngle(double delta) {
+        return new Angle(periodicConstant.inDegrees() * (float) delta, AngularUnit.DEGREE);
     }
 
     /**
@@ -179,8 +179,8 @@ public class OrbitalProperties {
      *
      * @return Vector2
      */
-    public Vector2 getCenterOfOrbit() {
-        return new Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
+    public mikera.vectorz.Vector2 getCenterOfOrbit() {
+        return new mikera.vectorz.Vector2(calculateCenterOfOrbitX(), calculateCenterOfOrbitY());
     }
 
     public CenterOfOrbit getPrimary() {
@@ -238,8 +238,8 @@ public class OrbitalProperties {
         orbitalAngle.changeBy(angularDeviation);
     }
 
-    public Vector2 getOrbitalPositionTotal(float orbitalRadiusInPixels, Angle deltaAlpha) {
-        return new Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
+    public mikera.vectorz.Vector2 getOrbitalPositionTotal(float orbitalRadiusInPixels, Angle deltaAlpha) {
+        return new mikera.vectorz.Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
 
     public CoOrbital getCoOrbitalInformation() {

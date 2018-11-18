@@ -19,6 +19,10 @@ public class Angle {
         this(0, AngularUnit.DEGREE);
     }
 
+    public Angle(double value, AngularUnit unit) {
+        this((float) value, unit);
+    }
+
     public Angle(float value, AngularUnit unit) {
         this.angularUnit = unit;
         this.value = value;

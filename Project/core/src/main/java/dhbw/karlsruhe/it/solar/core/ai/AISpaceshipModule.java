@@ -1,10 +1,10 @@
 package dhbw.karlsruhe.it.solar.core.ai;
 
-import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedEvent;
 import dhbw.karlsruhe.it.solar.core.ai.events.TargetReachedListener;
 import dhbw.karlsruhe.it.solar.core.ai.movement.*;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
+import mikera.vectorz.Vector2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +30,8 @@ public class AISpaceshipModule implements AIModule {
         kinematic = object.getKinematic();
         output = new AIOutput();
 
-        pursueSteeringProvider = new PursueSteeringProvider(10, kinematic.getMaxSpeed() * .5f);
-        arriveSteeringProvider = new ArriveSteeringProvider(10, kinematic.getMaxSpeed() * .5f);
+        pursueSteeringProvider = new PursueSteeringProvider(10, kinematic.getMaxSpeed() * .5);
+        arriveSteeringProvider = new ArriveSteeringProvider(10, kinematic.getMaxSpeed() * .5);
         orbitalArriveSteeringProvider = new OrbitalArriveSteeringProvider(10, kinematic.getMaxSpeed() * .5f);
     }
 

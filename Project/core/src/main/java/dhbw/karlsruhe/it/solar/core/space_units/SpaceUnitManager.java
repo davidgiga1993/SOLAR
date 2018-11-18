@@ -1,6 +1,5 @@
 package dhbw.karlsruhe.it.solar.core.space_units;
 
-import com.badlogic.gdx.math.Vector2;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.AstronomicalBody;
 import dhbw.karlsruhe.it.solar.core.astronomical_objects.SolarSystem;
 import dhbw.karlsruhe.it.solar.core.physics.Angle;
@@ -11,6 +10,8 @@ import dhbw.karlsruhe.it.solar.core.savegames.SpaceUnitInfo;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActor;
 import dhbw.karlsruhe.it.solar.core.player.Player;
 import dhbw.karlsruhe.it.solar.core.player.PlayerManager;
+import dhbw.karlsruhe.it.solar.core.utils.VectorUtils;
+import mikera.vectorz.Vector2;
 
 /**
  * Handles the creation of space units for the game.
@@ -46,7 +47,7 @@ public class SpaceUnitManager {
         this.name = unit.getName();
         this.owner = playerManager.getPlayerFromName(unit.getOwnerName());
         this.orbitInfo = unit.getOrbitInfo();
-        this.startLocation = unit.getLocation();
+        this.startLocation = VectorUtils.convert(unit.getLocation());
         this.mission = unit.getMissionInfo();
 
         return createUnitBasedOnType(unit, type);

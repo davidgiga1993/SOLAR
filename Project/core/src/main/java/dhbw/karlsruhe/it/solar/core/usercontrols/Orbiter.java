@@ -53,7 +53,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
         float orbitalSpeed = calculateOrbitalSpeed();
         kinematic.setPosition(getAdjustedPosition());
         kinematic.setRotation(0f);
-        kinematic.setVelocity(new Vector2(1, 0).scl(orbitalSpeed));
+        kinematic.setVelocity(new mikera.vectorz.Vector2(orbitalSpeed, 0));
         kinematic.setMaxSpeed(orbitalSpeed);
     }
 
@@ -62,8 +62,8 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
      *
      * @return Position coordinates of the center of the object's texture.
      */
-    private Vector2 getAdjustedPosition() {
-        return new Vector2(getX() + getWidth() / 2, getY() + getHeight() / 2);
+    private mikera.vectorz.Vector2 getAdjustedPosition() {
+        return new mikera.vectorz.Vector2(getXDouble() + getWidth() / 2, getYDouble() + getHeight() / 2);
     }
 
     /**
@@ -71,8 +71,8 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
      *
      * @return Position coordinates for the game logic which correspond to the lower left corner of an object.
      */
-    protected Vector2 getReAdjustedPosition() {
-        return new Vector2(kinematic.getXPosition() - getWidth() / 2, kinematic.getYPosition() - getHeight() / 2);
+    protected mikera.vectorz.Vector2 getReAdjustedPosition() {
+        return new mikera.vectorz.Vector2(kinematic.getXPosition() - getWidth() / 2, kinematic.getYPosition() - getHeight() / 2);
     }
 
     /**
@@ -145,7 +145,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
         this.setPosition(getReAdjustedPosition().x, getReAdjustedPosition().y);
     }
 
-    public Vector2 calculateFuturePosition(float delta) {
+    public mikera.vectorz.Vector2 calculateFuturePosition(double delta) {
         return orbitalProperties.calculateFuturePosition(orbitalRadiusInPixels, delta);
     }
 
@@ -154,7 +154,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
      *
      * @return Vector2
      */
-    public Vector2 getCenterOfOrbit() {
+    public mikera.vectorz.Vector2 getCenterOfOrbit() {
         return orbitalProperties.getCenterOfOrbit();
     }
 
@@ -190,7 +190,10 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
 
     protected void displayOrbit(SolarShapeRenderer shapeRenderer) {
         if (!orbitalProperties.isCoOrbital()) {
-            shapeRenderer.setTransformMatrix(orbitTransform.setToTranslation(orbitalProperties.calculateCenterOfOrbitX(), orbitalProperties.calculateCenterOfOrbitY(), 0));
+            shapeRenderer.setTransformMatrix(orbitTransform.setToTranslation(
+                    (float) orbitalProperties.calculateCenterOfOrbitX(),
+                    (float) orbitalProperties.calculateCenterOfOrbitY(),
+                    0));
             shapeRenderer.setColor(orbitColor);
             shapeRenderer.orbit(orbitalRadiusInPixels, segments);
         }
@@ -213,7 +216,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
         return orbitalProperties.getPrimary().asAstronomicalBody();
     }
 
-    protected void setKinematicPosition(Vector2 position) {
+    protected void setKinematicPosition(mikera.vectorz.Vector2 position) {
         kinematic.setPosition(position);
     }
 
