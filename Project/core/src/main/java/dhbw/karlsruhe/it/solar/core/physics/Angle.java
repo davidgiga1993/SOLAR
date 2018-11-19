@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlElement;
  */
 public class Angle {
 
-    private static final float DEGREE_IN_RADIANS = (float) (180f / Math.PI);
-    private static final float RADIANS_CIRCLE = (float) (2 * Math.PI);
+    private static final double DEGREE_IN_RADIANS = 180. / Math.PI;
+    private static final double RADIANS_CIRCLE = 2. * Math.PI;
 
     @XmlElement
     private double value;
@@ -29,25 +29,25 @@ public class Angle {
         preventOverflow();
     }
 
-    public float inDegrees() {
+    public double inDegrees() {
         switch (angularUnit) {
             case DEGREE:
-                return (float) value;
+                return value;
             case RADIANS:
-                return (float) value * DEGREE_IN_RADIANS;
+                return value * DEGREE_IN_RADIANS;
             default:
-                return Float.NaN;
+                return Double.NaN;
         }
     }
 
-    private float inRadians() {
+    private double inRadians() {
         switch (angularUnit) {
             case DEGREE:
-                return (float) value / DEGREE_IN_RADIANS;
+                return value / DEGREE_IN_RADIANS;
             case RADIANS:
-                return (float) value;
+                return value;
             default:
-                return Float.NaN;
+                return Double.NaN;
         }
     }
 
@@ -60,7 +60,7 @@ public class Angle {
                 value += change.inRadians();
                 break;
             default:
-                value = Float.NaN;
+                value = Double.NaN;
         }
         preventOverflow();
     }
@@ -79,7 +79,7 @@ public class Angle {
                 value = value > -RADIANS_CIRCLE ? value : value + RADIANS_CIRCLE;
                 break;
             default:
-                value = Float.NaN;
+                value = Double.NaN;
         }
     }
 

@@ -169,7 +169,7 @@ public class PlanetaryRing extends AstronomicalBody {
 
         adjustLabelPosition();
 
-        kinematic.setRotation(orbitalProperties.getOrbitalAngle().inDegrees() + 90f);
+        kinematic.setRotation(orbitalProperties.getOrbitalAngle().inDegrees() + 90.);
         kinematic.setVelocityAngle(kinematic.getRotation());
     }
 

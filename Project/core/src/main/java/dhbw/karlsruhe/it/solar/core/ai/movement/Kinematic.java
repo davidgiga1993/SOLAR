@@ -122,7 +122,7 @@ public class Kinematic {
         return rotation;
     }
 
-    public void setRotation(float value) {
+    public void setRotation(double value) {
         this.rotation = value;
     }
 
