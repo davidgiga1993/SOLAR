@@ -29,6 +29,7 @@ import dhbw.karlsruhe.it.solar.core.physics.Time.TimeUnit;
 import dhbw.karlsruhe.it.solar.core.resources.BaseResource;
 import dhbw.karlsruhe.it.solar.core.resources.Population;
 import dhbw.karlsruhe.it.solar.core.savegames.*;
+import dhbw.karlsruhe.it.solar.core.solar.SolarCamera;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
@@ -52,6 +53,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     private static GameInputListener inputListener;
     private static float gameSpeed = 0f;
     private static float oldGameSpeed = 1f;
+    private final SolarCamera camera;
     private Selection selectedActors = new Selection();
     private SelectionRectangle selectionRectangle;
     private SolarSystem solarSystem;
@@ -62,12 +64,13 @@ public class GameStartStage extends BaseStage implements Telegraph {
 
     private List<DoubleActor> doubleActors = new ArrayList<>(200);
 
-    private GameStartStage(SolarEngine se) {
+    private GameStartStage(SolarEngine se, SolarCamera camera) {
         super(se, "GameStartStage");
         se.setZoomSolarCameraTo(25);
 
         gameStartStageListener();
         addSelectionRectangle();
+        this.camera = camera;
     }
 
     /**
@@ -101,7 +104,7 @@ public class GameStartStage extends BaseStage implements Telegraph {
     }
 
     private static GameStartStage initGameStartStage(SolarEngine engine) {
-        GameStartStage gameStage = new GameStartStage(engine);
+        GameStartStage gameStage = new GameStartStage(engine, engine.getCamera());
         engine.addStage(gameStage);
 
         if (SolarEngine.DEBUG) {
@@ -253,10 +256,9 @@ public class GameStartStage extends BaseStage implements Telegraph {
      * </ol>
      */
     private void drawSprites() {
-        Camera camera = getViewport().getCamera();
         Vector3 oldPosition = new Vector3(camera.position);
         camera.position.setZero();
-        doubleActors.forEach(item -> item.translateAndBackup(-oldPosition.x, -oldPosition.y));
+        doubleActors.forEach(item -> item.translateAndBackup(-camera.positionDouble.x, -camera.positionDouble.y));
 
         camera.update();
 
@@ -274,8 +276,6 @@ public class GameStartStage extends BaseStage implements Telegraph {
         doubleActors.forEach(DoubleActor::restore);
         camera.position.set(oldPosition);
     }
-
-    boolean asdf = false;
 
     @Override
     public void dispose() {

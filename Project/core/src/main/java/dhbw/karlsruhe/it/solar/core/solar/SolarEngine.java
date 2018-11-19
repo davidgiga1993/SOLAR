@@ -236,8 +236,8 @@ public class SolarEngine extends Game implements InputProcessor {
         return camera.zoom;
     }
 
-    public void translateSolarCamera(Vector2 vec) {
-        camera.translate(vec);
+    public void translateSolarCamera(double x, double y) {
+        camera.translateDouble(x, y);
     }
 
     public SolarCamera getCamera() {

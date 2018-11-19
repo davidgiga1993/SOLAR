@@ -242,7 +242,7 @@ public class GameInputListener extends InputListener {
         x = handleKeyRight(x);
         x *= delta;
         y *= delta;
-        se.translateSolarCamera(new Vector2(x * se.getSolarCameraZoom(), y * se.getSolarCameraZoom()));
+        se.translateSolarCamera(x * se.getSolarCameraZoom(), y * se.getSolarCameraZoom());
     }
 
     private float handleKeyRight(float x) {
