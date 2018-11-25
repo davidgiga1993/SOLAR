@@ -72,6 +72,7 @@ public class Angle {
      * Make sure that no overflow happens.
      */
     private void preventOverflow() {
+        // FIXME: should be called normalize and should be able to cope with values > 2x max
         switch (angularUnit) {
             case DEGREE:
                 value = value < 360 ? value : value - 360;
