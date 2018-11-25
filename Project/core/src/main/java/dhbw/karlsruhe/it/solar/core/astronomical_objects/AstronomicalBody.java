@@ -9,7 +9,6 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceUnit;
 import dhbw.karlsruhe.it.solar.core.stages.GameStartStage;
 import dhbw.karlsruhe.it.solar.core.stages.guielements.BodyGameLabel;
 import dhbw.karlsruhe.it.solar.core.usercontrols.Orbiter;
-import dhbw.karlsruhe.it.solar.core.usercontrols.ShapeRenderable;
 import dhbw.karlsruhe.it.solar.core.usercontrols.SolarActorScale;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarMessageType;
@@ -38,7 +37,7 @@ public abstract class AstronomicalBody extends Orbiter implements CenterOfOrbit 
     }
 
     protected void changeBodyScale() {
-        float tSize = scaleDistanceToStage(physicalProperties.getRadius().asKilometers()) * actorScale.getShapeScale() * 2;
+        float tSize = (float) (scaleDistanceToStage(physicalProperties.getRadius().asKilometers()) * actorScale.getShapeScale() * 2);
         this.setSize(tSize, tSize);
     }
 

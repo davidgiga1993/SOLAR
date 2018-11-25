@@ -14,8 +14,6 @@ import dhbw.karlsruhe.it.solar.core.space_units.SpaceStation;
 import dhbw.karlsruhe.it.solar.core.solar.SolarEngine;
 import dhbw.karlsruhe.it.solar.core.solar.SolarShapeRenderer;
 
-import java.math.BigDecimal;
-
 /**
  * @author Andi
  * <p>
@@ -27,7 +25,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
     protected final Kinematic kinematic;
     protected OrbitalProperties orbitalProperties;
     protected PreviewActor preview;
-    protected float orbitalRadiusInPixels;
+    protected double orbitalRadiusInPixels;
     protected int segments = 250;
     protected Color orbitColor = Color.TEAL;
 
@@ -240,7 +238,7 @@ public abstract class Orbiter extends SolarActor implements ShapeRenderable, Kin
         return orbitalProperties.getCoOrbitalInformation();
     }
 
-    public float getOrbitalRadiusInPixels() {
+    public double getOrbitalRadiusInPixels() {
         return orbitalRadiusInPixels;
     }
 

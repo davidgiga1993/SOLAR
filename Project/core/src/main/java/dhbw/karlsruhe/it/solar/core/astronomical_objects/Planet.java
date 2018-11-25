@@ -32,7 +32,7 @@ public class Planet extends AstronomicalBody {
     protected boolean canBeSeen() {
         float size = getWidth();
         if (outermostMoon != null) {
-            size = outermostMoon.getOrbitalRadiusInPixels() * 2;
+            size = (float) outermostMoon.getOrbitalRadiusInPixels() * 2;
         }
         return (size / SolarEngine.get().getSolarCameraZoom()) > 1f;
     }

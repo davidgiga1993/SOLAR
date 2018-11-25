@@ -16,7 +16,7 @@ public class SolarShapeRenderer extends ShapeRenderer {
     private final ImmediateModeRenderer renderer = getRenderer();
     private final Matrix4 combinedMatrix = new Matrix4();
     private Color color = getColor();
-    private boolean disabled = true;
+    private final boolean disabled = false;
 
     /**
      * Some orbits are to big, so that the precision of circle(..) is not sufficient. This method provides a higher accuracy.
@@ -24,13 +24,14 @@ public class SolarShapeRenderer extends ShapeRenderer {
      * @param radius
      * @param segments
      */
-    public void orbit(float radius, int segments) {
+    public void orbit(double radius, int segments) {
         if(disabled) {
             return;
         }
         double theta = 2 * MathUtils.PI / (segments);
         // pre-calculate the sine and cosine
         // TODO: revise precision (Pluto's a jerk)
+        // TODO: [Performance Potential] Cache orbit vertices instead of recalculating them on every frame
         double c = Math.cos(theta);
         double s = Math.sin(theta);
         double t;
@@ -57,7 +58,8 @@ public class SolarShapeRenderer extends ShapeRenderer {
     }
 
 
-    public void orbit(float radius) {
+
+    public void orbit(double radius) {
         orbit(radius, (int) Math.sqrt(radius));
     }
 

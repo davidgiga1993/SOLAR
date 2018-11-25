@@ -152,7 +152,7 @@ public class OrbitalProperties {
      * @param deltaAlpha            Additional change in orbital angle which will be taken into account during the calculation.
      * @return X-axis position of the body.
      */
-    private double calculateOrbitalPositionX(float orbitalRadiusInPixels, Angle deltaAlpha) {
+    private double calculateOrbitalPositionX(double orbitalRadiusInPixels, Angle deltaAlpha) {
         return calculateCenterOfOrbitX() + Math.cos(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels;
     }
 
@@ -161,11 +161,11 @@ public class OrbitalProperties {
      *
      * @return current Y-axis position of the body
      */
-    private double calculateOrbitalPositionY(float orbitalRadiusInPixels, Angle deltaAlpha) {
+    private double calculateOrbitalPositionY(double orbitalRadiusInPixels, Angle deltaAlpha) {
         return calculateCenterOfOrbitY() + Math.sin(Math.toRadians(orbitalAngle.inDegrees() + deltaAlpha.inDegrees())) * orbitalRadiusInPixels;
     }
 
-    public mikera.vectorz.Vector2 calculateFuturePosition(float orbitalRadiusInPixels, double delta) {
+    public mikera.vectorz.Vector2 calculateFuturePosition(double orbitalRadiusInPixels, double delta) {
         Angle deltaAlpha = predictedChangeInOrbitalAngle(delta);
         return new mikera.vectorz.Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
@@ -238,7 +238,7 @@ public class OrbitalProperties {
         orbitalAngle.changeBy(angularDeviation);
     }
 
-    public mikera.vectorz.Vector2 getOrbitalPositionTotal(float orbitalRadiusInPixels, Angle deltaAlpha) {
+    public mikera.vectorz.Vector2 getOrbitalPositionTotal(double orbitalRadiusInPixels, Angle deltaAlpha) {
         return new mikera.vectorz.Vector2(calculateOrbitalPositionX(orbitalRadiusInPixels, deltaAlpha), calculateOrbitalPositionY(orbitalRadiusInPixels, deltaAlpha));
     }
 

@@ -277,8 +277,8 @@ public abstract class SpaceUnit extends Orbiter implements ShapeRenderable, Owna
      */
     private void setSize(Length width, Length height) {
         // convert to pixels and scale with scale setting
-        float pWidth = scaleDistanceToStage(width.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
-        float pHeight = scaleDistanceToStage(height.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale();
+        float pWidth = (float) (scaleDistanceToStage(width.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale());
+        float pHeight = (float) (scaleDistanceToStage(height.asKilometers()) * ConfigurationConstants.SCALE_FACTOR_UNITS.getShapeScale());
         // call super
         super.setSize(pWidth, pHeight);
     }

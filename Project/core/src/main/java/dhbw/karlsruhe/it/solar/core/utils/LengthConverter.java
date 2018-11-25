@@ -21,7 +21,7 @@ public class LengthConverter {
      */
     public static Length toPhysical(float lengthInPixels, SolarActorScale scale) {
         float orbitScale = scale.getOrbitScale();
-        float lengthKm = SolarActor.scaleDistanceToPhysical(lengthInPixels / orbitScale);
+        float lengthKm = (float) SolarActor.scaleDistanceToPhysical(lengthInPixels / orbitScale);
         return new Length(lengthKm, Length.DistanceUnit.KILOMETERS);
     }
 
@@ -34,6 +34,6 @@ public class LengthConverter {
      */
     public static float toPixels(Length length, SolarActorScale scale) {
         double scaledLength = length.asKilometers() * scale.getOrbitScale();
-        return SolarActor.scaleDistanceToStage(scaledLength);
+        return (float) SolarActor.scaleDistanceToStage(scaledLength);
     }
 }

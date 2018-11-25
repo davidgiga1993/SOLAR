@@ -178,11 +178,11 @@ public class PlanetaryRing extends AstronomicalBody {
         // planetary rings must be shifted by an offset when the primary is scaled
         // however they'll need to get scaled when the moon orbit changes
         // so the size should be radius = radius * moonOrbitScale + delta_planetsize
-        outerRadiusPixels = SolarActor.scaleDistanceToStage(physicalProperties.getRadius().asKilometers());
+        outerRadiusPixels = (float) SolarActor.scaleDistanceToStage(physicalProperties.getRadius().asKilometers());
         outerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.getOrbitScale();
         outerRadiusPixels += calculateOrbitOffset();
 
-        innerRadiusPixels = SolarActor.scaleDistanceToStage(innerRadius.asKilometers());
+        innerRadiusPixels = (float) SolarActor.scaleDistanceToStage(innerRadius.asKilometers());
         innerRadiusPixels *= ConfigurationConstants.SCALE_FACTOR_MOON.getOrbitScale();
         innerRadiusPixels += calculateOrbitOffset();
 
