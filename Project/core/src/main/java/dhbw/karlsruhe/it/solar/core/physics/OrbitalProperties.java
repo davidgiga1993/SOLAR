@@ -81,7 +81,7 @@ public class OrbitalProperties {
      */
     private void calculatePeriodicConstant() {
         if (0 != orbitalPeriod.inDays()) {
-            periodicConstant = new Angle(360 / orbitalPeriod.inDays(), AngularUnit.DEGREE);
+            periodicConstant = new Angle(360f / orbitalPeriod.inDays(), AngularUnit.DEGREE);
             return;
         }
         periodicConstant = new Angle();

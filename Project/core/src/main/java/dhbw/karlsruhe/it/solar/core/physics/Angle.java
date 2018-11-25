@@ -26,7 +26,10 @@ public class Angle {
     public Angle(float value, AngularUnit unit) {
         this.angularUnit = unit;
         this.value = value;
-        preventOverflow();
+        // FIXME: specifically set whether an angle should be normalized or not
+        // defaulting to normalization leads to weird results in calculating periodic constants for Orbiters
+        // it's not disabled when calling the change function in order to prevent accumulating huge angles over time
+        //preventOverflow();
     }
 
     public double inDegrees() {
@@ -86,5 +89,16 @@ public class Angle {
     public enum AngularUnit {
         DEGREE,
         RADIANS
+    }
+
+    @Override
+    public String toString() {
+        switch (angularUnit) {
+            case DEGREE:
+                return value + "°deg";
+            case RADIANS:
+                return value + "°rad";
+        }
+        return value + "°n/a";
     }
 }
